@@ -1,5 +1,5 @@
 require "crsfml"
-require "../src/graphics.cr"
+require "../src/textures.cr"
 require "../src/menus.cr"
 
 puts "A Normal World"
