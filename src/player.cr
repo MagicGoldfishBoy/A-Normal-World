@@ -127,4 +127,63 @@ Module Player
      end
 
  end
+
+   Class Appearance
+    def initialize(skin : String, hair : String, face : String, hat : String, earrings : String, shirt : String, gloves : String, pants : String, shoes : String)
+        @skin = skin
+        @@skin = skin
+        @hair = hair
+        @@hair = hair
+        @face = face
+        @@face = face
+        @hat = hat
+        @@hat = hat
+        @earrings = earrings
+        @@earrings = earrings
+        @shirt = shirt
+        @@shirt = shirt
+        @gloves = gloves
+        @@gloves = gloves
+        @pants = pants
+        @@pants = pants
+        @shoes = shoes
+        @@shoes = shoes
+    end
+
+    def skin
+        @skin
+    end
+
+    def hair
+        @hair
+    end
+
+    def face
+        @face
+    end
+
+    def hat
+        @hat
+    end
+
+    def earrings
+        @earrings
+    end
+
+    def shirt
+        @shirt
+    end
+
+    def gloves
+        @gloves
+    end
+
+    def pants
+        @pants
+    end
+
+    def shoes
+        @shoes
+    end
+ end
 end
