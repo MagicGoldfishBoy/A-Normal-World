@@ -2,6 +2,7 @@ require "crsfml"
 require "json"
 require "../src/textures.cr"
 require "../src/fonts.cr"
+require "../src/sprites.cr"
 
 module Menus
 
@@ -294,6 +295,7 @@ module Menus
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
             save = "save01"
             this = "character_creation_menu"
+            Player::Appearance.initialize_player_model
             SystemMenus.system_menu=(this)
         end
      end
@@ -305,6 +307,13 @@ module Menus
     
         scale_x = current_size.x.to_f / original_width
         scale_y = current_size.y.to_f / original_height
+
+        x = 3; y = 3
+        Sprites::Player.resize_player_sprite(window, x, y)
+        x = 250; y = 50
+        Sprites::Player.position_player_sprite(window, x, y)
+
+        Sprites::Player.refresh_player_sprite(window)
 
         MENU_BOX_01.position = SF.vector2(scale_x + 20, scale_y + 540)
         MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)

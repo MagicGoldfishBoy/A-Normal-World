@@ -1,7 +1,7 @@
 require "../src/textures.cr"
 
-Module Player
-  Class Stats
+module Player
+  class Stats
      def initialize(name : String, max_hp : Float64, current_hp : Float64, max_mp : Float64, current_mp : Float64, exp : Float64, defense : Float64, str : Float64, dex : Float64, luk : Float64, int : Float64)
         @name = name
         @@name = name
@@ -128,7 +128,7 @@ Module Player
 
  end
 
-   Class Appearance
+   class Appearance
     def initialize(skin : String, hair : String, face : String, hat : String, earrings : String, shirt : String, gloves : String, pants : String, shoes : String)
         @skin = skin
         @@skin = skin
@@ -184,6 +184,17 @@ Module Player
 
     def shoes
         @shoes
+    end
+
+    def Appearance.initialize_player_model
+        @@skin = "pale_skin"
+    end
+
+    def Appearance.get_clothing(this)
+        case this
+        when "skin"
+            return @@skin
+        end
     end
  end
 end
