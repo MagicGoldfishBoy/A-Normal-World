@@ -188,12 +188,18 @@ module Player
 
     def Appearance.initialize_player_model
         @@skin = "pale_skin"
+        @@hair = "black_shounen_hair"
+        @@face = "blue_button_eyes"
     end
 
     def Appearance.get_clothing(this)
         case this
         when "skin"
             return @@skin
+        when "hair"
+            return @@hair
+        when "face"
+            return @@face
         end
     end
  end
