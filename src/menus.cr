@@ -320,10 +320,33 @@ module Menus
         MENU_BOX_01.size = SF.vector2(115, 40)
         MENU_TEXT_01.string = "Back"
 
+        MENU_BOX_02.position = SF.vector2(scale_x + 80, scale_y + 60)
+        MENU_BOX_02.size = SF.vector2(115, 40)
+        MENU_TEXT_02.position = MENU_BOX_02.position + SF.vector2(30, 1)
+        MENU_TEXT_02.string = "Skin"
+        MENU_TEXT_02.color = SF::Color::Black
+
+        MENU_BOX_03.position = SF.vector2(scale_x + 560, scale_y + 60)
+        MENU_BOX_03.size = SF.vector2(115, 40)
+        MENU_TEXT_03.position = MENU_BOX_03.position + SF.vector2(30, 1)
+        MENU_TEXT_03.string = "Skin"
+        MENU_TEXT_03.color = SF::Color::Black
+
         window.draw(MENU_BOX_01)
+        window.draw(MENU_BOX_02)
+        window.draw(MENU_BOX_03)
         window.draw(MENU_TEXT_01)
+        window.draw(MENU_TEXT_02)
+        window.draw(MENU_TEXT_03)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.character_creation_menu_mouse_handling(window)
+        end
+        if SF::Keyboard.key_pressed?(SF::Keyboard::Right)
+            context = "character_creation"
+            direction = "right"
+            skin = Sprites::Player.change_skin(context, direction)
+            Player::Appearance.change_skin(skin)
+            Sprites::Player.refresh_player_sprite(window)
         end
      end
 
@@ -349,7 +372,23 @@ module Menus
         if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
             this = "save_menu"
             SystemMenus.system_menu=(this)
-            sleep 0.15.seconds
+            sleep 0.1.seconds
+        end
+        if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
+            context = "character_creation"
+            direction = "left"
+            skin = Sprites::Player.change_skin(context, direction)
+            Player::Appearance.change_skin(skin)
+            Sprites::Player.refresh_player_sprite(window)
+            sleep 0.1.seconds
+        end
+        if (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + MENU_BOX_03.size.x) && (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + MENU_BOX_03.size.y)
+            context = "character_creation"
+            direction = "right"
+            skin = Sprites::Player.change_skin(context, direction)
+            Player::Appearance.change_skin(skin)
+            Sprites::Player.refresh_player_sprite(window)
+            sleep 0.1.seconds
         end
      end
 

@@ -129,7 +129,7 @@ module Player
  end
 
    class Appearance
-    def initialize(skin : String, hair : String, face : String, hat : String, earrings : String, shirt : String, gloves : String, pants : String, shoes : String)
+    def initialize(skin : String, hair : String, face : String, hat : String, earrings : String, shirt : String, gloves : String, pants : String, shoes : String, weapon : String)
         @skin = skin
         @@skin = skin
         @hair = hair
@@ -148,6 +148,8 @@ module Player
         @@pants = pants
         @shoes = shoes
         @@shoes = shoes
+        @weapon = weapon
+        @@weapon = weapon
     end
 
     def skin
@@ -186,12 +188,21 @@ module Player
         @shoes
     end
 
+    def weapon
+        @weapon
+    end
+
     def Appearance.initialize_player_model
         @@skin = "pale_skin"
         @@hair = "black_shounen_hair"
         @@face = "blue_button_eyes"
-        @@pants = "white_jeans"
+        @@hat = "nil"
+        @@earrings = "nil"
         @@shirt = "white_tank_top"
+        @@gloves = "nil"
+        @@pants = "white_jeans"
+        @@shoes = "white_rain_boots"
+        @@weapon = "wooden_stick"
     end
 
     def Appearance.get_clothing(this)
@@ -202,11 +213,29 @@ module Player
             return @@hair
         when "face"
             return @@face
+        when "hat"
+            return @@hat
+        when "earrings"
+            return @@earrings
         when "shirt"
             return @@shirt
+        when "gloves"
+            return @@gloves
         when "pants"
             return @@pants
+        when "shoes"
+            return @@shoes
+        when "weapon"
+            return @@weapon
         end
+    end
+
+    def Appearance.change_skin(skin)
+        @@skin = skin
+    end
+
+    def Appearance.change_hair(hair)
+        @@hair = hair
     end
  end
 end
