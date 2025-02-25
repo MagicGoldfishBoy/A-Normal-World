@@ -10,6 +10,8 @@ module Sprites
     CLOTHES_HASH["white_shounen_hair"] = SHOUNEN_HAIR_WHITE_TEXTURE
     CLOTHES_HASH["black_shounen_hair"] = SHOUNEN_HAIR_BLACK_TEXTURE
     CLOTHES_HASH["blue_button_eyes"] = BUTTON_EYES_BLUE_TEXTURE
+    CLOTHES_HASH["white_tank_top"] = TANK_TOP_WHITE_TEXTURE
+    CLOTHES_HASH["white_jeans"] = JEANS_WHITE_TEXTURE
     
   class Player < Appearance
 
@@ -33,6 +35,16 @@ module Sprites
     face = CLOTHES_HASH[Appearance.get_clothing(this)]
     current_face = SF::Sprite.new(face)
     @@player_character_model.draw(current_face)
+
+    this = "pants"
+    pants = CLOTHES_HASH[Appearance.get_clothing(this)]
+    current_pants = SF::Sprite.new(pants)
+    @@player_character_model.draw(current_pants)
+    
+    this = "shirt"
+    shirt = CLOTHES_HASH[Appearance.get_clothing(this)]
+    current_shirt = SF::Sprite.new(shirt)
+    @@player_character_model.draw(current_shirt)
 
     @@player_character_model.create(672, 1024, false)
     @@player_character_model.display

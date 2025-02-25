@@ -190,6 +190,8 @@ module Player
         @@skin = "pale_skin"
         @@hair = "black_shounen_hair"
         @@face = "blue_button_eyes"
+        @@pants = "white_jeans"
+        @@shirt = "white_tank_top"
     end
 
     def Appearance.get_clothing(this)
@@ -200,6 +202,10 @@ module Player
             return @@hair
         when "face"
             return @@face
+        when "shirt"
+            return @@shirt
+        when "pants"
+            return @@pants
         end
     end
  end
