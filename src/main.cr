@@ -22,6 +22,7 @@ window.vertical_sync_enabled = true
 this = "main_menu"
 Menus::SystemMenus.system_menu=(this)
 Sprites::Player.is_drawn=(false)
+Player::Stats.initialize_player_stats
 
 while window.open?
     while event = window.poll_event

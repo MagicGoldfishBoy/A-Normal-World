@@ -126,6 +126,11 @@ module Player
        @@int = this
      end
 
+     def Stats.initialize_player_stats
+        Stats.name=("doll-2041")
+        Stats.max_hp=(10)
+     end
+
  end
 
   class Movement

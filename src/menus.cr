@@ -342,6 +342,7 @@ module Menus
             SystemMenus.system_menu=(this)
         end
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
+            Player::Stats.initialize_player_stats
             Serialization::SaveFile.save_file=("save01")
             Serialization::SaveFile.initial_save("save01")
             SystemMenus.initialize_character_creation_menu(window)

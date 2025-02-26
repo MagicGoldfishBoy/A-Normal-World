@@ -6,8 +6,8 @@ module Serialization
     include JSON::Serializable
 
     @@stat_save_hash = Hash(String, Float64 | Nil).new
+    Player::Stats.initialize_player_stats  #it doesn't get the right values without this, but it makes me nervous
     @@stat_save_hash["max_hp"] = Player::Stats.max_hp 
-    @@stat_save_hash["test"] = 1.5
     @@stat_save_hash["current_hp"] = Player::Stats.current_hp 
     @@stat_save_hash["max_mp"] = Player::Stats.max_mp 
     @@stat_save_hash["current_mp"] = Player::Stats.current_mp 
@@ -43,7 +43,8 @@ module Serialization
 
     def SaveFile.save_check(path1, key)
         json = File.open(path1)
-        puts key["test"]
+        puts key["max_hp"]
+        puts Player::Stats.max_hp 
         # JSON.parse(key)
         # puts JSON.parse(key["max_hp"])
     end
