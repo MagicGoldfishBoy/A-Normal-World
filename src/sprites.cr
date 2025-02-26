@@ -21,6 +21,26 @@ module Sprites
 
     CLOTHES_HASH["white_shounen_hair"] = SHOUNEN_HAIR_WHITE_TEXTURE
     CLOTHES_HASH["black_shounen_hair"] = SHOUNEN_HAIR_BLACK_TEXTURE
+    CLOTHES_HASH["blond_shounen_hair"] = SHOUNEN_HAIR_BLOND_TEXTURE
+    CLOTHES_HASH["light_blond_shounen_hair"] = SHOUNEN_HAIR_LIGHT_BLOND_TEXTURE
+    CLOTHES_HASH["brown_shounen_hair"] = SHOUNEN_HAIR_BROWN_TEXTURE
+    CLOTHES_HASH["orange_shounen_hair"] = SHOUNEN_HAIR_ORANGE_TEXTURE
+    CLOTHES_HASH["red_shounen_hair"] = SHOUNEN_HAIR_RED_TEXTURE
+    CLOTHES_HASH["blue_shounen_hair"] = SHOUNEN_HAIR_BLUE_TEXTURE
+    CLOTHES_HASH["pink_shounen_hair"] = SHOUNEN_HAIR_PINK_TEXTURE
+    CLOTHES_HASH["green_shounen_hair"] = SHOUNEN_HAIR_GREEN_TEXTURE
+    CLOTHES_HASH["purple_shounen_hair"] = SHOUNEN_HAIR_PURPLE_TEXTURE
+    CLOTHES_HASH["White_Ponytail_Hair"] = PONYTAIL_HAIR_WHITE_TEXTURE
+    CLOTHES_HASH["Black_Ponytail_Hair"] = PONYTAIL_HAIR_BLACK_TEXTURE
+    CLOTHES_HASH["Blonde_Ponytail_Hair"] = PONYTAIL_HAIR_BLONDE_TEXTURE
+    CLOTHES_HASH["Light_blonde_Ponytail_Hair"] = PONYTAIL_HAIR_LIGHT_BLONDE_TEXTURE
+    CLOTHES_HASH["Brown_Ponytail_Hair"] = PONYTAIL_HAIR_BROWN_TEXTURE
+    CLOTHES_HASH["Orange_Ponytail_Hair"] = PONYTAIL_HAIR_ORANGE_TEXTURE
+    CLOTHES_HASH["Red_Ponytail_Hair"] = PONYTAIL_HAIR_RED_TEXTURE
+    CLOTHES_HASH["Blue_Ponytail_Hair"] = PONYTAIL_HAIR_BLUE_TEXTURE
+    CLOTHES_HASH["Pink_Ponytail_Hair"] = PONYTAIL_HAIR_PINK_TEXTURE
+    CLOTHES_HASH["Green_Ponytail_Hair"] = PONYTAIL_HAIR_GREEN_TEXTURE
+    CLOTHES_HASH["Purple_Ponytail_Hair"] = PONYTAIL_HAIR_PURPLE_TEXTURE
 
     CLOTHES_HASH["blue_button_eyes"] = BUTTON_EYES_BLUE_TEXTURE
     CLOTHES_HASH["black_button_eyes"] = BUTTON_EYES_BLACK_TEXTURE
@@ -43,7 +63,9 @@ module Sprites
   class Player < Appearance
 
   STARTING_SKIN_ARRAY = ["pale_skin", "tan_skin", "dark_skin", "ghostly_skin", "jaundiced_skin", "blue_skin", "pink_skin", "green_skin", "purple_skin", "red_skin"]
-  STARTING_HAIR_ARRAY = ["black_shounen_hair", "white_shounen_hair"]
+  STARTING_HAIR_ARRAY = ["black_shounen_hair", "white_shounen_hair", "blond_shounen_hair", "light_blond_shounen_hair", "brown_shounen_hair", "orange_shounen_hair", "red_shounen_hair", 
+  "blue_shounen_hair", "pink_shounen_hair", "green_shounen_hair", "purple_shounen_hair", "White_Ponytail_Hair", "Black_Ponytail_Hair", "Blonde_Ponytail_Hair", "Light_blonde_Ponytail_Hair", 
+  "Brown_Ponytail_Hair", "Orange_Ponytail_Hair", "Red_Ponytail_Hair", "Blue_Ponytail_Hair", "Pink_Ponytail_Hair", "Green_Ponytail_Hair", "Purple_Ponytail_Hair"]
   STARTING_FACE_ARRAY = ["blue_button_eyes", "black_button_eyes"]
   STARTING_SHIRT_ARRAY = ["white_tank_top", "Black_tank_top", "Orange_tank_top"]
   STARTING_PANTS_ARRAY = ["white_jeans", "black_jeans"]
@@ -87,8 +109,8 @@ module Sprites
     @@player_character_model.clear(SF::Color::Transparent)
     @@player_character_model.draw(current_skin)
     @@player_character_model.draw(current_earrings)
-    @@player_character_model.draw(current_hair)
     @@player_character_model.draw(current_face)
+    @@player_character_model.draw(current_hair)
     @@player_character_model.draw(current_pants)
     @@player_character_model.draw(current_shirt)
     @@player_character_model.draw(current_shoes)
