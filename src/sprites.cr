@@ -55,6 +55,10 @@ module Sprites
     CLOTHES_HASH["purple_button_eyes"] = BUTTON_EYES_PURPLE_TEXTURE
     CLOTHES_HASH["white_button_eyes"] = BUTTON_EYES_WHITE_TEXTURE
 
+    CLOTHES_HASH["grey_shounen_face"] = SHOUNEN_FACE_GREY_TEXTURE
+    CLOTHES_HASH["pink_shounen_face"] = SHOUNEN_FACE_PINK_TEXTURE
+    CLOTHES_HASH["purple_shounen_face"] = SHOUNEN_FACE_PURPLE_TEXTURE
+
 
     CLOTHES_HASH["white_tank_top"] = TANK_TOP_WHITE_TEXTURE
     CLOTHES_HASH["Black_tank_top"] = TANK_TOP_BLACK_TEXTURE
@@ -84,7 +88,7 @@ module Sprites
   "Brown_Ponytail_Hair", "Orange_Ponytail_Hair", "Red_Ponytail_Hair", "Blue_Ponytail_Hair", "Pink_Ponytail_Hair", "Green_Ponytail_Hair", "Purple_Ponytail_Hair"]
 
   STARTING_FACE_ARRAY = ["blue_button_eyes", "black_button_eyes", "brown_button_eyes", "green_button_eyes", "yellow_button_eyes", "red_button_eyes", "pink_button_eyes", "purple_button_eyes", 
-  "white_button_eyes"]
+  "white_button_eyes", "grey_shounen_face", "pink_shounen_face", "purple_shounen_face"]
 
   STARTING_SHIRT_ARRAY = ["white_tank_top", "Black_tank_top", "Orange_tank_top"]
 

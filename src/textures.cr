@@ -100,6 +100,13 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
   BUTTON_EYES_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Button_Eyes.png")
 
+
+  SHOUNEN_FACE_GREY_TEXTURE = SF::Texture.from_file("../graphics/Grey_Shounen_Face.png")
+
+  SHOUNEN_FACE_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Shounen_Face.png")
+
+  SHOUNEN_FACE_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Shounen_Face.png")
+
  #PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
  #P                                        Pants Textures                                            P
  #PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
