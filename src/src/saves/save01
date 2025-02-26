@@ -1,1 +1,1 @@
-{"max_hp":null}
+{"max_hp" => nil, "test" => 1.5, "current_hp" => nil, "max_mp" => nil, "current_mp" => nil}

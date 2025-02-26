@@ -28,47 +28,47 @@ module Player
      end
 
      def name
-        @name
+        @@name
      end
 
      def Stats.max_hp 
         @@max_hp
      end
 
-     def current_hp
-        @max_hp
+     def Stats.current_hp
+        @@max_hp
      end
 
-     def max_mp 
-        @max_mp
+     def Stats.max_mp 
+        @@max_mp
      end
 
-     def current_mp
-        @current_mp
+     def Stats.current_mp
+        @@current_mp
      end
 
-     def exp
-        @exp
+     def Stats.exp
+        @@exp
      end
 
-     def defense
-        @defense
+     def Stats.defense
+        @@defense
      end
 
-     def str
-        @str
+     def Stats.str
+        @@str
      end
      
-     def dex
-        @dex
+     def Stats.dex
+        @@dex
      end
 
-     def luk
-        @luk
+     def Stats.luk
+        @@luk
      end
 
-     def int
-        @int
+     def Stats.int
+        @@int
      end
 
      def Stats.name=(this)

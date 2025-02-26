@@ -7,9 +7,22 @@ module Serialization
 
     @@stat_save_hash = Hash(String, Float64 | Nil).new
     @@stat_save_hash["max_hp"] = Player::Stats.max_hp 
+    @@stat_save_hash["test"] = 1.5
+    @@stat_save_hash["current_hp"] = Player::Stats.current_hp 
+    @@stat_save_hash["max_mp"] = Player::Stats.max_mp 
+    @@stat_save_hash["current_mp"] = Player::Stats.current_mp 
 
-    def initialize(save_file : String)
+    @[JSON::Field(key: "max_hp")]
+    property max_hp : Float64
+
+    def initialize(save_file : String, max_hp : Float64)
         @@save_file = save_file
+        @@max_hp = max_hp
+        @max_hp = max_hp
+    end
+
+    def max_hp
+        @@max_hp
     end
 
     def SaveFile.save_file
@@ -23,25 +36,17 @@ module Serialization
     def SaveFile.initial_save(file)
       path = "src/saves/" + file
       Dir.mkdir_p(File.dirname(path))
-      stats = @@stat_save_hash.to_json
+      stats = @@stat_save_hash#.to_json
       File.write(path, stats)
+      SaveFile.save_check(path, stats)
+    end
+
+    def SaveFile.save_check(path1, key)
+        json = File.open(path1)
+        puts key["test"]
+        # JSON.parse(key)
+        # puts JSON.parse(key["max_hp"])
     end
   end
 end
 
-require "json"
-
-# # Define your data as a hash
-# data = {
-#   "name" => "Crystal",
-#   "version" => "1.11.2",
-#   "features" => ["Fast", "Static Typing", "Ruby-like Syntax"]
-# }
-
-# # Convert hash to JSON string
-# json_string = data.to_json
-
-# # Write JSON string to a file
-# File.write("output.json", json_string)
-
-# puts "JSON file created successfully!"
