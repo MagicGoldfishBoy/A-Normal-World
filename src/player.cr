@@ -237,5 +237,9 @@ module Player
     def Appearance.change_hair(hair)
         @@hair = hair
     end
+
+    def Appearance.change_face(face)
+        @@face = face
+    end
  end
 end

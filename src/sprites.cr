@@ -15,6 +15,7 @@ module Sprites
     CLOTHES_HASH["black_shounen_hair"] = SHOUNEN_HAIR_BLACK_TEXTURE
 
     CLOTHES_HASH["blue_button_eyes"] = BUTTON_EYES_BLUE_TEXTURE
+    CLOTHES_HASH["black_button_eyes"] = BUTTON_EYES_BLACK_TEXTURE
 
     CLOTHES_HASH["white_tank_top"] = TANK_TOP_WHITE_TEXTURE
 
@@ -30,8 +31,12 @@ module Sprites
   class Player < Appearance
 
   STARTING_SKIN_ARRAY = ["pale_skin", "tan_skin"]
+  STARTING_HAIR_ARRAY = ["black_shounen_hair", "white_shounen_hair"]
+  STARTING_FACE_ARRAY = ["blue_button_eyes", "black_button_eyes"]
   @@current_array = STARTING_SKIN_ARRAY
   @@skin_iterator = 0
+  @@hair_iterator = 0
+  @@face_iterator = 0
 
   @@player_character_model = SF::RenderTexture.new(672, 512)
   @@player_character_rendered_model = SF::Sprite.new
@@ -116,10 +121,50 @@ module Sprites
         @@skin_iterator += 1
     elsif direction == "left" && @@skin_iterator > 0
         @@skin_iterator -= 1
-    else
+    elsif @@skin_iterator == @@current_array.size - 1
         @@skin_iterator = 0
+    else
+        @@skin_iterator = @@current_array.size - 1
     end
     return @@current_array[@@skin_iterator]
+   end
+
+   def Player.change_hair(context, direction)
+    case context
+    when "character_creation"
+
+        @@current_array = STARTING_HAIR_ARRAY
+
+    end
+    if direction == "right" && @@hair_iterator < @@current_array.size - 1
+        @@hair_iterator += 1
+    elsif direction == "left" && @@hair_iterator > 0
+        @@hair_iterator -= 1
+    elsif @@hair_iterator == @@current_array.size - 1
+        @@hair_iterator = 0
+    else
+        @@hair_iterator = @@current_array.size - 1
+    end
+    return @@current_array[@@hair_iterator]
+   end
+
+   def Player.change_face(context, direction)
+    case context
+    when "character_creation"
+
+        @@current_array = STARTING_FACE_ARRAY
+
+    end
+    if direction == "right" && @@face_iterator < @@current_array.size - 1
+        @@face_iterator += 1
+    elsif direction == "left" && @@face_iterator > 0
+        @@face_iterator -= 1
+    elsif @@face_iterator == @@current_array.size - 1
+        @@face_iterator = 0
+    else
+        @@face_iterator = @@current_array.size - 1
+    end
+    return @@current_array[@@face_iterator]
    end
  end
 end
