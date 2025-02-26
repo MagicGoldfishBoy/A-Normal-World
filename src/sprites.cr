@@ -19,6 +19,7 @@ module Sprites
     CLOTHES_HASH["purple_skin"] = PURPLE_SKIN_TEXTURE
     CLOTHES_HASH["red_skin"] = RED_SKIN_TEXTURE
 
+
     CLOTHES_HASH["white_shounen_hair"] = SHOUNEN_HAIR_WHITE_TEXTURE
     CLOTHES_HASH["black_shounen_hair"] = SHOUNEN_HAIR_BLACK_TEXTURE
     CLOTHES_HASH["blond_shounen_hair"] = SHOUNEN_HAIR_BLOND_TEXTURE
@@ -30,6 +31,7 @@ module Sprites
     CLOTHES_HASH["pink_shounen_hair"] = SHOUNEN_HAIR_PINK_TEXTURE
     CLOTHES_HASH["green_shounen_hair"] = SHOUNEN_HAIR_GREEN_TEXTURE
     CLOTHES_HASH["purple_shounen_hair"] = SHOUNEN_HAIR_PURPLE_TEXTURE
+
     CLOTHES_HASH["White_Ponytail_Hair"] = PONYTAIL_HAIR_WHITE_TEXTURE
     CLOTHES_HASH["Black_Ponytail_Hair"] = PONYTAIL_HAIR_BLACK_TEXTURE
     CLOTHES_HASH["Blonde_Ponytail_Hair"] = PONYTAIL_HAIR_BLONDE_TEXTURE
@@ -42,20 +44,33 @@ module Sprites
     CLOTHES_HASH["Green_Ponytail_Hair"] = PONYTAIL_HAIR_GREEN_TEXTURE
     CLOTHES_HASH["Purple_Ponytail_Hair"] = PONYTAIL_HAIR_PURPLE_TEXTURE
 
+
     CLOTHES_HASH["blue_button_eyes"] = BUTTON_EYES_BLUE_TEXTURE
     CLOTHES_HASH["black_button_eyes"] = BUTTON_EYES_BLACK_TEXTURE
+    CLOTHES_HASH["brown_button_eyes"] = BUTTON_EYES_BROWN_TEXTURE
+    CLOTHES_HASH["green_button_eyes"] = BUTTON_EYES_GREEN_TEXTURE
+    CLOTHES_HASH["yellow_button_eyes"] = BUTTON_EYES_YELLOW_TEXTURE
+    CLOTHES_HASH["red_button_eyes"] = BUTTON_EYES_RED_TEXTURE
+    CLOTHES_HASH["pink_button_eyes"] = BUTTON_EYES_PINK_TEXTURE
+    CLOTHES_HASH["purple_button_eyes"] = BUTTON_EYES_PURPLE_TEXTURE
+    CLOTHES_HASH["white_button_eyes"] = BUTTON_EYES_WHITE_TEXTURE
+
 
     CLOTHES_HASH["white_tank_top"] = TANK_TOP_WHITE_TEXTURE
     CLOTHES_HASH["Black_tank_top"] = TANK_TOP_BLACK_TEXTURE
     CLOTHES_HASH["Orange_tank_top"] = TANK_TOP_ORANGE_TEXTURE
 
+
     CLOTHES_HASH["white_fingerless_gloves"] = FINGERLESS_GLOVES_WHITE_TEXTURE
+
 
     CLOTHES_HASH["white_jeans"] = JEANS_WHITE_TEXTURE
     CLOTHES_HASH["black_jeans"] = JEANS_BLACK_TEXTURE
 
+
     CLOTHES_HASH["white_rain_boots"] = RAIN_BOOTS_WHITE_TEXTURE
     CLOTHES_HASH["black_rain_boots"] = RAIN_BOOTS_BLACK_TEXTURE
+
 
     CLOTHES_HASH["wooden_stick"] = WOODEN_STICK_TEXTURE
     
@@ -63,13 +78,20 @@ module Sprites
   class Player < Appearance
 
   STARTING_SKIN_ARRAY = ["pale_skin", "tan_skin", "dark_skin", "ghostly_skin", "jaundiced_skin", "blue_skin", "pink_skin", "green_skin", "purple_skin", "red_skin"]
+
   STARTING_HAIR_ARRAY = ["black_shounen_hair", "white_shounen_hair", "blond_shounen_hair", "light_blond_shounen_hair", "brown_shounen_hair", "orange_shounen_hair", "red_shounen_hair", 
   "blue_shounen_hair", "pink_shounen_hair", "green_shounen_hair", "purple_shounen_hair", "White_Ponytail_Hair", "Black_Ponytail_Hair", "Blonde_Ponytail_Hair", "Light_blonde_Ponytail_Hair", 
   "Brown_Ponytail_Hair", "Orange_Ponytail_Hair", "Red_Ponytail_Hair", "Blue_Ponytail_Hair", "Pink_Ponytail_Hair", "Green_Ponytail_Hair", "Purple_Ponytail_Hair"]
-  STARTING_FACE_ARRAY = ["blue_button_eyes", "black_button_eyes"]
+
+  STARTING_FACE_ARRAY = ["blue_button_eyes", "black_button_eyes", "brown_button_eyes", "green_button_eyes", "yellow_button_eyes", "red_button_eyes", "pink_button_eyes", "purple_button_eyes", 
+  "white_button_eyes"]
+
   STARTING_SHIRT_ARRAY = ["white_tank_top", "Black_tank_top", "Orange_tank_top"]
+
   STARTING_PANTS_ARRAY = ["white_jeans", "black_jeans"]
+
   STARTING_SHOES_ARRAY = ["white_rain_boots", "black_rain_boots"]
+
   @@current_array = STARTING_SKIN_ARRAY
   @@skin_iterator = 0
   @@hair_iterator = 0

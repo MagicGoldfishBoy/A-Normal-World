@@ -55,6 +55,7 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
  SHOUNEN_HAIR_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Shounen_Hair.png")
 
+
  PONYTAIL_HAIR_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Ponytail_Hair.png")
 
  PONYTAIL_HAIR_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Ponytail_Hair.png")
@@ -84,6 +85,20 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
   BUTTON_EYES_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Button_Eyes.png")
 
   BUTTON_EYES_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Button_Eyes.png")
+
+  BUTTON_EYES_BROWN_TEXTURE = SF::Texture.from_file("../graphics/Brown_Button_Eyes.png")
+
+  BUTTON_EYES_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Button_Eyes.png")
+
+  BUTTON_EYES_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Button_Eyes.png")
+
+  BUTTON_EYES_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Button_Eyes.png")
+
+  BUTTON_EYES_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Button_Eyes.png")
+
+  BUTTON_EYES_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Button_Eyes.png")
+
+  BUTTON_EYES_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Button_Eyes.png")
 
  #PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
  #P                                        Pants Textures                                            P
