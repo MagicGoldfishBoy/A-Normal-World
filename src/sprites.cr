@@ -123,7 +123,7 @@ module Sprites
    def Player.draw_sprite(window)
     if @@is_drawn == true
         window.draw(@@player_character_rendered_model)
-        Player.animate_sprite("idle", "right")
+        Player.animate_sprite("idle", "left")
     end
    end
 
@@ -163,8 +163,6 @@ module Sprites
     @@player_character_model.draw(current_gloves)
     @@player_character_model.draw(current_weapon)
 
-    
-    #@@player_character_rendered_model.texture_rect = SF.int_rect(0, 0, 96, 128)
     @@player_character_model.display
     @@player_character_rendered_model.texture = @@player_character_model.texture
    end
@@ -298,6 +296,8 @@ module Sprites
 
    def Player.animate_sprite(state, direction)
     if state == "idle" && direction == "right"
+        @@player_character_rendered_model.texture_rect = Animations::Player.idle_animation_right
+    elsif state == "idle" && direction == "left"
         @@player_character_rendered_model.texture_rect = Animations::Player.idle_animation_left
     end
    end
