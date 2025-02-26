@@ -6,7 +6,9 @@ module Serialization
     include JSON::Serializable
 
     @@stat_save_hash = Hash(String, Float64 | Nil).new
+    if Player::Stats.max_hp == nil
     Player::Stats.initialize_player_stats  #it doesn't get the right values without this, but it makes me nervous
+    end
     @@stat_save_hash["max_hp"] = Player::Stats.max_hp 
     @@stat_save_hash["current_hp"] = Player::Stats.current_hp 
     @@stat_save_hash["max_mp"] = Player::Stats.max_mp 
