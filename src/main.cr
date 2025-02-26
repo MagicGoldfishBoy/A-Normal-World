@@ -21,6 +21,7 @@ window = SF::RenderWindow.new(SF::VideoMode.new(800, 600), "A Normal World", SF:
 window.vertical_sync_enabled = true
 this = "main_menu"
 Menus::SystemMenus.system_menu=(this)
+Sprites::Player.is_drawn=(false)
 
 while window.open?
     while event = window.poll_event
@@ -30,6 +31,7 @@ while window.open?
     end
     window.clear(SF::Color::Black)
     Menus::SystemMenus.draw_system_menu(window)
+    Sprites::Player.draw_sprite(window)
     window.display
   end
 end

@@ -336,6 +336,7 @@ module Menus
             save = "save01"
             this = "character_creation_menu"
             Player::Appearance.initialize_player_model
+            Sprites::Player.is_drawn=(true)
             SystemMenus.system_menu=(this)
         end
      end
@@ -518,6 +519,7 @@ module Menus
         scaled_mouse_x = mouse_x / scale_x
         scaled_mouse_y = mouse_y / scale_y
         if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
+            Sprites::Player.is_drawn=(false)
             SystemMenus.system_menu=("save_menu")
             sleep 0.15.seconds
         end

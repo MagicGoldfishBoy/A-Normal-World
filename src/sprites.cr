@@ -1,6 +1,7 @@
 require "crsfml"
 require "../src/textures.cr"
 require "../src/player.cr"
+require "../src/animations.cr"
 
 module Sprites
     include Player
@@ -79,7 +80,19 @@ module Sprites
     CLOTHES_HASH["wooden_stick"] = WOODEN_STICK_TEXTURE
     
     
-  class Player < Appearance
+  class Player #< Appearance
+
+  def initialize(is_drawn : Bool)
+    @@is_drawn = is_drawn
+  end
+
+  def Player.is_drawn
+    @@is_drawn
+  end
+
+  def Player.is_drawn=(this)
+    @@is_drawn = this
+  end
 
   STARTING_SKIN_ARRAY = ["pale_skin", "tan_skin", "dark_skin", "ghostly_skin", "jaundiced_skin", "blue_skin", "pink_skin", "green_skin", "purple_skin", "red_skin"]
 
@@ -106,6 +119,13 @@ module Sprites
 
   @@player_character_model = SF::RenderTexture.new(672, 512)
   @@player_character_rendered_model = SF::Sprite.new
+
+   def Player.draw_sprite(window)
+    if @@is_drawn == true
+        window.draw(@@player_character_rendered_model)
+        Player.animate_sprite("idle", "right")
+    end
+   end
 
    def Player.refresh_player_sprite(window)
     @@player_character_model.create(672, 1024, false)
@@ -144,10 +164,9 @@ module Sprites
     @@player_character_model.draw(current_weapon)
 
     
-    @@player_character_rendered_model.texture_rect = SF.int_rect(0, 0, 96, 128)
+    #@@player_character_rendered_model.texture_rect = SF.int_rect(0, 0, 96, 128)
     @@player_character_model.display
     @@player_character_rendered_model.texture = @@player_character_model.texture
-    window.draw(@@player_character_rendered_model)
    end
 
    def Player.resize_player_sprite(window, x, y)
@@ -275,6 +294,12 @@ module Sprites
         @@shoes_iterator = @@current_array.size - 1
     end
     return @@current_array[@@shoes_iterator]
+   end
+
+   def Player.animate_sprite(state, direction)
+    if state == "idle" && direction == "right"
+        @@player_character_rendered_model.texture_rect = Animations::Player.idle_animation_left
+    end
    end
 
  end
