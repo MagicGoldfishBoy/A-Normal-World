@@ -80,7 +80,7 @@ module Sprites
     CLOTHES_HASH["wooden_stick"] = WOODEN_STICK_TEXTURE
     
     
-  class Player #< Appearance
+  class Player 
 
   def initialize(is_drawn : Bool)
     @@is_drawn = is_drawn

@@ -3,6 +3,7 @@ require "json"
 require "../src/textures.cr"
 require "../src/fonts.cr"
 require "../src/sprites.cr"
+require "../src/serialization.cr"
 
 module Menus
 
@@ -73,6 +74,11 @@ module Menus
         MENU_BOX_13.outline_thickness = 10
         MENU_BOX_13.outline_color = SF.color(151, 179, 194)
 
+        MENU_BOX_14 = SF::RectangleShape.new(SF.vector2(150, 80))
+        MENU_BOX_14.fill_color = SF.color(200, 212, 219)
+        MENU_BOX_14.outline_thickness = 10
+        MENU_BOX_14.outline_color = SF.color(151, 179, 194)
+
         MENU_TEXT_01 = SF::Text.new
         MENU_TEXT_01.font = QUICKSAND
 
@@ -112,6 +118,9 @@ module Menus
         MENU_TEXT_13 = SF::Text.new
         MENU_TEXT_13.font = QUICKSAND
 
+        MENU_TEXT_14 = SF::Text.new
+        MENU_TEXT_14.font = QUICKSAND
+
      def initialize(system_menu : String)
         @system_menu = system_menu
         @@system_menu = system_menu
@@ -137,7 +146,7 @@ module Menus
         when "settings_menu"
             puts  "settings menu"
         when "hud"
-            puts "hud"
+            SystemMenus.draw_hud(window)
         else
             puts @@system_menu
             window.close
@@ -333,15 +342,18 @@ module Menus
             SystemMenus.system_menu=(this)
         end
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
-            save = "save01"
-            this = "character_creation_menu"
-            Player::Appearance.initialize_player_model
-            Sprites::Player.is_drawn=(true)
-            SystemMenus.system_menu=(this)
+            Serialization::SaveFile.save_file=("save01")
+            Serialization::SaveFile.initial_save("save01")
+            SystemMenus.initialize_character_creation_menu(window)
         end
      end
 
-     def SystemMenus.draw_charater_creation_menu(window)
+     def SystemMenus.initialize_character_creation_menu(window)
+        Player::Appearance.initialize_player_model
+        Sprites::Player.refresh_player_sprite(window)
+        Sprites::Player.resize_player_sprite(window, 3, 3)
+        Sprites::Player.position_player_sprite(window, 250, 50)
+
         current_size = window.size
         original_width = 800 
         original_height = 600
@@ -349,12 +361,6 @@ module Menus
         scale_x = current_size.x.to_f / original_width
         scale_y = current_size.y.to_f / original_height
 
-        x = 3; y = 3
-        Sprites::Player.resize_player_sprite(window, x, y)
-        x = 250; y = 50
-        Sprites::Player.position_player_sprite(window, x, y)
-
-        Sprites::Player.refresh_player_sprite(window)
 
         MENU_BOX_01.position = SF.vector2(scale_x + 20, scale_y + 540)
         MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
@@ -433,6 +439,19 @@ module Menus
         MENU_TEXT_13.string = "Shoes"
         MENU_TEXT_13.color = SF::Color::Black
 
+        MENU_BOX_14.position = SF.vector2(scale_x + 660, scale_y + 540)
+        MENU_TEXT_14.position = MENU_BOX_14.position + SF.vector2(15, 1)
+        MENU_BOX_14.size = SF.vector2(115, 40)
+        MENU_TEXT_14.string = "Next"
+        MENU_TEXT_14.color = SF::Color::Black
+
+        sleep 0.15.seconds
+        SystemMenus.system_menu=("character_creation_menu")
+        Sprites::Player.is_drawn=(true)
+     end
+
+     def SystemMenus.draw_charater_creation_menu(window)
+
         window.draw(MENU_BOX_01)
         window.draw(MENU_BOX_02)
         window.draw(MENU_BOX_03)
@@ -446,6 +465,7 @@ module Menus
         window.draw(MENU_BOX_11)
         window.draw(MENU_BOX_12)
         window.draw(MENU_BOX_13)
+        window.draw(MENU_BOX_14)
 
         window.draw(MENU_TEXT_01)
         window.draw(MENU_TEXT_02)
@@ -460,6 +480,7 @@ module Menus
         window.draw(MENU_TEXT_11)
         window.draw(MENU_TEXT_12)
         window.draw(MENU_TEXT_13)
+        window.draw(MENU_TEXT_14)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.character_creation_menu_mouse_handling(window)
         end
@@ -508,6 +529,9 @@ module Menus
 
         menu_box_13_x = MENU_BOX_13.position.x
         menu_box_13_y = MENU_BOX_13.position.y
+
+        menu_box_14_x = MENU_BOX_14.position.x
+        menu_box_14_y = MENU_BOX_14.position.y
 
         current_size = window.size
         original_width = 800
@@ -583,6 +607,48 @@ module Menus
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
         end
+        if (scaled_mouse_x >= menu_box_14_x && scaled_mouse_x <= menu_box_14_x + MENU_BOX_14.size.x) && (scaled_mouse_y >= menu_box_14_y && scaled_mouse_y <= menu_box_14_y + MENU_BOX_14.size.y)
+            Sprites::Player.is_drawn=(true)
+            SystemMenus.system_menu=("hud")
+            SystemMenus.initialize_hud(window)
+            sleep 0.15.seconds
+        end
+     end
+
+     def SystemMenus.initialize_hud(window)
+        Sprites::Player.refresh_player_sprite(window)
+        Sprites::Player.resize_player_sprite(window, 1, 1)
+        Sprites::Player.position_player_sprite(window, 250, 50)
+
+        current_size = window.size
+        original_width = 800 
+        original_height = 600
+    
+        scale_x = current_size.x.to_f / original_width
+        scale_y = current_size.y.to_f / original_height
+
+
+        MENU_BOX_01.position = SF.vector2(scale_x + 20, scale_y + 540)
+        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
+        MENU_BOX_01.size = SF.vector2(115, 40)
+        MENU_TEXT_01.string = "Back"
+     end
+
+     def SystemMenus.draw_hud(window)
+        window.draw(MENU_BOX_01)
+        window.draw(MENU_TEXT_01)
+        if SF::Mouse.button_pressed?(SF::Mouse::Left)
+            SystemMenus.hud_mouse_handling(window)
+        end
+     end
+
+     def SystemMenus.hud_mouse_handling(window)
+        mouse_position = SF::Mouse.get_position(window)
+        mouse_x = mouse_position.x
+        mouse_y = mouse_position.y
+
+        menu_box_1_x = MENU_BOX_01.position.x
+        menu_box_1_y = MENU_BOX_01.position.y
      end
 
     end

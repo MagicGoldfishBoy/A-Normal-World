@@ -31,8 +31,8 @@ module Player
         @name
      end
 
-     def max_hp 
-        @max_hp
+     def Stats.max_hp 
+        @@max_hp
      end
 
      def current_hp
@@ -128,7 +128,27 @@ module Player
 
  end
 
-   class Appearance
+  class Movement
+    def initialize(movement_state : String, movement_speed : Float64, movement_direction : String)
+        @@movement_state = movement_state
+        @@movement_speed = movement_speed
+        @@movement_direction = movement_direction
+    end
+
+    def Movement.movement_state
+        @@movement_state
+    end
+
+    def Movement.movement_speed
+        @@movement_speed
+    end
+
+    def Movement.movement_direction
+        @@movement_direction
+    end
+  end
+
+  class Appearance
     def initialize(skin : String, hair : String, face : String, hat : String, earrings : String, shirt : String, gloves : String, pants : String, shoes : String, weapon : String)
         @skin = skin
         @@skin = skin
