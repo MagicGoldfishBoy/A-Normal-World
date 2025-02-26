@@ -18,12 +18,16 @@ module Sprites
     CLOTHES_HASH["black_button_eyes"] = BUTTON_EYES_BLACK_TEXTURE
 
     CLOTHES_HASH["white_tank_top"] = TANK_TOP_WHITE_TEXTURE
+    CLOTHES_HASH["Black_tank_top"] = TANK_TOP_BLACK_TEXTURE
+    CLOTHES_HASH["Orange_tank_top"] = TANK_TOP_ORANGE_TEXTURE
 
     CLOTHES_HASH["white_fingerless_gloves"] = FINGERLESS_GLOVES_WHITE_TEXTURE
 
     CLOTHES_HASH["white_jeans"] = JEANS_WHITE_TEXTURE
+    CLOTHES_HASH["black_jeans"] = JEANS_BLACK_TEXTURE
 
     CLOTHES_HASH["white_rain_boots"] = RAIN_BOOTS_WHITE_TEXTURE
+    CLOTHES_HASH["black_rain_boots"] = RAIN_BOOTS_BLACK_TEXTURE
 
     CLOTHES_HASH["wooden_stick"] = WOODEN_STICK_TEXTURE
     
@@ -33,10 +37,16 @@ module Sprites
   STARTING_SKIN_ARRAY = ["pale_skin", "tan_skin"]
   STARTING_HAIR_ARRAY = ["black_shounen_hair", "white_shounen_hair"]
   STARTING_FACE_ARRAY = ["blue_button_eyes", "black_button_eyes"]
+  STARTING_SHIRT_ARRAY = ["white_tank_top", "Black_tank_top", "Orange_tank_top"]
+  STARTING_PANTS_ARRAY = ["white_jeans", "black_jeans"]
+  STARTING_SHOES_ARRAY = ["white_rain_boots", "black_rain_boots"]
   @@current_array = STARTING_SKIN_ARRAY
   @@skin_iterator = 0
   @@hair_iterator = 0
   @@face_iterator = 0
+  @@shirt_iterator = 0
+  @@pants_iterator = 0
+  @@shoes_iterator = 0
 
   @@player_character_model = SF::RenderTexture.new(672, 512)
   @@player_character_rendered_model = SF::Sprite.new
@@ -48,41 +58,23 @@ module Sprites
     skin = CLOTHES_HASH[Appearance.get_clothing("skin")]
     current_skin = SF::Sprite.new(skin)
 
-    this = "hair"
-    hair = CLOTHES_HASH[Appearance.get_clothing(this)]
-    current_hair = SF::Sprite.new(hair)
+    current_hair = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("hair")])
 
-    this = "face"
-    face = CLOTHES_HASH[Appearance.get_clothing(this)]
-    current_face = SF::Sprite.new(face)
+    current_face = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("face")])
 
-    this = "hat"
-    hat = CLOTHES_HASH[Appearance.get_clothing(this)]
-    current_hat = SF::Sprite.new(hat)
+    current_hat = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("hat")])
 
-    this = "earrings"
-    earrings = CLOTHES_HASH[Appearance.get_clothing(this)]
-    current_earrings = SF::Sprite.new(earrings)
+    current_earrings = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("earrings")])
 
-    this = "shirt"
-    shirt = CLOTHES_HASH[Appearance.get_clothing(this)]
-    current_shirt = SF::Sprite.new(shirt)
+    current_shirt = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("shirt")])
 
-    this = "gloves"
-    gloves = CLOTHES_HASH[Appearance.get_clothing(this)]
-    current_gloves = SF::Sprite.new(gloves)
+    current_gloves = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("gloves")])
 
-    this = "pants"
-    pants = CLOTHES_HASH[Appearance.get_clothing(this)]
-    current_pants = SF::Sprite.new(pants)
+    current_pants = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("pants")])
 
-    this = "shoes"
-    shoes = CLOTHES_HASH[Appearance.get_clothing(this)]
-    current_shoes = SF::Sprite.new(shoes)
+    current_shoes = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("shoes")])
 
-    this = "weapon"
-    weapon = CLOTHES_HASH[Appearance.get_clothing(this)]
-    current_weapon = SF::Sprite.new(weapon)
+    current_weapon = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("weapon")])
 
     @@player_character_model.clear(SF::Color::Transparent)
     @@player_character_model.draw(current_skin)
@@ -129,6 +121,7 @@ module Sprites
     return @@current_array[@@skin_iterator]
    end
 
+
    def Player.change_hair(context, direction)
     case context
     when "character_creation"
@@ -148,6 +141,7 @@ module Sprites
     return @@current_array[@@hair_iterator]
    end
 
+
    def Player.change_face(context, direction)
     case context
     when "character_creation"
@@ -166,5 +160,66 @@ module Sprites
     end
     return @@current_array[@@face_iterator]
    end
+
+
+   def Player.change_shirt(context, direction)
+    case context
+    when "character_creation"
+
+        @@current_array = STARTING_SHIRT_ARRAY
+
+    end
+    if direction == "right" && @@shirt_iterator < @@current_array.size - 1
+        @@shirt_iterator += 1
+    elsif direction == "left" && @@shirt_iterator > 0
+        @@shirt_iterator -= 1
+    elsif @@shirt_iterator == @@current_array.size - 1
+        @@shirt_iterator = 0
+    else
+        @@shirt_iterator = @@current_array.size - 1
+    end
+    return @@current_array[@@shirt_iterator]
+   end
+
+
+   def Player.change_pants(context, direction)
+    case context
+    when "character_creation"
+
+        @@current_array = STARTING_PANTS_ARRAY
+
+    end
+    if direction == "right" && @@pants_iterator < @@current_array.size - 1
+        @@pants_iterator += 1
+    elsif direction == "left" && @@pants_iterator > 0
+        @@pants_iterator -= 1
+    elsif @@pants_iterator == @@current_array.size - 1
+        @@pants_iterator = 0
+    else
+        @@pants_iterator = @@current_array.size - 1
+    end
+    return @@current_array[@@pants_iterator]
+   end
+
+
+   def Player.change_shoes(context, direction)
+    case context
+    when "character_creation"
+
+        @@current_array = STARTING_SHOES_ARRAY
+
+    end
+    if direction == "right" && @@shoes_iterator < @@current_array.size - 1
+        @@shoes_iterator += 1
+    elsif direction == "left" && @@shoes_iterator > 0
+        @@shoes_iterator -= 1
+    elsif @@shoes_iterator == @@current_array.size - 1
+        @@shoes_iterator = 0
+    else
+        @@shoes_iterator = @@current_array.size - 1
+    end
+    return @@current_array[@@shoes_iterator]
+   end
+
  end
 end

@@ -241,5 +241,17 @@ module Player
     def Appearance.change_face(face)
         @@face = face
     end
+
+    def Appearance.change_shirt(shirt)
+        @@shirt = shirt
+    end
+
+    def Appearance.change_pants(pants)
+        @@pants = pants
+    end
+
+    def Appearance.change_shoes(shoes)
+        @@shoes = shoes
+    end
  end
 end

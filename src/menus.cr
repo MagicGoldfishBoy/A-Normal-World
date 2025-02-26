@@ -48,6 +48,31 @@ module Menus
         MENU_BOX_08.outline_thickness = 10
         MENU_BOX_08.outline_color = SF.color(151, 179, 194)
 
+        MENU_BOX_09 = SF::RectangleShape.new(SF.vector2(150, 80))
+        MENU_BOX_09.fill_color = SF.color(200, 212, 219)
+        MENU_BOX_09.outline_thickness = 10
+        MENU_BOX_09.outline_color = SF.color(151, 179, 194)
+
+        MENU_BOX_10 = SF::RectangleShape.new(SF.vector2(150, 80))
+        MENU_BOX_10.fill_color = SF.color(200, 212, 219)
+        MENU_BOX_10.outline_thickness = 10
+        MENU_BOX_10.outline_color = SF.color(151, 179, 194)
+
+        MENU_BOX_11 = SF::RectangleShape.new(SF.vector2(150, 80))
+        MENU_BOX_11.fill_color = SF.color(200, 212, 219)
+        MENU_BOX_11.outline_thickness = 10
+        MENU_BOX_11.outline_color = SF.color(151, 179, 194)
+
+        MENU_BOX_12 = SF::RectangleShape.new(SF.vector2(150, 80))
+        MENU_BOX_12.fill_color = SF.color(200, 212, 219)
+        MENU_BOX_12.outline_thickness = 10
+        MENU_BOX_12.outline_color = SF.color(151, 179, 194)
+
+        MENU_BOX_13 = SF::RectangleShape.new(SF.vector2(150, 80))
+        MENU_BOX_13.fill_color = SF.color(200, 212, 219)
+        MENU_BOX_13.outline_thickness = 10
+        MENU_BOX_13.outline_color = SF.color(151, 179, 194)
+
         MENU_TEXT_01 = SF::Text.new
         MENU_TEXT_01.font = QUICKSAND
 
@@ -71,6 +96,21 @@ module Menus
 
         MENU_TEXT_08 = SF::Text.new
         MENU_TEXT_08.font = QUICKSAND
+
+        MENU_TEXT_09 = SF::Text.new
+        MENU_TEXT_09.font = QUICKSAND
+
+        MENU_TEXT_10 = SF::Text.new
+        MENU_TEXT_10.font = QUICKSAND
+
+        MENU_TEXT_11 = SF::Text.new
+        MENU_TEXT_11.font = QUICKSAND
+
+        MENU_TEXT_12 = SF::Text.new
+        MENU_TEXT_12.font = QUICKSAND
+
+        MENU_TEXT_13 = SF::Text.new
+        MENU_TEXT_13.font = QUICKSAND
 
      def initialize(system_menu : String)
         @system_menu = system_menu
@@ -356,6 +396,42 @@ module Menus
         MENU_TEXT_07.string = "Face"
         MENU_TEXT_07.color = SF::Color::Black
 
+        MENU_BOX_08.position = SF.vector2(scale_x + 80, scale_y + 270)
+        MENU_BOX_08.size = SF.vector2(115, 40)
+        MENU_TEXT_08.position = MENU_BOX_08.position + SF.vector2(30, 1)
+        MENU_TEXT_08.string = "Shirt"
+        MENU_TEXT_08.color = SF::Color::Black
+
+        MENU_BOX_09.position = SF.vector2(scale_x + 560, scale_y + 270)
+        MENU_BOX_09.size = SF.vector2(115, 40)
+        MENU_TEXT_09.position = MENU_BOX_09.position + SF.vector2(30, 1)
+        MENU_TEXT_09.string = "Shirt"
+        MENU_TEXT_09.color = SF::Color::Black
+
+        MENU_BOX_10.position = SF.vector2(scale_x + 80, scale_y + 340)
+        MENU_BOX_10.size = SF.vector2(115, 40)
+        MENU_TEXT_10.position = MENU_BOX_10.position + SF.vector2(20, 1)
+        MENU_TEXT_10.string = "Pants"
+        MENU_TEXT_10.color = SF::Color::Black
+
+        MENU_BOX_11.position = SF.vector2(scale_x + 560, scale_y + 340)
+        MENU_BOX_11.size = SF.vector2(115, 40)
+        MENU_TEXT_11.position = MENU_BOX_11.position + SF.vector2(20, 1)
+        MENU_TEXT_11.string = "Pants"
+        MENU_TEXT_11.color = SF::Color::Black
+
+        MENU_BOX_12.position = SF.vector2(scale_x + 80, scale_y + 410)
+        MENU_BOX_12.size = SF.vector2(115, 40)
+        MENU_TEXT_12.position = MENU_BOX_12.position + SF.vector2(20, 1)
+        MENU_TEXT_12.string = "Shoes"
+        MENU_TEXT_12.color = SF::Color::Black
+
+        MENU_BOX_13.position = SF.vector2(scale_x + 560, scale_y + 410)
+        MENU_BOX_13.size = SF.vector2(115, 40)
+        MENU_TEXT_13.position = MENU_BOX_13.position + SF.vector2(20, 1)
+        MENU_TEXT_13.string = "Shoes"
+        MENU_TEXT_13.color = SF::Color::Black
+
         window.draw(MENU_BOX_01)
         window.draw(MENU_BOX_02)
         window.draw(MENU_BOX_03)
@@ -363,6 +439,12 @@ module Menus
         window.draw(MENU_BOX_05)
         window.draw(MENU_BOX_06)
         window.draw(MENU_BOX_07)
+        window.draw(MENU_BOX_08)
+        window.draw(MENU_BOX_09)
+        window.draw(MENU_BOX_10)
+        window.draw(MENU_BOX_11)
+        window.draw(MENU_BOX_12)
+        window.draw(MENU_BOX_13)
 
         window.draw(MENU_TEXT_01)
         window.draw(MENU_TEXT_02)
@@ -371,6 +453,12 @@ module Menus
         window.draw(MENU_TEXT_05)
         window.draw(MENU_TEXT_06)
         window.draw(MENU_TEXT_07)
+        window.draw(MENU_TEXT_08)
+        window.draw(MENU_TEXT_09)
+        window.draw(MENU_TEXT_10)
+        window.draw(MENU_TEXT_11)
+        window.draw(MENU_TEXT_12)
+        window.draw(MENU_TEXT_13)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.character_creation_menu_mouse_handling(window)
         end
@@ -402,6 +490,24 @@ module Menus
         menu_box_7_x = MENU_BOX_07.position.x
         menu_box_7_y = MENU_BOX_07.position.y
 
+        menu_box_8_x = MENU_BOX_08.position.x
+        menu_box_8_y = MENU_BOX_08.position.y
+
+        menu_box_9_x = MENU_BOX_09.position.x
+        menu_box_9_y = MENU_BOX_09.position.y
+
+        menu_box_10_x = MENU_BOX_10.position.x
+        menu_box_10_y = MENU_BOX_10.position.y
+
+        menu_box_11_x = MENU_BOX_11.position.x
+        menu_box_11_y = MENU_BOX_11.position.y
+
+        menu_box_12_x = MENU_BOX_12.position.x
+        menu_box_12_y = MENU_BOX_12.position.y
+
+        menu_box_13_x = MENU_BOX_13.position.x
+        menu_box_13_y = MENU_BOX_13.position.y
+
         current_size = window.size
         original_width = 800
         original_height = 600
@@ -412,47 +518,66 @@ module Menus
         scaled_mouse_x = mouse_x / scale_x
         scaled_mouse_y = mouse_y / scale_y
         if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
-            this = "save_menu"
-            SystemMenus.system_menu=(this)
+            SystemMenus.system_menu=("save_menu")
             sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
-            context = "character_creation"
-            direction = "left"
-            skin = Sprites::Player.change_skin(context, direction)
-            Player::Appearance.change_skin(skin)
+            Player::Appearance.change_skin(Sprites::Player.change_skin("character_creation", "left"))
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + MENU_BOX_03.size.x) && (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + MENU_BOX_03.size.y)
-            context = "character_creation"
-            direction = "right"
-            skin = Sprites::Player.change_skin(context, direction)
-            Player::Appearance.change_skin(skin)
+            Player::Appearance.change_skin(Sprites::Player.change_skin("character_creation", "right"))
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_4_x && scaled_mouse_x <= menu_box_4_x + MENU_BOX_04.size.x) && (scaled_mouse_y >= menu_box_4_y && scaled_mouse_y <= menu_box_4_y + MENU_BOX_04.size.y)
-            hair = Sprites::Player.change_hair("character_creation", "left")
-            Player::Appearance.change_hair(hair)
+            Player::Appearance.change_hair(Sprites::Player.change_hair("character_creation", "left"))
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_5_x && scaled_mouse_x <= menu_box_5_x + MENU_BOX_05.size.x) && (scaled_mouse_y >= menu_box_5_y && scaled_mouse_y <= menu_box_5_y + MENU_BOX_05.size.y)
-            hair = Sprites::Player.change_hair("character_creation", "left")
-            Player::Appearance.change_hair(hair)
+            Player::Appearance.change_hair(Sprites::Player.change_hair("character_creation", "right"))
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_6_x && scaled_mouse_x <= menu_box_6_x + MENU_BOX_06.size.x) && (scaled_mouse_y >= menu_box_6_y && scaled_mouse_y <= menu_box_6_y + MENU_BOX_06.size.y)
-            #face = Sprites::Player.change_face("character_creation", "left")
             Player::Appearance.change_face(Sprites::Player.change_face("character_creation", "left"))
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_7_x && scaled_mouse_x <= menu_box_7_x + MENU_BOX_07.size.x) && (scaled_mouse_y >= menu_box_7_y && scaled_mouse_y <= menu_box_7_y + MENU_BOX_07.size.y)
-            #hair = Sprites::Player.change_hair("character_creation", "left")
-            Player::Appearance.change_face(Sprites::Player.change_face("character_creation", "left"))
+            Player::Appearance.change_face(Sprites::Player.change_face("character_creation", "right"))
+            Sprites::Player.refresh_player_sprite(window)
+            sleep 0.15.seconds
+        end
+        if (scaled_mouse_x >= menu_box_8_x && scaled_mouse_x <= menu_box_8_x + MENU_BOX_08.size.x) && (scaled_mouse_y >= menu_box_8_y && scaled_mouse_y <= menu_box_8_y + MENU_BOX_08.size.y)
+            Player::Appearance.change_shirt(Sprites::Player.change_shirt("character_creation", "left"))
+            Sprites::Player.refresh_player_sprite(window)
+            sleep 0.15.seconds
+        end
+        if (scaled_mouse_x >= menu_box_9_x && scaled_mouse_x <= menu_box_9_x + MENU_BOX_09.size.x) && (scaled_mouse_y >= menu_box_9_y && scaled_mouse_y <= menu_box_9_y + MENU_BOX_09.size.y)
+            Player::Appearance.change_shirt(Sprites::Player.change_shirt("character_creation", "right"))
+            Sprites::Player.refresh_player_sprite(window)
+            sleep 0.15.seconds
+        end
+        if (scaled_mouse_x >= menu_box_10_x && scaled_mouse_x <= menu_box_10_x + MENU_BOX_10.size.x) && (scaled_mouse_y >= menu_box_10_y && scaled_mouse_y <= menu_box_10_y + MENU_BOX_10.size.y)
+            Player::Appearance.change_pants(Sprites::Player.change_pants("character_creation", "left"))
+            Sprites::Player.refresh_player_sprite(window)
+            sleep 0.15.seconds
+        end
+        if (scaled_mouse_x >= menu_box_11_x && scaled_mouse_x <= menu_box_11_x + MENU_BOX_11.size.x) && (scaled_mouse_y >= menu_box_11_y && scaled_mouse_y <= menu_box_11_y + MENU_BOX_11.size.y)
+            Player::Appearance.change_pants(Sprites::Player.change_pants("character_creation", "right"))
+            Sprites::Player.refresh_player_sprite(window)
+            sleep 0.15.seconds
+        end
+        if (scaled_mouse_x >= menu_box_12_x && scaled_mouse_x <= menu_box_12_x + MENU_BOX_12.size.x) && (scaled_mouse_y >= menu_box_12_y && scaled_mouse_y <= menu_box_12_y + MENU_BOX_12.size.y)
+            Player::Appearance.change_shoes(Sprites::Player.change_shoes("character_creation", "left"))
+            Sprites::Player.refresh_player_sprite(window)
+            sleep 0.15.seconds
+        end
+        if (scaled_mouse_x >= menu_box_13_x && scaled_mouse_x <= menu_box_13_x + MENU_BOX_13.size.x) && (scaled_mouse_y >= menu_box_13_y && scaled_mouse_y <= menu_box_13_y + MENU_BOX_13.size.y)
+            Player::Appearance.change_shoes(Sprites::Player.change_shoes("character_creation", "right"))
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
         end
