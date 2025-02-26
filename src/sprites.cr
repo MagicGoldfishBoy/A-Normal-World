@@ -9,7 +9,15 @@ module Sprites
     CLOTHES_HASH["nil"] = NIL_TEXTURE
 
     CLOTHES_HASH["pale_skin"] = PALE_SKIN_TEXTURE
-    CLOTHES_HASH["tan_skin"] = SKIN_TEXTURE_02
+    CLOTHES_HASH["tan_skin"] = TAN_SKIN_TEXTURE
+    CLOTHES_HASH["dark_skin"] = DARK_SKIN_TEXTURE
+    CLOTHES_HASH["ghostly_skin"] = GHOSTLY_SKIN_TEXTURE
+    CLOTHES_HASH["jaundiced_skin"] = JAUNDICED_SKIN_TEXTURE
+    CLOTHES_HASH["blue_skin"] = BLUE_SKIN_TEXTURE
+    CLOTHES_HASH["pink_skin"] = PINK_SKIN_TEXTURE
+    CLOTHES_HASH["green_skin"] = GREEN_SKIN_TEXTURE
+    CLOTHES_HASH["purple_skin"] = PURPLE_SKIN_TEXTURE
+    CLOTHES_HASH["red_skin"] = RED_SKIN_TEXTURE
 
     CLOTHES_HASH["white_shounen_hair"] = SHOUNEN_HAIR_WHITE_TEXTURE
     CLOTHES_HASH["black_shounen_hair"] = SHOUNEN_HAIR_BLACK_TEXTURE
@@ -34,7 +42,7 @@ module Sprites
     
   class Player < Appearance
 
-  STARTING_SKIN_ARRAY = ["pale_skin", "tan_skin"]
+  STARTING_SKIN_ARRAY = ["pale_skin", "tan_skin", "dark_skin", "ghostly_skin", "jaundiced_skin", "blue_skin", "pink_skin", "green_skin", "purple_skin", "red_skin"]
   STARTING_HAIR_ARRAY = ["black_shounen_hair", "white_shounen_hair"]
   STARTING_FACE_ARRAY = ["blue_button_eyes", "black_button_eyes"]
   STARTING_SHIRT_ARRAY = ["white_tank_top", "Black_tank_top", "Orange_tank_top"]

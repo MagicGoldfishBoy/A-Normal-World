@@ -8,10 +8,26 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 #S                                         Skin Textures                                             S
 #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
- #Pale Skin
+
  PALE_SKIN_TEXTURE = SF::Texture.from_file("../graphics/Char_Skin.png")
- #Tan Skin
- SKIN_TEXTURE_02 = SF::Texture.from_file("../graphics/Char_Skin_Tan.png")
+
+ TAN_SKIN_TEXTURE = SF::Texture.from_file("../graphics/Char_Skin_Tan.png")
+
+ DARK_SKIN_TEXTURE = SF::Texture.from_file("../graphics/Char_Skin_Dark.png")
+
+ GHOSTLY_SKIN_TEXTURE = SF::Texture.from_file("../graphics/Char_Skin_Ghostly.png")
+
+ JAUNDICED_SKIN_TEXTURE = SF::Texture.from_file("../graphics/Char_Skin_Jaundiced.png")
+
+ BLUE_SKIN_TEXTURE = SF::Texture.from_file("../graphics/Char_Skin_Blue.png")
+ 
+ PINK_SKIN_TEXTURE = SF::Texture.from_file("../graphics/Char_Skin_Pink.png")
+
+ GREEN_SKIN_TEXTURE = SF::Texture.from_file("../graphics/Char_Skin_Green.png")
+
+ PURPLE_SKIN_TEXTURE = SF::Texture.from_file("../graphics/Char_Skin_Purple.png")
+
+ RED_SKIN_TEXTURE = SF::Texture.from_file("../graphics/Char_Skin_Red.png")
 
 #HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 #H                                         Hair Textures                                             H
@@ -39,6 +55,7 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
  #S                                         Shirt Textures                                           S
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
   TANK_TOP_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Tank_Top.png")
 
   TANK_TOP_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Tank_Top.png")
