@@ -49,6 +49,9 @@ module Keyboard
                 Player::Movement.movement_direction=("right")
                 Player::Movement.move_horizontal(window, direction)
             end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::Space)
+                Levels::Level_Physics.jump(window)
+            end
         end
     end
 end

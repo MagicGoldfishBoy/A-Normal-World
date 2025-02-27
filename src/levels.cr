@@ -24,9 +24,10 @@ module Levels
         end
     end
     class Level_Physics
-        def initialize(can_float : Bool, gravity : Float64)
+        def initialize(can_float : Bool, gravity : Float64, is_on_ground : Bool)
             @@can_float = can_float
             @@gravity = gravity
+            @@is_on_ground = is_on_ground
         end
 
         def can_float
@@ -45,11 +46,28 @@ module Levels
             @@gravity = this
         end
 
+        def Level_Physics.is_on_ground
+            @@is_on_ground
+        end
+
+        def Level_Physics.is_on_ground=(this)
+            @@is_on_ground = this
+        end
+
         @@gravity_clock = SF::Clock.new
 
         def Level_Physics.gravitational_pull(entity)
             if @@gravity_clock.elapsed_time > SF.seconds(1) 
             entity.move(SF.vector2(0, @@gravity.not_nil!))
+            end
+        end
+
+        def Level_Physics.jump(window)
+            if !Level_Physics.is_on_ground == true #I don't know why I had to invert this to make it work.
+                if gravity == nil
+                    gravity = 0
+                end
+                Sprites::Player.move_player_sprite(window, 0, -50 + @@gravity.not_nil!)
             end
         end
     end
@@ -71,6 +89,9 @@ module Levels
             
             if Sprites::Player.check_feet_collision(window, TEST_PLATFORM_01) == false
                 Level_Physics.gravitational_pull(Sprites::Player.retrieve_sprite)
+                Level_Physics.is_on_ground=(true)
+            else
+                Level_Physics.is_on_ground=(false)
             end
             window.draw(TEST_PLATFORM_01)
         end
