@@ -282,37 +282,37 @@ module Menus
             MENU_TEXT_02.string = Serialization::SaveFile.retrieve_name.to_s
             SystemMenus.center_save_file_text(MENU_TEXT_02)
         end
-        if !File.exists?("save02")
+        if !File.exists?("src/saves/save02")
             MENU_TEXT_03.string = "Empty"
         else
             MENU_TEXT_03.string = Serialization::SaveFile.retrieve_name.to_s
             SystemMenus.center_save_file_text(MENU_TEXT_03)
         end
-        if !File.exists?("save03")
+        if !File.exists?("src/saves/save03")
             MENU_TEXT_04.string = "Empty"
         else
             MENU_TEXT_04.string = Serialization::SaveFile.retrieve_name.to_s
             SystemMenus.center_save_file_text(MENU_TEXT_04)
         end
-        if !File.exists?("save04")
+        if !File.exists?("src/saves/save04")
             MENU_TEXT_05.string = "Empty"
         else
             MENU_TEXT_05.string = Serialization::SaveFile.retrieve_name.to_s
             SystemMenus.center_save_file_text(MENU_TEXT_05)
         end
-        if !File.exists?("save05")
+        if !File.exists?("src/saves/save05")
             MENU_TEXT_06.string = "Empty"
         else
             MENU_TEXT_06.string = Serialization::SaveFile.retrieve_name.to_s
             SystemMenus.center_save_file_text(MENU_TEXT_06)
         end
-        if !File.exists?("save06")
+        if !File.exists?("src/saves/save06")
             MENU_TEXT_07.string = "Empty"
         else
             MENU_TEXT_07.string = Serialization::SaveFile.retrieve_name.to_s
             SystemMenus.center_save_file_text(MENU_TEXT_07)
         end
-        if !File.exists?("save07")
+        if !File.exists?("src/saves/save07")
             MENU_TEXT_08.string = "Empty"
         else
             MENU_TEXT_08.string = Serialization::SaveFile.retrieve_name.to_s
@@ -365,6 +365,16 @@ module Menus
         menu_box_2_y = MENU_BOX_02.position.y
         menu_box_3_x = MENU_BOX_03.position.x
         menu_box_3_y = MENU_BOX_03.position.y
+        menu_box_4_x = MENU_BOX_04.position.x
+        menu_box_4_y = MENU_BOX_04.position.y
+        menu_box_5_x = MENU_BOX_05.position.x
+        menu_box_5_y = MENU_BOX_05.position.y
+        menu_box_6_x = MENU_BOX_06.position.x
+        menu_box_6_y = MENU_BOX_06.position.y
+        menu_box_7_x = MENU_BOX_07.position.x
+        menu_box_7_y = MENU_BOX_07.position.y
+        menu_box_8_x = MENU_BOX_08.position.x
+        menu_box_8_y = MENU_BOX_08.position.y
         current_size = window.size
         original_width = 800
         original_height = 600
@@ -375,13 +385,48 @@ module Menus
         scaled_mouse_x = mouse_x / scale_x
         scaled_mouse_y = mouse_y / scale_y
         if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
-            this = "main_menu"
-            SystemMenus.system_menu=(this)
+            SystemMenus.system_menu=("main_menu")
         end
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
             Player::Stats.initialize_player_stats
             Serialization::SaveFile.save_file=("save01")
             Serialization::SaveFile.initial_save("save01")
+            SystemMenus.initialize_character_creation_menu(window)
+        end
+        if (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + MENU_BOX_03.size.x) && (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + MENU_BOX_03.size.y)
+            Player::Stats.initialize_player_stats
+            Serialization::SaveFile.save_file=("save02")
+            Serialization::SaveFile.initial_save("save02")
+            SystemMenus.initialize_character_creation_menu(window)
+        end
+        if (scaled_mouse_x >= menu_box_4_x && scaled_mouse_x <= menu_box_4_x + MENU_BOX_04.size.x) && (scaled_mouse_y >= menu_box_4_y && scaled_mouse_y <= menu_box_4_y + MENU_BOX_04.size.y)
+            Player::Stats.initialize_player_stats
+            Serialization::SaveFile.save_file=("save03")
+            Serialization::SaveFile.initial_save("save03")
+            SystemMenus.initialize_character_creation_menu(window)
+        end
+        if (scaled_mouse_x >= menu_box_5_x && scaled_mouse_x <= menu_box_5_x + MENU_BOX_05.size.x) && (scaled_mouse_y >= menu_box_5_y && scaled_mouse_y <= menu_box_5_y + MENU_BOX_05.size.y)
+            Player::Stats.initialize_player_stats
+            Serialization::SaveFile.save_file=("save04")
+            Serialization::SaveFile.initial_save("save04")
+            SystemMenus.initialize_character_creation_menu(window)
+        end
+        if (scaled_mouse_x >= menu_box_6_x && scaled_mouse_x <= menu_box_6_x + MENU_BOX_06.size.x) && (scaled_mouse_y >= menu_box_6_y && scaled_mouse_y <= menu_box_6_y + MENU_BOX_06.size.y)
+            Player::Stats.initialize_player_stats
+            Serialization::SaveFile.save_file=("save05")
+            Serialization::SaveFile.initial_save("save05")
+            SystemMenus.initialize_character_creation_menu(window)
+        end
+        if (scaled_mouse_x >= menu_box_7_x && scaled_mouse_x <= menu_box_7_x + MENU_BOX_07.size.x) && (scaled_mouse_y >= menu_box_7_y && scaled_mouse_y <= menu_box_7_y + MENU_BOX_07.size.y)
+            Player::Stats.initialize_player_stats
+            Serialization::SaveFile.save_file=("save06")
+            Serialization::SaveFile.initial_save("save06")
+            SystemMenus.initialize_character_creation_menu(window)
+        end
+        if (scaled_mouse_x >= menu_box_8_x && scaled_mouse_x <= menu_box_8_x + MENU_BOX_08.size.x) && (scaled_mouse_y >= menu_box_8_y && scaled_mouse_y <= menu_box_8_y + MENU_BOX_08.size.y)
+            Player::Stats.initialize_player_stats
+            Serialization::SaveFile.save_file=("save07")
+            Serialization::SaveFile.initial_save("save07")
             SystemMenus.initialize_character_creation_menu(window)
         end
      end
@@ -583,6 +628,7 @@ module Menus
         if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
             Sprites::Player.is_drawn=(false)
             SystemMenus.system_menu=("save_menu")
+            SystemMenus.initialize_save_menu(window)
             sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)

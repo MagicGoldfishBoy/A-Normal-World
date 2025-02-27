@@ -45,7 +45,7 @@ module Serialization
       Dir.mkdir_p(File.dirname(path))
       stats = @@stat_save_hash
       File.write(path, stats)
-      SaveFile.save_check(path, stats)
+      #SaveFile.save_check(path, stats)
     end
 
     def SaveFile.save_check(path1, key)
