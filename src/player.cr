@@ -1,4 +1,5 @@
 require "../src/textures.cr"
+require "../src/sprites.cr"
 
 module Player
   class Stats
@@ -160,6 +161,31 @@ module Player
     def Movement.movement_direction
         @@movement_direction
     end
+
+    def Movement.movement_state=(this)
+        @@movement_state = this
+    end
+
+    def Movement.movement_speed=(this)
+        @@movement_speed = this
+    end
+
+    def Movement.movement_direction=(this)
+        @@movement_direction = this
+    end
+
+    def Movement.move_horizontal(window, direction)
+        Movement.movement_direction = direction
+        Stats.dex ||= 5
+        Movement.movement_speed = Stats.dex.to_s.to_f? || 0.0
+      
+        if direction == "left"
+          Sprites::Player.move_player_sprite(window, -Movement.movement_speed.not_nil!, 0)
+        end
+        if direction == "right"
+          Sprites::Player.move_player_sprite(window, Movement.movement_speed.not_nil!, 0)
+        end
+      end
   end
 
   class Appearance

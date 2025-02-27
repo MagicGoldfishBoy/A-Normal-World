@@ -4,6 +4,7 @@ require "../src/textures.cr"
 require "../src/fonts.cr"
 require "../src/sprites.cr"
 require "../src/serialization.cr"
+require "../src/keyboard.cr"
 
 module Menus
 
@@ -648,7 +649,6 @@ module Menus
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
             Player::Appearance.change_skin(Sprites::Player.change_skin("character_creation", "left"))
             Sprites::Player.refresh_player_sprite(window)
-           # Player::Stats.name=("test")
             sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + MENU_BOX_03.size.x) && (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + MENU_BOX_03.size.y)
@@ -710,6 +710,7 @@ module Menus
             Sprites::Player.is_drawn=(true)
             SystemMenus.system_menu=("hud")
             SystemMenus.initialize_hud(window)
+            Keyboard::Gameplay.gameplay_mode=("normal")
             sleep 0.15.seconds
         end
      end

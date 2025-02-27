@@ -82,8 +82,10 @@ module Sprites
     
   class Player 
 
-  def initialize(is_drawn : Bool)
+  def initialize(is_drawn : Bool, movement_state : String, direction : String)
     @@is_drawn = is_drawn
+    @@movement_state = movement_state
+    @@direction = direction
   end
 
   def Player.is_drawn
@@ -92,6 +94,22 @@ module Sprites
 
   def Player.is_drawn=(this)
     @@is_drawn = this
+  end
+
+  def Player.movement_state
+    @@movement_state
+  end
+
+  def Player.movement_state=(this)
+    @@movement_state = this
+  end
+
+  def Player.direction
+    @@direction
+  end
+
+  def Player.direction=(this)
+    @@direction = this
   end
 
   STARTING_SKIN_ARRAY = ["pale_skin", "tan_skin", "dark_skin", "ghostly_skin", "jaundiced_skin", "blue_skin", "pink_skin", "green_skin", "purple_skin", "red_skin"]
@@ -120,10 +138,18 @@ module Sprites
   @@player_character_model = SF::RenderTexture.new(672, 512)
   @@player_character_rendered_model = SF::Sprite.new
 
+  
+
    def Player.draw_sprite(window)
     if @@is_drawn == true
         window.draw(@@player_character_rendered_model)
-        Player.animate_sprite("idle", "left")
+        if @@movement_state == nil
+            @@movement_state = "idle"
+        end
+        if @@direction == nil
+            @@direction = "left"
+        end
+        Player.animate_sprite(Player.movement_state, Player.direction)
     end
    end
 
@@ -173,6 +199,10 @@ module Sprites
 
    def Player.position_player_sprite(window, x, y)
     @@player_character_rendered_model.position = SF.vector2(x, y)
+   end
+
+   def Player.move_player_sprite(window, x, y)
+    @@player_character_rendered_model.move(SF.vector2(x.not_nil!, y.not_nil!))
    end
 
    def Player.change_skin(context, direction)
@@ -299,6 +329,12 @@ module Sprites
         @@player_character_rendered_model.texture_rect = Animations::Player.idle_animation_right
     elsif state == "idle" && direction == "left"
         @@player_character_rendered_model.texture_rect = Animations::Player.idle_animation_left
+    end
+
+    if state == "walking" && direction == "right"
+        @@player_character_rendered_model.texture_rect = Animations::Player.walking_animation_right
+    elsif state == "walking" && direction == "left"
+        @@player_character_rendered_model.texture_rect = Animations::Player.walking_animation_left
     end
    end
 
