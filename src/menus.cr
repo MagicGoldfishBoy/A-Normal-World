@@ -13,6 +13,10 @@ module Menus
         HUD_BOTTOM = SF::RectangleShape.new(SF.vector2(1000, 500))
         HUD_BOTTOM.fill_color = SF.color(200, 212, 219)
 
+        HP_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
+        HP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
+        HP_COLOR_BAR.fill_color = SF.color( 122, 14, 14 )
+
         MENU_BOX_01 = SF::RectangleShape.new(SF.vector2(150, 80))
         MENU_BOX_01.fill_color = SF.color(200, 212, 219)
         MENU_BOX_01.outline_thickness = 10
@@ -830,19 +834,22 @@ module Menus
         HUD_BOTTOM.scale = SF.vector2(scale_x, scale_y / 5)
         HUD_BOTTOM.position = SF.vector2(0_f32, current_size.y.to_f32 - HUD_BOTTOM.global_bounds.height)
 
-        MENU_BOX_01.position = SF.vector2(HUD_BOTTOM.position.x + 50, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 10)
+        MENU_BOX_01.position = SF.vector2(HUD_BOTTOM.position.x + 150, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 10)
         MENU_BOX_01.scale = SF.vector2(scale_x, scale_y)
 
-        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
+        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(50 - Player::Stats.lvl.to_s.size, 1)
         MENU_BOX_01.size = SF.vector2(115, 40)
 
         MENU_TEXT_01.string = Player::Stats.lvl.to_s
         MENU_TEXT_01.character_size = 24
         MENU_TEXT_01.scale = SF.vector2(scale_x, scale_y)
+
+        HP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 10)
+        
      end
 
-     def SystemMenus.draw_hud(window)
-     if SF::Event::Resized
+     def SystemMenus.draw_hud(window) 
+     if SF::Event::Resized #the HUD wil never scale correctly without this
         current_size = window.size
         original_width = 800 
         original_height = 600
@@ -851,10 +858,20 @@ module Menus
         HUD_BOTTOM.scale = SF.vector2(scale_x, scale_y / 5)
         HUD_BOTTOM.position = SF.vector2(0_f32, current_size.y.to_f32 - HUD_BOTTOM.global_bounds.height)
 
+        scale_ratio = [scale_x, scale_y].min
         MENU_BOX_01.scale = SF.vector2(scale_x, scale_y)
-        MENU_BOX_01.position = SF.vector2(HUD_BOTTOM.position.x + 50, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 10)
-        MENU_TEXT_01.scale = SF.vector2(scale_x, scale_y)
-        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(50 - Player::Stats.lvl.to_s.size, 1)
+        MENU_BOX_01.position = SF.vector2(30_f32 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 90 * scale_y)
+
+        MENU_TEXT_01.scale = SF.vector2(scale_ratio, scale_ratio)
+        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2((50 - Player::Stats.lvl.to_s.size) * scale_x, 1 * scale_y)
+
+        #so much math lol
+
+        HP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 85 * scale_y)
+        HP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
+
+        HP_COLOR_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 85 * scale_y)
+        HP_COLOR_BAR.scale = SF.vector2((Player::Stats.current_hp.not_nil! / Player::Stats.max_hp.not_nil!) * scale_ratio, scale_ratio) 
      end
         window_size = window.size
         hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
@@ -863,6 +880,8 @@ module Menus
         window.draw(HUD_BOTTOM)
         window.draw(MENU_BOX_01)
         window.draw(MENU_TEXT_01)
+        window.draw(HP_BAR)
+        window.draw(HP_COLOR_BAR)
         window.view = window.default_view
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.hud_mouse_handling(window)
