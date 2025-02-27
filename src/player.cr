@@ -3,7 +3,8 @@ require "../src/sprites.cr"
 
 module Player
   class Stats
-     def initialize(name : String, max_hp : Float64, current_hp : Float64, max_mp : Float64, current_mp : Float64, exp : Float64, defense : Float64, str : Float64, dex : Float64, luk : Float64, int : Float64)
+     def initialize(name : String, max_hp : Float64, current_hp : Float64, max_mp : Float64, current_mp : Float64, lvl : Int32,  exp : Float64, defense : Float64, str : Float64, dex : Float64, 
+        luk : Float64, int : Float64)
         @name = name
         @@name = name
         @max_hp = max_hp
@@ -16,6 +17,8 @@ module Player
         @@current_mp = current_mp
         @exp = exp
         @@exp = exp
+        @lvl = lvl
+        @@lvl = lvl
         @defense = defense
         @@defense = defense
         @str = str
@@ -50,6 +53,10 @@ module Player
 
      def Stats.exp
         @@exp
+     end
+
+     def Stats.lvl
+        @@lvl
      end
 
      def Stats.defense
@@ -102,6 +109,11 @@ module Player
        @@exp = this
      end
 
+     def Stats.lvl=(this)
+        lvl = this
+       @@lvl = this
+     end
+
      def Stats.defense=(this)
        defense = this
        @@defense = this
@@ -133,6 +145,7 @@ module Player
         Stats.current_hp=(10)
         Stats.max_mp=(7)
         Stats.current_mp=(7)
+        Stats.lvl=(1)
         Stats.exp=(0)
         Stats.defense=(5)
         Stats.str=(5)

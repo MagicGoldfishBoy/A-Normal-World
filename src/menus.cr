@@ -829,7 +829,16 @@ module Menus
         scale_y = current_size.y.to_f / original_height
         HUD_BOTTOM.scale = SF.vector2(scale_x, scale_y / 5)
         HUD_BOTTOM.position = SF.vector2(0_f32, current_size.y.to_f32 - HUD_BOTTOM.global_bounds.height)
-       # HUD_BOTTOM.position = SF.vector2(scale_x + 0, scale_y + 500)
+
+        MENU_BOX_01.position = SF.vector2(HUD_BOTTOM.position.x + 50, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 10)
+        MENU_BOX_01.scale = SF.vector2(scale_x, scale_y)
+
+        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
+        MENU_BOX_01.size = SF.vector2(115, 40)
+
+        MENU_TEXT_01.string = Player::Stats.lvl.to_s
+        MENU_TEXT_01.character_size = 24
+        MENU_TEXT_01.scale = SF.vector2(scale_x, scale_y)
      end
 
      def SystemMenus.draw_hud(window)
@@ -841,14 +850,19 @@ module Menus
         scale_y = current_size.y.to_f / original_height
         HUD_BOTTOM.scale = SF.vector2(scale_x, scale_y / 5)
         HUD_BOTTOM.position = SF.vector2(0_f32, current_size.y.to_f32 - HUD_BOTTOM.global_bounds.height)
+
+        MENU_BOX_01.scale = SF.vector2(scale_x, scale_y)
+        MENU_BOX_01.position = SF.vector2(HUD_BOTTOM.position.x + 50, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 10)
+        MENU_TEXT_01.scale = SF.vector2(scale_x, scale_y)
+        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(50 - Player::Stats.lvl.to_s.size, 1)
      end
         window_size = window.size
         hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
         hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
-        # hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
-        # hud_view.viewport = SF::FloatRect.new(0, 0.5, 1, 0.5)
         window.view = hud_view
         window.draw(HUD_BOTTOM)
+        window.draw(MENU_BOX_01)
+        window.draw(MENU_TEXT_01)
         window.view = window.default_view
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.hud_mouse_handling(window)
@@ -862,8 +876,21 @@ module Menus
 
         menu_box_1_x = MENU_BOX_01.position.x
         menu_box_1_y = MENU_BOX_01.position.y
+
+        current_size = window.size
+        original_width = 800
+        original_height = 600
+    
+        scale_x = current_size.x.to_f / original_width
+        scale_y = current_size.y.to_f / original_height
+    
+        scaled_mouse_x = mouse_x / scale_x
+        scaled_mouse_y = mouse_y / scale_y
+
+        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
+          puts "test"
+        end
      end
 
     end
 end
-#hud_view.center = Sprites::Player.retrieve_sprite.position + (SF.vector2(-500, 50))
