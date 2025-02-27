@@ -27,7 +27,7 @@ module Player
         @@int = int
      end
 
-     def name
+     def Stats.name
         @@name
      end
 
@@ -36,7 +36,7 @@ module Player
      end
 
      def Stats.current_hp
-        @@max_hp
+        @@current_hp
      end
 
      def Stats.max_mp 
@@ -127,8 +127,11 @@ module Player
      end
 
      def Stats.initialize_player_stats
-        Stats.name=("doll-2041")
+        Stats.name=("doll-3001")
         Stats.max_hp=(10)
+        Stats.current_hp=(10)
+        Stats.max_mp=(7)
+        Stats.current_mp=(7)
      end
 
  end

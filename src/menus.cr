@@ -211,6 +211,7 @@ module Menus
         if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
             MENU_BOX_01.outline_color = SF.color(97, 140, 165)
             this = "save_menu"
+            SystemMenus.initialize_save_menu(window)
             SystemMenus.system_menu=(this)
         elsif (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + 200) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + 80)
             MENU_BOX_02.outline_color = SF.color(97, 140, 165)
@@ -220,7 +221,7 @@ module Menus
         end
      end
 
-     def SystemMenus.draw_save_menu(window)
+     def SystemMenus.initialize_save_menu(window)
         current_size = window.size
         original_width = 800 
         original_height = 600
@@ -275,27 +276,52 @@ module Menus
         MENU_TEXT_08.character_size = MENU_TEXT_07.character_size
         MENU_TEXT_08.position = MENU_BOX_08.position + SF.vector2(35, 200)
 
-        if !File.exists?("save01")
+        if !File.exists?("src/saves/save01")
             MENU_TEXT_02.string = "Empty"
+        else
+            MENU_TEXT_02.string = Serialization::SaveFile.retrieve_name.to_s
+            SystemMenus.center_save_file_text(MENU_TEXT_02)
         end
         if !File.exists?("save02")
             MENU_TEXT_03.string = "Empty"
+        else
+            MENU_TEXT_03.string = Serialization::SaveFile.retrieve_name.to_s
+            SystemMenus.center_save_file_text(MENU_TEXT_03)
         end
         if !File.exists?("save03")
             MENU_TEXT_04.string = "Empty"
+        else
+            MENU_TEXT_04.string = Serialization::SaveFile.retrieve_name.to_s
+            SystemMenus.center_save_file_text(MENU_TEXT_04)
         end
         if !File.exists?("save04")
             MENU_TEXT_05.string = "Empty"
+        else
+            MENU_TEXT_05.string = Serialization::SaveFile.retrieve_name.to_s
+            SystemMenus.center_save_file_text(MENU_TEXT_05)
         end
         if !File.exists?("save05")
             MENU_TEXT_06.string = "Empty"
+        else
+            MENU_TEXT_06.string = Serialization::SaveFile.retrieve_name.to_s
+            SystemMenus.center_save_file_text(MENU_TEXT_06)
         end
         if !File.exists?("save06")
             MENU_TEXT_07.string = "Empty"
+        else
+            MENU_TEXT_07.string = Serialization::SaveFile.retrieve_name.to_s
+            SystemMenus.center_save_file_text(MENU_TEXT_07)
         end
         if !File.exists?("save07")
             MENU_TEXT_08.string = "Empty"
+        else
+            MENU_TEXT_08.string = Serialization::SaveFile.retrieve_name.to_s
+            SystemMenus.center_save_file_text(MENU_TEXT_08)
         end
+     end
+
+     def SystemMenus.draw_save_menu(window)
+
         window.draw(MENU_BOX_01)
         window.draw(MENU_BOX_02)
         window.draw(MENU_BOX_03)
@@ -315,6 +341,17 @@ module Menus
         window.draw(MENU_TEXT_08)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.save_menu_mouse_handling(window)
+        end
+     end
+
+     def SystemMenus.center_save_file_text(this)
+        if this.string.size > 5 && this.string.size < 10
+            x = this.position.x - (this.string.size + 5)
+            this.position = SF.vector2(x, this.position.y)
+        elsif this.string.size >= 10
+            this.character_size = this.character_size - 10
+            x = this.position.x - (this.string.size + 5)
+            this.position = SF.vector2(x, this.position.y)
         end
      end
 
