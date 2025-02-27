@@ -36,9 +36,9 @@ while window.open?
     end
     window.clear(SF::Color::Black)
     Levels::LevelSelectionLogic.current_area(window)
-    Menus::SystemMenus.draw_system_menu(window)
     Sprites::Player.draw_sprite(window)
     Keyboard::Gameplay.determine_gameplay_controls(window)
+    Menus::SystemMenus.draw_system_menu(window)
     window.display
   end
 end

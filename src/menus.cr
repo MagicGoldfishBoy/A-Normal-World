@@ -10,8 +10,8 @@ module Menus
 
     class SystemMenus
 
-        GROUND = SF::RectangleShape.new(SF.vector2(500, 80))
-        GROUND.fill_color = SF.color(200, 212, 219)
+        HUD_BOTTOM = SF::RectangleShape.new(SF.vector2(1000, 500))
+        HUD_BOTTOM.fill_color = SF.color(200, 212, 219)
 
         MENU_BOX_01 = SF::RectangleShape.new(SF.vector2(150, 80))
         MENU_BOX_01.fill_color = SF.color(200, 212, 219)
@@ -827,12 +827,29 @@ module Menus
     
         scale_x = current_size.x.to_f / original_width
         scale_y = current_size.y.to_f / original_height
-
-        GROUND.position = SF.vector2(scale_x + 0, scale_y + 540)
+        HUD_BOTTOM.scale = SF.vector2(scale_x, scale_y / 5)
+        HUD_BOTTOM.position = SF.vector2(0_f32, current_size.y.to_f32 - HUD_BOTTOM.global_bounds.height)
+       # HUD_BOTTOM.position = SF.vector2(scale_x + 0, scale_y + 500)
      end
 
      def SystemMenus.draw_hud(window)
-        window.draw(GROUND)
+     if SF::Event::Resized
+        current_size = window.size
+        original_width = 800 
+        original_height = 600
+        scale_x = current_size.x.to_f / original_width
+        scale_y = current_size.y.to_f / original_height
+        HUD_BOTTOM.scale = SF.vector2(scale_x, scale_y / 5)
+        HUD_BOTTOM.position = SF.vector2(0_f32, current_size.y.to_f32 - HUD_BOTTOM.global_bounds.height)
+     end
+        window_size = window.size
+        hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+        hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
+        # hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+        # hud_view.viewport = SF::FloatRect.new(0, 0.5, 1, 0.5)
+        window.view = hud_view
+        window.draw(HUD_BOTTOM)
+        window.view = window.default_view
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.hud_mouse_handling(window)
         end
@@ -849,3 +866,4 @@ module Menus
 
     end
 end
+#hud_view.center = Sprites::Player.retrieve_sprite.position + (SF.vector2(-500, 50))
