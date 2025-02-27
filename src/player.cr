@@ -132,6 +132,12 @@ module Player
         Stats.current_hp=(10)
         Stats.max_mp=(7)
         Stats.current_mp=(7)
+        Stats.exp=(0)
+        Stats.defense=(5)
+        Stats.str=(5)
+        Stats.dex=(5)
+        Stats.luk=(5)
+        Stats.int=(5)
      end
 
  end

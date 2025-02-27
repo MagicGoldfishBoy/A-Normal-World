@@ -279,43 +279,43 @@ module Menus
         if !File.exists?("src/saves/save01")
             MENU_TEXT_02.string = "Empty"
         else
-            MENU_TEXT_02.string = Serialization::SaveFile.retrieve_name.to_s
+            MENU_TEXT_02.string = Serialization::SaveFile.retrieve_data("src/saves/save01", "name").to_s
             SystemMenus.center_save_file_text(MENU_TEXT_02)
         end
         if !File.exists?("src/saves/save02")
             MENU_TEXT_03.string = "Empty"
         else
-            MENU_TEXT_03.string = Serialization::SaveFile.retrieve_name.to_s
+            MENU_TEXT_03.string = Serialization::SaveFile.retrieve_data("src/saves/save02", "name").to_s
             SystemMenus.center_save_file_text(MENU_TEXT_03)
         end
         if !File.exists?("src/saves/save03")
             MENU_TEXT_04.string = "Empty"
         else
-            MENU_TEXT_04.string = Serialization::SaveFile.retrieve_name.to_s
+            MENU_TEXT_04.string = Serialization::SaveFile.retrieve_data("src/saves/save03", "name").to_s
             SystemMenus.center_save_file_text(MENU_TEXT_04)
         end
         if !File.exists?("src/saves/save04")
             MENU_TEXT_05.string = "Empty"
         else
-            MENU_TEXT_05.string = Serialization::SaveFile.retrieve_name.to_s
+            MENU_TEXT_05.string = Serialization::SaveFile.retrieve_data("src/saves/save04", "name").to_s
             SystemMenus.center_save_file_text(MENU_TEXT_05)
         end
         if !File.exists?("src/saves/save05")
             MENU_TEXT_06.string = "Empty"
         else
-            MENU_TEXT_06.string = Serialization::SaveFile.retrieve_name.to_s
+            MENU_TEXT_06.string = Serialization::SaveFile.retrieve_data("src/saves/save05", "name").to_s
             SystemMenus.center_save_file_text(MENU_TEXT_06)
         end
         if !File.exists?("src/saves/save06")
             MENU_TEXT_07.string = "Empty"
         else
-            MENU_TEXT_07.string = Serialization::SaveFile.retrieve_name.to_s
+            MENU_TEXT_07.string = Serialization::SaveFile.retrieve_data("src/saves/save06", "name").to_s
             SystemMenus.center_save_file_text(MENU_TEXT_07)
         end
         if !File.exists?("src/saves/save07")
             MENU_TEXT_08.string = "Empty"
         else
-            MENU_TEXT_08.string = Serialization::SaveFile.retrieve_name.to_s
+            MENU_TEXT_08.string = Serialization::SaveFile.retrieve_data("src/saves/save07", "name").to_s
             SystemMenus.center_save_file_text(MENU_TEXT_08)
         end
      end
@@ -449,84 +449,98 @@ module Menus
         MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
         MENU_BOX_01.size = SF.vector2(115, 40)
         MENU_TEXT_01.string = "Back"
+        MENU_TEXT_01.character_size = 24
 
         MENU_BOX_02.position = SF.vector2(scale_x + 80, scale_y + 60)
         MENU_BOX_02.size = SF.vector2(115, 40)
         MENU_TEXT_02.position = MENU_BOX_02.position + SF.vector2(30, 1)
         MENU_TEXT_02.string = "Skin"
         MENU_TEXT_02.color = SF::Color::Black
+        MENU_TEXT_02.character_size = 24
 
         MENU_BOX_03.position = SF.vector2(scale_x + 560, scale_y + 60)
         MENU_BOX_03.size = SF.vector2(115, 40)
         MENU_TEXT_03.position = MENU_BOX_03.position + SF.vector2(30, 1)
         MENU_TEXT_03.string = "Skin"
         MENU_TEXT_03.color = SF::Color::Black
+        MENU_TEXT_03.character_size = 24
 
         MENU_BOX_04.position = SF.vector2(scale_x + 80, scale_y + 130)
         MENU_BOX_04.size = SF.vector2(115, 40)
         MENU_TEXT_04.position = MENU_BOX_04.position + SF.vector2(30, 1)
         MENU_TEXT_04.string = "Hair"
         MENU_TEXT_04.color = SF::Color::Black
+        MENU_TEXT_04.character_size = 24
 
         MENU_BOX_05.position = SF.vector2(scale_x + 560, scale_y + 130)
         MENU_BOX_05.size = SF.vector2(115, 40)
         MENU_TEXT_05.position = MENU_BOX_05.position + SF.vector2(30, 1)
         MENU_TEXT_05.string = "Hair"
         MENU_TEXT_05.color = SF::Color::Black
+        MENU_TEXT_05.character_size = 24
 
         MENU_BOX_06.position = SF.vector2(scale_x + 80, scale_y + 200)
         MENU_BOX_06.size = SF.vector2(115, 40)
         MENU_TEXT_06.position = MENU_BOX_06.position + SF.vector2(30, 1)
         MENU_TEXT_06.string = "Face"
         MENU_TEXT_06.color = SF::Color::Black
+        MENU_TEXT_06.character_size = 24
 
         MENU_BOX_07.position = SF.vector2(scale_x + 560, scale_y + 200)
         MENU_BOX_07.size = SF.vector2(115, 40)
         MENU_TEXT_07.position = MENU_BOX_07.position + SF.vector2(30, 1)
         MENU_TEXT_07.string = "Face"
         MENU_TEXT_07.color = SF::Color::Black
+        MENU_TEXT_07.character_size = 24
 
         MENU_BOX_08.position = SF.vector2(scale_x + 80, scale_y + 270)
         MENU_BOX_08.size = SF.vector2(115, 40)
         MENU_TEXT_08.position = MENU_BOX_08.position + SF.vector2(30, 1)
         MENU_TEXT_08.string = "Shirt"
         MENU_TEXT_08.color = SF::Color::Black
+        MENU_TEXT_08.character_size = 24
 
         MENU_BOX_09.position = SF.vector2(scale_x + 560, scale_y + 270)
         MENU_BOX_09.size = SF.vector2(115, 40)
         MENU_TEXT_09.position = MENU_BOX_09.position + SF.vector2(30, 1)
         MENU_TEXT_09.string = "Shirt"
         MENU_TEXT_09.color = SF::Color::Black
+        MENU_TEXT_09.character_size = 24
 
         MENU_BOX_10.position = SF.vector2(scale_x + 80, scale_y + 340)
         MENU_BOX_10.size = SF.vector2(115, 40)
         MENU_TEXT_10.position = MENU_BOX_10.position + SF.vector2(20, 1)
         MENU_TEXT_10.string = "Pants"
         MENU_TEXT_10.color = SF::Color::Black
+        MENU_TEXT_10.character_size = 24
 
         MENU_BOX_11.position = SF.vector2(scale_x + 560, scale_y + 340)
         MENU_BOX_11.size = SF.vector2(115, 40)
         MENU_TEXT_11.position = MENU_BOX_11.position + SF.vector2(20, 1)
         MENU_TEXT_11.string = "Pants"
         MENU_TEXT_11.color = SF::Color::Black
+        MENU_TEXT_11.character_size = 24
 
         MENU_BOX_12.position = SF.vector2(scale_x + 80, scale_y + 410)
         MENU_BOX_12.size = SF.vector2(115, 40)
         MENU_TEXT_12.position = MENU_BOX_12.position + SF.vector2(20, 1)
         MENU_TEXT_12.string = "Shoes"
         MENU_TEXT_12.color = SF::Color::Black
+        MENU_TEXT_12.character_size = 24
 
         MENU_BOX_13.position = SF.vector2(scale_x + 560, scale_y + 410)
         MENU_BOX_13.size = SF.vector2(115, 40)
         MENU_TEXT_13.position = MENU_BOX_13.position + SF.vector2(20, 1)
         MENU_TEXT_13.string = "Shoes"
         MENU_TEXT_13.color = SF::Color::Black
+        MENU_TEXT_13.character_size = 24
 
         MENU_BOX_14.position = SF.vector2(scale_x + 660, scale_y + 540)
         MENU_TEXT_14.position = MENU_BOX_14.position + SF.vector2(15, 1)
         MENU_BOX_14.size = SF.vector2(115, 40)
         MENU_TEXT_14.string = "Next"
         MENU_TEXT_14.color = SF::Color::Black
+        MENU_TEXT_14.character_size = 24
 
         sleep 0.15.seconds
         SystemMenus.system_menu=("character_creation_menu")
@@ -634,6 +648,7 @@ module Menus
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
             Player::Appearance.change_skin(Sprites::Player.change_skin("character_creation", "left"))
             Sprites::Player.refresh_player_sprite(window)
+           # Player::Stats.name=("test")
             sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + MENU_BOX_03.size.x) && (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + MENU_BOX_03.size.y)

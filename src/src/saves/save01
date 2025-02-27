@@ -1,1 +1,1 @@
-{"name" => "doll-3001", "max_hp" => 10.0, "current_hp" => 10.0, "max_mp" => 7.0, "current_mp" => 7.0}
+{"name":"doll-3001","max_hp":10.0,"current_hp":10.0,"max_mp":7.0,"current_mp":7.0,"exp":0.0,"defense":5.0,"str":5.0,"dex":5.0,"luk":5.0,"int":5.0,"skin":"pale_skin","hair":"black_shounen_hair","face":"blue_button_eyes","hat":"nil","earrings":"nil","shirt":"white_tank_top","gloves":"nil","pants":"white_jeans","shoes":"white_rain_boots","weapon":"wooden_stick"}
