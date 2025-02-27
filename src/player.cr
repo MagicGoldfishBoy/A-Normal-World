@@ -178,6 +178,7 @@ module Player
         Movement.movement_direction = direction
         Stats.dex ||= 5
         Movement.movement_speed = Stats.dex.to_s.to_f? || 0.0
+        Movement.movement_speed = Movement.movement_speed.not_nil! / 2
       
         if direction == "left"
           Sprites::Player.move_player_sprite(window, -Movement.movement_speed.not_nil!, 0)

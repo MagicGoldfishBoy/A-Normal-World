@@ -2,6 +2,7 @@ require "crsfml"
 require "../src/textures.cr"
 require "../src/menus.cr"
 require "../src/keyboard.cr"
+require "../src/levels.cr"
 
 puts "A Normal World"
 
@@ -25,6 +26,7 @@ Menus::SystemMenus.system_menu=(this)
 Sprites::Player.is_drawn=(false)
 Player::Stats.initialize_player_stats
 Keyboard::Gameplay.gameplay_mode=("none")
+Levels::LevelSelectionLogic.level=("none")
 
 while window.open?
     while event = window.poll_event
@@ -33,6 +35,7 @@ while window.open?
       end
     end
     window.clear(SF::Color::Black)
+    Levels::LevelSelectionLogic.current_area(window)
     Menus::SystemMenus.draw_system_menu(window)
     Sprites::Player.draw_sprite(window)
     Keyboard::Gameplay.determine_gameplay_controls(window)

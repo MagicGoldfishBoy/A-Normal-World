@@ -10,6 +10,9 @@ module Menus
 
     class SystemMenus
 
+        GROUND = SF::RectangleShape.new(SF.vector2(500, 80))
+        GROUND.fill_color = SF.color(200, 212, 219)
+
         MENU_BOX_01 = SF::RectangleShape.new(SF.vector2(150, 80))
         MENU_BOX_01.fill_color = SF.color(200, 212, 219)
         MENU_BOX_01.outline_thickness = 10
@@ -145,9 +148,11 @@ module Menus
         when "character_creation_menu"
             SystemMenus.draw_charater_creation_menu(window)
         when "settings_menu"
-            puts  "settings menu"
+            SystemMenus.draw_settings_menu(window)
         when "hud"
             SystemMenus.draw_hud(window)
+        when "debug"
+            SystemMenus.draw_debug_menu(window)
         else
             puts @@system_menu
             window.close
@@ -216,9 +221,103 @@ module Menus
             SystemMenus.system_menu=(this)
         elsif (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + 200) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + 80)
             MENU_BOX_02.outline_color = SF.color(97, 140, 165)
+            SystemMenus.initialize_settings_menu(window)
+            SystemMenus.system_menu=("settings_menu")
         elsif (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + 150) && (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + 80)
             MENU_BOX_03.outline_color = SF.color(97, 140, 165)
             window.close
+        end
+     end
+
+     def SystemMenus.initialize_settings_menu(window)
+        current_size = window.size
+        original_width = 800 
+        original_height = 600
+    
+        scale_x = current_size.x.to_f / original_width
+        scale_y = current_size.y.to_f / original_height
+
+        MENU_BOX_01.position = SF.vector2(scale_x + 20, scale_y + 540)
+        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
+        MENU_BOX_01.size = SF.vector2(115, 40)
+        MENU_TEXT_01.string = "Back"
+
+        MENU_BOX_02.size = SF.vector2(100, 50)
+        MENU_BOX_02.position = SF.vector2(scale_x + 50, scale_y + 20)
+        MENU_TEXT_02.color = SF::Color::Blue
+        MENU_TEXT_02.character_size = 25
+        MENU_TEXT_02.position = MENU_BOX_02.position + SF.vector2(8, 8)
+        MENU_TEXT_02.string = "Debug"
+
+     end
+
+     def SystemMenus.draw_settings_menu(window)
+        window.draw(MENU_BOX_01)
+        window.draw(MENU_TEXT_01)
+        window.draw(MENU_BOX_02)
+        window.draw(MENU_TEXT_02)
+        if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        SystemMenus.settings_menu_mouse_handling(window)
+        end
+     end
+
+     def SystemMenus.settings_menu_mouse_handling(window)
+        mouse_position = SF::Mouse.get_position(window)
+        mouse_x = mouse_position.x
+        mouse_y = mouse_position.y
+        menu_box_1_x = MENU_BOX_01.position.x
+        menu_box_1_y = MENU_BOX_01.position.y
+        menu_box_2_x = MENU_BOX_02.position.x
+        menu_box_2_y = MENU_BOX_02.position.y
+
+        current_size = window.size
+        original_width = 800
+        original_height = 600
+    
+        scale_x = current_size.x.to_f / original_width
+        scale_y = current_size.y.to_f / original_height
+    
+        scaled_mouse_x = mouse_x / scale_x
+        scaled_mouse_y = mouse_y / scale_y
+
+        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
+            SystemMenus.system_menu=("main_menu")
+        end
+
+        if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
+            SystemMenus.initialize_debug_menu(window)
+            SystemMenus.system_menu=("debug")
+        end
+     end
+
+     def SystemMenus.initialize_debug_menu(window)
+        current_size = window.size
+        original_width = 800 
+        original_height = 600
+    
+        scale_x = current_size.x.to_f / original_width
+        scale_y = current_size.y.to_f / original_height
+
+        MENU_BOX_01.position = SF.vector2(scale_x + 20, scale_y + 540)
+        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
+        MENU_BOX_01.size = SF.vector2(115, 40)
+        MENU_TEXT_01.string = "Back"
+
+        MENU_BOX_02.size = SF.vector2(155, 50)
+        MENU_BOX_02.position = SF.vector2(scale_x + 50, scale_y + 20)
+        MENU_TEXT_02.color = SF::Color::Blue
+        MENU_TEXT_02.character_size = 25
+        MENU_TEXT_02.position = MENU_BOX_02.position + SF.vector2(8, 8)
+        MENU_TEXT_02.string = "level_editor"
+     end
+
+     def SystemMenus.draw_debug_menu(window)
+        window.draw(MENU_BOX_01)
+        window.draw(MENU_TEXT_01)
+        window.draw(MENU_BOX_02)
+        window.draw(MENU_TEXT_02)
+        if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        SystemMenus.settings_menu_mouse_handling(window)
         end
      end
 
@@ -711,6 +810,8 @@ module Menus
             SystemMenus.system_menu=("hud")
             SystemMenus.initialize_hud(window)
             Keyboard::Gameplay.gameplay_mode=("normal")
+            Levels::PhysicsTest.initialize_platform_test(window)
+            Levels::LevelSelectionLogic.level=("physics_test")
             sleep 0.15.seconds
         end
      end
@@ -727,16 +828,11 @@ module Menus
         scale_x = current_size.x.to_f / original_width
         scale_y = current_size.y.to_f / original_height
 
-
-        MENU_BOX_01.position = SF.vector2(scale_x + 20, scale_y + 540)
-        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
-        MENU_BOX_01.size = SF.vector2(115, 40)
-        MENU_TEXT_01.string = "Back"
+        GROUND.position = SF.vector2(scale_x + 0, scale_y + 540)
      end
 
      def SystemMenus.draw_hud(window)
-        window.draw(MENU_BOX_01)
-        window.draw(MENU_TEXT_01)
+        window.draw(GROUND)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.hud_mouse_handling(window)
         end

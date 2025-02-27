@@ -137,12 +137,16 @@ module Sprites
 
   @@player_character_model = SF::RenderTexture.new(672, 512)
   @@player_character_rendered_model = SF::Sprite.new
+  @@player_feet_hitbox = SF::RectangleShape.new(SF.vector2(25, 15))
+  #@@player_feet_hitbox.fill_color = SF.color(100, 250, 50)
 
   
 
    def Player.draw_sprite(window)
     if @@is_drawn == true
+        @@player_feet_hitbox.position = @@player_character_rendered_model.position + SF.vector2(35, 110)
         window.draw(@@player_character_rendered_model)
+        #window.draw(@@player_feet_hitbox)
         if @@movement_state == nil
             @@movement_state = "idle"
         end
@@ -193,12 +197,34 @@ module Sprites
     @@player_character_rendered_model.texture = @@player_character_model.texture
    end
 
+   def Player.retrieve_sprite
+    return @@player_character_rendered_model
+   end
+
    def Player.resize_player_sprite(window, x, y)
     @@player_character_rendered_model.scale = SF.vector2(x, y)
    end
 
    def Player.position_player_sprite(window, x, y)
     @@player_character_rendered_model.position = SF.vector2(x, y)
+   end
+
+   def Player.check_sprite_collision(window, object)
+    bounding_box = @@player_character_rendered_model.global_bounds
+    if bounding_box.intersects? object.global_bounds
+        return true
+    else 
+        return false
+    end
+    end
+
+   def Player.check_feet_collision(window, object)
+    bounding_box = @@player_feet_hitbox.global_bounds
+    if bounding_box.intersects? object.global_bounds
+        return true
+    else 
+        return false
+    end
    end
 
    def Player.move_player_sprite(window, x, y)
