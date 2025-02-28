@@ -1002,7 +1002,7 @@ module Menus
               margin_bottom = 30 
               
               WINDOW_01.position = SF.vector2(510 * scale_x, 470 * scale_y)
-              WINDOW_01.scale = SF.vector2(scale_ratio, scale_ratio)
+              WINDOW_01.scale = SF.vector2(scale_x, scale_ratio)
 
               window_size = window.size
               window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
