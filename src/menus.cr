@@ -460,8 +460,9 @@ module Menus
         if this.string.size > 5 && this.string.size < 10
             x = this.position.x - (this.string.size + 5)
             this.position = SF.vector2(x, this.position.y)
-        elsif this.string.size >= 10
-            this.character_size = this.character_size - 10
+        elsif this.string.size >= 10 && this.character_size > 30
+            this.character_size = this.character_size - 2
+
             x = this.position.x - (this.string.size + 5)
             this.position = SF.vector2(x, this.position.y)
         end
@@ -1013,6 +1014,60 @@ module Menus
         MONEY_BOX_TEXT.font = QUICKSAND
         MONEY_BOX_TEXT.character_size = 24
 
+        HP_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
+        HP_BOX.fill_color = SF.color(116, 153, 195)
+        HP_BOX.outline_thickness = 5
+        HP_BOX.outline_color = SF.color(151, 179, 194)
+
+        HP_BOX_TEXT = SF::Text.new
+        HP_BOX_TEXT.font = QUICKSAND
+        HP_BOX_TEXT.character_size = 24
+
+        MP_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
+        MP_BOX.fill_color = SF.color(116, 153, 195)
+        MP_BOX.outline_thickness = 5
+        MP_BOX.outline_color = SF.color(151, 179, 194)
+
+        MP_BOX_TEXT = SF::Text.new
+        MP_BOX_TEXT.font = QUICKSAND
+        MP_BOX_TEXT.character_size = 24
+
+        LVL_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
+        LVL_BOX.fill_color = SF.color(116, 153, 195)
+        LVL_BOX.outline_thickness = 5
+        LVL_BOX.outline_color = SF.color(151, 179, 194)
+
+        LVL_BOX_TEXT = SF::Text.new
+        LVL_BOX_TEXT.font = QUICKSAND
+        LVL_BOX_TEXT.character_size = 24
+
+        EXP_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
+        EXP_BOX.fill_color = SF.color(116, 153, 195)
+        EXP_BOX.outline_thickness = 5
+        EXP_BOX.outline_color = SF.color(151, 179, 194)
+
+        EXP_BOX_TEXT = SF::Text.new
+        EXP_BOX_TEXT.font = QUICKSAND
+        EXP_BOX_TEXT.character_size = 24
+
+        STR_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
+        STR_BOX.fill_color = SF.color(116, 153, 195)
+        STR_BOX.outline_thickness = 5
+        STR_BOX.outline_color = SF.color(151, 179, 194)
+
+        STR_BOX_TEXT = SF::Text.new
+        STR_BOX_TEXT.font = QUICKSAND
+        STR_BOX_TEXT.character_size = 24
+
+        DEX_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
+        DEX_BOX.fill_color = SF.color(116, 153, 195)
+        DEX_BOX.outline_thickness = 5
+        DEX_BOX.outline_color = SF.color(151, 179, 194)
+
+        DEX_BOX_TEXT = SF::Text.new
+        DEX_BOX_TEXT.font = QUICKSAND
+        DEX_BOX_TEXT.character_size = 24
+
 
         def initialize(is_hud_menu_open : Bool, @@is_stats_menu_open : Bool)
             @@is_hud_menu_open = is_hud_menu_open
@@ -1057,6 +1112,18 @@ module Menus
             window.draw(NAME_BOX_TEXT)
             window.draw(MONEY_BOX)
             window.draw(MONEY_BOX_TEXT)
+            window.draw(HP_BOX)
+            window.draw(HP_BOX_TEXT)
+            window.draw(MP_BOX)
+            window.draw(MP_BOX_TEXT)
+            window.draw(LVL_BOX)
+            window.draw(LVL_BOX_TEXT)
+            window.draw(EXP_BOX)
+            window.draw(EXP_BOX_TEXT)
+            window.draw(STR_BOX)
+            window.draw(STR_BOX_TEXT)
+            window.draw(DEX_BOX)
+            window.draw(DEX_BOX_TEXT)
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
                 Windows.window_mouse_handling(window)
             end
@@ -1126,8 +1193,56 @@ module Menus
 
                 MONEY_BOX_TEXT.position = MONEY_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
                 MONEY_BOX_TEXT.scale = MONEY_BOX.scale
-                MONEY_BOX_TEXT.string = Player::Stats.money.not_nil!.to_s
+                MONEY_BOX_TEXT.string = "Cash: " + Player::Stats.money.not_nil!.to_s
                 SystemMenus.center_save_file_text(MONEY_BOX_TEXT)
+
+                HP_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 48 * max_scale)
+                HP_BOX.scale = STATS_MENU.scale
+
+                HP_BOX_TEXT.position = HP_BOX.position + SF.vector2(11 * max_scale, 5 * max_scale)
+                HP_BOX_TEXT.scale = HP_BOX.scale
+                HP_BOX_TEXT.string = "HP: #{Player::Stats.current_hp.not_nil!.to_s}/#{Player::Stats.max_hp.not_nil!.to_s}"
+                SystemMenus.center_save_file_text(HP_BOX_TEXT)
+
+                MP_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 48 * max_scale)
+                MP_BOX.scale = STATS_MENU.scale
+
+                MP_BOX_TEXT.position = MP_BOX.position + SF.vector2(11 * max_scale, 5 * max_scale)
+                MP_BOX_TEXT.scale = MP_BOX.scale
+                MP_BOX_TEXT.string = "MP: #{Player::Stats.current_mp.not_nil!.to_s}/#{Player::Stats.max_mp.not_nil!.to_s}"
+                SystemMenus.center_save_file_text(MP_BOX_TEXT)
+
+                LVL_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 90 * max_scale)
+                LVL_BOX.scale = STATS_MENU.scale
+
+                LVL_BOX_TEXT.position = LVL_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
+                LVL_BOX_TEXT.scale = LVL_BOX.scale
+                LVL_BOX_TEXT.string = "Lvl: " + Player::Stats.lvl.not_nil!.to_s
+                SystemMenus.center_save_file_text(LVL_BOX_TEXT)
+
+                EXP_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 90 * max_scale)
+                EXP_BOX.scale = STATS_MENU.scale
+
+                EXP_BOX_TEXT.position = EXP_BOX.position + SF.vector2(14 * max_scale, 5 * max_scale)
+                EXP_BOX_TEXT.scale = EXP_BOX.scale
+                EXP_BOX_TEXT.string = "EXP: #{Player::Stats.exp.not_nil!.to_s}/#{Player::Stats.exp_cap.not_nil!.to_s}"
+                SystemMenus.center_save_file_text(EXP_BOX_TEXT)
+
+                STR_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 132 * max_scale)
+                STR_BOX.scale = STATS_MENU.scale
+
+                STR_BOX_TEXT.position = STR_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
+                STR_BOX_TEXT.scale = STR_BOX.scale
+                STR_BOX_TEXT.string = "Str: " + Player::Stats.str.not_nil!.to_s
+                SystemMenus.center_save_file_text(STR_BOX_TEXT)
+
+                DEX_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 132 * max_scale)
+                DEX_BOX.scale = STATS_MENU.scale
+
+                DEX_BOX_TEXT.position = DEX_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
+                DEX_BOX_TEXT.scale = DEX_BOX.scale
+                DEX_BOX_TEXT.string = "Dex: " + Player::Stats.dex.not_nil!.to_s
+                SystemMenus.center_save_file_text(DEX_BOX_TEXT)
 
                 Windows.draw_stats_menu(window)
             end
