@@ -62,11 +62,17 @@ module Serialization
     end
 
     def SaveFile.initial_save(file)
+      SaveFile.save_file=(file)
       path = "src/saves/" + file
       Dir.mkdir_p(File.dirname(path))
       stats = @@stat_save_hash.to_json
       File.write(path, stats)
-      #SaveFile.save_check(path, stats)
+    end
+
+    def SaveFile.normal_save
+        path = "src/saves" + SaveFile.save_file.not_nil!
+        stats = @@stat_save_hash.to_json
+        File.write(path, stats)
     end
 
     def SaveFile.save_check(path1, key)

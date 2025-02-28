@@ -885,7 +885,7 @@ module Menus
         MENU_BOX_02.position = SF.vector2(650_f32 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 90 * scale_y)
 
         MENU_TEXT_02.scale = SF.vector2(scale_ratio, scale_ratio)
-        MENU_TEXT_02.position = MENU_BOX_02.position + SF.vector2(25 + scale_x, scale_y)
+        MENU_TEXT_02.position = MENU_BOX_02.position + SF.vector2(28 + scale_x, scale_y)
 
         #so much math lol
 
@@ -966,6 +966,14 @@ module Menus
         WINDOW_01.outline_thickness = 10
         WINDOW_01.outline_color = SF.color(151, 179, 194)
 
+        WINDOW_02 = SF::RectangleShape.new(SF.vector2(260, 20))
+        WINDOW_02.fill_color = SF.color(116, 153, 195)
+
+        WINDOW_02_TEXT = SF::Text.new
+        WINDOW_02_TEXT.font = QUICKSAND
+        WINDOW_02_TEXT.string = "Save"
+        WINDOW_02_TEXT.character_size = 24
+
 
         def initialize(is_hud_menu_open : Bool)
             @@is_hud_menu_open = is_hud_menu_open
@@ -983,6 +991,11 @@ module Menus
         def Windows.which_windows_are_open(window)
             if @@is_hud_menu_open == true
                 window.draw(WINDOW_01)
+                window.draw(WINDOW_02)
+                window.draw(WINDOW_02_TEXT)
+                if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                    Windows.window_mouse_handling(window)
+                end
             end
         end
 
@@ -1003,6 +1016,12 @@ module Menus
               
               WINDOW_01.position = SF.vector2(510 * scale_x, 470 * scale_y)
               WINDOW_01.scale = SF.vector2(scale_x, scale_ratio)
+              
+              WINDOW_02.position = SF.vector2(510 * scale_x, 465 * scale_y)
+              WINDOW_02.scale = SF.vector2(scale_x, scale_ratio)
+              
+              WINDOW_02_TEXT.position = SF.vector2(605 * scale_x, 460 * scale_y)
+              WINDOW_02_TEXT.scale = SF.vector2(scale_ratio, scale_ratio)
 
               window_size = window.size
               window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
@@ -1010,5 +1029,30 @@ module Menus
               window.view = window_01_view
             end
         end
+
+        def Windows.window_mouse_handling(window)
+            mouse_position = SF::Mouse.get_position(window)
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+    
+            menu_box_2_x = WINDOW_02.position.x
+            menu_box_2_y = WINDOW_02.position.y
+    
+            current_size = window.size
+            original_width = 800
+            original_height = 600
+        
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+        
+            scaled_mouse_x = mouse_x / scale_x
+            scaled_mouse_y = mouse_y / scale_y
+    
+            if (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + WINDOW_02.size.x / scale_x) && 
+                (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + WINDOW_02.size.y / scale_y)
+                Serialization::SaveFile.normal_save
+                sleep 0.15.seconds
+            end
+         end
     end
 end
