@@ -845,12 +845,19 @@ module Menus
         MENU_BOX_01.position = SF.vector2(HUD_BOTTOM.position.x + 150, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 10)
         MENU_BOX_01.scale = SF.vector2(scale_x, scale_y)
 
+        MENU_BOX_02.position = SF.vector2(HUD_BOTTOM.position.x + 550, current_size.y.to_f32 - MENU_BOX_02.global_bounds.height - 10)
+        MENU_BOX_02.scale = SF.vector2(scale_x, scale_y)
+
         MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(50 - Player::Stats.lvl.to_s.size, 1)
         MENU_BOX_01.size = SF.vector2(115, 40)
 
         MENU_TEXT_01.string = Player::Stats.lvl.to_s
         MENU_TEXT_01.character_size = 24
         MENU_TEXT_01.scale = SF.vector2(scale_x, scale_y)
+
+        MENU_TEXT_02.string = "Menu"
+        MENU_TEXT_02.character_size = 24
+        MENU_TEXT_02.scale = SF.vector2(scale_x, scale_y)
 
         HP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 10)
         MP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 20)
@@ -873,6 +880,12 @@ module Menus
 
         MENU_TEXT_01.scale = SF.vector2(scale_ratio, scale_ratio)
         MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2((50 - Player::Stats.lvl.to_s.size) * scale_x, 1 * scale_y)
+
+        MENU_BOX_02.scale = SF.vector2(scale_x, scale_y)
+        MENU_BOX_02.position = SF.vector2(650_f32 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 90 * scale_y)
+
+        MENU_TEXT_02.scale = SF.vector2(scale_ratio, scale_ratio)
+        MENU_TEXT_02.position = MENU_BOX_02.position + SF.vector2(25 + scale_x, scale_y)
 
         #so much math lol
 
@@ -901,6 +914,8 @@ module Menus
         window.draw(HUD_BOTTOM)
         window.draw(MENU_BOX_01)
         window.draw(MENU_TEXT_01)
+        window.draw(MENU_BOX_02)
+        window.draw(MENU_TEXT_02)
         window.draw(HP_BAR)
         window.draw(HP_COLOR_BAR)
         window.draw(MP_BAR)
@@ -918,8 +933,8 @@ module Menus
         mouse_x = mouse_position.x
         mouse_y = mouse_position.y
 
-        menu_box_1_x = MENU_BOX_01.position.x
-        menu_box_1_y = MENU_BOX_01.position.y
+        menu_box_2_x = MENU_BOX_02.position.x
+        menu_box_2_y = MENU_BOX_02.position.y
 
         current_size = window.size
         original_width = 800
@@ -931,10 +946,70 @@ module Menus
         scaled_mouse_x = mouse_x / scale_x
         scaled_mouse_y = mouse_y / scale_y
 
-        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
-          puts "test"
+        if (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x / scale_x) && 
+            (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + MENU_BOX_02.size.y / scale_y)
+            if Windows.is_hud_menu_open == false
+                Windows.is_hud_menu_open=(true)
+            else
+                Windows.is_hud_menu_open=(false)
+            end
+            sleep 0.15.seconds
         end
      end
 
+    end
+
+    class Windows
+
+        WINDOW_01 = SF::RectangleShape.new(SF.vector2(150, 80))
+        WINDOW_01.fill_color = SF.color(200, 212, 219)
+        WINDOW_01.outline_thickness = 10
+        WINDOW_01.outline_color = SF.color(151, 179, 194)
+
+
+        def initialize(is_hud_menu_open : Bool)
+            @@is_hud_menu_open = is_hud_menu_open
+            @@is_menu_open = false
+        end
+
+        def Windows.is_hud_menu_open
+            @@is_hud_menu_open
+        end
+
+        def Windows.is_hud_menu_open=(this)
+            @@is_hud_menu_open = this
+        end
+
+        def Windows.which_windows_are_open(window)
+            if @@is_hud_menu_open == true
+                window.draw(WINDOW_01)
+            end
+        end
+
+        def Windows.which_views_are_open(window)
+            current_size = window.size
+            original_width = 800 
+            original_height = 600
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+            window_width = current_size.x.to_f
+            window_height = current_size.y.to_f
+            scale_ratio = [scale_x, scale_y].min
+          
+            if @@is_hud_menu_open == true
+    
+              margin_right = 30 
+              margin_bottom = 30 
+              
+              WINDOW_01.position = SF.vector2(500 * scale_x, 470 * scale_y)
+              #WINDOW_01.position = SF.vector2(window_width - WINDOW_01.global_bounds.width - margin_right, window_height - WINDOW_01.global_bounds.height - margin_bottom)
+              WINDOW_01.scale = SF.vector2(scale_ratio, scale_ratio)
+
+              window_size = window.size
+              window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+              window_01_view.viewport = SF::FloatRect.new(0.43_f32, 0_f32, 0.5_f32, 1_f32)
+              window.view = window_01_view
+            end
+        end
     end
 end
