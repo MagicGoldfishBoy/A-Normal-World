@@ -959,7 +959,7 @@ module Menus
 
     end
 
-    class Windows
+    class Windows # I now know why everyone hates coding UI shit -_-
 
         WINDOW_01 = SF::RectangleShape.new(SF.vector2(260, 80)) #it ain't perfect, but it's good enough :P
         WINDOW_01.fill_color = SF.color(200, 212, 219)
@@ -990,10 +990,36 @@ module Menus
         WINDOW_04_TEXT.string = "Stats"
         WINDOW_04_TEXT.character_size = 24
 
+        STATS_MENU = SF::RectangleShape.new(SF.vector2(500, 400))
+        STATS_MENU.fill_color = SF.color(116, 153, 195)
+        STATS_MENU.outline_thickness = 10
+        STATS_MENU.outline_color = SF.color(151, 179, 194)
 
-        def initialize(is_hud_menu_open : Bool)
+        NAME_BOX = SF::RectangleShape.new(SF.vector2(250, 50))
+        NAME_BOX.fill_color = SF.color(116, 153, 195)
+        NAME_BOX.outline_thickness = 5
+        NAME_BOX.outline_color = SF.color(151, 179, 194)
+
+        NAME_BOX_TEXT = SF::Text.new
+        NAME_BOX_TEXT.font = QUICKSAND
+        NAME_BOX_TEXT.character_size = 24
+
+        MONEY_BOX = SF::RectangleShape.new(SF.vector2(190, 50))
+        MONEY_BOX.fill_color = SF.color(116, 153, 195)
+        MONEY_BOX.outline_thickness = 5
+        MONEY_BOX.outline_color = SF.color(151, 179, 194)
+
+        MONEY_BOX_TEXT = SF::Text.new
+        MONEY_BOX_TEXT.font = QUICKSAND
+        MONEY_BOX_TEXT.character_size = 24
+
+
+        def initialize(is_hud_menu_open : Bool, @@is_stats_menu_open : Bool)
             @@is_hud_menu_open = is_hud_menu_open
-            @@is_menu_open = false
+            @@is_hud_menu_open = false
+
+            @@is_stats_menu_open = is_stats_menu_open
+            @@is_stats_menu_open = false
         end
 
         def Windows.is_hud_menu_open
@@ -1004,18 +1030,35 @@ module Menus
             @@is_hud_menu_open = this
         end
 
-        def Windows.which_windows_are_open(window)
-            if @@is_hud_menu_open == true
-                window.draw(WINDOW_01)
-                window.draw(WINDOW_02)
-                window.draw(WINDOW_02_TEXT)
-                window.draw(WINDOW_03)
-                window.draw(WINDOW_03_TEXT)
-                window.draw(WINDOW_04)
-                window.draw(WINDOW_04_TEXT)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    Windows.window_mouse_handling(window)
-                end
+        def Windows.is_stats_menu_open
+            @@is_stats_menu_open
+        end
+
+        def Windows.is_stats_menu_open=(this)
+            @@is_stats_menu_open = this
+        end
+
+        def Windows.draw_hud_menu(window)
+            window.draw(WINDOW_01)
+            window.draw(WINDOW_02)
+            window.draw(WINDOW_02_TEXT)
+            window.draw(WINDOW_03)
+            window.draw(WINDOW_03_TEXT)
+            window.draw(WINDOW_04)
+            window.draw(WINDOW_04_TEXT)
+            if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                Windows.window_mouse_handling(window)
+            end
+        end
+
+        def Windows.draw_stats_menu(window)
+            window.draw(STATS_MENU)
+            window.draw(NAME_BOX)
+            window.draw(NAME_BOX_TEXT)
+            window.draw(MONEY_BOX)
+            window.draw(MONEY_BOX_TEXT)
+            if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                Windows.window_mouse_handling(window)
             end
         end
 
@@ -1028,6 +1071,9 @@ module Menus
             window_width = current_size.x.to_f
             window_height = current_size.y.to_f
             scale_ratio = [scale_x, scale_y].min
+
+            max_scale = 1.5 # Adjust this to whatever max size feels right
+            clamped_scale = [scale_ratio, max_scale].min
           
             if @@is_hud_menu_open == true
     
@@ -1059,6 +1105,31 @@ module Menus
               window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
               window_01_view.viewport = SF::FloatRect.new(0.485_f32, 0_f32, 0.5_f32, 1_f32)
               window.view = window_01_view
+              Windows.draw_hud_menu(window)
+            end
+
+            if @@is_stats_menu_open == true
+                window.view = window.default_view
+                STATS_MENU.position = SF.vector2(50 * max_scale, 50 * max_scale)
+                STATS_MENU.scale = SF.vector2(0.5, 1)
+
+                NAME_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 5 * max_scale)
+                NAME_BOX.scale = STATS_MENU.scale
+
+                NAME_BOX_TEXT.position = NAME_BOX.position + SF.vector2(32 * max_scale, 5 * max_scale)
+                NAME_BOX_TEXT.scale = NAME_BOX.scale
+                NAME_BOX_TEXT.string = Player::Stats.name.not_nil!
+                SystemMenus.center_save_file_text(NAME_BOX_TEXT)
+
+                MONEY_BOX.position = STATS_MENU.position + SF.vector2(98 * max_scale, 5 * max_scale)
+                MONEY_BOX.scale = STATS_MENU.scale
+
+                MONEY_BOX_TEXT.position = MONEY_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
+                MONEY_BOX_TEXT.scale = MONEY_BOX.scale
+                MONEY_BOX_TEXT.string = Player::Stats.money.not_nil!.to_s
+                SystemMenus.center_save_file_text(MONEY_BOX_TEXT)
+
+                Windows.draw_stats_menu(window)
             end
         end
 
@@ -1072,6 +1143,9 @@ module Menus
     
             menu_box_3_x = WINDOW_03.position.x
             menu_box_3_y = WINDOW_03.position.y
+    
+            menu_box_4_x = WINDOW_04.position.x
+            menu_box_4_y = WINDOW_04.position.y
     
             current_size = window.size
             original_width = 800
@@ -1094,6 +1168,16 @@ module Menus
                 Serialization::SaveFile.normal_save
                 sleep 0.15.seconds
                 window.close
+            end
+    
+            if (scaled_mouse_x >= menu_box_4_x / scale_x && scaled_mouse_x <= menu_box_4_x + WINDOW_04.size.x / scale_x) && 
+                (scaled_mouse_y >= menu_box_4_y / scale_y && scaled_mouse_y <= menu_box_4_y / scale_y + WINDOW_04.size.y / scale_y)
+                if Windows.is_stats_menu_open == false
+                Windows.is_stats_menu_open=(true)
+                else
+                Windows.is_stats_menu_open=(false)
+                end
+                sleep 0.15.seconds
             end
          end
     end

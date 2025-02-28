@@ -3,10 +3,12 @@ require "../src/sprites.cr"
 
 module Player
   class Stats
-     def initialize(name : String, max_hp : Float64, current_hp : Float64, max_mp : Float64, current_mp : Float64, lvl : Int32, exp : Float64, exp_cap : Float64, defense : Float64, str : Float64, dex : Float64, 
-        luk : Float64, int : Float64)
+     def initialize(name : String, money : Int32, max_hp : Float64, current_hp : Float64, max_mp : Float64, current_mp : Float64, lvl : Int32, 
+        exp : Float64, exp_cap : Float64, defense : Float64, str : Float64, dex : Float64, luk : Float64, int : Float64)
         @name = name
         @@name = name
+        @money = money
+        @@money = money
         @max_hp = max_hp
         @@max_hp = max_hp
         @current_hp = current_hp
@@ -35,6 +37,10 @@ module Player
 
      def Stats.name
         @@name
+     end
+
+     def Stats.money
+        @@money
      end
 
      def Stats.max_hp 
@@ -88,6 +94,11 @@ module Player
      def Stats.name=(this)
         name = this
         @@name = this
+     end
+
+     def Stats.money=(this)
+        money = this
+        @@money = this
      end
 
      def Stats.max_hp=(this)
@@ -152,6 +163,7 @@ module Player
 
      def Stats.initialize_player_stats
         Stats.name=("doll-3001")
+        Stats.money=(0)
         Stats.max_hp=(10)
         Stats.current_hp=(10)
         Stats.max_mp=(7)
