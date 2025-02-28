@@ -17,6 +17,10 @@ module Menus
         HP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
         HP_COLOR_BAR.fill_color = SF.color( 122, 14, 14 )
 
+        MP_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
+        MP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
+        MP_COLOR_BAR.fill_color = SF.color( 23, 81, 159 )
+
         MENU_BOX_01 = SF::RectangleShape.new(SF.vector2(150, 80))
         MENU_BOX_01.fill_color = SF.color(200, 212, 219)
         MENU_BOX_01.outline_thickness = 10
@@ -845,6 +849,7 @@ module Menus
         MENU_TEXT_01.scale = SF.vector2(scale_x, scale_y)
 
         HP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 10)
+        MP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 20)
         
      end
 
@@ -872,6 +877,12 @@ module Menus
 
         HP_COLOR_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 85 * scale_y)
         HP_COLOR_BAR.scale = SF.vector2((Player::Stats.current_hp.not_nil! / Player::Stats.max_hp.not_nil!) * scale_ratio, scale_ratio) 
+
+        MP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 105 * scale_y)
+        MP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
+
+        MP_COLOR_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 105 * scale_y)
+        MP_COLOR_BAR.scale = SF.vector2((Player::Stats.current_mp.not_nil! / Player::Stats.max_mp.not_nil!) * scale_ratio, scale_ratio) 
      end
         window_size = window.size
         hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
@@ -882,6 +893,8 @@ module Menus
         window.draw(MENU_TEXT_01)
         window.draw(HP_BAR)
         window.draw(HP_COLOR_BAR)
+        window.draw(MP_BAR)
+        window.draw(MP_COLOR_BAR)
         window.view = window.default_view
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.hud_mouse_handling(window)
