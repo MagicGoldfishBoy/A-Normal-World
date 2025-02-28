@@ -961,7 +961,7 @@ module Menus
 
     class Windows
 
-        WINDOW_01 = SF::RectangleShape.new(SF.vector2(150, 80))
+        WINDOW_01 = SF::RectangleShape.new(SF.vector2(260, 80)) #it ain't perfect, but it's good enough :P
         WINDOW_01.fill_color = SF.color(200, 212, 219)
         WINDOW_01.outline_thickness = 10
         WINDOW_01.outline_color = SF.color(151, 179, 194)
@@ -1001,13 +1001,12 @@ module Menus
               margin_right = 30 
               margin_bottom = 30 
               
-              WINDOW_01.position = SF.vector2(500 * scale_x, 470 * scale_y)
-              #WINDOW_01.position = SF.vector2(window_width - WINDOW_01.global_bounds.width - margin_right, window_height - WINDOW_01.global_bounds.height - margin_bottom)
+              WINDOW_01.position = SF.vector2(510 * scale_x, 470 * scale_y)
               WINDOW_01.scale = SF.vector2(scale_ratio, scale_ratio)
 
               window_size = window.size
               window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
-              window_01_view.viewport = SF::FloatRect.new(0.43_f32, 0_f32, 0.5_f32, 1_f32)
+              window_01_view.viewport = SF::FloatRect.new(0.485_f32, 0_f32, 0.5_f32, 1_f32)
               window.view = window_01_view
             end
         end
