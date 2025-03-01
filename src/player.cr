@@ -4,7 +4,7 @@ require "../src/sprites.cr"
 module Player
   class Stats
      def initialize(name : String, money : Int32, max_hp : Float64, current_hp : Float64, max_mp : Float64, current_mp : Float64, lvl : Int32, 
-        exp : Float64, exp_cap : Float64, defense : Float64, str : Float64, dex : Float64, luk : Float64, int : Float64)
+        exp : Float64, exp_cap : Float64, defense : Float64, str : Float64, dex : Float64, luk : Float64, int : Float64, lvl_points : Int32)
         @name = name
         @@name = name
         @money = money
@@ -33,6 +33,8 @@ module Player
         @@luk = luk
         @int = int
         @@int = int
+        @lvl_points = lvl_points
+        @@lvl_points = lvl_points
      end
 
      def Stats.name
@@ -89,6 +91,10 @@ module Player
 
      def Stats.int
         @@int
+     end
+
+     def Stats.lvl_points
+        @@lvl_points
      end
 
      def Stats.name=(this)
@@ -161,6 +167,11 @@ module Player
        @@int = this
      end
 
+     def Stats.lvl_points=(this)
+        lvl_points = this
+       @@lvl_points = this
+     end
+
      def Stats.initialize_player_stats
         Stats.name=("doll-3001")
         Stats.money=(0)
@@ -176,6 +187,7 @@ module Player
         Stats.dex=(5)
         Stats.luk=(5)
         Stats.int=(5)
+        Stats.lvl_points=(0)
      end
 
  end

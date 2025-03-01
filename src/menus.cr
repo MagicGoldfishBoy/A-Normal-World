@@ -1068,6 +1068,84 @@ module Menus
         DEX_BOX_TEXT.font = QUICKSAND
         DEX_BOX_TEXT.character_size = 24
 
+        INT_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
+        INT_BOX.fill_color = SF.color(116, 153, 195)
+        INT_BOX.outline_thickness = 5
+        INT_BOX.outline_color = SF.color(151, 179, 194)
+
+        INT_BOX_TEXT = SF::Text.new
+        INT_BOX_TEXT.font = QUICKSAND
+        INT_BOX_TEXT.character_size = 24
+
+        LUK_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
+        LUK_BOX.fill_color = SF.color(116, 153, 195)
+        LUK_BOX.outline_thickness = 5
+        LUK_BOX.outline_color = SF.color(151, 179, 194)
+
+        LUK_BOX_TEXT = SF::Text.new
+        LUK_BOX_TEXT.font = QUICKSAND
+        LUK_BOX_TEXT.character_size = 24
+
+        LEFT_ARROW_01 = SF::RectangleShape.new(SF.vector2(50, 15))
+        LEFT_ARROW_01.fill_color = SF.color( 137, 170, 208 )
+        LEFT_ARROW_01.outline_thickness = 5
+        LEFT_ARROW_01.outline_color = SF.color( 154, 191, 232 )
+
+        RIGHT_ARROW_01 = SF::RectangleShape.new(SF.vector2(50, 15))
+        RIGHT_ARROW_01.fill_color = SF.color( 137, 170, 208 )
+        RIGHT_ARROW_01.outline_thickness = 5
+        RIGHT_ARROW_01.outline_color = SF.color( 154, 191, 232 )
+
+        LEFT_ARROW_02 = SF::RectangleShape.new(SF.vector2(50, 15))
+        LEFT_ARROW_02.fill_color = SF.color( 137, 170, 208 )
+        LEFT_ARROW_02.outline_thickness = 5
+        LEFT_ARROW_02.outline_color = SF.color( 154, 191, 232 )
+
+        RIGHT_ARROW_02 = SF::RectangleShape.new(SF.vector2(50, 15))
+        RIGHT_ARROW_02.fill_color = SF.color( 137, 170, 208 )
+        RIGHT_ARROW_02.outline_thickness = 5
+        RIGHT_ARROW_02.outline_color = SF.color( 154, 191, 232 )
+
+        LEFT_ARROW_03 = SF::RectangleShape.new(SF.vector2(50, 15))
+        LEFT_ARROW_03.fill_color = SF.color( 137, 170, 208 )
+        LEFT_ARROW_03.outline_thickness = 5
+        LEFT_ARROW_03.outline_color = SF.color( 154, 191, 232 )
+
+        RIGHT_ARROW_03 = SF::RectangleShape.new(SF.vector2(50, 15))
+        RIGHT_ARROW_03.fill_color = SF.color( 137, 170, 208 )
+        RIGHT_ARROW_03.outline_thickness = 5
+        RIGHT_ARROW_03.outline_color = SF.color( 154, 191, 232 )
+
+        LEFT_ARROW_04 = SF::RectangleShape.new(SF.vector2(50, 15))
+        LEFT_ARROW_04.fill_color = SF.color( 137, 170, 208 )
+        LEFT_ARROW_04.outline_thickness = 5
+        LEFT_ARROW_04.outline_color = SF.color( 154, 191, 232 )
+
+        RIGHT_ARROW_04 = SF::RectangleShape.new(SF.vector2(50, 15))
+        RIGHT_ARROW_04.fill_color = SF.color( 137, 170, 208 )
+        RIGHT_ARROW_04.outline_thickness = 5
+        RIGHT_ARROW_04.outline_color = SF.color( 154, 191, 232 )
+
+        LEFT_ARROW_05 = SF::RectangleShape.new(SF.vector2(50, 15))
+        LEFT_ARROW_05.fill_color = SF.color( 137, 170, 208 )
+        LEFT_ARROW_05.outline_thickness = 5
+        LEFT_ARROW_05.outline_color = SF.color( 154, 191, 232 )
+
+        RIGHT_ARROW_05 = SF::RectangleShape.new(SF.vector2(50, 15))
+        RIGHT_ARROW_05.fill_color = SF.color( 137, 170, 208 )
+        RIGHT_ARROW_05.outline_thickness = 5
+        RIGHT_ARROW_05.outline_color = SF.color( 154, 191, 232 )
+
+        LEFT_ARROW_06 = SF::RectangleShape.new(SF.vector2(50, 15))
+        LEFT_ARROW_06.fill_color = SF.color( 137, 170, 208 )
+        LEFT_ARROW_06.outline_thickness = 5
+        LEFT_ARROW_06.outline_color = SF.color( 154, 191, 232 )
+
+        RIGHT_ARROW_06 = SF::RectangleShape.new(SF.vector2(50, 15))
+        RIGHT_ARROW_06.fill_color = SF.color( 137, 170, 208 )
+        RIGHT_ARROW_06.outline_thickness = 5
+        RIGHT_ARROW_06.outline_color = SF.color( 154, 191, 232 )
+
 
         def initialize(is_hud_menu_open : Bool, @@is_stats_menu_open : Bool)
             @@is_hud_menu_open = is_hud_menu_open
@@ -1124,6 +1202,22 @@ module Menus
             window.draw(STR_BOX_TEXT)
             window.draw(DEX_BOX)
             window.draw(DEX_BOX_TEXT)
+            window.draw(INT_BOX)
+            window.draw(INT_BOX_TEXT)
+            window.draw(LUK_BOX)
+            window.draw(LUK_BOX_TEXT)
+            window.draw(LEFT_ARROW_01)
+            window.draw(RIGHT_ARROW_01)
+            window.draw(LEFT_ARROW_02)
+            window.draw(RIGHT_ARROW_02)
+            window.draw(LEFT_ARROW_03)
+            window.draw(RIGHT_ARROW_03)
+            window.draw(LEFT_ARROW_04)
+            window.draw(RIGHT_ARROW_04)
+            window.draw(LEFT_ARROW_05)
+            window.draw(RIGHT_ARROW_05)
+            window.draw(LEFT_ARROW_06)
+            window.draw(RIGHT_ARROW_06)
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
                 Windows.window_mouse_handling(window)
             end
@@ -1196,7 +1290,7 @@ module Menus
                 MONEY_BOX_TEXT.string = "Cash: " + Player::Stats.money.not_nil!.to_s
                 SystemMenus.center_save_file_text(MONEY_BOX_TEXT)
 
-                HP_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 48 * max_scale)
+                HP_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 90 * max_scale)
                 HP_BOX.scale = STATS_MENU.scale
 
                 HP_BOX_TEXT.position = HP_BOX.position + SF.vector2(11 * max_scale, 5 * max_scale)
@@ -1204,7 +1298,13 @@ module Menus
                 HP_BOX_TEXT.string = "HP: #{Player::Stats.current_hp.not_nil!.to_s}/#{Player::Stats.max_hp.not_nil!.to_s}"
                 SystemMenus.center_save_file_text(HP_BOX_TEXT)
 
-                MP_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 48 * max_scale)
+                LEFT_ARROW_01.position = HP_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                LEFT_ARROW_01.scale = STATS_MENU.scale
+
+                RIGHT_ARROW_01.position = HP_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                RIGHT_ARROW_01.scale = STATS_MENU.scale
+
+                MP_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 90 * max_scale)
                 MP_BOX.scale = STATS_MENU.scale
 
                 MP_BOX_TEXT.position = MP_BOX.position + SF.vector2(11 * max_scale, 5 * max_scale)
@@ -1212,15 +1312,21 @@ module Menus
                 MP_BOX_TEXT.string = "MP: #{Player::Stats.current_mp.not_nil!.to_s}/#{Player::Stats.max_mp.not_nil!.to_s}"
                 SystemMenus.center_save_file_text(MP_BOX_TEXT)
 
-                LVL_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 90 * max_scale)
+                LEFT_ARROW_02.position = MP_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                LEFT_ARROW_02.scale = STATS_MENU.scale
+
+                RIGHT_ARROW_02.position = MP_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                RIGHT_ARROW_02.scale = STATS_MENU.scale
+
+                LVL_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 48 * max_scale)
                 LVL_BOX.scale = STATS_MENU.scale
 
-                LVL_BOX_TEXT.position = LVL_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
+                LVL_BOX_TEXT.position = LVL_BOX.position + SF.vector2(14 * max_scale, 5 * max_scale)
                 LVL_BOX_TEXT.scale = LVL_BOX.scale
-                LVL_BOX_TEXT.string = "Lvl: " + Player::Stats.lvl.not_nil!.to_s
+                LVL_BOX_TEXT.string = "Lvl: " + Player::Stats.lvl.not_nil!.to_s + " Pts: " + Player::Stats.lvl_points.not_nil!.to_s
                 SystemMenus.center_save_file_text(LVL_BOX_TEXT)
 
-                EXP_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 90 * max_scale)
+                EXP_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 48 * max_scale)
                 EXP_BOX.scale = STATS_MENU.scale
 
                 EXP_BOX_TEXT.position = EXP_BOX.position + SF.vector2(14 * max_scale, 5 * max_scale)
@@ -1228,7 +1334,7 @@ module Menus
                 EXP_BOX_TEXT.string = "EXP: #{Player::Stats.exp.not_nil!.to_s}/#{Player::Stats.exp_cap.not_nil!.to_s}"
                 SystemMenus.center_save_file_text(EXP_BOX_TEXT)
 
-                STR_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 132 * max_scale)
+                STR_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 152 * max_scale)
                 STR_BOX.scale = STATS_MENU.scale
 
                 STR_BOX_TEXT.position = STR_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
@@ -1236,13 +1342,53 @@ module Menus
                 STR_BOX_TEXT.string = "Str: " + Player::Stats.str.not_nil!.to_s
                 SystemMenus.center_save_file_text(STR_BOX_TEXT)
 
-                DEX_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 132 * max_scale)
+                LEFT_ARROW_03.position = STR_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                LEFT_ARROW_03.scale = STATS_MENU.scale
+
+                RIGHT_ARROW_03.position = STR_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                RIGHT_ARROW_03.scale = STATS_MENU.scale
+
+                DEX_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 152 * max_scale)
                 DEX_BOX.scale = STATS_MENU.scale
 
                 DEX_BOX_TEXT.position = DEX_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
                 DEX_BOX_TEXT.scale = DEX_BOX.scale
                 DEX_BOX_TEXT.string = "Dex: " + Player::Stats.dex.not_nil!.to_s
                 SystemMenus.center_save_file_text(DEX_BOX_TEXT)
+
+                LEFT_ARROW_04.position = DEX_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                LEFT_ARROW_04.scale = STATS_MENU.scale
+
+                RIGHT_ARROW_04.position = DEX_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                RIGHT_ARROW_04.scale = STATS_MENU.scale
+
+                INT_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 214 * max_scale)
+                INT_BOX.scale = STATS_MENU.scale
+
+                INT_BOX_TEXT.position = INT_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
+                INT_BOX_TEXT.scale = INT_BOX.scale
+                INT_BOX_TEXT.string = "Int: " + Player::Stats.int.not_nil!.to_s
+                SystemMenus.center_save_file_text(INT_BOX_TEXT)
+
+                LEFT_ARROW_05.position = INT_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                LEFT_ARROW_05.scale = STATS_MENU.scale
+
+                RIGHT_ARROW_05.position = INT_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                RIGHT_ARROW_05.scale = STATS_MENU.scale
+
+                LUK_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 214 * max_scale)
+                LUK_BOX.scale = STATS_MENU.scale
+
+                LUK_BOX_TEXT.position = LUK_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
+                LUK_BOX_TEXT.scale = LUK_BOX.scale
+                LUK_BOX_TEXT.string = "Luk: " + Player::Stats.luk.not_nil!.to_s
+                SystemMenus.center_save_file_text(LUK_BOX_TEXT)
+
+                LEFT_ARROW_06.position = LUK_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                LEFT_ARROW_06.scale = STATS_MENU.scale
+
+                RIGHT_ARROW_06.position = LUK_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                RIGHT_ARROW_06.scale = STATS_MENU.scale
 
                 Windows.draw_stats_menu(window)
             end
