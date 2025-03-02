@@ -19,8 +19,8 @@ module Player
         @@current_mp = current_mp
         @exp = exp
         @@exp = exp
-        @exp_cap = exp
-        @@exp_cap = exp
+        @exp_cap = exp_cap
+        @@exp_cap = exp_cap
         @lvl = lvl
         @@lvl = lvl
         @defense = defense

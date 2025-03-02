@@ -501,10 +501,22 @@ module Menus
             SystemMenus.system_menu=("main_menu")
         end
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
+            if !File.exists?("src/saves/save01")
             Player::Stats.initialize_player_stats
             Serialization::SaveFile.save_file=("save01")
             Serialization::SaveFile.initial_save("save01")
             SystemMenus.initialize_character_creation_menu(window)
+            else
+             Serialization::SaveFile.save_file=("save01")
+             Serialization::SaveFile.load_game("src/saves/save01")
+             Sprites::Player.is_drawn=(true)
+             SystemMenus.system_menu=("hud")
+             SystemMenus.initialize_hud(window)
+             Keyboard::Gameplay.gameplay_mode=("normal")
+             Levels::PhysicsTest.initialize_platform_test(window)
+             Levels::LevelSelectionLogic.level=("physics_test")
+             SystemMenus.initialize_hud(window)
+            end
         end
         if (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + MENU_BOX_03.size.x) && (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + MENU_BOX_03.size.y)
             Player::Stats.initialize_player_stats
@@ -1408,6 +1420,9 @@ module Menus
             menu_box_4_x = WINDOW_04.position.x
             menu_box_4_y = WINDOW_04.position.y
     
+            arrow_left_1_x = LEFT_ARROW_01.position.x
+            arrow_left_1_y = LEFT_ARROW_01.position.y
+    
             current_size = window.size
             original_width = 800
             original_height = 600
@@ -1437,6 +1452,16 @@ module Menus
                 Windows.is_stats_menu_open=(true)
                 else
                 Windows.is_stats_menu_open=(false)
+                end
+                sleep 0.15.seconds
+            end
+    
+            if (scaled_mouse_x >= arrow_left_1_x / scale_x && scaled_mouse_x <= arrow_left_1_x + LEFT_ARROW_01.size.x / scale_x) && 
+                (scaled_mouse_y >= arrow_left_1_y / scale_y && scaled_mouse_y <= arrow_left_1_y / scale_y + LEFT_ARROW_01.size.y / scale_y)
+                if Player::Stats.max_hp.not_nil! >= 5
+                    Player::Stats.max_hp=(Player::Stats.max_hp.not_nil! - 1)
+                    Player::Stats.current_hp=(Player::Stats.current_hp.not_nil! - 1)
+                    Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
                 end
                 sleep 0.15.seconds
             end
