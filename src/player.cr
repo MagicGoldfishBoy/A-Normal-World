@@ -352,6 +352,14 @@ module Player
         @@face = face
     end
 
+    def Appearance.change_hat(hat)
+        @@hat = hat
+    end
+
+    def Appearance.change_earrings(earrings)
+        @@earrings = earrings
+    end
+
     def Appearance.change_shirt(shirt)
         @@shirt = shirt
     end
@@ -362,6 +370,14 @@ module Player
 
     def Appearance.change_shoes(shoes)
         @@shoes = shoes
+    end
+
+    def Appearance.change_weapon(weapon)
+        @@weapon = weapon
+    end
+
+    def Appearance.change_gloves(gloves)
+        @@gloves = gloves
     end
  end
 end

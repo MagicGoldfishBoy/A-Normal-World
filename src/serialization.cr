@@ -83,7 +83,14 @@ module Serialization
         Player::Stats.int = player_stats["int"].to_s.to_f64
         Player::Appearance.change_skin(player_stats["skin"].to_s)
         Player::Appearance.change_hair(player_stats["hair"].to_s)
-        Player::Appearance.change_face(player_stats["face"].to_s)
+        Player::Appearance.change_face(player_stats["face"].to_s) 
+        Player::Appearance.change_shirt(player_stats["shirt"].to_s) 
+        Player::Appearance.change_hat(player_stats["hat"].to_s) 
+        Player::Appearance.change_earrings(player_stats["earrings"].to_s) 
+        Player::Appearance.change_pants(player_stats["pants"].to_s) 
+        Player::Appearance.change_gloves(player_stats["gloves"].to_s) 
+        Player::Appearance.change_shoes(player_stats["shoes"].to_s) 
+        Player::Appearance.change_weapon(player_stats["weapon"].to_s) 
     end
 
     def SaveFile.initial_save(file)
