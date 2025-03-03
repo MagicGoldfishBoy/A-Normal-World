@@ -1423,6 +1423,15 @@ module Menus
             arrow_left_1_x = LEFT_ARROW_01.position.x
             arrow_left_1_y = LEFT_ARROW_01.position.y
     
+            arrow_right_1_x = RIGHT_ARROW_01.position.x
+            arrow_right_1_y = RIGHT_ARROW_01.position.y
+    
+            arrow_left_2_x = LEFT_ARROW_02.position.x
+            arrow_left_2_y = LEFT_ARROW_02.position.y
+    
+            arrow_right_2_x = RIGHT_ARROW_02.position.x
+            arrow_right_2_y = RIGHT_ARROW_02.position.y
+    
             current_size = window.size
             original_width = 800
             original_height = 600
@@ -1462,6 +1471,36 @@ module Menus
                     Player::Stats.max_hp=(Player::Stats.max_hp.not_nil! - 1)
                     Player::Stats.current_hp=(Player::Stats.current_hp.not_nil! - 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
+                end
+                sleep 0.15.seconds
+            end
+    
+            if (scaled_mouse_x >= arrow_right_1_x / scale_x && scaled_mouse_x <= arrow_right_1_x + RIGHT_ARROW_01.size.x / scale_x) && 
+                (scaled_mouse_y >= arrow_right_1_y / scale_y && scaled_mouse_y <= arrow_right_1_y / scale_y + RIGHT_ARROW_01.size.y / scale_y)
+                if Player::Stats.lvl_points.not_nil! >= 1
+                    Player::Stats.max_hp=(Player::Stats.max_hp.not_nil! + 1)
+                    Player::Stats.current_hp=(Player::Stats.current_hp.not_nil! + 1)
+                    Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
+                end
+                sleep 0.15.seconds
+            end
+    
+            if (scaled_mouse_x >= arrow_left_2_x / scale_x && scaled_mouse_x <= arrow_left_2_x + LEFT_ARROW_02.size.x / scale_x) && 
+                (scaled_mouse_y >= arrow_left_2_y / scale_y && scaled_mouse_y <= arrow_left_2_y / scale_y + LEFT_ARROW_02.size.y / scale_y)
+                if Player::Stats.max_mp.not_nil! >= 5
+                    Player::Stats.max_mp=(Player::Stats.max_mp.not_nil! - 1)
+                    Player::Stats.current_mp=(Player::Stats.current_mp.not_nil! - 1)
+                    Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
+                end
+                sleep 0.15.seconds
+            end
+    
+            if (scaled_mouse_x >= arrow_right_2_x / scale_x && scaled_mouse_x <= arrow_right_2_x + RIGHT_ARROW_02.size.x / scale_x) && 
+                (scaled_mouse_y >= arrow_right_2_y / scale_y && scaled_mouse_y <= arrow_right_2_y / scale_y + RIGHT_ARROW_02.size.y / scale_y)
+                if Player::Stats.lvl_points.not_nil! >= 1
+                    Player::Stats.max_mp=(Player::Stats.max_mp.not_nil! + 1)
+                    Player::Stats.current_mp=(Player::Stats.current_mp.not_nil! + 1)
+                    Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
                 end
                 sleep 0.15.seconds
             end
