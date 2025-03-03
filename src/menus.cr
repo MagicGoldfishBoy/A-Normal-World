@@ -942,8 +942,14 @@ module Menus
         end
      end
 
-     def SystemMenus.hud_mouse_handling(window)
-        mouse_position = SF::Mouse.get_position(window)
+     def SystemMenus.hud_mouse_handling(window) #FIXME: fix the scaling
+        #mouse_position = SF::Mouse.get_position(window)
+        window_size = window.size
+        hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+        hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
+        window.view = hud_view
+        mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
+
         mouse_x = mouse_position.x
         mouse_y = mouse_position.y
 
@@ -960,6 +966,8 @@ module Menus
         scaled_mouse_x = mouse_x / scale_x
         scaled_mouse_y = mouse_y / scale_y
 
+        # (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + WINDOW_02.size.x / scale_x) && 
+        #         (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + WINDOW_02.size.y / scale_y)
         if (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x / scale_x) && 
             (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + MENU_BOX_02.size.y / scale_y)
             if Windows.is_hud_menu_open == false
@@ -974,6 +982,7 @@ module Menus
     end
 
     class Windows # I now know why everyone hates coding UI shit -_-
+        #I hate coding ui, I haaaate it!
 
         WINDOW_01 = SF::RectangleShape.new(SF.vector2(260, 80)) #it ain't perfect, but it's good enough :P
         WINDOW_01.fill_color = SF.color(200, 212, 219)
@@ -1284,10 +1293,10 @@ module Menus
               WINDOW_04_TEXT.position = SF.vector2(610 * scale_x, 506 * scale_y)
               WINDOW_04_TEXT.scale = SF.vector2(scale_ratio, scale_ratio)
 
-              window_size = window.size
-              window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
-              window_01_view.viewport = SF::FloatRect.new(0.485_f32, 0_f32, 0.5_f32, 1_f32)
-              window.view = window_01_view
+            #    window_size = window.size
+            #    window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+            #    window_01_view.viewport = SF::FloatRect.new(0.485_f32, 0_f32, 0.5_f32, 1_f32)
+              window.view = window.default_view # window_01_view #FIXME: make work with view
               Windows.draw_hud_menu(window)
             end
 
@@ -1417,20 +1426,26 @@ module Menus
         end
 
         def Windows.window_mouse_handling(window)
+            # puts "Mouse position: #{mouse_position_view_window01}"
+            # puts "Element position: #{LEFT_ARROW_06.position}"
+            
+            mouse_position_view_window01 = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
+            mouse_x = mouse_position_view_window01.x
+            mouse_y = mouse_position_view_window01.y
 
-            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
+            mouse_position = SF::Mouse.get_position(window)
             mouse_x = mouse_position.x
             mouse_y = mouse_position.y
         
             current_size = window.size
             original_width = 800 
             original_height = 600 
-            
-            scale_x = current_size.x.to_f / original_width
+
+            scale_x = (current_size.x.to_f / original_width)
             scale_y = current_size.y.to_f / original_height
         
-            scaled_mouse_x = mouse_x / scale_x
-            scaled_mouse_y = mouse_y / scale_y
+            scaled_mouse_x = mouse_x * scale_x
+            scaled_mouse_y = mouse_y * scale_y
         
             menu_box_2_x = WINDOW_02.position.x
             menu_box_2_y = WINDOW_02.position.y
@@ -1491,16 +1506,14 @@ module Menus
                 (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + WINDOW_02.size.y / scale_y)
                 Serialization::SaveFile.normal_save
                 sleep 0.15.seconds
-            end
     
-            if (scaled_mouse_x >= menu_box_3_x / scale_x && scaled_mouse_x <= menu_box_3_x + WINDOW_03.size.x / scale_x) && 
+        elsif (scaled_mouse_x >= menu_box_3_x / scale_x && scaled_mouse_x <= menu_box_3_x + WINDOW_03.size.x / scale_x) && 
                 (scaled_mouse_y >= menu_box_3_y / scale_y && scaled_mouse_y <= menu_box_3_y / scale_y + WINDOW_03.size.y / scale_y)
                 Serialization::SaveFile.normal_save
                 sleep 0.15.seconds
                 window.close
-            end
     
-            if (scaled_mouse_x >= menu_box_4_x / scale_x && scaled_mouse_x <= menu_box_4_x + WINDOW_04.size.x / scale_x) && 
+        elsif (scaled_mouse_x >= menu_box_4_x / scale_x && scaled_mouse_x <= menu_box_4_x + WINDOW_04.size.x / scale_x) && 
                 (scaled_mouse_y >= menu_box_4_y / scale_y && scaled_mouse_y <= menu_box_4_y / scale_y + WINDOW_04.size.y / scale_y)
                 if Windows.is_stats_menu_open == false
                 Windows.is_stats_menu_open=(true)
@@ -1508,113 +1521,100 @@ module Menus
                 Windows.is_stats_menu_open=(false)
                 end
                 sleep 0.15.seconds
-            end
     
-            if (scaled_mouse_x >= arrow_left_1_x / scale_x && scaled_mouse_x <= arrow_left_1_x + LEFT_ARROW_01.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_left_1_y / scale_y && scaled_mouse_y <= arrow_left_1_y / scale_y + LEFT_ARROW_01.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_left_1_x && scaled_mouse_x <= arrow_left_1_x + LEFT_ARROW_01.size.x) && (scaled_mouse_y >= arrow_left_1_y && scaled_mouse_y <= arrow_left_1_y + LEFT_ARROW_01.size.y)
                 if Player::Stats.max_hp.not_nil! >= 5
                     Player::Stats.max_hp=(Player::Stats.max_hp.not_nil! - 1)
                     Player::Stats.current_hp=(Player::Stats.current_hp.not_nil! - 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
                 end
                 sleep 0.15.seconds
-            end
+
     
-            if (scaled_mouse_x >= arrow_right_1_x / scale_x && scaled_mouse_x <= arrow_right_1_x + RIGHT_ARROW_01.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_right_1_y / scale_y && scaled_mouse_y <= arrow_right_1_y / scale_y + RIGHT_ARROW_01.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_right_1_x && scaled_mouse_x <= arrow_right_1_x + RIGHT_ARROW_01.size.x) && (scaled_mouse_y >= arrow_right_1_y && scaled_mouse_y <= arrow_right_1_y + RIGHT_ARROW_01.size.y)
                 if Player::Stats.lvl_points.not_nil! > 0
                     Player::Stats.max_hp=(Player::Stats.max_hp.not_nil! + 1)
                     Player::Stats.current_hp=(Player::Stats.current_hp.not_nil! + 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
                 end
                 sleep 0.15.seconds
-            end
+            
     
-            if (scaled_mouse_x >= arrow_left_2_x / scale_x && scaled_mouse_x <= arrow_left_2_x + LEFT_ARROW_02.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_left_2_y / scale_y && scaled_mouse_y <= arrow_left_2_y / scale_y + LEFT_ARROW_02.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_left_2_x && scaled_mouse_x <= arrow_left_2_x + LEFT_ARROW_02.size.x) && (scaled_mouse_y >= arrow_left_2_y && scaled_mouse_y <= arrow_left_2_y + LEFT_ARROW_02.size.y)
                 if Player::Stats.max_mp.not_nil! >= 5
                     Player::Stats.max_mp=(Player::Stats.max_mp.not_nil! - 1)
                     Player::Stats.current_mp=(Player::Stats.current_mp.not_nil! - 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
                 end
                 sleep 0.15.seconds
-            end
+           
     
-            if (scaled_mouse_x >= arrow_right_2_x / scale_x && scaled_mouse_x <= arrow_right_2_x + RIGHT_ARROW_02.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_right_2_y / scale_y && scaled_mouse_y <= arrow_right_2_y / scale_y + RIGHT_ARROW_02.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_right_2_x && scaled_mouse_x <= arrow_right_2_x + RIGHT_ARROW_02.size.x) && (scaled_mouse_y >= arrow_right_2_y && scaled_mouse_y <= arrow_right_2_y + RIGHT_ARROW_02.size.y)
                 if Player::Stats.lvl_points.not_nil! > 0
                     Player::Stats.max_mp=(Player::Stats.max_mp.not_nil! + 1)
                     Player::Stats.current_mp=(Player::Stats.current_mp.not_nil! + 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
                 end
                 sleep 0.15.seconds
-            end
+           
     
-            if (scaled_mouse_x >= arrow_left_3_x / scale_x && scaled_mouse_x <= arrow_left_3_x + LEFT_ARROW_03.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_left_3_y / scale_y && scaled_mouse_y <= arrow_left_3_y / scale_y + LEFT_ARROW_03.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_left_3_x && scaled_mouse_x <= arrow_left_3_x + LEFT_ARROW_03.size.x) && (scaled_mouse_y >= arrow_left_3_y && scaled_mouse_y <= arrow_left_3_y + LEFT_ARROW_03.size.y)
                 if Player::Stats.str.not_nil! >= 5
                     Player::Stats.str=(Player::Stats.str.not_nil! - 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
                 end
                 sleep 0.15.seconds
-            end
+           
     
-            if (scaled_mouse_x >= arrow_right_3_x / scale_x && scaled_mouse_x <= arrow_right_3_x + RIGHT_ARROW_03.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_right_3_y / scale_y && scaled_mouse_y <= arrow_right_3_y / scale_y + RIGHT_ARROW_03.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_right_3_x && scaled_mouse_x <= arrow_right_3_x + RIGHT_ARROW_03.size.x) && (scaled_mouse_y >= arrow_right_3_y && scaled_mouse_y <= arrow_right_3_y + RIGHT_ARROW_03.size.y)
                 if Player::Stats.lvl_points.not_nil! > 0
                     Player::Stats.str=(Player::Stats.str.not_nil! + 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
                 end
                 sleep 0.15.seconds
-            end
+           
     
-            if (scaled_mouse_x >= arrow_left_4_x / scale_x && scaled_mouse_x <= arrow_left_4_x + LEFT_ARROW_04.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_left_4_y / scale_y && scaled_mouse_y <= arrow_left_4_y / scale_y + LEFT_ARROW_04.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_left_4_x && scaled_mouse_x <= arrow_left_4_x + LEFT_ARROW_04.size.x) && (scaled_mouse_y >= arrow_left_4_y && scaled_mouse_y <= arrow_left_4_y + LEFT_ARROW_04.size.y)
                 if Player::Stats.dex.not_nil! >= 5
                     Player::Stats.dex=(Player::Stats.dex.not_nil! - 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
                 end
                 sleep 0.15.seconds
-            end
+        
     
-            if (scaled_mouse_x >= arrow_right_4_x / scale_x && scaled_mouse_x <= arrow_right_4_x + RIGHT_ARROW_04.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_right_4_y / scale_y && scaled_mouse_y <= arrow_right_4_y / scale_y + RIGHT_ARROW_04.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_right_4_x && scaled_mouse_x <= arrow_right_4_x + RIGHT_ARROW_04.size.x) && (scaled_mouse_y >= arrow_right_4_y && scaled_mouse_y <= arrow_right_4_y + RIGHT_ARROW_04.size.y)
                 if Player::Stats.lvl_points.not_nil! > 0
                     Player::Stats.dex=(Player::Stats.dex.not_nil! + 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
                 end
                 sleep 0.15.seconds
-            end
+       
     
-            if (scaled_mouse_x >= arrow_left_5_x / scale_x && scaled_mouse_x <= arrow_left_5_x + LEFT_ARROW_05.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_left_5_y / scale_y && scaled_mouse_y <= arrow_left_5_y / scale_y + LEFT_ARROW_05.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_left_5_x && scaled_mouse_x <= arrow_left_5_x + LEFT_ARROW_05.size.x) && (scaled_mouse_y >= arrow_left_5_y && scaled_mouse_y <= arrow_left_5_y + LEFT_ARROW_05.size.y)
                 if Player::Stats.int.not_nil! >= 5
                     Player::Stats.int=(Player::Stats.int.not_nil! - 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
                 end
                 sleep 0.15.seconds
-            end
+      
     
-            if (scaled_mouse_x >= arrow_right_5_x / scale_x && scaled_mouse_x <= arrow_right_5_x + RIGHT_ARROW_05.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_right_5_y / scale_y && scaled_mouse_y <= arrow_right_5_y / scale_y + RIGHT_ARROW_05.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_right_5_x && scaled_mouse_x <= arrow_right_5_x + RIGHT_ARROW_05.size.x) && (scaled_mouse_y >= arrow_right_5_y && scaled_mouse_y <= arrow_right_5_y + RIGHT_ARROW_05.size.y)
                 if Player::Stats.lvl_points.not_nil! > 0
                     Player::Stats.int=(Player::Stats.int.not_nil! + 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
                 end
                 sleep 0.15.seconds
-            end
+        
     
-            if (scaled_mouse_x >= arrow_left_6_x / scale_x && scaled_mouse_x <= arrow_left_6_x + LEFT_ARROW_06.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_left_6_y / scale_y && scaled_mouse_y <= arrow_left_6_y / scale_y + LEFT_ARROW_06.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_left_6_x && scaled_mouse_x <= arrow_left_6_x + LEFT_ARROW_06.size.x) && (scaled_mouse_y >= arrow_left_6_y && scaled_mouse_y <= arrow_left_6_y + LEFT_ARROW_06.size.y)
                 if Player::Stats.luk.not_nil! >= 5
                     Player::Stats.luk=(Player::Stats.luk.not_nil! - 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
                 end
                 sleep 0.15.seconds
-            end
+      
     
-            if (scaled_mouse_x >= arrow_right_6_x / scale_x && scaled_mouse_x <= arrow_right_6_x + RIGHT_ARROW_06.size.x / scale_x) && 
-                (scaled_mouse_y >= arrow_right_6_y / scale_y && scaled_mouse_y <= arrow_right_6_y / scale_y + RIGHT_ARROW_06.size.y / scale_y)
+            elsif (scaled_mouse_x >= arrow_right_6_x && scaled_mouse_x <= arrow_right_6_x + RIGHT_ARROW_06.size.x) && (scaled_mouse_y >= arrow_right_6_y && scaled_mouse_y <= arrow_right_6_y + RIGHT_ARROW_06.size.y)
                 if Player::Stats.lvl_points.not_nil! > 0
                     Player::Stats.luk=(Player::Stats.luk.not_nil! + 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
