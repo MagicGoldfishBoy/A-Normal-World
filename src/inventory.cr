@@ -1,3 +1,6 @@
+require "crsfml"
+require "../src/textures.cr"
+require "../src/clothing.cr"
 module Inventory
     class InventoryManager
         def initialize(is_inventory_open : Bool)
@@ -18,8 +21,8 @@ module Inventory
           end
         end
     end
-    class ClothingTab
-        @@owned_clothing_array = [] of String
+    class ClothingTab #TODO: adjust clothing_tab_sprite_01, make it scale, implement @@owned_clothing_array, draw inventory items
+        @@owned_clothing_array = [] of Clothing::Shirt
         @@clothing_tab_sprite_01 = SF::RectangleShape.new(SF.vector2(200, 200))
        def initialize(is_open : Bool, page : Int32)
         @@is_open = is_open
@@ -40,6 +43,21 @@ module Inventory
 
        def ClothingTab.page=(this)
         @@page = this
+       end
+
+       def ClothingTab.owned_clothing_array
+        @@owned_clothing_array
+       end
+
+       def ClothingTab.owned_clothing_array=(this)
+        @@owned_clothing_array = this
+       end
+
+       def ClothingTab.push_to_owned_clothing_array(this)
+        @@owned_clothing_array.push(this)
+       end
+
+       def ClothingTab.organise_owned_clothing_array_by_type
        end
 
        def ClothingTab.initialize_clothing_tab(window)
