@@ -1295,7 +1295,7 @@ module Menus
                window_size = window.size
                window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
                window_01_view.viewport = SF::FloatRect.new(0.485_f32, 0_f32, 0.5_f32, 1_f32)
-              window.view = window_01_view # window_01_view #FIXME: make work with view
+              window.view = window_01_view
               Windows.draw_hud_menu(window)
             end
 

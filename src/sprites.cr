@@ -2,6 +2,7 @@ require "crsfml"
 require "../src/textures.cr"
 require "../src/player.cr"
 require "../src/animations.cr"
+require "../src/clothing.cr"
 
 module Sprites
     include Player
@@ -59,12 +60,6 @@ module Sprites
     CLOTHES_HASH["grey_shounen_face"] = SHOUNEN_FACE_GREY_TEXTURE
     CLOTHES_HASH["pink_shounen_face"] = SHOUNEN_FACE_PINK_TEXTURE
     CLOTHES_HASH["purple_shounen_face"] = SHOUNEN_FACE_PURPLE_TEXTURE
-
-
-    CLOTHES_HASH["white_tank_top"] = TANK_TOP_WHITE_TEXTURE
-    CLOTHES_HASH["Black_tank_top"] = TANK_TOP_BLACK_TEXTURE
-    CLOTHES_HASH["Orange_tank_top"] = TANK_TOP_ORANGE_TEXTURE
-
 
     CLOTHES_HASH["white_fingerless_gloves"] = FINGERLESS_GLOVES_WHITE_TEXTURE
 
@@ -172,7 +167,14 @@ module Sprites
 
     current_earrings = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("earrings")])
 
-    current_shirt = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("shirt")])
+   # current_shirt = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("shirt")])
+    current_shirt = if shirt = Clothing::Shirt.get_shirt(Appearance.get_clothing("shirt"))
+        SF::Sprite.new(shirt.texture)
+    else
+        SF::Sprite.new
+    end
+
+    puts Appearance.get_clothing("shirt")
 
     current_gloves = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("gloves")])
 

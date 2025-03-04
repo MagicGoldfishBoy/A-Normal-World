@@ -23,6 +23,7 @@ module Inventory
     end
     class ClothingTab #TODO: adjust clothing_tab_sprite_01, make it scale, implement @@owned_clothing_array, draw inventory items
         @@owned_clothing_array = [] of Clothing::Shirt
+       # @@owned_clothing_array.push(Clothing::Shirt.get_shirt("white_tank_top").not_nil!)
         @@clothing_tab_sprite_01 = SF::RectangleShape.new(SF.vector2(200, 200))
        def initialize(is_open : Bool, page : Int32)
         @@is_open = is_open

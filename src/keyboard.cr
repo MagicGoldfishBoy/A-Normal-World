@@ -1,6 +1,7 @@
 require "crsfml"
 require "../src/sprites.cr"
 require "../src/inventory.cr"
+require "../src/clothing.cr"
 
 module Keyboard
     class Gameplay
@@ -58,6 +59,9 @@ module Keyboard
                 Inventory::ClothingTab.is_open=(!Inventory::ClothingTab.is_open)
                 Inventory::ClothingTab.initialize_clothing_tab(window)
                 sleep 0.25.seconds
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::A)
+               puts Clothing::Shirt::SHIRT_ARRAY
             end
         end
     end
