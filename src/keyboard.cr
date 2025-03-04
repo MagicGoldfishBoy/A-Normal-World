@@ -1,5 +1,6 @@
 require "crsfml"
 require "../src/sprites.cr"
+require "../src/inventory.cr"
 
 module Keyboard
     class Gameplay
@@ -51,6 +52,12 @@ module Keyboard
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::Space)
                 Levels::Level_Physics.jump(window)
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::I)
+                Inventory::InventoryManager.is_inventory_open=(!Inventory::InventoryManager.is_inventory_open)
+                Inventory::ClothingTab.is_open=(!Inventory::ClothingTab.is_open)
+                Inventory::ClothingTab.initialize_clothing_tab(window)
+                sleep 0.25.seconds
             end
         end
     end

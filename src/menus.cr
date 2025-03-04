@@ -942,8 +942,7 @@ module Menus
         end
      end
 
-     def SystemMenus.hud_mouse_handling(window) #FIXME: fix the scaling
-        #mouse_position = SF::Mouse.get_position(window)
+     def SystemMenus.hud_mouse_handling(window)
         window_size = window.size
         hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
         hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
@@ -966,8 +965,6 @@ module Menus
         scaled_mouse_x = mouse_x / scale_x
         scaled_mouse_y = mouse_y / scale_y
 
-        # (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + WINDOW_02.size.x / scale_x) && 
-        #         (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + WINDOW_02.size.y / scale_y)
         if (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x / scale_x) && 
             (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + MENU_BOX_02.size.y / scale_y)
             if Windows.is_hud_menu_open == false
@@ -1254,9 +1251,6 @@ module Menus
             window.draw(RIGHT_ARROW_05)
             window.draw(LEFT_ARROW_06)
             window.draw(RIGHT_ARROW_06)
-            # if SF::Mouse.button_pressed?(SF::Mouse::Left)
-            #     Windows.stats_menu_mouse_handling(window)
-            # end
         end
 
         def Windows.which_views_are_open(window)
@@ -1303,10 +1297,6 @@ module Menus
                window_01_view.viewport = SF::FloatRect.new(0.485_f32, 0_f32, 0.5_f32, 1_f32)
               window.view = window_01_view # window_01_view #FIXME: make work with view
               Windows.draw_hud_menu(window)
-            #   if SF::Mouse.button_pressed?(SF::Mouse::Left)
-            #     Windows.hud_menu_mouse_handling(window)
-            #   end
-              
             end
 
             if @@is_stats_menu_open == true
@@ -1431,9 +1421,6 @@ module Menus
                 RIGHT_ARROW_06.scale = STATS_MENU.scale
 
                 Windows.draw_stats_menu(window)
-                # if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                #     Windows.stats_menu_mouse_handling(window)
-                # end
             end
         end
 
@@ -1455,7 +1442,6 @@ module Menus
             scaled_mouse_x = (mouse_x + window_size.x * window_01_view.viewport.left) * scale_x
             scaled_mouse_y = (mouse_y + window_size.y * window_01_view.viewport.top) * scale_y
         
-            # Apply viewport offset to boxes
             menu_box_2_x = (WINDOW_02.position.x + window_size.x * window_01_view.viewport.left) * scale_x
             menu_box_2_y = (WINDOW_02.position.y + window_size.y * window_01_view.viewport.top) * scale_y
             menu_box_2_width = WINDOW_02.size.x * scale_x
@@ -1470,9 +1456,6 @@ module Menus
             menu_box_4_y = (WINDOW_04.position.y + window_size.y * window_01_view.viewport.top) * scale_y
             menu_box_4_width = WINDOW_04.size.x * scale_x
             menu_box_4_height = WINDOW_04.size.y * scale_y
-        
-            # puts "Mouse: #{scaled_mouse_x}, #{scaled_mouse_y}"
-            # puts "Box: #{menu_box_2_x}, #{menu_box_2_y}, #{menu_box_2_width}, #{menu_box_2_height}"
         
             if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + menu_box_2_width) &&
                (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + menu_box_2_height)
@@ -1492,78 +1475,8 @@ module Menus
                 sleep 0.15.seconds
             end
         end
-        
-        
-
-        # def Windows.hud_menu_mouse_handling(window)
-        #     window_size = window.size
-        #     window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
-        #     window_01_view.viewport = SF::FloatRect.new(0.485_f32, 0_f32, 0.5_f32, 1_f32)
-        #     window.view = window_01_view
-        #     mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
-        #     mouse_x = mouse_position.x
-        #     mouse_y = mouse_position.y
-        
-        #     current_size = window.size
-        #     original_width = 800 
-        #     original_height = 600 
-
-        #     # scale_x = (current_size.x.to_f / original_width)
-        #     # scale_y = current_size.y.to_f / original_height
-        #     scale_x = window_01_view.size.x / original_width
-        #     scale_y = window_01_view.size.y / original_height
-        
-        #     # scaled_mouse_x = mouse_x * scale_x
-        #     # scaled_mouse_y = mouse_y * scale_y
-        #     scaled_mouse_x = (mouse_x + window_size.x * window_01_view.viewport.left) * scale_x
-        #     scaled_mouse_y = (mouse_y + window_size.y * window_01_view.viewport.top) * scale_y
-
-        #      menu_box_2_x = WINDOW_02.position.x
-        #      menu_box_2_y = WINDOW_02.position.y
-        #     menu_box_2_x *= scale_x
-        #     menu_box_2_y *= scale_y
-    
-        #     menu_box_3_x = WINDOW_03.position.x
-        #     menu_box_3_y = WINDOW_03.position.y
-    
-        #     menu_box_4_x = WINDOW_04.position.x
-        #     menu_box_4_y = WINDOW_04.position.y
-
-        #     puts "Mouse: #{scaled_mouse_x}, #{scaled_mouse_y}"
-        #     puts "Box: #{menu_box_2_x}, #{menu_box_2_y}, #{WINDOW_02.size.x}, #{WINDOW_02.size.y}"
-
-
-        #     if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + WINDOW_02.size.x) && 
-        #         (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + WINDOW_02.size.y)
-        #         Serialization::SaveFile.normal_save
-        #         puts "save"
-        #         sleep 0.15.seconds
-    
-        # elsif (scaled_mouse_x >= menu_box_3_x / scale_x && scaled_mouse_x <= menu_box_3_x + WINDOW_03.size.x / scale_x) && 
-        #         (scaled_mouse_y >= menu_box_3_y / scale_y && scaled_mouse_y <= menu_box_3_y / scale_y + WINDOW_03.size.y / scale_y)
-        #         Serialization::SaveFile.normal_save
-        #         sleep 0.15.seconds
-        #         window.close
-    
-        # elsif (scaled_mouse_x >= menu_box_4_x / scale_x && scaled_mouse_x <= menu_box_4_x + WINDOW_04.size.x / scale_x) && 
-        #         (scaled_mouse_y >= menu_box_4_y / scale_y && scaled_mouse_y <= menu_box_4_y / scale_y + WINDOW_04.size.y / scale_y)
-        #         if Windows.is_stats_menu_open == false
-        #         Windows.is_stats_menu_open=(true)
-        #         else
-        #         Windows.is_stats_menu_open=(false)
-        #         end
-        #         sleep 0.15.seconds
-        #     end
-            
-        # end
 
         def Windows.stats_menu_mouse_handling(window)
-            # puts "Mouse position: #{mouse_position_view_window01}"
-            # puts "Element position: #{LEFT_ARROW_06.position}"
-            
-            # mouse_position_view_window01 = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
-            # mouse_x = mouse_position_view_window01.x
-            # mouse_y = mouse_position_view_window01.y
 
             mouse_position = SF::Mouse.get_position(window)
             mouse_x = mouse_position.x
