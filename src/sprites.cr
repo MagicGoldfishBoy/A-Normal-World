@@ -116,7 +116,7 @@ module Sprites
   STARTING_FACE_ARRAY = ["blue_button_eyes", "black_button_eyes", "brown_button_eyes", "green_button_eyes", "yellow_button_eyes", "red_button_eyes", "pink_button_eyes", "purple_button_eyes", 
   "white_button_eyes", "grey_shounen_face", "pink_shounen_face", "purple_shounen_face"]
 
-  STARTING_SHIRT_ARRAY = ["white_tank_top", "Black_tank_top", "Orange_tank_top"]
+  STARTING_SHIRT_ARRAY = ["White_tank_top", "Black_tank_top", "Red_tank_top", "Orange_tank_top", "Yellow_tank_top", "Green_tank_top", "Blue_tank_top", "Purple_tank_top", "Pink_tank_top"]
 
   STARTING_PANTS_ARRAY = ["white_jeans", "black_jeans"]
 

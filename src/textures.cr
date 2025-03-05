@@ -122,7 +122,19 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
   TANK_TOP_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Tank_Top.png")
 
+  TANK_TOP_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Tank_Top.png")
+
   TANK_TOP_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Tank_Top.png")
+
+  TANK_TOP_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Tank_Top.png")
+
+  TANK_TOP_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Tank_Top.png")
+
+  TANK_TOP_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Tank_Top.png")
+
+  TANK_TOP_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Tank_Top.png")
+
+  TANK_TOP_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Tank_Top.png")
 
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
  #S                                          Shoe Textures                                           S
