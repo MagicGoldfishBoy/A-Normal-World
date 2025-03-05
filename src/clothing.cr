@@ -71,5 +71,13 @@ module Clothing
        @@blue_tank_top = Shirt.new("Blue_tank_top", 7, false, "very_short", "plain", TANK_TOP_BLUE_TEXTURE)
        @@purple_tank_top = Shirt.new("Purple_tank_top", 8, false, "very_short", "plain", TANK_TOP_PURPLE_TEXTURE)
        @@pink_tank_top = Shirt.new("Pink_tank_top", 9, false, "very_short", "plain", TANK_TOP_PINK_TEXTURE)
+
+       @@white_t_shirt = Shirt.new("White_T-Shirt", 100, false, "short", "plain", T_SHIRT_WHITE_TEXTURE)
+       @@black_t_shirt = Shirt.new("Black_T-Shirt", 101, false, "short", "plain", T_SHIRT_BLACK_TEXTURE)
+       @@red_t_shirt = Shirt.new("Red_T-Shirt", 102, false, "short", "plain", T_SHIRT_RED_TEXTURE)
+       @@orange_t_shirt = Shirt.new("Orange_T-Shirt", 103, false, "short", "plain", T_SHIRT_ORANGE_TEXTURE)
+       @@yellow_t_shirt = Shirt.new("Yellow_T-Shirt", 104, false, "short", "plain", T_SHIRT_YELLOW_TEXTURE)
+       @@green_t_shirt = Shirt.new("Green_T-Shirt", 105, false, "short", "plain", T_SHIRT_GREEN_TEXTURE)
+       @@blue_t_shirt = Shirt.new("Blue_T-Shirt", 106, false, "short", "plain", T_SHIRT_BLUE_TEXTURE)
     end
 end

@@ -136,6 +136,21 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
   TANK_TOP_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Tank_Top.png")
 
+
+  T_SHIRT_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_T-Shirt.png")
+
+  T_SHIRT_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_T-Shirt.png")
+
+  T_SHIRT_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_T-Shirt.png")
+
+  T_SHIRT_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_T-Shirt.png")
+
+  T_SHIRT_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_T-Shirt.png")
+
+  T_SHIRT_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_T-Shirt.png")
+
+  T_SHIRT_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_T-Shirt.png")
+
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
  #S                                          Shoe Textures                                           S
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
