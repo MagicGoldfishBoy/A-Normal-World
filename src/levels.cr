@@ -87,7 +87,13 @@ module Levels
         TEST_PLATFORM_01.fill_color = SF.color( 96, 166, 84 )
         TEST_PLATFORM_01_HITBOX = SF::RectangleShape.new(SF.vector2(500, 10))
         TEST_PLATFORM_01_HITBOX.fill_color = SF.color( 0, 166, 84 )
-        PHYSICS_TEST_PLATFORM_ARRAY = [TEST_PLATFORM_01, TEST_PLATFORM_01_HITBOX]
+
+        TEST_PLATFORM_02 = SF::RectangleShape.new(SF.vector2(200, 40))
+        TEST_PLATFORM_02.fill_color = SF.color( 96, 166, 84 )
+        TEST_PLATFORM_02_HITBOX = SF::RectangleShape.new(SF.vector2(200, 10))
+        TEST_PLATFORM_02_HITBOX.fill_color = SF.color( 0, 166, 84 )
+
+        PHYSICS_TEST_PLATFORM_ARRAY = [TEST_PLATFORM_01_HITBOX, TEST_PLATFORM_02_HITBOX]
         @@test_platform_array_iterator = 0
         def PhysicsTest.initialize_platform_test(window)
             current_size = window.size
@@ -98,26 +104,30 @@ module Levels
             scale_y = current_size.y.to_f / original_height
             TEST_PLATFORM_01.position = SF.vector2(scale_x + 200, scale_y + 340)
             TEST_PLATFORM_01_HITBOX.position = TEST_PLATFORM_01.position
+            TEST_PLATFORM_02.position = SF.vector2(scale_x + 200, scale_y + 280)
+            TEST_PLATFORM_02_HITBOX.position = TEST_PLATFORM_02.position
         end
 
         def PhysicsTest.draw_platform_test(window)
-            Level_Physics.gravity=(1)
-
+            Level_Physics.gravity = 1
+        
             if @@test_platform_array_iterator < PHYSICS_TEST_PLATFORM_ARRAY.size - 1
                 @@test_platform_array_iterator += 1
             else
                 @@test_platform_array_iterator = 0
             end
-
-            if Sprites::Player.check_feet_collision(window, PHYSICS_TEST_PLATFORM_ARRAY[@@test_platform_array_iterator]) == false
+        
+            if PHYSICS_TEST_PLATFORM_ARRAY.all? { |platform| Sprites::Player.check_feet_collision(window, platform) == false }
                 Level_Physics.gravitational_pull(Sprites::Player.retrieve_sprite)
-                Level_Physics.is_on_ground=(true)
+                Level_Physics.is_on_ground = true
             else
-                Level_Physics.is_on_ground=(false)
+                Level_Physics.is_on_ground = false
             end
             LevelView.normal_gameplay_view(window)
             window.draw(TEST_PLATFORM_01)
             window.draw(TEST_PLATFORM_01_HITBOX)
+            window.draw(TEST_PLATFORM_02)
+            window.draw(TEST_PLATFORM_02_HITBOX)
         end
     end
 end
