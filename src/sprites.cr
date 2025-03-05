@@ -174,8 +174,6 @@ module Sprites
         SF::Sprite.new
     end
 
-    puts Appearance.get_clothing("shirt")
-
     current_gloves = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("gloves")])
 
     current_pants = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("pants")])

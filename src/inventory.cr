@@ -21,10 +21,12 @@ module Inventory
           end
         end
     end
-    class ClothingTab #TODO: adjust clothing_tab_sprite_01, make it scale, implement @@owned_clothing_array, draw inventory items
+    class ClothingTab #TODO: implement @@owned_clothing_array, draw inventory items
         @@owned_clothing_array = [] of Clothing::Shirt
-       # @@owned_clothing_array.push(Clothing::Shirt.get_shirt("white_tank_top").not_nil!)
-        @@clothing_tab_sprite_01 = SF::RectangleShape.new(SF.vector2(200, 200))
+        #@@owned_clothing_array.push(Clothing::Shirt.get_shirt("White_tank_top").not_nil!)
+        #@@owned_clothing_array.push(Clothing::Shirt.get_shirt("Black_tank_top").not_nil!)
+        @@clothing_tab_sprite_01 = SF::RectangleShape.new(SF.vector2(600, 400))
+        @@clothing_tab_sprite_01.fill_color = SF.color( 137, 170, 208 )
        def initialize(is_open : Bool, page : Int32)
         @@is_open = is_open
         @@page = page
@@ -67,6 +69,19 @@ module Inventory
        end
 
        def ClothingTab.draw_clothing_tab(window)
+            current_size = window.size
+            original_width = 800 
+            original_height = 600
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+    
+            scale_ratio = [scale_x, scale_y].min
+            max_scale = 1.5
+            clamped_scale = [scale_ratio, max_scale].min
+
+        window.view = window.default_view
+        @@clothing_tab_sprite_01.position = SF.vector2(20 * max_scale, 40 * max_scale)
+        @@clothing_tab_sprite_01.scale = SF.vector2(1, 1)
         window.draw(@@clothing_tab_sprite_01)
        end
     end

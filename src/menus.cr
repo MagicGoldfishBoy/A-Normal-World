@@ -879,7 +879,7 @@ module Menus
      end
 
      def SystemMenus.draw_hud(window) 
-     if SF::Event::Resized #the HUD will never scale correctly without this
+      if SF::Event::Resized #the HUD will never scale correctly without this
         current_size = window.size
         original_width = 800 
         original_height = 600
@@ -920,7 +920,7 @@ module Menus
 
         EXP_COLOR_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 125 * scale_y)
         EXP_COLOR_BAR.scale = SF.vector2((Player::Stats.exp.not_nil! / Player::Stats.exp_cap.not_nil!) * scale_ratio, scale_ratio) 
-     end
+      end
         window_size = window.size
         hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
         hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
@@ -1638,7 +1638,6 @@ module Menus
                 if Player::Stats.lvl_points.not_nil! > 0
                     Player::Stats.luk=(Player::Stats.luk.not_nil! + 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
-                    puts Player::Stats.luk
                 end
                 sleep 0.15.seconds
             end

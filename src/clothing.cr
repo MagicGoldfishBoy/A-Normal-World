@@ -51,7 +51,6 @@ module Clothing
        end
 
        def Shirt.get_shirt(this)
-        puts this
         SHIRT_ARRAY.each { |shirt| if shirt.name == this
         return shirt
         end }
