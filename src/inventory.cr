@@ -24,6 +24,22 @@ module Inventory
     class ClothingTab #TODO: implement @@owned_clothing_array, draw inventory items
         @@owned_clothing_array = [] of Clothing::Shirt
 
+        @@clothing_slot_01 : Clothing::Shirt? = nil
+        @@clothing_slot_02 : Clothing::Shirt? = nil
+        @@clothing_slot_03 : Clothing::Shirt? = nil
+        @@clothing_slot_04 : Clothing::Shirt? = nil
+        @@clothing_slot_05 : Clothing::Shirt? = nil
+        @@clothing_slot_06 : Clothing::Shirt? = nil
+        @@clothing_slot_07 : Clothing::Shirt? = nil
+        @@clothing_slot_08 : Clothing::Shirt? = nil
+        @@clothing_slot_09 : Clothing::Shirt? = nil
+        @@clothing_slot_10 : Clothing::Shirt? = nil
+        @@clothing_slot_11 : Clothing::Shirt? = nil
+        @@clothing_slot_12 : Clothing::Shirt? = nil
+        @@clothing_slot_13 : Clothing::Shirt? = nil
+        @@clothing_slot_14 : Clothing::Shirt? = nil
+        @@clothing_slot_15 : Clothing::Shirt? = nil
+
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("White Tank Top").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Black Tank Top").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Red Tank Top").not_nil!)
@@ -282,9 +298,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_01_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_01_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_01 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_01_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_01_text.string = ""
+                @@clothing_slot_01 = nil
             end
         end
         if @@owned_clothing_array.size > 1
@@ -699,21 +717,22 @@ module Inventory
         scale_x = (current_size.x.to_f / original_width)
         scale_y = current_size.y.to_f / original_height
 
-        arrow_left_x = @@clothing_left_arrow_sprite.position.x
-        arrow_left_y = @@clothing_left_arrow_sprite.position.y
+        #------------------------------------objects-------------------------------------------------
+            arrow_left_x = @@clothing_left_arrow_sprite.position.x
+            arrow_left_y = @@clothing_left_arrow_sprite.position.y
+            arrow_left_width = @@clothing_left_arrow_sprite.size.x
+            arrow_left_height = @@clothing_left_arrow_sprite.size.y
 
-        arrow_right_x = @@clothing_right_arrow_sprite.position.x
-        arrow_right_y = @@clothing_right_arrow_sprite.position.y
+            arrow_right_x = @@clothing_right_arrow_sprite.position.x
+            arrow_right_y = @@clothing_right_arrow_sprite.position.y
+            arrow_right_width = @@clothing_right_arrow_sprite.size.x
+            arrow_right_height = @@clothing_right_arrow_sprite.size.y
 
-        arrow_left_x = @@clothing_left_arrow_sprite.position.x
-        arrow_left_y = @@clothing_left_arrow_sprite.position.y
-        arrow_left_width = @@clothing_left_arrow_sprite.size.x
-        arrow_left_height = @@clothing_left_arrow_sprite.size.y
-
-        arrow_right_x = @@clothing_right_arrow_sprite.position.x
-        arrow_right_y = @@clothing_right_arrow_sprite.position.y
-        arrow_right_width = @@clothing_right_arrow_sprite.size.x
-        arrow_right_height = @@clothing_right_arrow_sprite.size.y
+            slot_01_x = @@clothing_slot_01_sprite.position.x
+            slot_01_y = @@clothing_slot_01_sprite.position.y
+            slot_01_width = @@clothing_slot_01_sprite.size.x
+            slot_01_height = @@clothing_slot_01_sprite.size.y
+        #---------------------------------------------------------------------------------------------
         
         if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
            (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -730,6 +749,17 @@ module Inventory
            
             if @@page.not_nil! <= 5
                 @@page = @@page.not_nil! + 1
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
+           (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
+           
+            if @@clothing_slot_01 != nil
+                Player::Appearance.change_shirt(@@clothing_slot_01.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTab.assign_slot_textures(window)
             sleep 0.15.seconds
