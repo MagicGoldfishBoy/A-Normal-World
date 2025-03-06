@@ -31,10 +31,17 @@ module Inventory
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Yellow Tank Top").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Green Tank Top").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Blue Tank Top").not_nil!)
-        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Purple_tank_top").not_nil!)
-        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Pink_tank_top").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Purple Tank Top").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Pink Tank Top").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("White_T-Shirt").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Black_T-Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Red_T-Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Orange_T-Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Yellow_T-Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Green_T-Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Blue_T-Shirt").not_nil!)
+        # @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Purple_T-Shirt").not_nil!)
+        # @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Pink_T-Shirt").not_nil!)
         
         @@clothing_box_sprite = SF::RectangleShape.new(SF.vector2(610, 420))
         @@clothing_box_sprite.fill_color = SF.color( 137, 170, 208 )
@@ -275,6 +282,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_01_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_01_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_01_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_01_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 1
@@ -282,6 +292,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_02_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_02_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_02_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_02_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 2
@@ -289,6 +302,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_03_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_03_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_03_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_03_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 3
@@ -296,6 +312,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_04_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_04_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_04_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_04_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 4
@@ -303,6 +322,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_05_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_05_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_05_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_05_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 5
@@ -310,6 +332,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_06_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_06_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_06_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_06_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 6
@@ -317,6 +342,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_07_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_07_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_07_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_07_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 7
@@ -324,6 +352,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_08_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_08_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_08_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_08_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 8
@@ -331,6 +362,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_09_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_09_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_09_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_09_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 9
@@ -338,6 +372,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_10_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_10_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_10_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_10_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 10
@@ -345,6 +382,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_11_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_11_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_11_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_11_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 11
@@ -352,6 +392,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_12_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_12_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_12_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_12_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 12
@@ -359,6 +402,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_13_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_13_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_13_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_13_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 13
@@ -366,6 +412,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_14_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_14_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_14_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_14_text.string = ""
             end
         end
         if @@owned_clothing_array.size > 14
@@ -373,6 +422,9 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_15_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_15_text.string = @@owned_clothing_array[t].name
+            else
+                @@clothing_slot_15_image_sprite.texture = NIL_TEXTURE
+                @@clothing_slot_15_text.string = ""
             end
         end
        end
@@ -480,6 +532,9 @@ module Inventory
 
         @@clothing_slot_08_sprite.position = @@clothing_box_sprite.position + SF.vector2(170 * max_scale, 120 * max_scale)
         @@clothing_slot_08_sprite.scale = SF.vector2(1, 1)
+                
+        @@clothing_slot_08_text.position = @@clothing_slot_08_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
+        ClothingTab.center_clothing_text(@@clothing_slot_08_text)
         
         @@clothing_slot_08_image_sprite.position = @@clothing_slot_08_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@clothing_slot_08_image_sprite.scale = SF.vector2(2, 2)
@@ -488,6 +543,9 @@ module Inventory
 
         @@clothing_slot_09_sprite.position = @@clothing_box_sprite.position + SF.vector2(250 * max_scale, 120 * max_scale)
         @@clothing_slot_09_sprite.scale = SF.vector2(1, 1)
+                
+        @@clothing_slot_09_text.position = @@clothing_slot_09_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
+        ClothingTab.center_clothing_text(@@clothing_slot_09_text)
         
         @@clothing_slot_09_image_sprite.position = @@clothing_slot_09_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@clothing_slot_09_image_sprite.scale = SF.vector2(2, 2)
@@ -496,6 +554,9 @@ module Inventory
 
         @@clothing_slot_10_sprite.position = @@clothing_box_sprite.position + SF.vector2(330 * max_scale, 120 * max_scale)
         @@clothing_slot_10_sprite.scale = SF.vector2(1, 1)
+                        
+        @@clothing_slot_10_text.position = @@clothing_slot_10_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
+        ClothingTab.center_clothing_text(@@clothing_slot_10_text)
         
         @@clothing_slot_10_image_sprite.position = @@clothing_slot_10_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@clothing_slot_10_image_sprite.scale = SF.vector2(2, 2)
@@ -504,6 +565,9 @@ module Inventory
 
         @@clothing_slot_11_sprite.position = @@clothing_box_sprite.position + SF.vector2(10 * max_scale, 200 * max_scale)
         @@clothing_slot_11_sprite.scale = SF.vector2(1, 1)
+                        
+        @@clothing_slot_11_text.position = @@clothing_slot_11_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
+        ClothingTab.center_clothing_text(@@clothing_slot_11_text)
         
         @@clothing_slot_11_image_sprite.position = @@clothing_slot_11_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@clothing_slot_11_image_sprite.scale = SF.vector2(2, 2)
@@ -512,6 +576,9 @@ module Inventory
 
         @@clothing_slot_12_sprite.position = @@clothing_box_sprite.position + SF.vector2(90 * max_scale, 200 * max_scale)
         @@clothing_slot_12_sprite.scale = SF.vector2(1, 1)
+                        
+        @@clothing_slot_12_text.position = @@clothing_slot_12_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
+        ClothingTab.center_clothing_text(@@clothing_slot_12_text)
         
         @@clothing_slot_12_image_sprite.position = @@clothing_slot_12_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@clothing_slot_12_image_sprite.scale = SF.vector2(2, 2)
@@ -520,6 +587,9 @@ module Inventory
 
         @@clothing_slot_13_sprite.position = @@clothing_box_sprite.position + SF.vector2(170 * max_scale, 200 * max_scale)
         @@clothing_slot_13_sprite.scale = SF.vector2(1, 1)
+                        
+        @@clothing_slot_13_text.position = @@clothing_slot_13_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
+        ClothingTab.center_clothing_text(@@clothing_slot_13_text)
         
         @@clothing_slot_13_image_sprite.position = @@clothing_slot_13_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@clothing_slot_13_image_sprite.scale = SF.vector2(2, 2)
@@ -528,6 +598,9 @@ module Inventory
 
         @@clothing_slot_14_sprite.position = @@clothing_box_sprite.position + SF.vector2(250 * max_scale, 200 * max_scale)
         @@clothing_slot_14_sprite.scale = SF.vector2(1, 1)
+                        
+        @@clothing_slot_14_text.position = @@clothing_slot_14_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
+        ClothingTab.center_clothing_text(@@clothing_slot_14_text)
         
         @@clothing_slot_14_image_sprite.position = @@clothing_slot_14_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@clothing_slot_14_image_sprite.scale = SF.vector2(2, 2)
@@ -536,6 +609,9 @@ module Inventory
 
         @@clothing_slot_15_sprite.position = @@clothing_box_sprite.position + SF.vector2(330 * max_scale, 200 * max_scale)
         @@clothing_slot_15_sprite.scale = SF.vector2(1, 1)
+                        
+        @@clothing_slot_15_text.position = @@clothing_slot_15_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
+        ClothingTab.center_clothing_text(@@clothing_slot_15_text)
         
         @@clothing_slot_15_image_sprite.position = @@clothing_slot_15_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@clothing_slot_15_image_sprite.scale = SF.vector2(2, 2)
@@ -575,20 +651,89 @@ module Inventory
 
         window.draw(@@clothing_slot_08_sprite)
         window.draw(@@clothing_slot_08_image_sprite)
+        window.draw(@@clothing_slot_08_text)
+
         window.draw(@@clothing_slot_09_sprite)
         window.draw(@@clothing_slot_09_image_sprite)
+        window.draw(@@clothing_slot_09_text)
+
         window.draw(@@clothing_slot_10_sprite)
         window.draw(@@clothing_slot_10_image_sprite)
+        window.draw(@@clothing_slot_10_text)
+
         window.draw(@@clothing_slot_11_sprite)
         window.draw(@@clothing_slot_11_image_sprite)
+        window.draw(@@clothing_slot_11_text)
+
         window.draw(@@clothing_slot_12_sprite)
         window.draw(@@clothing_slot_12_image_sprite)
+        window.draw(@@clothing_slot_12_text)
+
         window.draw(@@clothing_slot_13_sprite)
         window.draw(@@clothing_slot_13_image_sprite)
+        window.draw(@@clothing_slot_13_text)
+
         window.draw(@@clothing_slot_14_sprite)
         window.draw(@@clothing_slot_14_image_sprite)
+        window.draw(@@clothing_slot_14_text)
+
         window.draw(@@clothing_slot_15_sprite)
         window.draw(@@clothing_slot_15_image_sprite)
+        window.draw(@@clothing_slot_15_text)
+
+        if SF::Mouse.button_pressed?(SF::Mouse::Left)
+            ClothingTab.clothes_mouse_handling(window)
+        end
+       end
+
+       def ClothingTab.clothes_mouse_handling(window)
+        mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+        mouse_x = mouse_position.x
+        mouse_y = mouse_position.y
+        
+    
+        current_size = window.size
+        original_width = 800 
+        original_height = 600 
+
+        scale_x = (current_size.x.to_f / original_width)
+        scale_y = current_size.y.to_f / original_height
+
+        arrow_left_x = @@clothing_left_arrow_sprite.position.x
+        arrow_left_y = @@clothing_left_arrow_sprite.position.y
+
+        arrow_right_x = @@clothing_right_arrow_sprite.position.x
+        arrow_right_y = @@clothing_right_arrow_sprite.position.y
+
+        arrow_left_x = @@clothing_left_arrow_sprite.position.x
+        arrow_left_y = @@clothing_left_arrow_sprite.position.y
+        arrow_left_width = @@clothing_left_arrow_sprite.size.x
+        arrow_left_height = @@clothing_left_arrow_sprite.size.y
+
+        arrow_right_x = @@clothing_right_arrow_sprite.position.x
+        arrow_right_y = @@clothing_right_arrow_sprite.position.y
+        arrow_right_width = @@clothing_right_arrow_sprite.size.x
+        arrow_right_height = @@clothing_right_arrow_sprite.size.y
+        
+        if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
+           (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
+           
+            if @@page.not_nil! > 1
+                @@page = @@page.not_nil! - 1
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+           (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
+           
+            if @@page.not_nil! <= 5
+                @@page = @@page.not_nil! + 1
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
        end
     end
 
