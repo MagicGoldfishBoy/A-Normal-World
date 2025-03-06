@@ -765,6 +765,11 @@ module Inventory
             slot_02_y = @@clothing_slot_02_sprite.position.y
             slot_02_width = @@clothing_slot_02_sprite.size.x
             slot_02_height = @@clothing_slot_02_sprite.size.y
+
+            slot_03_x = @@clothing_slot_03_sprite.position.x
+            slot_03_y = @@clothing_slot_03_sprite.position.y
+            slot_03_width = @@clothing_slot_03_sprite.size.x
+            slot_03_height = @@clothing_slot_03_sprite.size.y
         #---------------------------------------------------------------------------------------------
         
         if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
@@ -810,6 +815,20 @@ module Inventory
                 
                 @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
                 Player::Appearance.change_shirt(@@clothing_slot_02.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
+           (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
+           
+            if @@clothing_slot_03 != nil
+                t = 2 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_03.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTab.assign_slot_textures(window)
