@@ -140,7 +140,7 @@ module Sprites
 
    def Player.draw_sprite(window)
     if @@is_drawn == true
-        @@player_feet_hitbox.Player.refresh_player_sprite(window)position = @@player_character_rendered_model.position + SF.vector2(35, 110)
+        @@player_feet_hitbox.position = @@player_character_rendered_model.position + SF.vector2(35, 110)
         window.draw(@@player_character_rendered_model)
         #window.draw(@@player_feet_hitbox)
         if @@movement_state == nil

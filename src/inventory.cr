@@ -310,9 +310,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_02_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_02_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_02 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_02_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_02_text.string = ""
+                @@clothing_slot_02 = nil
             end
         end
         if @@owned_clothing_array.size > 2
@@ -320,9 +322,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_03_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_03_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_03 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_03_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_03_text.string = ""
+                @@clothing_slot_03 = nil
             end
         end
         if @@owned_clothing_array.size > 3
@@ -330,9 +334,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_04_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_04_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_04 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_04_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_04_text.string = ""
+                @@clothing_slot_04 = nil
             end
         end
         if @@owned_clothing_array.size > 4
@@ -340,9 +346,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_05_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_05_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_05 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_05_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_05_text.string = ""
+                @@clothing_slot_05 = nil
             end
         end
         if @@owned_clothing_array.size > 5
@@ -350,9 +358,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_06_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_06_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_06 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_06_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_06_text.string = ""
+                @@clothing_slot_06 = nil
             end
         end
         if @@owned_clothing_array.size > 6
@@ -360,9 +370,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_07_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_07_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_07 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_07_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_07_text.string = ""
+                @@clothing_slot_07 = nil
             end
         end
         if @@owned_clothing_array.size > 7
@@ -370,9 +382,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_08_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_08_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_08 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_08_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_08_text.string = ""
+                @@clothing_slot_08 = nil
             end
         end
         if @@owned_clothing_array.size > 8
@@ -380,9 +394,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_09_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_09_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_09 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_09_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_09_text.string = ""
+                @@clothing_slot_09 = nil
             end
         end
         if @@owned_clothing_array.size > 9
@@ -390,9 +406,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_10_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_10_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_10 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_10_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_10_text.string = ""
+                @@clothing_slot_10 = nil
             end
         end
         if @@owned_clothing_array.size > 10
@@ -400,9 +418,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_11_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_11_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_11 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_11_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_11_text.string = ""
+                @@clothing_slot_11 = nil
             end
         end
         if @@owned_clothing_array.size > 11
@@ -410,9 +430,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_12_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_12_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_12 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_12_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_12_text.string = ""
+                @@clothing_slot_12 = nil
             end
         end
         if @@owned_clothing_array.size > 12
@@ -420,9 +442,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_13_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_13_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_13 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_13_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_13_text.string = ""
+                @@clothing_slot_13 = nil
             end
         end
         if @@owned_clothing_array.size > 13
@@ -430,9 +454,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_14_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_14_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_14 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_14_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_14_text.string = ""
+                @@clothing_slot_14 = nil
             end
         end
         if @@owned_clothing_array.size > 14
@@ -440,9 +466,11 @@ module Inventory
             if t <= @@owned_clothing_array.size - 1
              @@clothing_slot_15_image_sprite.texture = @@owned_clothing_array[t].texture
              @@clothing_slot_15_text.string = @@owned_clothing_array[t].name
+             @@clothing_slot_15 = @@owned_clothing_array[t]
             else
                 @@clothing_slot_15_image_sprite.texture = NIL_TEXTURE
                 @@clothing_slot_15_text.string = ""
+                @@clothing_slot_15 = nil
             end
         end
        end
@@ -732,6 +760,11 @@ module Inventory
             slot_01_y = @@clothing_slot_01_sprite.position.y
             slot_01_width = @@clothing_slot_01_sprite.size.x
             slot_01_height = @@clothing_slot_01_sprite.size.y
+
+            slot_02_x = @@clothing_slot_02_sprite.position.x
+            slot_02_y = @@clothing_slot_02_sprite.position.y
+            slot_02_width = @@clothing_slot_02_sprite.size.x
+            slot_02_height = @@clothing_slot_02_sprite.size.y
         #---------------------------------------------------------------------------------------------
         
         if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
@@ -753,12 +786,30 @@ module Inventory
             ClothingTab.assign_slot_textures(window)
             sleep 0.15.seconds
         end
+
         
         if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
            (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
            
-            if @@clothing_slot_01 != nil
+            if @@clothing_slot_01 != nil   
+                t = 0 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
                 Player::Appearance.change_shirt(@@clothing_slot_01.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
+           (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
+           
+            if @@clothing_slot_02 != nil
+                t = 1 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_02.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTab.assign_slot_textures(window)
