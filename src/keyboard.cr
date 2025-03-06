@@ -58,6 +58,7 @@ module Keyboard
                 Inventory::InventoryManager.is_inventory_open=(!Inventory::InventoryManager.is_inventory_open)
                 Inventory::ClothingTab.is_open=(!Inventory::ClothingTab.is_open)
                 Inventory::ClothingTab.initialize_clothing_tab(window)
+                Inventory::ClothingTab.assign_slot_textures(window)
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::A)
