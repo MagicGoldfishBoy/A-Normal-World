@@ -5,7 +5,7 @@ require "../src/keyboard.cr"
 require "../src/levels.cr"
 
 puts "A Normal World"
-
+#TODO: add screaming trees lol
 module GameLoop
   VERSION = "0.1.0"
   @[Link("GL")]
