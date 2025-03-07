@@ -52,6 +52,9 @@ module Inventory
                 end
             elsif ClothingTabPants.is_open == true
                 InventoryManager.draw_universal_elements(window)
+                if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                    InventoryManager.universal_mouse_handling("pants", window)
+                end
             end
           end
         end
@@ -101,6 +104,8 @@ module Inventory
             when "shirt"
                 ClothingTabShirt.clothes_mouse_handling(window)
                 InventoryManager.shirt_tab_mouse_handling(window)
+            when "pants"
+                InventoryManager.pants_tab_mouse_handling(window)
             end
         end
 
@@ -118,6 +123,11 @@ module Inventory
             scale_y = current_size.y.to_f / original_height
     
             #------------------------------------objects-------------------------------------------------
+                shirt_tab_x = @@pants_tab.position.x
+                shirt_tab_y = @@pants_tab.position.y
+                shirt_tab_width = @@pants_tab.size.x
+                shirt_tab_height = @@pants_tab.size.y
+
                 pants_tab_x = @@pants_tab.position.x
                 pants_tab_y = @@pants_tab.position.y
                 pants_tab_width = @@pants_tab.size.x
@@ -128,6 +138,32 @@ module Inventory
                 ClothingTabPants.is_open=(true)
                 ClothingTabShirt.is_open=(false)
             end    
+        end
+
+        def InventoryManager.pants_tab_mouse_handling(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+            
+        
+            current_size = window.size
+            original_width = 800 
+            original_height = 600 
+    
+            scale_x = (current_size.x.to_f / original_width)
+            scale_y = current_size.y.to_f / original_height
+    
+            #------------------------------------objects-------------------------------------------------
+                shirt_tab_x = @@shirt_tab.position.x
+                shirt_tab_y = @@shirt_tab.position.y
+                shirt_tab_width = @@shirt_tab.size.x
+                shirt_tab_height = @@shirt_tab.size.y
+            #---------------------------------------------------------------------------------------------
+            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
+                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
+                ClothingTabShirt.is_open=(true)
+                ClothingTabPants.is_open=(false)
+            end   
         end
     end
     class ClothingTabShirt 
