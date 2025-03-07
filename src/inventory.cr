@@ -69,6 +69,16 @@ module Inventory
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Blue Tube-Top").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Purple Tube-Top").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Pink Tube-Top").not_nil!)
+
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("White Layered Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Black Layered Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Red Layered Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Orange Layered Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Yellow Layered Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Green Layered Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Blue Layered Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Purple Layered Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Pink Layered Shirt").not_nil!)
         
         @@clothing_box_sprite = SF::RectangleShape.new(SF.vector2(610, 420))
         @@clothing_box_sprite.fill_color = SF.color( 137, 170, 208 )
@@ -279,7 +289,11 @@ module Inventory
         @@owned_clothing_array.push(this)
        end
 
-       def ClothingTab.organise_owned_clothing_array_by_type
+       def ClothingTab.organise_owned_clothing_array_by_sleeve_length
+        temp_clothing_array_01 = [] of Clothing::Shirt
+        @@owned_clothing_array.each { |shirt| if shirt.sleeve_length.includes?("none") == true
+        temp_clothing_array_01.push(shirt)
+        end }
        end
 
        def ClothingTab.center_clothing_text(this)

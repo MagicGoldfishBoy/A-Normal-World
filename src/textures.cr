@@ -174,6 +174,25 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
   PINK_TUBE_TOP_TEXTURE = SF::Texture.from_file("../graphics/Pink_Tube_Top.png")
 
+
+  WHITE_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/White_Layered_Shirt.png")
+
+  BLACK_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Black_Layered_Shirt.png")
+
+  RED_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Red_Layered_Shirt.png")
+
+  ORANGE_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Orange_Layered_Shirt.png")
+
+  YELLOW_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Layered_Shirt.png")
+
+  GREEN_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Green_Layered_Shirt.png")
+
+  BLUE_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Blue_Layered_Shirt.png")
+
+  PURPLE_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Purple_Layered_Shirt.png")
+  
+  PINK_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Pink_Layered_Shirt.png")
+
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
  #S                                          Shoe Textures                                           S
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
