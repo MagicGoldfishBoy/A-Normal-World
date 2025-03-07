@@ -314,7 +314,7 @@ module Inventory
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
                 if ClothingTabPants.get_pants_category == "Color"
                  ClothingTabPants.organise_owned_pants_array_by_color(window)
-                elsif "Sleeve_Length"
+                elsif "Length"
                  ClothingTabPants.organise_owned_pants_array_by_sleeve_length_short_to_long(window)
                 end
                  sleep 0.15.seconds
@@ -394,6 +394,7 @@ module Inventory
         @@owned_shirt_array.push(Clothing::Shirt.get_shirt("Pink Layered Shirt").not_nil!)
       #---------------------------------------------------------------------------------
         
+      #--------------------------------objects------------------------------------------
         @@clothing_box_sprite = SF::RectangleShape.new(SF.vector2(610, 420))
         @@clothing_box_sprite.fill_color = SF.color( 137, 170, 208 )
 
@@ -564,6 +565,7 @@ module Inventory
         @@shirt_slot_15_text.color = SF::Color::Blue
 
         @@shirt_slot_15_image_sprite = SF::Sprite.new
+      #---------------------------------------------------------------------------------
 
 
        def initialize(is_open : Bool, page : Int32)
@@ -1474,223 +1476,227 @@ module Inventory
 
        #---------------------------------debug-------------------------------------------
         @@owned_pants_array.push(Clothing::Pants.get_pants("White Jeans").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Black Jeans").not_nil!)
        #---------------------------------------------------------------------------------
 
-       @@clothing_box_sprite = SF::RectangleShape.new(SF.vector2(610, 420))
-       @@clothing_box_sprite.fill_color = SF.color( 137, 170, 208 )
+       #--------------------------------objects------------------------------------------
+        @@clothing_box_sprite = SF::RectangleShape.new(SF.vector2(610, 420))
+        @@clothing_box_sprite.fill_color = SF.color( 137, 170, 208 )
 
-       
-       @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-       @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
+        
+        @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-       @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
 
-       @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
-       @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
+        @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
+        @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@clothing_pants_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
-       @@clothing_pants_category_box.fill_color = SF.color(161, 183, 208)
+        @@clothing_pants_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
+        @@clothing_pants_category_box.fill_color = SF.color(161, 183, 208)
 
-       @@clothing_sort_button_text = SF::Text.new
-       @@clothing_sort_button_text.font = QUICKSAND
-       @@clothing_sort_button_text.character_size = 20
-       @@clothing_sort_button_text.color = SF::Color::Blue
-       @@clothing_sort_button_text.string = "Sort"
+        @@clothing_sort_button_text = SF::Text.new
+        @@clothing_sort_button_text.font = QUICKSAND
+        @@clothing_sort_button_text.character_size = 20
+        @@clothing_sort_button_text.color = SF::Color::Blue
+        @@clothing_sort_button_text.string = "Sort"
 
-       @@clothing_pants_category_text = SF::Text.new
-       @@clothing_pants_category_text.font = QUICKSAND
-       @@clothing_pants_category_text.character_size = 20
-       @@clothing_pants_category_text.color = SF::Color::Blue
-       @@clothing_pants_category_text.string = @@pants_sorting_category
-       ClothingTabPants.center_clothing_text(@@clothing_pants_category_text)
+        @@clothing_pants_category_text = SF::Text.new
+        @@clothing_pants_category_text.font = QUICKSAND
+        @@clothing_pants_category_text.character_size = 20
+        @@clothing_pants_category_text.color = SF::Color::Blue
+        @@clothing_pants_category_text.string = @@pants_sorting_category
+        ClothingTabPants.center_clothing_text(@@clothing_pants_category_text)
 
-       @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-       @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
-       @@pants_tab.fill_color = SF.color(141, 163, 188)
+        @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@pants_tab.fill_color = SF.color(141, 163, 188)
 
-       @@pants_tab_text = SF::Text.new
-       @@pants_tab_text.font = QUICKSAND
-       @@pants_tab_text.character_size = 20
-       @@pants_tab_text.color = SF::Color::Blue
-       @@pants_tab_text.string = "Pantss"
+        @@pants_tab_text = SF::Text.new
+        @@pants_tab_text.font = QUICKSAND
+        @@pants_tab_text.character_size = 20
+        @@pants_tab_text.color = SF::Color::Blue
+        @@pants_tab_text.string = "Pantss"
 
-       @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
-       @@pants_tab.fill_color = SF.color(161, 183, 208)
+        @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@pants_tab.fill_color = SF.color(161, 183, 208)
 
-       @@pants_tab_text = SF::Text.new
-       @@pants_tab_text.font = QUICKSAND
-       @@pants_tab_text.character_size = 20
-       @@pants_tab_text.color = SF::Color::Blue
-       @@pants_tab_text.string = "Pants"
+        @@pants_tab_text = SF::Text.new
+        @@pants_tab_text.font = QUICKSAND
+        @@pants_tab_text.character_size = 20
+        @@pants_tab_text.color = SF::Color::Blue
+        @@pants_tab_text.string = "Pants"
 
 
-       @@pants_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_01_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_01_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_01_text = SF::Text.new
-       @@pants_slot_01_text.font = QUICKSAND
-       @@pants_slot_01_text.character_size = 12
-       @@pants_slot_01_text.color = SF::Color::Blue
+        @@pants_slot_01_text = SF::Text.new
+        @@pants_slot_01_text.font = QUICKSAND
+        @@pants_slot_01_text.character_size = 12
+        @@pants_slot_01_text.color = SF::Color::Blue
 
-       @@pants_slot_01_image_sprite = SF::Sprite.new
+        @@pants_slot_01_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_02_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_02_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_02_text = SF::Text.new
-       @@pants_slot_02_text.font = QUICKSAND
-       @@pants_slot_02_text.character_size = 12
-       @@pants_slot_02_text.color = SF::Color::Blue
+        @@pants_slot_02_text = SF::Text.new
+        @@pants_slot_02_text.font = QUICKSAND
+        @@pants_slot_02_text.character_size = 12
+        @@pants_slot_02_text.color = SF::Color::Blue
 
-       @@pants_slot_02_image_sprite = SF::Sprite.new
+        @@pants_slot_02_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_03_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_03_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_03_text = SF::Text.new
-       @@pants_slot_03_text.font = QUICKSAND
-       @@pants_slot_03_text.character_size = 12
-       @@pants_slot_03_text.color = SF::Color::Blue
+        @@pants_slot_03_text = SF::Text.new
+        @@pants_slot_03_text.font = QUICKSAND
+        @@pants_slot_03_text.character_size = 12
+        @@pants_slot_03_text.color = SF::Color::Blue
 
-       @@pants_slot_03_image_sprite = SF::Sprite.new
+        @@pants_slot_03_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_04_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_04_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_04_text = SF::Text.new
-       @@pants_slot_04_text.font = QUICKSAND
-       @@pants_slot_04_text.character_size = 12
-       @@pants_slot_04_text.color = SF::Color::Blue
+        @@pants_slot_04_text = SF::Text.new
+        @@pants_slot_04_text.font = QUICKSAND
+        @@pants_slot_04_text.character_size = 12
+        @@pants_slot_04_text.color = SF::Color::Blue
 
-       @@pants_slot_04_image_sprite = SF::Sprite.new
+        @@pants_slot_04_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_05_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_05_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_05_text = SF::Text.new
-       @@pants_slot_05_text.font = QUICKSAND
-       @@pants_slot_05_text.character_size = 12
-       @@pants_slot_05_text.color = SF::Color::Blue
+        @@pants_slot_05_text = SF::Text.new
+        @@pants_slot_05_text.font = QUICKSAND
+        @@pants_slot_05_text.character_size = 12
+        @@pants_slot_05_text.color = SF::Color::Blue
 
-       @@pants_slot_05_image_sprite = SF::Sprite.new
+        @@pants_slot_05_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_06_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_06_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_06_text = SF::Text.new
-       @@pants_slot_06_text.font = QUICKSAND
-       @@pants_slot_06_text.character_size = 12
-       @@pants_slot_06_text.color = SF::Color::Blue
-       
-       @@pants_slot_06_image_sprite = SF::Sprite.new
+        @@pants_slot_06_text = SF::Text.new
+        @@pants_slot_06_text.font = QUICKSAND
+        @@pants_slot_06_text.character_size = 12
+        @@pants_slot_06_text.color = SF::Color::Blue
+        
+        @@pants_slot_06_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_07_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_07_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_07_text = SF::Text.new
-       @@pants_slot_07_text.font = QUICKSAND
-       @@pants_slot_07_text.character_size = 12
-       @@pants_slot_07_text.color = SF::Color::Blue
+        @@pants_slot_07_text = SF::Text.new
+        @@pants_slot_07_text.font = QUICKSAND
+        @@pants_slot_07_text.character_size = 12
+        @@pants_slot_07_text.color = SF::Color::Blue
 
-       @@pants_slot_07_image_sprite = SF::Sprite.new
+        @@pants_slot_07_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_08_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_08_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_08_text = SF::Text.new
-       @@pants_slot_08_text.font = QUICKSAND
-       @@pants_slot_08_text.character_size = 12
-       @@pants_slot_08_text.color = SF::Color::Blue
+        @@pants_slot_08_text = SF::Text.new
+        @@pants_slot_08_text.font = QUICKSAND
+        @@pants_slot_08_text.character_size = 12
+        @@pants_slot_08_text.color = SF::Color::Blue
 
-       @@pants_slot_08_image_sprite = SF::Sprite.new
+        @@pants_slot_08_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_09_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_09_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_09_text = SF::Text.new
-       @@pants_slot_09_text.font = QUICKSAND
-       @@pants_slot_09_text.character_size = 12
-       @@pants_slot_09_text.color = SF::Color::Blue
+        @@pants_slot_09_text = SF::Text.new
+        @@pants_slot_09_text.font = QUICKSAND
+        @@pants_slot_09_text.character_size = 12
+        @@pants_slot_09_text.color = SF::Color::Blue
 
-       @@pants_slot_09_image_sprite = SF::Sprite.new
+        @@pants_slot_09_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_10_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_10_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_10_text = SF::Text.new
-       @@pants_slot_10_text.font = QUICKSAND
-       @@pants_slot_10_text.character_size = 12
-       @@pants_slot_10_text.color = SF::Color::Blue
+        @@pants_slot_10_text = SF::Text.new
+        @@pants_slot_10_text.font = QUICKSAND
+        @@pants_slot_10_text.character_size = 12
+        @@pants_slot_10_text.color = SF::Color::Blue
 
-       @@pants_slot_10_image_sprite = SF::Sprite.new
+        @@pants_slot_10_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_11_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_11_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_11_text = SF::Text.new
-       @@pants_slot_11_text.font = QUICKSAND
-       @@pants_slot_11_text.character_size = 12
-       @@pants_slot_11_text.color = SF::Color::Blue
+        @@pants_slot_11_text = SF::Text.new
+        @@pants_slot_11_text.font = QUICKSAND
+        @@pants_slot_11_text.character_size = 12
+        @@pants_slot_11_text.color = SF::Color::Blue
 
-       @@pants_slot_11_image_sprite = SF::Sprite.new
+        @@pants_slot_11_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_12_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_12_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_12_text = SF::Text.new
-       @@pants_slot_12_text.font = QUICKSAND
-       @@pants_slot_12_text.character_size = 12
-       @@pants_slot_12_text.color = SF::Color::Blue
+        @@pants_slot_12_text = SF::Text.new
+        @@pants_slot_12_text.font = QUICKSAND
+        @@pants_slot_12_text.character_size = 12
+        @@pants_slot_12_text.color = SF::Color::Blue
 
-       @@pants_slot_12_image_sprite = SF::Sprite.new
+        @@pants_slot_12_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_13_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_13_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_13_text = SF::Text.new
-       @@pants_slot_13_text.font = QUICKSAND
-       @@pants_slot_13_text.character_size = 12
-       @@pants_slot_13_text.color = SF::Color::Blue
+        @@pants_slot_13_text = SF::Text.new
+        @@pants_slot_13_text.font = QUICKSAND
+        @@pants_slot_13_text.character_size = 12
+        @@pants_slot_13_text.color = SF::Color::Blue
 
-       @@pants_slot_13_image_sprite = SF::Sprite.new
+        @@pants_slot_13_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_14_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_14_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_14_text = SF::Text.new
-       @@pants_slot_14_text.font = QUICKSAND
-       @@pants_slot_14_text.character_size = 12
-       @@pants_slot_14_text.color = SF::Color::Blue
+        @@pants_slot_14_text = SF::Text.new
+        @@pants_slot_14_text.font = QUICKSAND
+        @@pants_slot_14_text.character_size = 12
+        @@pants_slot_14_text.color = SF::Color::Blue
 
-       @@pants_slot_14_image_sprite = SF::Sprite.new
+        @@pants_slot_14_image_sprite = SF::Sprite.new
 
 
-       @@pants_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-       @@pants_slot_15_sprite.fill_color = SF.color(161, 183, 208)
+        @@pants_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@pants_slot_15_sprite.fill_color = SF.color(161, 183, 208)
 
-       @@pants_slot_15_text = SF::Text.new
-       @@pants_slot_15_text.font = QUICKSAND
-       @@pants_slot_15_text.character_size = 12
-       @@pants_slot_15_text.color = SF::Color::Blue
+        @@pants_slot_15_text = SF::Text.new
+        @@pants_slot_15_text.font = QUICKSAND
+        @@pants_slot_15_text.character_size = 12
+        @@pants_slot_15_text.color = SF::Color::Blue
 
-       @@pants_slot_15_image_sprite = SF::Sprite.new
+        @@pants_slot_15_image_sprite = SF::Sprite.new
+
+       #---------------------------------------------------------------------------------
 
        def initialize(is_open : Bool, page : Int32)
         @@is_open = is_open
@@ -1832,9 +1838,9 @@ module Inventory
             x = this.position.x - (this.string.size - 12)
             this.position = SF.vector2(x, this.position.y)
         end
-     end
+       end
 
-     def ClothingTabPants.initialize_clothing_tab(window)
+       def ClothingTabPants.initialize_clothing_tab(window)
         @@page = 1
         @@clothing_box_sprite.position = SF.vector2(20, 40)  
        end
@@ -2046,9 +2052,9 @@ module Inventory
         @@pants_slot_01_sprite.position = @@clothing_box_sprite.position + SF.vector2(10 * max_scale, 40 * max_scale)
         @@pants_slot_01_sprite.scale = SF.vector2(1, 1)
         
-        @@pants_slot_01_image_sprite.position = @@pants_slot_01_sprite.position - SF.vector2(30 * max_scale, 100 * max_scale)
+        @@pants_slot_01_image_sprite.position = @@pants_slot_01_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_01_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_01_image_sprite.texture_rect = SF.int_rect(96, 0, 96, 128)
+        @@pants_slot_01_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
 
         @@pants_slot_01_text.position = @@pants_slot_01_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_01_text)
@@ -2057,9 +2063,9 @@ module Inventory
         @@pants_slot_02_sprite.position = @@clothing_box_sprite.position + SF.vector2(90 * max_scale, 40 * max_scale)
         @@pants_slot_02_sprite.scale = SF.vector2(1, 1)
         
-        @@pants_slot_02_image_sprite.position = @@pants_slot_02_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_02_image_sprite.position = @@pants_slot_02_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_02_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_02_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_02_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
 
         @@pants_slot_02_text.position = @@pants_slot_02_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_02_text)
@@ -2068,9 +2074,9 @@ module Inventory
         @@pants_slot_03_sprite.position = @@clothing_box_sprite.position + SF.vector2(170 * max_scale, 40 * max_scale)
         @@pants_slot_03_sprite.scale = SF.vector2(1, 1)
         
-        @@pants_slot_03_image_sprite.position = @@pants_slot_03_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_03_image_sprite.position = @@pants_slot_03_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_03_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_03_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_03_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
 
         @@pants_slot_03_text.position = @@pants_slot_03_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_03_text)
@@ -2082,9 +2088,9 @@ module Inventory
         @@pants_slot_04_text.position = @@pants_slot_04_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_04_text)
         
-        @@pants_slot_04_image_sprite.position = @@pants_slot_04_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_04_image_sprite.position = @@pants_slot_04_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_04_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_04_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_04_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
 
 
         @@pants_slot_05_sprite.position = @@clothing_box_sprite.position + SF.vector2(330 * max_scale, 40 * max_scale)
@@ -2093,9 +2099,9 @@ module Inventory
         @@pants_slot_05_text.position = @@pants_slot_05_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_05_text)
         
-        @@pants_slot_05_image_sprite.position = @@pants_slot_05_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_05_image_sprite.position = @@pants_slot_05_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_05_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_05_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_05_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
         @@pants_slot_06_sprite.position = @@clothing_box_sprite.position + SF.vector2(10 * max_scale, 120 * max_scale)
@@ -2104,9 +2110,9 @@ module Inventory
         @@pants_slot_06_text.position = @@pants_slot_06_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_06_text)
         
-        @@pants_slot_06_image_sprite.position = @@pants_slot_06_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_06_image_sprite.position = @@pants_slot_06_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_06_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_06_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_06_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
         @@pants_slot_07_sprite.position = @@clothing_box_sprite.position + SF.vector2(90 * max_scale, 120 * max_scale)
@@ -2115,9 +2121,9 @@ module Inventory
         @@pants_slot_07_text.position = @@pants_slot_07_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_07_text)
         
-        @@pants_slot_07_image_sprite.position = @@pants_slot_07_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_07_image_sprite.position = @@pants_slot_07_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_07_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_07_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_07_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
         @@pants_slot_08_sprite.position = @@clothing_box_sprite.position + SF.vector2(170 * max_scale, 120 * max_scale)
@@ -2126,9 +2132,9 @@ module Inventory
         @@pants_slot_08_text.position = @@pants_slot_08_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_08_text)
         
-        @@pants_slot_08_image_sprite.position = @@pants_slot_08_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_08_image_sprite.position = @@pants_slot_08_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_08_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_08_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_08_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
         @@pants_slot_09_sprite.position = @@clothing_box_sprite.position + SF.vector2(250 * max_scale, 120 * max_scale)
@@ -2137,9 +2143,9 @@ module Inventory
         @@pants_slot_09_text.position = @@pants_slot_09_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_09_text)
         
-        @@pants_slot_09_image_sprite.position = @@pants_slot_09_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_09_image_sprite.position = @@pants_slot_09_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_09_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_09_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_09_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
         @@pants_slot_10_sprite.position = @@clothing_box_sprite.position + SF.vector2(330 * max_scale, 120 * max_scale)
@@ -2148,9 +2154,9 @@ module Inventory
         @@pants_slot_10_text.position = @@pants_slot_10_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_10_text)
         
-        @@pants_slot_10_image_sprite.position = @@pants_slot_10_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_10_image_sprite.position = @@pants_slot_10_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_10_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_10_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_10_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
         @@pants_slot_11_sprite.position = @@clothing_box_sprite.position + SF.vector2(10 * max_scale, 200 * max_scale)
@@ -2159,9 +2165,9 @@ module Inventory
         @@pants_slot_11_text.position = @@pants_slot_11_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_11_text)
         
-        @@pants_slot_11_image_sprite.position = @@pants_slot_11_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_11_image_sprite.position = @@pants_slot_11_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_11_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_11_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_11_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
         @@pants_slot_12_sprite.position = @@clothing_box_sprite.position + SF.vector2(90 * max_scale, 200 * max_scale)
@@ -2170,9 +2176,9 @@ module Inventory
         @@pants_slot_12_text.position = @@pants_slot_12_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_12_text)
         
-        @@pants_slot_12_image_sprite.position = @@pants_slot_12_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_12_image_sprite.position = @@pants_slot_12_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_12_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_12_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_12_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
         @@pants_slot_13_sprite.position = @@clothing_box_sprite.position + SF.vector2(170 * max_scale, 200 * max_scale)
@@ -2181,9 +2187,9 @@ module Inventory
         @@pants_slot_13_text.position = @@pants_slot_13_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_13_text)
         
-        @@pants_slot_13_image_sprite.position = @@pants_slot_13_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_13_image_sprite.position = @@pants_slot_13_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_13_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_13_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_13_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
         @@pants_slot_14_sprite.position = @@clothing_box_sprite.position + SF.vector2(250 * max_scale, 200 * max_scale)
@@ -2192,9 +2198,9 @@ module Inventory
         @@pants_slot_14_text.position = @@pants_slot_14_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_14_text)
         
-        @@pants_slot_14_image_sprite.position = @@pants_slot_14_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_14_image_sprite.position = @@pants_slot_14_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_14_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_14_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_14_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
         @@pants_slot_15_sprite.position = @@clothing_box_sprite.position + SF.vector2(330 * max_scale, 200 * max_scale)
@@ -2203,9 +2209,9 @@ module Inventory
         @@pants_slot_15_text.position = @@pants_slot_15_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabPants.center_clothing_text(@@pants_slot_15_text)
         
-        @@pants_slot_15_image_sprite.position = @@pants_slot_15_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
+        @@pants_slot_15_image_sprite.position = @@pants_slot_15_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
         @@pants_slot_15_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_15_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@pants_slot_15_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
 
 
         window.draw(@@pants_slot_01_sprite)
@@ -2367,7 +2373,7 @@ module Inventory
         
         if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
            (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
-           
+           puts @@owned_pants_array
             if @@pants_slot_01 != nil   
                 t = 0 + (@@page.not_nil! * 15) - 15
                 
