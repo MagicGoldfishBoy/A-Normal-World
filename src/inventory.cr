@@ -18,6 +18,26 @@ module Inventory
         @@inventory_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
         @@inventory_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
+        @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
+        @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_shirt_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
+        @@clothing_shirt_category_box.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_sort_button_text = SF::Text.new
+        @@clothing_sort_button_text.font = QUICKSAND
+        @@clothing_sort_button_text.character_size = 20
+        @@clothing_sort_button_text.color = SF::Color::Blue
+        @@clothing_sort_button_text.string = "Sort"
+
+        @@clothing_shirt_category_text = SF::Text.new
+        @@clothing_shirt_category_text.font = QUICKSAND
+        @@clothing_shirt_category_text.character_size = 20
+        @@clothing_shirt_category_text.color = SF::Color::Blue
+        @@clothing_shirt_category_text.string = ClothingTabShirt.get_shirt_category
+        ClothingTabShirt.center_clothing_text(@@clothing_shirt_category_text)
+
+
         @@shirt_tab = SF::RectangleShape.new(SF.vector2(100, 50))
         @@shirt_tab.fill_color = SF.color(141, 163, 188)
 
@@ -89,6 +109,13 @@ module Inventory
             @@pants_tab.position = @@inventory_box.position - SF.vector2(65 * max_scale, -(45 * max_scale))
             @@pants_tab_text.position = @@pants_tab.position + SF.vector2(15 * max_scale, 7 * max_scale)
 
+
+            @@clothing_sort_button_sprite.position = @@inventory_box.position + SF.vector2(50 * max_scale, 15 * max_scale)
+            @@clothing_shirt_category_box.position = @@clothing_sort_button_sprite.position + SF.vector2(60 * max_scale, 0)
+    
+            @@clothing_sort_button_text.position = @@clothing_sort_button_sprite.position + SF.vector2(10 * max_scale, 1 * max_scale)
+            @@clothing_shirt_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+
             window.draw(@@inventory_box)
 
             window.draw(@@inventory_left_arrow_sprite)
@@ -97,6 +124,11 @@ module Inventory
             window.draw(@@shirt_tab_text)
             window.draw(@@pants_tab)
             window.draw(@@pants_tab_text)
+
+            window.draw(@@clothing_sort_button_sprite)
+            window.draw(@@clothing_shirt_category_box)
+            window.draw(@@clothing_sort_button_text)
+            window.draw(@@clothing_shirt_category_text)
         end
 
         def InventoryManager.universal_mouse_handling(tab, window)
@@ -133,11 +165,25 @@ module Inventory
                 arrow_right_width = @@inventory_right_arrow_sprite.size.x
                 arrow_right_height = @@inventory_right_arrow_sprite.size.y
 
+
+                sort_button_x = @@clothing_sort_button_sprite.position.x
+                sort_button_y = @@clothing_sort_button_sprite.position.y
+                sort_button_width = @@clothing_sort_button_sprite.size.x
+                sort_button_height = @@clothing_sort_button_sprite.size.y
+    
+                category_button_x = @@clothing_shirt_category_box.position.x
+                category_button_y = @@clothing_shirt_category_box.position.y
+                category_button_width = @@clothing_shirt_category_box.size.x
+                category_button_height = @@clothing_shirt_category_box.size.y
+                
+
                 pants_tab_x = @@pants_tab.position.x
                 pants_tab_y = @@pants_tab.position.y
                 pants_tab_width = @@pants_tab.size.x
                 pants_tab_height = @@pants_tab.size.y
             #---------------------------------------------------------------------------------------------
+
+            
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
                 
@@ -162,6 +208,25 @@ module Inventory
                 ClothingTabPants.is_open=(true)
                 ClothingTabShirt.is_open=(false)
             end    
+
+            if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
+                (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
+                if ClothingTabShirt.get_shirt_category == "Color"
+                 ClothingTabShirt.organise_owned_shirt_array_by_color(window)
+                elsif "Sleeve_Length"
+                 ClothingTabShirt.organise_owned_shirt_array_by_sleeve_length_short_to_long(window)
+                end
+                 sleep 0.15.seconds
+             end        
+     
+             if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
+                (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
+                
+                 ClothingTabShirt.change_shirt_sort_category
+                 @@clothing_shirt_category_text.string = ClothingTabShirt.get_shirt_category
+                 ClothingTabShirt.center_clothing_text(@@clothing_shirt_category_text)
+                 sleep 0.15.seconds
+             end
         end
 
         def InventoryManager.pants_tab_mouse_handling(window)
@@ -257,32 +322,25 @@ module Inventory
         @@clothing_box_sprite = SF::RectangleShape.new(SF.vector2(610, 420))
         @@clothing_box_sprite.fill_color = SF.color( 137, 170, 208 )
 
-        
-        # @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-        # @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
-        # @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-        # @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+        # @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
+        # @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
 
+        # @@clothing_shirt_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
+        # @@clothing_shirt_category_box.fill_color = SF.color(161, 183, 208)
 
-        @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
-        @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
+        # @@clothing_sort_button_text = SF::Text.new
+        # @@clothing_sort_button_text.font = QUICKSAND
+        # @@clothing_sort_button_text.character_size = 20
+        # @@clothing_sort_button_text.color = SF::Color::Blue
+        # @@clothing_sort_button_text.string = "Sort"
 
-        @@clothing_shirt_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
-        @@clothing_shirt_category_box.fill_color = SF.color(161, 183, 208)
-
-        @@clothing_sort_button_text = SF::Text.new
-        @@clothing_sort_button_text.font = QUICKSAND
-        @@clothing_sort_button_text.character_size = 20
-        @@clothing_sort_button_text.color = SF::Color::Blue
-        @@clothing_sort_button_text.string = "Sort"
-
-        @@clothing_shirt_category_text = SF::Text.new
-        @@clothing_shirt_category_text.font = QUICKSAND
-        @@clothing_shirt_category_text.character_size = 20
-        @@clothing_shirt_category_text.color = SF::Color::Blue
-        @@clothing_shirt_category_text.string = @@shirt_sorting_category
-        ClothingTabShirt.center_clothing_text(@@clothing_shirt_category_text)
+        # @@clothing_shirt_category_text = SF::Text.new
+        # @@clothing_shirt_category_text.font = QUICKSAND
+        # @@clothing_shirt_category_text.character_size = 20
+        # @@clothing_shirt_category_text.color = SF::Color::Blue
+        # @@clothing_shirt_category_text.string = @@shirt_sorting_category
+        # ClothingTabShirt.center_clothing_text(@@clothing_shirt_category_text)
 
         @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
         @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
@@ -493,6 +551,10 @@ module Inventory
         when "Color"
             @@shirt_sorting_category = "Length"
         end
+       end
+
+       def ClothingTabShirt.get_shirt_category
+        return @@shirt_sorting_category
        end
 
        def ClothingTabShirt.organise_owned_shirt_array_by_color(window)
@@ -799,17 +861,12 @@ module Inventory
         @@clothing_box_sprite.position = SF.vector2(80 * max_scale, 40 * max_scale)
         @@clothing_box_sprite.scale = SF.vector2(1, 1)
 
-        # @@clothing_left_arrow_sprite.position = @@clothing_box_sprite.position + SF.vector2(200 * max_scale, 15 * max_scale)
-        # @@clothing_left_arrow_sprite.scale = SF.vector2(1, 1)
 
-        # @@clothing_right_arrow_sprite.position = @@clothing_left_arrow_sprite.position + SF.vector2(50 * max_scale, 1 * max_scale)
-        # @@clothing_right_arrow_sprite.scale = SF.vector2(1, 1)
+        # @@clothing_sort_button_sprite.position = @@clothing_box_sprite.position + SF.vector2(50 * max_scale, 15 * max_scale)
+        # @@clothing_shirt_category_box.position = @@clothing_sort_button_sprite.position + SF.vector2(60 * max_scale, 0)
 
-        @@clothing_sort_button_sprite.position = @@clothing_box_sprite.position + SF.vector2(50 * max_scale, 15 * max_scale)
-        @@clothing_shirt_category_box.position = @@clothing_sort_button_sprite.position + SF.vector2(60 * max_scale, 0)
-
-        @@clothing_sort_button_text.position = @@clothing_sort_button_sprite.position + SF.vector2(10 * max_scale, 1 * max_scale)
-        @@clothing_shirt_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+        # @@clothing_sort_button_text.position = @@clothing_sort_button_sprite.position + SF.vector2(10 * max_scale, 1 * max_scale)
+        # @@clothing_shirt_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
 
         @@shirt_slot_01_sprite.position = @@clothing_box_sprite.position + SF.vector2(10 * max_scale, 40 * max_scale)
@@ -976,14 +1033,10 @@ module Inventory
         @@shirt_slot_15_image_sprite.scale = SF.vector2(2, 2)
         @@shirt_slot_15_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
 
-        #window.draw(@@clothing_box_sprite)
-        # window.draw(@@clothing_left_arrow_sprite)
-        # window.draw(@@clothing_right_arrow_sprite)
-
-        window.draw(@@clothing_sort_button_sprite)
-        window.draw(@@clothing_shirt_category_box)
-        window.draw(@@clothing_sort_button_text)
-        window.draw(@@clothing_shirt_category_text)
+        # window.draw(@@clothing_sort_button_sprite)
+        # window.draw(@@clothing_shirt_category_box)
+        # window.draw(@@clothing_sort_button_text)
+        # window.draw(@@clothing_shirt_category_text)
 
 
         window.draw(@@shirt_slot_01_sprite)
@@ -1075,15 +1128,15 @@ module Inventory
             # arrow_right_width = @@clothing_right_arrow_sprite.size.x
             # arrow_right_height = @@clothing_right_arrow_sprite.size.y
 
-            sort_button_x = @@clothing_sort_button_sprite.position.x
-            sort_button_y = @@clothing_sort_button_sprite.position.y
-            sort_button_width = @@clothing_sort_button_sprite.size.x
-            sort_button_height = @@clothing_sort_button_sprite.size.y
+            # sort_button_x = @@clothing_sort_button_sprite.position.x
+            # sort_button_y = @@clothing_sort_button_sprite.position.y
+            # sort_button_width = @@clothing_sort_button_sprite.size.x
+            # sort_button_height = @@clothing_sort_button_sprite.size.y
 
-            category_button_x = @@clothing_shirt_category_box.position.x
-            category_button_y = @@clothing_shirt_category_box.position.y
-            category_button_width = @@clothing_shirt_category_box.size.x
-            category_button_height = @@clothing_shirt_category_box.size.y
+            # category_button_x = @@clothing_shirt_category_box.position.x
+            # category_button_y = @@clothing_shirt_category_box.position.y
+            # category_button_width = @@clothing_shirt_category_box.size.x
+            # category_button_height = @@clothing_shirt_category_box.size.y
 
             slot_01_x = @@shirt_slot_01_sprite.position.x
             slot_01_y = @@shirt_slot_01_sprite.position.y
@@ -1181,24 +1234,24 @@ module Inventory
         #     sleep 0.15.seconds
         # end      
 
-        if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
-           (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
-           if @@shirt_sorting_category == "Color"
-            ClothingTabShirt.organise_owned_shirt_array_by_color(window)
-           elsif "Sleeve_Length"
-            ClothingTabShirt.organise_owned_shirt_array_by_sleeve_length_short_to_long(window)
-           end
-            sleep 0.15.seconds
-        end        
+        # if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
+        #    (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
+        #    if @@shirt_sorting_category == "Color"
+        #     ClothingTabShirt.organise_owned_shirt_array_by_color(window)
+        #    elsif "Sleeve_Length"
+        #     ClothingTabShirt.organise_owned_shirt_array_by_sleeve_length_short_to_long(window)
+        #    end
+        #     sleep 0.15.seconds
+        # end        
 
-        if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
-           (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
+        # if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
+        #    (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
            
-            ClothingTabShirt.change_shirt_sort_category
-            @@clothing_shirt_category_text.string = @@shirt_sorting_category
-            ClothingTabShirt.center_clothing_text(@@clothing_shirt_category_text)
-            sleep 0.15.seconds
-        end
+        #     ClothingTabShirt.change_shirt_sort_category
+        #     @@clothing_shirt_category_text.string = @@shirt_sorting_category
+        #     ClothingTabShirt.center_clothing_text(@@clothing_shirt_category_text)
+        #     sleep 0.15.seconds
+        # end
         
         if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
            (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
