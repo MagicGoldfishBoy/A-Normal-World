@@ -123,16 +123,40 @@ module Inventory
             scale_y = current_size.y.to_f / original_height
     
             #------------------------------------objects-------------------------------------------------
-                shirt_tab_x = @@pants_tab.position.x
-                shirt_tab_y = @@pants_tab.position.y
-                shirt_tab_width = @@pants_tab.size.x
-                shirt_tab_height = @@pants_tab.size.y
+                arrow_left_x = @@inventory_left_arrow_sprite.position.x
+                arrow_left_y = @@inventory_left_arrow_sprite.position.y
+                arrow_left_width = @@inventory_left_arrow_sprite.size.x
+                arrow_left_height = @@inventory_left_arrow_sprite.size.y
+
+                arrow_right_x = @@inventory_right_arrow_sprite.position.x
+                arrow_right_y = @@inventory_right_arrow_sprite.position.y
+                arrow_right_width = @@inventory_right_arrow_sprite.size.x
+                arrow_right_height = @@inventory_right_arrow_sprite.size.y
 
                 pants_tab_x = @@pants_tab.position.x
                 pants_tab_y = @@pants_tab.position.y
                 pants_tab_width = @@pants_tab.size.x
                 pants_tab_height = @@pants_tab.size.y
             #---------------------------------------------------------------------------------------------
+            if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
+                (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
+                
+                 if ClothingTabShirt.page.not_nil! > 1
+                    ClothingTabShirt.page=(ClothingTabShirt.page.not_nil! - 1)
+                 end
+                 ClothingTabShirt.assign_slot_textures(window)
+                 sleep 0.15.seconds
+             end
+             
+             if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+                (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
+                
+                 if ClothingTabShirt.page.not_nil! <= 5
+                    ClothingTabShirt.page=(ClothingTabShirt.page.not_nil! + 1)
+                 end
+                 ClothingTabShirt.assign_slot_textures(window)
+                 sleep 0.15.seconds
+             end  
             if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
                 (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
                 ClothingTabPants.is_open=(true)
@@ -234,11 +258,11 @@ module Inventory
         @@clothing_box_sprite.fill_color = SF.color( 137, 170, 208 )
 
         
-        @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-        @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
+        # @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        # @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+        # @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        # @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
 
         @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
@@ -262,24 +286,6 @@ module Inventory
 
         @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
         @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
-
-        # @@shirt_tab = SF::RectangleShape.new(SF.vector2(100, 50))
-        # @@shirt_tab.fill_color = SF.color(141, 163, 188)
-
-        # @@shirt_tab_text = SF::Text.new
-        # @@shirt_tab_text.font = QUICKSAND
-        # @@shirt_tab_text.character_size = 20
-        # @@shirt_tab_text.color = SF::Color::Blue
-        # @@shirt_tab_text.string = "Shirts"
-
-        # @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
-        # @@pants_tab.fill_color = SF.color(161, 183, 208)
-
-        # @@pants_tab_text = SF::Text.new
-        # @@pants_tab_text.font = QUICKSAND
-        # @@pants_tab_text.character_size = 20
-        # @@pants_tab_text.color = SF::Color::Blue
-        # @@pants_tab_text.string = "Pants"
 
 
         @@shirt_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
@@ -793,11 +799,11 @@ module Inventory
         @@clothing_box_sprite.position = SF.vector2(80 * max_scale, 40 * max_scale)
         @@clothing_box_sprite.scale = SF.vector2(1, 1)
 
-        @@clothing_left_arrow_sprite.position = @@clothing_box_sprite.position + SF.vector2(200 * max_scale, 15 * max_scale)
-        @@clothing_left_arrow_sprite.scale = SF.vector2(1, 1)
+        # @@clothing_left_arrow_sprite.position = @@clothing_box_sprite.position + SF.vector2(200 * max_scale, 15 * max_scale)
+        # @@clothing_left_arrow_sprite.scale = SF.vector2(1, 1)
 
-        @@clothing_right_arrow_sprite.position = @@clothing_left_arrow_sprite.position + SF.vector2(50 * max_scale, 1 * max_scale)
-        @@clothing_right_arrow_sprite.scale = SF.vector2(1, 1)
+        # @@clothing_right_arrow_sprite.position = @@clothing_left_arrow_sprite.position + SF.vector2(50 * max_scale, 1 * max_scale)
+        # @@clothing_right_arrow_sprite.scale = SF.vector2(1, 1)
 
         @@clothing_sort_button_sprite.position = @@clothing_box_sprite.position + SF.vector2(50 * max_scale, 15 * max_scale)
         @@clothing_shirt_category_box.position = @@clothing_sort_button_sprite.position + SF.vector2(60 * max_scale, 0)
@@ -970,9 +976,9 @@ module Inventory
         @@shirt_slot_15_image_sprite.scale = SF.vector2(2, 2)
         @@shirt_slot_15_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
 
-        window.draw(@@clothing_box_sprite)
-        window.draw(@@clothing_left_arrow_sprite)
-        window.draw(@@clothing_right_arrow_sprite)
+        #window.draw(@@clothing_box_sprite)
+        # window.draw(@@clothing_left_arrow_sprite)
+        # window.draw(@@clothing_right_arrow_sprite)
 
         window.draw(@@clothing_sort_button_sprite)
         window.draw(@@clothing_shirt_category_box)
@@ -1059,15 +1065,15 @@ module Inventory
         scale_y = current_size.y.to_f / original_height
 
         #------------------------------------objects-------------------------------------------------
-            arrow_left_x = @@clothing_left_arrow_sprite.position.x
-            arrow_left_y = @@clothing_left_arrow_sprite.position.y
-            arrow_left_width = @@clothing_left_arrow_sprite.size.x
-            arrow_left_height = @@clothing_left_arrow_sprite.size.y
+            # arrow_left_x = @@clothing_left_arrow_sprite.position.x
+            # arrow_left_y = @@clothing_left_arrow_sprite.position.y
+            # arrow_left_width = @@clothing_left_arrow_sprite.size.x
+            # arrow_left_height = @@clothing_left_arrow_sprite.size.y
 
-            arrow_right_x = @@clothing_right_arrow_sprite.position.x
-            arrow_right_y = @@clothing_right_arrow_sprite.position.y
-            arrow_right_width = @@clothing_right_arrow_sprite.size.x
-            arrow_right_height = @@clothing_right_arrow_sprite.size.y
+            # arrow_right_x = @@clothing_right_arrow_sprite.position.x
+            # arrow_right_y = @@clothing_right_arrow_sprite.position.y
+            # arrow_right_width = @@clothing_right_arrow_sprite.size.x
+            # arrow_right_height = @@clothing_right_arrow_sprite.size.y
 
             sort_button_x = @@clothing_sort_button_sprite.position.x
             sort_button_y = @@clothing_sort_button_sprite.position.y
@@ -1155,25 +1161,25 @@ module Inventory
             slot_15_height = @@shirt_slot_15_sprite.size.y
         #---------------------------------------------------------------------------------------------
         
-        if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
-           (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
+        # if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
+        #    (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
            
-            if @@page.not_nil! > 1
-                @@page = @@page.not_nil! - 1
-            end
-            ClothingTabShirt.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+        #     if @@page.not_nil! > 1
+        #         @@page = @@page.not_nil! - 1
+        #     end
+        #     ClothingTabShirt.assign_slot_textures(window)
+        #     sleep 0.15.seconds
+        # end
         
-        if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
-           (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
+        # if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+        #    (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
            
-            if @@page.not_nil! <= 5
-                @@page = @@page.not_nil! + 1
-            end
-            ClothingTabShirt.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end      
+        #     if @@page.not_nil! <= 5
+        #         @@page = @@page.not_nil! + 1
+        #     end
+        #     ClothingTabShirt.assign_slot_textures(window)
+        #     sleep 0.15.seconds
+        # end      
 
         if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
            (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
