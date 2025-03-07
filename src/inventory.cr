@@ -91,6 +91,10 @@ module Inventory
         @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
 
+        @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
+
+
         @@clothing_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
         @@clothing_slot_01_sprite.fill_color = SF.color(161, 183, 208)
 
@@ -289,11 +293,27 @@ module Inventory
         @@owned_clothing_array.push(this)
        end
 
-       def ClothingTab.organise_owned_clothing_array_by_sleeve_length
+       def ClothingTab.organise_owned_clothing_array_by_sleeve_length_short_to_long(window)
         temp_clothing_array_01 = [] of Clothing::Shirt
         @@owned_clothing_array.each { |shirt| if shirt.sleeve_length.includes?("none") == true
         temp_clothing_array_01.push(shirt)
-        end }
+        end}
+
+        @@owned_clothing_array.each { |shirt| if shirt.sleeve_length.includes?("very_short") == true
+        temp_clothing_array_01.push(shirt)
+        end}
+
+        @@owned_clothing_array.each { |shirt| if shirt.sleeve_length.includes?("short") == true
+        temp_clothing_array_01.push(shirt)
+        end}
+
+        @@owned_clothing_array.each { |shirt| if shirt.sleeve_length.includes?("long") == true
+        temp_clothing_array_01.push(shirt)
+        end}
+
+        @@owned_clothing_array.clear
+        @@owned_clothing_array = temp_clothing_array_01
+        ClothingTab.assign_slot_textures(window)
        end
 
        def ClothingTab.center_clothing_text(this)
@@ -523,6 +543,8 @@ module Inventory
         @@clothing_right_arrow_sprite.position = @@clothing_left_arrow_sprite.position + SF.vector2(50 * max_scale, 1 * max_scale)
         @@clothing_right_arrow_sprite.scale = SF.vector2(1, 1)
 
+        @@clothing_sort_button_sprite.position = @@clothing_box_sprite.position + SF.vector2(150 * max_scale, 15 * max_scale)
+
         
         @@clothing_slot_01_sprite.position = @@clothing_box_sprite.position + SF.vector2(10 * max_scale, 40 * max_scale)
         @@clothing_slot_01_sprite.scale = SF.vector2(1, 1)
@@ -692,6 +714,8 @@ module Inventory
         window.draw(@@clothing_left_arrow_sprite)
         window.draw(@@clothing_right_arrow_sprite)
 
+        window.draw(@@clothing_sort_button_sprite)
+
         window.draw(@@clothing_slot_01_sprite)
         window.draw(@@clothing_slot_01_image_sprite)
         window.draw(@@clothing_slot_01_text)
@@ -780,6 +804,12 @@ module Inventory
             arrow_right_y = @@clothing_right_arrow_sprite.position.y
             arrow_right_width = @@clothing_right_arrow_sprite.size.x
             arrow_right_height = @@clothing_right_arrow_sprite.size.y
+
+            sort_button_x = @@clothing_sort_button_sprite.position.x
+            sort_button_y = @@clothing_sort_button_sprite.position.y
+            sort_button_width = @@clothing_sort_button_sprite.size.x
+            sort_button_height = @@clothing_sort_button_sprite.size.y
+
 
             slot_01_x = @@clothing_slot_01_sprite.position.x
             slot_01_y = @@clothing_slot_01_sprite.position.y
@@ -874,6 +904,14 @@ module Inventory
                 @@page = @@page.not_nil! + 1
             end
             ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+
+        if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
+           (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
+           
+            ClothingTab.organise_owned_clothing_array_by_sleeve_length_short_to_long(window)
             sleep 0.15.seconds
         end
 
