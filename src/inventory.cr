@@ -56,8 +56,8 @@ module Inventory
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Yellow_T-Shirt").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Green_T-Shirt").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Blue_T-Shirt").not_nil!)
-        # @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Purple_T-Shirt").not_nil!)
-        # @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Pink_T-Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Purple T-Shirt").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Pink T-Shirt").not_nil!)
         
         @@clothing_box_sprite = SF::RectangleShape.new(SF.vector2(610, 420))
         @@clothing_box_sprite.fill_color = SF.color( 137, 170, 208 )
@@ -770,6 +770,66 @@ module Inventory
             slot_03_y = @@clothing_slot_03_sprite.position.y
             slot_03_width = @@clothing_slot_03_sprite.size.x
             slot_03_height = @@clothing_slot_03_sprite.size.y
+
+            slot_04_x = @@clothing_slot_04_sprite.position.x
+            slot_04_y = @@clothing_slot_04_sprite.position.y
+            slot_04_width = @@clothing_slot_04_sprite.size.x
+            slot_04_height = @@clothing_slot_04_sprite.size.y
+
+            slot_05_x = @@clothing_slot_05_sprite.position.x
+            slot_05_y = @@clothing_slot_05_sprite.position.y
+            slot_05_width = @@clothing_slot_05_sprite.size.x
+            slot_05_height = @@clothing_slot_05_sprite.size.y
+
+            slot_06_x = @@clothing_slot_06_sprite.position.x
+            slot_06_y = @@clothing_slot_06_sprite.position.y
+            slot_06_width = @@clothing_slot_06_sprite.size.x
+            slot_06_height = @@clothing_slot_06_sprite.size.y
+
+            slot_07_x = @@clothing_slot_07_sprite.position.x
+            slot_07_y = @@clothing_slot_07_sprite.position.y
+            slot_07_width = @@clothing_slot_07_sprite.size.x
+            slot_07_height = @@clothing_slot_07_sprite.size.y
+
+            slot_08_x = @@clothing_slot_08_sprite.position.x
+            slot_08_y = @@clothing_slot_08_sprite.position.y
+            slot_08_width = @@clothing_slot_08_sprite.size.x
+            slot_08_height = @@clothing_slot_08_sprite.size.y
+
+            slot_09_x = @@clothing_slot_09_sprite.position.x
+            slot_09_y = @@clothing_slot_09_sprite.position.y
+            slot_09_width = @@clothing_slot_09_sprite.size.x
+            slot_09_height = @@clothing_slot_09_sprite.size.y
+
+            slot_10_x = @@clothing_slot_10_sprite.position.x
+            slot_10_y = @@clothing_slot_10_sprite.position.y
+            slot_10_width = @@clothing_slot_10_sprite.size.x
+            slot_10_height = @@clothing_slot_10_sprite.size.y
+
+            slot_11_x = @@clothing_slot_11_sprite.position.x
+            slot_11_y = @@clothing_slot_11sprite.position.y
+            slot_11_width = @@clothing_slot_11_sprite.size.x
+            slot_11_height = @@clothing_slot_11_sprite.size.y
+
+            slot_12_x = @@clothing_slot_12_sprite.position.x
+            slot_12_y = @@clothing_slot_12_sprite.position.y
+            slot_12_width = @@clothing_slot_12_sprite.size.x
+            slot_12_height = @@clothing_slot_12_sprite.size.y
+
+            slot_13_x = @@clothing_slot_13_sprite.position.x
+            slot_13_y = @@clothing_slot_13_sprite.position.y
+            slot_13_width = @@clothing_slot_13_sprite.size.x
+            slot_13_height = @@clothing_slot_13_sprite.size.y
+
+            slot_14_x = @@clothing_slot_14_sprite.position.x
+            slot_14_y = @@clothing_slot_14_sprite.position.y
+            slot_14_width = @@clothing_slot_14_sprite.size.x
+            slot_14_height = @@clothing_slot_14_sprite.size.y
+
+            slot_15_x = @@clothing_slot_15_sprite.position.x
+            slot_15_y = @@clothing_slot_15_sprite.position.y
+            slot_15_width = @@clothing_slot_15_sprite.size.x
+            slot_15_height = @@clothing_slot_15_sprite.size.y
         #---------------------------------------------------------------------------------------------
         
         if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
@@ -834,6 +894,63 @@ module Inventory
             ClothingTab.assign_slot_textures(window)
             sleep 0.15.seconds
         end
+        
+        if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
+           (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
+           
+            if @@clothing_slot_04 != nil
+                t = 3 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_04.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
+           (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
+           
+            if @@clothing_slot_05 != nil
+                t = 4 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_05.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
+           (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
+           
+            if @@clothing_slot_06 != nil
+                t = 5 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_06.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
+           (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
+           
+            if @@clothing_slot_07 != nil
+                t = 6 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_07.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+
        end
     end
 

@@ -151,6 +151,10 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
   T_SHIRT_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_T-Shirt.png")
 
+  T_SHIRT_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_T-Shirt.png")
+
+  T_SHIRT_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_T-Shirt.png")
+
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
  #S                                          Shoe Textures                                           S
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
