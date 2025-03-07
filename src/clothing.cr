@@ -4,7 +4,7 @@ require "../src/textures.cr"
 module Clothing
     class Shirt
         SHIRT_ARRAY = [] of Shirt
-       def initialize(name : String, id : Int32, is_owned : Bool, sleeve_length : String, style : String, texture : SF::Texture)
+       def initialize(name : String, id : Int32, is_owned : Bool, sleeve_length : String, style : String, texture : SF::Texture, color : String)
         @name = name
         @@name = name
         @id = id
@@ -12,6 +12,7 @@ module Clothing
         @sleeve_length = sleeve_length
         @style = style
         @texture = texture
+        @color = color
         SHIRT_ARRAY.push(self)
        end
 
@@ -20,6 +21,7 @@ module Clothing
        getter sleeve_length : String
        getter style : String
        getter texture : SF::Texture
+       getter color : String
        property is_owned : Bool
 
        def Shirt.name
@@ -46,6 +48,10 @@ module Clothing
         @@texture
        end
 
+       def Shirt.color
+        @@texture
+       end
+
        def Shirt.is_owned=(this)
         @@is_owned = this
        end
@@ -62,45 +68,45 @@ module Clothing
         end }
        end
 
-       @@white_tank_top = Shirt.new("White Tank Top", 1, false, "very_short", "plain", TANK_TOP_WHITE_TEXTURE)
-       @@black_tank_top = Shirt.new("Black Tank Top", 2, false, "very_short", "plain", TANK_TOP_BLACK_TEXTURE)
-       @@red_tank_top = Shirt.new("Red Tank Top", 3, false, "very_short", "plain", TANK_TOP_RED_TEXTURE)
-       @@orange_tank_top = Shirt.new("Orange Tank Top", 4, false, "very_short", "plain", TANK_TOP_ORANGE_TEXTURE)
-       @@yellow_tank_top = Shirt.new("Yellow Tank Top", 5, false, "very_short", "plain", TANK_TOP_YELLOW_TEXTURE)
-       @@green_tank_top = Shirt.new("Green Tank Top", 6, false, "very_short", "plain", TANK_TOP_GREEN_TEXTURE)
-       @@blue_tank_top = Shirt.new("Blue Tank Top", 7, false, "very_short", "plain", TANK_TOP_BLUE_TEXTURE)
-       @@purple_tank_top = Shirt.new("Purple Tank Top", 8, false, "very_short", "plain", TANK_TOP_PURPLE_TEXTURE)
-       @@pink_tank_top = Shirt.new("Pink Tank Top", 9, false, "very_short", "plain", TANK_TOP_PINK_TEXTURE)
+       @@white_tank_top = Shirt.new("White Tank Top", 1, false, "very_short", "plain", TANK_TOP_WHITE_TEXTURE, "white")
+       @@black_tank_top = Shirt.new("Black Tank Top", 2, false, "very_short", "plain", TANK_TOP_BLACK_TEXTURE, "black")
+       @@red_tank_top = Shirt.new("Red Tank Top", 3, false, "very_short", "plain", TANK_TOP_RED_TEXTURE, "red")
+       @@orange_tank_top = Shirt.new("Orange Tank Top", 4, false, "very_short", "plain", TANK_TOP_ORANGE_TEXTURE, "orange")
+       @@yellow_tank_top = Shirt.new("Yellow Tank Top", 5, false, "very_short", "plain", TANK_TOP_YELLOW_TEXTURE, "yellow")
+       @@green_tank_top = Shirt.new("Green Tank Top", 6, false, "very_short", "plain", TANK_TOP_GREEN_TEXTURE, "green")
+       @@blue_tank_top = Shirt.new("Blue Tank Top", 7, false, "very_short", "plain", TANK_TOP_BLUE_TEXTURE, "blue")
+       @@purple_tank_top = Shirt.new("Purple Tank Top", 8, false, "very_short", "plain", TANK_TOP_PURPLE_TEXTURE, "purple")
+       @@pink_tank_top = Shirt.new("Pink Tank Top", 9, false, "very_short", "plain", TANK_TOP_PINK_TEXTURE, "pink")
 
-       @@white_t_shirt = Shirt.new("White_T-Shirt", 100, false, "short", "plain", T_SHIRT_WHITE_TEXTURE)
-       @@black_t_shirt = Shirt.new("Black_T-Shirt", 101, false, "short", "plain", T_SHIRT_BLACK_TEXTURE)
-       @@red_t_shirt = Shirt.new("Red_T-Shirt", 102, false, "short", "plain", T_SHIRT_RED_TEXTURE)
-       @@orange_t_shirt = Shirt.new("Orange_T-Shirt", 103, false, "short", "plain", T_SHIRT_ORANGE_TEXTURE)
-       @@yellow_t_shirt = Shirt.new("Yellow_T-Shirt", 104, false, "short", "plain", T_SHIRT_YELLOW_TEXTURE)
-       @@green_t_shirt = Shirt.new("Green_T-Shirt", 105, false, "short", "plain", T_SHIRT_GREEN_TEXTURE)
-       @@blue_t_shirt = Shirt.new("Blue_T-Shirt", 106, false, "short", "plain", T_SHIRT_BLUE_TEXTURE)
-       @@purple_t_shirt = Shirt.new("Purple T-Shirt", 107, false, "short", "plain", T_SHIRT_PURPLE_TEXTURE)
-       @@pink_t_shirt = Shirt.new("Pink T-Shirt", 108, false, "short", "plain", T_SHIRT_PINK_TEXTURE)
+       @@white_t_shirt = Shirt.new("White_T-Shirt", 100, false, "short", "plain", T_SHIRT_WHITE_TEXTURE, "white")
+       @@black_t_shirt = Shirt.new("Black_T-Shirt", 101, false, "short", "plain", T_SHIRT_BLACK_TEXTURE, "black")
+       @@red_t_shirt = Shirt.new("Red_T-Shirt", 102, false, "short", "plain", T_SHIRT_RED_TEXTURE, "red")
+       @@orange_t_shirt = Shirt.new("Orange_T-Shirt", 103, false, "short", "plain", T_SHIRT_ORANGE_TEXTURE, "orange")
+       @@yellow_t_shirt = Shirt.new("Yellow_T-Shirt", 104, false, "short", "plain", T_SHIRT_YELLOW_TEXTURE, "yellow")
+       @@green_t_shirt = Shirt.new("Green_T-Shirt", 105, false, "short", "plain", T_SHIRT_GREEN_TEXTURE, "green")
+       @@blue_t_shirt = Shirt.new("Blue_T-Shirt", 106, false, "short", "plain", T_SHIRT_BLUE_TEXTURE, "blue")
+       @@purple_t_shirt = Shirt.new("Purple T-Shirt", 107, false, "short", "plain", T_SHIRT_PURPLE_TEXTURE, "purple")
+       @@pink_t_shirt = Shirt.new("Pink T-Shirt", 108, false, "short", "plain", T_SHIRT_PINK_TEXTURE, "pink")
 
-       @@white_tube_top = Shirt.new("White Tube-Top", 200, false, "none", "plain", WHITE_TUBE_TOP_TEXTURE)
-       @@black_tube_top = Shirt.new("Black Tube-Top", 201, false, "none", "plain", BLACK_TUBE_TOP_TEXTURE)
-       @@red_tube_top = Shirt.new("Red Tube-Top", 202, false, "none", "plain", RED_TUBE_TOP_TEXTURE)
-       @@orange_tube_top = Shirt.new("Orange Tube-Top", 203, false, "none", "plain", ORANGE_TUBE_TOP_TEXTURE)
-       @@yellow_tube_top = Shirt.new("Yellow Tube-Top", 204, false, "none", "plain", YELLOW_TUBE_TOP_TEXTURE)
-       @@green_tube_top = Shirt.new("Green Tube-Top", 205, false, "none", "plain", GREEN_TUBE_TOP_TEXTURE)
-       @@blue_tube_top = Shirt.new("Blue Tube-Top", 206, false, "none", "plain", BLUE_TUBE_TOP_TEXTURE)
-       @@purple_tube_top = Shirt.new("Purple Tube-Top", 207, false, "none", "plain", PURPLE_TUBE_TOP_TEXTURE)
-       @@pink_tube_top = Shirt.new("Pink Tube-Top", 208, false, "none", "plain", PINK_TUBE_TOP_TEXTURE)
+       @@white_tube_top = Shirt.new("White Tube-Top", 200, false, "none", "plain", WHITE_TUBE_TOP_TEXTURE, "white")
+       @@black_tube_top = Shirt.new("Black Tube-Top", 201, false, "none", "plain", BLACK_TUBE_TOP_TEXTURE, "black")
+       @@red_tube_top = Shirt.new("Red Tube-Top", 202, false, "none", "plain", RED_TUBE_TOP_TEXTURE, "red")
+       @@orange_tube_top = Shirt.new("Orange Tube-Top", 203, false, "none", "plain", ORANGE_TUBE_TOP_TEXTURE, "orange")
+       @@yellow_tube_top = Shirt.new("Yellow Tube-Top", 204, false, "none", "plain", YELLOW_TUBE_TOP_TEXTURE, "yellow")
+       @@green_tube_top = Shirt.new("Green Tube-Top", 205, false, "none", "plain", GREEN_TUBE_TOP_TEXTURE, "green")
+       @@blue_tube_top = Shirt.new("Blue Tube-Top", 206, false, "none", "plain", BLUE_TUBE_TOP_TEXTURE, "blue")
+       @@purple_tube_top = Shirt.new("Purple Tube-Top", 207, false, "none", "plain", PURPLE_TUBE_TOP_TEXTURE, "purple")
+       @@pink_tube_top = Shirt.new("Pink Tube-Top", 208, false, "none", "plain", PINK_TUBE_TOP_TEXTURE, "pink")
 
 
-       @@white_layered_shirt = Shirt.new("White Layered Shirt", 300, false, "long", "plain", WHITE_LAYERED_SHIRT_TEXTURE)
-       @@black_layered_shirt = Shirt.new("Black Layered Shirt", 301, false, "long", "plain", BLACK_LAYERED_SHIRT_TEXTURE)
-       @@red_layered_shirt = Shirt.new("Red Layered Shirt", 302, false, "long", "plain", RED_LAYERED_SHIRT_TEXTURE)
-       @@orange_layered_shirt = Shirt.new("Orange Layered Shirt", 303, false, "long", "plain", ORANGE_LAYERED_SHIRT_TEXTURE)
-       @@yellow_layered_shirt = Shirt.new("Yellow Layered Shirt", 304, false, "long", "plain", YELLOW_LAYERED_SHIRT_TEXTURE)
-       @@green_layered_shirt = Shirt.new("Green Layered Shirt", 305, false, "long", "plain", GREEN_LAYERED_SHIRT_TEXTURE)
-       @@blue_layered_shirt = Shirt.new("Blue Layered Shirt", 306, false, "long", "plain", BLUE_LAYERED_SHIRT_TEXTURE)
-       @@purple_layered_shirt = Shirt.new("Purple Layered Shirt", 307, false, "long", "plain", PURPLE_LAYERED_SHIRT_TEXTURE)
-       @@pink_layered_shirt = Shirt.new("Pink Layered Shirt", 308, false, "long", "plain", PINK_LAYERED_SHIRT_TEXTURE)
+       @@white_layered_shirt = Shirt.new("White Layered Shirt", 300, false, "long", "plain", WHITE_LAYERED_SHIRT_TEXTURE, "white")
+       @@black_layered_shirt = Shirt.new("Black Layered Shirt", 301, false, "long", "plain", BLACK_LAYERED_SHIRT_TEXTURE, "black")
+       @@red_layered_shirt = Shirt.new("Red Layered Shirt", 302, false, "long", "plain", RED_LAYERED_SHIRT_TEXTURE, "red")
+       @@orange_layered_shirt = Shirt.new("Orange Layered Shirt", 303, false, "long", "plain", ORANGE_LAYERED_SHIRT_TEXTURE, "orange")
+       @@yellow_layered_shirt = Shirt.new("Yellow Layered Shirt", 304, false, "long", "plain", YELLOW_LAYERED_SHIRT_TEXTURE, "yellow")
+       @@green_layered_shirt = Shirt.new("Green Layered Shirt", 305, false, "long", "plain", GREEN_LAYERED_SHIRT_TEXTURE, "green")
+       @@blue_layered_shirt = Shirt.new("Blue Layered Shirt", 306, false, "long", "plain", BLUE_LAYERED_SHIRT_TEXTURE, "blue")
+       @@purple_layered_shirt = Shirt.new("Purple Layered Shirt", 307, false, "long", "plain", PURPLE_LAYERED_SHIRT_TEXTURE, "purple")
+       @@pink_layered_shirt = Shirt.new("Pink Layered Shirt", 308, false, "long", "plain", PINK_LAYERED_SHIRT_TEXTURE, "pink")
     end
 end
