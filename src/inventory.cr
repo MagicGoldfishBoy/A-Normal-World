@@ -49,6 +49,7 @@ module Inventory
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Blue Tank Top").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Purple Tank Top").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Pink Tank Top").not_nil!)
+
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("White_T-Shirt").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Black_T-Shirt").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Red_T-Shirt").not_nil!)
@@ -58,6 +59,16 @@ module Inventory
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Blue_T-Shirt").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Purple T-Shirt").not_nil!)
         @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Pink T-Shirt").not_nil!)
+
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("White Tube-Top").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Black Tube-Top").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Red Tube-Top").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Orange Tube-Top").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Yellow Tube-Top").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Green Tube-Top").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Blue Tube-Top").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Purple Tube-Top").not_nil!)
+        @@owned_clothing_array.push(Clothing::Shirt.get_shirt("Pink Tube-Top").not_nil!)
         
         @@clothing_box_sprite = SF::RectangleShape.new(SF.vector2(610, 420))
         @@clothing_box_sprite.fill_color = SF.color( 137, 170, 208 )
