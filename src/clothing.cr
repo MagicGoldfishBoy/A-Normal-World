@@ -109,4 +109,76 @@ module Clothing
        @@purple_layered_shirt = Shirt.new("Purple Layered Shirt", 307, false, "long", "plain", PURPLE_LAYERED_SHIRT_TEXTURE, "purple")
        @@pink_layered_shirt = Shirt.new("Pink Layered Shirt", 308, false, "long", "plain", PINK_LAYERED_SHIRT_TEXTURE, "pink")
     end
+
+    class Pants
+        PANTS_ARRAY = [] of Pants
+        def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String, is_skirt : Bool)
+         @name = name
+         @@name = name
+         @id = id
+         @is_owned = is_owned
+         @length = length
+         @style = style
+         @texture = texture
+         @color = color
+         @is_skirt = is_skirt
+         PANTS_ARRAY.push(self)
+        end
+ 
+        getter name : String
+        getter id : Int32
+        getter length : String
+        getter style : String
+        getter texture : SF::Texture
+        getter color : String
+        getter is_skirt : Bool
+        property is_owned : Bool
+ 
+        def Pants.name
+         @@name
+        end
+ 
+        def Pants.id
+         @@id
+        end
+ 
+        def Pants.is_owned
+         @@is_owned
+        end
+ 
+        def Pants.length
+         @@length
+        end
+ 
+        def Pants.style
+         @@style
+        end
+ 
+        def Pants.texture
+         @@texture
+        end
+ 
+        def Pants.color
+         @@texture
+        end
+ 
+        def Pants.is_owned=(this)
+         @@is_owned = this
+        end
+ 
+        def Pants.get_pants(this)
+         PANTS_ARRAY.each { |pants| if pants.name == this
+         return pants
+         end }
+        end
+ 
+        def Pants.get_pants_texture(this)
+         PANTS_ARRAY.each { |pants| if pants.name == this
+         return pants.texture
+         end }
+        end
+
+        @@white_jeans = Pants.new("White Jeans", 1, false, "long", "plain", JEANS_WHITE_TEXTURE, "white", false)
+
+    end
 end

@@ -7,6 +7,35 @@ module Inventory
         def initialize(is_inventory_open : Bool)
             @@is_inventory_open = is_inventory_open
         end
+
+        @@inventory_box = SF::RectangleShape.new(SF.vector2(610, 420))
+        @@inventory_box.fill_color = SF.color( 137, 170, 208 )
+
+
+        @@inventory_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@inventory_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@inventory_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@inventory_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@shirt_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@shirt_tab.fill_color = SF.color(141, 163, 188)
+
+        @@shirt_tab_text = SF::Text.new
+        @@shirt_tab_text.font = QUICKSAND
+        @@shirt_tab_text.character_size = 20
+        @@shirt_tab_text.color = SF::Color::Blue
+        @@shirt_tab_text.string = "Shirts"
+
+        @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@pants_tab.fill_color = SF.color(161, 183, 208)
+
+        @@pants_tab_text = SF::Text.new
+        @@pants_tab_text.font = QUICKSAND
+        @@pants_tab_text.character_size = 20
+        @@pants_tab_text.color = SF::Color::Blue
+        @@pants_tab_text.string = "Pants"
+
         def InventoryManager.is_inventory_open
             @@is_inventory_open
         end
@@ -16,10 +45,89 @@ module Inventory
         def InventoryManager.draw_inventory(window)
           if @@is_inventory_open == true
             if ClothingTabShirt.is_open == true
+                InventoryManager.draw_universal_elements(window)
                 ClothingTabShirt.draw_clothing_tab(window)
-            elsif WeaponTab.is_open == true
+                if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                    InventoryManager.universal_mouse_handling("shirt", window)
+                end
+            elsif ClothingTabPants.is_open == true
+                InventoryManager.draw_universal_elements(window)
             end
           end
+        end
+
+        def InventoryManager.draw_universal_elements(window)
+            current_size = window.size
+            original_width = 800 
+            original_height = 600
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+    
+            scale_ratio = [scale_x, scale_y].min
+            max_scale = 1.5
+            clamped_scale = [scale_ratio, max_scale].min
+
+            window.view = window.default_view
+
+            @@inventory_box.position = SF.vector2(80 * max_scale, 40 * max_scale)
+            @@inventory_box.scale = SF.vector2(1, 1)
+        
+
+            @@inventory_left_arrow_sprite.position = @@inventory_box.position + SF.vector2(200 * max_scale, 15 * max_scale)
+            @@inventory_left_arrow_sprite.scale = SF.vector2(1, 1)
+
+            @@inventory_right_arrow_sprite.position = @@inventory_left_arrow_sprite.position + SF.vector2(50 * max_scale, 1 * max_scale)
+            @@inventory_right_arrow_sprite.scale = SF.vector2(1, 1)
+
+
+            @@shirt_tab.position = @@inventory_box.position - SF.vector2(65 * max_scale, 0)
+            @@shirt_tab_text.position = @@shirt_tab.position + SF.vector2(15 * max_scale, 7 * max_scale)
+
+            @@pants_tab.position = @@inventory_box.position - SF.vector2(65 * max_scale, -(45 * max_scale))
+            @@pants_tab_text.position = @@pants_tab.position + SF.vector2(15 * max_scale, 7 * max_scale)
+
+            window.draw(@@inventory_box)
+
+            window.draw(@@inventory_left_arrow_sprite)
+            window.draw(@@inventory_right_arrow_sprite)
+            window.draw(@@shirt_tab)
+            window.draw(@@shirt_tab_text)
+            window.draw(@@pants_tab)
+            window.draw(@@pants_tab_text)
+        end
+
+        def InventoryManager.universal_mouse_handling(tab, window)
+            case tab
+            when "shirt"
+                ClothingTabShirt.clothes_mouse_handling(window)
+                InventoryManager.shirt_tab_mouse_handling(window)
+            end
+        end
+
+        def InventoryManager.shirt_tab_mouse_handling(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+            
+        
+            current_size = window.size
+            original_width = 800 
+            original_height = 600 
+    
+            scale_x = (current_size.x.to_f / original_width)
+            scale_y = current_size.y.to_f / original_height
+    
+            #------------------------------------objects-------------------------------------------------
+                pants_tab_x = @@pants_tab.position.x
+                pants_tab_y = @@pants_tab.position.y
+                pants_tab_width = @@pants_tab.size.x
+                pants_tab_height = @@pants_tab.size.y
+            #---------------------------------------------------------------------------------------------
+            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
+                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
+                ClothingTabPants.is_open=(true)
+                ClothingTabShirt.is_open=(false)
+            end    
         end
     end
     class ClothingTabShirt 
@@ -119,23 +227,23 @@ module Inventory
         @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
         @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@shirt_tab = SF::RectangleShape.new(SF.vector2(100, 50))
-        @@shirt_tab.fill_color = SF.color(141, 163, 188)
+        # @@shirt_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        # @@shirt_tab.fill_color = SF.color(141, 163, 188)
 
-        @@shirt_tab_text = SF::Text.new
-        @@shirt_tab_text.font = QUICKSAND
-        @@shirt_tab_text.character_size = 20
-        @@shirt_tab_text.color = SF::Color::Blue
-        @@shirt_tab_text.string = "Shirts"
+        # @@shirt_tab_text = SF::Text.new
+        # @@shirt_tab_text.font = QUICKSAND
+        # @@shirt_tab_text.character_size = 20
+        # @@shirt_tab_text.color = SF::Color::Blue
+        # @@shirt_tab_text.string = "Shirts"
 
-        @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
-        @@pants_tab.fill_color = SF.color(161, 183, 208)
+        # @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        # @@pants_tab.fill_color = SF.color(161, 183, 208)
 
-        @@pants_tab_text = SF::Text.new
-        @@pants_tab_text.font = QUICKSAND
-        @@pants_tab_text.character_size = 20
-        @@pants_tab_text.color = SF::Color::Blue
-        @@pants_tab_text.string = "Pants"
+        # @@pants_tab_text = SF::Text.new
+        # @@pants_tab_text.font = QUICKSAND
+        # @@pants_tab_text.character_size = 20
+        # @@pants_tab_text.color = SF::Color::Blue
+        # @@pants_tab_text.string = "Pants"
 
 
         @@shirt_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
@@ -662,13 +770,6 @@ module Inventory
         @@clothing_shirt_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
 
-        @@shirt_tab.position = @@clothing_box_sprite.position - SF.vector2(65 * max_scale, 0)
-        @@shirt_tab_text.position = @@shirt_tab.position + SF.vector2(15 * max_scale, 7 * max_scale)
-
-        @@pants_tab.position = @@clothing_box_sprite.position - SF.vector2(65 * max_scale, -(45 * max_scale))
-        @@pants_tab_text.position = @@pants_tab.position + SF.vector2(15 * max_scale, 7 * max_scale)
-        
-
         @@shirt_slot_01_sprite.position = @@clothing_box_sprite.position + SF.vector2(10 * max_scale, 40 * max_scale)
         @@shirt_slot_01_sprite.scale = SF.vector2(1, 1)
         
@@ -842,12 +943,6 @@ module Inventory
         window.draw(@@clothing_sort_button_text)
         window.draw(@@clothing_shirt_category_text)
 
-        window.draw(@@shirt_tab)
-        window.draw(@@shirt_tab_text)
-
-        window.draw(@@pants_tab)
-        window.draw(@@pants_tab_text)
-
 
         window.draw(@@shirt_slot_01_sprite)
         window.draw(@@shirt_slot_01_image_sprite)
@@ -947,12 +1042,6 @@ module Inventory
             category_button_y = @@clothing_shirt_category_box.position.y
             category_button_width = @@clothing_shirt_category_box.size.x
             category_button_height = @@clothing_shirt_category_box.size.y
-
-            pants_tab_x = @@pants_tab.position.x
-            pants_tab_y = @@pants_tab.position.y
-            pants_tab_width = @@pants_tab.size.x
-            pants_tab_height = @@pants_tab.size.y
-
 
             slot_01_x = @@shirt_slot_01_sprite.position.x
             slot_01_y = @@shirt_slot_01_sprite.position.y
@@ -1058,12 +1147,7 @@ module Inventory
             ClothingTabShirt.organise_owned_shirt_array_by_sleeve_length_short_to_long(window)
            end
             sleep 0.15.seconds
-        end     
-
-        if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + sort_button_width) &&
-           (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + sort_button_height)
-           ClothingTabShirt.is_open=(false)
-        end     
+        end        
 
         if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
            (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
@@ -1288,25 +1372,384 @@ module Inventory
     end
 
     class ClothingTabPants
-        # @@owned_pants_array = [] of Clothing::Pants
+        @@owned_pants_array = [] of Clothing::Pants
 
-        # @@pants_sorting_category = "Length"
+        @@pants_sorting_category = "Length"
 
-        # @@pants_slot_01 : Clothing::Pants? = nil
-        # @@pants_slot_02 : Clothing::Pants? = nil
-        # @@pants_slot_03 : Clothing::Pants? = nil
-        # @@pants_slot_04 : Clothing::Pants? = nil
-        # @@pants_slot_05 : Clothing::Pants? = nil
-        # @@pants_slot_06 : Clothing::Pants? = nil
-        # @@pants_slot_07 : Clothing::Pants? = nil
-        # @@pants_slot_08 : Clothing::Pants? = nil
-        # @@pants_slot_09 : Clothing::Pants? = nil
-        # @@pants_slot_10 : Clothing::Pants? = nil
-        # @@pants_slot_11 : Clothing::Pants? = nil
-        # @@pants_slot_12 : Clothing::Pants? = nil
-        # @@pants_slot_13 : Clothing::Pants? = nil
-        # @@pants_slot_14 : Clothing::Pants? = nil
-        # @@pants_slot_15 : Clothing::Pants? = nil
+        @@pants_slot_01 : Clothing::Pants? = nil
+        @@pants_slot_02 : Clothing::Pants? = nil
+        @@pants_slot_03 : Clothing::Pants? = nil
+        @@pants_slot_04 : Clothing::Pants? = nil
+        @@pants_slot_05 : Clothing::Pants? = nil
+        @@pants_slot_06 : Clothing::Pants? = nil
+        @@pants_slot_07 : Clothing::Pants? = nil
+        @@pants_slot_08 : Clothing::Pants? = nil
+        @@pants_slot_09 : Clothing::Pants? = nil
+        @@pants_slot_10 : Clothing::Pants? = nil
+        @@pants_slot_11 : Clothing::Pants? = nil
+        @@pants_slot_12 : Clothing::Pants? = nil
+        @@pants_slot_13 : Clothing::Pants? = nil
+        @@pants_slot_14 : Clothing::Pants? = nil
+        @@pants_slot_15 : Clothing::Pants? = nil
+
+       #---------------------------------debug-------------------------------------------
+        @@owned_pants_array.push(Clothing::Pants.get_pants("White Jeans").not_nil!)
+       #---------------------------------------------------------------------------------
+
+       @@clothing_box_sprite = SF::RectangleShape.new(SF.vector2(610, 420))
+       @@clothing_box_sprite.fill_color = SF.color( 137, 170, 208 )
+
+       
+       @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+       @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+       @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+
+       @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
+       @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@clothing_pants_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
+       @@clothing_pants_category_box.fill_color = SF.color(161, 183, 208)
+
+       @@clothing_sort_button_text = SF::Text.new
+       @@clothing_sort_button_text.font = QUICKSAND
+       @@clothing_sort_button_text.character_size = 20
+       @@clothing_sort_button_text.color = SF::Color::Blue
+       @@clothing_sort_button_text.string = "Sort"
+
+       @@clothing_pants_category_text = SF::Text.new
+       @@clothing_pants_category_text.font = QUICKSAND
+       @@clothing_pants_category_text.character_size = 20
+       @@clothing_pants_category_text.color = SF::Color::Blue
+       @@clothing_pants_category_text.string = @@pants_sorting_category
+       ClothingTabPants.center_clothing_text(@@clothing_pants_category_text)
+
+       @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+       @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+       @@pants_tab.fill_color = SF.color(141, 163, 188)
+
+       @@pants_tab_text = SF::Text.new
+       @@pants_tab_text.font = QUICKSAND
+       @@pants_tab_text.character_size = 20
+       @@pants_tab_text.color = SF::Color::Blue
+       @@pants_tab_text.string = "Pantss"
+
+       @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+       @@pants_tab.fill_color = SF.color(161, 183, 208)
+
+       @@pants_tab_text = SF::Text.new
+       @@pants_tab_text.font = QUICKSAND
+       @@pants_tab_text.character_size = 20
+       @@pants_tab_text.color = SF::Color::Blue
+       @@pants_tab_text.string = "Pants"
+
+
+       @@pants_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_01_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_01_text = SF::Text.new
+       @@pants_slot_01_text.font = QUICKSAND
+       @@pants_slot_01_text.character_size = 12
+       @@pants_slot_01_text.color = SF::Color::Blue
+
+       @@pants_slot_01_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_02_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_02_text = SF::Text.new
+       @@pants_slot_02_text.font = QUICKSAND
+       @@pants_slot_02_text.character_size = 12
+       @@pants_slot_02_text.color = SF::Color::Blue
+
+       @@pants_slot_02_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_03_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_03_text = SF::Text.new
+       @@pants_slot_03_text.font = QUICKSAND
+       @@pants_slot_03_text.character_size = 12
+       @@pants_slot_03_text.color = SF::Color::Blue
+
+       @@pants_slot_03_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_04_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_04_text = SF::Text.new
+       @@pants_slot_04_text.font = QUICKSAND
+       @@pants_slot_04_text.character_size = 12
+       @@pants_slot_04_text.color = SF::Color::Blue
+
+       @@pants_slot_04_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_05_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_05_text = SF::Text.new
+       @@pants_slot_05_text.font = QUICKSAND
+       @@pants_slot_05_text.character_size = 12
+       @@pants_slot_05_text.color = SF::Color::Blue
+
+       @@pants_slot_05_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_06_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_06_text = SF::Text.new
+       @@pants_slot_06_text.font = QUICKSAND
+       @@pants_slot_06_text.character_size = 12
+       @@pants_slot_06_text.color = SF::Color::Blue
+       
+       @@pants_slot_06_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_07_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_07_text = SF::Text.new
+       @@pants_slot_07_text.font = QUICKSAND
+       @@pants_slot_07_text.character_size = 12
+       @@pants_slot_07_text.color = SF::Color::Blue
+
+       @@pants_slot_07_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_08_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_08_text = SF::Text.new
+       @@pants_slot_08_text.font = QUICKSAND
+       @@pants_slot_08_text.character_size = 12
+       @@pants_slot_08_text.color = SF::Color::Blue
+
+       @@pants_slot_08_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_09_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_09_text = SF::Text.new
+       @@pants_slot_09_text.font = QUICKSAND
+       @@pants_slot_09_text.character_size = 12
+       @@pants_slot_09_text.color = SF::Color::Blue
+
+       @@pants_slot_09_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_10_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_10_text = SF::Text.new
+       @@pants_slot_10_text.font = QUICKSAND
+       @@pants_slot_10_text.character_size = 12
+       @@pants_slot_10_text.color = SF::Color::Blue
+
+       @@pants_slot_10_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_11_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_11_text = SF::Text.new
+       @@pants_slot_11_text.font = QUICKSAND
+       @@pants_slot_11_text.character_size = 12
+       @@pants_slot_11_text.color = SF::Color::Blue
+
+       @@pants_slot_11_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_12_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_12_text = SF::Text.new
+       @@pants_slot_12_text.font = QUICKSAND
+       @@pants_slot_12_text.character_size = 12
+       @@pants_slot_12_text.color = SF::Color::Blue
+
+       @@pants_slot_12_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_13_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_13_text = SF::Text.new
+       @@pants_slot_13_text.font = QUICKSAND
+       @@pants_slot_13_text.character_size = 12
+       @@pants_slot_13_text.color = SF::Color::Blue
+
+       @@pants_slot_13_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_14_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_14_text = SF::Text.new
+       @@pants_slot_14_text.font = QUICKSAND
+       @@pants_slot_14_text.character_size = 12
+       @@pants_slot_14_text.color = SF::Color::Blue
+
+       @@pants_slot_14_image_sprite = SF::Sprite.new
+
+
+       @@pants_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+       @@pants_slot_15_sprite.fill_color = SF.color(161, 183, 208)
+
+       @@pants_slot_15_text = SF::Text.new
+       @@pants_slot_15_text.font = QUICKSAND
+       @@pants_slot_15_text.character_size = 12
+       @@pants_slot_15_text.color = SF::Color::Blue
+
+       @@pants_slot_15_image_sprite = SF::Sprite.new
+
+       def initialize(is_open : Bool, page : Int32)
+        @@is_open = is_open
+        @@page = page
+       end
+
+       def ClothingTabPants.is_open
+        @@is_open
+       end
+
+       def ClothingTabPants.page
+        @@page
+       end
+
+       def ClothingTabPants.is_open=(this)
+        @@is_open = this
+       end
+
+       def ClothingTabPants.page=(this)
+        @@page = this
+       end
+
+       def ClothingTabPants.owned_pants_array
+        @@owned_pants_array
+       end
+
+       def ClothingTabPants.owned_pants_array=(this)
+        @@owned_pants_array = this
+       end
+
+       def ClothingTabPants.push_to_owned_pants_array(this)
+        @@owned_pants_array.push(this)
+       end
+
+       def ClothingTabPants.change_pants_sort_category
+        case @@pants_sorting_category
+        when "Length"
+            @@pants_sorting_category = "Color"
+        when "Color"
+            @@pants_sorting_category = "Length"
+        end
+       end
+
+       def ClothingTabPants.organise_owned_pants_array_by_color(window)
+        temp_clothing_array_01 = [] of Clothing::Pants
+        @@owned_pants_array.each { |pants| if pants.color == "white"
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.each { |pants| if pants.color == "black"
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.each { |pants| if pants.color == "red"
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.each { |pants| if pants.color == "orange"
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.each { |pants| if pants.color == "yellow"
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.each { |pants| if pants.color == "green"
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.each { |pants| if pants.color == "blue"
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.each { |pants| if pants.color == "purple"
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.each { |pants| if pants.color == "pink"
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.clear
+        @@owned_pants_array = temp_clothing_array_01
+        @@owned_pants_array.uniq!
+        ClothingTabPants.assign_slot_textures(window)
+       end
+
+       def ClothingTabPants.organise_owned_pants_array_by_sleeve_length_short_to_long(window)
+        temp_clothing_array_01 = [] of Clothing::Pants
+        @@owned_pants_array.each { |pants| if pants.sleeve_length.includes?("none") == true
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.each { |pants| if pants.sleeve_length.includes?("very_short") == true
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.each { |pants| if pants.sleeve_length.includes?("short") == true
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.each { |pants| if pants.sleeve_length.includes?("long") == true
+        temp_clothing_array_01.push(pants)
+        end}
+
+        @@owned_pants_array.clear
+        @@owned_pants_array = temp_clothing_array_01
+        @@owned_pants_array.uniq!
+        ClothingTabPants.assign_slot_textures(window)
+       end
+
+       def ClothingTabPants.center_clothing_text(this)
+        if this.string.size <= 5
+            this.character_size = 20
+
+            x = this.position.x - (this.string.size + 6)
+            this.position = SF.vector2(x, this.position.y)
+
+        elsif this.string.size > 5 && this.string.size < 10
+            this.character_size = 15
+
+            x = this.position.x - (this.string.size + 5)
+            this.position = SF.vector2(x, this.position.y)
+
+        elsif this.string.size >= 10 && this.string.size < 15
+            this.character_size = 11
+
+            x = this.position.x - (this.string.size - 12)
+            y = this.position.y + 2
+            this.position = SF.vector2(x, y)
+
+        elsif this.string.size >= 15
+            this.character_size = 11
+
+            x = this.position.x - (this.string.size - 12)
+            this.position = SF.vector2(x, this.position.y)
+        end
+     end
+
     end
 
     class WeaponTab
