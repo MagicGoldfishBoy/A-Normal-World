@@ -807,7 +807,7 @@ module Inventory
             slot_10_height = @@clothing_slot_10_sprite.size.y
 
             slot_11_x = @@clothing_slot_11_sprite.position.x
-            slot_11_y = @@clothing_slot_11sprite.position.y
+            slot_11_y = @@clothing_slot_11_sprite.position.y
             slot_11_width = @@clothing_slot_11_sprite.size.x
             slot_11_height = @@clothing_slot_11_sprite.size.y
 
@@ -945,6 +945,118 @@ module Inventory
                 
                 @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
                 Player::Appearance.change_shirt(@@clothing_slot_07.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
+           (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
+           
+            if @@clothing_slot_08 != nil
+                t = 7 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_08.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
+           (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
+           
+            if @@clothing_slot_09 != nil
+                t = 8 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_09.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
+           (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
+           
+            if @@clothing_slot_10 != nil
+                t = 9 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_10.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
+           (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
+           
+            if @@clothing_slot_11 != nil
+                t = 10 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_11.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
+           (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
+           
+            if @@clothing_slot_12 != nil
+                t = 11 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_12.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
+           (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
+           
+            if @@clothing_slot_13 != nil
+                t = 12 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_13.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
+           (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
+           
+            if @@clothing_slot_14 != nil
+                t = 13 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_14.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTab.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
+           (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
+           
+            if @@clothing_slot_15 != nil
+                t = 14 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_clothing_array[t] = (Clothing::Shirt.get_shirt(Player::Appearance.get_clothing("shirt").not_nil!).not_nil!)
+                Player::Appearance.change_shirt(@@clothing_slot_15.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTab.assign_slot_textures(window)
