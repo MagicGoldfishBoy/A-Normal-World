@@ -285,5 +285,15 @@ module Clothing
         @@blue_rain_boots = Shoes.new("Blue Rain Boots", 7, false, "long", "plain", RAIN_BOOTS_BLUE_TEXTURE, "blue")
         @@purple_rain_boots = Shoes.new("Purple Rain Boots", 8, false, "long", "plain", RAIN_BOOTS_PURPLE_TEXTURE, "purple")
         @@pink_rain_boots = Shoes.new("Pink Rain Boots", 9, false, "long", "plain", RAIN_BOOTS_PINK_TEXTURE, "pink")
+
+        @@white_sneakers = Shoes.new("White Sneakers", 100, false, "short", "plain", SNEAKERS_WHITE_TEXTURE, "white")
+        @@black_sneakers = Shoes.new("Black Sneakers", 101, false, "short", "plain", SNEAKERS_BLACK_TEXTURE, "black")
+        @@red_sneakers = Shoes.new("Red Sneakers", 102, false, "short", "plain", SNEAKERS_RED_TEXTURE, "red")
+        @@orange_sneakers = Shoes.new("Orange Sneakers", 103, false, "short", "plain", SNEAKERS_ORANGE_TEXTURE, "orange")
+        @@yellow_sneakers = Shoes.new("Yellow Sneakers", 104, false, "short", "plain", SNEAKERS_YELLOW_TEXTURE, "yellow")
+        @@green_sneakers = Shoes.new("Green Sneakers", 105, false, "short", "plain", SNEAKERS_GREEN_TEXTURE, "green")
+        @@blue_sneakers = Shoes.new("Blue Sneakers", 106, false, "short", "plain", SNEAKERS_BLUE_TEXTURE, "blue")
+        @@purple_sneakers = Shoes.new("Purple Sneakers", 107, false, "short", "plain", SNEAKERS_PURPLE_TEXTURE, "purple")
+        @@pink_sneakers = Shoes.new("Pink Sneakers", 108, false, "short", "plain", SNEAKERS_PINK_TEXTURE, "pink")
     end
 end

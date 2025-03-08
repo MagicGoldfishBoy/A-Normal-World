@@ -2815,6 +2815,16 @@ module Inventory
         @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Blue Rain Boots").not_nil!)
         @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Purple Rain Boots").not_nil!)
         @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Pink Rain Boots").not_nil!)
+
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("White Sneakers").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Black Sneakers").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Red Sneakers").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Orange Sneakers").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Yellow Sneakers").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Green Sneakers").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Blue Sneakers").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Purple Sneakers").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Pink Sneakers").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
