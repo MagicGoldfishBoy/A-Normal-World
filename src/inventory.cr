@@ -1490,6 +1490,16 @@ module Inventory
         @@owned_pants_array.push(Clothing::Pants.get_pants("Blue Jeans").not_nil!)
         @@owned_pants_array.push(Clothing::Pants.get_pants("Purple Jeans").not_nil!)
         @@owned_pants_array.push(Clothing::Pants.get_pants("Pink Jeans").not_nil!)
+
+        @@owned_pants_array.push(Clothing::Pants.get_pants("White Booty Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Black Booty Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Red Booty Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Orange Booty Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Yellow Booty Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Green Booty Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Blue Booty Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Purple Booty Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Pink Booty Shorts").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
@@ -1516,12 +1526,6 @@ module Inventory
         @@clothing_sort_button_text.color = SF::Color::Blue
         @@clothing_sort_button_text.string = "Sort"
 
-        # @@clothing_pants_category_text = SF::Text.new
-        # @@clothing_pants_category_text.font = QUICKSAND
-        # @@clothing_pants_category_text.character_size = 20
-        # @@clothing_pants_category_text.color = SF::Color::Blue
-        # @@clothing_pants_category_text.string = @@pants_sorting_category
-        # ClothingTabPants.center_clothing_text(@@clothing_pants_category_text)
 
         @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
         @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
