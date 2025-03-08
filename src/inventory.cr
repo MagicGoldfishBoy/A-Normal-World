@@ -3377,9 +3377,9 @@ module Inventory
         @@shoes_slot_01_sprite.position = @@clothing_box_sprite.position + SF.vector2(10 * max_scale, 40 * max_scale)
         @@shoes_slot_01_sprite.scale = SF.vector2(1, 1)
         
-        @@shoes_slot_01_image_sprite.position = @@shoes_slot_01_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_01_image_sprite.position = @@shoes_slot_01_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_01_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_01_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_01_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
         @@shoes_slot_01_text.position = @@shoes_slot_01_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_01_text)
@@ -3388,9 +3388,9 @@ module Inventory
         @@shoes_slot_02_sprite.position = @@clothing_box_sprite.position + SF.vector2(90 * max_scale, 40 * max_scale)
         @@shoes_slot_02_sprite.scale = SF.vector2(1, 1)
         
-        @@shoes_slot_02_image_sprite.position = @@shoes_slot_02_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_02_image_sprite.position = @@shoes_slot_02_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_02_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_02_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_02_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
         @@shoes_slot_02_text.position = @@shoes_slot_02_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_02_text)
@@ -3399,9 +3399,9 @@ module Inventory
         @@shoes_slot_03_sprite.position = @@clothing_box_sprite.position + SF.vector2(170 * max_scale, 40 * max_scale)
         @@shoes_slot_03_sprite.scale = SF.vector2(1, 1)
         
-        @@shoes_slot_03_image_sprite.position = @@shoes_slot_03_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_03_image_sprite.position = @@shoes_slot_03_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_03_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_03_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_03_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
         @@shoes_slot_03_text.position = @@shoes_slot_03_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_03_text)
@@ -3413,9 +3413,9 @@ module Inventory
         @@shoes_slot_04_text.position = @@shoes_slot_04_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_04_text)
         
-        @@shoes_slot_04_image_sprite.position = @@shoes_slot_04_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_04_image_sprite.position = @@shoes_slot_04_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_04_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_04_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_04_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
 
         @@shoes_slot_05_sprite.position = @@clothing_box_sprite.position + SF.vector2(330 * max_scale, 40 * max_scale)
@@ -3424,9 +3424,9 @@ module Inventory
         @@shoes_slot_05_text.position = @@shoes_slot_05_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_05_text)
         
-        @@shoes_slot_05_image_sprite.position = @@shoes_slot_05_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_05_image_sprite.position = @@shoes_slot_05_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_05_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_05_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_05_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
         @@shoes_slot_06_sprite.position = @@clothing_box_sprite.position + SF.vector2(10 * max_scale, 120 * max_scale)
@@ -3435,9 +3435,9 @@ module Inventory
         @@shoes_slot_06_text.position = @@shoes_slot_06_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_06_text)
         
-        @@shoes_slot_06_image_sprite.position = @@shoes_slot_06_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_06_image_sprite.position = @@shoes_slot_06_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_06_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_06_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_06_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
         @@shoes_slot_07_sprite.position = @@clothing_box_sprite.position + SF.vector2(90 * max_scale, 120 * max_scale)
@@ -3446,9 +3446,9 @@ module Inventory
         @@shoes_slot_07_text.position = @@shoes_slot_07_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_07_text)
         
-        @@shoes_slot_07_image_sprite.position = @@shoes_slot_07_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_07_image_sprite.position = @@shoes_slot_07_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_07_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_07_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_07_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
         @@shoes_slot_08_sprite.position = @@clothing_box_sprite.position + SF.vector2(170 * max_scale, 120 * max_scale)
@@ -3457,9 +3457,9 @@ module Inventory
         @@shoes_slot_08_text.position = @@shoes_slot_08_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_08_text)
         
-        @@shoes_slot_08_image_sprite.position = @@shoes_slot_08_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_08_image_sprite.position = @@shoes_slot_08_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_08_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_08_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_08_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
         @@shoes_slot_09_sprite.position = @@clothing_box_sprite.position + SF.vector2(250 * max_scale, 120 * max_scale)
@@ -3468,9 +3468,9 @@ module Inventory
         @@shoes_slot_09_text.position = @@shoes_slot_09_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_09_text)
         
-        @@shoes_slot_09_image_sprite.position = @@shoes_slot_09_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_09_image_sprite.position = @@shoes_slot_09_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_09_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_09_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_09_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
         @@shoes_slot_10_sprite.position = @@clothing_box_sprite.position + SF.vector2(330 * max_scale, 120 * max_scale)
@@ -3479,9 +3479,9 @@ module Inventory
         @@shoes_slot_10_text.position = @@shoes_slot_10_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_10_text)
         
-        @@shoes_slot_10_image_sprite.position = @@shoes_slot_10_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_10_image_sprite.position = @@shoes_slot_10_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_10_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_10_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_10_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
         @@shoes_slot_11_sprite.position = @@clothing_box_sprite.position + SF.vector2(10 * max_scale, 200 * max_scale)
@@ -3490,9 +3490,9 @@ module Inventory
         @@shoes_slot_11_text.position = @@shoes_slot_11_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_11_text)
         
-        @@shoes_slot_11_image_sprite.position = @@shoes_slot_11_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_11_image_sprite.position = @@shoes_slot_11_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_11_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_11_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_11_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
         @@shoes_slot_12_sprite.position = @@clothing_box_sprite.position + SF.vector2(90 * max_scale, 200 * max_scale)
@@ -3501,9 +3501,9 @@ module Inventory
         @@shoes_slot_12_text.position = @@shoes_slot_12_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_12_text)
         
-        @@shoes_slot_12_image_sprite.position = @@shoes_slot_12_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_12_image_sprite.position = @@shoes_slot_12_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_12_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_12_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_12_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
         @@shoes_slot_13_sprite.position = @@clothing_box_sprite.position + SF.vector2(170 * max_scale, 200 * max_scale)
@@ -3512,9 +3512,9 @@ module Inventory
         @@shoes_slot_13_text.position = @@shoes_slot_13_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_13_text)
         
-        @@shoes_slot_13_image_sprite.position = @@shoes_slot_13_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_13_image_sprite.position = @@shoes_slot_13_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_13_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_13_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_13_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
         @@shoes_slot_14_sprite.position = @@clothing_box_sprite.position + SF.vector2(250 * max_scale, 200 * max_scale)
@@ -3523,9 +3523,9 @@ module Inventory
         @@shoes_slot_14_text.position = @@shoes_slot_14_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_14_text)
         
-        @@shoes_slot_14_image_sprite.position = @@shoes_slot_14_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_14_image_sprite.position = @@shoes_slot_14_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_14_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_14_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_14_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
         @@shoes_slot_15_sprite.position = @@clothing_box_sprite.position + SF.vector2(330 * max_scale, 200 * max_scale)
@@ -3534,9 +3534,9 @@ module Inventory
         @@shoes_slot_15_text.position = @@shoes_slot_15_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabShoes.center_clothing_text(@@shoes_slot_15_text)
         
-        @@shoes_slot_15_image_sprite.position = @@shoes_slot_15_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+        @@shoes_slot_15_image_sprite.position = @@shoes_slot_15_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
         @@shoes_slot_15_image_sprite.scale = SF.vector2(2, 2)
-        @@shoes_slot_15_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        @@shoes_slot_15_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
 
         window.draw(@@shoes_slot_01_sprite)
