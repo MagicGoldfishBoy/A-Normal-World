@@ -363,6 +363,7 @@ module Clothing
          end }
         end
 
+        @@nil_gloves = Gloves.new("No Gloves", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
         @@white_fingerless_gloves = Gloves.new("White Fingerless Gloves", 1, false, "very_short", "punk", FINGERLESS_GLOVES_WHITE_TEXTURE, "white")
     end
 end
