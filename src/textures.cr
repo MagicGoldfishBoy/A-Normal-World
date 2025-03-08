@@ -252,6 +252,20 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
   RAIN_BOOTS_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Rain_Boots.png")
 
+  RAIN_BOOTS_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Rain_Boots.png")
+
+  RAIN_BOOTS_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Rain_Boots.png")
+
+  RAIN_BOOTS_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Rain_Boots.png")
+
+  RAIN_BOOTS_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Rain_Boots.png")
+
+  RAIN_BOOTS_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Rain_Boots.png")
+
+  RAIN_BOOTS_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Rain_Boots.png")
+
+  RAIN_BOOTS_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Rain_Boots.png")
+
  #GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
  #G                                         Glove Textures                                           G
  #GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG

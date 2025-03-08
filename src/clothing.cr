@@ -278,5 +278,12 @@ module Clothing
 
         @@white_rain_boots = Shoes.new("White Rain Boots", 1, false, "long", "plain", RAIN_BOOTS_WHITE_TEXTURE, "white")
         @@black_rain_boots = Shoes.new("Black Rain Boots", 2, false, "long", "plain", RAIN_BOOTS_BLACK_TEXTURE, "black")
+        @@red_rain_boots = Shoes.new("Red Rain Boots", 3, false, "long", "plain", RAIN_BOOTS_RED_TEXTURE, "red")
+        @@orange_rain_boots = Shoes.new("Orange Rain Boots", 4, false, "long", "plain", RAIN_BOOTS_ORANGE_TEXTURE, "orange")
+        @@yellow_rain_boots = Shoes.new("Yellow Rain Boots", 5, false, "long", "plain", RAIN_BOOTS_YELLOW_TEXTURE, "yellow")
+        @@green_rain_boots = Shoes.new("Green Rain Boots", 6, false, "long", "plain", RAIN_BOOTS_GREEN_TEXTURE, "green")
+        @@blue_rain_boots = Shoes.new("Blue Rain Boots", 7, false, "long", "plain", RAIN_BOOTS_BLUE_TEXTURE, "blue")
+        @@purple_rain_boots = Shoes.new("Purple Rain Boots", 8, false, "long", "plain", RAIN_BOOTS_PURPLE_TEXTURE, "purple")
+        @@pink_rain_boots = Shoes.new("Pink Rain Boots", 9, false, "long", "plain", RAIN_BOOTS_PINK_TEXTURE, "pink")
     end
 end

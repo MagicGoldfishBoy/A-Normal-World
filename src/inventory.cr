@@ -2808,6 +2808,13 @@ module Inventory
        #---------------------------------debug-------------------------------------------
         @@owned_shoes_array.push(Clothing::Shoes.get_shoes("White Rain Boots").not_nil!)
         @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Black Rain Boots").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Red Rain Boots").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Orange Rain Boots").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Yellow Rain Boots").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Green Rain Boots").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Blue Rain Boots").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Purple Rain Boots").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Pink Rain Boots").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
