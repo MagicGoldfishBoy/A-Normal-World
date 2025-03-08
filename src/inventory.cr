@@ -1500,6 +1500,16 @@ module Inventory
         @@owned_pants_array.push(Clothing::Pants.get_pants("Blue Booty Shorts").not_nil!)
         @@owned_pants_array.push(Clothing::Pants.get_pants("Purple Booty Shorts").not_nil!)
         @@owned_pants_array.push(Clothing::Pants.get_pants("Pink Booty Shorts").not_nil!)
+
+        @@owned_pants_array.push(Clothing::Pants.get_pants("White Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Black Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Red Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Orange Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Yellow Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Green Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Blue Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Purple Shorts").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Pink Shorts").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
