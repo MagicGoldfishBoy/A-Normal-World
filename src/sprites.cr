@@ -180,11 +180,15 @@ module Sprites
         SF::Sprite.new
     end
 
+    current_shoes = if shoes = Clothing::Shoes.get_shoes(Appearance.get_clothing("shoes"))
+        SF::Sprite.new(shoes.texture)
+    else
+        SF::Sprite.new
+    end
+
     current_gloves = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("gloves")])
 
-    #current_pants = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("pants")])
-
-    current_shoes = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("shoes")])
+    #current_shoes = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("shoes")])
 
     current_weapon = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("weapon")])
 

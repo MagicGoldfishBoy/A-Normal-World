@@ -209,4 +209,74 @@ module Clothing
         @@pink_shorts = Pants.new("Pink Shorts", 208, false, "short", "plain", SHORTS_PINK_TEXTURE, "pink", false)
 
     end
+
+    class Shoes
+        SHOES_ARRAY = [] of Shoes
+        def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String)
+         @name = name
+         @@name = name
+         @id = id
+         @is_owned = is_owned
+         @length = length
+         @style = style
+         @texture = texture
+         @color = color
+         SHOES_ARRAY.push(self)
+        end
+ 
+        getter name : String
+        getter id : Int32
+        getter length : String
+        getter style : String
+        getter texture : SF::Texture
+        getter color : String
+        property is_owned : Bool
+ 
+        def Shoes.name
+         @@name
+        end
+ 
+        def Shoes.id
+         @@id
+        end
+ 
+        def Shoes.is_owned
+         @@is_owned
+        end
+ 
+        def Shoes.length
+         @@length
+        end
+ 
+        def Shoes.style
+         @@style
+        end
+ 
+        def Shoes.texture
+         @@texture
+        end
+ 
+        def Shoes.color
+         @@texture
+        end
+ 
+        def Shoes.is_owned=(this)
+         @@is_owned = this
+        end
+ 
+        def Shoes.get_shoes(this)
+         SHOES_ARRAY.each { |shoes| if shoes.name == this
+         return shoes
+         end }
+        end
+ 
+        def Shoes.get_shoes_texture(this)
+         SHOES_ARRAY.each { |shoes| if shoes.name == this
+         return shoes.texture
+         end }
+        end
+
+        @@white_boots = Shoes.new("White Boots", 1, false, "short", "plain", RAIN_BOOTS_WHITE_TEXTURE, "white")
+        @@black_boots = Shoes.new("Black Boots", 2, false, "short", "plain", RAIN_BOOTS_BLACK_TEXTURE, "black")
+    end
 end
