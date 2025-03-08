@@ -4101,7 +4101,7 @@ module Inventory
         @@gloves_slot_15 : Clothing::Gloves? = nil
 
        #---------------------------------debug-------------------------------------------
-        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("White Fingerless Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("White Fingerless\n          Gloves").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
@@ -4365,6 +4365,9 @@ module Inventory
 
        def ClothingTabGloves.organise_owned_gloves_array_by_color(window)
         temp_clothing_array_01 = [] of Clothing::Gloves
+        @@owned_gloves_array.each { |gloves| if gloves.id == 0
+        temp_clothing_array_01.push(gloves)
+        end}
         @@owned_gloves_array.each { |gloves| if gloves.color == "white"
         temp_clothing_array_01.push(gloves)
         end}
@@ -4441,7 +4444,7 @@ module Inventory
         elsif this.string.size > 5 && this.string.size < 10
             this.character_size = 15
 
-            x = this.position.x - (this.string.size + 5)
+            x = this.position.x + (this.string.size - 1)
             this.position = SF.vector2(x, this.position.y)
 
         elsif this.string.size >= 10 && this.string.size < 15
@@ -4451,11 +4454,18 @@ module Inventory
             y = this.position.y + 2
             this.position = SF.vector2(x, y)
 
-        elsif this.string.size >= 15
+        elsif this.string.size >= 15 && this.string.size < 20
             this.character_size = 11
 
-            x = this.position.x - (this.string.size - 12)
+            x = this.position.x - (this.string.size - 10)
             this.position = SF.vector2(x, this.position.y)
+
+        elsif this.string.size >= 20
+            this.character_size = 11
+
+            x = this.position.x - (this.string.size - 33)
+            y = this.position.y - (this.string.size - 20)
+            this.position = SF.vector2(x, y)
         end
        end
 
@@ -4671,8 +4681,8 @@ module Inventory
         @@gloves_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
         @@gloves_slot_01_sprite.scale = SF.vector2(1, 1)
         
-        @@gloves_slot_01_image_sprite.position = @@gloves_slot_01_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_01_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_01_image_sprite.position = @@gloves_slot_01_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_01_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_01_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
         @@gloves_slot_01_text.position = @@gloves_slot_01_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
@@ -4682,8 +4692,8 @@ module Inventory
         @@gloves_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
         @@gloves_slot_02_sprite.scale = SF.vector2(1, 1)
         
-        @@gloves_slot_02_image_sprite.position = @@gloves_slot_02_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_02_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_02_image_sprite.position = @@gloves_slot_02_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_02_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_02_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
         @@gloves_slot_02_text.position = @@gloves_slot_02_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
@@ -4693,8 +4703,8 @@ module Inventory
         @@gloves_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
         @@gloves_slot_03_sprite.scale = SF.vector2(1, 1)
         
-        @@gloves_slot_03_image_sprite.position = @@gloves_slot_03_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_03_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_03_image_sprite.position = @@gloves_slot_03_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_03_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_03_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
         @@gloves_slot_03_text.position = @@gloves_slot_03_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
@@ -4707,8 +4717,8 @@ module Inventory
         @@gloves_slot_04_text.position = @@gloves_slot_04_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_04_text)
         
-        @@gloves_slot_04_image_sprite.position = @@gloves_slot_04_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_04_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_04_image_sprite.position = @@gloves_slot_04_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_04_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_04_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
 
@@ -4718,8 +4728,8 @@ module Inventory
         @@gloves_slot_05_text.position = @@gloves_slot_05_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_05_text)
         
-        @@gloves_slot_05_image_sprite.position = @@gloves_slot_05_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_05_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_05_image_sprite.position = @@gloves_slot_05_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_05_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_05_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
@@ -4729,8 +4739,8 @@ module Inventory
         @@gloves_slot_06_text.position = @@gloves_slot_06_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_06_text)
         
-        @@gloves_slot_06_image_sprite.position = @@gloves_slot_06_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_06_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_06_image_sprite.position = @@gloves_slot_06_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_06_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_06_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
@@ -4740,8 +4750,8 @@ module Inventory
         @@gloves_slot_07_text.position = @@gloves_slot_07_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_07_text)
         
-        @@gloves_slot_07_image_sprite.position = @@gloves_slot_07_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_07_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_07_image_sprite.position = @@gloves_slot_07_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_07_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_07_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
@@ -4751,8 +4761,8 @@ module Inventory
         @@gloves_slot_08_text.position = @@gloves_slot_08_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_08_text)
         
-        @@gloves_slot_08_image_sprite.position = @@gloves_slot_08_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_08_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_08_image_sprite.position = @@gloves_slot_08_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_08_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_08_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
@@ -4762,8 +4772,8 @@ module Inventory
         @@gloves_slot_09_text.position = @@gloves_slot_09_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_09_text)
         
-        @@gloves_slot_09_image_sprite.position = @@gloves_slot_09_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_09_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_09_image_sprite.position = @@gloves_slot_09_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_09_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_09_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
@@ -4773,8 +4783,8 @@ module Inventory
         @@gloves_slot_10_text.position = @@gloves_slot_10_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_10_text)
         
-        @@gloves_slot_10_image_sprite.position = @@gloves_slot_10_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_10_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_10_image_sprite.position = @@gloves_slot_10_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_10_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_10_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
@@ -4784,8 +4794,8 @@ module Inventory
         @@gloves_slot_11_text.position = @@gloves_slot_11_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_11_text)
         
-        @@gloves_slot_11_image_sprite.position = @@gloves_slot_11_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_11_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_11_image_sprite.position = @@gloves_slot_11_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_11_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_11_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
@@ -4795,8 +4805,8 @@ module Inventory
         @@gloves_slot_12_text.position = @@gloves_slot_12_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_12_text)
         
-        @@gloves_slot_12_image_sprite.position = @@gloves_slot_12_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_12_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_12_image_sprite.position = @@gloves_slot_12_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_12_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_12_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
@@ -4806,8 +4816,8 @@ module Inventory
         @@gloves_slot_13_text.position = @@gloves_slot_13_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_13_text)
         
-        @@gloves_slot_13_image_sprite.position = @@gloves_slot_13_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_13_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_13_image_sprite.position = @@gloves_slot_13_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_13_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_13_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
@@ -4817,8 +4827,8 @@ module Inventory
         @@gloves_slot_14_text.position = @@gloves_slot_14_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_14_text)
         
-        @@gloves_slot_14_image_sprite.position = @@gloves_slot_14_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_14_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_14_image_sprite.position = @@gloves_slot_14_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_14_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_14_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
@@ -4828,8 +4838,8 @@ module Inventory
         @@gloves_slot_15_text.position = @@gloves_slot_15_sprite.position + SF.vector2(4 * max_scale, 55 * max_scale)
         ClothingTabGloves.center_clothing_text(@@gloves_slot_15_text)
         
-        @@gloves_slot_15_image_sprite.position = @@gloves_slot_15_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
-        @@gloves_slot_15_image_sprite.scale = SF.vector2(2, 2)
+        @@gloves_slot_15_image_sprite.position = @@gloves_slot_15_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
+        @@gloves_slot_15_image_sprite.scale = SF.vector2(4, 4)
         @@gloves_slot_15_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
 
