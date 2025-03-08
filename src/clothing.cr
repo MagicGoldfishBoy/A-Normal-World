@@ -296,4 +296,73 @@ module Clothing
         @@purple_sneakers = Shoes.new("Purple Sneakers", 107, false, "short", "plain", SNEAKERS_PURPLE_TEXTURE, "purple")
         @@pink_sneakers = Shoes.new("Pink Sneakers", 108, false, "short", "plain", SNEAKERS_PINK_TEXTURE, "pink")
     end
+
+    class Gloves
+        GLOVES_ARRAY = [] of Gloves
+        def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String)
+         @name = name
+         @@name = name
+         @id = id
+         @is_owned = is_owned
+         @length = length
+         @style = style
+         @texture = texture
+         @color = color
+         GLOVES_ARRAY.push(self)
+        end
+ 
+        getter name : String
+        getter id : Int32
+        getter length : String
+        getter style : String
+        getter texture : SF::Texture
+        getter color : String
+        property is_owned : Bool
+ 
+        def Gloves.name
+         @@name
+        end
+ 
+        def Gloves.id
+         @@id
+        end
+ 
+        def Gloves.is_owned
+         @@is_owned
+        end
+ 
+        def Gloves.length
+         @@length
+        end
+ 
+        def Gloves.style
+         @@style
+        end
+ 
+        def Gloves.texture
+         @@texture
+        end
+ 
+        def Gloves.color
+         @@texture
+        end
+ 
+        def Gloves.is_owned=(this)
+         @@is_owned = this
+        end
+ 
+        def Gloves.get_gloves(this)
+         GLOVES_ARRAY.each { |gloves| if gloves.name == this
+         return gloves
+         end }
+        end
+ 
+        def Gloves.get_gloves_texture(this)
+         GLOVES_ARRAY.each { |gloves| if gloves.name == this
+         return gloves.texture
+         end }
+        end
+
+        @@white_fingerless_gloves = Gloves.new("White Fingerless Gloves", 1, false, "very_short", "punk", FINGERLESS_GLOVES_WHITE_TEXTURE, "white")
+    end
 end
