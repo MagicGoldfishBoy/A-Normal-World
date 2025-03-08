@@ -211,20 +211,58 @@ module Inventory
             end
         end
 
+        def InventoryManager.reset_clothing_pages(window)
+            ClothingTabGloves.page=(1)
+            ClothingTabShirt.page=(1)
+            ClothingTabPants.page=(1)
+        end
+
+        def InventoryManager.open_shirt_tab(window)
+            InventoryManager.reset_clothing_pages(window)
+            ClothingTabShirt.is_open=(true)
+            ClothingTabGloves.is_open=(false)
+            ClothingTabPants.is_open=(false)
+            ClothingTabShoes.is_open=(false)
+            ClothingTabShirt.assign_slot_textures(window)
+        end
+
+        def InventoryManager.open_pants_tab(window)
+            InventoryManager.reset_clothing_pages(window)
+            ClothingTabShirt.is_open=(false)
+            ClothingTabGloves.is_open=(false)
+            ClothingTabPants.is_open=(true)
+            ClothingTabShoes.is_open=(false)
+            ClothingTabPants.assign_slot_textures(window)
+        end
+
+        def InventoryManager.open_shoes_tab(window)
+            InventoryManager.reset_clothing_pages(window)
+            ClothingTabShirt.is_open=(false)
+            ClothingTabGloves.is_open=(false)
+            ClothingTabPants.is_open=(false)
+            ClothingTabShoes.is_open=(true)
+            ClothingTabShoes.assign_slot_textures(window)
+        end
+
+        def InventoryManager.open_gloves_tab(window)
+            InventoryManager.reset_clothing_pages(window)
+            ClothingTabShirt.is_open=(false)
+            ClothingTabGloves.is_open=(true)
+            ClothingTabPants.is_open=(false)
+            ClothingTabShoes.is_open=(false)
+            ClothingTabGloves.assign_slot_textures(window)
+        end
+
         def InventoryManager.universal_mouse_handling(tab, window)
             case tab
             when "shirt"
-                ClothingTabShirt.clothes_mouse_handling(window)
                 InventoryManager.shirt_tab_mouse_handling(window)
             when "pants"
                 InventoryManager.pants_tab_mouse_handling(window)
-                ClothingTabPants.clothes_mouse_handling(window)
             when "shoes"
                 InventoryManager.shoes_tab_mouse_handling(window)
-                ClothingTabShoes.clothes_mouse_handling(window)
             when "gloves"
                 InventoryManager.gloves_tab_mouse_handling(window)
-                ClothingTabGloves.clothes_mouse_handling(window)
             end
         end
 
@@ -289,9 +327,9 @@ module Inventory
                  end
                  ClothingTabShirt.assign_slot_textures(window)
                  sleep 0.15.seconds
-             end
+            end
              
-             if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+            if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
                 (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
                 
                  if ClothingTabShirt.page.not_nil! <= 5
@@ -299,40 +337,26 @@ module Inventory
                  end
                  ClothingTabShirt.assign_slot_textures(window)
                  sleep 0.15.seconds
-             end  
+            end  
+
             if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
                 (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-                ClothingTabPants.page=(1)
-                ClothingTabShirt.page=(1)
-                ClothingTabShoes.page=(1)
-                ClothingTabGloves.page=(1)
-                ClothingTabPants.is_open=(true)
-                ClothingTabShirt.is_open=(false)
-                ClothingTabShoes.is_open=(false)
-                ClothingTabGloves.is_open=(false)
-                ClothingTabPants.assign_slot_textures(window)
+
+                InventoryManager.open_pants_tab(window)
+                sleep 0.15.seconds
             end    
+
             if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
                 (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-                ClothingTabShoes.page=(1)
-                ClothingTabGloves.page=(1)
-                ClothingTabShirt.page=(1)
-                ClothingTabPants.page=(1)
-                ClothingTabShoes.is_open=(true)
-                ClothingTabGloves.is_open=(true)
-                ClothingTabShirt.is_open=(false)
-                ClothingTabPants.is_open=(false)
-                ClothingTabShoes.assign_slot_textures(window)
+
+                InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
             end    
+
             if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
                 (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
-                ClothingTabGloves.page=(1)
-                ClothingTabShirt.page=(1)
-                ClothingTabPants.page=(1)
-                ClothingTabGloves.is_open=(true)
-                ClothingTabShirt.is_open=(false)
-                ClothingTabPants.is_open=(false)
-                ClothingTabGloves.assign_slot_textures(window)
+                InventoryManager.open_gloves_tab(window)
+                sleep 0.15.seconds
             end    
 
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
@@ -343,16 +367,16 @@ module Inventory
                  ClothingTabShirt.organise_owned_shirt_array_by_sleeve_length_short_to_long(window)
                 end
                  sleep 0.15.seconds
-             end        
+            end        
      
-             if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
+            if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
                 (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
                 
                  ClothingTabShirt.change_shirt_sort_category
                  @@clothing_shirt_category_text.string = ClothingTabShirt.get_shirt_category
                  ClothingTabShirt.center_clothing_text(@@clothing_shirt_category_text)
                  sleep 0.15.seconds
-             end
+            end
         end
 
         def InventoryManager.pants_tab_mouse_handling(window)
@@ -399,8 +423,13 @@ module Inventory
                 shoes_tab_y = @@shoes_tab.position.y
                 shoes_tab_width = @@shoes_tab.size.x
                 shoes_tab_height = @@shoes_tab.size.y
+                
+                gloves_tab_x = @@gloves_tab.position.x
+                gloves_tab_y = @@gloves_tab.position.y
+                gloves_tab_width = @@gloves_tab.size.x
+                gloves_tab_height = @@gloves_tab.size.y
             #---------------------------------------------------------------------------------------------
-             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
+            if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
                 
                  if ClothingTabPants.page.not_nil! > 1
@@ -408,9 +437,9 @@ module Inventory
                  end
                  ClothingTabPants.assign_slot_textures(window)
                  sleep 0.15.seconds
-             end
+            end
              
-             if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+            if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
                 (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
                 
                  if ClothingTabPants.page.not_nil! <= 5
@@ -418,24 +447,27 @@ module Inventory
                  end
                  ClothingTabPants.assign_slot_textures(window)
                  sleep 0.15.seconds
-             end  
+            end  
 
             if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
                 (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-                ClothingTabPants.page=(1)
-                ClothingTabShirt.page=(1)
-                ClothingTabShirt.is_open=(true)
-                ClothingTabPants.is_open=(false)
-                ClothingTabShirt.assign_slot_textures(window)
+
+                InventoryManager.open_shirt_tab(window)
+                sleep 0.15.seconds
             end 
 
             if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
                 (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-                ClothingTabPants.page=(1)
-                ClothingTabShoes.page=(1)
-                ClothingTabShoes.is_open=(true)
-                ClothingTabPants.is_open=(false)
-                ClothingTabShoes.assign_slot_textures(window)
+
+                InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
+                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
+
+                InventoryManager.open_gloves_tab(window)
+                sleep 0.15.seconds
             end 
             
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
@@ -446,15 +478,15 @@ module Inventory
                  ClothingTabPants.organise_owned_pants_array_by_sleeve_length_short_to_long(window)
                 end
                  sleep 0.15.seconds
-             end        
+            end        
      
-             if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
+            if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
                 (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
                  ClothingTabPants.change_pants_sort_category
                  @@clothing_pants_category_text.string = ClothingTabPants.get_pants_category
                  ClothingTabPants.center_clothing_text(@@clothing_pants_category_text)
                  sleep 0.15.seconds
-             end   
+            end   
         end
 
         def InventoryManager.shoes_tab_mouse_handling(window)
@@ -506,8 +538,13 @@ module Inventory
                 shoes_tab_y = @@shoes_tab.position.y
                 shoes_tab_width = @@shoes_tab.size.x
                 shoes_tab_height = @@shoes_tab.size.y
+                
+                gloves_tab_x = @@gloves_tab.position.x
+                gloves_tab_y = @@gloves_tab.position.y
+                gloves_tab_width = @@gloves_tab.size.x
+                gloves_tab_height = @@gloves_tab.size.y
             #---------------------------------------------------------------------------------------------
-             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
+            if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
                 
                  if ClothingTabShoes.page.not_nil! > 1
@@ -515,9 +552,9 @@ module Inventory
                  end
                  ClothingTabShoes.assign_slot_textures(window)
                  sleep 0.15.seconds
-             end
+            end
              
-             if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+            if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
                 (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
                 
                  if ClothingTabShoes.page.not_nil! <= 5
@@ -525,24 +562,27 @@ module Inventory
                  end
                  ClothingTabShoes.assign_slot_textures(window)
                  sleep 0.15.seconds
-             end  
+            end  
 
             if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
                 (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-                ClothingTabShoes.page=(1)
-                ClothingTabShirt.page=(1)
-                ClothingTabShirt.is_open=(true)
-                ClothingTabShoes.is_open=(false)
-                ClothingTabShirt.assign_slot_textures(window)
+
+                InventoryManager.open_shirt_tab(window)
+                sleep 0.15.seconds
             end 
 
             if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
                 (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-                ClothingTabShoes.page=(1)
-                ClothingTabPants.page=(1)
-                ClothingTabPants.is_open=(true)
-                ClothingTabShoes.is_open=(false)
-                ClothingTabPants.assign_slot_textures(window)
+                
+                 InventoryManager.open_pants_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
+                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
+
+                 InventoryManager.open_gloves_tab(window)
+                 sleep 0.15.seconds
             end 
             
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
@@ -553,16 +593,17 @@ module Inventory
                  ClothingTabShoes.organise_owned_shoes_array_by_sleeve_length_short_to_long(window)
                 end
                  sleep 0.15.seconds
-             end        
+            end        
      
-             if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
+            if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
                 (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
                  ClothingTabShoes.change_shoes_sort_category
                  @@clothing_shoes_category_text.string = ClothingTabShoes.get_shoes_category
                  ClothingTabShoes.center_clothing_text(@@clothing_shoes_category_text)
                  sleep 0.15.seconds
-             end  
+            end  
         end
+
         def InventoryManager.gloves_tab_mouse_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
             mouse_x = mouse_position.x
@@ -608,12 +649,17 @@ module Inventory
                 pants_tab_width = @@pants_tab.size.x
                 pants_tab_height = @@pants_tab.size.y
                 
+                shoes_tab_x = @@shoes_tab.position.x
+                shoes_tab_y = @@shoes_tab.position.y
+                shoes_tab_width = @@shoes_tab.size.x
+                shoes_tab_height = @@shoes_tab.size.y
+                
                 gloves_tab_x = @@gloves_tab.position.x
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
                 gloves_tab_height = @@gloves_tab.size.y
             #---------------------------------------------------------------------------------------------
-             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
+            if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
                 
                  if ClothingTabGloves.page.not_nil! > 1
@@ -621,9 +667,9 @@ module Inventory
                  end
                  ClothingTabGloves.assign_slot_textures(window)
                  sleep 0.15.seconds
-             end
+            end
              
-             if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+            if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
                 (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
                 
                  if ClothingTabGloves.page.not_nil! <= 5
@@ -631,24 +677,28 @@ module Inventory
                  end
                  ClothingTabGloves.assign_slot_textures(window)
                  sleep 0.15.seconds
-             end  
+            end  
 
             if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
                 (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-                ClothingTabGloves.page=(1)
-                ClothingTabShirt.page=(1)
-                ClothingTabShirt.is_open=(true)
-                ClothingTabGloves.is_open=(false)
-                ClothingTabShirt.assign_slot_textures(window)
+
+               InventoryManager.open_shirt_tab(window)
+
+               sleep 0.15.seconds
             end 
 
             if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
                 (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-                ClothingTabGloves.page=(1)
-                ClothingTabPants.page=(1)
-                ClothingTabPants.is_open=(true)
-                ClothingTabGloves.is_open=(false)
-                ClothingTabPants.assign_slot_textures(window)
+
+                InventoryManager.open_pants_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
+                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
+
+                InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
             end 
             
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
