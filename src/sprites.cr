@@ -168,16 +168,21 @@ module Sprites
 
     current_earrings = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("earrings")])
 
-   # current_shirt = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("shirt")])
     current_shirt = if shirt = Clothing::Shirt.get_shirt(Appearance.get_clothing("shirt"))
         SF::Sprite.new(shirt.texture)
     else
         SF::Sprite.new
     end
 
+    current_pants = if pants = Clothing::Pants.get_pants(Appearance.get_clothing("pants"))
+        SF::Sprite.new(pants.texture)
+    else
+        SF::Sprite.new
+    end
+
     current_gloves = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("gloves")])
 
-    current_pants = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("pants")])
+    #current_pants = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("pants")])
 
     current_shoes = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("shoes")])
 
