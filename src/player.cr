@@ -311,7 +311,7 @@ module Player
         @@shirt = "white_tank_top"
         @@gloves = "nil"
         @@pants = "white_jeans"
-        @@shoes = "white Boots"
+        @@shoes = "white Rain Boots"
         @@weapon = "wooden_stick"
     end
 

@@ -276,7 +276,7 @@ module Clothing
          end }
         end
 
-        @@white_boots = Shoes.new("White Boots", 1, false, "short", "plain", RAIN_BOOTS_WHITE_TEXTURE, "white")
-        @@black_boots = Shoes.new("Black Boots", 2, false, "short", "plain", RAIN_BOOTS_BLACK_TEXTURE, "black")
+        @@white_rain_boots = Shoes.new("White Rain Boots", 1, false, "long", "plain", RAIN_BOOTS_WHITE_TEXTURE, "white")
+        @@black_rain_boots = Shoes.new("Black Rain Boots", 2, false, "long", "plain", RAIN_BOOTS_BLACK_TEXTURE, "black")
     end
 end

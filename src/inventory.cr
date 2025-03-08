@@ -2806,8 +2806,8 @@ module Inventory
         @@shoes_slot_15 : Clothing::Shoes? = nil
 
        #---------------------------------debug-------------------------------------------
-        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("White Boots").not_nil!)
-        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Black Boots").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("White Rain Boots").not_nil!)
+        @@owned_shoes_array.push(Clothing::Shoes.get_shoes("Black Rain Boots").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
@@ -3698,7 +3698,6 @@ module Inventory
         
         if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
            (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
-           puts @@page
             if @@shoes_slot_01 != nil   
                 t = 0 + (@@page.not_nil! * 15) - 15
                 
