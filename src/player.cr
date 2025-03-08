@@ -308,10 +308,10 @@ module Player
         @@face = "blue_button_eyes"
         @@hat = "nil"
         @@earrings = "nil"
-        @@shirt = "white_tank_top"
+        @@shirt = "White Tank Top"
         @@gloves = "nil"
-        @@pants = "white_jeans"
-        @@shoes = "white Rain Boots"
+        @@pants = "White Jeans"
+        @@shoes = "white Sneakers"
         @@weapon = "wooden_stick"
     end
 

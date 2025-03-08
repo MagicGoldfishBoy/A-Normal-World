@@ -119,9 +119,9 @@ module Sprites
   STARTING_SHIRT_ARRAY = ["White Tank Top", "Black Tank Top", "Red Tank Top", "Orange Tank Top", "Yellow Tank Top", "Green Tank Top", "Blue Tank Top", "Purple Tank Top", "Pink Tank Top",
    "White_T-Shirt", "Black_T-Shirt", "Red_T-Shirt", "Orange_T-Shirt", "Yellow_T-Shirt", "Green_T-Shirt", "Blue_T-Shirt"]
 
-  STARTING_PANTS_ARRAY = ["white_jeans", "black_jeans"]
+  STARTING_PANTS_ARRAY = ["White Jeans", "Black Jeans"]
 
-  STARTING_SHOES_ARRAY = ["white_rain_boots", "black_rain_boots"]
+  STARTING_SHOES_ARRAY = ["White Rain Boots", "Black Rain Boots"]
 
   @@current_array = STARTING_SKIN_ARRAY
   @@skin_iterator = 0
@@ -186,7 +186,13 @@ module Sprites
         SF::Sprite.new
     end
 
-    current_gloves = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("gloves")])
+    current_gloves = if gloves = Clothing::Gloves.get_gloves(Appearance.get_clothing("gloves"))
+        SF::Sprite.new(gloves.texture)
+    else
+        SF::Sprite.new
+    end
+
+    #current_gloves = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("gloves")])
 
     current_weapon = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("weapon")])
 
