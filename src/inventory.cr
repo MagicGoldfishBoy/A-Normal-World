@@ -60,7 +60,7 @@ module Inventory
         @@clothing_pants_category_text.font = QUICKSAND
         @@clothing_pants_category_text.character_size = 20
         @@clothing_pants_category_text.color = SF::Color::Blue
-        @@clothing_pants_category_text.string = ClothingTabShirt.get_shirt_category
+        @@clothing_pants_category_text.string = ClothingTabPants.get_pants_category
         ClothingTabShirt.center_clothing_text(@@clothing_pants_category_text)
 
         def InventoryManager.is_inventory_open
@@ -124,6 +124,8 @@ module Inventory
             @@clothing_sort_button_text.position = @@clothing_sort_button_sprite.position + SF.vector2(10 * max_scale, 1 * max_scale)
             @@clothing_shirt_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
+            @@clothing_pants_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+
             window.draw(@@inventory_box)
 
             window.draw(@@inventory_left_arrow_sprite)
@@ -136,7 +138,12 @@ module Inventory
             window.draw(@@clothing_sort_button_sprite)
             window.draw(@@clothing_shirt_category_box)
             window.draw(@@clothing_sort_button_text)
-            window.draw(@@clothing_shirt_category_text)
+            
+            if ClothingTabShirt.is_open == true
+             window.draw(@@clothing_shirt_category_text)
+            elsif ClothingTabPants.is_open == true
+             window.draw(@@clothing_pants_category_text)
+            end
         end
 
         def InventoryManager.universal_mouse_handling(tab, window)
@@ -322,7 +329,6 @@ module Inventory
      
              if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
                 (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
-                
                  ClothingTabPants.change_pants_sort_category
                  @@clothing_pants_category_text.string = ClothingTabPants.get_pants_category
                  ClothingTabPants.center_clothing_text(@@clothing_pants_category_text)
@@ -1503,12 +1509,12 @@ module Inventory
         @@clothing_sort_button_text.color = SF::Color::Blue
         @@clothing_sort_button_text.string = "Sort"
 
-        @@clothing_pants_category_text = SF::Text.new
-        @@clothing_pants_category_text.font = QUICKSAND
-        @@clothing_pants_category_text.character_size = 20
-        @@clothing_pants_category_text.color = SF::Color::Blue
-        @@clothing_pants_category_text.string = @@pants_sorting_category
-        ClothingTabPants.center_clothing_text(@@clothing_pants_category_text)
+        # @@clothing_pants_category_text = SF::Text.new
+        # @@clothing_pants_category_text.font = QUICKSAND
+        # @@clothing_pants_category_text.character_size = 20
+        # @@clothing_pants_category_text.color = SF::Color::Blue
+        # @@clothing_pants_category_text.string = @@pants_sorting_category
+        # ClothingTabPants.center_clothing_text(@@clothing_pants_category_text)
 
         @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
         @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
@@ -2373,7 +2379,6 @@ module Inventory
         
         if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
            (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
-           puts @@owned_pants_array
             if @@pants_slot_01 != nil   
                 t = 0 + (@@page.not_nil! * 15) - 15
                 
