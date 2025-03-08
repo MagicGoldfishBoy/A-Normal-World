@@ -147,6 +147,25 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
   BOOTY_SHORTS_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Booty_Shorts.png")
 
+
+  SHORTS_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Shorts.png")
+
+  SHORTS_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Shorts.png")
+
+  SHORTS_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Shorts.png")
+
+  SHORTS_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Shorts.png")
+
+  SHORTS_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Shorts.png")
+
+  SHORTS_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Shorts.png")
+
+  SHORTS_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Shorts.png")
+
+  SHORTS_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Shorts.png")
+
+  SHORTS_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Shorts.png")
+
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
  #S                                         Shirt Textures                                           S
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS

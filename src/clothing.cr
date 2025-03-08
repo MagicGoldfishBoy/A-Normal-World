@@ -88,15 +88,15 @@ module Clothing
        @@purple_t_shirt = Shirt.new("Purple T-Shirt", 107, false, "short", "plain", T_SHIRT_PURPLE_TEXTURE, "purple")
        @@pink_t_shirt = Shirt.new("Pink T-Shirt", 108, false, "short", "plain", T_SHIRT_PINK_TEXTURE, "pink")
 
-       @@white_tube_top = Shirt.new("White Tube-Top", 200, false, "none", "plain", WHITE_TUBE_TOP_TEXTURE, "white")
-       @@black_tube_top = Shirt.new("Black Tube-Top", 201, false, "none", "plain", BLACK_TUBE_TOP_TEXTURE, "black")
-       @@red_tube_top = Shirt.new("Red Tube-Top", 202, false, "none", "plain", RED_TUBE_TOP_TEXTURE, "red")
-       @@orange_tube_top = Shirt.new("Orange Tube-Top", 203, false, "none", "plain", ORANGE_TUBE_TOP_TEXTURE, "orange")
-       @@yellow_tube_top = Shirt.new("Yellow Tube-Top", 204, false, "none", "plain", YELLOW_TUBE_TOP_TEXTURE, "yellow")
-       @@green_tube_top = Shirt.new("Green Tube-Top", 205, false, "none", "plain", GREEN_TUBE_TOP_TEXTURE, "green")
-       @@blue_tube_top = Shirt.new("Blue Tube-Top", 206, false, "none", "plain", BLUE_TUBE_TOP_TEXTURE, "blue")
-       @@purple_tube_top = Shirt.new("Purple Tube-Top", 207, false, "none", "plain", PURPLE_TUBE_TOP_TEXTURE, "purple")
-       @@pink_tube_top = Shirt.new("Pink Tube-Top", 208, false, "none", "plain", PINK_TUBE_TOP_TEXTURE, "pink")
+       @@white_tube_top = Shirt.new("White Tube-Top", 200, false, "none", "sexy", WHITE_TUBE_TOP_TEXTURE, "white")
+       @@black_tube_top = Shirt.new("Black Tube-Top", 201, false, "none", "sexy", BLACK_TUBE_TOP_TEXTURE, "black")
+       @@red_tube_top = Shirt.new("Red Tube-Top", 202, false, "none", "sexy", RED_TUBE_TOP_TEXTURE, "red")
+       @@orange_tube_top = Shirt.new("Orange Tube-Top", 203, false, "none", "sexy", ORANGE_TUBE_TOP_TEXTURE, "orange")
+       @@yellow_tube_top = Shirt.new("Yellow Tube-Top", 204, false, "none", "sexy", YELLOW_TUBE_TOP_TEXTURE, "yellow")
+       @@green_tube_top = Shirt.new("Green Tube-Top", 205, false, "none", "sexy", GREEN_TUBE_TOP_TEXTURE, "green")
+       @@blue_tube_top = Shirt.new("Blue Tube-Top", 206, false, "none", "sexy", BLUE_TUBE_TOP_TEXTURE, "blue")
+       @@purple_tube_top = Shirt.new("Purple Tube-Top", 207, false, "none", "sexy", PURPLE_TUBE_TOP_TEXTURE, "purple")
+       @@pink_tube_top = Shirt.new("Pink Tube-Top", 208, false, "none", "sexy", PINK_TUBE_TOP_TEXTURE, "pink")
 
 
        @@white_layered_shirt = Shirt.new("White Layered Shirt", 300, false, "long", "plain", WHITE_LAYERED_SHIRT_TEXTURE, "white")
@@ -197,6 +197,16 @@ module Clothing
         @@blue_booty_shorts = Pants.new("Blue Booty Shorts", 106, false, "very_short", "sexy", BOOTY_SHORTS_BLUE_TEXTURE, "blue", false)
         @@purple_booty_shorts = Pants.new("Purple Booty Shorts", 107, false, "very_short", "sexy", BOOTY_SHORTS_PURPLE_TEXTURE, "purple", false)
         @@pink_booty_shorts = Pants.new("Pink Booty Shorts", 108, false, "very_short", "sexy", BOOTY_SHORTS_PINK_TEXTURE, "pink", false)
+
+        @@white_shorts = Pants.new("White Shorts", 200, false, "short", "plain", SHORTS_WHITE_TEXTURE, "white", false)
+        @@black_shorts = Pants.new("Black Shorts", 201, false, "short", "plain", SHORTS_BLACK_TEXTURE, "black", false)
+        @@red_shorts = Pants.new("Red Shorts", 202, false, "short", "plain", SHORTS_RED_TEXTURE, "red", false)
+        @@orange_shorts = Pants.new("Orange Shorts", 203, false, "short", "plain", SHORTS_ORANGE_TEXTURE, "orange", false)
+        @@yellow_shorts = Pants.new("Yellow Shorts", 204, false, "short", "plain", SHORTS_YELLOW_TEXTURE, "yellow", false)
+        @@green_shorts = Pants.new("Green Shorts", 205, false, "short", "plain", SHORTS_GREEN_TEXTURE, "green", false)
+        @@blue_shorts = Pants.new("Blue Shorts", 206, false, "short", "plain", SHORTS_BLUE_TEXTURE, "blue", false)
+        @@purple_shorts = Pants.new("Purple Shorts", 207, false, "short", "plain", SHORTS_PURPLE_TEXTURE, "purple", false)
+        @@pink_shorts = Pants.new("Pink Shorts", 208, false, "short", "plain", SHORTS_PINK_TEXTURE, "pink", false)
 
     end
 end
