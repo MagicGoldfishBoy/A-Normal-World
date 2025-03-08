@@ -114,6 +114,20 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
   JEANS_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Jeans.png")
 
+  JEANS_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Jeans.png")
+
+  JEANS_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Jeans.png")
+
+  JEANS_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Jeans.png")
+
+  JEANS_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Jeans.png")
+
+  JEANS_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Jeans.png")
+
+  JEANS_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Jeans.png")
+
+  JEANS_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Jeans.png")
+
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
  #S                                         Shirt Textures                                           S
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
@@ -190,7 +204,7 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
   BLUE_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Blue_Layered_Shirt.png")
 
   PURPLE_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Purple_Layered_Shirt.png")
-  
+
   PINK_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Pink_Layered_Shirt.png")
 
  #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS

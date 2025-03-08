@@ -1483,6 +1483,13 @@ module Inventory
        #---------------------------------debug-------------------------------------------
         @@owned_pants_array.push(Clothing::Pants.get_pants("White Jeans").not_nil!)
         @@owned_pants_array.push(Clothing::Pants.get_pants("Black Jeans").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Red Jeans").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Orange Jeans").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Yellow Jeans").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Green Jeans").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Blue Jeans").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Purple Jeans").not_nil!)
+        @@owned_pants_array.push(Clothing::Pants.get_pants("Pink Jeans").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
