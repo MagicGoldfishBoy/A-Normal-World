@@ -188,8 +188,6 @@ module Sprites
 
     current_gloves = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("gloves")])
 
-    #current_shoes = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("shoes")])
-
     current_weapon = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("weapon")])
 
     @@player_character_model.clear(SF::Color::Transparent)
