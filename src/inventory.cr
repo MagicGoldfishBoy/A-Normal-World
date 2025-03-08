@@ -4152,6 +4152,14 @@ module Inventory
 
        #---------------------------------debug-------------------------------------------
         @@owned_gloves_array.push(Clothing::Gloves.get_gloves("White Fingerless\n          Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Black Fingerless\n          Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Red Fingerless\n          Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Orange Fingerless\n          Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Yellow Fingerless\n          Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Green Fingerless\n          Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Blue Fingerless\n          Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Purple Fingerless\n          Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Pink Fingerless\n          Gloves").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------

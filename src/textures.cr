@@ -290,6 +290,22 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
  #GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
   FINGERLESS_GLOVES_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Fingerless_Gloves.png")
 
+  FINGERLESS_GLOVES_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Fingerless_Gloves.png")
+  
+  FINGERLESS_GLOVES_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Fingerless_Gloves.png")
+  
+  FINGERLESS_GLOVES_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Fingerless_Gloves.png")
+  
+  FINGERLESS_GLOVES_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Fingerless_Gloves.png")
+  
+  FINGERLESS_GLOVES_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Fingerless_Gloves.png")
+  
+  FINGERLESS_GLOVES_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Fingerless_Gloves.png")
+  
+  FINGERLESS_GLOVES_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Fingerless_Gloves.png")
+  
+  FINGERLESS_GLOVES_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Fingerless_Gloves.png")
+
  #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
  #W                                         Weapon Textures                                          W
  #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
