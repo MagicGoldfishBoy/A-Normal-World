@@ -68,6 +68,8 @@ module Clothing
         end }
        end
 
+       @@nil_shirt = Shirt.new("No Shirt", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
+
        @@white_tank_top = Shirt.new("White Tank Top", 1, false, "very_short", "plain", TANK_TOP_WHITE_TEXTURE, "white")
        @@black_tank_top = Shirt.new("Black Tank Top", 2, false, "very_short", "plain", TANK_TOP_BLACK_TEXTURE, "black")
        @@red_tank_top = Shirt.new("Red Tank Top", 3, false, "very_short", "plain", TANK_TOP_RED_TEXTURE, "red")
@@ -178,6 +180,8 @@ module Clothing
          end }
         end
 
+        @@nil_pants = Pants.new("No Pants", 0, false, "long", "plain", NIL_TEXTURE, "white", false)
+
         @@white_jeans = Pants.new("White Jeans", 1, false, "long", "plain", JEANS_WHITE_TEXTURE, "white", false)
         @@black_jeans = Pants.new("Black Jeans", 2, false, "long", "plain", JEANS_BLACK_TEXTURE, "black", false)
         @@red_jeans = Pants.new("Red Jeans", 3, false, "long", "plain", JEANS_RED_TEXTURE, "red", false)
@@ -276,6 +280,8 @@ module Clothing
          end }
         end
 
+        @@nil_shoes = Shoes.new("No Shoes", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
+
         @@white_rain_boots = Shoes.new("White Rain Boots", 1, false, "long", "plain", RAIN_BOOTS_WHITE_TEXTURE, "white")
         @@black_rain_boots = Shoes.new("Black Rain Boots", 2, false, "long", "plain", RAIN_BOOTS_BLACK_TEXTURE, "black")
         @@red_rain_boots = Shoes.new("Red Rain Boots", 3, false, "long", "plain", RAIN_BOOTS_RED_TEXTURE, "red")
@@ -364,6 +370,6 @@ module Clothing
         end
 
         @@nil_gloves = Gloves.new("No Gloves", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
-        @@white_fingerless_gloves = Gloves.new("White Fingerless Gloves", 1, false, "very_short", "punk", FINGERLESS_GLOVES_WHITE_TEXTURE, "white")
+        @@white_fingerless_gloves = Gloves.new("White Fingerless\n          Gloves", 1, false, "very_short", "punk", FINGERLESS_GLOVES_WHITE_TEXTURE, "white")
     end
 end
