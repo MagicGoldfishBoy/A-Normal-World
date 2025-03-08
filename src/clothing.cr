@@ -188,5 +188,15 @@ module Clothing
         @@purple_jeans = Pants.new("Purple Jeans", 8, false, "long", "plain", JEANS_PURPLE_TEXTURE, "purple", false)
         @@pink_jeans = Pants.new("Pink Jeans", 9, false, "long", "plain", JEANS_PINK_TEXTURE, "pink", false)
 
+        @@white_booty_shorts = Pants.new("White Booty Shorts", 100, false, "very_short", "sexy", BOOTY_SHORTS_WHITE_TEXTURE, "white", false)
+        @@black_booty_shorts = Pants.new("Black Booty Shorts", 101, false, "very_short", "sexy", BOOTY_SHORTS_BLACK_TEXTURE, "black", false)
+        @@red_booty_shorts = Pants.new("Red Booty Shorts", 102, false, "very_short", "sexy", BOOTY_SHORTS_RED_TEXTURE, "red", false)
+        @@orange_booty_shorts = Pants.new("Orange Booty Shorts", 103, false, "very_short", "sexy", BOOTY_SHORTS_ORANGE_TEXTURE, "orange", false)
+        @@yellow_booty_shorts = Pants.new("Yellow Booty Shorts", 104, false, "very_short", "sexy", BOOTY_SHORTS_YELLOW_TEXTURE, "yellow", false)
+        @@green_booty_shorts = Pants.new("Green Booty Shorts", 105, false, "very_short", "sexy", BOOTY_SHORTS_GREEN_TEXTURE, "green", false)
+        @@blue_booty_shorts = Pants.new("Blue Booty Shorts", 106, false, "very_short", "sexy", BOOTY_SHORTS_BLUE_TEXTURE, "blue", false)
+        @@purple_booty_shorts = Pants.new("Purple Booty Shorts", 107, false, "very_short", "sexy", BOOTY_SHORTS_PURPLE_TEXTURE, "purple", false)
+        @@pink_booty_shorts = Pants.new("Pink Booty Shorts", 108, false, "very_short", "sexy", BOOTY_SHORTS_PINK_TEXTURE, "pink", false)
+
     end
 end
