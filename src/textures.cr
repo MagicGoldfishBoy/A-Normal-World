@@ -350,6 +350,10 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
   RUBY_EARRINGS_TEXTURE = SF::Texture.from_file("../graphics/Ruby_Earrings.png")
 
+  AMBER_EARRINGS_TEXTURE = SF::Texture.from_file("../graphics/Amber_Earrings.png")
+
+  TOPAZ_EARRINGS_TEXTURE = SF::Texture.from_file("../graphics/Topaz_Earrings.png")
+
  #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
  #W                                         Weapon Textures                                          W
  #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW

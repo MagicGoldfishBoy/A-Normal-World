@@ -83,9 +83,9 @@ module Levels
         end
     end
     class PhysicsTest
-        TEST_PLATFORM_01 = SF::RectangleShape.new(SF.vector2(500, 80))
+        TEST_PLATFORM_01 = SF::RectangleShape.new(SF.vector2(2800, 80))
         TEST_PLATFORM_01.fill_color = SF.color( 96, 166, 84 )
-        TEST_PLATFORM_01_HITBOX = SF::RectangleShape.new(SF.vector2(500, 10))
+        TEST_PLATFORM_01_HITBOX = SF::RectangleShape.new(SF.vector2(2800, 10))
         TEST_PLATFORM_01_HITBOX.fill_color = SF.color( 0, 166, 84 )
 
         TEST_PLATFORM_02 = SF::RectangleShape.new(SF.vector2(200, 40))

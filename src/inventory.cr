@@ -5545,6 +5545,8 @@ module Inventory
 
        #---------------------------------debug-------------------------------------------
         @@owned_earrings_array.push(Clothing::Earrings.get_earrings("Ruby Earrings").not_nil!)
+        @@owned_earrings_array.push(Clothing::Earrings.get_earrings("Amber Earrings").not_nil!)
+        @@owned_earrings_array.push(Clothing::Earrings.get_earrings("Topaz Earrings").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
