@@ -389,5 +389,15 @@ module Clothing
         @@blue_gloves = Gloves.new("Blue Gloves", 106, false, "short", "plain", GLOVES_BLUE_TEXTURE, "blue")
         @@purple_gloves = Gloves.new("Purple Gloves", 107, false, "short", "plain", GLOVES_PURPLE_TEXTURE, "purple")
         @@pink_gloves = Gloves.new("Pink Gloves", 108, false, "short", "plain", GLOVES_PINK_TEXTURE, "pink")
+
+        @@white_opera_gloves = Gloves.new("White Opera Gloves", 200, false, "short", "plain", OPERA_GLOVES_WHITE_TEXTURE, "white")
+        @@black_opera_gloves = Gloves.new("Black Opera Gloves", 201, false, "short", "plain", OPERA_GLOVES_BLACK_TEXTURE, "black")
+        @@red_opera_gloves = Gloves.new("Red Opera Gloves", 202, false, "short", "plain", OPERA_GLOVES_RED_TEXTURE, "red")
+        @@orange_opera_gloves = Gloves.new("Orange Opera Gloves", 203, false, "short", "plain", OPERA_GLOVES_ORANGE_TEXTURE, "orange")
+        @@yellow_opera_gloves = Gloves.new("Yellow Opera Gloves", 204, false, "short", "plain", OPERA_GLOVES_YELLOW_TEXTURE, "yellow")
+        @@green_opera_gloves = Gloves.new("Green Opera Gloves", 205, false, "short", "plain", OPERA_GLOVES_GREEN_TEXTURE, "green")
+        @@blue_opera_gloves = Gloves.new("Blue Opera Gloves", 206, false, "short", "plain", OPERA_GLOVES_BLUE_TEXTURE, "blue")
+        @@purple_opera_gloves = Gloves.new("Purple Opera Gloves", 207, false, "short", "plain", OPERA_GLOVES_PURPLE_TEXTURE, "purple")
+        @@pink_opera_gloves = Gloves.new("Pink Opera Gloves", 208, false, "short", "plain", OPERA_GLOVES_PINK_TEXTURE, "pink")
     end
 end
