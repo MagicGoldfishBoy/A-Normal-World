@@ -345,7 +345,7 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
   OPERA_GLOVES_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Opera_Gloves.png")
 
  #EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
- #E                                        Earring Textures                                          E
+ #E                                       Earrings Textures                                          E
  #EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
   RUBY_EARRINGS_TEXTURE = SF::Texture.from_file("../graphics/Ruby_Earrings.png")
@@ -353,6 +353,12 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
   AMBER_EARRINGS_TEXTURE = SF::Texture.from_file("../graphics/Amber_Earrings.png")
 
   TOPAZ_EARRINGS_TEXTURE = SF::Texture.from_file("../graphics/Topaz_Earrings.png")
+
+ #HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ #H                                          Hat Textures                                            H
+ #HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+
+  BLACK_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Black_Baseball_Cap.png")
 
  #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
  #W                                         Weapon Textures                                          W

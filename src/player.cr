@@ -306,7 +306,7 @@ module Player
         @@skin = "pale_skin"
         @@hair = "black_shounen_hair"
         @@face = "blue_button_eyes"
-        @@hat = "nil"
+        @@hat = "No Hat"
         @@earrings = "nil"
         @@shirt = "White Tank Top"
         @@gloves = "nil"
