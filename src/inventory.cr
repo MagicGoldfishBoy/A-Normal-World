@@ -7565,12 +7565,9 @@ module Inventory
         @@hat_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
         @@hat_slot_01_sprite.scale = SF.vector2(1, 1)
         
-        @@hat_slot_01_image_sprite.position = @@hat_slot_01_sprite.position - SF.vector2(90 * max_scale, 100 * max_scale)
-        @@hat_slot_01_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_01_image_sprite.position = @@hat_slot_01_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_01_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_01_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_01_image_sprite_dup = @@hat_slot_01_image_sprite.dup
-        hat_slot_01_image_sprite_dup.position = @@hat_slot_01_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
 
         @@hat_slot_01_text.position = @@hat_slot_01_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_01_text)
@@ -7579,12 +7576,9 @@ module Inventory
         @@hat_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
         @@hat_slot_02_sprite.scale = SF.vector2(1, 1)
         
-        @@hat_slot_02_image_sprite.position = @@hat_slot_02_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_02_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_02_image_sprite.position = @@hat_slot_02_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_02_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_02_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_02_image_sprite_dup = @@hat_slot_02_image_sprite.dup
-        hat_slot_02_image_sprite_dup.position = @@hat_slot_02_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
 
         @@hat_slot_02_text.position = @@hat_slot_02_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_02_text)
@@ -7593,12 +7587,9 @@ module Inventory
         @@hat_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
         @@hat_slot_03_sprite.scale = SF.vector2(1, 1)
         
-        @@hat_slot_03_image_sprite.position = @@hat_slot_03_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_03_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_03_image_sprite.position = @@hat_slot_03_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_03_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_03_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_03_image_sprite_dup = @@hat_slot_03_image_sprite.dup
-        hat_slot_03_image_sprite_dup.position = @@hat_slot_03_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
 
         @@hat_slot_03_text.position = @@hat_slot_03_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_03_text)
@@ -7610,13 +7601,9 @@ module Inventory
         @@hat_slot_04_text.position = @@hat_slot_04_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_04_text)
         
-        @@hat_slot_04_image_sprite.position = @@hat_slot_04_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_04_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_04_image_sprite.position = @@hat_slot_04_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_04_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_04_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-
-        hat_slot_04_image_sprite_dup = @@hat_slot_04_image_sprite.dup
-        hat_slot_04_image_sprite_dup.position = @@hat_slot_04_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
 
 
         @@hat_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
@@ -7625,12 +7612,9 @@ module Inventory
         @@hat_slot_05_text.position = @@hat_slot_05_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_05_text)
         
-        @@hat_slot_05_image_sprite.position = @@hat_slot_05_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_05_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_05_image_sprite.position = @@hat_slot_05_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_05_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_05_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_05_image_sprite_dup = @@hat_slot_05_image_sprite.dup
-        hat_slot_05_image_sprite_dup.position = @@hat_slot_05_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
         
 
         @@hat_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
@@ -7639,12 +7623,9 @@ module Inventory
         @@hat_slot_06_text.position = @@hat_slot_06_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_06_text)
         
-        @@hat_slot_06_image_sprite.position = @@hat_slot_06_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_06_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_06_image_sprite.position = @@hat_slot_06_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_06_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_06_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_06_image_sprite_dup = @@hat_slot_06_image_sprite.dup
-        hat_slot_06_image_sprite_dup.position = @@hat_slot_06_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
         
 
         @@hat_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
@@ -7653,13 +7634,9 @@ module Inventory
         @@hat_slot_07_text.position = @@hat_slot_07_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_07_text)
         
-        @@hat_slot_07_image_sprite.position = @@hat_slot_07_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_07_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_07_image_sprite.position = @@hat_slot_07_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_07_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_07_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-
-        hat_slot_07_image_sprite_dup = @@hat_slot_07_image_sprite.dup
-        hat_slot_07_image_sprite_dup.position = @@hat_slot_07_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
         
 
         @@hat_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
@@ -7668,12 +7645,9 @@ module Inventory
         @@hat_slot_08_text.position = @@hat_slot_08_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_08_text)
         
-        @@hat_slot_08_image_sprite.position = @@hat_slot_08_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_08_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_08_image_sprite.position = @@hat_slot_08_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_08_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_08_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_08_image_sprite_dup = @@hat_slot_08_image_sprite.dup
-        hat_slot_08_image_sprite_dup.position = @@hat_slot_08_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
         
 
         @@hat_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
@@ -7682,12 +7656,9 @@ module Inventory
         @@hat_slot_09_text.position = @@hat_slot_09_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_09_text)
         
-        @@hat_slot_09_image_sprite.position = @@hat_slot_09_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_09_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_09_image_sprite.position = @@hat_slot_09_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_09_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_09_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_09_image_sprite_dup = @@hat_slot_09_image_sprite.dup
-        hat_slot_09_image_sprite_dup.position = @@hat_slot_09_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
         
 
         @@hat_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
@@ -7696,12 +7667,9 @@ module Inventory
         @@hat_slot_10_text.position = @@hat_slot_10_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_10_text)
         
-        @@hat_slot_10_image_sprite.position = @@hat_slot_10_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_10_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_10_image_sprite.position = @@hat_slot_10_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_10_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_10_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_10_image_sprite_dup = @@hat_slot_10_image_sprite.dup
-        hat_slot_10_image_sprite_dup.position = @@hat_slot_10_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
         
 
         @@hat_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
@@ -7710,12 +7678,9 @@ module Inventory
         @@hat_slot_11_text.position = @@hat_slot_11_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_11_text)
         
-        @@hat_slot_11_image_sprite.position = @@hat_slot_11_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_11_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_11_image_sprite.position = @@hat_slot_11_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_11_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_11_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_11_image_sprite_dup = @@hat_slot_11_image_sprite.dup
-        hat_slot_11_image_sprite_dup.position = @@hat_slot_11_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
         
 
         @@hat_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
@@ -7724,12 +7689,9 @@ module Inventory
         @@hat_slot_12_text.position = @@hat_slot_12_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_12_text)
         
-        @@hat_slot_12_image_sprite.position = @@hat_slot_12_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_12_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_12_image_sprite.position = @@hat_slot_12_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_12_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_12_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_12_image_sprite_dup = @@hat_slot_12_image_sprite.dup
-        hat_slot_12_image_sprite_dup.position = @@hat_slot_12_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
         
 
         @@hat_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
@@ -7738,12 +7700,9 @@ module Inventory
         @@hat_slot_13_text.position = @@hat_slot_13_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_13_text)
         
-        @@hat_slot_13_image_sprite.position = @@hat_slot_13_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_13_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_13_image_sprite.position = @@hat_slot_13_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_13_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_13_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_13_image_sprite_dup = @@hat_slot_13_image_sprite.dup
-        hat_slot_13_image_sprite_dup.position = @@hat_slot_13_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
         
 
         @@hat_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
@@ -7752,12 +7711,9 @@ module Inventory
         @@hat_slot_14_text.position = @@hat_slot_14_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_14_text)
         
-        @@hat_slot_14_image_sprite.position = @@hat_slot_14_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_14_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_14_image_sprite.position = @@hat_slot_14_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_14_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_14_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_14_image_sprite_dup = @@hat_slot_14_image_sprite.dup
-        hat_slot_14_image_sprite_dup.position = @@hat_slot_14_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
         
 
         @@hat_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
@@ -7766,87 +7722,69 @@ module Inventory
         @@hat_slot_15_text.position = @@hat_slot_15_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabHat.center_clothing_text(@@hat_slot_15_text)
         
-        @@hat_slot_15_image_sprite.position = @@hat_slot_15_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
-        @@hat_slot_15_image_sprite.scale = SF.vector2(4, 4)
+        @@hat_slot_15_image_sprite.position = @@hat_slot_15_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@hat_slot_15_image_sprite.scale = SF.vector2(2, 2)
         @@hat_slot_15_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        hat_slot_15_image_sprite_dup = @@hat_slot_15_image_sprite.dup
-        hat_slot_15_image_sprite_dup.position = @@hat_slot_15_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
 
 
         window.draw(@@hat_slot_01_sprite)
         window.draw(@@hat_slot_01_image_sprite)
-        window.draw(hat_slot_01_image_sprite_dup)
         window.draw(@@hat_slot_01_text)
 
         window.draw(@@hat_slot_02_sprite)
         window.draw(@@hat_slot_02_image_sprite)
-        window.draw(hat_slot_02_image_sprite_dup)
         window.draw(@@hat_slot_02_text)
 
         window.draw(@@hat_slot_03_sprite)
         window.draw(@@hat_slot_03_image_sprite)
-        window.draw(hat_slot_03_image_sprite_dup)
         window.draw(@@hat_slot_03_text)
         
         window.draw(@@hat_slot_04_sprite)
         window.draw(@@hat_slot_04_image_sprite)
-        window.draw(hat_slot_04_image_sprite_dup)
         window.draw(@@hat_slot_04_text)
 
         window.draw(@@hat_slot_05_sprite)
         window.draw(@@hat_slot_05_image_sprite)
-        window.draw(hat_slot_05_image_sprite_dup)
         window.draw(@@hat_slot_05_text)
 
         window.draw(@@hat_slot_06_sprite)
         window.draw(@@hat_slot_06_image_sprite)
-        window.draw(hat_slot_06_image_sprite_dup)
         window.draw(@@hat_slot_06_text)
 
         window.draw(@@hat_slot_07_sprite)
         window.draw(@@hat_slot_07_image_sprite)
-        window.draw(hat_slot_07_image_sprite_dup)
         window.draw(@@hat_slot_07_text)
 
         window.draw(@@hat_slot_08_sprite)
         window.draw(@@hat_slot_08_image_sprite)
-        window.draw(hat_slot_08_image_sprite_dup)
         window.draw(@@hat_slot_08_text)
 
         window.draw(@@hat_slot_09_sprite)
         window.draw(@@hat_slot_09_image_sprite)
-        window.draw(hat_slot_09_image_sprite_dup)
         window.draw(@@hat_slot_09_text)
 
         window.draw(@@hat_slot_10_sprite)
         window.draw(@@hat_slot_10_image_sprite)
-        window.draw(hat_slot_10_image_sprite_dup)
         window.draw(@@hat_slot_10_text)
 
         window.draw(@@hat_slot_11_sprite)
         window.draw(@@hat_slot_11_image_sprite)
-        window.draw(hat_slot_11_image_sprite_dup)
         window.draw(@@hat_slot_11_text)
 
         window.draw(@@hat_slot_12_sprite)
         window.draw(@@hat_slot_12_image_sprite)
-        window.draw(hat_slot_12_image_sprite_dup)
         window.draw(@@hat_slot_12_text)
 
         window.draw(@@hat_slot_13_sprite)
         window.draw(@@hat_slot_13_image_sprite)
-        window.draw(hat_slot_13_image_sprite_dup)
         window.draw(@@hat_slot_13_text)
 
         window.draw(@@hat_slot_14_sprite)
         window.draw(@@hat_slot_14_image_sprite)
-        window.draw(hat_slot_14_image_sprite_dup)
         window.draw(@@hat_slot_14_text)
 
         window.draw(@@hat_slot_15_sprite)
         window.draw(@@hat_slot_15_image_sprite)
-        window.draw(hat_slot_15_image_sprite_dup)
         window.draw(@@hat_slot_15_text)
 
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
@@ -7855,306 +7793,306 @@ module Inventory
        end
 
        def ClothingTabHat.clothes_mouse_handling(window)
-        # mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
-        # mouse_x = mouse_position.x
-        # mouse_y = mouse_position.y
+        mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+        mouse_x = mouse_position.x
+        mouse_y = mouse_position.y
         
     
-        # current_size = window.size
-        # original_width = 800 
-        # original_height = 600 
+        current_size = window.size
+        original_width = 800 
+        original_height = 600 
 
-        # scale_x = (current_size.x.to_f / original_width)
-        # scale_y = current_size.y.to_f / original_height
+        scale_x = (current_size.x.to_f / original_width)
+        scale_y = current_size.y.to_f / original_height
         
 
-        # #------------------------------------objects-------------------------------------------------
+        #------------------------------------objects-------------------------------------------------
 
-        #     slot_01_x = @@hat_slot_01_sprite.position.x
-        #     slot_01_y = @@hat_slot_01_sprite.position.y
-        #     slot_01_width = @@hat_slot_01_sprite.size.x
-        #     slot_01_height = @@hat_slot_01_sprite.size.y
+            slot_01_x = @@hat_slot_01_sprite.position.x
+            slot_01_y = @@hat_slot_01_sprite.position.y
+            slot_01_width = @@hat_slot_01_sprite.size.x
+            slot_01_height = @@hat_slot_01_sprite.size.y
 
-        #     slot_02_x = @@hat_slot_02_sprite.position.x
-        #     slot_02_y = @@hat_slot_02_sprite.position.y
-        #     slot_02_width = @@hat_slot_02_sprite.size.x
-        #     slot_02_height = @@hat_slot_02_sprite.size.y
+            slot_02_x = @@hat_slot_02_sprite.position.x
+            slot_02_y = @@hat_slot_02_sprite.position.y
+            slot_02_width = @@hat_slot_02_sprite.size.x
+            slot_02_height = @@hat_slot_02_sprite.size.y
 
-        #     slot_03_x = @@hat_slot_03_sprite.position.x
-        #     slot_03_y = @@hat_slot_03_sprite.position.y
-        #     slot_03_width = @@hat_slot_03_sprite.size.x
-        #     slot_03_height = @@hat_slot_03_sprite.size.y
+            slot_03_x = @@hat_slot_03_sprite.position.x
+            slot_03_y = @@hat_slot_03_sprite.position.y
+            slot_03_width = @@hat_slot_03_sprite.size.x
+            slot_03_height = @@hat_slot_03_sprite.size.y
 
-        #     slot_04_x = @@hat_slot_04_sprite.position.x
-        #     slot_04_y = @@hat_slot_04_sprite.position.y
-        #     slot_04_width = @@hat_slot_04_sprite.size.x
-        #     slot_04_height = @@hat_slot_04_sprite.size.y
+            slot_04_x = @@hat_slot_04_sprite.position.x
+            slot_04_y = @@hat_slot_04_sprite.position.y
+            slot_04_width = @@hat_slot_04_sprite.size.x
+            slot_04_height = @@hat_slot_04_sprite.size.y
 
-        #     slot_05_x = @@hat_slot_05_sprite.position.x
-        #     slot_05_y = @@hat_slot_05_sprite.position.y
-        #     slot_05_width = @@hat_slot_05_sprite.size.x
-        #     slot_05_height = @@hat_slot_05_sprite.size.y
+            slot_05_x = @@hat_slot_05_sprite.position.x
+            slot_05_y = @@hat_slot_05_sprite.position.y
+            slot_05_width = @@hat_slot_05_sprite.size.x
+            slot_05_height = @@hat_slot_05_sprite.size.y
 
-        #     slot_06_x = @@hat_slot_06_sprite.position.x
-        #     slot_06_y = @@hat_slot_06_sprite.position.y
-        #     slot_06_width = @@hat_slot_06_sprite.size.x
-        #     slot_06_height = @@hat_slot_06_sprite.size.y
+            slot_06_x = @@hat_slot_06_sprite.position.x
+            slot_06_y = @@hat_slot_06_sprite.position.y
+            slot_06_width = @@hat_slot_06_sprite.size.x
+            slot_06_height = @@hat_slot_06_sprite.size.y
 
-        #     slot_07_x = @@hat_slot_07_sprite.position.x
-        #     slot_07_y = @@hat_slot_07_sprite.position.y
-        #     slot_07_width = @@hat_slot_07_sprite.size.x
-        #     slot_07_height = @@hat_slot_07_sprite.size.y
+            slot_07_x = @@hat_slot_07_sprite.position.x
+            slot_07_y = @@hat_slot_07_sprite.position.y
+            slot_07_width = @@hat_slot_07_sprite.size.x
+            slot_07_height = @@hat_slot_07_sprite.size.y
 
-        #     slot_08_x = @@hat_slot_08_sprite.position.x
-        #     slot_08_y = @@hat_slot_08_sprite.position.y
-        #     slot_08_width = @@hat_slot_08_sprite.size.x
-        #     slot_08_height = @@hat_slot_08_sprite.size.y
+            slot_08_x = @@hat_slot_08_sprite.position.x
+            slot_08_y = @@hat_slot_08_sprite.position.y
+            slot_08_width = @@hat_slot_08_sprite.size.x
+            slot_08_height = @@hat_slot_08_sprite.size.y
 
-        #     slot_09_x = @@hat_slot_09_sprite.position.x
-        #     slot_09_y = @@hat_slot_09_sprite.position.y
-        #     slot_09_width = @@hat_slot_09_sprite.size.x
-        #     slot_09_height = @@hat_slot_09_sprite.size.y
+            slot_09_x = @@hat_slot_09_sprite.position.x
+            slot_09_y = @@hat_slot_09_sprite.position.y
+            slot_09_width = @@hat_slot_09_sprite.size.x
+            slot_09_height = @@hat_slot_09_sprite.size.y
 
-        #     slot_10_x = @@hat_slot_10_sprite.position.x
-        #     slot_10_y = @@hat_slot_10_sprite.position.y
-        #     slot_10_width = @@hat_slot_10_sprite.size.x
-        #     slot_10_height = @@hat_slot_10_sprite.size.y
+            slot_10_x = @@hat_slot_10_sprite.position.x
+            slot_10_y = @@hat_slot_10_sprite.position.y
+            slot_10_width = @@hat_slot_10_sprite.size.x
+            slot_10_height = @@hat_slot_10_sprite.size.y
 
-        #     slot_11_x = @@hat_slot_11_sprite.position.x
-        #     slot_11_y = @@hat_slot_11_sprite.position.y
-        #     slot_11_width = @@hat_slot_11_sprite.size.x
-        #     slot_11_height = @@hat_slot_11_sprite.size.y
+            slot_11_x = @@hat_slot_11_sprite.position.x
+            slot_11_y = @@hat_slot_11_sprite.position.y
+            slot_11_width = @@hat_slot_11_sprite.size.x
+            slot_11_height = @@hat_slot_11_sprite.size.y
 
-        #     slot_12_x = @@hat_slot_12_sprite.position.x
-        #     slot_12_y = @@hat_slot_12_sprite.position.y
-        #     slot_12_width = @@hat_slot_12_sprite.size.x
-        #     slot_12_height = @@hat_slot_12_sprite.size.y
+            slot_12_x = @@hat_slot_12_sprite.position.x
+            slot_12_y = @@hat_slot_12_sprite.position.y
+            slot_12_width = @@hat_slot_12_sprite.size.x
+            slot_12_height = @@hat_slot_12_sprite.size.y
 
-        #     slot_13_x = @@hat_slot_13_sprite.position.x
-        #     slot_13_y = @@hat_slot_13_sprite.position.y
-        #     slot_13_width = @@hat_slot_13_sprite.size.x
-        #     slot_13_height = @@hat_slot_13_sprite.size.y
+            slot_13_x = @@hat_slot_13_sprite.position.x
+            slot_13_y = @@hat_slot_13_sprite.position.y
+            slot_13_width = @@hat_slot_13_sprite.size.x
+            slot_13_height = @@hat_slot_13_sprite.size.y
 
-        #     slot_14_x = @@hat_slot_14_sprite.position.x
-        #     slot_14_y = @@hat_slot_14_sprite.position.y
-        #     slot_14_width = @@hat_slot_14_sprite.size.x
-        #     slot_14_height = @@hat_slot_14_sprite.size.y
+            slot_14_x = @@hat_slot_14_sprite.position.x
+            slot_14_y = @@hat_slot_14_sprite.position.y
+            slot_14_width = @@hat_slot_14_sprite.size.x
+            slot_14_height = @@hat_slot_14_sprite.size.y
 
-        #     slot_15_x = @@hat_slot_15_sprite.position.x
-        #     slot_15_y = @@hat_slot_15_sprite.position.y
-        #     slot_15_width = @@hat_slot_15_sprite.size.x
-        #     slot_15_height = @@hat_slot_15_sprite.size.y
-        # #---------------------------------------------------------------------------------------------
+            slot_15_x = @@hat_slot_15_sprite.position.x
+            slot_15_y = @@hat_slot_15_sprite.position.y
+            slot_15_width = @@hat_slot_15_sprite.size.x
+            slot_15_height = @@hat_slot_15_sprite.size.y
+        #---------------------------------------------------------------------------------------------
         
-        # if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
-        #    (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
-        #     if @@hat_slot_01 != nil   
-        #         t = 0 + (@@page.not_nil! * 15) - 15
+        if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
+           (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
+            if @@hat_slot_01 != nil   
+                t = 0 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_01.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_01.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
                 
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
-        #    (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
+        if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
+           (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
            
-        #     if @@hat_slot_02 != nil
-        #         t = 1 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_02 != nil
+                t = 1 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_02.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_02.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
-        #    (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
+        if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
+           (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
            
-        #     if @@hat_slot_03 != nil
-        #         t = 2 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_03 != nil
+                t = 2 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_03.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_03.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
-        #    (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
+        if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
+           (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
            
-        #     if @@hat_slot_04 != nil
-        #         t = 3 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_04 != nil
+                t = 3 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_04.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_04.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
-        #    (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
+        if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
+           (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
            
-        #     if @@hat_slot_05 != nil
-        #         t = 4 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_05 != nil
+                t = 4 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_05.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_05.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
-        #    (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
+        if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
+           (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
            
-        #     if @@hat_slot_06 != nil
-        #         t = 5 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_06 != nil
+                t = 5 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_06.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_06.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
-        #    (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
+        if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
+           (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
            
-        #     if @@hat_slot_07 != nil
-        #         t = 6 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_07 != nil
+                t = 6 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_07.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_07.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
-        #    (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
+        if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
+           (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
            
-        #     if @@hat_slot_08 != nil
-        #         t = 7 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_08 != nil
+                t = 7 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_08.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_08.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
-        #    (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
+        if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
+           (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
            
-        #     if @@hat_slot_09 != nil
-        #         t = 8 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_09 != nil
+                t = 8 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_09.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_09.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
-        #    (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
+        if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
+           (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
            
-        #     if @@hat_slot_10 != nil
-        #         t = 9 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_10 != nil
+                t = 9 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_10.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_10.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
-        #    (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
+        if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
+           (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
            
-        #     if @@hat_slot_11 != nil
-        #         t = 10 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_11 != nil
+                t = 10 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_11.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_11.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
-        #    (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
+        if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
+           (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
            
-        #     if @@hat_slot_12 != nil
-        #         t = 11 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_12 != nil
+                t = 11 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_12.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_12.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
-        #    (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
+        if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
+           (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
            
-        #     if @@hat_slot_13 != nil
-        #         t = 12 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_13 != nil
+                t = 12 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_13.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_13.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
-        #    (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
+        if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
+           (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
            
-        #     if @@hat_slot_14 != nil
-        #         t = 13 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_14 != nil
+                t = 13 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_14.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_14.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
         
-        # if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
-        #    (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
+        if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
+           (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
            
-        #     if @@hat_slot_15 != nil
-        #         t = 14 + (@@page.not_nil! * 15) - 15
+            if @@hat_slot_15 != nil
+                t = 14 + (@@page.not_nil! * 15) - 15
                 
-        #         @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
-        #         Player::Appearance.change_hat(@@hat_slot_15.not_nil!.name)
-        #         Sprites::Player.refresh_player_sprite(window)
-        #     end
-        #     ClothingTabHat.assign_slot_textures(window)
-        #     sleep 0.15.seconds
-        # end
+                @@owned_hat_array[t] = (Clothing::Hat.get_hat(Player::Appearance.get_clothing("hat").not_nil!).not_nil!)
+                Player::Appearance.change_hat(@@hat_slot_15.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabHat.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
 
        end
 
