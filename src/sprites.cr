@@ -166,7 +166,7 @@ module Sprites
 
     current_hat = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("hat")])
 
-    current_earrings = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("earrings")])
+    #current_earrings = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("earrings")])
 
     current_shirt = if shirt = Clothing::Shirt.get_shirt(Appearance.get_clothing("shirt"))
         SF::Sprite.new(shirt.texture)
@@ -192,12 +192,18 @@ module Sprites
         SF::Sprite.new
     end
 
+    current_earrings = if earrings = Clothing::Earrings.get_earrings(Appearance.get_clothing("earrings"))
+        SF::Sprite.new(earrings.texture)
+    else
+        SF::Sprite.new
+    end
+
     current_weapon = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("weapon")])
 
     @@player_character_model.clear(SF::Color::Transparent)
     @@player_character_model.draw(current_skin)
-    @@player_character_model.draw(current_earrings)
     @@player_character_model.draw(current_face)
+    @@player_character_model.draw(current_earrings)
     @@player_character_model.draw(current_hair)
     @@player_character_model.draw(current_pants)
     @@player_character_model.draw(current_shirt)

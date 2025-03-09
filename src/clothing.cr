@@ -400,4 +400,74 @@ module Clothing
         @@purple_opera_gloves = Gloves.new("Purple Opera Gloves", 207, false, "short", "plain", OPERA_GLOVES_PURPLE_TEXTURE, "purple")
         @@pink_opera_gloves = Gloves.new("Pink Opera Gloves", 208, false, "short", "plain", OPERA_GLOVES_PINK_TEXTURE, "pink")
     end
+
+    class Earrings
+        EARRINGS_ARRAY = [] of Earrings
+        def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String)
+         @name = name
+         @@name = name
+         @id = id
+         @is_owned = is_owned
+         @length = length
+         @style = style
+         @texture = texture
+         @color = color
+         EARRINGS_ARRAY.push(self)
+        end
+ 
+        getter name : String
+        getter id : Int32
+        getter length : String
+        getter style : String
+        getter texture : SF::Texture
+        getter color : String
+        property is_owned : Bool
+ 
+        def Earrings.name
+         @@name
+        end
+ 
+        def Earrings.id
+         @@id
+        end
+ 
+        def Earrings.is_owned
+         @@is_owned
+        end
+ 
+        def Earrings.length
+         @@length
+        end
+ 
+        def Earrings.style
+         @@style
+        end
+ 
+        def Earrings.texture
+         @@texture
+        end
+ 
+        def Earrings.color
+         @@texture
+        end
+ 
+        def Earrings.is_owned=(this)
+         @@is_owned = this
+        end
+ 
+        def Earrings.get_earrings(this)
+         EARRINGS_ARRAY.each { |earrings| if earrings.name == this
+         return earrings
+         end }
+        end
+ 
+        def Earrings.get_earrings_texture(this)
+         EARRINGS_ARRAY.each { |earrings| if earrings.name == this
+         return earrings.texture
+         end }
+        end
+
+        @@nil_earrings = Earrings.new("No Earrings", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
+        @@ruby_earrings = Earrings.new("Ruby Earrings", 1, false, "long", "fancy", RUBY_EARRINGS_TEXTURE, "red")
+    end
 end
