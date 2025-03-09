@@ -6985,7 +6985,7 @@ module Inventory
         @@hat_slot_15 : Clothing::Hat? = nil
 
        #---------------------------------debug-------------------------------------------
-       # @@owned_hat_array.push(Clothing::Hat.get_hat("Black_Baseball_Cap").not_nil!) #TODO: fix this shit
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Black Baseball Cap").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
