@@ -379,5 +379,15 @@ module Clothing
         @@blue_fingerless_gloves = Gloves.new("Blue Fingerless\n          Gloves", 7, false, "very_short", "punk", FINGERLESS_GLOVES_BLUE_TEXTURE, "blue")
         @@purple_fingerless_gloves = Gloves.new("Purple Fingerless\n          Gloves", 8, false, "very_short", "punk", FINGERLESS_GLOVES_PURPLE_TEXTURE, "purple")
         @@pink_fingerless_gloves = Gloves.new("Pink Fingerless\n          Gloves", 9, false, "very_short", "punk", FINGERLESS_GLOVES_PINK_TEXTURE, "pink")
+
+        @@white_gloves = Gloves.new("White Gloves", 100, false, "short", "plain", GLOVES_WHITE_TEXTURE, "white")
+        @@black_gloves = Gloves.new("Black Gloves", 101, false, "short", "plain", GLOVES_BLACK_TEXTURE, "black")
+        @@red_gloves = Gloves.new("Red Gloves", 102, false, "short", "plain", GLOVES_RED_TEXTURE, "red")
+        @@orange_gloves = Gloves.new("Orange Gloves", 103, false, "short", "plain", GLOVES_ORANGE_TEXTURE, "orange")
+        @@yellow_gloves = Gloves.new("Yellow Gloves", 104, false, "short", "plain", GLOVES_YELLOW_TEXTURE, "yellow")
+        @@green_gloves = Gloves.new("Green Gloves", 105, false, "short", "plain", GLOVES_GREEN_TEXTURE, "green")
+        @@blue_gloves = Gloves.new("Blue Gloves", 106, false, "short", "plain", GLOVES_BLUE_TEXTURE, "blue")
+        @@purple_gloves = Gloves.new("Purple Gloves", 107, false, "short", "plain", GLOVES_PURPLE_TEXTURE, "purple")
+        @@pink_gloves = Gloves.new("Pink Gloves", 108, false, "short", "plain", GLOVES_PINK_TEXTURE, "pink")
     end
 end
