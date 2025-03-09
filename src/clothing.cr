@@ -472,4 +472,74 @@ module Clothing
         @@amber_earrings = Earrings.new("Amber Earrings", 2, false, "long", "quirky", AMBER_EARRINGS_TEXTURE, "orange")
         @@topaz_earrings = Earrings.new("Topaz Earrings", 3, false, "long", "fancy", TOPAZ_EARRINGS_TEXTURE, "yellow")
     end
+
+    class Hat
+        HAT_ARRAY = [] of Hat
+        def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String)
+         @name = name
+         @@name = name
+         @id = id
+         @is_owned = is_owned
+         @length = length
+         @style = style
+         @texture = texture
+         @color = color
+         HAT_ARRAY.push(self)
+        end
+ 
+        getter name : String
+        getter id : Int32
+        getter length : String
+        getter style : String
+        getter texture : SF::Texture
+        getter color : String
+        property is_owned : Bool
+ 
+        def Hat.name
+         @@name
+        end
+ 
+        def Hat.id
+         @@id
+        end
+ 
+        def Hat.is_owned
+         @@is_owned
+        end
+ 
+        def Hat.length
+         @@length
+        end
+ 
+        def Hat.style
+         @@style
+        end
+ 
+        def Hat.texture
+         @@texture
+        end
+ 
+        def Hat.color
+         @@texture
+        end
+ 
+        def Hat.is_owned=(this)
+         @@is_owned = this
+        end
+ 
+        def Hat.get_hat(this)
+         HAT_ARRAY.each { |hat| if hat.name == this
+         return hat
+         end }
+        end
+ 
+        def Hat.get_hat_texture(this)
+         HAT_ARRAY.each { |hat| if hat.name == this
+         return hat.texture
+         end }
+        end
+
+        @@nil_hat = Hat.new("No Hat", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
+        @@black_baseball_cap = Hat.new("Black_Baseball_Cap", 1, false, "long", "sporty", BLACK_BASEBALL_CAP_TEXTURE, "black")
+    end
 end
