@@ -540,6 +540,6 @@ module Clothing
         end
 
         @@nil_hat = Hat.new("No Hat", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
-        @@black_baseball_cap = Hat.new("Black_Baseball_Cap", 1, false, "long", "sporty", BLACK_BASEBALL_CAP_TEXTURE, "black")
+        @@black_baseball_cap = Hat.new("Black Baseball Cap", 1, false, "long", "sporty", BLACK_BASEBALL_CAP_TEXTURE, "black")
     end
 end
