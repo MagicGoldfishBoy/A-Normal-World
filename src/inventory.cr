@@ -96,6 +96,22 @@ module Inventory
         @@clothing_gloves_category_text.string = ClothingTabGloves.get_gloves_category
         ClothingTabShirt.center_clothing_text(@@clothing_gloves_category_text)
 
+        @@earrings_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@earrings_tab.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_tab_text = SF::Text.new
+        @@earrings_tab_text.font = QUICKSAND
+        @@earrings_tab_text.character_size = 20
+        @@earrings_tab_text.color = SF::Color::Blue
+        @@earrings_tab_text.string = "Earrings"
+
+        @@clothing_earrings_category_text = SF::Text.new
+        @@clothing_earrings_category_text.font = QUICKSAND
+        @@clothing_earrings_category_text.character_size = 20
+        @@clothing_earrings_category_text.color = SF::Color::Blue
+        @@clothing_earrings_category_text.string = ClothingTabEarrings.get_earrings_category
+        ClothingTabShirt.center_clothing_text(@@clothing_earrings_category_text)
+
      #-----------------------------------------------------------------------------------------
 
         def InventoryManager.is_inventory_open
@@ -129,6 +145,12 @@ module Inventory
                 ClothingTabGloves.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("gloves", window)
+                end
+            elsif ClothingTabEarrings.is_open == true
+                InventoryManager.draw_universal_elements(window)
+                ClothingTabEarrings.draw_clothing_tab(window)
+                if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                    InventoryManager.universal_mouse_handling("earrings", window)
                 end
             end
           end
@@ -168,7 +190,10 @@ module Inventory
             @@shoes_tab_text.position = @@shoes_tab.position + SF.vector2(15 * max_scale, 7 * max_scale)
 
             @@gloves_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(135 * max_scale))
-            @@gloves_tab_text.position = @@gloves_tab.position + SF.vector2(15 * max_scale, 7 * max_scale)
+            @@gloves_tab_text.position = @@gloves_tab.position + SF.vector2(13 * max_scale, 7 * max_scale)
+
+            @@earrings_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(180 * max_scale))
+            @@earrings_tab_text.position = @@earrings_tab.position + SF.vector2(10 * max_scale, 7 * max_scale)
 
 
             @@clothing_sort_button_sprite.position = INVENTORY_BOX.position + SF.vector2(50 * max_scale, 15 * max_scale)
@@ -183,6 +208,8 @@ module Inventory
 
             @@clothing_gloves_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
+            @@clothing_earrings_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+
             window.draw(INVENTORY_BOX)
 
             window.draw(INVENTORY_LEFT_ARROW_SPRITE)
@@ -195,6 +222,8 @@ module Inventory
             window.draw(@@shoes_tab_text)
             window.draw(@@gloves_tab)
             window.draw(@@gloves_tab_text)
+            window.draw(@@earrings_tab)
+            window.draw(@@earrings_tab_text)
 
             window.draw(@@clothing_sort_button_sprite)
             window.draw(@@clothing_shirt_category_box)
@@ -208,6 +237,8 @@ module Inventory
              window.draw(@@clothing_shoes_category_text)
             elsif ClothingTabGloves.is_open == true
              window.draw(@@clothing_gloves_category_text)
+            elsif ClothingTabEarrings.is_open == true
+             window.draw(@@clothing_earrings_category_text)
             end
         end
 
@@ -215,6 +246,7 @@ module Inventory
             ClothingTabGloves.page=(1)
             ClothingTabShirt.page=(1)
             ClothingTabPants.page=(1)
+            ClothingTabEarrings.page=(1)
         end
 
         def InventoryManager.open_shirt_tab(window)
@@ -223,6 +255,7 @@ module Inventory
             ClothingTabGloves.is_open=(false)
             ClothingTabPants.is_open=(false)
             ClothingTabShoes.is_open=(false)
+            ClothingTabEarrings.is_open=(false)
             ClothingTabShirt.assign_slot_textures(window)
         end
 
@@ -232,6 +265,7 @@ module Inventory
             ClothingTabGloves.is_open=(false)
             ClothingTabPants.is_open=(true)
             ClothingTabShoes.is_open=(false)
+            ClothingTabEarrings.is_open=(false)
             ClothingTabPants.assign_slot_textures(window)
         end
 
@@ -241,6 +275,7 @@ module Inventory
             ClothingTabGloves.is_open=(false)
             ClothingTabPants.is_open=(false)
             ClothingTabShoes.is_open=(true)
+            ClothingTabEarrings.is_open=(false)
             ClothingTabShoes.assign_slot_textures(window)
         end
 
@@ -250,7 +285,18 @@ module Inventory
             ClothingTabGloves.is_open=(true)
             ClothingTabPants.is_open=(false)
             ClothingTabShoes.is_open=(false)
+            ClothingTabEarrings.is_open=(false)
             ClothingTabGloves.assign_slot_textures(window)
+        end
+
+        def InventoryManager.open_earrings_tab(window)
+            InventoryManager.reset_clothing_pages(window)
+            ClothingTabShirt.is_open=(false)
+            ClothingTabGloves.is_open=(false)
+            ClothingTabPants.is_open=(false)
+            ClothingTabShoes.is_open=(false)
+            ClothingTabEarrings.is_open=(true)
+            ClothingTabEarrings.assign_slot_textures(window)
         end
 
         def InventoryManager.universal_mouse_handling(tab, window)
@@ -263,6 +309,8 @@ module Inventory
                 InventoryManager.shoes_tab_mouse_handling(window)
             when "gloves"
                 InventoryManager.gloves_tab_mouse_handling(window)
+            when "earrings"
+                InventoryManager.earrings_tab_mouse_handling(window)
             end
         end
 
@@ -316,6 +364,11 @@ module Inventory
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
                 gloves_tab_height = @@gloves_tab.size.y
+
+                earrings_tab_x = @@earrings_tab.position.x
+                earrings_tab_y = @@earrings_tab.position.y
+                earrings_tab_width = @@earrings_tab.size.x
+                earrings_tab_height = @@earrings_tab.size.y
             #---------------------------------------------------------------------------------------------
 
             
@@ -356,6 +409,12 @@ module Inventory
             if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
                 (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
                 InventoryManager.open_gloves_tab(window)
+                sleep 0.15.seconds
+            end    
+
+            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
+                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
+                InventoryManager.open_earrings_tab(window)
                 sleep 0.15.seconds
             end    
 
@@ -428,6 +487,11 @@ module Inventory
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
                 gloves_tab_height = @@gloves_tab.size.y
+                
+                earrings_tab_x = @@earrings_tab.position.x
+                earrings_tab_y = @@earrings_tab.position.y
+                earrings_tab_width = @@earrings_tab.size.x
+                earrings_tab_height = @@earrings_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -467,6 +531,13 @@ module Inventory
                 (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
 
                 InventoryManager.open_gloves_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
+                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
+
+                InventoryManager.open_earrings_tab(window)
                 sleep 0.15.seconds
             end 
             
@@ -543,6 +614,11 @@ module Inventory
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
                 gloves_tab_height = @@gloves_tab.size.y
+                
+                earrings_tab_x = @@earrings_tab.position.x
+                earrings_tab_y = @@earrings_tab.position.y
+                earrings_tab_width = @@earrings_tab.size.x
+                earrings_tab_height = @@earrings_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -582,6 +658,13 @@ module Inventory
                 (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
 
                  InventoryManager.open_gloves_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
+                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
+
+                 InventoryManager.open_earrings_tab(window)
                  sleep 0.15.seconds
             end 
             
@@ -658,6 +741,11 @@ module Inventory
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
                 gloves_tab_height = @@gloves_tab.size.y
+                
+                earrings_tab_x = @@earrings_tab.position.x
+                earrings_tab_y = @@earrings_tab.position.y
+                earrings_tab_width = @@earrings_tab.size.x
+                earrings_tab_height = @@earrings_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -700,6 +788,13 @@ module Inventory
                 InventoryManager.open_shoes_tab(window)
                 sleep 0.15.seconds
             end 
+
+            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
+                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
+
+                InventoryManager.open_earrings_tab(window)
+                sleep 0.15.seconds
+            end 
             
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
@@ -716,6 +811,141 @@ module Inventory
                  ClothingTabGloves.change_gloves_sort_category
                  @@clothing_gloves_category_text.string = ClothingTabGloves.get_gloves_category
                  ClothingTabGloves.center_clothing_text(@@clothing_gloves_category_text)
+                 sleep 0.15.seconds
+             end  
+        end
+
+        def InventoryManager.earrings_tab_mouse_handling(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+            
+        
+            current_size = window.size
+            original_width = 800 
+            original_height = 600 
+    
+            scale_x = (current_size.x.to_f / original_width)
+            scale_y = current_size.y.to_f / original_height
+    
+            #------------------------------------objects-------------------------------------------------
+                arrow_left_x = INVENTORY_LEFT_ARROW_SPRITE.position.x
+                arrow_left_y = INVENTORY_LEFT_ARROW_SPRITE.position.y
+                arrow_left_width = INVENTORY_LEFT_ARROW_SPRITE.size.x
+                arrow_left_height = INVENTORY_LEFT_ARROW_SPRITE.size.y
+
+                arrow_right_x = INVENTORY_RIGHT_ARROW_SPRITE.position.x
+                arrow_right_y = INVENTORY_RIGHT_ARROW_SPRITE.position.y
+                arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
+                arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
+
+
+                sort_button_x = @@clothing_sort_button_sprite.position.x
+                sort_button_y = @@clothing_sort_button_sprite.position.y
+                sort_button_width = @@clothing_sort_button_sprite.size.x
+                sort_button_height = @@clothing_sort_button_sprite.size.y
+    
+                category_button_x = @@clothing_shirt_category_box.position.x
+                category_button_y = @@clothing_shirt_category_box.position.y
+                category_button_width = @@clothing_shirt_category_box.size.x
+                category_button_height = @@clothing_shirt_category_box.size.y
+                
+                shirt_tab_x = @@shirt_tab.position.x
+                shirt_tab_y = @@shirt_tab.position.y
+                shirt_tab_width = @@shirt_tab.size.x
+                shirt_tab_height = @@shirt_tab.size.y
+                
+                pants_tab_x = @@pants_tab.position.x
+                pants_tab_y = @@pants_tab.position.y
+                pants_tab_width = @@pants_tab.size.x
+                pants_tab_height = @@pants_tab.size.y
+                
+                shoes_tab_x = @@shoes_tab.position.x
+                shoes_tab_y = @@shoes_tab.position.y
+                shoes_tab_width = @@shoes_tab.size.x
+                shoes_tab_height = @@shoes_tab.size.y
+                
+                gloves_tab_x = @@gloves_tab.position.x
+                gloves_tab_y = @@gloves_tab.position.y
+                gloves_tab_width = @@gloves_tab.size.x
+                gloves_tab_height = @@gloves_tab.size.y
+                
+                earrings_tab_x = @@earrings_tab.position.x
+                earrings_tab_y = @@earrings_tab.position.y
+                earrings_tab_width = @@earrings_tab.size.x
+                earrings_tab_height = @@earrings_tab.size.y
+            #---------------------------------------------------------------------------------------------
+            if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
+                (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
+                
+                 if ClothingTabEarrings.page.not_nil! > 1
+                    ClothingTabEarrings.page=(ClothingTabEarrings.page.not_nil! - 1)
+                 end
+                 ClothingTabEarrings.assign_slot_textures(window)
+                 sleep 0.15.seconds
+            end
+             
+            if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+                (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
+                
+                 if ClothingTabEarrings.page.not_nil! <= 5
+                    ClothingTabEarrings.page=(ClothingTabEarrings.page.not_nil! + 1)
+                 end
+                 ClothingTabEarrings.assign_slot_textures(window)
+                 sleep 0.15.seconds
+            end  
+
+            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
+                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
+
+               InventoryManager.open_shirt_tab(window)
+
+               sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
+                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
+
+                InventoryManager.open_pants_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
+                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
+
+                InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
+                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
+
+                InventoryManager.open_earrings_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
+                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
+
+                InventoryManager.open_gloves_tab(window)
+                sleep 0.15.seconds
+            end 
+            
+            if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
+                (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
+                if ClothingTabEarrings.get_earrings_category == "Color"
+                 ClothingTabEarrings.organise_owned_earrings_array_by_color(window)
+                elsif "Length"
+                 ClothingTabEarrings.organise_owned_earrings_array_by_sleeve_length_short_to_long(window)
+                end
+                 sleep 0.15.seconds
+             end        
+     
+             if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
+                (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
+                 ClothingTabEarrings.change_earrings_sort_category
+                 @@clothing_earrings_category_text.string = ClothingTabEarrings.get_earrings_category
+                 ClothingTabEarrings.center_clothing_text(@@clothing_earrings_category_text)
                  sleep 0.15.seconds
              end  
         end
@@ -5285,6 +5515,1203 @@ module Inventory
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+
+       end
+
+    end
+
+    class ClothingTabEarrings
+        @@owned_earrings_array = [] of Clothing::Earrings
+
+        @@earrings_sorting_category = "Length"
+
+        @@earrings_slot_01 : Clothing::Earrings? = nil
+        @@earrings_slot_02 : Clothing::Earrings? = nil
+        @@earrings_slot_03 : Clothing::Earrings? = nil
+        @@earrings_slot_04 : Clothing::Earrings? = nil
+        @@earrings_slot_05 : Clothing::Earrings? = nil
+        @@earrings_slot_06 : Clothing::Earrings? = nil
+        @@earrings_slot_07 : Clothing::Earrings? = nil
+        @@earrings_slot_08 : Clothing::Earrings? = nil
+        @@earrings_slot_09 : Clothing::Earrings? = nil
+        @@earrings_slot_10 : Clothing::Earrings? = nil
+        @@earrings_slot_11 : Clothing::Earrings? = nil
+        @@earrings_slot_12 : Clothing::Earrings? = nil
+        @@earrings_slot_13 : Clothing::Earrings? = nil
+        @@earrings_slot_14 : Clothing::Earrings? = nil
+        @@earrings_slot_15 : Clothing::Earrings? = nil
+
+       #---------------------------------debug-------------------------------------------
+        @@owned_earrings_array.push(Clothing::Earrings.get_earrings("Ruby Earrings").not_nil!)
+       #---------------------------------------------------------------------------------
+
+       #--------------------------------objects------------------------------------------
+        INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
+        INVENTORY_BOX.fill_color = SF.color( 137, 170, 208 )
+
+        
+        @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+
+        @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
+        @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_earrings_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
+        @@clothing_earrings_category_box.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_sort_button_text = SF::Text.new
+        @@clothing_sort_button_text.font = QUICKSAND
+        @@clothing_sort_button_text.character_size = 20
+        @@clothing_sort_button_text.color = SF::Color::Blue
+        @@clothing_sort_button_text.string = "Sort"
+
+
+        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@earrings_tab.fill_color = SF.color(141, 163, 188)
+
+        @@earrings_tab_text = SF::Text.new
+        @@earrings_tab_text.font = QUICKSAND
+        @@earrings_tab_text.character_size = 20
+        @@earrings_tab_text.color = SF::Color::Blue
+        @@earrings_tab_text.string = "Earringss"
+
+        @@earrings_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@earrings_tab.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_tab_text = SF::Text.new
+        @@earrings_tab_text.font = QUICKSAND
+        @@earrings_tab_text.character_size = 20
+        @@earrings_tab_text.color = SF::Color::Blue
+        @@earrings_tab_text.string = "Earrings"
+
+
+        @@earrings_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_01_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_01_text = SF::Text.new
+        @@earrings_slot_01_text.font = QUICKSAND
+        @@earrings_slot_01_text.character_size = 12
+        @@earrings_slot_01_text.color = SF::Color::Blue
+
+        @@earrings_slot_01_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_02_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_02_text = SF::Text.new
+        @@earrings_slot_02_text.font = QUICKSAND
+        @@earrings_slot_02_text.character_size = 12
+        @@earrings_slot_02_text.color = SF::Color::Blue
+
+        @@earrings_slot_02_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_03_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_03_text = SF::Text.new
+        @@earrings_slot_03_text.font = QUICKSAND
+        @@earrings_slot_03_text.character_size = 12
+        @@earrings_slot_03_text.color = SF::Color::Blue
+
+        @@earrings_slot_03_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_04_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_04_text = SF::Text.new
+        @@earrings_slot_04_text.font = QUICKSAND
+        @@earrings_slot_04_text.character_size = 12
+        @@earrings_slot_04_text.color = SF::Color::Blue
+
+        @@earrings_slot_04_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_05_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_05_text = SF::Text.new
+        @@earrings_slot_05_text.font = QUICKSAND
+        @@earrings_slot_05_text.character_size = 12
+        @@earrings_slot_05_text.color = SF::Color::Blue
+
+        @@earrings_slot_05_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_06_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_06_text = SF::Text.new
+        @@earrings_slot_06_text.font = QUICKSAND
+        @@earrings_slot_06_text.character_size = 12
+        @@earrings_slot_06_text.color = SF::Color::Blue
+        
+        @@earrings_slot_06_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_07_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_07_text = SF::Text.new
+        @@earrings_slot_07_text.font = QUICKSAND
+        @@earrings_slot_07_text.character_size = 12
+        @@earrings_slot_07_text.color = SF::Color::Blue
+
+        @@earrings_slot_07_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_08_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_08_text = SF::Text.new
+        @@earrings_slot_08_text.font = QUICKSAND
+        @@earrings_slot_08_text.character_size = 12
+        @@earrings_slot_08_text.color = SF::Color::Blue
+
+        @@earrings_slot_08_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_09_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_09_text = SF::Text.new
+        @@earrings_slot_09_text.font = QUICKSAND
+        @@earrings_slot_09_text.character_size = 12
+        @@earrings_slot_09_text.color = SF::Color::Blue
+
+        @@earrings_slot_09_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_10_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_10_text = SF::Text.new
+        @@earrings_slot_10_text.font = QUICKSAND
+        @@earrings_slot_10_text.character_size = 12
+        @@earrings_slot_10_text.color = SF::Color::Blue
+
+        @@earrings_slot_10_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_11_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_11_text = SF::Text.new
+        @@earrings_slot_11_text.font = QUICKSAND
+        @@earrings_slot_11_text.character_size = 12
+        @@earrings_slot_11_text.color = SF::Color::Blue
+
+        @@earrings_slot_11_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_12_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_12_text = SF::Text.new
+        @@earrings_slot_12_text.font = QUICKSAND
+        @@earrings_slot_12_text.character_size = 12
+        @@earrings_slot_12_text.color = SF::Color::Blue
+
+        @@earrings_slot_12_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_13_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_13_text = SF::Text.new
+        @@earrings_slot_13_text.font = QUICKSAND
+        @@earrings_slot_13_text.character_size = 12
+        @@earrings_slot_13_text.color = SF::Color::Blue
+
+        @@earrings_slot_13_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_14_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_14_text = SF::Text.new
+        @@earrings_slot_14_text.font = QUICKSAND
+        @@earrings_slot_14_text.character_size = 12
+        @@earrings_slot_14_text.color = SF::Color::Blue
+
+        @@earrings_slot_14_image_sprite = SF::Sprite.new
+
+
+        @@earrings_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@earrings_slot_15_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@earrings_slot_15_text = SF::Text.new
+        @@earrings_slot_15_text.font = QUICKSAND
+        @@earrings_slot_15_text.character_size = 12
+        @@earrings_slot_15_text.color = SF::Color::Blue
+
+        @@earrings_slot_15_image_sprite = SF::Sprite.new
+
+       #---------------------------------------------------------------------------------
+
+       def initialize(is_open : Bool, page : Int32)
+        @@is_open = is_open
+        @@page = page
+       end
+
+       def ClothingTabEarrings.is_open
+        @@is_open
+       end
+
+       def ClothingTabEarrings.page
+        @@page
+       end
+
+       def ClothingTabEarrings.is_open=(this)
+        @@is_open = this
+       end
+
+       def ClothingTabEarrings.page=(this)
+        @@page = this
+       end
+
+       def ClothingTabEarrings.owned_earrings_array
+        @@owned_earrings_array
+       end
+
+       def ClothingTabEarrings.owned_earrings_array=(this)
+        @@owned_earrings_array = this
+       end
+
+       def ClothingTabEarrings.push_to_owned_earrings_array(this)
+        @@owned_earrings_array.push(this)
+       end
+
+       def ClothingTabEarrings.change_earrings_sort_category
+        case @@earrings_sorting_category
+        when "Length"
+            @@earrings_sorting_category = "Color"
+        when "Color"
+            @@earrings_sorting_category = "Length"
+        end
+       end
+
+       def ClothingTabEarrings.get_earrings_category
+        return @@earrings_sorting_category
+       end
+
+       def ClothingTabEarrings.organise_owned_earrings_array_by_color(window)
+        temp_clothing_array_01 = [] of Clothing::Earrings
+        @@owned_earrings_array.each { |earrings| if earrings.id == 0
+        temp_clothing_array_01.push(earrings)
+        end}
+        @@owned_earrings_array.each { |earrings| if earrings.color == "white"
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.each { |earrings| if earrings.color == "black"
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.each { |earrings| if earrings.color == "red"
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.each { |earrings| if earrings.color == "orange"
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.each { |earrings| if earrings.color == "yellow"
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.each { |earrings| if earrings.color == "green"
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.each { |earrings| if earrings.color == "blue"
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.each { |earrings| if earrings.color == "purple"
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.each { |earrings| if earrings.color == "pink"
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.clear
+        @@owned_earrings_array = temp_clothing_array_01
+        @@owned_earrings_array.uniq!
+        ClothingTabEarrings.assign_slot_textures(window)
+       end
+
+       def ClothingTabEarrings.organise_owned_earrings_array_by_sleeve_length_short_to_long(window)
+        temp_clothing_array_01 = [] of Clothing::Earrings
+        @@owned_earrings_array.each { |earrings| if earrings.length.includes?("none") == true
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.each { |earrings| if earrings.length.includes?("very_short") == true
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.each { |earrings| if earrings.length.includes?("short") == true
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.each { |earrings| if earrings.length.includes?("long") == true
+        temp_clothing_array_01.push(earrings)
+        end}
+
+        @@owned_earrings_array.clear
+        @@owned_earrings_array = temp_clothing_array_01
+        @@owned_earrings_array.uniq!
+        ClothingTabEarrings.assign_slot_textures(window)
+       end
+
+       def ClothingTabEarrings.center_clothing_text(this)
+        if this.string.size <= 5
+            this.character_size = 20
+
+            x = this.position.x - (this.string.size + 6)
+            this.position = SF.vector2(x, this.position.y)
+
+        elsif this.string.size > 5 && this.string.size < 10
+            this.character_size = 15
+
+            x = this.position.x + (this.string.size - 1)
+            this.position = SF.vector2(x, this.position.y)
+
+        elsif this.string.size >= 10 && this.string.size < 15
+            this.character_size = 11
+
+            x = this.position.x - (this.string.size - 12)
+            y = this.position.y + 2
+            this.position = SF.vector2(x, y)
+
+        elsif this.string.size >= 15 && this.string.size < 20
+            this.character_size = 11
+
+            x = this.position.x - (this.string.size - 10)
+            this.position = SF.vector2(x, this.position.y)
+
+        elsif this.string.size >= 20
+            this.character_size = 11
+
+            x = this.position.x - (this.string.size - 33)
+            y = this.position.y - (this.string.size - 20)
+            this.position = SF.vector2(x, y)
+        end
+       end
+
+       def ClothingTabEarrings.initialize_clothing_tab(window)
+        @@page = 1
+        INVENTORY_BOX.position = SF.vector2(20, 40)  
+       end
+
+       def ClothingTabEarrings.assign_slot_textures(window)
+        if @@page == nil
+            @@page = 1
+        end
+        if @@owned_earrings_array.size > 0
+            t = 0 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_01_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_01_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_01 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_01_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_01_text.string = ""
+                @@earrings_slot_01 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 1
+            t = 1 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_02_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_02_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_02 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_02_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_02_text.string = ""
+                @@earrings_slot_02 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 2
+            t = 2 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_03_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_03_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_03 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_03_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_03_text.string = ""
+                @@earrings_slot_03 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 3
+            t = 3 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_04_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_04_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_04 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_04_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_04_text.string = ""
+                @@earrings_slot_04 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 4
+            t = 4 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_05_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_05_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_05 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_05_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_05_text.string = ""
+                @@earrings_slot_05 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 5
+            t = 5 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_06_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_06_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_06 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_06_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_06_text.string = ""
+                @@earrings_slot_06 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 6
+            t = 6 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_07_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_07_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_07 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_07_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_07_text.string = ""
+                @@earrings_slot_07 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 7
+            t = 7 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_08_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_08_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_08 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_08_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_08_text.string = ""
+                @@earrings_slot_08 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 8
+            t = 8 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_09_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_09_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_09 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_09_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_09_text.string = ""
+                @@earrings_slot_09 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 9
+            t = 9 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_10_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_10_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_10 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_10_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_10_text.string = ""
+                @@earrings_slot_10 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 10
+            t = 10 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_11_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_11_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_11 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_11_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_11_text.string = ""
+                @@earrings_slot_11 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 11
+            t = 11 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_12_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_12_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_12 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_12_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_12_text.string = ""
+                @@earrings_slot_12 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 12
+            t = 12 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_13_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_13_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_13 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_13_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_13_text.string = ""
+                @@earrings_slot_13 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 13
+            t = 13 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_14_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_14_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_14 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_14_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_14_text.string = ""
+                @@earrings_slot_14 = nil
+            end
+        end
+        if @@owned_earrings_array.size > 14
+            t = 14 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_earrings_array.size - 1
+             @@earrings_slot_15_image_sprite.texture = @@owned_earrings_array[t].texture
+             @@earrings_slot_15_text.string = @@owned_earrings_array[t].name
+             @@earrings_slot_15 = @@owned_earrings_array[t]
+            else
+                @@earrings_slot_15_image_sprite.texture = NIL_TEXTURE
+                @@earrings_slot_15_text.string = ""
+                @@earrings_slot_15 = nil
+            end
+        end
+       end
+       
+
+       def ClothingTabEarrings.draw_clothing_tab(window)
+            current_size = window.size
+            original_width = 800 
+            original_height = 600
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+    
+            scale_ratio = [scale_x, scale_y].min
+            max_scale = 1.5
+            clamped_scale = [scale_ratio, max_scale].min
+
+        window.view = window.default_view
+
+        INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
+        INVENTORY_BOX.scale = SF.vector2(1, 1)
+
+
+        @@earrings_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
+        @@earrings_slot_01_sprite.scale = SF.vector2(1, 1)
+        
+        @@earrings_slot_01_image_sprite.position = @@earrings_slot_01_sprite.position - SF.vector2(90 * max_scale, 100 * max_scale)
+        @@earrings_slot_01_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_01_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_01_image_sprite_dup = @@earrings_slot_01_image_sprite.dup
+        earrings_slot_01_image_sprite_dup.position = @@earrings_slot_01_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+
+        @@earrings_slot_01_text.position = @@earrings_slot_01_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_01_text)
+        
+
+        @@earrings_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
+        @@earrings_slot_02_sprite.scale = SF.vector2(1, 1)
+        
+        @@earrings_slot_02_image_sprite.position = @@earrings_slot_02_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_02_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_02_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_02_image_sprite_dup = @@earrings_slot_02_image_sprite.dup
+        earrings_slot_02_image_sprite_dup.position = @@earrings_slot_02_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+
+        @@earrings_slot_02_text.position = @@earrings_slot_02_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_02_text)
+        
+
+        @@earrings_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
+        @@earrings_slot_03_sprite.scale = SF.vector2(1, 1)
+        
+        @@earrings_slot_03_image_sprite.position = @@earrings_slot_03_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_03_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_03_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_03_image_sprite_dup = @@earrings_slot_03_image_sprite.dup
+        earrings_slot_03_image_sprite_dup.position = @@earrings_slot_03_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+
+        @@earrings_slot_03_text.position = @@earrings_slot_03_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_03_text)
+        
+
+        @@earrings_slot_04_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 40 * max_scale)
+        @@earrings_slot_04_sprite.scale = SF.vector2(1, 1)
+
+        @@earrings_slot_04_text.position = @@earrings_slot_04_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_04_text)
+        
+        @@earrings_slot_04_image_sprite.position = @@earrings_slot_04_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_04_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_04_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+
+        earrings_slot_04_image_sprite_dup = @@earrings_slot_04_image_sprite.dup
+        earrings_slot_04_image_sprite_dup.position = @@earrings_slot_04_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+
+
+        @@earrings_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
+        @@earrings_slot_05_sprite.scale = SF.vector2(1, 1)
+
+        @@earrings_slot_05_text.position = @@earrings_slot_05_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_05_text)
+        
+        @@earrings_slot_05_image_sprite.position = @@earrings_slot_05_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_05_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_05_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_05_image_sprite_dup = @@earrings_slot_05_image_sprite.dup
+        earrings_slot_05_image_sprite_dup.position = @@earrings_slot_05_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+        
+
+        @@earrings_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
+        @@earrings_slot_06_sprite.scale = SF.vector2(1, 1)
+
+        @@earrings_slot_06_text.position = @@earrings_slot_06_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_06_text)
+        
+        @@earrings_slot_06_image_sprite.position = @@earrings_slot_06_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_06_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_06_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_06_image_sprite_dup = @@earrings_slot_06_image_sprite.dup
+        earrings_slot_06_image_sprite_dup.position = @@earrings_slot_06_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+        
+
+        @@earrings_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
+        @@earrings_slot_07_sprite.scale = SF.vector2(1, 1)
+        
+        @@earrings_slot_07_text.position = @@earrings_slot_07_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_07_text)
+        
+        @@earrings_slot_07_image_sprite.position = @@earrings_slot_07_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_07_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_07_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+
+        earrings_slot_07_image_sprite_dup = @@earrings_slot_07_image_sprite.dup
+        earrings_slot_07_image_sprite_dup.position = @@earrings_slot_07_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+        
+
+        @@earrings_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
+        @@earrings_slot_08_sprite.scale = SF.vector2(1, 1)
+                
+        @@earrings_slot_08_text.position = @@earrings_slot_08_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_08_text)
+        
+        @@earrings_slot_08_image_sprite.position = @@earrings_slot_08_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_08_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_08_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_08_image_sprite_dup = @@earrings_slot_08_image_sprite.dup
+        earrings_slot_08_image_sprite_dup.position = @@earrings_slot_08_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+        
+
+        @@earrings_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
+        @@earrings_slot_09_sprite.scale = SF.vector2(1, 1)
+                
+        @@earrings_slot_09_text.position = @@earrings_slot_09_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_09_text)
+        
+        @@earrings_slot_09_image_sprite.position = @@earrings_slot_09_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_09_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_09_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_09_image_sprite_dup = @@earrings_slot_09_image_sprite.dup
+        earrings_slot_09_image_sprite_dup.position = @@earrings_slot_09_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+        
+
+        @@earrings_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
+        @@earrings_slot_10_sprite.scale = SF.vector2(1, 1)
+                        
+        @@earrings_slot_10_text.position = @@earrings_slot_10_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_10_text)
+        
+        @@earrings_slot_10_image_sprite.position = @@earrings_slot_10_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_10_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_10_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_10_image_sprite_dup = @@earrings_slot_10_image_sprite.dup
+        earrings_slot_10_image_sprite_dup.position = @@earrings_slot_10_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+        
+
+        @@earrings_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
+        @@earrings_slot_11_sprite.scale = SF.vector2(1, 1)
+                        
+        @@earrings_slot_11_text.position = @@earrings_slot_11_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_11_text)
+        
+        @@earrings_slot_11_image_sprite.position = @@earrings_slot_11_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_11_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_11_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_11_image_sprite_dup = @@earrings_slot_11_image_sprite.dup
+        earrings_slot_11_image_sprite_dup.position = @@earrings_slot_11_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+        
+
+        @@earrings_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
+        @@earrings_slot_12_sprite.scale = SF.vector2(1, 1)
+                        
+        @@earrings_slot_12_text.position = @@earrings_slot_12_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_12_text)
+        
+        @@earrings_slot_12_image_sprite.position = @@earrings_slot_12_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_12_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_12_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_12_image_sprite_dup = @@earrings_slot_12_image_sprite.dup
+        earrings_slot_12_image_sprite_dup.position = @@earrings_slot_12_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+        
+
+        @@earrings_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
+        @@earrings_slot_13_sprite.scale = SF.vector2(1, 1)
+        
+        @@earrings_slot_13_text.position = @@earrings_slot_13_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_13_text)
+        
+        @@earrings_slot_13_image_sprite.position = @@earrings_slot_13_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_13_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_13_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_13_image_sprite_dup = @@earrings_slot_13_image_sprite.dup
+        earrings_slot_13_image_sprite_dup.position = @@earrings_slot_13_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+        
+
+        @@earrings_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
+        @@earrings_slot_14_sprite.scale = SF.vector2(1, 1)
+                        
+        @@earrings_slot_14_text.position = @@earrings_slot_14_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_14_text)
+        
+        @@earrings_slot_14_image_sprite.position = @@earrings_slot_14_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_14_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_14_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_14_image_sprite_dup = @@earrings_slot_14_image_sprite.dup
+        earrings_slot_14_image_sprite_dup.position = @@earrings_slot_14_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+        
+
+        @@earrings_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
+        @@earrings_slot_15_sprite.scale = SF.vector2(1, 1)
+                        
+        @@earrings_slot_15_text.position = @@earrings_slot_15_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabEarrings.center_clothing_text(@@earrings_slot_15_text)
+        
+        @@earrings_slot_15_image_sprite.position = @@earrings_slot_15_sprite.position - SF.vector2(80 * max_scale, 100 * max_scale)
+        @@earrings_slot_15_image_sprite.scale = SF.vector2(4, 4)
+        @@earrings_slot_15_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        earrings_slot_15_image_sprite_dup = @@earrings_slot_15_image_sprite.dup
+        earrings_slot_15_image_sprite_dup.position = @@earrings_slot_15_sprite.position - SF.vector2(65 * max_scale, 100 * max_scale)
+
+
+        window.draw(@@earrings_slot_01_sprite)
+        window.draw(@@earrings_slot_01_image_sprite)
+        window.draw(earrings_slot_01_image_sprite_dup)
+        window.draw(@@earrings_slot_01_text)
+
+        window.draw(@@earrings_slot_02_sprite)
+        window.draw(@@earrings_slot_02_image_sprite)
+        window.draw(earrings_slot_02_image_sprite_dup)
+        window.draw(@@earrings_slot_02_text)
+
+        window.draw(@@earrings_slot_03_sprite)
+        window.draw(@@earrings_slot_03_image_sprite)
+        window.draw(earrings_slot_03_image_sprite_dup)
+        window.draw(@@earrings_slot_03_text)
+        
+        window.draw(@@earrings_slot_04_sprite)
+        window.draw(@@earrings_slot_04_image_sprite)
+        window.draw(earrings_slot_04_image_sprite_dup)
+        window.draw(@@earrings_slot_04_text)
+
+        window.draw(@@earrings_slot_05_sprite)
+        window.draw(@@earrings_slot_05_image_sprite)
+        window.draw(earrings_slot_05_image_sprite_dup)
+        window.draw(@@earrings_slot_05_text)
+
+        window.draw(@@earrings_slot_06_sprite)
+        window.draw(@@earrings_slot_06_image_sprite)
+        window.draw(earrings_slot_06_image_sprite_dup)
+        window.draw(@@earrings_slot_06_text)
+
+        window.draw(@@earrings_slot_07_sprite)
+        window.draw(@@earrings_slot_07_image_sprite)
+        window.draw(earrings_slot_07_image_sprite_dup)
+        window.draw(@@earrings_slot_07_text)
+
+        window.draw(@@earrings_slot_08_sprite)
+        window.draw(@@earrings_slot_08_image_sprite)
+        window.draw(earrings_slot_08_image_sprite_dup)
+        window.draw(@@earrings_slot_08_text)
+
+        window.draw(@@earrings_slot_09_sprite)
+        window.draw(@@earrings_slot_09_image_sprite)
+        window.draw(earrings_slot_09_image_sprite_dup)
+        window.draw(@@earrings_slot_09_text)
+
+        window.draw(@@earrings_slot_10_sprite)
+        window.draw(@@earrings_slot_10_image_sprite)
+        window.draw(earrings_slot_10_image_sprite_dup)
+        window.draw(@@earrings_slot_10_text)
+
+        window.draw(@@earrings_slot_11_sprite)
+        window.draw(@@earrings_slot_11_image_sprite)
+        window.draw(earrings_slot_11_image_sprite_dup)
+        window.draw(@@earrings_slot_11_text)
+
+        window.draw(@@earrings_slot_12_sprite)
+        window.draw(@@earrings_slot_12_image_sprite)
+        window.draw(earrings_slot_12_image_sprite_dup)
+        window.draw(@@earrings_slot_12_text)
+
+        window.draw(@@earrings_slot_13_sprite)
+        window.draw(@@earrings_slot_13_image_sprite)
+        window.draw(earrings_slot_13_image_sprite_dup)
+        window.draw(@@earrings_slot_13_text)
+
+        window.draw(@@earrings_slot_14_sprite)
+        window.draw(@@earrings_slot_14_image_sprite)
+        window.draw(earrings_slot_14_image_sprite_dup)
+        window.draw(@@earrings_slot_14_text)
+
+        window.draw(@@earrings_slot_15_sprite)
+        window.draw(@@earrings_slot_15_image_sprite)
+        window.draw(earrings_slot_15_image_sprite_dup)
+        window.draw(@@earrings_slot_15_text)
+
+        if SF::Mouse.button_pressed?(SF::Mouse::Left)
+            ClothingTabEarrings.clothes_mouse_handling(window)
+        end
+       end
+
+       def ClothingTabEarrings.clothes_mouse_handling(window)
+        mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+        mouse_x = mouse_position.x
+        mouse_y = mouse_position.y
+        
+    
+        current_size = window.size
+        original_width = 800 
+        original_height = 600 
+
+        scale_x = (current_size.x.to_f / original_width)
+        scale_y = current_size.y.to_f / original_height
+        
+
+        #------------------------------------objects-------------------------------------------------
+
+            slot_01_x = @@earrings_slot_01_sprite.position.x
+            slot_01_y = @@earrings_slot_01_sprite.position.y
+            slot_01_width = @@earrings_slot_01_sprite.size.x
+            slot_01_height = @@earrings_slot_01_sprite.size.y
+
+            slot_02_x = @@earrings_slot_02_sprite.position.x
+            slot_02_y = @@earrings_slot_02_sprite.position.y
+            slot_02_width = @@earrings_slot_02_sprite.size.x
+            slot_02_height = @@earrings_slot_02_sprite.size.y
+
+            slot_03_x = @@earrings_slot_03_sprite.position.x
+            slot_03_y = @@earrings_slot_03_sprite.position.y
+            slot_03_width = @@earrings_slot_03_sprite.size.x
+            slot_03_height = @@earrings_slot_03_sprite.size.y
+
+            slot_04_x = @@earrings_slot_04_sprite.position.x
+            slot_04_y = @@earrings_slot_04_sprite.position.y
+            slot_04_width = @@earrings_slot_04_sprite.size.x
+            slot_04_height = @@earrings_slot_04_sprite.size.y
+
+            slot_05_x = @@earrings_slot_05_sprite.position.x
+            slot_05_y = @@earrings_slot_05_sprite.position.y
+            slot_05_width = @@earrings_slot_05_sprite.size.x
+            slot_05_height = @@earrings_slot_05_sprite.size.y
+
+            slot_06_x = @@earrings_slot_06_sprite.position.x
+            slot_06_y = @@earrings_slot_06_sprite.position.y
+            slot_06_width = @@earrings_slot_06_sprite.size.x
+            slot_06_height = @@earrings_slot_06_sprite.size.y
+
+            slot_07_x = @@earrings_slot_07_sprite.position.x
+            slot_07_y = @@earrings_slot_07_sprite.position.y
+            slot_07_width = @@earrings_slot_07_sprite.size.x
+            slot_07_height = @@earrings_slot_07_sprite.size.y
+
+            slot_08_x = @@earrings_slot_08_sprite.position.x
+            slot_08_y = @@earrings_slot_08_sprite.position.y
+            slot_08_width = @@earrings_slot_08_sprite.size.x
+            slot_08_height = @@earrings_slot_08_sprite.size.y
+
+            slot_09_x = @@earrings_slot_09_sprite.position.x
+            slot_09_y = @@earrings_slot_09_sprite.position.y
+            slot_09_width = @@earrings_slot_09_sprite.size.x
+            slot_09_height = @@earrings_slot_09_sprite.size.y
+
+            slot_10_x = @@earrings_slot_10_sprite.position.x
+            slot_10_y = @@earrings_slot_10_sprite.position.y
+            slot_10_width = @@earrings_slot_10_sprite.size.x
+            slot_10_height = @@earrings_slot_10_sprite.size.y
+
+            slot_11_x = @@earrings_slot_11_sprite.position.x
+            slot_11_y = @@earrings_slot_11_sprite.position.y
+            slot_11_width = @@earrings_slot_11_sprite.size.x
+            slot_11_height = @@earrings_slot_11_sprite.size.y
+
+            slot_12_x = @@earrings_slot_12_sprite.position.x
+            slot_12_y = @@earrings_slot_12_sprite.position.y
+            slot_12_width = @@earrings_slot_12_sprite.size.x
+            slot_12_height = @@earrings_slot_12_sprite.size.y
+
+            slot_13_x = @@earrings_slot_13_sprite.position.x
+            slot_13_y = @@earrings_slot_13_sprite.position.y
+            slot_13_width = @@earrings_slot_13_sprite.size.x
+            slot_13_height = @@earrings_slot_13_sprite.size.y
+
+            slot_14_x = @@earrings_slot_14_sprite.position.x
+            slot_14_y = @@earrings_slot_14_sprite.position.y
+            slot_14_width = @@earrings_slot_14_sprite.size.x
+            slot_14_height = @@earrings_slot_14_sprite.size.y
+
+            slot_15_x = @@earrings_slot_15_sprite.position.x
+            slot_15_y = @@earrings_slot_15_sprite.position.y
+            slot_15_width = @@earrings_slot_15_sprite.size.x
+            slot_15_height = @@earrings_slot_15_sprite.size.y
+        #---------------------------------------------------------------------------------------------
+        
+        if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
+           (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
+            if @@earrings_slot_01 != nil   
+                t = 0 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_01.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+                
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
+           (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
+           
+            if @@earrings_slot_02 != nil
+                t = 1 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_02.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
+           (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
+           
+            if @@earrings_slot_03 != nil
+                t = 2 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_03.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
+           (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
+           
+            if @@earrings_slot_04 != nil
+                t = 3 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_04.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
+           (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
+           
+            if @@earrings_slot_05 != nil
+                t = 4 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_05.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
+           (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
+           
+            if @@earrings_slot_06 != nil
+                t = 5 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_06.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
+           (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
+           
+            if @@earrings_slot_07 != nil
+                t = 6 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_07.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
+           (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
+           
+            if @@earrings_slot_08 != nil
+                t = 7 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_08.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
+           (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
+           
+            if @@earrings_slot_09 != nil
+                t = 8 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_09.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
+           (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
+           
+            if @@earrings_slot_10 != nil
+                t = 9 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_10.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
+           (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
+           
+            if @@earrings_slot_11 != nil
+                t = 10 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_11.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
+           (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
+           
+            if @@earrings_slot_12 != nil
+                t = 11 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_12.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
+           (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
+           
+            if @@earrings_slot_13 != nil
+                t = 12 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_13.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
+           (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
+           
+            if @@earrings_slot_14 != nil
+                t = 13 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_14.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
+           (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
+           
+            if @@earrings_slot_15 != nil
+                t = 14 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
+                Player::Appearance.change_earrings(@@earrings_slot_15.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
         end
 
