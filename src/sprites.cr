@@ -3,6 +3,7 @@ require "../src/textures.cr"
 require "../src/player.cr"
 require "../src/animations.cr"
 require "../src/clothing.cr"
+require "../src/body.cr"
 
 module Sprites
     include Player
@@ -160,11 +161,27 @@ module Sprites
     skin = CLOTHES_HASH[Appearance.get_clothing("skin")]
     current_skin = SF::Sprite.new(skin)
 
-    current_hair = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("hair")])
+    #current_hair = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("hair")])
+
+    current_hair = if hair = Body::Hair.get_hair(Appearance.get_clothing("hair"))
+
+    hat = Appearance.get_clothing("hat")
+
+        if hat.nil?
+           return SF::Sprite.new
+        elsif hat == "No Hat"
+            SF::Sprite.new(hair.texture)
+        else 
+            i = "#{hair.name} Hat"
+            puts i
+            texture = Body::Hair.get_hair(i).try(&.texture) || SF::Texture.new(NIL_TEXTURE)
+            SF::Sprite.new(texture)
+        end
+        else
+            SF::Sprite.new
+        end
 
     current_face = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("face")])
-
-    #current_hat = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("hat")])
 
     current_shirt = if shirt = Clothing::Shirt.get_shirt(Appearance.get_clothing("shirt"))
         SF::Sprite.new(shirt.texture)
