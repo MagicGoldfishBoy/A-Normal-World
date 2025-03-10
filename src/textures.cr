@@ -391,6 +391,17 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
   PURPLE_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Purple_Baseball_Cap.png")
   PINK_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Pink_Baseball_Cap.png")
 
+  WHITE_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/White_Sweatband.png")
+  BLACK_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Black_Sweatband.png")
+  BROWN_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Brown_Sweatband.png")
+  RED_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Red_Sweatband.png")
+  ORANGE_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Orange_Sweatband.png")
+  YELLOW_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Sweatband.png")
+  GREEN_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Green_Sweatband.png")
+  BLUE_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Blue_Sweatband.png")
+  PURPLE_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Purple_Sweatband.png")
+  PINK_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Pink_Sweatband.png")
+
  #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
  #W                                         Weapon Textures                                          W
  #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
