@@ -540,6 +540,7 @@ module Clothing
         end
 
         @@nil_hat = Hat.new("No Hat", 0, false, "floating", "plain", NIL_TEXTURE, "white")
+        
         @@white_baseball_cap = Hat.new("White Baseball Cap", 1, false, "full", "sporty", WHITE_BASEBALL_CAP_TEXTURE, "white")
         @@black_baseball_cap = Hat.new("Black Baseball Cap", 2, false, "full", "sporty", BLACK_BASEBALL_CAP_TEXTURE, "black")
         @@brown_baseball_cap = Hat.new("Brown Baseball Cap", 3, false, "full", "sporty", BROWN_BASEBALL_CAP_TEXTURE, "brown")
@@ -550,5 +551,16 @@ module Clothing
         @@blue_baseball_cap = Hat.new("Blue Baseball Cap", 8, false, "full", "sporty", BLUE_BASEBALL_CAP_TEXTURE, "blue")
         @@purple_baseball_cap = Hat.new("Purple Baseball Cap", 9, false, "full", "sporty", PURPLE_BASEBALL_CAP_TEXTURE, "purple")
         @@pink_baseball_cap = Hat.new("Pink Baseball Cap", 10, false, "full", "sporty", PINK_BASEBALL_CAP_TEXTURE, "pink")
+
+        @@white_sweatband = Hat.new("White Sweatband", 100, false, "ring", "sporty", WHITE_SWEATBAND_TEXTURE, "white")
+        @@black_sweatband = Hat.new("Black Sweatband", 101, false, "ring", "sporty", BLACK_SWEATBAND_TEXTURE, "black")
+        @@brown_sweatband = Hat.new("Brown Sweatband", 102, false, "ring", "sporty", BROWN_SWEATBAND_TEXTURE, "brown")
+        @@red_sweatband = Hat.new("Red Sweatband", 103, false, "ring", "sporty", RED_SWEATBAND_TEXTURE, "red")
+        @@orange_sweatband = Hat.new("Orange Sweatband", 104, false, "ring", "sporty", ORANGE_SWEATBAND_TEXTURE, "orange")
+        @@yellow_sweatband = Hat.new("Yellow Sweatband", 105, false, "ring", "sporty", YELLOW_SWEATBAND_TEXTURE, "yellow")
+        @@green_sweatband = Hat.new("Green Sweatband", 106, false, "ring", "sporty", GREEN_SWEATBAND_TEXTURE, "green")
+        @@blue_sweatband = Hat.new("Blue Sweatband", 107, false, "ring", "sporty", BLUE_SWEATBAND_TEXTURE, "blue")
+        @@purple_sweatband = Hat.new("Purple Sweatband", 108, false, "ring", "sporty", PURPLE_SWEATBAND_TEXTURE, "purple")
+        @@pink_sweatband = Hat.new("Pink Sweatband", 109, false, "ring", "sporty", PINK_SWEATBAND_TEXTURE, "pink")
     end
 end

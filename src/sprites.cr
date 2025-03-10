@@ -167,7 +167,7 @@ module Sprites
 
         if hat.nil?
            return SF::Sprite.new
-        elsif hat == "No Hat"
+        elsif hat == "No Hat" || Clothing::Hat.get_hat(Appearance.get_clothing("hat")).try(&.length) != "full"
             SF::Sprite.new(hair.texture)
         else 
             i = "#{hair.name} Hat"

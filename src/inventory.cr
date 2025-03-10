@@ -6986,6 +6986,7 @@ module Inventory
 
        #---------------------------------debug-------------------------------------------
         @@owned_hat_array.push(Clothing::Hat.get_hat("No Hat").not_nil!)
+
         @@owned_hat_array.push(Clothing::Hat.get_hat("White Baseball Cap").not_nil!)
         @@owned_hat_array.push(Clothing::Hat.get_hat("Black Baseball Cap").not_nil!)
         @@owned_hat_array.push(Clothing::Hat.get_hat("Brown Baseball Cap").not_nil!)
@@ -6996,6 +6997,19 @@ module Inventory
         @@owned_hat_array.push(Clothing::Hat.get_hat("Blue Baseball Cap").not_nil!)
         @@owned_hat_array.push(Clothing::Hat.get_hat("Purple Baseball Cap").not_nil!)
         @@owned_hat_array.push(Clothing::Hat.get_hat("Pink Baseball Cap").not_nil!)
+
+        @@owned_hat_array.push(Clothing::Hat.get_hat("White Sweatband").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Black Sweatband").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Brown Sweatband").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Red Sweatband").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Orange Sweatband").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Yellow Sweatband").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Green Sweatband").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Blue Sweatband").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Purple Sweatband").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Pink Sweatband").not_nil!)
+        
+        @@owned_hat_array.uniq!
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
