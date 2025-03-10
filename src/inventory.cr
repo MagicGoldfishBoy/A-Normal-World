@@ -1178,7 +1178,7 @@ module Inventory
                 if ClothingTabHat.get_hat_category == "Color"
                  ClothingTabHat.organise_owned_hat_array_by_color(window)
                 elsif "Length"
-                 ClothingTabHat.organise_owned_hat_array_by_sleeve_length_short_to_long(window)
+                 ClothingTabHat.organise_owned_hat_array_by_type(window)
                 end
                  sleep 0.15.seconds
              end        
@@ -6966,7 +6966,7 @@ module Inventory
     class ClothingTabHat
         @@owned_hat_array = [] of Clothing::Hat
 
-        @@hat_sorting_category = "Length"
+        @@hat_sorting_category = "Type"
 
         @@hat_slot_01 : Clothing::Hat? = nil
         @@hat_slot_02 : Clothing::Hat? = nil
@@ -6985,7 +6985,17 @@ module Inventory
         @@hat_slot_15 : Clothing::Hat? = nil
 
        #---------------------------------debug-------------------------------------------
+        @@owned_hat_array.push(Clothing::Hat.get_hat("No Hat").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("White Baseball Cap").not_nil!)
         @@owned_hat_array.push(Clothing::Hat.get_hat("Black Baseball Cap").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Brown Baseball Cap").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Red Baseball Cap").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Orange Baseball Cap").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Yellow Baseball Cap").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Green Baseball Cap").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Blue Baseball Cap").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Purple Baseball Cap").not_nil!)
+        @@owned_hat_array.push(Clothing::Hat.get_hat("Pink Baseball Cap").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
@@ -7236,10 +7246,10 @@ module Inventory
 
        def ClothingTabHat.change_hat_sort_category
         case @@hat_sorting_category
-        when "Length"
+        when "Type"
             @@hat_sorting_category = "Color"
         when "Color"
-            @@hat_sorting_category = "Length"
+            @@hat_sorting_category = "Type"
         end
        end
 
@@ -7257,6 +7267,10 @@ module Inventory
         end}
 
         @@owned_hat_array.each { |hat| if hat.color == "black"
+        temp_clothing_array_01.push(hat)
+        end}
+
+        @@owned_hat_array.each { |hat| if hat.color == "brown"
         temp_clothing_array_01.push(hat)
         end}
 
@@ -7294,21 +7308,17 @@ module Inventory
         ClothingTabHat.assign_slot_textures(window)
        end
 
-       def ClothingTabHat.organise_owned_hat_array_by_sleeve_length_short_to_long(window)
+       def ClothingTabHat.organise_owned_hat_array_by_type(window)
         temp_clothing_array_01 = [] of Clothing::Hat
-        @@owned_hat_array.each { |hat| if hat.length.includes?("none") == true
+        @@owned_hat_array.each { |hat| if hat.length.includes?("full") == true
         temp_clothing_array_01.push(hat)
         end}
 
-        @@owned_hat_array.each { |hat| if hat.length.includes?("very_short") == true
+        @@owned_hat_array.each { |hat| if hat.length.includes?("ring") == true
         temp_clothing_array_01.push(hat)
         end}
 
-        @@owned_hat_array.each { |hat| if hat.length.includes?("short") == true
-        temp_clothing_array_01.push(hat)
-        end}
-
-        @@owned_hat_array.each { |hat| if hat.length.includes?("long") == true
+        @@owned_hat_array.each { |hat| if hat.length.includes?("floating") == true
         temp_clothing_array_01.push(hat)
         end}
 

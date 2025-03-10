@@ -539,7 +539,16 @@ module Clothing
          end }
         end
 
-        @@nil_hat = Hat.new("No Hat", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
-        @@black_baseball_cap = Hat.new("Black Baseball Cap", 1, false, "long", "sporty", BLACK_BASEBALL_CAP_TEXTURE, "black")
+        @@nil_hat = Hat.new("No Hat", 0, false, "floating", "plain", NIL_TEXTURE, "white")
+        @@white_baseball_cap = Hat.new("White Baseball Cap", 1, false, "full", "sporty", WHITE_BASEBALL_CAP_TEXTURE, "white")
+        @@black_baseball_cap = Hat.new("Black Baseball Cap", 2, false, "full", "sporty", BLACK_BASEBALL_CAP_TEXTURE, "black")
+        @@brown_baseball_cap = Hat.new("Brown Baseball Cap", 3, false, "full", "sporty", BROWN_BASEBALL_CAP_TEXTURE, "brown")
+        @@red_baseball_cap = Hat.new("Red Baseball Cap", 4, false, "full", "sporty", RED_BASEBALL_CAP_TEXTURE, "red")
+        @@orange_baseball_cap = Hat.new("Orange Baseball Cap", 5, false, "full", "sporty", ORANGE_BASEBALL_CAP_TEXTURE, "orange")
+        @@yellow_baseball_cap = Hat.new("Yellow Baseball Cap", 6, false, "full", "sporty", YELLOW_BASEBALL_CAP_TEXTURE, "yellow")
+        @@green_baseball_cap = Hat.new("Green Baseball Cap", 7, false, "full", "sporty", GREEN_BASEBALL_CAP_TEXTURE, "green")
+        @@blue_baseball_cap = Hat.new("Blue Baseball Cap", 8, false, "full", "sporty", BLUE_BASEBALL_CAP_TEXTURE, "blue")
+        @@purple_baseball_cap = Hat.new("Purple Baseball Cap", 9, false, "full", "sporty", PURPLE_BASEBALL_CAP_TEXTURE, "purple")
+        @@pink_baseball_cap = Hat.new("Pink Baseball Cap", 10, false, "full", "sporty", PINK_BASEBALL_CAP_TEXTURE, "pink")
     end
 end

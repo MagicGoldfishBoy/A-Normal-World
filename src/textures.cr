@@ -380,7 +380,16 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
  #H                                          Hat Textures                                            H
  #HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 
+  WHITE_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/White_Baseball_Cap.png")
   BLACK_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Black_Baseball_Cap.png")
+  BROWN_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Brown_Baseball_Cap.png")
+  RED_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Red_Baseball_Cap.png")
+  ORANGE_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Orange_Baseball_Cap.png")
+  YELLOW_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Baseball_Cap.png")
+  GREEN_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Green_Baseball_Cap.png")
+  BLUE_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Blue_Baseball_Cap.png")
+  PURPLE_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Purple_Baseball_Cap.png")
+  PINK_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Pink_Baseball_Cap.png")
 
  #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
  #W                                         Weapon Textures                                          W
