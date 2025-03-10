@@ -161,8 +161,6 @@ module Sprites
     skin = CLOTHES_HASH[Appearance.get_clothing("skin")]
     current_skin = SF::Sprite.new(skin)
 
-    #current_hair = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("hair")])
-
     current_hair = if hair = Body::Hair.get_hair(Appearance.get_clothing("hair"))
 
     hat = Appearance.get_clothing("hat")
@@ -173,7 +171,6 @@ module Sprites
             SF::Sprite.new(hair.texture)
         else 
             i = "#{hair.name} Hat"
-            puts i
             texture = Body::Hair.get_hair(i).try(&.texture) || SF::Texture.new(NIL_TEXTURE)
             SF::Sprite.new(texture)
         end
