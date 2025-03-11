@@ -638,4 +638,77 @@ module Clothing
 
         @@eye_bandage = Glasses.new("Eye Bandage", 3, false, "opaque", "cool", EYE_BANDAGE_TEXTURE, "white")
     end
+
+    class Makeup
+        MAKEUP_ARRAY = [] of Makeup
+        def initialize(name : String, id : Int32, is_owned : Bool, makeup_type : String, style : String, texture : SF::Texture, color : String)
+         @name = name
+         @@name = name
+         @id = id
+         @is_owned = is_owned
+         @makeup_type = makeup_type
+         @style = style
+         @texture = texture
+         @color = color
+         MAKEUP_ARRAY.push(self)
+        end
+ 
+        getter name : String
+        getter id : Int32
+        getter makeup_type : String
+        getter style : String
+        getter texture : SF::Texture
+        getter color : String
+        property is_owned : Bool
+ 
+        def Makeup.name
+         @@name
+        end
+ 
+        def Makeup.id
+         @@id
+        end
+ 
+        def Makeup.is_owned
+         @@is_owned
+        end
+ 
+        def Makeup.makeup_type
+         @@makeup_type
+        end
+ 
+        def Makeup.style
+         @@style
+        end
+ 
+        def Makeup.texture
+         @@texture
+        end
+ 
+        def Makeup.color
+         @@texture
+        end
+ 
+        def Makeup.is_owned=(this)
+         @@is_owned = this
+        end
+ 
+        def Makeup.get_makeup(this)
+         MAKEUP_ARRAY.each { |makeup| if makeup.name == this
+         return makeup
+         end }
+        end
+ 
+        def Makeup.get_makeup_texture(this)
+         MAKEUP_ARRAY.each { |makeup| if makeup.name == this
+         return makeup.texture
+         end }
+        end
+
+        @@nil_makeup = Makeup.new("No Makeup", 0, false, "nil", "plain", NIL_TEXTURE, "white")
+
+        @@eye_scar = Makeup.new("Eye Scar", 1, false, "eye", "cool", EYE_SCAR_SHOUNEN_TEXTURE, "pink")
+        @@eye_scar_shounen = Makeup.new("Eye Scar Shounen", 1, false, "eye", "cool", EYE_SCAR_SHOUNEN_TEXTURE, "pink")
+        @@eye_scar_button = Makeup.new("Eye Scar Button", 1, false, "eye", "cool", EYE_SCAR_BUTTON_TEXTURE, "pink")
+    end
 end

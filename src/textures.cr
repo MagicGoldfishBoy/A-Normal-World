@@ -409,7 +409,14 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
         SUNGLASSES_TEXTURE = SF::Texture.from_file("../graphics/Sunglasses.png")
         ROUND_GLASSES_TEXTURE = SF::Texture.from_file("../graphics/Round_Glasses.png")
         EYE_BANDAGE_TEXTURE = SF::Texture.from_file("../graphics/Eye_Bandage.png")
-        
+
+    #MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+    #M                                         Makeup Textures                                          M
+    #MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+
+    EYE_SCAR_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/Eye_Scar_Shounen.png")
+    EYE_SCAR_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/Eye_Scar_Button.png")
+
     #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
     #W                                         Weapon Textures                                          W
     #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW

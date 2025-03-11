@@ -33,6 +33,7 @@ module Serialization
     @@stat_save_hash["gloves"] = Player::Appearance.get_clothing("gloves")
     @@stat_save_hash["pants"] = Player::Appearance.get_clothing("pants")
     @@stat_save_hash["shoes"] = Player::Appearance.get_clothing("shoes")
+    @@stat_save_hash["makeup"] = Player::Appearance.get_clothing("makeup")
     @@stat_save_hash["weapon"] = Player::Appearance.get_clothing("weapon")
 
     def initialize(save_file : String, max_hp : Float64)
@@ -90,6 +91,7 @@ module Serialization
         Player::Appearance.change_pants(player_stats["pants"].to_s) 
         Player::Appearance.change_gloves(player_stats["gloves"].to_s) 
         Player::Appearance.change_shoes(player_stats["shoes"].to_s) 
+        Player::Appearance.change_makeup(player_stats["makeup"].to_s) 
         Player::Appearance.change_weapon(player_stats["weapon"].to_s) 
     end
 
@@ -127,6 +129,7 @@ module Serialization
         @@stat_save_hash["gloves"] = Player::Appearance.get_clothing("gloves")
         @@stat_save_hash["pants"] = Player::Appearance.get_clothing("pants")
         @@stat_save_hash["shoes"] = Player::Appearance.get_clothing("shoes")
+        @@stat_save_hash["makeup"] = Player::Appearance.get_clothing("makeup")
         @@stat_save_hash["glasses"] = Player::Appearance.get_clothing("glasses")
         @@stat_save_hash["weapon"] = Player::Appearance.get_clothing("weapon")
     end
