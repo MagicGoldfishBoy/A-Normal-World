@@ -1131,6 +1131,13 @@ module Inventory
                 sleep 0.15.seconds
             end 
 
+            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
+                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
+
+                InventoryManager.open_hat_tab(window)
+                sleep 0.15.seconds
+            end 
+
             if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
                 (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
 
@@ -1269,10 +1276,10 @@ module Inventory
                 sleep 0.15.seconds
             end 
 
-            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
-                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
+            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
+                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
 
-                InventoryManager.open_hat_tab(window)
+                InventoryManager.open_earrings_tab(window)
                 sleep 0.15.seconds
             end 
 
