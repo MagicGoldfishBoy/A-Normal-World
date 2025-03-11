@@ -144,6 +144,22 @@ module Inventory
         @@clothing_glasses_category_text.string = ClothingTabGlasses.get_glasses_category
         ClothingTabShirt.center_clothing_text(@@clothing_glasses_category_text)
 
+        @@makeup_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@makeup_tab.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_tab_text = SF::Text.new
+        @@makeup_tab_text.font = QUICKSAND
+        @@makeup_tab_text.character_size = 20
+        @@makeup_tab_text.color = SF::Color::Blue
+        @@makeup_tab_text.string = "Makeup"
+
+        @@clothing_makeup_category_text = SF::Text.new
+        @@clothing_makeup_category_text.font = QUICKSAND
+        @@clothing_makeup_category_text.character_size = 20
+        @@clothing_makeup_category_text.color = SF::Color::Blue
+        @@clothing_makeup_category_text.string = ClothingTabMakeup.get_makeup_category
+        ClothingTabShirt.center_clothing_text(@@clothing_makeup_category_text)
+
      #-----------------------------------------------------------------------------------------
 
         def InventoryManager.is_inventory_open
@@ -196,6 +212,12 @@ module Inventory
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("glasses", window)
                 end
+            elsif ClothingTabMakeup.is_open == true
+                InventoryManager.draw_universal_elements(window)
+                ClothingTabMakeup.draw_clothing_tab(window)
+                if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                    InventoryManager.universal_mouse_handling("makeup", window)
+                end
             end
           end
         end
@@ -245,6 +267,9 @@ module Inventory
             @@glasses_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(210 * max_scale))
             @@glasses_tab_text.position = @@glasses_tab.position + SF.vector2(10 * max_scale, 7 * max_scale)
 
+            @@makeup_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(245 * max_scale))
+            @@makeup_tab_text.position = @@makeup_tab.position + SF.vector2(10 * max_scale, 7 * max_scale)
+
 
             @@clothing_sort_button_sprite.position = INVENTORY_BOX.position + SF.vector2(50 * max_scale, 15 * max_scale)
             @@clothing_shirt_category_box.position = @@clothing_sort_button_sprite.position + SF.vector2(60 * max_scale, 0)
@@ -264,6 +289,8 @@ module Inventory
 
             @@clothing_glasses_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
+            @@clothing_makeup_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+
             window.draw(INVENTORY_BOX)
 
             window.draw(INVENTORY_LEFT_ARROW_SPRITE)
@@ -282,6 +309,8 @@ module Inventory
             window.draw(@@hat_tab_text)
             window.draw(@@glasses_tab)
             window.draw(@@glasses_tab_text)
+            window.draw(@@makeup_tab)
+            window.draw(@@makeup_tab_text)
 
             window.draw(@@clothing_sort_button_sprite)
             window.draw(@@clothing_shirt_category_box)
@@ -301,6 +330,8 @@ module Inventory
                 window.draw(@@clothing_hat_category_text)
                 elsif ClothingTabGlasses.is_open == true
                 window.draw(@@clothing_glasses_category_text)
+                elsif ClothingTabMakeup.is_open == true
+                window.draw(@@clothing_makeup_category_text)
             end
         end
 
@@ -311,6 +342,7 @@ module Inventory
             ClothingTabEarrings.page=(1)
             ClothingTabHat.page=(1)
             ClothingTabGlasses.page=(1)
+            ClothingTabMakeup.page=(1)
         end
 
         def InventoryManager.open_shirt_tab(window)
@@ -322,6 +354,7 @@ module Inventory
             ClothingTabEarrings.is_open=(false)
             ClothingTabHat.is_open=(false)
             ClothingTabGlasses.is_open=(false)
+            ClothingTabMakeup.is_open=(false)
             ClothingTabShirt.assign_slot_textures(window)
         end
 
@@ -334,6 +367,7 @@ module Inventory
             ClothingTabEarrings.is_open=(false)
             ClothingTabHat.is_open=(false)
             ClothingTabGlasses.is_open=(false)
+            ClothingTabMakeup.is_open=(false)
             ClothingTabPants.assign_slot_textures(window)
         end
 
@@ -346,6 +380,7 @@ module Inventory
             ClothingTabEarrings.is_open=(false)
             ClothingTabHat.is_open=(false)
             ClothingTabGlasses.is_open=(false)
+            ClothingTabMakeup.is_open=(false)
             ClothingTabShoes.assign_slot_textures(window)
         end
 
@@ -358,6 +393,7 @@ module Inventory
             ClothingTabEarrings.is_open=(false)
             ClothingTabHat.is_open=(false)
             ClothingTabGlasses.is_open=(false)
+            ClothingTabMakeup.is_open=(false)
             ClothingTabGloves.assign_slot_textures(window)
         end
 
@@ -370,7 +406,7 @@ module Inventory
             ClothingTabEarrings.is_open=(true)
             ClothingTabHat.is_open=(false)
             ClothingTabGlasses.is_open=(false)
-            ClothingTabGlasses.is_open=(false)
+            ClothingTabMakeup.is_open=(false)
             ClothingTabEarrings.assign_slot_textures(window)
         end
 
@@ -382,7 +418,8 @@ module Inventory
             ClothingTabShoes.is_open=(false)
             ClothingTabEarrings.is_open=(false)
             ClothingTabHat.is_open=(true)
-            ClothingTabGlasses.is_open=(true)
+            ClothingTabGlasses.is_open=(false)
+            ClothingTabMakeup.is_open=(false)
             ClothingTabHat.assign_slot_textures(window)
         end
 
@@ -395,7 +432,21 @@ module Inventory
             ClothingTabEarrings.is_open=(false)
             ClothingTabHat.is_open=(false)
             ClothingTabGlasses.is_open=(true)
+            ClothingTabMakeup.is_open=(false)
             ClothingTabGlasses.assign_slot_textures(window)
+        end
+
+        def InventoryManager.open_makeup_tab(window)
+            InventoryManager.reset_clothing_pages(window)
+            ClothingTabShirt.is_open=(false)
+            ClothingTabGloves.is_open=(false)
+            ClothingTabPants.is_open=(false)
+            ClothingTabShoes.is_open=(false)
+            ClothingTabEarrings.is_open=(false)
+            ClothingTabHat.is_open=(false)
+            ClothingTabGlasses.is_open=(false)
+            ClothingTabMakeup.is_open=(true)
+            ClothingTabMakeup.assign_slot_textures(window)
         end
 
         def InventoryManager.universal_mouse_handling(tab, window)
@@ -414,6 +465,8 @@ module Inventory
                 InventoryManager.hat_tab_mouse_handling(window)
             when "glasses"
                 InventoryManager.glasses_tab_mouse_handling(window)
+            when "makeup"
+                InventoryManager.makeup_tab_mouse_handling(window)
             end
         end
 
@@ -482,6 +535,11 @@ module Inventory
                 glasses_tab_y = @@glasses_tab.position.y
                 glasses_tab_width = @@glasses_tab.size.x
                 glasses_tab_height = @@glasses_tab.size.y
+
+                makeup_tab_x = @@makeup_tab.position.x
+                makeup_tab_y = @@makeup_tab.position.y
+                makeup_tab_width = @@makeup_tab.size.x
+                makeup_tab_height = @@makeup_tab.size.y
             #---------------------------------------------------------------------------------------------
 
             
@@ -540,6 +598,12 @@ module Inventory
             if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
                 (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
                 InventoryManager.open_glasses_tab(window)
+                sleep 0.15.seconds
+            end    
+
+            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
+                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
+                InventoryManager.open_makeup_tab(window)
                 sleep 0.15.seconds
             end    
 
@@ -627,6 +691,11 @@ module Inventory
                 glasses_tab_y = @@glasses_tab.position.y
                 glasses_tab_width = @@glasses_tab.size.x
                 glasses_tab_height = @@glasses_tab.size.y
+                
+                makeup_tab_x = @@makeup_tab.position.x
+                makeup_tab_y = @@makeup_tab.position.y
+                makeup_tab_width = @@makeup_tab.size.x
+                makeup_tab_height = @@makeup_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -687,6 +756,13 @@ module Inventory
                 (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
 
                 InventoryManager.open_glasses_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
+                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
+
+                InventoryManager.open_makeup_tab(window)
                 sleep 0.15.seconds
             end 
             
@@ -778,6 +854,11 @@ module Inventory
                 glasses_tab_y = @@glasses_tab.position.y
                 glasses_tab_width = @@glasses_tab.size.x
                 glasses_tab_height = @@glasses_tab.size.y
+                
+                makeup_tab_x = @@makeup_tab.position.x
+                makeup_tab_y = @@makeup_tab.position.y
+                makeup_tab_width = @@makeup_tab.size.x
+                makeup_tab_height = @@makeup_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -838,6 +919,13 @@ module Inventory
                 (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
 
                  InventoryManager.open_glasses_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
+                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
+
+                 InventoryManager.open_makeup_tab(window)
                  sleep 0.15.seconds
             end 
             
@@ -929,6 +1017,11 @@ module Inventory
                 glasses_tab_y = @@glasses_tab.position.y
                 glasses_tab_width = @@glasses_tab.size.x
                 glasses_tab_height = @@glasses_tab.size.y
+                
+                makeup_tab_x = @@makeup_tab.position.x
+                makeup_tab_y = @@makeup_tab.position.y
+                makeup_tab_width = @@makeup_tab.size.x
+                makeup_tab_height = @@makeup_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -990,6 +1083,13 @@ module Inventory
                 (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
 
                 InventoryManager.open_glasses_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
+                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
+
+                InventoryManager.open_makeup_tab(window)
                 sleep 0.15.seconds
             end 
             
@@ -1081,6 +1181,11 @@ module Inventory
                 glasses_tab_y = @@glasses_tab.position.y
                 glasses_tab_width = @@glasses_tab.size.x
                 glasses_tab_height = @@glasses_tab.size.y
+                
+                makeup_tab_x = @@makeup_tab.position.x
+                makeup_tab_y = @@makeup_tab.position.y
+                makeup_tab_width = @@makeup_tab.size.x
+                makeup_tab_height = @@makeup_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1233,6 +1338,11 @@ module Inventory
                 glasses_tab_y = @@glasses_tab.position.y
                 glasses_tab_width = @@glasses_tab.size.x
                 glasses_tab_height = @@glasses_tab.size.y
+                
+                makeup_tab_x = @@makeup_tab.position.x
+                makeup_tab_y = @@makeup_tab.position.y
+                makeup_tab_width = @@makeup_tab.size.x
+                makeup_tab_height = @@makeup_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1294,6 +1404,13 @@ module Inventory
                 (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
 
                 InventoryManager.open_glasses_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
+                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
+
+                InventoryManager.open_makeup_tab(window)
                 sleep 0.15.seconds
             end 
             
@@ -1385,6 +1502,11 @@ module Inventory
                 glasses_tab_y = @@glasses_tab.position.y
                 glasses_tab_width = @@glasses_tab.size.x
                 glasses_tab_height = @@glasses_tab.size.y
+                
+                makeup_tab_x = @@makeup_tab.position.x
+                makeup_tab_y = @@makeup_tab.position.y
+                makeup_tab_width = @@makeup_tab.size.x
+                makeup_tab_height = @@makeup_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1439,6 +1561,13 @@ module Inventory
                 sleep 0.15.seconds
             end 
 
+            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
+                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
+
+                InventoryManager.open_makeup_tab(window)
+                sleep 0.15.seconds
+            end 
+
             if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
                 (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
 
@@ -1468,6 +1597,174 @@ module Inventory
                  ClothingTabGlasses.change_glasses_sort_category
                  @@clothing_glasses_category_text.string = ClothingTabGlasses.get_glasses_category
                  ClothingTabGlasses.center_clothing_text(@@clothing_glasses_category_text)
+                 sleep 0.15.seconds
+             end  
+        end
+
+        def InventoryManager.makeup_tab_mouse_handling(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+            
+        
+            current_size = window.size
+            original_width = 800 
+            original_height = 600 
+    
+            scale_x = (current_size.x.to_f / original_width)
+            scale_y = current_size.y.to_f / original_height
+    
+            #------------------------------------objects-------------------------------------------------
+                arrow_left_x = INVENTORY_LEFT_ARROW_SPRITE.position.x
+                arrow_left_y = INVENTORY_LEFT_ARROW_SPRITE.position.y
+                arrow_left_width = INVENTORY_LEFT_ARROW_SPRITE.size.x
+                arrow_left_height = INVENTORY_LEFT_ARROW_SPRITE.size.y
+
+                arrow_right_x = INVENTORY_RIGHT_ARROW_SPRITE.position.x
+                arrow_right_y = INVENTORY_RIGHT_ARROW_SPRITE.position.y
+                arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
+                arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
+
+
+                sort_button_x = @@clothing_sort_button_sprite.position.x
+                sort_button_y = @@clothing_sort_button_sprite.position.y
+                sort_button_width = @@clothing_sort_button_sprite.size.x
+                sort_button_height = @@clothing_sort_button_sprite.size.y
+    
+                category_button_x = @@clothing_shirt_category_box.position.x
+                category_button_y = @@clothing_shirt_category_box.position.y
+                category_button_width = @@clothing_shirt_category_box.size.x
+                category_button_height = @@clothing_shirt_category_box.size.y
+                
+                shirt_tab_x = @@shirt_tab.position.x
+                shirt_tab_y = @@shirt_tab.position.y
+                shirt_tab_width = @@shirt_tab.size.x
+                shirt_tab_height = @@shirt_tab.size.y
+                
+                pants_tab_x = @@pants_tab.position.x
+                pants_tab_y = @@pants_tab.position.y
+                pants_tab_width = @@pants_tab.size.x
+                pants_tab_height = @@pants_tab.size.y
+                
+                shoes_tab_x = @@shoes_tab.position.x
+                shoes_tab_y = @@shoes_tab.position.y
+                shoes_tab_width = @@shoes_tab.size.x
+                shoes_tab_height = @@shoes_tab.size.y
+                
+                gloves_tab_x = @@gloves_tab.position.x
+                gloves_tab_y = @@gloves_tab.position.y
+                gloves_tab_width = @@gloves_tab.size.x
+                gloves_tab_height = @@gloves_tab.size.y
+                
+                earrings_tab_x = @@earrings_tab.position.x
+                earrings_tab_y = @@earrings_tab.position.y
+                earrings_tab_width = @@earrings_tab.size.x
+                earrings_tab_height = @@earrings_tab.size.y
+                
+                hat_tab_x = @@hat_tab.position.x
+                hat_tab_y = @@hat_tab.position.y
+                hat_tab_width = @@hat_tab.size.x
+                hat_tab_height = @@hat_tab.size.y
+                
+                glasses_tab_x = @@glasses_tab.position.x
+                glasses_tab_y = @@glasses_tab.position.y
+                glasses_tab_width = @@glasses_tab.size.x
+                glasses_tab_height = @@glasses_tab.size.y
+                
+                makeup_tab_x = @@makeup_tab.position.x
+                makeup_tab_y = @@makeup_tab.position.y
+                makeup_tab_width = @@makeup_tab.size.x
+                makeup_tab_height = @@makeup_tab.size.y
+            #---------------------------------------------------------------------------------------------
+            if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
+                (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
+                if ClothingTabMakeup.page == nil
+                    ClothingTabMakeup.page = 1
+                end
+                 if ClothingTabMakeup.page.not_nil! > 1
+                    ClothingTabMakeup.page=(ClothingTabMakeup.page.not_nil! - 1)
+                 end
+                 ClothingTabMakeup.assign_slot_textures(window)
+                 sleep 0.15.seconds
+            end
+             
+            if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+                (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
+                 if ClothingTabMakeup.page == nil
+                    ClothingTabMakeup.page = 1
+                 end
+                 if ClothingTabMakeup.page.not_nil! <= 5
+                    ClothingTabMakeup.page=(ClothingTabMakeup.page.not_nil! + 1)
+                 end
+                 ClothingTabMakeup.assign_slot_textures(window)
+                 sleep 0.15.seconds
+            end  
+
+            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
+                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
+
+               InventoryManager.open_shirt_tab(window)
+
+               sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
+                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
+
+                InventoryManager.open_pants_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
+                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
+
+                InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
+                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
+
+                InventoryManager.open_glasses_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
+                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
+
+                InventoryManager.open_makeup_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
+                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
+
+                InventoryManager.open_hat_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
+                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
+
+                InventoryManager.open_gloves_tab(window)
+                sleep 0.15.seconds
+            end 
+            
+            if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
+                (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
+                if ClothingTabMakeup.get_makeup_category == "Color"
+                 ClothingTabMakeup.organise_owned_makeup_array_by_color(window)
+                elsif "Type"
+                 ClothingTabMakeup.organise_owned_makeup_array_by_type(window)
+                end
+                 sleep 0.15.seconds
+             end        
+     
+             if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
+                (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
+                 ClothingTabMakeup.change_makeup_sort_category
+                 @@clothing_makeup_category_text.string = ClothingTabMakeup.get_makeup_category
+                 ClothingTabMakeup.center_clothing_text(@@clothing_makeup_category_text)
                  sleep 0.15.seconds
              end  
         end
@@ -9540,6 +9837,1147 @@ module Inventory
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGlasses.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+
+       end
+
+    end
+
+    class ClothingTabMakeup
+        @@owned_makeup_array = [] of Clothing::Makeup
+
+        @@makeup_sorting_category = "Type"
+
+        @@makeup_slot_01 : Clothing::Makeup? = nil
+        @@makeup_slot_02 : Clothing::Makeup? = nil
+        @@makeup_slot_03 : Clothing::Makeup? = nil
+        @@makeup_slot_04 : Clothing::Makeup? = nil
+        @@makeup_slot_05 : Clothing::Makeup? = nil
+        @@makeup_slot_06 : Clothing::Makeup? = nil
+        @@makeup_slot_07 : Clothing::Makeup? = nil
+        @@makeup_slot_08 : Clothing::Makeup? = nil
+        @@makeup_slot_09 : Clothing::Makeup? = nil
+        @@makeup_slot_10 : Clothing::Makeup? = nil
+        @@makeup_slot_11 : Clothing::Makeup? = nil
+        @@makeup_slot_12 : Clothing::Makeup? = nil
+        @@makeup_slot_13 : Clothing::Makeup? = nil
+        @@makeup_slot_14 : Clothing::Makeup? = nil
+        @@makeup_slot_15 : Clothing::Makeup? = nil
+
+       #---------------------------------debug-------------------------------------------
+        @@owned_makeup_array.push(Clothing::Makeup.get_makeup("No Makeup").not_nil!)
+
+        @@owned_makeup_array.push(Clothing::Makeup.get_makeup("Eye Scar").not_nil!)
+        
+        @@owned_makeup_array.uniq!
+       #---------------------------------------------------------------------------------
+
+       #--------------------------------objects------------------------------------------
+        INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
+        INVENTORY_BOX.fill_color = SF.color( 137, 170, 208 )
+
+        
+        @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+
+        @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
+        @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_makeup_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
+        @@clothing_makeup_category_box.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_sort_button_text = SF::Text.new
+        @@clothing_sort_button_text.font = QUICKSAND
+        @@clothing_sort_button_text.character_size = 20
+        @@clothing_sort_button_text.color = SF::Color::Blue
+        @@clothing_sort_button_text.string = "Sort"
+
+
+        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@makeup_tab.fill_color = SF.color(141, 163, 188)
+
+        @@makeup_tab_text = SF::Text.new
+        @@makeup_tab_text.font = QUICKSAND
+        @@makeup_tab_text.character_size = 20
+        @@makeup_tab_text.color = SF::Color::Blue
+        @@makeup_tab_text.string = "Makeups"
+
+        @@makeup_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@makeup_tab.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_tab_text = SF::Text.new
+        @@makeup_tab_text.font = QUICKSAND
+        @@makeup_tab_text.character_size = 20
+        @@makeup_tab_text.color = SF::Color::Blue
+        @@makeup_tab_text.string = "Makeup"
+
+
+        @@makeup_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_01_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_01_text = SF::Text.new
+        @@makeup_slot_01_text.font = QUICKSAND
+        @@makeup_slot_01_text.character_size = 12
+        @@makeup_slot_01_text.color = SF::Color::Blue
+
+        @@makeup_slot_01_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_02_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_02_text = SF::Text.new
+        @@makeup_slot_02_text.font = QUICKSAND
+        @@makeup_slot_02_text.character_size = 12
+        @@makeup_slot_02_text.color = SF::Color::Blue
+
+        @@makeup_slot_02_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_03_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_03_text = SF::Text.new
+        @@makeup_slot_03_text.font = QUICKSAND
+        @@makeup_slot_03_text.character_size = 12
+        @@makeup_slot_03_text.color = SF::Color::Blue
+
+        @@makeup_slot_03_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_04_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_04_text = SF::Text.new
+        @@makeup_slot_04_text.font = QUICKSAND
+        @@makeup_slot_04_text.character_size = 12
+        @@makeup_slot_04_text.color = SF::Color::Blue
+
+        @@makeup_slot_04_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_05_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_05_text = SF::Text.new
+        @@makeup_slot_05_text.font = QUICKSAND
+        @@makeup_slot_05_text.character_size = 12
+        @@makeup_slot_05_text.color = SF::Color::Blue
+
+        @@makeup_slot_05_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_06_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_06_text = SF::Text.new
+        @@makeup_slot_06_text.font = QUICKSAND
+        @@makeup_slot_06_text.character_size = 12
+        @@makeup_slot_06_text.color = SF::Color::Blue
+        
+        @@makeup_slot_06_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_07_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_07_text = SF::Text.new
+        @@makeup_slot_07_text.font = QUICKSAND
+        @@makeup_slot_07_text.character_size = 12
+        @@makeup_slot_07_text.color = SF::Color::Blue
+
+        @@makeup_slot_07_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_08_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_08_text = SF::Text.new
+        @@makeup_slot_08_text.font = QUICKSAND
+        @@makeup_slot_08_text.character_size = 12
+        @@makeup_slot_08_text.color = SF::Color::Blue
+
+        @@makeup_slot_08_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_09_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_09_text = SF::Text.new
+        @@makeup_slot_09_text.font = QUICKSAND
+        @@makeup_slot_09_text.character_size = 12
+        @@makeup_slot_09_text.color = SF::Color::Blue
+
+        @@makeup_slot_09_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_10_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_10_text = SF::Text.new
+        @@makeup_slot_10_text.font = QUICKSAND
+        @@makeup_slot_10_text.character_size = 12
+        @@makeup_slot_10_text.color = SF::Color::Blue
+
+        @@makeup_slot_10_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_11_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_11_text = SF::Text.new
+        @@makeup_slot_11_text.font = QUICKSAND
+        @@makeup_slot_11_text.character_size = 12
+        @@makeup_slot_11_text.color = SF::Color::Blue
+
+        @@makeup_slot_11_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_12_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_12_text = SF::Text.new
+        @@makeup_slot_12_text.font = QUICKSAND
+        @@makeup_slot_12_text.character_size = 12
+        @@makeup_slot_12_text.color = SF::Color::Blue
+
+        @@makeup_slot_12_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_13_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_13_text = SF::Text.new
+        @@makeup_slot_13_text.font = QUICKSAND
+        @@makeup_slot_13_text.character_size = 12
+        @@makeup_slot_13_text.color = SF::Color::Blue
+
+        @@makeup_slot_13_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_14_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_14_text = SF::Text.new
+        @@makeup_slot_14_text.font = QUICKSAND
+        @@makeup_slot_14_text.character_size = 12
+        @@makeup_slot_14_text.color = SF::Color::Blue
+
+        @@makeup_slot_14_image_sprite = SF::Sprite.new
+
+
+        @@makeup_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@makeup_slot_15_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@makeup_slot_15_text = SF::Text.new
+        @@makeup_slot_15_text.font = QUICKSAND
+        @@makeup_slot_15_text.character_size = 12
+        @@makeup_slot_15_text.color = SF::Color::Blue
+
+        @@makeup_slot_15_image_sprite = SF::Sprite.new
+
+       #---------------------------------------------------------------------------------
+
+       def initialize(is_open : Bool, page : Int32)
+        @@is_open = is_open
+        @@page = page
+       end
+
+       def ClothingTabMakeup.is_open
+        @@is_open
+       end
+
+       def ClothingTabMakeup.page
+        @@page
+       end
+
+       def ClothingTabMakeup.is_open=(this)
+        @@is_open = this
+       end
+
+       def ClothingTabMakeup.page=(this)
+        @@page = this
+       end
+
+       def ClothingTabMakeup.owned_makeup_array
+        @@owned_makeup_array
+       end
+
+       def ClothingTabMakeup.owned_makeup_array=(this)
+        @@owned_makeup_array = this
+       end
+
+       def ClothingTabMakeup.push_to_owned_makeup_array(this)
+        @@owned_makeup_array.push(this)
+       end
+
+       def ClothingTabMakeup.change_makeup_sort_category
+        case @@makeup_sorting_category
+        when "Type"
+            @@makeup_sorting_category = "Color"
+        when "Color"
+            @@makeup_sorting_category = "Type"
+        end
+       end
+
+       def ClothingTabMakeup.get_makeup_category
+        return @@makeup_sorting_category
+       end
+
+       def ClothingTabMakeup.organise_owned_makeup_array_by_color(window)
+        temp_clothing_array_01 = [] of Clothing::Makeup
+        @@owned_makeup_array.each { |makeup| if makeup.id == 0
+        temp_clothing_array_01.push(makeup)
+        end}
+        @@owned_makeup_array.each { |makeup| if makeup.color == "white"
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.each { |makeup| if makeup.color == "black"
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.each { |makeup| if makeup.color == "brown"
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.each { |makeup| if makeup.color == "red"
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.each { |makeup| if makeup.color == "orange"
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.each { |makeup| if makeup.color == "yellow"
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.each { |makeup| if makeup.color == "green"
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.each { |makeup| if makeup.color == "blue"
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.each { |makeup| if makeup.color == "purple"
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.each { |makeup| if makeup.color == "pink"
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.clear
+        @@owned_makeup_array = temp_clothing_array_01
+        @@owned_makeup_array.uniq!
+        ClothingTabMakeup.assign_slot_textures(window)
+       end
+
+       def ClothingTabMakeup.organise_owned_makeup_array_by_type(window)
+        temp_clothing_array_01 = [] of Clothing::Makeup
+        @@owned_makeup_array.each { |makeup| if makeup.makeup_type.includes?("eye") == true
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.each { |makeup| if makeup.makeup_type.includes?("cheek") == true
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.each { |makeup| if makeup.makeup_type.includes?("lips") == true
+        temp_clothing_array_01.push(makeup)
+        end}
+
+        @@owned_makeup_array.clear
+        @@owned_makeup_array = temp_clothing_array_01
+        @@owned_makeup_array.uniq!
+        ClothingTabMakeup.assign_slot_textures(window)
+       end
+
+       def ClothingTabMakeup.center_clothing_text(this)
+        if this.string.size <= 5
+            this.character_size = 20
+
+            x = this.position.x - (this.string.size + 6)
+            this.position = SF.vector2(x, this.position.y)
+
+        elsif this.string.size > 5 && this.string.size < 10
+            this.character_size = 15
+
+            x = this.position.x + (this.string.size - 1)
+            this.position = SF.vector2(x, this.position.y)
+
+        elsif this.string.size >= 10 && this.string.size < 15
+            this.character_size = 11
+
+            x = this.position.x - (this.string.size - 12)
+            y = this.position.y + 2
+            this.position = SF.vector2(x, y)
+
+        elsif this.string.size >= 15 && this.string.size < 20
+            this.character_size = 11
+
+            x = this.position.x - (this.string.size - 10)
+            this.position = SF.vector2(x, this.position.y)
+
+        elsif this.string.size >= 20
+            this.character_size = 11
+
+            x = this.position.x - (this.string.size - 33)
+            y = this.position.y - (this.string.size - 20)
+            this.position = SF.vector2(x, y)
+        end
+       end
+
+       def ClothingTabMakeup.initialize_clothing_tab(window)
+        @@page = 1
+        INVENTORY_BOX.position = SF.vector2(20, 40)  
+       end
+
+       def ClothingTabMakeup.assign_slot_textures(window)
+        if @@page == nil
+            @@page = 1
+        end
+        if @@owned_makeup_array.size > 0
+            t = 0 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_01_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_01_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_01 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_01_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_01_text.string = ""
+                @@makeup_slot_01 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 1
+            t = 1 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_02_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_02_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_02 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_02_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_02_text.string = ""
+                @@makeup_slot_02 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 2
+            t = 2 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_03_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_03_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_03 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_03_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_03_text.string = ""
+                @@makeup_slot_03 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 3
+            t = 3 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_04_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_04_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_04 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_04_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_04_text.string = ""
+                @@makeup_slot_04 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 4
+            t = 4 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_05_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_05_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_05 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_05_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_05_text.string = ""
+                @@makeup_slot_05 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 5
+            t = 5 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_06_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_06_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_06 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_06_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_06_text.string = ""
+                @@makeup_slot_06 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 6
+            t = 6 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_07_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_07_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_07 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_07_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_07_text.string = ""
+                @@makeup_slot_07 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 7
+            t = 7 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_08_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_08_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_08 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_08_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_08_text.string = ""
+                @@makeup_slot_08 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 8
+            t = 8 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_09_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_09_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_09 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_09_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_09_text.string = ""
+                @@makeup_slot_09 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 9
+            t = 9 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_10_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_10_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_10 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_10_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_10_text.string = ""
+                @@makeup_slot_10 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 10
+            t = 10 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_11_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_11_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_11 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_11_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_11_text.string = ""
+                @@makeup_slot_11 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 11
+            t = 11 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_12_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_12_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_12 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_12_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_12_text.string = ""
+                @@makeup_slot_12 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 12
+            t = 12 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_13_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_13_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_13 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_13_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_13_text.string = ""
+                @@makeup_slot_13 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 13
+            t = 13 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_14_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_14_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_14 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_14_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_14_text.string = ""
+                @@makeup_slot_14 = nil
+            end
+        end
+        if @@owned_makeup_array.size > 14
+            t = 14 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_makeup_array.size - 1
+             @@makeup_slot_15_image_sprite.texture = @@owned_makeup_array[t].texture
+             @@makeup_slot_15_text.string = @@owned_makeup_array[t].name
+             @@makeup_slot_15 = @@owned_makeup_array[t]
+            else
+                @@makeup_slot_15_image_sprite.texture = NIL_TEXTURE
+                @@makeup_slot_15_text.string = ""
+                @@makeup_slot_15 = nil
+            end
+        end
+       end
+       
+
+       def ClothingTabMakeup.draw_clothing_tab(window)
+            current_size = window.size
+            original_width = 800 
+            original_height = 600
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+    
+            scale_ratio = [scale_x, scale_y].min
+            max_scale = 1.5
+            clamped_scale = [scale_ratio, max_scale].min
+
+        window.view = window.default_view
+
+        INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
+        INVENTORY_BOX.scale = SF.vector2(1, 1)
+
+
+        @@makeup_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
+        @@makeup_slot_01_sprite.scale = SF.vector2(1, 1)
+        
+        @@makeup_slot_01_image_sprite.position = @@makeup_slot_01_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_01_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_01_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        @@makeup_slot_01_text.position = @@makeup_slot_01_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_01_text)
+        
+
+        @@makeup_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
+        @@makeup_slot_02_sprite.scale = SF.vector2(1, 1)
+        
+        @@makeup_slot_02_image_sprite.position = @@makeup_slot_02_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_02_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_02_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        @@makeup_slot_02_text.position = @@makeup_slot_02_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_02_text)
+        
+
+        @@makeup_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
+        @@makeup_slot_03_sprite.scale = SF.vector2(1, 1)
+        
+        @@makeup_slot_03_image_sprite.position = @@makeup_slot_03_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_03_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_03_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        @@makeup_slot_03_text.position = @@makeup_slot_03_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_03_text)
+        
+
+        @@makeup_slot_04_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 40 * max_scale)
+        @@makeup_slot_04_sprite.scale = SF.vector2(1, 1)
+
+        @@makeup_slot_04_text.position = @@makeup_slot_04_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_04_text)
+        
+        @@makeup_slot_04_image_sprite.position = @@makeup_slot_04_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_04_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_04_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+
+        @@makeup_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
+        @@makeup_slot_05_sprite.scale = SF.vector2(1, 1)
+
+        @@makeup_slot_05_text.position = @@makeup_slot_05_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_05_text)
+        
+        @@makeup_slot_05_image_sprite.position = @@makeup_slot_05_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_05_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_05_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@makeup_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
+        @@makeup_slot_06_sprite.scale = SF.vector2(1, 1)
+
+        @@makeup_slot_06_text.position = @@makeup_slot_06_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_06_text)
+        
+        @@makeup_slot_06_image_sprite.position = @@makeup_slot_06_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_06_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_06_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@makeup_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
+        @@makeup_slot_07_sprite.scale = SF.vector2(1, 1)
+        
+        @@makeup_slot_07_text.position = @@makeup_slot_07_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_07_text)
+        
+        @@makeup_slot_07_image_sprite.position = @@makeup_slot_07_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_07_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_07_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@makeup_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
+        @@makeup_slot_08_sprite.scale = SF.vector2(1, 1)
+                
+        @@makeup_slot_08_text.position = @@makeup_slot_08_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_08_text)
+        
+        @@makeup_slot_08_image_sprite.position = @@makeup_slot_08_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_08_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_08_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@makeup_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
+        @@makeup_slot_09_sprite.scale = SF.vector2(1, 1)
+                
+        @@makeup_slot_09_text.position = @@makeup_slot_09_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_09_text)
+        
+        @@makeup_slot_09_image_sprite.position = @@makeup_slot_09_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_09_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_09_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@makeup_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
+        @@makeup_slot_10_sprite.scale = SF.vector2(1, 1)
+                        
+        @@makeup_slot_10_text.position = @@makeup_slot_10_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_10_text)
+        
+        @@makeup_slot_10_image_sprite.position = @@makeup_slot_10_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_10_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_10_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@makeup_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
+        @@makeup_slot_11_sprite.scale = SF.vector2(1, 1)
+                        
+        @@makeup_slot_11_text.position = @@makeup_slot_11_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_11_text)
+        
+        @@makeup_slot_11_image_sprite.position = @@makeup_slot_11_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_11_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_11_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@makeup_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
+        @@makeup_slot_12_sprite.scale = SF.vector2(1, 1)
+                        
+        @@makeup_slot_12_text.position = @@makeup_slot_12_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_12_text)
+        
+        @@makeup_slot_12_image_sprite.position = @@makeup_slot_12_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_12_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_12_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@makeup_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
+        @@makeup_slot_13_sprite.scale = SF.vector2(1, 1)
+        
+        @@makeup_slot_13_text.position = @@makeup_slot_13_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_13_text)
+        
+        @@makeup_slot_13_image_sprite.position = @@makeup_slot_13_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_13_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_13_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@makeup_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
+        @@makeup_slot_14_sprite.scale = SF.vector2(1, 1)
+                        
+        @@makeup_slot_14_text.position = @@makeup_slot_14_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_14_text)
+        
+        @@makeup_slot_14_image_sprite.position = @@makeup_slot_14_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_14_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_14_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@makeup_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
+        @@makeup_slot_15_sprite.scale = SF.vector2(1, 1)
+                        
+        @@makeup_slot_15_text.position = @@makeup_slot_15_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
+        ClothingTabMakeup.center_clothing_text(@@makeup_slot_15_text)
+        
+        @@makeup_slot_15_image_sprite.position = @@makeup_slot_15_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_15_image_sprite.scale = SF.vector2(2, 2)
+        @@makeup_slot_15_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+
+        window.draw(@@makeup_slot_01_sprite)
+        window.draw(@@makeup_slot_01_image_sprite)
+        window.draw(@@makeup_slot_01_text)
+
+        window.draw(@@makeup_slot_02_sprite)
+        window.draw(@@makeup_slot_02_image_sprite)
+        window.draw(@@makeup_slot_02_text)
+
+        window.draw(@@makeup_slot_03_sprite)
+        window.draw(@@makeup_slot_03_image_sprite)
+        window.draw(@@makeup_slot_03_text)
+        
+        window.draw(@@makeup_slot_04_sprite)
+        window.draw(@@makeup_slot_04_image_sprite)
+        window.draw(@@makeup_slot_04_text)
+
+        window.draw(@@makeup_slot_05_sprite)
+        window.draw(@@makeup_slot_05_image_sprite)
+        window.draw(@@makeup_slot_05_text)
+
+        window.draw(@@makeup_slot_06_sprite)
+        window.draw(@@makeup_slot_06_image_sprite)
+        window.draw(@@makeup_slot_06_text)
+
+        window.draw(@@makeup_slot_07_sprite)
+        window.draw(@@makeup_slot_07_image_sprite)
+        window.draw(@@makeup_slot_07_text)
+
+        window.draw(@@makeup_slot_08_sprite)
+        window.draw(@@makeup_slot_08_image_sprite)
+        window.draw(@@makeup_slot_08_text)
+
+        window.draw(@@makeup_slot_09_sprite)
+        window.draw(@@makeup_slot_09_image_sprite)
+        window.draw(@@makeup_slot_09_text)
+
+        window.draw(@@makeup_slot_10_sprite)
+        window.draw(@@makeup_slot_10_image_sprite)
+        window.draw(@@makeup_slot_10_text)
+
+        window.draw(@@makeup_slot_11_sprite)
+        window.draw(@@makeup_slot_11_image_sprite)
+        window.draw(@@makeup_slot_11_text)
+
+        window.draw(@@makeup_slot_12_sprite)
+        window.draw(@@makeup_slot_12_image_sprite)
+        window.draw(@@makeup_slot_12_text)
+
+        window.draw(@@makeup_slot_13_sprite)
+        window.draw(@@makeup_slot_13_image_sprite)
+        window.draw(@@makeup_slot_13_text)
+
+        window.draw(@@makeup_slot_14_sprite)
+        window.draw(@@makeup_slot_14_image_sprite)
+        window.draw(@@makeup_slot_14_text)
+
+        window.draw(@@makeup_slot_15_sprite)
+        window.draw(@@makeup_slot_15_image_sprite)
+        window.draw(@@makeup_slot_15_text)
+
+        if SF::Mouse.button_pressed?(SF::Mouse::Left)
+            ClothingTabMakeup.clothes_mouse_handling(window)
+        end
+       end
+
+       def ClothingTabMakeup.clothes_mouse_handling(window)
+        mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+        mouse_x = mouse_position.x
+        mouse_y = mouse_position.y
+        
+    
+        current_size = window.size
+        original_width = 800 
+        original_height = 600 
+
+        scale_x = (current_size.x.to_f / original_width)
+        scale_y = current_size.y.to_f / original_height
+        
+
+        #------------------------------------objects-------------------------------------------------
+
+            slot_01_x = @@makeup_slot_01_sprite.position.x
+            slot_01_y = @@makeup_slot_01_sprite.position.y
+            slot_01_width = @@makeup_slot_01_sprite.size.x
+            slot_01_height = @@makeup_slot_01_sprite.size.y
+
+            slot_02_x = @@makeup_slot_02_sprite.position.x
+            slot_02_y = @@makeup_slot_02_sprite.position.y
+            slot_02_width = @@makeup_slot_02_sprite.size.x
+            slot_02_height = @@makeup_slot_02_sprite.size.y
+
+            slot_03_x = @@makeup_slot_03_sprite.position.x
+            slot_03_y = @@makeup_slot_03_sprite.position.y
+            slot_03_width = @@makeup_slot_03_sprite.size.x
+            slot_03_height = @@makeup_slot_03_sprite.size.y
+
+            slot_04_x = @@makeup_slot_04_sprite.position.x
+            slot_04_y = @@makeup_slot_04_sprite.position.y
+            slot_04_width = @@makeup_slot_04_sprite.size.x
+            slot_04_height = @@makeup_slot_04_sprite.size.y
+
+            slot_05_x = @@makeup_slot_05_sprite.position.x
+            slot_05_y = @@makeup_slot_05_sprite.position.y
+            slot_05_width = @@makeup_slot_05_sprite.size.x
+            slot_05_height = @@makeup_slot_05_sprite.size.y
+
+            slot_06_x = @@makeup_slot_06_sprite.position.x
+            slot_06_y = @@makeup_slot_06_sprite.position.y
+            slot_06_width = @@makeup_slot_06_sprite.size.x
+            slot_06_height = @@makeup_slot_06_sprite.size.y
+
+            slot_07_x = @@makeup_slot_07_sprite.position.x
+            slot_07_y = @@makeup_slot_07_sprite.position.y
+            slot_07_width = @@makeup_slot_07_sprite.size.x
+            slot_07_height = @@makeup_slot_07_sprite.size.y
+
+            slot_08_x = @@makeup_slot_08_sprite.position.x
+            slot_08_y = @@makeup_slot_08_sprite.position.y
+            slot_08_width = @@makeup_slot_08_sprite.size.x
+            slot_08_height = @@makeup_slot_08_sprite.size.y
+
+            slot_09_x = @@makeup_slot_09_sprite.position.x
+            slot_09_y = @@makeup_slot_09_sprite.position.y
+            slot_09_width = @@makeup_slot_09_sprite.size.x
+            slot_09_height = @@makeup_slot_09_sprite.size.y
+
+            slot_10_x = @@makeup_slot_10_sprite.position.x
+            slot_10_y = @@makeup_slot_10_sprite.position.y
+            slot_10_width = @@makeup_slot_10_sprite.size.x
+            slot_10_height = @@makeup_slot_10_sprite.size.y
+
+            slot_11_x = @@makeup_slot_11_sprite.position.x
+            slot_11_y = @@makeup_slot_11_sprite.position.y
+            slot_11_width = @@makeup_slot_11_sprite.size.x
+            slot_11_height = @@makeup_slot_11_sprite.size.y
+
+            slot_12_x = @@makeup_slot_12_sprite.position.x
+            slot_12_y = @@makeup_slot_12_sprite.position.y
+            slot_12_width = @@makeup_slot_12_sprite.size.x
+            slot_12_height = @@makeup_slot_12_sprite.size.y
+
+            slot_13_x = @@makeup_slot_13_sprite.position.x
+            slot_13_y = @@makeup_slot_13_sprite.position.y
+            slot_13_width = @@makeup_slot_13_sprite.size.x
+            slot_13_height = @@makeup_slot_13_sprite.size.y
+
+            slot_14_x = @@makeup_slot_14_sprite.position.x
+            slot_14_y = @@makeup_slot_14_sprite.position.y
+            slot_14_width = @@makeup_slot_14_sprite.size.x
+            slot_14_height = @@makeup_slot_14_sprite.size.y
+
+            slot_15_x = @@makeup_slot_15_sprite.position.x
+            slot_15_y = @@makeup_slot_15_sprite.position.y
+            slot_15_width = @@makeup_slot_15_sprite.size.x
+            slot_15_height = @@makeup_slot_15_sprite.size.y
+        #---------------------------------------------------------------------------------------------
+        if @@page == nil
+            @@page = 1
+        end
+        if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
+           (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
+            if @@makeup_slot_01 != nil   
+                t = 0 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_01.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+                
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
+           (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
+           
+            if @@makeup_slot_02 != nil
+                t = 1 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_02.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
+           (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
+           
+            if @@makeup_slot_03 != nil
+                t = 2 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_03.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
+           (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
+           
+            if @@makeup_slot_04 != nil
+                t = 3 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_04.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
+           (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
+           
+            if @@makeup_slot_05 != nil
+                t = 4 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_05.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
+           (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
+           
+            if @@makeup_slot_06 != nil
+                t = 5 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_06.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
+           (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
+           
+            if @@makeup_slot_07 != nil
+                t = 6 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_07.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
+           (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
+           
+            if @@makeup_slot_08 != nil
+                t = 7 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_08.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
+           (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
+           
+            if @@makeup_slot_09 != nil
+                t = 8 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_09.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
+           (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
+           
+            if @@makeup_slot_10 != nil
+                t = 9 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_10.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
+           (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
+           
+            if @@makeup_slot_11 != nil
+                t = 10 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_11.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
+           (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
+           
+            if @@makeup_slot_12 != nil
+                t = 11 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_12.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
+           (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
+           
+            if @@makeup_slot_13 != nil
+                t = 12 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_13.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
+           (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
+           
+            if @@makeup_slot_14 != nil
+                t = 13 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_14.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
+           (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
+           
+            if @@makeup_slot_15 != nil
+                t = 14 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
+                Player::Appearance.change_makeup(@@makeup_slot_15.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabMakeup.assign_slot_textures(window)
             sleep 0.15.seconds
         end
 

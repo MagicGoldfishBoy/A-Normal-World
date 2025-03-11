@@ -222,6 +222,29 @@ module Sprites
         SF::Sprite.new
     end
 
+    current_makeup = if makeup = Clothing::Makeup.get_makeup(Appearance.get_clothing("makeup"))
+        SF::Sprite.new(makeup.texture)
+    else
+        SF::Sprite.new
+    end
+
+    # current_makeup = if makeup = Clothing::Makeup.get_makeup(Appearance.get_clothing("makeup"))
+
+    # makeup = Appearance.get_clothing("makeup")
+
+    # if current_face.includes.name?("shounen")
+    #     m = "#{makeup.name} Shounen"
+    #     texture = Clothing::Makeup.get_makeup(m).try(&.texture) || SF::Texture.new(NIL_TEXTURE)
+    #     SF::Sprite.new(texture)
+    # elsif current_face.includes.name?("button")
+    #     m = "#{makeup.name} Button"
+    #     texture = Clothing::Makeup.get_makeup(m).try(&.texture) || SF::Texture.new(NIL_TEXTURE)
+    #     SF::Sprite.new(texture)
+    # else
+    #     SF::Sprite.new
+    # end
+    # end
+
     current_weapon = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("weapon")])
 
     if Player.direction == "left"
@@ -229,11 +252,11 @@ module Sprites
         @@player_character_model.draw(current_weapon)
         @@player_character_model.draw(current_skin)
         @@player_character_model.draw(current_face)
+        @@player_character_model.draw(current_makeup)
         @@player_character_model.draw(current_earrings)
         @@player_character_model.draw(current_glasses)
         @@player_character_model.draw(current_hair)
         @@player_character_model.draw(current_hat)
-        @@player_character_model.draw(current_glasses)
         @@player_character_model.draw(current_pants)
         @@player_character_model.draw(current_shirt)
         @@player_character_model.draw(current_shoes)
@@ -242,11 +265,11 @@ module Sprites
         @@player_character_model.clear(SF::Color::Transparent)
         @@player_character_model.draw(current_skin)
         @@player_character_model.draw(current_face)
+        @@player_character_model.draw(current_makeup)
         @@player_character_model.draw(current_earrings)
         @@player_character_model.draw(current_glasses)
         @@player_character_model.draw(current_hair)
         @@player_character_model.draw(current_hat)
-        @@player_character_model.draw(current_glasses)
         @@player_character_model.draw(current_pants)
         @@player_character_model.draw(current_shirt)
         @@player_character_model.draw(current_shoes)
