@@ -10,6 +10,9 @@ module Animations
         @@attack_animation_timer = SF::Clock.new
         @@attack_animation_frame = 0
 
+        @@stab_animation_timer = SF::Clock.new
+        @@stab_animation_frame = 0
+
         @@idle_animation_left_array = [SF.int_rect(192, 384, 96, 128), SF.int_rect(288, 384, 96, 128), SF.int_rect(384, 384, 96, 128), 
         SF.int_rect(480, 384, 96, 128), SF.int_rect(576, 384, 96, 128)]
 
@@ -25,6 +28,10 @@ module Animations
         @@attack_animation_left_array = [SF.int_rect(0, 768, 96, 128), SF.int_rect(96, 768, 96, 128), SF.int_rect(192, 768, 96, 128), SF.int_rect(288, 768, 96, 128)]
 
         @@attack_animation_right_array = [SF.int_rect(0, 512, 96, 128), SF.int_rect(96, 512, 96, 128), SF.int_rect(192, 512, 96, 128), SF.int_rect(288, 512, 96, 128)]
+
+        @@stab_animation_left_array = [SF.int_rect(384, 768, 96, 128), SF.int_rect(480, 768, 96, 128), SF.int_rect(578, 768, 96, 128)]
+
+        @@stab_animation_right_array = [SF.int_rect(384, 512, 96, 128), SF.int_rect(480, 512, 96, 128), SF.int_rect(578, 512, 96, 128)]
 
         def Player.attack_animation_left
             if @@attack_animation_timer.elapsed_time >= SF.seconds(0.08) 
@@ -48,6 +55,30 @@ module Animations
                 return @@attack_animation_right_array[@@attack_animation_frame]
             end
                 return @@attack_animation_right_array[@@attack_animation_frame]
+        end
+
+        def Player.attack_animation_right
+            if @@attack_animation_timer.elapsed_time >= SF.seconds(0.08) 
+                if @@attack_animation_frame < @@attack_animation_right_array.size - 1
+                @@attack_animation_frame += 1
+                else @@attack_animation_frame = 0
+                end
+                @@attack_animation_timer.restart
+                return @@attack_animation_right_array[@@attack_animation_frame]
+            end
+                return @@attack_animation_right_array[@@attack_animation_frame]
+        end
+
+        def Player.stab_animation_left
+            if @@stab_animation_timer.elapsed_time >= SF.seconds(0.05) 
+                if @@stab_animation_frame < @@stab_animation_left_array.size - 1
+                @@stab_animation_frame += 1
+                else @@stab_animation_frame = 0
+                end
+                @@stab_animation_timer.restart
+                return @@stab_animation_left_array[@@stab_animation_frame]
+            end
+                return @@stab_animation_left_array[@@stab_animation_frame]
         end
 
         def Player.idle_animation_left
