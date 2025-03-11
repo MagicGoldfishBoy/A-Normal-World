@@ -563,4 +563,79 @@ module Clothing
         @@purple_sweatband = Hat.new("Purple Sweatband", 108, false, "ring", "sporty", PURPLE_SWEATBAND_TEXTURE, "purple")
         @@pink_sweatband = Hat.new("Pink Sweatband", 109, false, "ring", "sporty", PINK_SWEATBAND_TEXTURE, "pink")
     end
+
+    class Glasses
+        GLASSES_ARRAY = [] of Glasses
+        def initialize(name : String, id : Int32, is_owned : Bool, glasses_type : String, style : String, texture : SF::Texture, color : String)
+         @name = name
+         @@name = name
+         @id = id
+         @is_owned = is_owned
+         @glasses_type = glasses_type
+         @style = style
+         @texture = texture
+         @color = color
+         GLASSES_ARRAY.push(self)
+        end
+ 
+        getter name : String
+        getter id : Int32
+        getter glasses_type : String
+        getter style : String
+        getter texture : SF::Texture
+        getter color : String
+        property is_owned : Bool
+ 
+        def Glasses.name
+         @@name
+        end
+ 
+        def Glasses.id
+         @@id
+        end
+ 
+        def Glasses.is_owned
+         @@is_owned
+        end
+ 
+        def Glasses.glasses_type
+         @@glasses_type
+        end
+ 
+        def Glasses.style
+         @@style
+        end
+ 
+        def Glasses.texture
+         @@texture
+        end
+ 
+        def Glasses.color
+         @@texture
+        end
+ 
+        def Glasses.is_owned=(this)
+         @@is_owned = this
+        end
+ 
+        def Glasses.get_glasses(this)
+         GLASSES_ARRAY.each { |glasses| if glasses.name == this
+         return glasses
+         end }
+        end
+ 
+        def Glasses.get_glasses_texture(this)
+         GLASSES_ARRAY.each { |glasses| if glasses.name == this
+         return glasses.texture
+         end }
+        end
+
+        @@nil_glasses = Glasses.new("No Glasses", 0, false, "nil", "plain", NIL_TEXTURE, "white")
+
+        @@sunglasses = Glasses.new("Sunglasses", 1, false, "translucent", "cool", SUNGLASSES_TEXTURE, "black")
+
+        @@round_glasses = Glasses.new("Round Glasses", 2, false, "transparent", "nerdy", ROUND_GLASSES_TEXTURE, "white")
+
+        @@eye_bandage = Glasses.new("Eye Bandage", 3, false, "opaque", "cool", EYE_BANDAGE_TEXTURE, "white")
+    end
 end
