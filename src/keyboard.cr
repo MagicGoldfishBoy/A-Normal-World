@@ -42,6 +42,7 @@ module Keyboard
                 Sprites::Player.direction=("left")
                 Player::Movement.movement_direction=("left")
                 Player::Movement.move_horizontal(window, direction)
+                Sprites::Player.refresh_player_sprite(window)
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::Right)
                 direction = "right"
@@ -50,6 +51,7 @@ module Keyboard
                 Sprites::Player.direction=("right")
                 Player::Movement.movement_direction=("right")
                 Player::Movement.move_horizontal(window, direction)
+                Sprites::Player.refresh_player_sprite(window)
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::Space)
                 Levels::Level_Physics.jump(window)
@@ -62,7 +64,9 @@ module Keyboard
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::A)
-               puts Clothing::Shirt::SHIRT_ARRAY
+                Sprites::Player.movement_state=("attacking")
+                Player::Movement.movement_state=("attacking")
+                Sprites::Player.refresh_player_sprite(window)
             end
         end
     end
