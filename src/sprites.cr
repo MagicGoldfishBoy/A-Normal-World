@@ -216,14 +216,22 @@ module Sprites
         SF::Sprite.new
     end
 
+    current_glasses = if glasses = Clothing::Glasses.get_glasses(Appearance.get_clothing("glasses"))
+        SF::Sprite.new(glasses.texture)
+    else
+        SF::Sprite.new
+    end
+
     current_weapon = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("weapon")])
 
     @@player_character_model.clear(SF::Color::Transparent)
     @@player_character_model.draw(current_skin)
     @@player_character_model.draw(current_face)
     @@player_character_model.draw(current_earrings)
+    @@player_character_model.draw(current_glasses)
     @@player_character_model.draw(current_hair)
     @@player_character_model.draw(current_hat)
+    @@player_character_model.draw(current_glasses)
     @@player_character_model.draw(current_pants)
     @@player_character_model.draw(current_shirt)
     @@player_character_model.draw(current_shoes)

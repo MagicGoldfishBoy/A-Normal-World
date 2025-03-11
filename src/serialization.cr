@@ -127,6 +127,7 @@ module Serialization
         @@stat_save_hash["gloves"] = Player::Appearance.get_clothing("gloves")
         @@stat_save_hash["pants"] = Player::Appearance.get_clothing("pants")
         @@stat_save_hash["shoes"] = Player::Appearance.get_clothing("shoes")
+        @@stat_save_hash["glasses"] = Player::Appearance.get_clothing("glasses")
         @@stat_save_hash["weapon"] = Player::Appearance.get_clothing("weapon")
     end
 
