@@ -224,19 +224,35 @@ module Sprites
 
     current_weapon = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("weapon")])
 
-    @@player_character_model.clear(SF::Color::Transparent)
-    @@player_character_model.draw(current_skin)
-    @@player_character_model.draw(current_face)
-    @@player_character_model.draw(current_earrings)
-    @@player_character_model.draw(current_glasses)
-    @@player_character_model.draw(current_hair)
-    @@player_character_model.draw(current_hat)
-    @@player_character_model.draw(current_glasses)
-    @@player_character_model.draw(current_pants)
-    @@player_character_model.draw(current_shirt)
-    @@player_character_model.draw(current_shoes)
-    @@player_character_model.draw(current_gloves)
-    @@player_character_model.draw(current_weapon)
+    if Player.direction == "left"
+        @@player_character_model.clear(SF::Color::Transparent)
+        @@player_character_model.draw(current_weapon)
+        @@player_character_model.draw(current_skin)
+        @@player_character_model.draw(current_face)
+        @@player_character_model.draw(current_earrings)
+        @@player_character_model.draw(current_glasses)
+        @@player_character_model.draw(current_hair)
+        @@player_character_model.draw(current_hat)
+        @@player_character_model.draw(current_glasses)
+        @@player_character_model.draw(current_pants)
+        @@player_character_model.draw(current_shirt)
+        @@player_character_model.draw(current_shoes)
+        @@player_character_model.draw(current_gloves)
+    else
+        @@player_character_model.clear(SF::Color::Transparent)
+        @@player_character_model.draw(current_skin)
+        @@player_character_model.draw(current_face)
+        @@player_character_model.draw(current_earrings)
+        @@player_character_model.draw(current_glasses)
+        @@player_character_model.draw(current_hair)
+        @@player_character_model.draw(current_hat)
+        @@player_character_model.draw(current_glasses)
+        @@player_character_model.draw(current_pants)
+        @@player_character_model.draw(current_shirt)
+        @@player_character_model.draw(current_shoes)
+        @@player_character_model.draw(current_gloves)
+        @@player_character_model.draw(current_weapon)
+    end
 
     @@player_character_model.display
     @@player_character_rendered_model.texture = @@player_character_model.texture
@@ -406,6 +422,12 @@ module Sprites
         @@player_character_rendered_model.texture_rect = Animations::Player.walking_animation_right
     elsif state == "walking" && direction == "left"
         @@player_character_rendered_model.texture_rect = Animations::Player.walking_animation_left
+    end
+
+    if state == "attacking" && direction == "right"
+        @@player_character_rendered_model.texture_rect = Animations::Player.attack_animation_right
+    elsif state == "attacking" && direction == "left"
+        @@player_character_rendered_model.texture_rect = Animations::Player.attack_animation_left
     end
    end
 
