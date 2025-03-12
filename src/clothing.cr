@@ -710,5 +710,9 @@ module Clothing
         @@eye_scar = Makeup.new("Eye Scar", 1, false, "eye", "cool", EYE_SCAR_BUTTON_TEXTURE, "pink")
         @@eye_scar_shounen = Makeup.new("Eye Scar Shounen", 1, false, "eye", "cool", EYE_SCAR_SHOUNEN_TEXTURE, "pink")
         @@eye_scar_button = Makeup.new("Eye Scar Button", 1, false, "eye", "cool", EYE_SCAR_BUTTON_TEXTURE, "pink")
+
+        @@pink_makeup = Makeup.new("Pink Makeup", 1, false, "eye", "cool", PINK_MAKEUP_BUTTON_TEXTURE, "pink")
+        @@pink_makeup_shounen = Makeup.new("Pink Makeup Shounen", 1, false, "eye", "cool", PINK_MAKEUP_SHOUNEN_TEXTURE, "pink")
+        @@pink_makeup_button = Makeup.new("Pink Makeup Button", 1, false, "eye", "cool", PINK_MAKEUP_BUTTON_TEXTURE, "pink")
     end
 end
