@@ -10203,6 +10203,10 @@ module Inventory
         temp_clothing_array_01.push(makeup)
         end}
 
+        @@owned_makeup_array.each { |makeup| if makeup.makeup_type.includes?("face") == true
+        temp_clothing_array_01.push(makeup)
+        end}
+
         @@owned_makeup_array.clear
         @@owned_makeup_array = temp_clothing_array_01
         @@owned_makeup_array.uniq!
@@ -10456,7 +10460,7 @@ module Inventory
         @@makeup_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
         @@makeup_slot_01_sprite.scale = SF.vector2(1, 1)
         
-        @@makeup_slot_01_image_sprite.position = @@makeup_slot_01_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_01_image_sprite.position = @@makeup_slot_01_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_01_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_01_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
@@ -10467,7 +10471,7 @@ module Inventory
         @@makeup_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
         @@makeup_slot_02_sprite.scale = SF.vector2(1, 1)
         
-        @@makeup_slot_02_image_sprite.position = @@makeup_slot_02_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_02_image_sprite.position = @@makeup_slot_02_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_02_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_02_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
@@ -10478,7 +10482,7 @@ module Inventory
         @@makeup_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
         @@makeup_slot_03_sprite.scale = SF.vector2(1, 1)
         
-        @@makeup_slot_03_image_sprite.position = @@makeup_slot_03_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_03_image_sprite.position = @@makeup_slot_03_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_03_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_03_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
@@ -10492,7 +10496,7 @@ module Inventory
         @@makeup_slot_04_text.position = @@makeup_slot_04_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_04_text)
         
-        @@makeup_slot_04_image_sprite.position = @@makeup_slot_04_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_04_image_sprite.position = @@makeup_slot_04_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_04_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_04_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
@@ -10503,7 +10507,7 @@ module Inventory
         @@makeup_slot_05_text.position = @@makeup_slot_05_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_05_text)
         
-        @@makeup_slot_05_image_sprite.position = @@makeup_slot_05_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_05_image_sprite.position = @@makeup_slot_05_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_05_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_05_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
@@ -10514,7 +10518,7 @@ module Inventory
         @@makeup_slot_06_text.position = @@makeup_slot_06_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_06_text)
         
-        @@makeup_slot_06_image_sprite.position = @@makeup_slot_06_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_06_image_sprite.position = @@makeup_slot_06_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_06_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_06_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
@@ -10525,7 +10529,7 @@ module Inventory
         @@makeup_slot_07_text.position = @@makeup_slot_07_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_07_text)
         
-        @@makeup_slot_07_image_sprite.position = @@makeup_slot_07_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_07_image_sprite.position = @@makeup_slot_07_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_07_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_07_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
@@ -10536,7 +10540,7 @@ module Inventory
         @@makeup_slot_08_text.position = @@makeup_slot_08_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_08_text)
         
-        @@makeup_slot_08_image_sprite.position = @@makeup_slot_08_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_08_image_sprite.position = @@makeup_slot_08_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_08_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_08_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
@@ -10547,7 +10551,7 @@ module Inventory
         @@makeup_slot_09_text.position = @@makeup_slot_09_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_09_text)
         
-        @@makeup_slot_09_image_sprite.position = @@makeup_slot_09_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_09_image_sprite.position = @@makeup_slot_09_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_09_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_09_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
@@ -10558,7 +10562,7 @@ module Inventory
         @@makeup_slot_10_text.position = @@makeup_slot_10_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_10_text)
         
-        @@makeup_slot_10_image_sprite.position = @@makeup_slot_10_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_10_image_sprite.position = @@makeup_slot_10_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_10_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_10_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
@@ -10569,7 +10573,7 @@ module Inventory
         @@makeup_slot_11_text.position = @@makeup_slot_11_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_11_text)
         
-        @@makeup_slot_11_image_sprite.position = @@makeup_slot_11_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_11_image_sprite.position = @@makeup_slot_11_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_11_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_11_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
@@ -10580,7 +10584,7 @@ module Inventory
         @@makeup_slot_12_text.position = @@makeup_slot_12_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_12_text)
         
-        @@makeup_slot_12_image_sprite.position = @@makeup_slot_12_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_12_image_sprite.position = @@makeup_slot_12_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_12_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_12_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
@@ -10591,7 +10595,7 @@ module Inventory
         @@makeup_slot_13_text.position = @@makeup_slot_13_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_13_text)
         
-        @@makeup_slot_13_image_sprite.position = @@makeup_slot_13_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_13_image_sprite.position = @@makeup_slot_13_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_13_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_13_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
@@ -10602,7 +10606,7 @@ module Inventory
         @@makeup_slot_14_text.position = @@makeup_slot_14_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_14_text)
         
-        @@makeup_slot_14_image_sprite.position = @@makeup_slot_14_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_14_image_sprite.position = @@makeup_slot_14_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_14_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_14_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
@@ -10613,7 +10617,7 @@ module Inventory
         @@makeup_slot_15_text.position = @@makeup_slot_15_sprite.position + SF.vector2(7 * max_scale, 55 * max_scale)
         ClothingTabMakeup.center_clothing_text(@@makeup_slot_15_text)
         
-        @@makeup_slot_15_image_sprite.position = @@makeup_slot_15_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+        @@makeup_slot_15_image_sprite.position = @@makeup_slot_15_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
         @@makeup_slot_15_image_sprite.scale = SF.vector2(2, 2)
         @@makeup_slot_15_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
