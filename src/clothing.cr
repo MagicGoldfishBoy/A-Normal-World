@@ -711,6 +711,14 @@ module Clothing
         @@eye_scar_shounen = Makeup.new("Eye Scar Shounen", 1, false, "eye", "cool", EYE_SCAR_SHOUNEN_TEXTURE, "pink")
         @@eye_scar_button = Makeup.new("Eye Scar Button", 1, false, "eye", "cool", EYE_SCAR_BUTTON_TEXTURE, "pink")
 
+        @@red_makeup = Makeup.new("Red Makeup", 1, false, "eye", "cool", RED_MAKEUP_BUTTON_TEXTURE, "red")
+        @@red_makeup_shounen = Makeup.new("Red Makeup Shounen", 1, false, "eye", "cool", RED_MAKEUP_SHOUNEN_TEXTURE, "red")
+        @@red_makeup_button = Makeup.new("Red Makeup Button", 1, false, "eye", "cool", RED_MAKEUP_BUTTON_TEXTURE, "red")
+
+        @@blue_makeup = Makeup.new("Blue Makeup", 1, false, "eye", "cool", BLUE_MAKEUP_BUTTON_TEXTURE, "blue")
+        @@blue_makeup_shounen = Makeup.new("Blue Makeup Shounen", 1, false, "eye", "cool", BLUE_MAKEUP_SHOUNEN_TEXTURE, "blue")
+        @@blue_makeup_button = Makeup.new("Blue Makeup Button", 1, false, "eye", "cool", BLUE_MAKEUP_BUTTON_TEXTURE, "blue")
+
         @@pink_makeup = Makeup.new("Pink Makeup", 1, false, "eye", "cool", PINK_MAKEUP_BUTTON_TEXTURE, "pink")
         @@pink_makeup_shounen = Makeup.new("Pink Makeup Shounen", 1, false, "eye", "cool", PINK_MAKEUP_SHOUNEN_TEXTURE, "pink")
         @@pink_makeup_button = Makeup.new("Pink Makeup Button", 1, false, "eye", "cool", PINK_MAKEUP_BUTTON_TEXTURE, "pink")
