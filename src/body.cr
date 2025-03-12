@@ -140,4 +140,118 @@ module Body
         @@brown_ponytail_hair = Hair.new("Brown Ponytail Hair", 122, false, "long", "sporty", PONYTAIL_HAIR_BROWN_TEXTURE, "brown")
         @@brown_ponytail_hair_hat = Hair.new("Brown Ponytail Hair Hat", 123, false, "long", "sporty", PONYTAIL_HAIR_BROWN_HAT_TEXTURE, "brown")
     end
+    class Face
+        FACE_ARRAY = [] of Face
+        def initialize(name : String, id : Int32, is_owned : Bool, does_blink : Bool, style : String, texture : SF::Texture, color : String)
+         @name = name
+         @@name = name
+         @id = id
+         @is_owned = is_owned
+         @does_blink = does_blink
+         @style = style
+         @texture = texture
+         @color = color
+         FACE_ARRAY.push(self)
+        end
+ 
+        getter name : String
+        getter id : Int32
+        getter does_blink : Bool
+        getter style : String
+        getter texture : SF::Texture
+        getter color : String
+        property is_owned : Bool
+ 
+        def Face.name
+         @@name
+        end
+ 
+        def Face.id
+         @@id
+        end
+ 
+        def Face.is_owned
+         @@is_owned
+        end
+ 
+        def Face.does_blink
+         @@does_blink
+        end
+ 
+        def Face.style
+         @@style
+        end
+ 
+        def Face.texture
+         @@texture
+        end
+ 
+        def Face.color
+         @@texture
+        end
+ 
+        def Face.is_owned=(this)
+         @@is_owned = this
+        end
+ 
+        def Face.get_face(this)
+         FACE_ARRAY.each { |face| if face.name == this
+         return face
+         end }
+        end
+ 
+        def Face.get_face_texture(this)
+         FACE_ARRAY.each { |face| if face.name == this
+         return face.texture
+         end }
+        end
+ 
+        @@nil_face = Face.new("No Face", 0, false, false, "plain", NIL_TEXTURE, "white")
+
+ 
+        @@white_button_eyes_face = Face.new("White Button Eyes", 1, false, false, "doll", BUTTON_EYES_WHITE_TEXTURE, "white")
+ 
+        @@black_button_eyes_face = Face.new("Black Button Eyes", 2, false, false, "doll", BUTTON_EYES_BLACK_TEXTURE, "black")
+ 
+        @@gray_button_eyes_face = Face.new("Gray Button Eyes", 3, false, false, "doll", BUTTON_EYES_GRAY_TEXTURE, "gray")
+ 
+        @@brown_button_eyes_face = Face.new("Brown Button Eyes", 4, false, false, "doll", BUTTON_EYES_BROWN_TEXTURE, "brown")
+ 
+        @@red_button_eyes_face = Face.new("Red Button Eyes", 5, false, false, "doll", BUTTON_EYES_RED_TEXTURE, "red")
+ 
+        @@orange_button_eyes_face = Face.new("Orange Button Eyes", 6, false, false, "doll", BUTTON_EYES_ORANGE_TEXTURE, "orange")
+ 
+        @@yellow_button_eyes_face = Face.new("Yellow Button Eyes", 7, false, false, "doll", BUTTON_EYES_YELLOW_TEXTURE, "yellow")
+ 
+        @@green_button_eyes_face = Face.new("Green Button Eyes", 8, false, false, "doll", BUTTON_EYES_GREEN_TEXTURE, "green")
+ 
+        @@blue_button_eyes_face = Face.new("Blue Button Eyes", 9, false, false, "doll", BUTTON_EYES_BLUE_TEXTURE, "blue")
+ 
+        @@purple_button_eyes_face = Face.new("Purple Button Eyes", 10, false, false, "doll", BUTTON_EYES_PURPLE_TEXTURE, "purple")
+ 
+        @@pink_button_eyes_face = Face.new("Pink Button Eyes", 11, false, false, "doll", BUTTON_EYES_PINK_TEXTURE, "pink")
+
+
+        @@white_shounen_face = Face.new("White Shounen Face", 100, false, true, "human", SHOUNEN_FACE_WHITE_TEXTURE, "white")
+
+        @@gray_shounen_face = Face.new("Gray Shounen Face", 101, false, true, "human", SHOUNEN_FACE_GRAY_TEXTURE, "gray")
+
+        @@black_shounen_face = Face.new("Black Shounen Face", 102, false, true, "human", SHOUNEN_FACE_BLACK_TEXTURE, "black")
+
+        @@brown_shounen_face = Face.new("Brown Shounen Face", 103, false, true, "human", SHOUNEN_FACE_BROWN_TEXTURE, "brown")
+
+        @@red_shounen_face = Face.new("Red Shounen Face", 104, false, true, "human", SHOUNEN_FACE_RED_TEXTURE, "red")
+
+        @@orange_shounen_face = Face.new("Orange Shounen Face", 105, false, true, "human", SHOUNEN_FACE_ORANGE_TEXTURE, "orange")
+
+        @@yellow_shounen_face = Face.new("Yellow Shounen Face", 106, false, true, "human", SHOUNEN_FACE_YELLOW_TEXTURE, "yellow")
+
+        @@green_shounen_face = Face.new("Green Shounen Face", 107, false, true, "human", SHOUNEN_FACE_GREEN_TEXTURE, "green")
+
+        @@blue_shounen_face = Face.new("Blue Shounen Face", 108, false, true, "human", SHOUNEN_FACE_BLUE_TEXTURE, "blue")
+
+        @@purple_shounen_face = Face.new("Purple Shounen Face", 109, false, true, "human", SHOUNEN_FACE_PURPLE_TEXTURE, "purple")
+
+        @@pink_shounen_face = Face.new("Pink Shounen Face", 110, false, true, "human", SHOUNEN_FACE_PINK_TEXTURE, "pink")
+    end
 end

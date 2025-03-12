@@ -318,7 +318,7 @@ module Player
     def Appearance.initialize_player_model
         @@skin = "pale_skin"
         @@hair = "black_shounen_hair"
-        @@face = "blue_button_eyes"
+        @@face = "Blue Shounen Eyes"
         @@hat = "No Hat"
         @@earrings = "nil"
         @@shirt = "White Tank Top"
