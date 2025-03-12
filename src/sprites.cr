@@ -178,13 +178,13 @@ module Sprites
             SF::Sprite.new
         end
 
-    current_face = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("face")])
+    #current_face = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("face")])
 
-    # current_face = if face = Body::Face.get_face(Appearance.get_clothing("face"))
-    #     SF::Sprite.new(face.texture)
-    # else
-    #     SF::Sprite.new
-    # end
+    current_face = if face = Body::Face.get_face(Appearance.get_clothing("face"))
+        SF::Sprite.new(face.texture)
+    else
+        SF::Sprite.new
+    end
 
     current_shirt = if shirt = Clothing::Shirt.get_shirt(Appearance.get_clothing("shirt"))
         SF::Sprite.new(shirt.texture)
@@ -228,51 +228,35 @@ module Sprites
         SF::Sprite.new
     end
 
-    current_makeup = if makeup = Clothing::Makeup.get_makeup(Appearance.get_clothing("makeup"))
-        SF::Sprite.new(makeup.texture)
-    else
-        SF::Sprite.new
-    end
+    makeup = Clothing::Makeup.get_makeup(Appearance.get_clothing("makeup"))
 
-    # current_face = Body::Face.get_face(Appearance.get_clothing("face"))
-    
-    # current_makeup = if makeup = Clothing::Makeup.get_makeup(Appearance.get_clothing("makeup"))
-
-    # makeup = Appearance.get_clothing("makeup")
-
-    # if current_face.includes.name?("shounen")
-    #     m = "#{makeup.name} Shounen"
-    #     texture = Clothing::Makeup.get_makeup(m).try(&.texture) || SF::Texture.new(NIL_TEXTURE)
-    #     SF::Sprite.new(texture)
-    # elsif current_face.includes.name?("button")
-    #     m = "#{makeup.name} Button"
-    #     texture = Clothing::Makeup.get_makeup(m).try(&.texture) || SF::Texture.new(NIL_TEXTURE)
-    #     SF::Sprite.new(texture)
-    # else
-    #     SF::Sprite.new
-    # end
-    # end
-
-        # current_makeup = if makeup = Clothing::Makeup.get_makeup(Appearance.get_clothing("makeup"))
-
-        # face = Appearance.get_clothing("face")
-    
-        #     if face.nil?
-        #        return SF::Sprite.new
-        #     elsif Body::Face.get_face(Appearance.get_clothing("face")).try(&.name.includes? "Button") == true
-        #         puts makeup
-        #         SF::Sprite.new(makeup.texture)
-        #     elsif Body::Face.get_face(Appearance.get_clothing("face")).try(&.name.includes? "Shounen") == true
-        #         puts makeup
-        #         SF::Sprite.new(makeup.texture)
-        #     else 
-        #         i = "#{makeup.name} Face"
-        #         texture = Clothing::Makeup.get_makeup(i).try(&.texture) || SF::Texture.new(NIL_TEXTURE)
-        #         SF::Sprite.new(texture)
-        #     end
-        #     else
-        #         SF::Sprite.new
-        #     end
+        current_makeup = if makeup
+          face = Appearance.get_clothing("face")
+          puts "face_name: #{face}"
+          if face.nil?
+            return SF::Sprite.new
+          end
+        
+          face_name = Body::Face.get_face(face).try(&.name) || ""
+        
+          if face_name.includes?("Button") && !face_name.includes?("Shounen")
+            i = "#{makeup.name} Button"
+            texture = Clothing::Makeup.get_makeup_texture(i) || SF::Texture.new(NIL_TEXTURE)
+            SF::Sprite.new(texture)
+          elsif face_name.includes?("Shounen")
+            i = "#{makeup.name} Shounen"
+            puts i
+            puts Clothing::Makeup.get_makeup(i)
+            texture = Clothing::Makeup.get_makeup_texture(i) || SF::Texture.new(NIL_TEXTURE)
+            SF::Sprite.new(texture)
+          else
+            i = makeup.name
+            texture = Clothing::Makeup.get_makeup_texture(i) || SF::Texture.new(NIL_TEXTURE)
+            SF::Sprite.new(texture)
+          end    
+        else
+          SF::Sprite.new
+        end
 
     current_weapon = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("weapon")])
 
