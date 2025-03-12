@@ -707,7 +707,7 @@ module Clothing
 
         @@nil_makeup = Makeup.new("No Makeup", 0, false, "nil", "plain", NIL_TEXTURE, "white")
 
-        @@eye_scar = Makeup.new("Eye Scar", 1, false, "eye", "cool", EYE_SCAR_SHOUNEN_TEXTURE, "pink")
+        @@eye_scar = Makeup.new("Eye Scar", 1, false, "eye", "cool", EYE_SCAR_BUTTON_TEXTURE, "pink")
         @@eye_scar_shounen = Makeup.new("Eye Scar Shounen", 1, false, "eye", "cool", EYE_SCAR_SHOUNEN_TEXTURE, "pink")
         @@eye_scar_button = Makeup.new("Eye Scar Button", 1, false, "eye", "cool", EYE_SCAR_BUTTON_TEXTURE, "pink")
     end
