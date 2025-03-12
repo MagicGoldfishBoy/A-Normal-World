@@ -2,6 +2,7 @@ require "crsfml"
 require "../src/sprites.cr"
 require "../src/inventory.cr"
 require "../src/clothing.cr"
+require "../src/combat.cr"
 
 module Keyboard
     class Gameplay
@@ -66,6 +67,8 @@ module Keyboard
             if SF::Keyboard.key_pressed?(SF::Keyboard::A)
                 Sprites::Player.movement_state=("attacking")
                 Player::Movement.movement_state=("attacking")
+                player_strength = Player::Stats.str
+                Combat::Player.normal_attack(window, player_strength)
                 Sprites::Player.refresh_player_sprite(window)
             end
         end

@@ -82,6 +82,7 @@ module Levels
             end
         end
     end
+    
     class PhysicsTest
         TEST_PLATFORM_01 = SF::RectangleShape.new(SF.vector2(2800, 80))
         TEST_PLATFORM_01.fill_color = SF.color( 96, 166, 84 )
