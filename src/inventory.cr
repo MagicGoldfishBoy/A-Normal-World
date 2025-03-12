@@ -9869,6 +9869,8 @@ module Inventory
         @@owned_makeup_array.push(Clothing::Makeup.get_makeup("No Makeup").not_nil!)
 
         @@owned_makeup_array.push(Clothing::Makeup.get_makeup("Eye Scar").not_nil!)
+
+        @@owned_makeup_array.push(Clothing::Makeup.get_makeup("Pink Makeup").not_nil!)
         
         @@owned_makeup_array.uniq!
        #---------------------------------------------------------------------------------

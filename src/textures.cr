@@ -436,8 +436,11 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
     #M                                         Makeup Textures                                          M
     #MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 
-    EYE_SCAR_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/Eye_Scar_Shounen.png")
-    EYE_SCAR_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/Eye_Scar_Button.png")
+        EYE_SCAR_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/Eye_Scar_Shounen.png")
+        EYE_SCAR_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/Eye_Scar_Button.png")
+
+        PINK_MAKEUP_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/Pink_Makeup_Shounen.png")
+        PINK_MAKEUP_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/Pink_Makeup_Button.png")
 
     #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
     #W                                         Weapon Textures                                          W

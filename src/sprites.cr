@@ -232,7 +232,6 @@ module Sprites
 
         current_makeup = if makeup
           face = Appearance.get_clothing("face")
-          puts "face_name: #{face}"
           if face.nil?
             return SF::Sprite.new
           end
@@ -245,8 +244,6 @@ module Sprites
             SF::Sprite.new(texture)
           elsif face_name.includes?("Shounen")
             i = "#{makeup.name} Shounen"
-            puts i
-            puts Clothing::Makeup.get_makeup(i)
             texture = Clothing::Makeup.get_makeup_texture(i) || SF::Texture.new(NIL_TEXTURE)
             SF::Sprite.new(texture)
           else
