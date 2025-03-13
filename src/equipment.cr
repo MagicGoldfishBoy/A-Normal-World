@@ -5,12 +5,16 @@ module Equipment
     class Weapon
         WEAPON_ARRAY = [] of Weapon
 
-        def initialize(name : String, id : Int32, attack_type : String, attack_strength : Float64, minimum_strength : Float64, status_effects : Array(String), amount_owned : Int32, texture : SF::Texture)
+        def initialize(name : String, id : Int32, attack_type : String, attack_strength : Float64, minimum_strength : Float64, minimum_dexterity : Float64, 
+            minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), amount_owned : Int32, texture : SF::Texture)
             @name = name
             @id = id
             @attack_type = attack_type
             @attack_strength = attack_strength
             @minimum_strength = minimum_strength
+            @minimum_dexterity = minimum_dexterity
+            @minimum_intelligence = minimum_intelligence
+            @minimum_luck = minimum_luck
             @status_effects = status_effects
             @amount_owned = amount_owned
             @texture = texture
@@ -52,6 +56,27 @@ module Equipment
             @minimum_strength = this
         end
 
+        def minimum_dexterity
+            @minimum_dexterity
+        end
+        def minimum_dexterity=(this)
+            @minimum_dexterity = this
+        end
+
+        def minimum_intelligence
+            @minimum_intelligence
+        end
+        def minimum_intelligence=(this)
+            @minimum_intelligence = this
+        end
+
+        def minimum_luck
+            @minimum_luck
+        end
+        def minimum_luck=(this)
+            @minimum_luck = this
+        end
+
         def status_effects
             @status_effects
         end
@@ -80,7 +105,7 @@ module Equipment
             nil
         end
 
-        @@nil_weapon = Weapon.new("No Weapon", 0, "punch", 1.0, 0.0, [] of String, 1, NIL_TEXTURE)
-        @@stick = Weapon.new("Stick", 1, "swing", 2.0, 0.0, [] of String, 1, WOODEN_STICK_TEXTURE)
+        @@nil_weapon = Weapon.new("No Weapon", 0, "punch", 1.0, 0.0, 0.0, 0.0, 0.0, [] of String, 1, NIL_TEXTURE)
+        @@stick = Weapon.new("Stick", 1, "swing", 2.0, 0.0, 0.0, 0.0, 0.0, [] of String, 1, WOODEN_STICK_TEXTURE)
     end
 end
