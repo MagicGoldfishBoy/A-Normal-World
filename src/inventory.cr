@@ -12246,8 +12246,370 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
-                 WeaponTab.assign_slot_textures(window)
-                 sleep 0.15.seconds
+             end
+            if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
+                (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
+                 if @@weapon_slot_02 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_02.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_02.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_02.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_02.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_02.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_02.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_02.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_02.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_02.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
+                (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
+                 if @@weapon_slot_03 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_03.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_03.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_03.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_03.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_03.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_03.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_03.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_03.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_03.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
+                (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
+                 if @@weapon_slot_04 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_04.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_04.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_04.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_04.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_04.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_04.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_04.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_04.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_04.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
+                (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
+                 if @@weapon_slot_05 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_05.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_05.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_05.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_05.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_05.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_05.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_05.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_05.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_05.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
+                (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
+                 if @@weapon_slot_06 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_06.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_06.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_06.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_06.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_06.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_06.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_06.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_06.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_06.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
+                (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
+                 if @@weapon_slot_07 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_07.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_07.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_07.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_07.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_07.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_07.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_07.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_07.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_07.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
+                (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
+                 if @@weapon_slot_08 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_08.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_08.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_08.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_08.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_08.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_08.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_08.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_08.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_08.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
+                (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
+                 if @@weapon_slot_09 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_09.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_09.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_09.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_09.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_09.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_09.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_09.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_09.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_09.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
+                (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
+                 if @@weapon_slot_10 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_10.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_10.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_10.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_10.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_10.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_10.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_10.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_10.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_10.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
+                (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
+                 if @@weapon_slot_11 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_11.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_11.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_11.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_11.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_11.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_11.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_11.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_11.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_11.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
+                (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
+                 if @@weapon_slot_12 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_12.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_12.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_12.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_12.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_12.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_12.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_12.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_12.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_12.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
+                (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
+                 if @@weapon_slot_13 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_13.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_13.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_13.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_13.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_13.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_13.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_13.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_13.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_13.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
+                (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
+                 if @@weapon_slot_14 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_14.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_14.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_14.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_14.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_14.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_14.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_14.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_14.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_14.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+             end
+            if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
+                (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
+                 if @@weapon_slot_15 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_15.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_15.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_15.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_15.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_15.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_15.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_15.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_15.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_15.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
              end
            end
     
