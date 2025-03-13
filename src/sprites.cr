@@ -178,8 +178,6 @@ module Sprites
             SF::Sprite.new
         end
 
-    #current_face = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("face")])
-
     current_face = if face = Body::Face.get_face(Appearance.get_clothing("face"))
         SF::Sprite.new(face.texture)
     else
@@ -255,7 +253,11 @@ module Sprites
           SF::Sprite.new
         end
 
-    current_weapon = SF::Sprite.new(CLOTHES_HASH[Appearance.get_clothing("weapon")])
+    current_weapon = if weapon = Equipment::Weapon.get_weapon(Appearance.get_clothing("weapon"))
+        SF::Sprite.new(weapon.texture)
+    else
+        SF::Sprite.new
+    end
 
     if Player.direction == "left"
         @@player_character_model.clear(SF::Color::Transparent)

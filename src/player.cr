@@ -327,7 +327,7 @@ module Player
         @@shoes = "white Sneakers"
         @@makeup = "No Makeup"
         @@glasses = "No Glasses"
-        @@weapon = "wooden_stick"
+        @@weapon = "Stick"
     end
 
     def Appearance.get_clothing(this)
