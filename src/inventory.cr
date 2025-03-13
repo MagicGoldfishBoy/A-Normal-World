@@ -14,10 +14,32 @@ INVENTORY_RIGHT_ARROW_SPRITE.fill_color = SF.color(161, 183, 208)
 module Inventory
     class InventoryManager
 
-        def initialize(is_inventory_open : Bool)
+        def initialize(is_inventory_open : Bool, category : String)
             @@is_inventory_open = is_inventory_open
+            @@category = category
         end
+        
+        @@category = "Cosmetics"
      #----------------------------------objects------------------------------------------------
+
+        @@cosmetics_category_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@cosmetics_category_tab.fill_color = SF.color(161, 183, 208)
+
+        @@cosmetics_category_tab_text = SF::Text.new
+        @@cosmetics_category_tab_text.font = QUICKSAND
+        @@cosmetics_category_tab_text.character_size = 20
+        @@cosmetics_category_tab_text.color = SF::Color::Blue
+        @@cosmetics_category_tab_text.string = "Cosmetics"
+
+        @@equipment_category_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@equipment_category_tab.fill_color = SF.color(161, 183, 208)
+
+        @@equipment_category_tab_text = SF::Text.new
+        @@equipment_category_tab_text.font = QUICKSAND
+        @@equipment_category_tab_text.character_size = 20
+        @@equipment_category_tab_text.color = SF::Color::Blue
+        @@equipment_category_tab_text.string = "Equipment"
+
 
         @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
         @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
@@ -168,8 +190,16 @@ module Inventory
         def InventoryManager.is_inventory_open=(this)
             @@is_inventory_open = this
         end
+
+        def InventoryManager.tab
+            @@tab
+        end
+        def InventoryManager.tab=(this)
+            @@tab = tab
+        end
+
         def InventoryManager.draw_inventory(window)
-          if @@is_inventory_open == true
+          if @@is_inventory_open == true && @@category == "Cosmetics"
             if ClothingTabShirt.is_open == true
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabShirt.draw_clothing_tab(window)
@@ -220,6 +250,12 @@ module Inventory
                 end
             end
           end
+            if @@is_inventory_open == true && @@category == "Equipment"
+                InventoryManager.draw_universal_elements(window)
+                if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                    InventoryManager.universal_mouse_handling("makeup", window)
+                end
+            end
         end
 
         def InventoryManager.draw_universal_elements(window)
@@ -244,6 +280,12 @@ module Inventory
 
             INVENTORY_RIGHT_ARROW_SPRITE.position = INVENTORY_LEFT_ARROW_SPRITE.position + SF.vector2(50 * max_scale, 1 * max_scale)
             INVENTORY_RIGHT_ARROW_SPRITE.scale = SF.vector2(1, 1)
+
+            @@cosmetics_category_tab.position = INVENTORY_BOX.position - SF.vector2(-2 * max_scale, 50)
+            @@cosmetics_category_tab_text.position = @@cosmetics_category_tab.position + SF.vector2(2 * max_scale, 7 * max_scale)
+
+            @@equipment_category_tab.position = INVENTORY_BOX.position - SF.vector2(-70 * max_scale, 50)
+            @@equipment_category_tab_text.position = @@equipment_category_tab.position + SF.vector2(0.5 * max_scale, 7 * max_scale)
 
 
             @@shirt_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, 0)
@@ -295,6 +337,11 @@ module Inventory
 
             window.draw(INVENTORY_LEFT_ARROW_SPRITE)
             window.draw(INVENTORY_RIGHT_ARROW_SPRITE)
+            window.draw(@@cosmetics_category_tab)
+            window.draw(@@cosmetics_category_tab_text)
+            window.draw(@@equipment_category_tab)
+            window.draw(@@equipment_category_tab_text)
+            if @@category == "Cosmetics"
             window.draw(@@shirt_tab)
             window.draw(@@shirt_tab_text)
             window.draw(@@pants_tab)
@@ -311,6 +358,7 @@ module Inventory
             window.draw(@@glasses_tab_text)
             window.draw(@@makeup_tab)
             window.draw(@@makeup_tab_text)
+            end
 
             window.draw(@@clothing_sort_button_sprite)
             window.draw(@@clothing_shirt_category_box)
@@ -450,6 +498,42 @@ module Inventory
         end
 
         def InventoryManager.universal_mouse_handling(tab, window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+            
+        
+            current_size = window.size
+            original_width = 800 
+            original_height = 600 
+    
+            scale_x = (current_size.x.to_f / original_width)
+            scale_y = current_size.y.to_f / original_height
+            
+            cosmetics_tab_x = @@cosmetics_category_tab.position.x
+            cosmetics_tab_y = @@cosmetics_category_tab.position.y
+            cosmetics_tab_width = @@cosmetics_category_tab.size.x
+            cosmetics_tab_height = @@cosmetics_category_tab.size.y
+            
+            equipment_tab_x = @@equipment_category_tab.position.x
+            equipment_tab_y = @@equipment_category_tab.position.y
+            equipment_tab_width = @@equipment_category_tab.size.x
+            equipment_tab_height = @@equipment_category_tab.size.y
+
+            if (mouse_x >= cosmetics_tab_x && mouse_x <= cosmetics_tab_x + cosmetics_tab_width) &&
+                (mouse_y >= cosmetics_tab_y && mouse_y <= cosmetics_tab_y + cosmetics_tab_height)
+                
+                 @@category = "Cosmetics"
+                 sleep 0.15.seconds
+            end
+            
+            if (mouse_x >= equipment_tab_x && mouse_x <= equipment_tab_x + equipment_tab_width) &&
+                (mouse_y >= equipment_tab_y && mouse_y <= equipment_tab_y + equipment_tab_height)
+                
+                 @@category = "Equipment"
+                 sleep 0.15.seconds
+            end
+
             case tab
             when "shirt"
                 InventoryManager.shirt_tab_mouse_handling(window)
@@ -504,7 +588,7 @@ module Inventory
                 category_button_y = @@clothing_shirt_category_box.position.y
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
-                
+
 
                 pants_tab_x = @@pants_tab.position.x
                 pants_tab_y = @@pants_tab.position.y
@@ -541,6 +625,8 @@ module Inventory
                 makeup_tab_width = @@makeup_tab.size.x
                 makeup_tab_height = @@makeup_tab.size.y
             #---------------------------------------------------------------------------------------------
+
+            
 
             
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
@@ -10996,16 +11082,23 @@ module Inventory
     end
 
     class WeaponTab
-        def initialize(is_open : Bool)
+        def initialize(is_open : Bool, page : Int32)
             @@is_open = is_open
+            @@page = page
         end
 
         def WeaponTab.is_open
             @@is_open
         end
-
         def WeaponTab.is_open=(this)
             @@is_open = this
+        end
+
+        def WeaponTab.page
+            @@page
+        end
+        def WeaponTab.page=(this)
+            @@page = this
         end
     end
 
