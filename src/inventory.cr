@@ -271,7 +271,7 @@ module Inventory
                 InventoryManager.draw_universal_elements(window)
                 WeaponTab.draw_equipment_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("makeup", window)
+                    InventoryManager.universal_mouse_handling("weapon", window)
                 end
             end
         end
@@ -614,11 +614,10 @@ module Inventory
                 InventoryManager.glasses_tab_mouse_handling(window)
             when "makeup"
                 InventoryManager.makeup_tab_mouse_handling(window)
-            end
-
-            if @@category == "Equipment"
+            when "weapon"
                 InventoryManager.weapon_tab_mouse_handling(window)
             end
+
         end
 
         def InventoryManager.shirt_tab_mouse_handling(window)
@@ -11279,7 +11278,59 @@ module Inventory
       
               @@equipment_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
               @@equipment_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+
+              @@weapon_info_box = SF::RectangleShape.new(SF.vector2(200, 200))
+              @@weapon_info_box.fill_color = SF.color(200, 212, 219)
+              @@weapon_info_box.outline_thickness = 10
+              @@weapon_info_box.outline_color = SF.color(151, 179, 194)
+
+              @@weapon_info_box_name_text = SF::Text.new
+              @@weapon_info_box_name_text.font = QUICKSAND
+              @@weapon_info_box_name_text.character_size = 14
+              @@weapon_info_box_name_text.color = SF::Color::Blue
+
+              @@weapon_info_box_attack_type_text = SF::Text.new
+              @@weapon_info_box_attack_type_text.font = QUICKSAND
+              @@weapon_info_box_attack_type_text.character_size = 14
+              @@weapon_info_box_attack_type_text.color = SF::Color::Blue
+
+              @@weapon_info_box_attack_strength_text = SF::Text.new
+              @@weapon_info_box_attack_strength_text.font = QUICKSAND
+              @@weapon_info_box_attack_strength_text.character_size = 14
+              @@weapon_info_box_attack_strength_text.color = SF::Color::Blue
+
+              @@weapon_info_box_minimum_strength_text = SF::Text.new
+              @@weapon_info_box_minimum_strength_text.font = QUICKSAND
+              @@weapon_info_box_minimum_strength_text.character_size = 14
+              @@weapon_info_box_minimum_strength_text.color = SF::Color::Blue
+
+              @@weapon_info_box_minimum_dexterity_text = SF::Text.new
+              @@weapon_info_box_minimum_dexterity_text.font = QUICKSAND
+              @@weapon_info_box_minimum_dexterity_text.character_size = 14
+              @@weapon_info_box_minimum_dexterity_text.color = SF::Color::Blue
+
+              @@weapon_info_box_minimum_intelligence_text = SF::Text.new
+              @@weapon_info_box_minimum_intelligence_text.font = QUICKSAND
+              @@weapon_info_box_minimum_intelligence_text.character_size = 14
+              @@weapon_info_box_minimum_intelligence_text.color = SF::Color::Blue
+
+              @@weapon_info_box_minimum_luck_text = SF::Text.new
+              @@weapon_info_box_minimum_luck_text.font = QUICKSAND
+              @@weapon_info_box_minimum_luck_text.character_size = 14
+              @@weapon_info_box_minimum_luck_text.color = SF::Color::Blue
+
+              @@weapon_info_box_minimum_status_effects_text = SF::Text.new
+              @@weapon_info_box_minimum_status_effects_text.font = QUICKSAND
+              @@weapon_info_box_minimum_status_effects_text.character_size = 14
+              @@weapon_info_box_minimum_status_effects_text.color = SF::Color::Blue
+
+              @@weapon_info_box_minimum_amount_owned_text = SF::Text.new
+              @@weapon_info_box_minimum_amount_owned_text.font = QUICKSAND
+              @@weapon_info_box_minimum_amount_owned_text.character_size = 14
+              @@weapon_info_box_minimum_amount_owned_text.color = SF::Color::Blue
       
+
               @@weapon_tab = SF::RectangleShape.new(SF.vector2(100, 50))
               @@weapon_tab.fill_color = SF.color(141, 163, 188)
       
@@ -11500,11 +11551,11 @@ module Inventory
            end
         end
     
-           def WeaponTab.get_weapon_category
+        def WeaponTab.get_weapon_category
             return @@weapon_sorting_category
-           end
+        end
     
-           def WeaponTab.organise_owned_weapon_array_by_color(window)
+        def WeaponTab.organise_owned_weapon_array_by_color(window)
             temp_equipment_array_01 = [] of Equipment::Weapon
             @@owned_weapon_array.each { |weapon| if weapon.id == 0
             temp_equipment_array_01.push(weapon)
@@ -11577,7 +11628,7 @@ module Inventory
             @@owned_weapon_array = temp_equipment_array_01
             @@owned_weapon_array.uniq!
             WeaponTab.assign_slot_textures(window)
-           end
+        end
     
            def WeaponTab.center_equipment_text(this)
             if this.string.size <= 5
@@ -11807,6 +11858,10 @@ module Inventory
            
     
            def WeaponTab.draw_equipment_tab(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+
                 current_size = window.size
                 original_width = 800 
                 original_height = 600
@@ -11822,7 +11877,7 @@ module Inventory
             INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
             INVENTORY_BOX.scale = SF.vector2(1, 1)
     
-    
+
             @@weapon_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
             @@weapon_slot_01_sprite.scale = SF.vector2(1, 1)
             
@@ -11986,8 +12041,7 @@ module Inventory
             @@weapon_slot_15_image_sprite.position = @@weapon_slot_15_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
             @@weapon_slot_15_image_sprite.scale = SF.vector2(2, 2)
             @@weapon_slot_15_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
-    
-    
+
             window.draw(@@weapon_slot_01_sprite)
             window.draw(@@weapon_slot_01_image_sprite)
             window.draw(@@weapon_slot_01_text)
@@ -12047,10 +12101,154 @@ module Inventory
             window.draw(@@weapon_slot_15_sprite)
             window.draw(@@weapon_slot_15_image_sprite)
             window.draw(@@weapon_slot_15_text)
+
+            WeaponTab.weapon_info_box_handling(window)
     
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
                 WeaponTab.mouse_handling(window)
             end
+           end
+
+           def WeaponTab.weapon_info_box_handling(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+            
+        
+            current_size = window.size
+            original_width = 800 
+            original_height = 600 
+    
+            scale_x = (current_size.x.to_f / original_width)
+            scale_y = current_size.y.to_f / original_height
+
+            #------------------------------------objects-------------------------------------------------
+                
+                @@weapon_info_box.position = mouse_position + SF.vector2(15, 15)
+                @@weapon_info_box.scale = SF.vector2(1, 1)
+
+                @@weapon_info_box_name_text.position = @@weapon_info_box.position + SF.vector2(5, 5)
+
+                @@weapon_info_box_attack_type_text.position = @@weapon_info_box.position + SF.vector2(5, 20)
+
+                @@weapon_info_box_attack_strength_text.position = @@weapon_info_box.position + SF.vector2(5, 35)
+
+                @@weapon_info_box_minimum_strength_text.position = @@weapon_info_box.position + SF.vector2(5, 50)
+
+                @@weapon_info_box_minimum_dexterity_text.position = @@weapon_info_box.position + SF.vector2(5, 65)
+
+                @@weapon_info_box_minimum_intelligence_text.position = @@weapon_info_box.position + SF.vector2(5, 80)
+
+                @@weapon_info_box_minimum_luck_text.position = @@weapon_info_box.position + SF.vector2(5, 95)
+
+                @@weapon_info_box_minimum_status_effects_text.position = @@weapon_info_box.position + SF.vector2(5, 110)
+
+                @@weapon_info_box_minimum_amount_owned_text.position = @@weapon_info_box.position + SF.vector2(5, 125)
+    
+                slot_01_x = @@weapon_slot_01_sprite.position.x
+                slot_01_y = @@weapon_slot_01_sprite.position.y
+                slot_01_width = @@weapon_slot_01_sprite.size.x
+                slot_01_height = @@weapon_slot_01_sprite.size.y
+    
+                slot_02_x = @@weapon_slot_02_sprite.position.x
+                slot_02_y = @@weapon_slot_02_sprite.position.y
+                slot_02_width = @@weapon_slot_02_sprite.size.x
+                slot_02_height = @@weapon_slot_02_sprite.size.y
+    
+                slot_03_x = @@weapon_slot_03_sprite.position.x
+                slot_03_y = @@weapon_slot_03_sprite.position.y
+                slot_03_width = @@weapon_slot_03_sprite.size.x
+                slot_03_height = @@weapon_slot_03_sprite.size.y
+    
+                slot_04_x = @@weapon_slot_04_sprite.position.x
+                slot_04_y = @@weapon_slot_04_sprite.position.y
+                slot_04_width = @@weapon_slot_04_sprite.size.x
+                slot_04_height = @@weapon_slot_04_sprite.size.y
+    
+                slot_05_x = @@weapon_slot_05_sprite.position.x
+                slot_05_y = @@weapon_slot_05_sprite.position.y
+                slot_05_width = @@weapon_slot_05_sprite.size.x
+                slot_05_height = @@weapon_slot_05_sprite.size.y
+    
+                slot_06_x = @@weapon_slot_06_sprite.position.x
+                slot_06_y = @@weapon_slot_06_sprite.position.y
+                slot_06_width = @@weapon_slot_06_sprite.size.x
+                slot_06_height = @@weapon_slot_06_sprite.size.y
+    
+                slot_07_x = @@weapon_slot_07_sprite.position.x
+                slot_07_y = @@weapon_slot_07_sprite.position.y
+                slot_07_width = @@weapon_slot_07_sprite.size.x
+                slot_07_height = @@weapon_slot_07_sprite.size.y
+    
+                slot_08_x = @@weapon_slot_08_sprite.position.x
+                slot_08_y = @@weapon_slot_08_sprite.position.y
+                slot_08_width = @@weapon_slot_08_sprite.size.x
+                slot_08_height = @@weapon_slot_08_sprite.size.y
+    
+                slot_09_x = @@weapon_slot_09_sprite.position.x
+                slot_09_y = @@weapon_slot_09_sprite.position.y
+                slot_09_width = @@weapon_slot_09_sprite.size.x
+                slot_09_height = @@weapon_slot_09_sprite.size.y
+    
+                slot_10_x = @@weapon_slot_10_sprite.position.x
+                slot_10_y = @@weapon_slot_10_sprite.position.y
+                slot_10_width = @@weapon_slot_10_sprite.size.x
+                slot_10_height = @@weapon_slot_10_sprite.size.y
+    
+                slot_11_x = @@weapon_slot_11_sprite.position.x
+                slot_11_y = @@weapon_slot_11_sprite.position.y
+                slot_11_width = @@weapon_slot_11_sprite.size.x
+                slot_11_height = @@weapon_slot_11_sprite.size.y
+    
+                slot_12_x = @@weapon_slot_12_sprite.position.x
+                slot_12_y = @@weapon_slot_12_sprite.position.y
+                slot_12_width = @@weapon_slot_12_sprite.size.x
+                slot_12_height = @@weapon_slot_12_sprite.size.y
+    
+                slot_13_x = @@weapon_slot_13_sprite.position.x
+                slot_13_y = @@weapon_slot_13_sprite.position.y
+                slot_13_width = @@weapon_slot_13_sprite.size.x
+                slot_13_height = @@weapon_slot_13_sprite.size.y
+    
+                slot_14_x = @@weapon_slot_14_sprite.position.x
+                slot_14_y = @@weapon_slot_14_sprite.position.y
+                slot_14_width = @@weapon_slot_14_sprite.size.x
+                slot_14_height = @@weapon_slot_14_sprite.size.y
+    
+                slot_15_x = @@weapon_slot_15_sprite.position.x
+                slot_15_y = @@weapon_slot_15_sprite.position.y
+                slot_15_width = @@weapon_slot_15_sprite.size.x
+                slot_15_height = @@weapon_slot_15_sprite.size.y
+            #---------------------------------------------------------------------------------------------
+
+            if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
+                (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
+                 if @@weapon_slot_01 != nil  
+                    @@weapon_info_box_name_text.string = "Name: #{@@weapon_slot_01.not_nil!.name}"
+                    @@weapon_info_box_attack_type_text.string = "Attack Type: #{@@weapon_slot_01.not_nil!.attack_type}"
+                    @@weapon_info_box_attack_strength_text.string = "Attack Strength: #{@@weapon_slot_01.not_nil!.attack_strength}"
+                    @@weapon_info_box_minimum_strength_text.string = "Minimum Strength: #{@@weapon_slot_01.not_nil!.minimum_strength}"
+                    @@weapon_info_box_minimum_dexterity_text.string = "Minimum Dexterity: #{@@weapon_slot_01.not_nil!.minimum_dexterity}"
+                    @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_01.not_nil!.minimum_intelligence}"
+                    @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_01.not_nil!.minimum_luck}"
+                    @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_01.not_nil!.status_effects}"
+                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_01.not_nil!.amount_owned}"
+
+                     window.draw(@@weapon_info_box)
+                     window.draw(@@weapon_info_box_name_text)
+                     window.draw(@@weapon_info_box_attack_type_text)
+                     window.draw(@@weapon_info_box_attack_strength_text)
+                     window.draw(@@weapon_info_box_minimum_strength_text)
+                     window.draw(@@weapon_info_box_minimum_dexterity_text)
+                     window.draw(@@weapon_info_box_minimum_intelligence_text)
+                     window.draw(@@weapon_info_box_minimum_luck_text)
+                     window.draw(@@weapon_info_box_minimum_status_effects_text)
+                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
+                     
+                 end
+                 WeaponTab.assign_slot_textures(window)
+                 sleep 0.15.seconds
+             end
            end
     
            def WeaponTab.mouse_handling(window)
