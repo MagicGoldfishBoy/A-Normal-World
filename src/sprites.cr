@@ -4,6 +4,7 @@ require "../src/player.cr"
 require "../src/animations.cr"
 require "../src/clothing.cr"
 require "../src/body.cr"
+require "../src/equipment.cr"
 
 module Sprites
     include Player
@@ -446,7 +447,8 @@ module Sprites
     return @@current_array[@@shoes_iterator]
    end
 
-   def Player.animate_sprite(state, direction)
+   def Player.animate_sprite(state, direction) #the stab animations are fucking stupid and I love it lol XD
+    weapon = Equipment::Weapon.get_weapon(Appearance.get_clothing("weapon"))
     if state == "idle" && direction == "right"
         @@player_character_rendered_model.texture_rect = Animations::Player.idle_animation_right
     elsif state == "idle" && direction == "left"
@@ -460,11 +462,20 @@ module Sprites
     end
 
     if state == "attacking" && direction == "right"
-        @@player_character_rendered_model.texture_rect = Animations::Player.attack_animation_right
+        if weapon.try(&.attack_type) == "swing"
+         @@player_character_rendered_model.texture_rect = Animations::Player.attack_animation_right
+        elsif weapon.try(&.attack_type) == "stab"
+         @@player_character_rendered_model.texture_rect = Animations::Player.stab_animation_right
+        end
     elsif state == "attacking" && direction == "left"
-        @@player_character_rendered_model.texture_rect = Animations::Player.attack_animation_left
+        if weapon.try(&.attack_type) == "swing"
+         @@player_character_rendered_model.texture_rect = Animations::Player.attack_animation_left
+        elsif weapon.try(&.attack_type) == "stab"
+         @@player_character_rendered_model.texture_rect = Animations::Player.stab_animation_left
+        end
     end
    end
 
  end
 end
+#Appearance.get_clothing(weapon)

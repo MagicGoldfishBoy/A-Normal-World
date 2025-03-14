@@ -57,16 +57,16 @@ module Animations
                 return @@attack_animation_right_array[@@attack_animation_frame]
         end
 
-        def Player.attack_animation_right
-            if @@attack_animation_timer.elapsed_time >= SF.seconds(0.08) 
-                if @@attack_animation_frame < @@attack_animation_right_array.size - 1
-                @@attack_animation_frame += 1
-                else @@attack_animation_frame = 0
+        def Player.stab_animation_right
+            if @@stab_animation_timer.elapsed_time >= SF.seconds(0.08) 
+                if @@stab_animation_frame < @@stab_animation_right_array.size - 1
+                @@stab_animation_frame += 1
+                else @@stab_animation_frame = 0
                 end
-                @@attack_animation_timer.restart
-                return @@attack_animation_right_array[@@attack_animation_frame]
+                @@stab_animation_timer.restart
+                return @@stab_animation_right_array[@@stab_animation_frame]
             end
-                return @@attack_animation_right_array[@@attack_animation_frame]
+                return @@stab_animation_right_array[@@stab_animation_frame]
         end
 
         def Player.stab_animation_left
