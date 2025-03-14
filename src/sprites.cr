@@ -472,6 +472,8 @@ module Sprites
          @@player_character_rendered_model.texture_rect = Animations::Player.attack_animation_left
         elsif weapon.try(&.attack_type) == "stab"
          @@player_character_rendered_model.texture_rect = Animations::Player.stab_animation_left
+        elsif weapon.try(&.attack_type) == "shoot"
+         @@player_character_rendered_model.texture_rect = Animations::Player.shoot_animation_left
         end
     end
    end
