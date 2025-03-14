@@ -11250,6 +11250,7 @@ module Inventory
        #---------------------------------debug-------------------------------------------
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("No Weapon").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Stick").not_nil!)
+            @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Wooden Training Sword").not_nil!)
        #---------------------------------------------------------------------------------
        #--------------------------------objects------------------------------------------
               INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
