@@ -109,5 +109,6 @@ module Equipment
         @@stick = Weapon.new("Stick", 1, "swing", 2.0, 0.0, 0.0, 0.0, 0.0, [] of String, 1, WOODEN_STICK_TEXTURE)
         @@wooden_training_sword = Weapon.new("Wooden Training Sword", 2, "swing", 3.5, 0.0, 0.0, 0.0, 0.0, [] of String, 1, WOODEN_TRAINING_SWORD_TEXTURE)
         @@kitchen_knife = Weapon.new("Kitchen Knife", 3, "stab", 3.0, 0.0, 0.0, 0.0, 0.0, [] of String, 1, KITCHEN_KNIFE_TEXTURE)
+        @@broken_bottle = Weapon.new("Broken Bottle", 4, "stab", 2.5, 0.0, 0.0, 0.0, 0.0, [] of String, 1, BROKEN_BOTTLE_TEXTURE)
     end
 end
