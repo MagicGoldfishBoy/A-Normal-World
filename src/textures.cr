@@ -453,3 +453,4 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
     #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
         WOODEN_STICK_TEXTURE = SF::Texture.from_file("../graphics/Wooden_Stick.png") 
         WOODEN_TRAINING_SWORD_TEXTURE = SF::Texture.from_file("../graphics/Wooden_Training_Sword.png") 
+        KITCHEN_KNIFE_TEXTURE = SF::Texture.from_file("../graphics/Kitchen_Knife.png") 
