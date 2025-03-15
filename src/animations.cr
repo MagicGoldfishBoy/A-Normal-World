@@ -40,6 +40,9 @@ module Animations
 
         @@shoot_animation_left_array = [SF.int_rect(0, 896, 96, 128), SF.int_rect(96, 896, 96, 128), SF.int_rect(192, 896, 96, 128)]
 
+        @@shoot_animation_right_array = [SF.int_rect(0, 640, 96, 128), SF.int_rect(96, 640, 96, 128), SF.int_rect(192, 640, 96, 128)]
+
+
         def Player.attack_animation_left
             if @@attack_animation_timer.elapsed_time >= SF.seconds(0.08) 
                 if @@attack_animation_frame < @@attack_animation_left_array.size - 1
@@ -98,6 +101,18 @@ module Animations
                 return @@shoot_animation_left_array[@@shoot_animation_frame]
             end
                 return @@shoot_animation_left_array[@@shoot_animation_frame]
+        end
+
+        def Player.shoot_animation_right
+            if @@shoot_animation_timer.elapsed_time >= SF.seconds(0.1) 
+                if @@shoot_animation_frame < @@shoot_animation_right_array.size - 1
+                @@shoot_animation_frame += 1
+                else @@shoot_animation_frame = 0
+                end
+                @@shoot_animation_timer.restart
+                return @@shoot_animation_right_array[@@shoot_animation_frame]
+            end
+                return @@shoot_animation_right_array[@@shoot_animation_frame]
         end
 
         def Player.idle_animation_left
