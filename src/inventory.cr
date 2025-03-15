@@ -11251,7 +11251,7 @@ module Inventory
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("No Weapon").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Stick").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Wooden Training Sword").not_nil!)
-            @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Kitchen Knife").not_nil!)
+            #@@owned_weapon_array.push(Equipment::Weapon.get_weapon("Kitchen Knife").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Broken Bottle").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("BB Gun").not_nil!)
        #---------------------------------------------------------------------------------
@@ -11608,9 +11608,9 @@ module Inventory
             @@owned_weapon_array = temp_equipment_array_01
             @@owned_weapon_array.uniq!
             WeaponTab.assign_slot_textures(window)
-           end
+        end
     
-           def WeaponTab.organise_owned_weapon_array_by_type(window)
+        def WeaponTab.organise_owned_weapon_array_by_type(window)
             temp_equipment_array_01 = [] of Equipment::Weapon
             @@owned_weapon_array.each { |weapon| if weapon.attack_type == "swing"
             temp_equipment_array_01.push(weapon)
@@ -11885,9 +11885,9 @@ module Inventory
             @@weapon_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
             @@weapon_slot_01_sprite.scale = SF.vector2(1, 1)
             
-            @@weapon_slot_01_image_sprite.position = @@weapon_slot_01_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_01_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_01_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_01_image_sprite.position = @@weapon_slot_01_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_01_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_01_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
     
             @@weapon_slot_01_text.position = @@weapon_slot_01_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_01_text)
@@ -11896,9 +11896,9 @@ module Inventory
             @@weapon_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
             @@weapon_slot_02_sprite.scale = SF.vector2(1, 1)
             
-            @@weapon_slot_02_image_sprite.position = @@weapon_slot_02_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_02_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_02_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_02_image_sprite.position = @@weapon_slot_02_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_02_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_02_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
     
             @@weapon_slot_02_text.position = @@weapon_slot_02_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_02_text)
@@ -11907,9 +11907,9 @@ module Inventory
             @@weapon_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
             @@weapon_slot_03_sprite.scale = SF.vector2(1, 1)
             
-            @@weapon_slot_03_image_sprite.position = @@weapon_slot_03_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_03_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_03_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_03_image_sprite.position = @@weapon_slot_03_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_03_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_03_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
     
             @@weapon_slot_03_text.position = @@weapon_slot_03_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_03_text)
@@ -11921,9 +11921,9 @@ module Inventory
             @@weapon_slot_04_text.position = @@weapon_slot_04_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_04_text)
             
-            @@weapon_slot_04_image_sprite.position = @@weapon_slot_04_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_04_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_04_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_04_image_sprite.position = @@weapon_slot_04_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_04_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_04_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
     
     
             @@weapon_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
@@ -11932,9 +11932,9 @@ module Inventory
             @@weapon_slot_05_text.position = @@weapon_slot_05_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_05_text)
             
-            @@weapon_slot_05_image_sprite.position = @@weapon_slot_05_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_05_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_05_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_05_image_sprite.position = @@weapon_slot_05_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_05_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_05_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
     
             @@weapon_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
@@ -11943,9 +11943,9 @@ module Inventory
             @@weapon_slot_06_text.position = @@weapon_slot_06_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_06_text)
             
-            @@weapon_slot_06_image_sprite.position = @@weapon_slot_06_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_06_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_06_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_06_image_sprite.position = @@weapon_slot_06_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_06_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_06_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
     
             @@weapon_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
@@ -11954,9 +11954,9 @@ module Inventory
             @@weapon_slot_07_text.position = @@weapon_slot_07_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_07_text)
             
-            @@weapon_slot_07_image_sprite.position = @@weapon_slot_07_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_07_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_07_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_07_image_sprite.position = @@weapon_slot_07_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_07_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_07_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
     
             @@weapon_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
@@ -11965,9 +11965,9 @@ module Inventory
             @@weapon_slot_08_text.position = @@weapon_slot_08_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_08_text)
             
-            @@weapon_slot_08_image_sprite.position = @@weapon_slot_08_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_08_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_08_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_08_image_sprite.position = @@weapon_slot_08_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_08_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_08_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
     
             @@weapon_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
@@ -11976,9 +11976,9 @@ module Inventory
             @@weapon_slot_09_text.position = @@weapon_slot_09_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_09_text)
             
-            @@weapon_slot_09_image_sprite.position = @@weapon_slot_09_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_09_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_09_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_09_image_sprite.position = @@weapon_slot_09_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_09_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_09_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
     
             @@weapon_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
@@ -11987,9 +11987,9 @@ module Inventory
             @@weapon_slot_10_text.position = @@weapon_slot_10_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_10_text)
             
-            @@weapon_slot_10_image_sprite.position = @@weapon_slot_10_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_10_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_10_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_10_image_sprite.position = @@weapon_slot_10_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_10_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_10_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
     
             @@weapon_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
@@ -11998,9 +11998,9 @@ module Inventory
             @@weapon_slot_11_text.position = @@weapon_slot_11_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_11_text)
             
-            @@weapon_slot_11_image_sprite.position = @@weapon_slot_11_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_11_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_11_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_11_image_sprite.position = @@weapon_slot_11_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_11_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_11_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
     
             @@weapon_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
@@ -12009,9 +12009,9 @@ module Inventory
             @@weapon_slot_12_text.position = @@weapon_slot_12_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_12_text)
             
-            @@weapon_slot_12_image_sprite.position = @@weapon_slot_12_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_12_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_12_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_12_image_sprite.position = @@weapon_slot_12_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_12_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_12_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
     
             @@weapon_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
@@ -12020,9 +12020,9 @@ module Inventory
             @@weapon_slot_13_text.position = @@weapon_slot_13_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_13_text)
             
-            @@weapon_slot_13_image_sprite.position = @@weapon_slot_13_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_13_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_13_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_13_image_sprite.position = @@weapon_slot_13_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_13_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_13_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
     
             @@weapon_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
@@ -12031,9 +12031,9 @@ module Inventory
             @@weapon_slot_14_text.position = @@weapon_slot_14_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_14_text)
             
-            @@weapon_slot_14_image_sprite.position = @@weapon_slot_14_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_14_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_14_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_14_image_sprite.position = @@weapon_slot_14_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_14_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_14_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
     
             @@weapon_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
@@ -12042,9 +12042,9 @@ module Inventory
             @@weapon_slot_15_text.position = @@weapon_slot_15_sprite.position + SF.vector2(0, 55 * max_scale)
             WeaponTab.center_equipment_text(@@weapon_slot_15_text)
             
-            @@weapon_slot_15_image_sprite.position = @@weapon_slot_15_sprite.position - SF.vector2(40 * max_scale, 65 * max_scale)
-            @@weapon_slot_15_image_sprite.scale = SF.vector2(2, 2)
-            @@weapon_slot_15_image_sprite.texture_rect = SF.int_rect(0, 0, 96, 128)
+            @@weapon_slot_15_image_sprite.position = @@weapon_slot_15_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@weapon_slot_15_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@weapon_slot_15_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
 
             window.draw(@@weapon_slot_01_sprite)
             window.draw(@@weapon_slot_01_image_sprite)
