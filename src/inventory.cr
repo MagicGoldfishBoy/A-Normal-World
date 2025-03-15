@@ -11250,7 +11250,7 @@ module Inventory
        #---------------------------------debug-------------------------------------------
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("No Weapon").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Stick").not_nil!)
-            @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Wooden Training Sword").not_nil!)
+            @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Wood Sword").not_nil!)
             #@@owned_weapon_array.push(Equipment::Weapon.get_weapon("Kitchen Knife").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Broken Bottle").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("BB Gun").not_nil!)
@@ -11641,24 +11641,25 @@ module Inventory
                 x = this.position.x + (this.string.size + 25)
                 this.position = SF.vector2(x, this.position.y)
     
-            elsif this.string.size > 5 && this.string.size < 10
+            elsif this.string.size > 5 && this.string.size < 9
                 this.character_size = 15
     
-                x = this.position.x + (this.string.size - 1)
+                x = this.position.x + (this.string.size + 18)
                 this.position = SF.vector2(x, this.position.y)
     
-            elsif this.string.size >= 10 && this.string.size < 15
-                this.character_size = 11
+            elsif this.string.size >= 9 && this.string.size < 12
+                this.character_size = 14
     
-                x = this.position.x - (this.string.size - 12)
+                x = this.position.x - (this.string.size - 16)
                 y = this.position.y + 2
                 this.position = SF.vector2(x, y)
     
-            elsif this.string.size >= 15 && this.string.size < 20
-                this.character_size = 11
+            elsif this.string.size >= 12 && this.string.size < 20
+                this.character_size = 13
     
-                x = this.position.x - (this.string.size - 10)
-                this.position = SF.vector2(x, this.position.y)
+                x = this.position.x + (this.string.size / 2)
+                y = this.position.y + 2
+                this.position = SF.vector2(x, y)
     
             elsif this.string.size >= 20
                 this.character_size = 11

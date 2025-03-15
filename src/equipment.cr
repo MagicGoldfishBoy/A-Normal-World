@@ -124,7 +124,7 @@ module Equipment
         @@nil_weapon = Weapon.new("No Weapon", 0, "fist", "punch", 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, [] of String, 1, NIL_TEXTURE)
 
         @@stick = Weapon.new("Stick", 1, "blunt", "swing", 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, [] of String, 1, WOODEN_STICK_TEXTURE)
-        @@wooden_training_sword = Weapon.new("Wooden Training Sword", 2, "sword", "swing", 3.5, 2.5, 0.0, 0.0, 0.0, 0.0, [] of String, 1, WOODEN_TRAINING_SWORD_TEXTURE)
+        @@wooden_training_sword = Weapon.new("Wood Sword", 2, "sword", "swing", 3.5, 2.5, 0.0, 0.0, 0.0, 0.0, [] of String, 1, WOODEN_TRAINING_SWORD_TEXTURE)
 
         @@kitchen_knife = Weapon.new("Kitchen Knife", 100, "knife", "stab", 3.0, 1.5, 0.0, 0.0, 0.0, 0.0, [] of String, 1, KITCHEN_KNIFE_TEXTURE)
         @@broken_bottle = Weapon.new("Broken Bottle", 101, "knife", "stab", 2.5, 1.5, 0.0, 0.0, 0.0, 0.0, [] of String, 1, BROKEN_BOTTLE_TEXTURE)
