@@ -11248,6 +11248,7 @@ module Inventory
         @@weapon_slot_15 : Equipment::Weapon? = nil
 
        #---------------------------------debug-------------------------------------------
+            #Note: Duplicates fuck this shit up. Under NO circumstances should duplicates be allowed
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("No Weapon").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Stick").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Wood Sword").not_nil!)
@@ -11634,7 +11635,7 @@ module Inventory
             WeaponTab.assign_slot_textures(window)
         end
     
-           def WeaponTab.center_equipment_text(this)
+        def WeaponTab.center_equipment_text(this)
             if this.string.size <= 5
                 this.character_size = 16
     
@@ -11668,7 +11669,7 @@ module Inventory
                 y = this.position.y - (this.string.size - 20)
                 this.position = SF.vector2(x, y)
             end
-           end
+        end
     
            def WeaponTab.initialize_equipment_tab(window)
             @@page = 1

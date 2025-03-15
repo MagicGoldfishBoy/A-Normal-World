@@ -111,12 +111,12 @@ module Sprites
 
   STARTING_SKIN_ARRAY = ["pale_skin", "tan_skin", "dark_skin", "ghostly_skin", "jaundiced_skin", "blue_skin", "pink_skin", "green_skin", "purple_skin", "red_skin"]
 
-  STARTING_HAIR_ARRAY = ["black_shounen_hair", "white_shounen_hair", "blond_shounen_hair", "light_blond_shounen_hair", "brown_shounen_hair", "orange_shounen_hair", "red_shounen_hair", 
-  "blue_shounen_hair", "pink_shounen_hair", "green_shounen_hair", "purple_shounen_hair", "White_Ponytail_Hair", "Black_Ponytail_Hair", "Blonde_Ponytail_Hair", "Light_blonde_Ponytail_Hair", 
-  "Brown_Ponytail_Hair", "Orange_Ponytail_Hair", "Red_Ponytail_Hair", "Blue_Ponytail_Hair", "Pink_Ponytail_Hair", "Green_Ponytail_Hair", "Purple_Ponytail_Hair"]
+  STARTING_HAIR_ARRAY = ["Black Shounen Hair", "White Shounen Hair", "Blond Shounen Hair", "Light Blond Shounen Hair", "Brown Shounen Hair", "Orange Shounen Hair", "Red Shounen Hair", 
+  "Blue Shounen Hair", "Pink Shounen Hair", "Green Shounen Hair", "Purple Shounen Hair", "White Ponytail Hair", "Black Ponytail Hair", "Blonde Ponytail Hair", "Light Blonde Ponytail Hair", 
+  "Brown Ponytail Hair", "Orange Ponytail Hair", "Red Ponytail Hair", "Blue Ponytail Hair", "Pink Ponytail Hair", "Green Ponytail Hair", "Purple Ponytail Hair"]
 
-  STARTING_FACE_ARRAY = ["blue_button_eyes", "black_button_eyes", "brown_button_eyes", "green_button_eyes", "yellow_button_eyes", "red_button_eyes", "pink_button_eyes", "purple_button_eyes", 
-  "white_button_eyes", "grey_shounen_face", "pink_shounen_face", "purple_shounen_face"]
+  STARTING_FACE_ARRAY = ["Blue Button Eyes", "Black Button Eyes", "Brown Button Eyes", "Green Button Eyes", "Yellow Button Eyes", "Red Button Eyes", "Pink Button Eyes", "Purple Button Eyes", 
+  "White Button Eyes", "Grey Button Eyes", "Pink Shounen Face", "Purple Shounen Face"]
 
   STARTING_SHIRT_ARRAY = ["White Tank Top", "Black Tank Top", "Red Tank Top", "Orange Tank Top", "Yellow Tank Top", "Green Tank Top", "Blue Tank Top", "Purple Tank Top", "Pink Tank Top",
    "White T-Shirt", "Black T-Shirt", "Red T-Shirt", "Orange T-Shirt", "Yellow T-Shirt", "Green T-Shirt", "Blue T-Shirt"]
