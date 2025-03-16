@@ -6357,17 +6357,19 @@ module Inventory
             slot_15_width = @@gloves_slot_15_sprite.size.x
             slot_15_height = @@gloves_slot_15_sprite.size.y
         #---------------------------------------------------------------------------------------------
-        
+         
         if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
            (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
             if @@gloves_slot_01 != nil   
-                t = 0 + (@@page.not_nil! * 15) - 15
+                t = ((@@page || 1) * 15) - 15
                 
-                @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(Player::Appearance.get_clothing("gloves").not_nil!).not_nil!)
-                Player::Appearance.change_gloves(@@gloves_slot_01.not_nil!.name)
+                @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
+                Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
+                Player::Appearance.change_gloves(@@gloves_slot_01.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
                 
             end
+            @@owned_gloves_array.uniq!
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
         end
@@ -11252,7 +11254,7 @@ module Inventory
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("No Weapon").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Stick").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Wood Sword").not_nil!)
-            #@@owned_weapon_array.push(Equipment::Weapon.get_weapon("Kitchen Knife").not_nil!)
+            @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Kitchen Knife").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Broken Bottle").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("BB Gun").not_nil!)
        #---------------------------------------------------------------------------------
@@ -11329,11 +11331,6 @@ module Inventory
               @@weapon_info_box_minimum_status_effects_text.font = QUICKSAND
               @@weapon_info_box_minimum_status_effects_text.character_size = 14
               @@weapon_info_box_minimum_status_effects_text.color = SF::Color::Blue
-
-              @@weapon_info_box_minimum_amount_owned_text = SF::Text.new
-              @@weapon_info_box_minimum_amount_owned_text.font = QUICKSAND
-              @@weapon_info_box_minimum_amount_owned_text.character_size = 14
-              @@weapon_info_box_minimum_amount_owned_text.color = SF::Color::Blue
       
 
               @@weapon_tab = SF::RectangleShape.new(SF.vector2(100, 50))
@@ -11607,7 +11604,6 @@ module Inventory
     
             @@owned_weapon_array.clear
             @@owned_weapon_array = temp_equipment_array_01
-            @@owned_weapon_array.uniq!
             WeaponTab.assign_slot_textures(window)
         end
     
@@ -11631,7 +11627,6 @@ module Inventory
     
             @@owned_weapon_array.clear
             @@owned_weapon_array = temp_equipment_array_01
-            @@owned_weapon_array.uniq!
             WeaponTab.assign_slot_textures(window)
         end
     
@@ -12149,7 +12144,7 @@ module Inventory
 
                 @@weapon_info_box_minimum_status_effects_text.position = @@weapon_info_box.position + SF.vector2(5, 110)
 
-                @@weapon_info_box_minimum_amount_owned_text.position = @@weapon_info_box.position + SF.vector2(5, 125)
+              #  .position = @@weapon_info_box.position + SF.vector2(5, 125)
     
                 slot_01_x = @@weapon_slot_01_sprite.position.x
                 slot_01_y = @@weapon_slot_01_sprite.position.y
@@ -12238,7 +12233,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_01.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_01.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_01.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_01.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12249,7 +12243,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12264,7 +12257,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_02.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_02.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_02.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_02.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12275,7 +12267,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12290,7 +12281,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_03.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_03.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_03.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_03.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12301,7 +12291,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12316,7 +12305,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_04.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_04.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_04.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_04.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12327,7 +12315,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12342,7 +12329,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_05.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_05.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_05.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_05.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12353,7 +12339,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12368,7 +12353,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_06.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_06.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_06.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_06.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12379,7 +12363,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12394,7 +12377,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_07.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_07.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_07.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_07.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12405,7 +12387,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12420,7 +12401,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_08.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_08.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_08.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_08.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12431,7 +12411,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12446,7 +12425,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_09.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_09.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_09.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_09.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12457,7 +12435,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12472,7 +12449,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_10.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_10.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_10.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_10.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12483,7 +12459,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12498,7 +12473,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_11.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_11.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_11.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_11.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12509,7 +12483,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12524,7 +12497,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_12.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_12.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_12.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_12.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12535,7 +12507,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12550,7 +12521,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_13.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_13.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_13.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_13.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12561,7 +12531,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12576,7 +12545,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_14.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_14.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_14.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_14.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12587,7 +12555,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
@@ -12602,7 +12569,6 @@ module Inventory
                     @@weapon_info_box_minimum_intelligence_text.string = "Minimum Intelligence: #{@@weapon_slot_15.not_nil!.minimum_intelligence}"
                     @@weapon_info_box_minimum_luck_text.string = "Minimum Luck: #{@@weapon_slot_15.not_nil!.minimum_luck}"
                     @@weapon_info_box_minimum_status_effects_text.string = "Status Effects: #{@@weapon_slot_15.not_nil!.status_effects}"
-                    @@weapon_info_box_minimum_amount_owned_text.string = "Amount Owned: #{@@weapon_slot_15.not_nil!.amount_owned}"
 
                      window.draw(@@weapon_info_box)
                      window.draw(@@weapon_info_box_name_text)
@@ -12613,7 +12579,6 @@ module Inventory
                      window.draw(@@weapon_info_box_minimum_intelligence_text)
                      window.draw(@@weapon_info_box_minimum_luck_text)
                      window.draw(@@weapon_info_box_minimum_status_effects_text)
-                     window.draw(@@weapon_info_box_minimum_amount_owned_text)
                      
                  end
              end
