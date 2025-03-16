@@ -6694,7 +6694,7 @@ module Inventory
 
     class ClothingTabEarrings
         @@owned_earrings_array = [] of Clothing::Earrings
-
+        #@@owned_earrings_set = Set(Clothing::Earrings).new
         @@earrings_sorting_category = "Length"
 
         @@earrings_slot_01 : Clothing::Earrings? = nil
@@ -6714,7 +6714,8 @@ module Inventory
         @@earrings_slot_15 : Clothing::Earrings? = nil
 
        #---------------------------------debug-------------------------------------------
-        @@owned_earrings_array.push(Clothing::Earrings.get_earrings("Ruby Earrings").not_nil!)
+        @@owned_earrings_array.push(Clothing::Earrings.get_earrings("No Earrings").not_nil!)
+        #@@owned_earrings_set.add?(Clothing::Earrings.get_earrings("Ruby Earrings").not_nil!)
         @@owned_earrings_array.push(Clothing::Earrings.get_earrings("Amber Earrings").not_nil!)
         @@owned_earrings_array.push(Clothing::Earrings.get_earrings("Topaz Earrings").not_nil!)
        #---------------------------------------------------------------------------------
@@ -7586,6 +7587,7 @@ module Inventory
        end
 
        def ClothingTabEarrings.clothes_mouse_handling(window)
+        ClothingTabEarrings.owned_earrings_array
         mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
         mouse_x = mouse_position.x
         mouse_y = mouse_position.y
@@ -7680,12 +7682,14 @@ module Inventory
         if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
            (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
             if @@earrings_slot_01 != nil   
-                t = 0 + (@@page.not_nil! * 15) - 15
+                t = 0 + ((@@page || 1) * 15) - 15
                 
-                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_01.not_nil!.name)
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(
+                Player::Appearance.get_clothing("earrings").try(&.to_s) || Clothing::Earrings.get_earrings("No Earrings").not_nil!)).not_nil!
+                Player::Appearance.change_earrings(@@earrings_slot_01.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7695,11 +7699,14 @@ module Inventory
            (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
            
             if @@earrings_slot_02 != nil
-                t = 1 + (@@page.not_nil! * 15) - 15
+                t = 1 + ((@@page || 1) * 15) - 15
                 
-                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_02.not_nil!.name)
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(
+                Player::Appearance.get_clothing("earrings").try(&.to_s) || Clothing::Earrings.get_earrings("No Earrings").not_nil!)).not_nil!
+                Player::Appearance.change_earrings(@@earrings_slot_02.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7709,11 +7716,15 @@ module Inventory
            (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
            
             if @@earrings_slot_03 != nil
-                t = 2 + (@@page.not_nil! * 15) - 15
-                
-                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_03.not_nil!.name)
+                t = 2 + ((@@page || 1) * 15) - 15
+                if t < @@owned_earrings_array.size
+                @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(
+                Player::Appearance.get_clothing("earrings").try(&.to_s) || Clothing::Earrings.get_earrings("No Earrings").not_nil!)).not_nil!
+                Player::Appearance.change_earrings(@@earrings_slot_03.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
+                end
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7723,11 +7734,13 @@ module Inventory
            (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
            
             if @@earrings_slot_04 != nil
-                t = 3 + (@@page.not_nil! * 15) - 15
+                t = 3 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_04.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_04.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7737,11 +7750,13 @@ module Inventory
            (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
            
             if @@earrings_slot_05 != nil
-                t = 4 + (@@page.not_nil! * 15) - 15
+                t = 4 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_05.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_05.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7751,11 +7766,13 @@ module Inventory
            (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
            
             if @@earrings_slot_06 != nil
-                t = 5 + (@@page.not_nil! * 15) - 15
+                t = 5 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_06.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_06.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7765,11 +7782,13 @@ module Inventory
            (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
            
             if @@earrings_slot_07 != nil
-                t = 6 + (@@page.not_nil! * 15) - 15
+                t = 6 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_07.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_07.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7779,11 +7798,13 @@ module Inventory
            (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
            
             if @@earrings_slot_08 != nil
-                t = 7 + (@@page.not_nil! * 15) - 15
+                t = 7 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_08.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_08.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7793,11 +7814,13 @@ module Inventory
            (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
            
             if @@earrings_slot_09 != nil
-                t = 8 + (@@page.not_nil! * 15) - 15
+                t = 8 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_09.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_09.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7807,11 +7830,13 @@ module Inventory
            (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
            
             if @@earrings_slot_10 != nil
-                t = 9 + (@@page.not_nil! * 15) - 15
+                t = 9 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_10.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_10.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7821,11 +7846,13 @@ module Inventory
            (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
            
             if @@earrings_slot_11 != nil
-                t = 10 + (@@page.not_nil! * 15) - 15
+                t = 10 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_11.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_11.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7835,11 +7862,13 @@ module Inventory
            (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
            
             if @@earrings_slot_12 != nil
-                t = 11 + (@@page.not_nil! * 15) - 15
+                t = 11 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_12.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_12.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7849,11 +7878,13 @@ module Inventory
            (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
            
             if @@earrings_slot_13 != nil
-                t = 12 + (@@page.not_nil! * 15) - 15
+                t = 12 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_13.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_13.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7863,11 +7894,13 @@ module Inventory
            (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
            
             if @@earrings_slot_14 != nil
-                t = 13 + (@@page.not_nil! * 15) - 15
+                t = 13 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_14.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_14.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7877,11 +7910,13 @@ module Inventory
            (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
            
             if @@earrings_slot_15 != nil
-                t = 14 + (@@page.not_nil! * 15) - 15
+                t = 14 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_15.not_nil!.name)
+                Player::Appearance.change_earrings(@@earrings_slot_15.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
+                @@owned_earrings_array.uniq!
+                @@owned_earrings_array.compact!
             end
             ClothingTabEarrings.assign_slot_textures(window)
             sleep 0.15.seconds
