@@ -1260,7 +1260,7 @@ module Inventory
                 (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
                  ClothingTabGloves.change_gloves_sort_category
                  @@clothing_gloves_category_text.string = ClothingTabGloves.get_gloves_category
-                 ClothingTabGloves.center_clothing_text(@@clothing_gloves_category_text)
+                 Utility::StringUtilities.center_text(@@clothing_gloves_category_text)
                  sleep 0.15.seconds
              end  
         end
@@ -5438,15 +5438,15 @@ module Inventory
         @@gloves_slot_15 : Clothing::Gloves? = nil
 
        #---------------------------------debug-------------------------------------------
-        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("White Fingerless\n          Gloves").not_nil!)
-        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Black Fingerless\n          Gloves").not_nil!)
-        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Red Fingerless\n          Gloves").not_nil!)
-        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Orange Fingerless\n          Gloves").not_nil!)
-        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Yellow Fingerless\n          Gloves").not_nil!)
-        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Green Fingerless\n          Gloves").not_nil!)
-        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Blue Fingerless\n          Gloves").not_nil!)
-        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Purple Fingerless\n          Gloves").not_nil!)
-        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Pink Fingerless\n          Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("W/Fngrless Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Bk/Fngrless Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("R/Fngrless Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("O/Fngrless Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Y/Fngrless Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("G/Fngrless Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Bl/Fngrless Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Pr/Fngrless Gloves").not_nil!)
+        @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Pk/Fngrless Gloves").not_nil!)
 
         @@owned_gloves_array.push(Clothing::Gloves.get_gloves("White Gloves").not_nil!)
         @@owned_gloves_array.push(Clothing::Gloves.get_gloves("Black Gloves").not_nil!)
@@ -5799,41 +5799,6 @@ module Inventory
         ClothingTabGloves.assign_slot_textures(window)
        end
 
-       def ClothingTabGloves.center_clothing_text(this) #TODO:shorten names of fingerless gloves to avoid arithmetic overflow
-        if this.string.size <= 5
-            this.character_size = 20
-
-            x = this.position.x - (this.string.size + 6)
-            this.position = SF.vector2(x, this.position.y)
-
-        elsif this.string.size > 5 && this.string.size < 10
-            this.character_size = 15
-
-            x = this.position.x + (this.string.size - 1)
-            this.position = SF.vector2(x, this.position.y)
-
-        elsif this.string.size >= 10 && this.string.size < 15
-            this.character_size = 11
-
-            x = this.position.x - (this.string.size - 12)
-            y = this.position.y + 2
-            this.position = SF.vector2(x, y)
-
-        elsif this.string.size >= 15 && this.string.size < 20
-            this.character_size = 11
-
-            x = this.position.x - (this.string.size - 10)
-            this.position = SF.vector2(x, this.position.y)
-
-        elsif this.string.size >= 20
-            this.character_size = 11
-
-            x = this.position.x - (this.string.size - 33)
-            y = this.position.y - (this.string.size - 20)
-            this.position = SF.vector2(x, y)
-        end
-       end
-
        def ClothingTabGloves.initialize_clothing_tab(window)
         @@page = 1
         INVENTORY_BOX.position = SF.vector2(20, 40)  
@@ -6051,7 +6016,7 @@ module Inventory
         @@gloves_slot_01_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
         @@gloves_slot_01_text.position = @@gloves_slot_01_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_01_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_01_text)
         
 
         @@gloves_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
@@ -6062,7 +6027,7 @@ module Inventory
         @@gloves_slot_02_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
         @@gloves_slot_02_text.position = @@gloves_slot_02_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_02_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_02_text)
         
 
         @@gloves_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
@@ -6073,14 +6038,14 @@ module Inventory
         @@gloves_slot_03_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
         @@gloves_slot_03_text.position = @@gloves_slot_03_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_03_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_03_text)
         
 
         @@gloves_slot_04_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 40 * max_scale)
         @@gloves_slot_04_sprite.scale = SF.vector2(1, 1)
 
         @@gloves_slot_04_text.position = @@gloves_slot_04_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_04_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_04_text)
         
         @@gloves_slot_04_image_sprite.position = @@gloves_slot_04_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_04_image_sprite.scale = SF.vector2(4, 4)
@@ -6091,7 +6056,7 @@ module Inventory
         @@gloves_slot_05_sprite.scale = SF.vector2(1, 1)
 
         @@gloves_slot_05_text.position = @@gloves_slot_05_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_05_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_05_text)
         
         @@gloves_slot_05_image_sprite.position = @@gloves_slot_05_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_05_image_sprite.scale = SF.vector2(4, 4)
@@ -6102,7 +6067,7 @@ module Inventory
         @@gloves_slot_06_sprite.scale = SF.vector2(1, 1)
 
         @@gloves_slot_06_text.position = @@gloves_slot_06_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_06_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_06_text)
         
         @@gloves_slot_06_image_sprite.position = @@gloves_slot_06_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_06_image_sprite.scale = SF.vector2(4, 4)
@@ -6113,7 +6078,7 @@ module Inventory
         @@gloves_slot_07_sprite.scale = SF.vector2(1, 1)
         
         @@gloves_slot_07_text.position = @@gloves_slot_07_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_07_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_07_text)
         
         @@gloves_slot_07_image_sprite.position = @@gloves_slot_07_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_07_image_sprite.scale = SF.vector2(4, 4)
@@ -6124,7 +6089,7 @@ module Inventory
         @@gloves_slot_08_sprite.scale = SF.vector2(1, 1)
                 
         @@gloves_slot_08_text.position = @@gloves_slot_08_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_08_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_08_text)
         
         @@gloves_slot_08_image_sprite.position = @@gloves_slot_08_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_08_image_sprite.scale = SF.vector2(4, 4)
@@ -6135,7 +6100,7 @@ module Inventory
         @@gloves_slot_09_sprite.scale = SF.vector2(1, 1)
                 
         @@gloves_slot_09_text.position = @@gloves_slot_09_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_09_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_09_text)
         
         @@gloves_slot_09_image_sprite.position = @@gloves_slot_09_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_09_image_sprite.scale = SF.vector2(4, 4)
@@ -6146,7 +6111,7 @@ module Inventory
         @@gloves_slot_10_sprite.scale = SF.vector2(1, 1)
                         
         @@gloves_slot_10_text.position = @@gloves_slot_10_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_10_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_10_text)
         
         @@gloves_slot_10_image_sprite.position = @@gloves_slot_10_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_10_image_sprite.scale = SF.vector2(4, 4)
@@ -6157,7 +6122,7 @@ module Inventory
         @@gloves_slot_11_sprite.scale = SF.vector2(1, 1)
                         
         @@gloves_slot_11_text.position = @@gloves_slot_11_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_11_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_11_text)
         
         @@gloves_slot_11_image_sprite.position = @@gloves_slot_11_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_11_image_sprite.scale = SF.vector2(4, 4)
@@ -6168,7 +6133,7 @@ module Inventory
         @@gloves_slot_12_sprite.scale = SF.vector2(1, 1)
                         
         @@gloves_slot_12_text.position = @@gloves_slot_12_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_12_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_12_text)
         
         @@gloves_slot_12_image_sprite.position = @@gloves_slot_12_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_12_image_sprite.scale = SF.vector2(4, 4)
@@ -6179,7 +6144,7 @@ module Inventory
         @@gloves_slot_13_sprite.scale = SF.vector2(1, 1)
         
         @@gloves_slot_13_text.position = @@gloves_slot_13_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_13_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_13_text)
         
         @@gloves_slot_13_image_sprite.position = @@gloves_slot_13_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_13_image_sprite.scale = SF.vector2(4, 4)
@@ -6190,7 +6155,7 @@ module Inventory
         @@gloves_slot_14_sprite.scale = SF.vector2(1, 1)
                         
         @@gloves_slot_14_text.position = @@gloves_slot_14_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_14_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_14_text)
         
         @@gloves_slot_14_image_sprite.position = @@gloves_slot_14_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_14_image_sprite.scale = SF.vector2(4, 4)
@@ -6201,7 +6166,7 @@ module Inventory
         @@gloves_slot_15_sprite.scale = SF.vector2(1, 1)
                         
         @@gloves_slot_15_text.position = @@gloves_slot_15_sprite.position + SF.vector2(45, 55 * max_scale)
-        ClothingTabGloves.center_clothing_text(@@gloves_slot_15_text)
+        Utility::StringUtilities.center_text(@@gloves_slot_15_text)
         
         @@gloves_slot_15_image_sprite.position = @@gloves_slot_15_sprite.position - SF.vector2(80 * max_scale, 190 * max_scale)
         @@gloves_slot_15_image_sprite.scale = SF.vector2(4, 4)
