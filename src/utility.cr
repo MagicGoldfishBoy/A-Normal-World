@@ -50,6 +50,46 @@ module Utility
             tab.assign_slot_textures(window)
         end
 
+        def ArrayUtilities.organise_array_by_color(window, array : Array(T), tab)forall T
+            white_array = [] of T
+            black_array = [] of T
+            red_array = [] of T
+            orange_array = [] of T            
+            yellow_array = [] of T            
+            green_array = [] of T            
+            blue_array = [] of T            
+            purple_array = [] of T            
+            pink_array = [] of T            
+
+
+            array.each do |item|
+                case item.color
+                when "white"    then white_array << item
+                when "black"    then black_array << item
+                when "red"      then red_array << item
+                when "orange"   then orange_array << item
+                when "yellow"   then yellow_array << item
+                when "green"    then green_array << item
+                when "blue"     then blue_array << item
+                when "purple"   then purple_array << item
+                when "pink"     then pink_array << item
+                end
+              end
+    
+            array.clear
+            array.concat(white_array)
+            array.concat(black_array)
+            array.concat(red_array)
+            array.concat(orange_array)
+            array.concat(yellow_array)
+            array.concat(green_array)
+            array.concat(blue_array)
+            array.concat(purple_array)
+            array.concat(pink_array)
+            array.uniq!
+            tab.assign_slot_textures(window)
+        end
+
     end
 
 end
