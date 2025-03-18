@@ -1406,7 +1406,7 @@ module Inventory
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
                 if ClothingTabEarrings.get_earrings_category == "Color"
-                 ClothingTabEarrings.organise_owned_earrings_array_by_color(window)
+                 Utility::ArrayUtilities.organise_array_by_color(window, ClothingTabEarrings.owned_earrings_array, ClothingTabEarrings)
                 elsif "Length"
                  Utility::ArrayUtilities.organise_array_by_length_short_to_long(window, ClothingTabEarrings.owned_earrings_array, ClothingTabEarrings)
                 end
@@ -5520,53 +5520,6 @@ module Inventory
 
        def ClothingTabGloves.get_gloves_category
         return @@gloves_sorting_category
-       end
-
-       def ClothingTabGloves.organise_owned_gloves_array_by_color(window)
-        temp_clothing_array_01 = [] of Clothing::Gloves
-        @@owned_gloves_array.each { |gloves| if gloves.id == 0
-        temp_clothing_array_01.push(gloves)
-        end}
-        @@owned_gloves_array.each { |gloves| if gloves.color == "white"
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.each { |gloves| if gloves.color == "black"
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.each { |gloves| if gloves.color == "red"
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.each { |gloves| if gloves.color == "orange"
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.each { |gloves| if gloves.color == "yellow"
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.each { |gloves| if gloves.color == "green"
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.each { |gloves| if gloves.color == "blue"
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.each { |gloves| if gloves.color == "purple"
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.each { |gloves| if gloves.color == "pink"
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.clear
-        @@owned_gloves_array = temp_clothing_array_01
-        @@owned_gloves_array.uniq!
-        ClothingTabGloves.assign_slot_textures(window)
        end
 
        def ClothingTabGloves.initialize_clothing_tab(window)
