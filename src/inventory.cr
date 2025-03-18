@@ -1085,7 +1085,7 @@ module Inventory
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
                 if ClothingTabShoes.get_shoes_category == "Color"
-                 ClothingTabShoes.organise_owned_shoes_array_by_color(window)
+                 Utility::ArrayUtilities.organise_array_by_color(window, ClothingTabShoes.owned_shoes_array, ClothingTabShoes)
                 elsif "Length"
                  Utility::ArrayUtilities.organise_array_by_length_short_to_long(window, ClothingTabShoes.owned_shoes_array, ClothingTabShoes)
                 end
@@ -4434,50 +4434,6 @@ module Inventory
 
        def ClothingTabShoes.get_shoes_category
         return @@shoes_sorting_category
-       end
-
-       def ClothingTabShoes.organise_owned_shoes_array_by_color(window)
-        temp_clothing_array_01 = [] of Clothing::Shoes
-        @@owned_shoes_array.each { |shoes| if shoes.color == "white"
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.each { |shoes| if shoes.color == "black"
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.each { |shoes| if shoes.color == "red"
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.each { |shoes| if shoes.color == "orange"
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.each { |shoes| if shoes.color == "yellow"
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.each { |shoes| if shoes.color == "green"
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.each { |shoes| if shoes.color == "blue"
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.each { |shoes| if shoes.color == "purple"
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.each { |shoes| if shoes.color == "pink"
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.clear
-        @@owned_shoes_array = temp_clothing_array_01
-        @@owned_shoes_array.uniq!
-        ClothingTabShoes.assign_slot_textures(window)
        end
 
        def ClothingTabShoes.initialize_clothing_tab(window)
