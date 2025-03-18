@@ -8812,185 +8812,156 @@ module Inventory
         if @@page == nil
             @@page = 1
         end
+        @@owned_glasses_array.uniq!
         if @@owned_glasses_array.size > 0
             t = 0 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_01_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_01_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_01 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_01_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_01_text.string = ""
-                @@glasses_slot_01 = nil
-            end
+        else
+            @@glasses_slot_01_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_01_text.string = ""
+            @@glasses_slot_01 = nil
         end
         if @@owned_glasses_array.size > 1
             t = 1 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_02_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_02_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_02 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_02_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_02_text.string = ""
-                @@glasses_slot_02 = nil
-            end
+        else
+            @@glasses_slot_02_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_02_text.string = ""
+            @@glasses_slot_02 = nil
         end
         if @@owned_glasses_array.size > 2
             t = 2 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_03_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_03_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_03 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_03_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_03_text.string = ""
-                @@glasses_slot_03 = nil
-            end
+        else
+            @@glasses_slot_03_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_03_text.string = ""
+            @@glasses_slot_03 = nil
         end
         if @@owned_glasses_array.size > 3
             t = 3 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_04_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_04_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_04 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_04_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_04_text.string = ""
-                @@glasses_slot_04 = nil
-            end
+        else
+            @@glasses_slot_04_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_04_text.string = ""
+            @@glasses_slot_04 = nil
         end
         if @@owned_glasses_array.size > 4
             t = 4 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_05_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_05_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_05 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_05_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_05_text.string = ""
-                @@glasses_slot_05 = nil
-            end
+        else
+            @@glasses_slot_05_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_05_text.string = ""
+            @@glasses_slot_05 = nil
         end
         if @@owned_glasses_array.size > 5
             t = 5 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_06_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_06_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_06 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_06_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_06_text.string = ""
-                @@glasses_slot_06 = nil
-            end
+        else
+            @@glasses_slot_06_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_06_text.string = ""
+            @@glasses_slot_06 = nil
         end
         if @@owned_glasses_array.size > 6
             t = 6 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_07_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_07_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_07 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_07_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_07_text.string = ""
-                @@glasses_slot_07 = nil
-            end
+        else
+            @@glasses_slot_07_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_07_text.string = ""
+            @@glasses_slot_07 = nil
         end
         if @@owned_glasses_array.size > 7
             t = 7 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_08_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_08_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_08 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_08_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_08_text.string = ""
-                @@glasses_slot_08 = nil
-            end
+        else
+            @@glasses_slot_08_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_08_text.string = ""
+            @@glasses_slot_08 = nil
         end
         if @@owned_glasses_array.size > 8
             t = 8 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_09_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_09_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_09 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_09_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_09_text.string = ""
-                @@glasses_slot_09 = nil
-            end
+        else
+            @@glasses_slot_09_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_09_text.string = ""
+            @@glasses_slot_09 = nil
         end
         if @@owned_glasses_array.size > 9
             t = 9 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_10_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_10_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_10 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_10_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_10_text.string = ""
-                @@glasses_slot_10 = nil
-            end
+        else
+            @@glasses_slot_10_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_10_text.string = ""
+            @@glasses_slot_10 = nil
         end
         if @@owned_glasses_array.size > 10
             t = 10 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_11_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_11_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_11 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_11_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_11_text.string = ""
-                @@glasses_slot_11 = nil
-            end
+        else
+            @@glasses_slot_11_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_11_text.string = ""
+            @@glasses_slot_11 = nil
         end
         if @@owned_glasses_array.size > 11
             t = 11 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_12_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_12_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_12 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_12_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_12_text.string = ""
-                @@glasses_slot_12 = nil
-            end
+        else
+            @@glasses_slot_12_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_12_text.string = ""
+            @@glasses_slot_12 = nil
         end
         if @@owned_glasses_array.size > 12
             t = 12 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_13_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_13_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_13 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_13_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_13_text.string = ""
-                @@glasses_slot_13 = nil
-            end
+        else
+            @@glasses_slot_13_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_13_text.string = ""
+            @@glasses_slot_13 = nil
         end
         if @@owned_glasses_array.size > 13
             t = 13 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_14_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_14_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_14 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_14_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_14_text.string = ""
-                @@glasses_slot_14 = nil
-            end
+        else
+            @@glasses_slot_14_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_14_text.string = ""
+            @@glasses_slot_14 = nil
         end
         if @@owned_glasses_array.size > 14
             t = 14 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_glasses_array.size - 1
              @@glasses_slot_15_image_sprite.texture = @@owned_glasses_array[t].texture
              @@glasses_slot_15_text.string = @@owned_glasses_array[t].name
              @@glasses_slot_15 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_15_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_15_text.string = ""
-                @@glasses_slot_15 = nil
-            end
+        else
+            @@glasses_slot_15_image_sprite.texture = NIL_TEXTURE
+            @@glasses_slot_15_text.string = ""
+            @@glasses_slot_15 = nil
         end
        end
        
