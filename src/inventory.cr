@@ -1087,7 +1087,7 @@ module Inventory
                 if ClothingTabShoes.get_shoes_category == "Color"
                  ClothingTabShoes.organise_owned_shoes_array_by_color(window)
                 elsif "Length"
-                 ClothingTabShoes.organise_owned_shoes_array_by_length_short_to_long(window)
+                 Utility::ArrayUtilities.organise_array_by_length_short_to_long(window, ClothingTabShoes.owned_shoes_array, ClothingTabShoes)
                 end
                  sleep 0.15.seconds
             end        
@@ -4559,30 +4559,6 @@ module Inventory
         end}
 
         @@owned_shoes_array.each { |shoes| if shoes.color == "pink"
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.clear
-        @@owned_shoes_array = temp_clothing_array_01
-        @@owned_shoes_array.uniq!
-        ClothingTabShoes.assign_slot_textures(window)
-       end
-
-       def ClothingTabShoes.organise_owned_shoes_array_by_length_short_to_long(window)
-        temp_clothing_array_01 = [] of Clothing::Shoes
-        @@owned_shoes_array.each { |shoes| if shoes.length.includes?("none") == true
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.each { |shoes| if shoes.length.includes?("very_short") == true
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.each { |shoes| if shoes.length.includes?("short") == true
-        temp_clothing_array_01.push(shoes)
-        end}
-
-        @@owned_shoes_array.each { |shoes| if shoes.length.includes?("long") == true
         temp_clothing_array_01.push(shoes)
         end}
 
