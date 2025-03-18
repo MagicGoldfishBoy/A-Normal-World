@@ -9876,186 +9876,158 @@ module Inventory
         if @@page == nil
             @@page = 1
         end
+        @@owned_makeup_array.uniq!
         if @@owned_makeup_array.size > 0
             t = 0 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
-             @@makeup_slot_01_image_sprite.texture = @@owned_makeup_array[t].texture
-             @@makeup_slot_01_text.string = @@owned_makeup_array[t].name
-             @@makeup_slot_01 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_01_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_01_text.string = ""
-                @@makeup_slot_01 = nil
-            end
+            @@makeup_slot_01_image_sprite.texture = @@owned_makeup_array[t].texture
+            @@makeup_slot_01_text.string = @@owned_makeup_array[t].name
+            @@makeup_slot_01 = @@owned_makeup_array[t]
+        else
+            @@makeup_slot_01_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_01_text.string = ""
+            @@makeup_slot_01 = nil
         end
         if @@owned_makeup_array.size > 1
             t = 1 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_02_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_02_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_02 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_02_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_02_text.string = ""
-                @@makeup_slot_02 = nil
-            end
+        else
+            @@makeup_slot_02_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_02_text.string = ""
+            @@makeup_slot_02 = nil
         end
         if @@owned_makeup_array.size > 2
             t = 2 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_03_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_03_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_03 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_03_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_03_text.string = ""
-                @@makeup_slot_03 = nil
-            end
+        else
+            @@makeup_slot_03_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_03_text.string = ""
+            @@makeup_slot_03 = nil
         end
         if @@owned_makeup_array.size > 3
             t = 3 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_04_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_04_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_04 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_04_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_04_text.string = ""
-                @@makeup_slot_04 = nil
-            end
+        else
+            @@makeup_slot_04_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_04_text.string = ""
+            @@makeup_slot_04 = nil
         end
         if @@owned_makeup_array.size > 4
             t = 4 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_05_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_05_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_05 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_05_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_05_text.string = ""
-                @@makeup_slot_05 = nil
-            end
+        else
+            @@makeup_slot_05_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_05_text.string = ""
+            @@makeup_slot_05 = nil
         end
         if @@owned_makeup_array.size > 5
             t = 5 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_06_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_06_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_06 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_06_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_06_text.string = ""
-                @@makeup_slot_06 = nil
-            end
+        else
+            @@makeup_slot_06_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_06_text.string = ""
+            @@makeup_slot_06 = nil
         end
         if @@owned_makeup_array.size > 6
             t = 6 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_07_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_07_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_07 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_07_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_07_text.string = ""
-                @@makeup_slot_07 = nil
-            end
+        else
+            @@makeup_slot_07_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_07_text.string = ""
+            @@makeup_slot_07 = nil
         end
         if @@owned_makeup_array.size > 7
             t = 7 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_08_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_08_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_08 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_08_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_08_text.string = ""
-                @@makeup_slot_08 = nil
-            end
+        else
+            @@makeup_slot_08_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_08_text.string = ""
+            @@makeup_slot_08 = nil
         end
         if @@owned_makeup_array.size > 8
             t = 8 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_09_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_09_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_09 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_09_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_09_text.string = ""
-                @@makeup_slot_09 = nil
-            end
+        else
+            @@makeup_slot_09_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_09_text.string = ""
+            @@makeup_slot_09 = nil
         end
         if @@owned_makeup_array.size > 9
             t = 9 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_10_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_10_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_10 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_10_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_10_text.string = ""
-                @@makeup_slot_10 = nil
-            end
+        else
+            @@makeup_slot_10_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_10_text.string = ""
+            @@makeup_slot_10 = nil
         end
         if @@owned_makeup_array.size > 10
             t = 10 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_11_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_11_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_11 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_11_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_11_text.string = ""
-                @@makeup_slot_11 = nil
-            end
+        else
+            @@makeup_slot_11_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_11_text.string = ""
+            @@makeup_slot_11 = nil
         end
         if @@owned_makeup_array.size > 11
             t = 11 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_12_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_12_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_12 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_12_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_12_text.string = ""
-                @@makeup_slot_12 = nil
-            end
+        else
+            @@makeup_slot_12_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_12_text.string = ""
+            @@makeup_slot_12 = nil
         end
         if @@owned_makeup_array.size > 12
             t = 12 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_13_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_13_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_13 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_13_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_13_text.string = ""
-                @@makeup_slot_13 = nil
-            end
+        else
+            @@makeup_slot_13_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_13_text.string = ""
+            @@makeup_slot_13 = nil
         end
         if @@owned_makeup_array.size > 13
             t = 13 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_14_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_14_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_14 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_14_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_14_text.string = ""
-                @@makeup_slot_14 = nil
-            end
+        else
+            @@makeup_slot_14_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_14_text.string = ""
+            @@makeup_slot_14 = nil
         end
         if @@owned_makeup_array.size > 14
             t = 14 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_makeup_array.size - 1
              @@makeup_slot_15_image_sprite.texture = @@owned_makeup_array[t].texture
              @@makeup_slot_15_text.string = @@owned_makeup_array[t].name
              @@makeup_slot_15 = @@owned_makeup_array[t]
-            else
-                @@makeup_slot_15_image_sprite.texture = NIL_TEXTURE
-                @@makeup_slot_15_text.string = ""
-                @@makeup_slot_15 = nil
-            end
+        else
+            @@makeup_slot_15_image_sprite.texture = NIL_TEXTURE
+            @@makeup_slot_15_text.string = ""
+            @@makeup_slot_15 = nil
         end
+        @@owned_makeup_array.uniq!
        end
        
 
@@ -10408,7 +10380,6 @@ module Inventory
                 @@owned_makeup_array[t] = (Clothing::Makeup.get_makeup(Player::Appearance.get_clothing("makeup").not_nil!).not_nil!)
                 Player::Appearance.change_makeup(@@makeup_slot_01.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
-                
             end
             ClothingTabMakeup.assign_slot_textures(window)
             sleep 0.15.seconds
