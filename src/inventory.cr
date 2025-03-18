@@ -1251,7 +1251,7 @@ module Inventory
                 if ClothingTabGloves.get_gloves_category == "Color"
                  ClothingTabGloves.organise_owned_gloves_array_by_color(window)
                 elsif "Length"
-                 ClothingTabGloves.organise_owned_gloves_array_by_sleeve_length_short_to_long(window)
+                 Utility::ArrayUtilities.organise_array_by_length_short_to_long(window, ClothingTabGloves.owned_gloves_array, ClothingTabGloves)
                 end
                  sleep 0.15.seconds
              end        
@@ -5766,30 +5766,6 @@ module Inventory
         end}
 
         @@owned_gloves_array.each { |gloves| if gloves.color == "pink"
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.clear
-        @@owned_gloves_array = temp_clothing_array_01
-        @@owned_gloves_array.uniq!
-        ClothingTabGloves.assign_slot_textures(window)
-       end
-
-       def ClothingTabGloves.organise_owned_gloves_array_by_sleeve_length_short_to_long(window)
-        temp_clothing_array_01 = [] of Clothing::Gloves
-        @@owned_gloves_array.each { |gloves| if gloves.length.includes?("none") == true
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.each { |gloves| if gloves.length.includes?("very_short") == true
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.each { |gloves| if gloves.length.includes?("short") == true
-        temp_clothing_array_01.push(gloves)
-        end}
-
-        @@owned_gloves_array.each { |gloves| if gloves.length.includes?("long") == true
         temp_clothing_array_01.push(gloves)
         end}
 
