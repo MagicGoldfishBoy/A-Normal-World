@@ -395,25 +395,26 @@ module Inventory
             window.draw(@@clothing_shirt_category_box)
             window.draw(@@clothing_sort_button_text)
             
-            if  @@tab == "Shirt" #TODO: Make this into a switch case with @@tab
-                window.draw(@@clothing_shirt_category_text)
-                elsif ClothingTabPants.is_open == true
-                window.draw(@@clothing_pants_category_text)
-                elsif ClothingTabShoes.is_open == true
-                window.draw(@@clothing_shoes_category_text)
-                elsif ClothingTabGloves.is_open == true
-                window.draw(@@clothing_gloves_category_text)
-                elsif ClothingTabEarrings.is_open == true
-                window.draw(@@clothing_earrings_category_text)
-                elsif ClothingTabHat.is_open == true
-                window.draw(@@clothing_hat_category_text)
-                elsif ClothingTabGlasses.is_open == true
-                window.draw(@@clothing_glasses_category_text)
-                elsif ClothingTabMakeup.is_open == true
-                window.draw(@@clothing_makeup_category_text)
-                elsif WeaponTab.is_open == true
-                window.draw(@@equipment_weapon_category_text)
-            end
+                case @@tab
+                when  "Shirt"
+                 window.draw(@@clothing_shirt_category_text)
+                when  "Pants"
+                 window.draw(@@clothing_pants_category_text)
+                when  "Shoes"
+                 window.draw(@@clothing_shoes_category_text)
+                when  "Gloves"
+                 window.draw(@@clothing_gloves_category_text)
+                when  "Earrings"
+                 window.draw(@@clothing_earrings_category_text)
+                when  "Hat"
+                 window.draw(@@clothing_hat_category_text)
+                when  "Glasses"
+                 window.draw(@@clothing_glasses_category_text)
+                when  "Makeup"
+                 window.draw(@@clothing_makeup_category_text)
+                when  "Weapon"
+                 window.draw(@@equipment_weapon_category_text)
+                end
         end
 
         def InventoryManager.reset_clothing_pages(window)
