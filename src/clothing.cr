@@ -723,4 +723,73 @@ module Clothing
         @@pink_makeup_shounen = Makeup.new("Pink Makeup Shounen", 1, false, "eye", "cool", PINK_MAKEUP_SHOUNEN_TEXTURE, "pink")
         @@pink_makeup_button = Makeup.new("Pink Makeup Button", 1, false, "eye", "cool", PINK_MAKEUP_BUTTON_TEXTURE, "pink")
     end
+
+    class Jacket
+        JACKET_ARRAY = [] of Jacket
+        def initialize(name : String, id : Int32, is_owned : Bool, jacket_type : String, style : String, texture : SF::Texture, color : String)
+         @name = name
+         @@name = name
+         @id = id
+         @is_owned = is_owned
+         @jacket_type = jacket_type
+         @style = style
+         @texture = texture
+         @color = color
+         JACKET_ARRAY.push(self)
+        end
+ 
+        getter name : String
+        getter id : Int32
+        getter jacket_type : String
+        getter style : String
+        getter texture : SF::Texture
+        getter color : String
+        property is_owned : Bool
+ 
+        def Jacket.name
+         @@name
+        end
+ 
+        def Jacket.id
+         @@id
+        end
+ 
+        def Jacket.is_owned
+         @@is_owned
+        end
+ 
+        def Jacket.jacket_type
+         @@jacket_type
+        end
+ 
+        def Jacket.style
+         @@style
+        end
+ 
+        def Jacket.texture
+         @@texture
+        end
+ 
+        def Jacket.color
+         @@texture
+        end
+ 
+        def Jacket.is_owned=(this)
+         @@is_owned = this
+        end
+ 
+        def Jacket.get_jacket(this)
+         JACKET_ARRAY.each { |jacket| if jacket.name == this
+         return jacket
+         end }
+        end
+ 
+        def Jacket.get_jacket_texture(this)
+         JACKET_ARRAY.each { |jacket| if jacket.name == this
+         return jacket.texture
+         end }
+        end
+
+        @@nil_jacket = Jacket.new("No Jacket", 0, false, "nil", "plain", NIL_TEXTURE, "white")
+    end
 end
