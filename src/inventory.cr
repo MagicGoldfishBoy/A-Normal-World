@@ -1738,7 +1738,7 @@ module Inventory
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
                 if ClothingTabGlasses.get_glasses_category == "Color"
-                 ClothingTabGlasses.organise_owned_glasses_array_by_color(window)
+                 Utility::ArrayUtilities.organise_array_by_color(window, ClothingTabGlasses.owned_glasses_array, ClothingTabGlasses)
                 elsif "Type"
                  ClothingTabGlasses.organise_owned_glasses_array_by_type(window)
                 end
@@ -8834,57 +8834,6 @@ module Inventory
 
        def ClothingTabGlasses.get_glasses_category
         return @@glasses_sorting_category
-       end
-
-       def ClothingTabGlasses.organise_owned_glasses_array_by_color(window)
-        temp_clothing_array_01 = [] of Clothing::Glasses
-        @@owned_glasses_array.each { |glasses| if glasses.id == 0
-        temp_clothing_array_01.push(glasses)
-        end}
-        @@owned_glasses_array.each { |glasses| if glasses.color == "white"
-        temp_clothing_array_01.push(glasses)
-        end}
-
-        @@owned_glasses_array.each { |glasses| if glasses.color == "black"
-        temp_clothing_array_01.push(glasses)
-        end}
-
-        @@owned_glasses_array.each { |glasses| if glasses.color == "brown"
-        temp_clothing_array_01.push(glasses)
-        end}
-
-        @@owned_glasses_array.each { |glasses| if glasses.color == "red"
-        temp_clothing_array_01.push(glasses)
-        end}
-
-        @@owned_glasses_array.each { |glasses| if glasses.color == "orange"
-        temp_clothing_array_01.push(glasses)
-        end}
-
-        @@owned_glasses_array.each { |glasses| if glasses.color == "yellow"
-        temp_clothing_array_01.push(glasses)
-        end}
-
-        @@owned_glasses_array.each { |glasses| if glasses.color == "green"
-        temp_clothing_array_01.push(glasses)
-        end}
-
-        @@owned_glasses_array.each { |glasses| if glasses.color == "blue"
-        temp_clothing_array_01.push(glasses)
-        end}
-
-        @@owned_glasses_array.each { |glasses| if glasses.color == "purple"
-        temp_clothing_array_01.push(glasses)
-        end}
-
-        @@owned_glasses_array.each { |glasses| if glasses.color == "pink"
-        temp_clothing_array_01.push(glasses)
-        end}
-
-        @@owned_glasses_array.clear
-        @@owned_glasses_array = temp_clothing_array_01
-        @@owned_glasses_array.uniq!
-        ClothingTabGlasses.assign_slot_textures(window)
        end
 
        def ClothingTabGlasses.organise_owned_glasses_array_by_type(window)
