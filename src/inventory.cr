@@ -924,7 +924,7 @@ module Inventory
                 if ClothingTabPants.get_pants_category == "Color"
                  ClothingTabPants.organise_owned_pants_array_by_color(window)
                 elsif "Length"
-                 ClothingTabPants.organise_owned_pants_array_by_length_short_to_long(window)
+                 Utility::ArrayUtilities.organise_array_by_length_short_to_long(window, ClothingTabPants.owned_pants_array, ClothingTabPants)
                 end
                  sleep 0.15.seconds
             end        
@@ -2518,7 +2518,6 @@ module Inventory
         end
        end
        
-
        def ClothingTabShirt.draw_clothing_tab(window)
             current_size = window.size
             original_width = 800 
@@ -3440,30 +3439,6 @@ module Inventory
         end}
 
         @@owned_pants_array.each { |pants| if pants.color == "pink"
-        temp_clothing_array_01.push(pants)
-        end}
-
-        @@owned_pants_array.clear
-        @@owned_pants_array = temp_clothing_array_01
-        @@owned_pants_array.uniq!
-        ClothingTabPants.assign_slot_textures(window)
-       end
-
-       def ClothingTabPants.organise_owned_pants_array_by_length_short_to_long(window)
-        temp_clothing_array_01 = [] of Clothing::Pants
-        @@owned_pants_array.each { |pants| if pants.length.includes?("none") == true
-        temp_clothing_array_01.push(pants)
-        end}
-
-        @@owned_pants_array.each { |pants| if pants.length.includes?("very_short") == true
-        temp_clothing_array_01.push(pants)
-        end}
-
-        @@owned_pants_array.each { |pants| if pants.length.includes?("short") == true
-        temp_clothing_array_01.push(pants)
-        end}
-
-        @@owned_pants_array.each { |pants| if pants.length.includes?("long") == true
         temp_clothing_array_01.push(pants)
         end}
 
