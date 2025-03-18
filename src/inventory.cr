@@ -65,7 +65,7 @@ module Inventory
         Utility::StringUtilities.center_text(@@clothing_shirt_category_text)
 
 
-        @@shirt_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@shirt_tab = SF::RectangleShape.new(SF.vector2(100, 30))
         @@shirt_tab.fill_color = SF.color(141, 163, 188)
 
         @@shirt_tab_text = SF::Text.new
@@ -74,7 +74,7 @@ module Inventory
         @@shirt_tab_text.color = SF::Color::Blue
         @@shirt_tab_text.string = "Shirts"
 
-        @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 30))
         @@pants_tab.fill_color = SF.color(161, 183, 208)
 
         @@pants_tab_text = SF::Text.new
@@ -90,7 +90,7 @@ module Inventory
         @@clothing_pants_category_text.string = ClothingTabPants.get_pants_category
         Utility::StringUtilities.center_text(@@clothing_pants_category_text)
 
-        @@shoes_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@shoes_tab = SF::RectangleShape.new(SF.vector2(100, 30))
         @@shoes_tab.fill_color = SF.color(161, 183, 208)
 
         @@shoes_tab_text = SF::Text.new
@@ -106,7 +106,7 @@ module Inventory
         @@clothing_shoes_category_text.string = ClothingTabShoes.get_shoes_category
         Utility::StringUtilities.center_text(@@clothing_shoes_category_text)
 
-        @@gloves_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@gloves_tab = SF::RectangleShape.new(SF.vector2(100, 30))
         @@gloves_tab.fill_color = SF.color(161, 183, 208)
 
         @@gloves_tab_text = SF::Text.new
@@ -122,7 +122,7 @@ module Inventory
         @@clothing_gloves_category_text.string = ClothingTabGloves.get_gloves_category
         Utility::StringUtilities.center_text(@@clothing_gloves_category_text)
 
-        @@earrings_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@earrings_tab = SF::RectangleShape.new(SF.vector2(100, 30))
         @@earrings_tab.fill_color = SF.color(161, 183, 208)
 
         @@earrings_tab_text = SF::Text.new
@@ -138,7 +138,7 @@ module Inventory
         @@clothing_earrings_category_text.string = ClothingTabEarrings.get_earrings_category
         Utility::StringUtilities.center_text(@@clothing_earrings_category_text)
 
-        @@hat_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@hat_tab = SF::RectangleShape.new(SF.vector2(100, 30))
         @@hat_tab.fill_color = SF.color(161, 183, 208)
 
         @@hat_tab_text = SF::Text.new
@@ -154,7 +154,7 @@ module Inventory
         @@clothing_hat_category_text.string = ClothingTabHat.get_hat_category
         Utility::StringUtilities.center_text(@@clothing_hat_category_text)
 
-        @@glasses_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@glasses_tab = SF::RectangleShape.new(SF.vector2(100, 30))
         @@glasses_tab.fill_color = SF.color(161, 183, 208)
 
         @@glasses_tab_text = SF::Text.new
@@ -170,7 +170,7 @@ module Inventory
         @@clothing_glasses_category_text.string = ClothingTabGlasses.get_glasses_category
         Utility::StringUtilities.center_text(@@clothing_glasses_category_text)
 
-        @@makeup_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@makeup_tab = SF::RectangleShape.new(SF.vector2(100, 30))
         @@makeup_tab.fill_color = SF.color(161, 183, 208)
 
         @@makeup_tab_text = SF::Text.new
@@ -310,28 +310,28 @@ module Inventory
 
 
             @@shirt_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, 0)
-            @@shirt_tab_text.position = @@shirt_tab.position + SF.vector2(15 * max_scale, 7 * max_scale)
+            @@shirt_tab_text.position = @@shirt_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
 
-            @@pants_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(35 * max_scale))
-            @@pants_tab_text.position = @@pants_tab.position + SF.vector2(15 * max_scale, 7 * max_scale)
+            @@pants_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(21 * max_scale))
+            @@pants_tab_text.position = @@pants_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
 
-            @@shoes_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(70.5 * max_scale))
-            @@shoes_tab_text.position = @@shoes_tab.position + SF.vector2(15 * max_scale, 7 * max_scale)
+            @@shoes_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(42.5 * max_scale))
+            @@shoes_tab_text.position = @@shoes_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
 
-            @@gloves_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(105 * max_scale))
-            @@gloves_tab_text.position = @@gloves_tab.position + SF.vector2(13 * max_scale, 7 * max_scale)
+            @@gloves_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(64 * max_scale))
+            @@gloves_tab_text.position = @@gloves_tab.position + SF.vector2(13 * max_scale, 2 * max_scale)
 
-            @@earrings_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(140 * max_scale))
-            @@earrings_tab_text.position = @@earrings_tab.position + SF.vector2(10 * max_scale, 7 * max_scale)
+            @@earrings_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(85 * max_scale))
+            @@earrings_tab_text.position = @@earrings_tab.position + SF.vector2(10 * max_scale, 2 * max_scale)
 
-            @@hat_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(175 * max_scale))
-            @@hat_tab_text.position = @@hat_tab.position + SF.vector2(10 * max_scale, 7 * max_scale)
+            @@hat_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(106.5 * max_scale))
+            @@hat_tab_text.position = @@hat_tab.position + SF.vector2(20 * max_scale, 2 * max_scale)
 
-            @@glasses_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(210 * max_scale))
-            @@glasses_tab_text.position = @@glasses_tab.position + SF.vector2(10 * max_scale, 7 * max_scale)
+            @@glasses_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(128 * max_scale))
+            @@glasses_tab_text.position = @@glasses_tab.position + SF.vector2(10 * max_scale, 2 * max_scale)
 
-            @@makeup_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(245 * max_scale))
-            @@makeup_tab_text.position = @@makeup_tab.position + SF.vector2(10 * max_scale, 7 * max_scale)
+            @@makeup_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(149 * max_scale))
+            @@makeup_tab_text.position = @@makeup_tab.position + SF.vector2(10 * max_scale, 2 * max_scale)
 
 
             @@weapon_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, 0)
