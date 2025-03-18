@@ -1570,7 +1570,7 @@ module Inventory
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
                 if ClothingTabHat.get_hat_category == "Color"
-                 ClothingTabHat.organise_owned_hat_array_by_color(window)
+                 Utility::ArrayUtilities.organise_array_by_color(window, ClothingTabHat.owned_hat_array, ClothingTabHat)
                 elsif "Length"
                  ClothingTabHat.organise_owned_hat_array_by_type(window)
                 end
@@ -7777,57 +7777,6 @@ module Inventory
 
        def ClothingTabHat.get_hat_category
         return @@hat_sorting_category
-       end
-
-       def ClothingTabHat.organise_owned_hat_array_by_color(window)
-        temp_clothing_array_01 = [] of Clothing::Hat
-        @@owned_hat_array.each { |hat| if hat.id == 0
-        temp_clothing_array_01.push(hat)
-        end}
-        @@owned_hat_array.each { |hat| if hat.color == "white"
-        temp_clothing_array_01.push(hat)
-        end}
-
-        @@owned_hat_array.each { |hat| if hat.color == "black"
-        temp_clothing_array_01.push(hat)
-        end}
-
-        @@owned_hat_array.each { |hat| if hat.color == "brown"
-        temp_clothing_array_01.push(hat)
-        end}
-
-        @@owned_hat_array.each { |hat| if hat.color == "red"
-        temp_clothing_array_01.push(hat)
-        end}
-
-        @@owned_hat_array.each { |hat| if hat.color == "orange"
-        temp_clothing_array_01.push(hat)
-        end}
-
-        @@owned_hat_array.each { |hat| if hat.color == "yellow"
-        temp_clothing_array_01.push(hat)
-        end}
-
-        @@owned_hat_array.each { |hat| if hat.color == "green"
-        temp_clothing_array_01.push(hat)
-        end}
-
-        @@owned_hat_array.each { |hat| if hat.color == "blue"
-        temp_clothing_array_01.push(hat)
-        end}
-
-        @@owned_hat_array.each { |hat| if hat.color == "purple"
-        temp_clothing_array_01.push(hat)
-        end}
-
-        @@owned_hat_array.each { |hat| if hat.color == "pink"
-        temp_clothing_array_01.push(hat)
-        end}
-
-        @@owned_hat_array.clear
-        @@owned_hat_array = temp_clothing_array_01
-        @@owned_hat_array.uniq!
-        ClothingTabHat.assign_slot_textures(window)
        end
 
        def ClothingTabHat.organise_owned_hat_array_by_type(window)
