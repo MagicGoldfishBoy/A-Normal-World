@@ -16,11 +16,13 @@ INVENTORY_RIGHT_ARROW_SPRITE.fill_color = SF.color(161, 183, 208)
 module Inventory
     class InventoryManager
 
-        def initialize(is_inventory_open : Bool, category : String)
+        def initialize(is_inventory_open : Bool, category : String, tab : String)
             @@is_inventory_open = is_inventory_open
             @@category = category
+            @@tab = tab
         end
-        
+
+        @@tab = "Shirt"
         @@category = "Cosmetics"
      #----------------------------------objects------------------------------------------------
 
@@ -218,49 +220,49 @@ module Inventory
 
         def InventoryManager.draw_inventory(window)
           if @@is_inventory_open == true && @@category == "Cosmetics"
-            if ClothingTabShirt.is_open == true
+            if @@tab == "Shirt"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabShirt.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("shirt", window)
                 end
-            elsif ClothingTabPants.is_open == true
+            elsif @@tab == "Pants"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabPants.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("pants", window)
                 end
-            elsif ClothingTabShoes.is_open == true
+            elsif @@tab == "Shoes"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabShoes.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("shoes", window)
                 end
-            elsif ClothingTabGloves.is_open == true
+            elsif @@tab == "Gloves"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabGloves.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("gloves", window)
                 end
-            elsif ClothingTabEarrings.is_open == true
+            elsif @@tab == "Earrings"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabEarrings.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("earrings", window)
                 end
-            elsif ClothingTabHat.is_open == true
+            elsif @@tab == "Hat"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabHat.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("hat", window)
                 end
-            elsif ClothingTabGlasses.is_open == true
+            elsif @@tab == "Glasses"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabGlasses.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("glasses", window)
                 end
-            elsif ClothingTabMakeup.is_open == true
+            elsif @@tab == "Makeup"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabMakeup.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
@@ -393,7 +395,7 @@ module Inventory
             window.draw(@@clothing_shirt_category_box)
             window.draw(@@clothing_sort_button_text)
             
-            if ClothingTabShirt.is_open == true
+            if  @@tab == "Shirt" #TODO: Make this into a switch case with @@tab
                 window.draw(@@clothing_shirt_category_text)
                 elsif ClothingTabPants.is_open == true
                 window.draw(@@clothing_pants_category_text)
@@ -426,105 +428,49 @@ module Inventory
 
         def InventoryManager.open_shirt_tab(window)
             InventoryManager.reset_clothing_pages(window)
-            ClothingTabShirt.is_open=(true)
-            ClothingTabGloves.is_open=(false)
-            ClothingTabPants.is_open=(false)
-            ClothingTabShoes.is_open=(false)
-            ClothingTabEarrings.is_open=(false)
-            ClothingTabHat.is_open=(false)
-            ClothingTabGlasses.is_open=(false)
-            ClothingTabMakeup.is_open=(false)
+            @@tab = "Shirt"
             ClothingTabShirt.assign_slot_textures(window)
         end
 
         def InventoryManager.open_pants_tab(window)
             InventoryManager.reset_clothing_pages(window)
-            ClothingTabShirt.is_open=(false)
-            ClothingTabGloves.is_open=(false)
-            ClothingTabPants.is_open=(true)
-            ClothingTabShoes.is_open=(false)
-            ClothingTabEarrings.is_open=(false)
-            ClothingTabHat.is_open=(false)
-            ClothingTabGlasses.is_open=(false)
-            ClothingTabMakeup.is_open=(false)
+            @@tab = "Pants"
             ClothingTabPants.assign_slot_textures(window)
         end
 
         def InventoryManager.open_shoes_tab(window)
             InventoryManager.reset_clothing_pages(window)
-            ClothingTabShirt.is_open=(false)
-            ClothingTabGloves.is_open=(false)
-            ClothingTabPants.is_open=(false)
-            ClothingTabShoes.is_open=(true)
-            ClothingTabEarrings.is_open=(false)
-            ClothingTabHat.is_open=(false)
-            ClothingTabGlasses.is_open=(false)
-            ClothingTabMakeup.is_open=(false)
+            @@tab = "Shoes"
             ClothingTabShoes.assign_slot_textures(window)
         end
 
         def InventoryManager.open_gloves_tab(window)
             InventoryManager.reset_clothing_pages(window)
-            ClothingTabShirt.is_open=(false)
-            ClothingTabGloves.is_open=(true)
-            ClothingTabPants.is_open=(false)
-            ClothingTabShoes.is_open=(false)
-            ClothingTabEarrings.is_open=(false)
-            ClothingTabHat.is_open=(false)
-            ClothingTabGlasses.is_open=(false)
-            ClothingTabMakeup.is_open=(false)
+            @@tab = "Gloves"
             ClothingTabGloves.assign_slot_textures(window)
         end
 
         def InventoryManager.open_earrings_tab(window)
             InventoryManager.reset_clothing_pages(window)
-            ClothingTabShirt.is_open=(false)
-            ClothingTabGloves.is_open=(false)
-            ClothingTabPants.is_open=(false)
-            ClothingTabShoes.is_open=(false)
-            ClothingTabEarrings.is_open=(true)
-            ClothingTabHat.is_open=(false)
-            ClothingTabGlasses.is_open=(false)
-            ClothingTabMakeup.is_open=(false)
+            @@tab = "Earrings"
             ClothingTabEarrings.assign_slot_textures(window)
         end
 
         def InventoryManager.open_hat_tab(window)
             InventoryManager.reset_clothing_pages(window)
-            ClothingTabShirt.is_open=(false)
-            ClothingTabGloves.is_open=(false)
-            ClothingTabPants.is_open=(false)
-            ClothingTabShoes.is_open=(false)
-            ClothingTabEarrings.is_open=(false)
-            ClothingTabHat.is_open=(true)
-            ClothingTabGlasses.is_open=(false)
-            ClothingTabMakeup.is_open=(false)
+            @@tab = "Hat"
             ClothingTabHat.assign_slot_textures(window)
         end
 
         def InventoryManager.open_glasses_tab(window)
             InventoryManager.reset_clothing_pages(window)
-            ClothingTabShirt.is_open=(false)
-            ClothingTabGloves.is_open=(false)
-            ClothingTabPants.is_open=(false)
-            ClothingTabShoes.is_open=(false)
-            ClothingTabEarrings.is_open=(false)
-            ClothingTabHat.is_open=(false)
-            ClothingTabGlasses.is_open=(true)
-            ClothingTabMakeup.is_open=(false)
+            @@tab = "Glasses"
             ClothingTabGlasses.assign_slot_textures(window)
         end
 
         def InventoryManager.open_makeup_tab(window)
             InventoryManager.reset_clothing_pages(window)
-            ClothingTabShirt.is_open=(false)
-            ClothingTabGloves.is_open=(false)
-            ClothingTabPants.is_open=(false)
-            ClothingTabShoes.is_open=(false)
-            ClothingTabEarrings.is_open=(false)
-            ClothingTabHat.is_open=(false)
-            ClothingTabGlasses.is_open=(false)
-            ClothingTabMakeup.is_open=(true)
+            @@tab = "Makeup"
             ClothingTabMakeup.assign_slot_textures(window)
         end
 
