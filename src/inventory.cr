@@ -1906,7 +1906,7 @@ module Inventory
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
                 if ClothingTabMakeup.get_makeup_category == "Color"
-                 ClothingTabMakeup.organise_owned_makeup_array_by_color(window)
+                 Utility::ArrayUtilities.organise_array_by_color(window, ClothingTabMakeup.owned_makeup_array, ClothingTabMakeup)
                 elsif "Type"
                  ClothingTabMakeup.organise_owned_makeup_array_by_type(window)
                 end
@@ -9894,57 +9894,6 @@ module Inventory
 
        def ClothingTabMakeup.get_makeup_category
         return @@makeup_sorting_category
-       end
-
-       def ClothingTabMakeup.organise_owned_makeup_array_by_color(window)
-        temp_clothing_array_01 = [] of Clothing::Makeup
-        @@owned_makeup_array.each { |makeup| if makeup.id == 0
-        temp_clothing_array_01.push(makeup)
-        end}
-        @@owned_makeup_array.each { |makeup| if makeup.color == "white"
-        temp_clothing_array_01.push(makeup)
-        end}
-
-        @@owned_makeup_array.each { |makeup| if makeup.color == "black"
-        temp_clothing_array_01.push(makeup)
-        end}
-
-        @@owned_makeup_array.each { |makeup| if makeup.color == "brown"
-        temp_clothing_array_01.push(makeup)
-        end}
-
-        @@owned_makeup_array.each { |makeup| if makeup.color == "red"
-        temp_clothing_array_01.push(makeup)
-        end}
-
-        @@owned_makeup_array.each { |makeup| if makeup.color == "orange"
-        temp_clothing_array_01.push(makeup)
-        end}
-
-        @@owned_makeup_array.each { |makeup| if makeup.color == "yellow"
-        temp_clothing_array_01.push(makeup)
-        end}
-
-        @@owned_makeup_array.each { |makeup| if makeup.color == "green"
-        temp_clothing_array_01.push(makeup)
-        end}
-
-        @@owned_makeup_array.each { |makeup| if makeup.color == "blue"
-        temp_clothing_array_01.push(makeup)
-        end}
-
-        @@owned_makeup_array.each { |makeup| if makeup.color == "purple"
-        temp_clothing_array_01.push(makeup)
-        end}
-
-        @@owned_makeup_array.each { |makeup| if makeup.color == "pink"
-        temp_clothing_array_01.push(makeup)
-        end}
-
-        @@owned_makeup_array.clear
-        @@owned_makeup_array = temp_clothing_array_01
-        @@owned_makeup_array.uniq!
-        ClothingTabMakeup.assign_slot_textures(window)
        end
 
        def ClothingTabMakeup.organise_owned_makeup_array_by_type(window)
