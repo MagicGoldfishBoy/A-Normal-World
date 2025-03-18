@@ -1249,7 +1249,7 @@ module Inventory
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
                 if ClothingTabGloves.get_gloves_category == "Color"
-                 ClothingTabGloves.organise_owned_gloves_array_by_color(window)
+                 Utility::ArrayUtilities.organise_array_by_color(window, ClothingTabGloves.owned_gloves_array, ClothingTabGloves)
                 elsif "Length"
                  Utility::ArrayUtilities.organise_array_by_length_short_to_long(window, ClothingTabGloves.owned_gloves_array, ClothingTabGloves)
                 end
