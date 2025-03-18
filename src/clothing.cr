@@ -4,12 +4,12 @@ require "../src/textures.cr"
 module Clothing
     class Shirt
         SHIRT_ARRAY = [] of Shirt
-       def initialize(name : String, id : Int32, is_owned : Bool, sleeve_length : String, style : String, texture : SF::Texture, color : String)
+       def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String)
         @name = name
         @@name = name
         @id = id
         @is_owned = is_owned
-        @sleeve_length = sleeve_length
+        @length = length
         @style = style
         @texture = texture
         @color = color
@@ -18,7 +18,7 @@ module Clothing
 
        getter name : String
        getter id : Int32
-       getter sleeve_length : String
+       getter length : String
        getter style : String
        getter texture : SF::Texture
        getter color : String
@@ -36,8 +36,8 @@ module Clothing
         @@is_owned
        end
 
-       def Shirt.sleeve_length
-        @@sleeve_length
+       def Shirt.length
+        @@length
        end
 
        def Shirt.style

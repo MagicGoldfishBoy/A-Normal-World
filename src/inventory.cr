@@ -764,8 +764,8 @@ module Inventory
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
                 if ClothingTabShirt.get_shirt_category == "Color"
                  ClothingTabShirt.organise_owned_shirt_array_by_color(window)
-                elsif "Sleeve_Length"
-                 ClothingTabShirt.organise_owned_shirt_array_by_sleeve_length_short_to_long(window)
+                elsif "Length"
+                 Utility::ArrayUtilities.organise_array_by_length_short_to_long(window, ClothingTabShirt.owned_shirt_array, ClothingTabShirt)
                 end
                  sleep 0.15.seconds
             end        
@@ -924,7 +924,7 @@ module Inventory
                 if ClothingTabPants.get_pants_category == "Color"
                  ClothingTabPants.organise_owned_pants_array_by_color(window)
                 elsif "Length"
-                 ClothingTabPants.organise_owned_pants_array_by_sleeve_length_short_to_long(window)
+                 ClothingTabPants.organise_owned_pants_array_by_length_short_to_long(window)
                 end
                  sleep 0.15.seconds
             end        
@@ -1087,7 +1087,7 @@ module Inventory
                 if ClothingTabShoes.get_shoes_category == "Color"
                  ClothingTabShoes.organise_owned_shoes_array_by_color(window)
                 elsif "Length"
-                 ClothingTabShoes.organise_owned_shoes_array_by_sleeve_length_short_to_long(window)
+                 ClothingTabShoes.organise_owned_shoes_array_by_length_short_to_long(window)
                 end
                  sleep 0.15.seconds
             end        
@@ -1408,7 +1408,7 @@ module Inventory
                 if ClothingTabEarrings.get_earrings_category == "Color"
                  ClothingTabEarrings.organise_owned_earrings_array_by_color(window)
                 elsif "Length"
-                 ClothingTabEarrings.organise_owned_earrings_array_by_sleeve_length_short_to_long(window)
+                 ClothingTabEarrings.organise_owned_earrings_array_by_length_short_to_long(window)
                 end
                  sleep 0.15.seconds
              end        
@@ -2318,30 +2318,6 @@ module Inventory
         end}
 
         @@owned_shirt_array.each { |shirt| if shirt.color == "pink"
-        temp_clothing_array_01.push(shirt)
-        end}
-
-        @@owned_shirt_array.clear
-        @@owned_shirt_array = temp_clothing_array_01
-        @@owned_shirt_array.uniq!
-        ClothingTabShirt.assign_slot_textures(window)
-       end
-
-       def ClothingTabShirt.organise_owned_shirt_array_by_sleeve_length_short_to_long(window)
-        temp_clothing_array_01 = [] of Clothing::Shirt
-        @@owned_shirt_array.each { |shirt| if shirt.sleeve_length.includes?("none") == true
-        temp_clothing_array_01.push(shirt)
-        end}
-
-        @@owned_shirt_array.each { |shirt| if shirt.sleeve_length.includes?("very_short") == true
-        temp_clothing_array_01.push(shirt)
-        end}
-
-        @@owned_shirt_array.each { |shirt| if shirt.sleeve_length.includes?("short") == true
-        temp_clothing_array_01.push(shirt)
-        end}
-
-        @@owned_shirt_array.each { |shirt| if shirt.sleeve_length.includes?("long") == true
         temp_clothing_array_01.push(shirt)
         end}
 
@@ -3473,7 +3449,7 @@ module Inventory
         ClothingTabPants.assign_slot_textures(window)
        end
 
-       def ClothingTabPants.organise_owned_pants_array_by_sleeve_length_short_to_long(window)
+       def ClothingTabPants.organise_owned_pants_array_by_length_short_to_long(window)
         temp_clothing_array_01 = [] of Clothing::Pants
         @@owned_pants_array.each { |pants| if pants.length.includes?("none") == true
         temp_clothing_array_01.push(pants)
@@ -4617,7 +4593,7 @@ module Inventory
         ClothingTabShoes.assign_slot_textures(window)
        end
 
-       def ClothingTabShoes.organise_owned_shoes_array_by_sleeve_length_short_to_long(window)
+       def ClothingTabShoes.organise_owned_shoes_array_by_length_short_to_long(window)
         temp_clothing_array_01 = [] of Clothing::Shoes
         @@owned_shoes_array.each { |shoes| if shoes.length.includes?("none") == true
         temp_clothing_array_01.push(shoes)
@@ -6884,7 +6860,7 @@ module Inventory
         ClothingTabEarrings.assign_slot_textures(window)
        end
 
-       def ClothingTabEarrings.organise_owned_earrings_array_by_sleeve_length_short_to_long(window)
+       def ClothingTabEarrings.organise_owned_earrings_array_by_length_short_to_long(window)
         temp_clothing_array_01 = [] of Clothing::Earrings
         @@owned_earrings_array.each { |earrings| if earrings.length.includes?("none") == true
         temp_clothing_array_01.push(earrings)
