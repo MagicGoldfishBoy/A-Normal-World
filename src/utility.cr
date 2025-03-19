@@ -52,7 +52,9 @@ module Utility
 
         def ArrayUtilities.organise_array_by_color(window, array : Array(T), tab)forall T
             white_array = [] of T
+            gray_array = [] of T
             black_array = [] of T
+            brown_array = [] of T
             red_array = [] of T
             orange_array = [] of T            
             yellow_array = [] of T            
@@ -65,7 +67,9 @@ module Utility
             array.each do |item|
                 case item.color
                 when "white"    then white_array << item
+                when "gray"    then gray_array << item
                 when "black"    then black_array << item
+                when "brown"    then brown_array << item
                 when "red"      then red_array << item
                 when "orange"   then orange_array << item
                 when "yellow"   then yellow_array << item
@@ -78,7 +82,9 @@ module Utility
     
             array.clear
             array.concat(white_array)
+            array.concat(gray_array)
             array.concat(black_array)
+            array.concat(brown_array)
             array.concat(red_array)
             array.concat(orange_array)
             array.concat(yellow_array)
