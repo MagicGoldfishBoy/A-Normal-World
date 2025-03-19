@@ -240,7 +240,7 @@ module Player
 
   class Appearance
     def initialize(skin : String, hair : String, face : String, hat : String, glasses : String, earrings : String, shirt : String, gloves : String, pants : String, 
-        shoes : String, makeup : String, weapon : String)
+        shoes : String, makeup : String, jacket : String, weapon : String)
         @skin = skin
         @@skin = skin
         @hair = hair
@@ -263,6 +263,8 @@ module Player
         @@shoes = shoes
         @makeup = makeup
         @@makeup = makeup
+        @jacket = jacket
+        @@jacket = jacket
         @weapon = weapon
         @@weapon = weapon
     end
@@ -311,6 +313,10 @@ module Player
         @makeup
     end
 
+    def jacket
+        @jacket
+    end
+
     def weapon
         @weapon
     end
@@ -327,6 +333,7 @@ module Player
         @@shoes = "white Sneakers"
         @@makeup = "No Makeup"
         @@glasses = "No Glasses"
+        @@jacket = "No Jacket"
         @@weapon = "Stick"
     end
 
@@ -354,6 +361,8 @@ module Player
             return @@glasses
         when "makeup"
             return @@makeup
+        when "jacket"
+            return @@jacket
         when "weapon"
             return @@weapon
         end
@@ -381,6 +390,10 @@ module Player
 
     def Appearance.change_makeup(makeup)
         @@makeup = makeup
+    end
+
+    def Appearance.change_jacket(jacket)
+        @@jacket = jacket
     end
 
     def Appearance.change_earrings(earrings)

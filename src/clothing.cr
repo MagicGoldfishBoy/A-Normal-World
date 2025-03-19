@@ -726,14 +726,16 @@ module Clothing
 
     class Jacket
         JACKET_ARRAY = [] of Jacket
-        def initialize(name : String, id : Int32, is_owned : Bool, jacket_type : String, style : String, texture : SF::Texture, color : String)
+        def initialize(name : String, id : Int32, is_owned : Bool, jacket_type : String, style : String, length : String, front_texture : SF::Texture, back_texture : SF::Texture, color : String)
          @name = name
          @@name = name
          @id = id
          @is_owned = is_owned
          @jacket_type = jacket_type
          @style = style
-         @texture = texture
+         @length = length
+         @front_texture = front_texture
+         @back_texture = back_texture
          @color = color
          JACKET_ARRAY.push(self)
         end
@@ -742,7 +744,9 @@ module Clothing
         getter id : Int32
         getter jacket_type : String
         getter style : String
-        getter texture : SF::Texture
+        getter length : String
+        getter front_texture : SF::Texture
+        getter back_texture : SF::Texture
         getter color : String
         property is_owned : Bool
  
@@ -766,8 +770,16 @@ module Clothing
          @@style
         end
  
-        def Jacket.texture
-         @@texture
+        def Jacket.length
+         @@length
+        end
+ 
+        def Jacket.front_texture
+         @@front_texture
+        end
+ 
+        def Jacket.back_texture
+         @@back_texture
         end
  
         def Jacket.color
@@ -790,6 +802,8 @@ module Clothing
          end }
         end
 
-        @@nil_jacket = Jacket.new("No Jacket", 0, false, "nil", "plain", NIL_TEXTURE, "white")
+        @@nil_jacket = Jacket.new("No Jacket", 0, false, "nil", "plain", "long", NIL_TEXTURE,  NIL_TEXTURE, "white")
+        @@white_light_jacket = Jacket.new("W/Light Jacket", 2, false, "nil", "plain", "long", WHITE_LIGHT_JACKET_FRONT_TEXTURE, WHITE_LIGHT_JACKET_BACK_TEXTURE, "white")
+        @@black_light_jacket = Jacket.new("Bk/Light Jacket", 3, false, "nil", "plain", "long", BLACK_LIGHT_JACKET_FRONT_TEXTURE, BLACK_LIGHT_JACKET_BACK_TEXTURE, "black")
     end
 end

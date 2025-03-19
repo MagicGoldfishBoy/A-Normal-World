@@ -456,3 +456,11 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
         KITCHEN_KNIFE_TEXTURE = SF::Texture.from_file("../graphics/Kitchen_Knife.png") 
         BROKEN_BOTTLE_TEXTURE = SF::Texture.from_file("../graphics/Broken_Bottle.png") 
         BB_GUN_TEXTURE = SF::Texture.from_file("../graphics/bb_gun.png") 
+
+    #JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+    #J                                         Jacket Textures                                          J
+    #JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+         WHITE_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/white_light_jacket_front.png")
+         WHITE_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/white_light_jacket_back.png")
+         BLACK_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/black_light_jacket_front.png")
+         BLACK_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/black_light_jacket_back.png")
