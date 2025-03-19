@@ -803,7 +803,16 @@ module Clothing
         end
 
         @@nil_jacket = Jacket.new("No Jacket", 0, false, "nil", "plain", "long", NIL_TEXTURE,  NIL_TEXTURE, "white")
-        @@white_light_jacket = Jacket.new("W/Light Jacket", 2, false, "nil", "plain", "long", WHITE_LIGHT_JACKET_FRONT_TEXTURE, WHITE_LIGHT_JACKET_BACK_TEXTURE, "white")
-        @@black_light_jacket = Jacket.new("Bk/Light Jacket", 3, false, "nil", "plain", "long", BLACK_LIGHT_JACKET_FRONT_TEXTURE, BLACK_LIGHT_JACKET_BACK_TEXTURE, "black")
+        @@white_light_jacket = Jacket.new("W/Light Jacket", 2, false, "light", "plain", "long", WHITE_LIGHT_JACKET_FRONT_TEXTURE, WHITE_LIGHT_JACKET_BACK_TEXTURE, "white")
+        @@gray_light_jacket = Jacket.new("Gy/Light Jacket", 3, false, "light", "plain", "long", GRAY_LIGHT_JACKET_FRONT_TEXTURE, GRAY_LIGHT_JACKET_BACK_TEXTURE, "gray")
+        @@black_light_jacket = Jacket.new("Bk/Light Jacket", 4, false, "light", "plain", "long", BLACK_LIGHT_JACKET_FRONT_TEXTURE, BLACK_LIGHT_JACKET_BACK_TEXTURE, "black")
+        @@brown_light_jacket = Jacket.new("Br/Light Jacket", 5, false, "light", "plain", "long", BROWN_LIGHT_JACKET_FRONT_TEXTURE, BROWN_LIGHT_JACKET_BACK_TEXTURE, "brown")
+        @@red_light_jacket = Jacket.new("R/Light Jacket", 6, false, "light", "plain", "long", RED_LIGHT_JACKET_FRONT_TEXTURE, RED_LIGHT_JACKET_BACK_TEXTURE, "red")
+        @@orange_light_jacket = Jacket.new("O/Light Jacket", 7, false, "light", "plain", "long", ORANGE_LIGHT_JACKET_FRONT_TEXTURE, ORANGE_LIGHT_JACKET_BACK_TEXTURE, "orange")
+        @@yellow_light_jacket = Jacket.new("Y/Light Jacket", 8, false, "light", "plain", "long", YELLOW_LIGHT_JACKET_FRONT_TEXTURE, YELLOW_LIGHT_JACKET_BACK_TEXTURE, "yellow")
+        @@green_light_jacket = Jacket.new("Gn/Light Jacket", 9, false, "light", "plain", "long", GREEN_LIGHT_JACKET_FRONT_TEXTURE, GREEN_LIGHT_JACKET_BACK_TEXTURE, "green")
+        @@blue_light_jacket = Jacket.new("Bl/Light Jacket", 10, false, "light", "plain", "long", BLUE_LIGHT_JACKET_FRONT_TEXTURE, BLUE_LIGHT_JACKET_BACK_TEXTURE, "blue")
+        @@purple_light_jacket = Jacket.new("Pr/Light Jacket", 11, false, "light", "plain", "long", PURPLE_LIGHT_JACKET_FRONT_TEXTURE, PURPLE_LIGHT_JACKET_BACK_TEXTURE, "purple")
+        @@pink_light_jacket = Jacket.new("Pk/Light Jacket", 12, false, "light", "plain", "long", PINK_LIGHT_JACKET_FRONT_TEXTURE, PINK_LIGHT_JACKET_BACK_TEXTURE, "pink")
     end
 end

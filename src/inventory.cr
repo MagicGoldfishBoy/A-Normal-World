@@ -3345,7 +3345,16 @@ module Inventory
       #---------------------------------debug-------------------------------------------
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("No Jacket").not_nil!)
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("W/Light Jacket").not_nil!)
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Gy/Light Jacket").not_nil!)
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Bk/Light Jacket").not_nil!)
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Br/Light Jacket").not_nil!)
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("R/Light Jacket").not_nil!)
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("O/Light Jacket").not_nil!)
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Y/Light Jacket").not_nil!)
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Gn/Light Jacket").not_nil!)
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Bl/Light Jacket").not_nil!)
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Pr/Light Jacket").not_nil!)
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Pk/Light Jacket").not_nil!)
       #---------------------------------------------------------------------------------
         
       #--------------------------------objects------------------------------------------
