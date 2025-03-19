@@ -227,6 +227,18 @@ module Sprites
         SF::Sprite.new
     end
 
+    current_jacket_front = if jacket = Clothing::Jacket.get_jacket(Appearance.get_clothing("jacket"))
+        SF::Sprite.new(jacket.front_texture)
+    else
+        SF::Sprite.new
+    end
+
+    current_jacket_back = if jacket = Clothing::Jacket.get_jacket(Appearance.get_clothing("jacket"))
+        SF::Sprite.new(jacket.back_texture)
+    else
+        SF::Sprite.new
+    end
+
     makeup = Clothing::Makeup.get_makeup(Appearance.get_clothing("makeup"))
 
         current_makeup = if makeup
@@ -264,6 +276,7 @@ module Sprites
         @@player_character_model.clear(SF::Color::Transparent)
         @@player_character_model.draw(current_weapon)
         @@player_character_model.draw(current_skin)
+        @@player_character_model.draw(current_jacket_back)
         @@player_character_model.draw(current_face)
         @@player_character_model.draw(current_makeup)
         @@player_character_model.draw(current_earrings)
@@ -274,9 +287,11 @@ module Sprites
         @@player_character_model.draw(current_shirt)
         @@player_character_model.draw(current_shoes)
         @@player_character_model.draw(current_gloves)
+        @@player_character_model.draw(current_jacket_front)
     else
         @@player_character_model.clear(SF::Color::Transparent)
         @@player_character_model.draw(current_skin)
+        @@player_character_model.draw(current_jacket_back)
         @@player_character_model.draw(current_face)
         @@player_character_model.draw(current_makeup)
         @@player_character_model.draw(current_earrings)
@@ -287,6 +302,7 @@ module Sprites
         @@player_character_model.draw(current_shirt)
         @@player_character_model.draw(current_shoes)
         @@player_character_model.draw(current_gloves)
+        @@player_character_model.draw(current_jacket_front)
         @@player_character_model.draw(current_weapon)
     end
 
