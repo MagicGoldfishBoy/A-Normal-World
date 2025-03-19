@@ -823,10 +823,10 @@ module Inventory
                 sort_button_width = @@clothing_sort_button_sprite.size.x
                 sort_button_height = @@clothing_sort_button_sprite.size.y
     
-                category_button_x = @@clothing_jacket_category_box.position.x
-                category_button_y = @@clothing_jacket_category_box.position.y
-                category_button_width = @@clothing_jacket_category_box.size.x
-                category_button_height = @@clothing_jacket_category_box.size.y
+                category_button_x = @@clothing_shirt_category_box.position.x
+                category_button_y = @@clothing_shirt_category_box.position.y
+                category_button_width = @@clothing_shirt_category_box.size.x
+                category_button_height = @@clothing_shirt_category_box.size.y
 
 
                 shirt_tab_x = @@shirt_tab.position.x
@@ -956,7 +956,7 @@ module Inventory
      
             if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
                 (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
-                
+                puts "jacket"
                  ClothingTabJacket.change_jacket_sort_category
                  @@clothing_jacket_category_text.string = ClothingTabJacket.get_jacket_category
                  Utility::StringUtilities.center_text(@@clothing_jacket_category_text)
