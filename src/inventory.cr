@@ -3357,7 +3357,10 @@ module Inventory
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Pr/Light Jacket").not_nil!)
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Pk/Light Jacket").not_nil!)
 
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("W/Backpack").not_nil!)
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Gy/Backpack").not_nil!)
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Bk/Backpack").not_nil!)
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Br/Backpack").not_nil!)
       #---------------------------------------------------------------------------------
         
       #--------------------------------objects------------------------------------------
@@ -3590,16 +3593,19 @@ module Inventory
         @@owned_jacket_array.uniq!
         if @@owned_jacket_array.size > 0
             t = 0 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size 
              @@jacket_slot_01_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_01_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_01 = @@owned_jacket_array[t]
         else
-            @@jacket_slot_01_image_sprite.texture = NIL_TEXTURE
-            @@jacket_slot_01_text.string = ""
-            @@jacket_slot_01 = nil
+             @@jacket_slot_01_image_sprite.texture = NIL_TEXTURE
+             @@jacket_slot_01_text.string = ""
+             @@jacket_slot_01 = nil
+           end
         end
         if @@owned_jacket_array.size > 1
             t = 1 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size 
              @@jacket_slot_02_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_02_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_02 = @@owned_jacket_array[t]
@@ -3607,9 +3613,11 @@ module Inventory
             @@jacket_slot_02_image_sprite.texture = NIL_TEXTURE
             @@jacket_slot_02_text.string = ""
             @@jacket_slot_02 = nil
+           end
         end
         if @@owned_jacket_array.size > 2
             t = 2 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size 
              @@jacket_slot_03_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_03_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_03 = @@owned_jacket_array[t]
@@ -3618,8 +3626,10 @@ module Inventory
             @@jacket_slot_03_text.string = ""
             @@jacket_slot_03 = nil
         end
+        end
         if @@owned_jacket_array.size > 3
             t = 3 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_04_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_04_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_04 = @@owned_jacket_array[t]
@@ -3627,9 +3637,11 @@ module Inventory
             @@jacket_slot_04_image_sprite.texture = NIL_TEXTURE
             @@jacket_slot_04_text.string = ""
             @@jacket_slot_04 = nil
+           end
         end
         if @@owned_jacket_array.size > 4
             t = 4 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_05_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_05_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_05 = @@owned_jacket_array[t]
@@ -3638,8 +3650,10 @@ module Inventory
             @@jacket_slot_05_text.string = ""
             @@jacket_slot_05 = nil
         end
+        end
         if @@owned_jacket_array.size > 5
             t = 5 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_06_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_06_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_06 = @@owned_jacket_array[t]
@@ -3648,8 +3662,10 @@ module Inventory
             @@jacket_slot_06_text.string = ""
             @@jacket_slot_06 = nil
         end
+        end
         if @@owned_jacket_array.size > 6
             t = 6 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_07_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_07_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_07 = @@owned_jacket_array[t]
@@ -3658,8 +3674,10 @@ module Inventory
             @@jacket_slot_07_text.string = ""
             @@jacket_slot_07 = nil
         end
+        end
         if @@owned_jacket_array.size > 7
             t = 7 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_08_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_08_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_08 = @@owned_jacket_array[t]
@@ -3668,8 +3686,10 @@ module Inventory
             @@jacket_slot_08_text.string = ""
             @@jacket_slot_08 = nil
         end
+        end
         if @@owned_jacket_array.size > 8
             t = 8 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_09_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_09_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_09 = @@owned_jacket_array[t]
@@ -3678,8 +3698,10 @@ module Inventory
             @@jacket_slot_09_text.string = ""
             @@jacket_slot_09 = nil
         end
+        end
         if @@owned_jacket_array.size > 9
             t = 9 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_10_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_10_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_10 = @@owned_jacket_array[t]
@@ -3688,8 +3710,10 @@ module Inventory
             @@jacket_slot_10_text.string = ""
             @@jacket_slot_10 = nil
         end
+        end
         if @@owned_jacket_array.size > 10
             t = 10 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_11_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_11_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_11 = @@owned_jacket_array[t]
@@ -3698,8 +3722,10 @@ module Inventory
             @@jacket_slot_11_text.string = ""
             @@jacket_slot_11 = nil
         end
+        end
         if @@owned_jacket_array.size > 11
             t = 11 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_12_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_12_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_12 = @@owned_jacket_array[t]
@@ -3708,8 +3734,10 @@ module Inventory
             @@jacket_slot_12_text.string = ""
             @@jacket_slot_12 = nil
         end
+        end
         if @@owned_jacket_array.size > 12
             t = 12 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_13_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_13_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_13 = @@owned_jacket_array[t]
@@ -3718,8 +3746,10 @@ module Inventory
             @@jacket_slot_13_text.string = ""
             @@jacket_slot_13 = nil
         end
+        end
         if @@owned_jacket_array.size > 13
             t = 13 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_14_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_14_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_14 = @@owned_jacket_array[t]
@@ -3728,8 +3758,10 @@ module Inventory
             @@jacket_slot_14_text.string = ""
             @@jacket_slot_14 = nil
         end
+        end
         if @@owned_jacket_array.size > 14
             t = 14 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_jacket_array.size
              @@jacket_slot_15_image_sprite.texture = @@owned_jacket_array[t].front_texture
              @@jacket_slot_15_text.string = @@owned_jacket_array[t].name
              @@jacket_slot_15 = @@owned_jacket_array[t]
@@ -3737,6 +3769,7 @@ module Inventory
             @@jacket_slot_15_image_sprite.texture = NIL_TEXTURE
             @@jacket_slot_15_text.string = ""
             @@jacket_slot_15 = nil
+        end
         end
         @@owned_jacket_array.uniq!
        end

@@ -496,3 +496,12 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
          GRAY_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_gray_front.png")
          GRAY_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_gray_back.png")
+
+         WHITE_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_white_front.png")
+         WHITE_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_white_back.png")
+
+         BLACK_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_black_front.png")
+         BLACK_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_black_back.png")
+
+         BROWN_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_brown_front.png")
+         BROWN_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_brown_back.png")
