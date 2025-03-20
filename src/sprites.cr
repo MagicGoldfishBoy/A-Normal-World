@@ -203,6 +203,12 @@ module Sprites
         SF::Sprite.new
     end
 
+    current_socks = if socks = Clothing::Socks.get_socks(Appearance.get_clothing("socks"))
+        SF::Sprite.new(socks.texture)
+    else
+        SF::Sprite.new
+    end
+
     current_gloves = if gloves = Clothing::Gloves.get_gloves(Appearance.get_clothing("gloves"))
         SF::Sprite.new(gloves.texture)
     else
@@ -283,6 +289,7 @@ module Sprites
         @@player_character_model.draw(current_glasses)
         @@player_character_model.draw(current_hair)
         @@player_character_model.draw(current_hat)
+        @@player_character_model.draw(current_socks)
         @@player_character_model.draw(current_pants)
         @@player_character_model.draw(current_shirt)
         @@player_character_model.draw(current_shoes)
@@ -298,6 +305,7 @@ module Sprites
         @@player_character_model.draw(current_glasses)
         @@player_character_model.draw(current_hair)
         @@player_character_model.draw(current_hat)
+        @@player_character_model.draw(current_socks)
         @@player_character_model.draw(current_pants)
         @@player_character_model.draw(current_shirt)
         @@player_character_model.draw(current_shoes)

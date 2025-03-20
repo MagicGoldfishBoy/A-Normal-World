@@ -303,6 +303,77 @@ module Clothing
         @@pink_sneakers = Shoes.new("Pink Sneakers", 108, false, "short", "plain", SNEAKERS_PINK_TEXTURE, "pink")
     end
 
+    class Socks
+        SOCKS_ARRAY = [] of Socks
+        def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String)
+         @name = name
+         @@name = name
+         @id = id
+         @is_owned = is_owned
+         @length = length
+         @style = style
+         @texture = texture
+         @color = color
+         SOCKS_ARRAY.push(self)
+        end
+ 
+        getter name : String
+        getter id : Int32
+        getter length : String
+        getter style : String
+        getter texture : SF::Texture
+        getter color : String
+        property is_owned : Bool
+ 
+        def Socks.name
+         @@name
+        end
+ 
+        def Socks.id
+         @@id
+        end
+ 
+        def Socks.is_owned
+         @@is_owned
+        end
+ 
+        def Socks.length
+         @@length
+        end
+ 
+        def Socks.style
+         @@style
+        end
+ 
+        def Socks.texture
+         @@texture
+        end
+ 
+        def Socks.color
+         @@texture
+        end
+ 
+        def Socks.is_owned=(this)
+         @@is_owned = this
+        end
+ 
+        def Socks.get_socks(this)
+         SOCKS_ARRAY.each { |socks| if socks.name == this
+         return socks
+         end }
+        end
+ 
+        def Socks.get_socks_texture(this)
+         SOCKS_ARRAY.each { |socks| if socks.name == this
+         return socks.texture
+         end }
+        end
+
+        @@nil_socks = Socks.new("No Socks", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
+
+        @@white_socks = Socks.new("W/Socks", 1, false, "short", "plain", WHITE_SOCKS_TEXTURE, "white")
+    end
+
     class Gloves
         GLOVES_ARRAY = [] of Gloves
         def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String)
