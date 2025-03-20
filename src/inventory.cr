@@ -3344,6 +3344,7 @@ module Inventory
 
       #---------------------------------debug-------------------------------------------
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("No Jacket").not_nil!)
+
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("W/Light Jacket").not_nil!)
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Gy/Light Jacket").not_nil!)
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Bk/Light Jacket").not_nil!)
@@ -3355,6 +3356,8 @@ module Inventory
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Bl/Light Jacket").not_nil!)
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Pr/Light Jacket").not_nil!)
         @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Pk/Light Jacket").not_nil!)
+
+        @@owned_jacket_array.push(Clothing::Jacket.get_jacket("Gy/Backpack").not_nil!)
       #---------------------------------------------------------------------------------
         
       #--------------------------------objects------------------------------------------
@@ -3749,14 +3752,14 @@ module Inventory
             max_scale = 1.5
             clamped_scale = [scale_ratio, max_scale].min
 
-        window.view = window.default_view #the second frame of the walk cycle should be used for display
+        window.view = window.default_view
 
         @@jacket_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
         @@jacket_slot_01_sprite.scale = SF.vector2(1, 1)
         
         @@jacket_slot_01_image_sprite.position = @@jacket_slot_01_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_01_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_01_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_01_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
 
         @@jacket_slot_01_text.position = @@jacket_slot_01_sprite.position + SF.vector2(45, 55 * max_scale)
         Utility::StringUtilities.center_text(@@jacket_slot_01_text)
@@ -3767,7 +3770,7 @@ module Inventory
         
         @@jacket_slot_02_image_sprite.position = @@jacket_slot_02_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_02_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_02_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_02_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
 
         @@jacket_slot_02_text.position = @@jacket_slot_02_sprite.position + SF.vector2(45, 55 * max_scale)
         Utility::StringUtilities.center_text(@@jacket_slot_02_text)
@@ -3778,7 +3781,7 @@ module Inventory
         
         @@jacket_slot_03_image_sprite.position = @@jacket_slot_03_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_03_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_03_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_03_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
 
         @@jacket_slot_03_text.position = @@jacket_slot_03_sprite.position + SF.vector2(45, 55 * max_scale)
         Utility::StringUtilities.center_text(@@jacket_slot_03_text)
@@ -3792,7 +3795,7 @@ module Inventory
         
         @@jacket_slot_04_image_sprite.position = @@jacket_slot_04_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_04_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_04_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_04_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
 
 
         @@jacket_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
@@ -3803,7 +3806,7 @@ module Inventory
         
         @@jacket_slot_05_image_sprite.position = @@jacket_slot_05_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_05_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_05_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_05_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
         
 
         @@jacket_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
@@ -3814,7 +3817,7 @@ module Inventory
         
         @@jacket_slot_06_image_sprite.position = @@jacket_slot_06_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_06_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_06_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_06_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
         
 
         @@jacket_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
@@ -3825,7 +3828,7 @@ module Inventory
         
         @@jacket_slot_07_image_sprite.position = @@jacket_slot_07_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_07_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_07_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_07_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
         
 
         @@jacket_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
@@ -3836,7 +3839,7 @@ module Inventory
         
         @@jacket_slot_08_image_sprite.position = @@jacket_slot_08_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_08_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_08_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_08_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
         
 
         @@jacket_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
@@ -3847,7 +3850,7 @@ module Inventory
         
         @@jacket_slot_09_image_sprite.position = @@jacket_slot_09_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_09_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_09_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_09_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
         
 
         @@jacket_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
@@ -3858,7 +3861,7 @@ module Inventory
         
         @@jacket_slot_10_image_sprite.position = @@jacket_slot_10_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_10_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_10_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_10_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
         
 
         @@jacket_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
@@ -3869,7 +3872,7 @@ module Inventory
         
         @@jacket_slot_11_image_sprite.position = @@jacket_slot_11_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_11_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_11_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_11_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
         
 
         @@jacket_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
@@ -3880,7 +3883,7 @@ module Inventory
         
         @@jacket_slot_12_image_sprite.position = @@jacket_slot_12_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_12_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_12_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_12_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
         
 
         @@jacket_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
@@ -3891,7 +3894,7 @@ module Inventory
         
         @@jacket_slot_13_image_sprite.position = @@jacket_slot_13_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_13_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_13_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_13_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
         
 
         @@jacket_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
@@ -3902,7 +3905,7 @@ module Inventory
         
         @@jacket_slot_14_image_sprite.position = @@jacket_slot_14_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_14_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_14_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_14_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
         
 
         @@jacket_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
@@ -3913,7 +3916,7 @@ module Inventory
         
         @@jacket_slot_15_image_sprite.position = @@jacket_slot_15_sprite.position - SF.vector2(30 * max_scale, 65 * max_scale)
         @@jacket_slot_15_image_sprite.scale = SF.vector2(2, 2)
-        @@jacket_slot_15_image_sprite.texture_rect = SF.int_rect(192, 0, 96, 128) 
+        @@jacket_slot_15_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
 
 
         window.draw(@@jacket_slot_01_sprite)
