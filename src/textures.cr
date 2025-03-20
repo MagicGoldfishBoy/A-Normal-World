@@ -492,3 +492,7 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
          PINK_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/pink_light_jacket_front.png")
          PINK_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/pink_light_jacket_back.png")
+
+
+         GRAY_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_gray_front.png")
+         GRAY_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_gray_back.png")

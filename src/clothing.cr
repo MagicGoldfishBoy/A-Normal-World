@@ -803,6 +803,7 @@ module Clothing
         end
 
         @@nil_jacket = Jacket.new("No Jacket", 0, false, "nil", "plain", "long", NIL_TEXTURE,  NIL_TEXTURE, "white")
+
         @@white_light_jacket = Jacket.new("W/Light Jacket", 2, false, "light", "plain", "long", WHITE_LIGHT_JACKET_FRONT_TEXTURE, WHITE_LIGHT_JACKET_BACK_TEXTURE, "white")
         @@gray_light_jacket = Jacket.new("Gy/Light Jacket", 3, false, "light", "plain", "long", GRAY_LIGHT_JACKET_FRONT_TEXTURE, GRAY_LIGHT_JACKET_BACK_TEXTURE, "gray")
         @@black_light_jacket = Jacket.new("Bk/Light Jacket", 4, false, "light", "plain", "long", BLACK_LIGHT_JACKET_FRONT_TEXTURE, BLACK_LIGHT_JACKET_BACK_TEXTURE, "black")
@@ -814,5 +815,7 @@ module Clothing
         @@blue_light_jacket = Jacket.new("Bl/Light Jacket", 10, false, "light", "plain", "long", BLUE_LIGHT_JACKET_FRONT_TEXTURE, BLUE_LIGHT_JACKET_BACK_TEXTURE, "blue")
         @@purple_light_jacket = Jacket.new("Pr/Light Jacket", 11, false, "light", "plain", "long", PURPLE_LIGHT_JACKET_FRONT_TEXTURE, PURPLE_LIGHT_JACKET_BACK_TEXTURE, "purple")
         @@pink_light_jacket = Jacket.new("Pk/Light Jacket", 12, false, "light", "plain", "long", PINK_LIGHT_JACKET_FRONT_TEXTURE, PINK_LIGHT_JACKET_BACK_TEXTURE, "pink")
+
+        @@gray_backpack = Jacket.new("Gy/Backpack", 101, false, "very_light", "plain", "very_short", GRAY_BACKPACK_FRONT_TEXTURE, GRAY_BACKPACK_BACK_TEXTURE, "gray")
     end
 end
