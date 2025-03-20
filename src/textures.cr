@@ -505,3 +505,24 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
          BROWN_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_brown_front.png")
          BROWN_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_brown_back.png")
+
+         RED_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_red_front.png")
+         RED_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_red_back.png")
+
+         ORANGE_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_orange_front.png")
+         ORANGE_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_orange_back.png")
+
+         YELLOW_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_yellow_front.png")
+         YELLOW_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_yellow_back.png")
+
+         GREEN_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_green_front.png")
+         GREEN_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_green_back.png")
+
+         BLUE_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_blue_front.png")
+         BLUE_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_blue_back.png")
+
+         PURPLE_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_purple_front.png")
+         PURPLE_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_purple_back.png")
+
+         PINK_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_pink_front.png")
+         PINK_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_pink_back.png")

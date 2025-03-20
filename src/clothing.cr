@@ -820,5 +820,12 @@ module Clothing
         @@gray_backpack = Jacket.new("Gy/Backpack", 101, false, "very_light", "sporty", "very_short", GRAY_BACKPACK_FRONT_TEXTURE, GRAY_BACKPACK_BACK_TEXTURE, "gray")
         @@black_backpack = Jacket.new("Bk/Backpack", 102, false, "very_light", "sporty", "very_short", BLACK_BACKPACK_FRONT_TEXTURE, BLACK_BACKPACK_BACK_TEXTURE, "black")
         @@brown_backpack = Jacket.new("Br/Backpack", 103, false, "very_light", "sporty", "very_short", BROWN_BACKPACK_FRONT_TEXTURE, BROWN_BACKPACK_BACK_TEXTURE, "brown")
+        @@red_backpack = Jacket.new("R/Backpack", 104, false, "very_light", "sporty", "very_short", RED_BACKPACK_FRONT_TEXTURE, RED_BACKPACK_BACK_TEXTURE, "red")
+        @@orange_backpack = Jacket.new("O/Backpack", 105, false, "very_light", "sporty", "very_short", ORANGE_BACKPACK_FRONT_TEXTURE, ORANGE_BACKPACK_BACK_TEXTURE, "orange")
+        @@yellow_backpack = Jacket.new("Y/Backpack", 106, false, "very_light", "sporty", "very_short", YELLOW_BACKPACK_FRONT_TEXTURE, YELLOW_BACKPACK_BACK_TEXTURE, "yellow")
+        @@green_backpack = Jacket.new("Gn/Backpack", 107, false, "very_light", "sporty", "very_short", GREEN_BACKPACK_FRONT_TEXTURE, GREEN_BACKPACK_BACK_TEXTURE, "green")
+        @@blue_backpack = Jacket.new("Bl/Backpack", 108, false, "very_light", "sporty", "very_short", BLUE_BACKPACK_FRONT_TEXTURE, BLUE_BACKPACK_BACK_TEXTURE, "blue")
+        @@purple_backpack = Jacket.new("Pr/Backpack", 109, false, "very_light", "sporty", "very_short", PURPLE_BACKPACK_FRONT_TEXTURE, PURPLE_BACKPACK_BACK_TEXTURE, "purple")
+        @@pink_backpack = Jacket.new("Pk/Backpack", 110, false, "very_light", "sporty", "very_short", PINK_BACKPACK_FRONT_TEXTURE, PINK_BACKPACK_BACK_TEXTURE, "pink")
     end
 end
