@@ -816,6 +816,9 @@ module Clothing
         @@purple_light_jacket = Jacket.new("Pr/Light Jacket", 11, false, "light", "plain", "long", PURPLE_LIGHT_JACKET_FRONT_TEXTURE, PURPLE_LIGHT_JACKET_BACK_TEXTURE, "purple")
         @@pink_light_jacket = Jacket.new("Pk/Light Jacket", 12, false, "light", "plain", "long", PINK_LIGHT_JACKET_FRONT_TEXTURE, PINK_LIGHT_JACKET_BACK_TEXTURE, "pink")
 
-        @@gray_backpack = Jacket.new("Gy/Backpack", 101, false, "very_light", "plain", "very_short", GRAY_BACKPACK_FRONT_TEXTURE, GRAY_BACKPACK_BACK_TEXTURE, "gray")
+        @@white_backpack = Jacket.new("W/Backpack", 100, false, "very_light", "sporty", "very_short", WHITE_BACKPACK_FRONT_TEXTURE, WHITE_BACKPACK_BACK_TEXTURE, "white")
+        @@gray_backpack = Jacket.new("Gy/Backpack", 101, false, "very_light", "sporty", "very_short", GRAY_BACKPACK_FRONT_TEXTURE, GRAY_BACKPACK_BACK_TEXTURE, "gray")
+        @@black_backpack = Jacket.new("Bk/Backpack", 102, false, "very_light", "sporty", "very_short", BLACK_BACKPACK_FRONT_TEXTURE, BLACK_BACKPACK_BACK_TEXTURE, "black")
+        @@brown_backpack = Jacket.new("Br/Backpack", 103, false, "very_light", "sporty", "very_short", BROWN_BACKPACK_FRONT_TEXTURE, BROWN_BACKPACK_BACK_TEXTURE, "brown")
     end
 end
