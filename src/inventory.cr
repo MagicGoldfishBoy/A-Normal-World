@@ -134,6 +134,22 @@ module Inventory
         @@clothing_shoes_category_text.string = ClothingTabShoes.get_shoes_category
         Utility::StringUtilities.center_text(@@clothing_shoes_category_text)
 
+        @@socks_tab = SF::RectangleShape.new(SF.vector2(100, 30))
+        @@socks_tab.fill_color = SF.color(161, 183, 208)
+
+        @@socks_tab_text = SF::Text.new
+        @@socks_tab_text.font = QUICKSAND
+        @@socks_tab_text.character_size = 20
+        @@socks_tab_text.color = SF::Color::Blue
+        @@socks_tab_text.string = "Socks"
+
+        @@clothing_socks_category_text = SF::Text.new
+        @@clothing_socks_category_text.font = QUICKSAND
+        @@clothing_socks_category_text.character_size = 20
+        @@clothing_socks_category_text.color = SF::Color::Blue
+        @@clothing_socks_category_text.string = ClothingTabSocks.get_socks_category
+        Utility::StringUtilities.center_text(@@clothing_socks_category_text)
+
         @@gloves_tab = SF::RectangleShape.new(SF.vector2(100, 30))
         @@gloves_tab.fill_color = SF.color(161, 183, 208)
 
@@ -272,6 +288,12 @@ module Inventory
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("shoes", window)
                 end
+            elsif @@tab == "Socks"
+                InventoryManager.draw_universal_elements(window)
+                ClothingTabSocks.draw_clothing_tab(window)
+                if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                    InventoryManager.universal_mouse_handling("socks", window)
+                end
             elsif @@tab == "Gloves"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabGloves.draw_clothing_tab(window)
@@ -355,6 +377,9 @@ module Inventory
             @@shoes_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(42.5 * max_scale))
             @@shoes_tab_text.position = @@shoes_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
 
+            @@socks_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(192 * max_scale))
+            @@socks_tab_text.position = @@socks_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
+
             @@gloves_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(64 * max_scale))
             @@gloves_tab_text.position = @@gloves_tab.position + SF.vector2(13 * max_scale, 2 * max_scale)
 
@@ -387,6 +412,8 @@ module Inventory
 
             @@clothing_shoes_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
+            @@clothing_socks_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+
             @@clothing_gloves_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
             @@clothing_earrings_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
@@ -416,6 +443,8 @@ module Inventory
             window.draw(@@pants_tab_text)
             window.draw(@@shoes_tab)
             window.draw(@@shoes_tab_text)
+            window.draw(@@socks_tab)
+            window.draw(@@socks_tab_text)
             window.draw(@@gloves_tab)
             window.draw(@@gloves_tab_text)
             window.draw(@@earrings_tab)
@@ -445,6 +474,8 @@ module Inventory
                  window.draw(@@clothing_pants_category_text)
                 when  "Shoes"
                  window.draw(@@clothing_shoes_category_text)
+                when  "Socks"
+                 window.draw(@@clothing_socks_category_text)
                 when  "Gloves"
                  window.draw(@@clothing_gloves_category_text)
                 when  "Earrings"
@@ -495,6 +526,12 @@ module Inventory
             ClothingTabShoes.assign_slot_textures(window)
         end
 
+        def InventoryManager.open_socks_tab(window)
+            InventoryManager.reset_clothing_pages(window)
+            @@tab = "Socks"
+            ClothingTabSocks.assign_slot_textures(window)
+        end
+
         def InventoryManager.open_gloves_tab(window)
             InventoryManager.reset_clothing_pages(window)
             @@tab = "Gloves"
@@ -532,6 +569,7 @@ module Inventory
             ClothingTabGloves.is_open=(false)
             ClothingTabPants.is_open=(false)
             ClothingTabShoes.is_open=(false)
+            ClothingTabSocks.is_open=(false)
             ClothingTabEarrings.is_open=(false)
             ClothingTabHat.is_open=(false)
             ClothingTabGlasses.is_open=(false)
@@ -546,6 +584,7 @@ module Inventory
             ClothingTabGloves.is_open=(false)
             ClothingTabPants.is_open=(false)
             ClothingTabShoes.is_open=(false)
+            ClothingTabSocks.is_open=(false)
             ClothingTabEarrings.is_open=(false)
             ClothingTabHat.is_open=(false)
             ClothingTabGlasses.is_open=(false)
@@ -606,6 +645,8 @@ module Inventory
                 InventoryManager.pants_tab_mouse_handling(window)
             when "shoes"
                 InventoryManager.shoes_tab_mouse_handling(window)
+            when "socks"
+                InventoryManager.socks_tab_mouse_handling(window)
             when "gloves"
                 InventoryManager.gloves_tab_mouse_handling(window)
             when "earrings"
@@ -672,6 +713,11 @@ module Inventory
                 shoes_tab_y = @@shoes_tab.position.y
                 shoes_tab_width = @@shoes_tab.size.x
                 shoes_tab_height = @@shoes_tab.size.y
+
+                socks_tab_x = @@socks_tab.position.x
+                socks_tab_y = @@socks_tab.position.y
+                socks_tab_width = @@socks_tab.size.x
+                socks_tab_height = @@socks_tab.size.y
 
                 gloves_tab_x = @@gloves_tab.position.x
                 gloves_tab_y = @@gloves_tab.position.y
@@ -740,6 +786,13 @@ module Inventory
                 (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
 
                 InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end    
+
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+
+                InventoryManager.open_socks_tab(window)
                 sleep 0.15.seconds
             end    
 
@@ -844,6 +897,11 @@ module Inventory
                 shoes_tab_width = @@shoes_tab.size.x
                 shoes_tab_height = @@shoes_tab.size.y
 
+                socks_tab_x = @@socks_tab.position.x
+                socks_tab_y = @@socks_tab.position.y
+                socks_tab_width = @@socks_tab.size.x
+                socks_tab_height = @@socks_tab.size.y
+
                 gloves_tab_x = @@gloves_tab.position.x
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
@@ -911,6 +969,13 @@ module Inventory
                 (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
 
                 InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end    
+
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+
+                InventoryManager.open_socks_tab(window)
                 sleep 0.15.seconds
             end    
 
@@ -1014,6 +1079,11 @@ module Inventory
                 shoes_tab_width = @@shoes_tab.size.x
                 shoes_tab_height = @@shoes_tab.size.y
                 
+                socks_tab_x = @@socks_tab.position.x
+                socks_tab_y = @@socks_tab.position.y
+                socks_tab_width = @@socks_tab.size.x
+                socks_tab_height = @@socks_tab.size.y
+                
                 gloves_tab_x = @@gloves_tab.position.x
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
@@ -1077,6 +1147,13 @@ module Inventory
                 (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
 
                 InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+
+                InventoryManager.open_socks_tab(window)
                 sleep 0.15.seconds
             end 
 
@@ -1189,6 +1266,11 @@ module Inventory
                 shoes_tab_width = @@shoes_tab.size.x
                 shoes_tab_height = @@shoes_tab.size.y
                 
+                socks_tab_x = @@socks_tab.position.x
+                socks_tab_y = @@socks_tab.position.y
+                socks_tab_width = @@socks_tab.size.x
+                socks_tab_height = @@socks_tab.size.y
+                
                 gloves_tab_x = @@gloves_tab.position.x
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
@@ -1255,6 +1337,13 @@ module Inventory
                  sleep 0.15.seconds
             end 
 
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+                
+                 InventoryManager.open_socks_tab(window)
+                 sleep 0.15.seconds
+            end 
+
             if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
                 (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
 
@@ -1305,6 +1394,193 @@ module Inventory
                  ClothingTabShoes.change_shoes_sort_category
                  @@clothing_shoes_category_text.string = ClothingTabShoes.get_shoes_category
                  Utility::StringUtilities.center_text(@@clothing_shoes_category_text)
+                 sleep 0.15.seconds
+            end  
+        end
+
+        def InventoryManager.socks_tab_mouse_handling(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+            
+        
+            current_size = window.size
+            original_width = 800 
+            original_height = 600 
+    
+            scale_x = (current_size.x.to_f / original_width)
+            scale_y = current_size.y.to_f / original_height
+    
+            #------------------------------------objects-------------------------------------------------
+                arrow_left_x = INVENTORY_LEFT_ARROW_SPRITE.position.x
+                arrow_left_y = INVENTORY_LEFT_ARROW_SPRITE.position.y
+                arrow_left_width = INVENTORY_LEFT_ARROW_SPRITE.size.x
+                arrow_left_height = INVENTORY_LEFT_ARROW_SPRITE.size.y
+
+                arrow_right_x = INVENTORY_RIGHT_ARROW_SPRITE.position.x
+                arrow_right_y = INVENTORY_RIGHT_ARROW_SPRITE.position.y
+                arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
+                arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
+
+
+                sort_button_x = @@clothing_sort_button_sprite.position.x
+                sort_button_y = @@clothing_sort_button_sprite.position.y
+                sort_button_width = @@clothing_sort_button_sprite.size.x
+                sort_button_height = @@clothing_sort_button_sprite.size.y
+    
+                category_button_x = @@clothing_shirt_category_box.position.x
+                category_button_y = @@clothing_shirt_category_box.position.y
+                category_button_width = @@clothing_shirt_category_box.size.x
+                category_button_height = @@clothing_shirt_category_box.size.y
+                
+                shirt_tab_x = @@shirt_tab.position.x
+                shirt_tab_y = @@shirt_tab.position.y
+                shirt_tab_width = @@shirt_tab.size.x
+                shirt_tab_height = @@shirt_tab.size.y
+                
+                pants_tab_x = @@pants_tab.position.x
+                pants_tab_y = @@pants_tab.position.y
+                pants_tab_width = @@pants_tab.size.x
+                pants_tab_height = @@pants_tab.size.y
+                
+                jacket_tab_x = @@jacket_tab.position.x
+                jacket_tab_y = @@jacket_tab.position.y
+                jacket_tab_width = @@jacket_tab.size.x
+                jacket_tab_height = @@jacket_tab.size.y
+                
+                shoes_tab_x = @@shoes_tab.position.x
+                shoes_tab_y = @@shoes_tab.position.y
+                shoes_tab_width = @@shoes_tab.size.x
+                shoes_tab_height = @@shoes_tab.size.y
+                
+                socks_tab_x = @@socks_tab.position.x
+                socks_tab_y = @@socks_tab.position.y
+                socks_tab_width = @@socks_tab.size.x
+                socks_tab_height = @@socks_tab.size.y
+                
+                gloves_tab_x = @@gloves_tab.position.x
+                gloves_tab_y = @@gloves_tab.position.y
+                gloves_tab_width = @@gloves_tab.size.x
+                gloves_tab_height = @@gloves_tab.size.y
+                
+                earrings_tab_x = @@earrings_tab.position.x
+                earrings_tab_y = @@earrings_tab.position.y
+                earrings_tab_width = @@earrings_tab.size.x
+                earrings_tab_height = @@earrings_tab.size.y
+                
+                hat_tab_x = @@hat_tab.position.x
+                hat_tab_y = @@hat_tab.position.y
+                hat_tab_width = @@hat_tab.size.x
+                hat_tab_height = @@hat_tab.size.y
+                
+                glasses_tab_x = @@glasses_tab.position.x
+                glasses_tab_y = @@glasses_tab.position.y
+                glasses_tab_width = @@glasses_tab.size.x
+                glasses_tab_height = @@glasses_tab.size.y
+                
+                makeup_tab_x = @@makeup_tab.position.x
+                makeup_tab_y = @@makeup_tab.position.y
+                makeup_tab_width = @@makeup_tab.size.x
+                makeup_tab_height = @@makeup_tab.size.y
+            #---------------------------------------------------------------------------------------------
+            if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
+                (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
+                
+                 if ClothingTabSocks.page.not_nil! > 1
+                    ClothingTabSocks.page=(ClothingTabSocks.page.not_nil! - 1)
+                 end
+                 ClothingTabSocks.assign_slot_textures(window)
+                 sleep 0.15.seconds
+            end
+             
+            if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+                (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
+                
+                 if ClothingTabSocks.page.not_nil! <= 5
+                    ClothingTabSocks.page=(ClothingTabSocks.page.not_nil! + 1)
+                 end
+                 ClothingTabSocks.assign_slot_textures(window)
+                 sleep 0.15.seconds
+            end  
+
+            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
+                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
+
+                InventoryManager.open_shirt_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
+                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
+                
+                 InventoryManager.open_pants_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
+                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
+                
+                 InventoryManager.open_jacket_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+                
+                 InventoryManager.open_shoes_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
+                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
+
+                 InventoryManager.open_gloves_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
+                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
+
+                 InventoryManager.open_earrings_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
+                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
+
+                 InventoryManager.open_hat_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
+                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
+
+                 InventoryManager.open_glasses_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
+                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
+
+                 InventoryManager.open_makeup_tab(window)
+                 sleep 0.15.seconds
+            end 
+            
+            if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
+                (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
+                if ClothingTabSocks.get_socks_category == "Color"
+                 Utility::ArrayUtilities.organise_array_by_color(window, ClothingTabSocks.owned_socks_array, ClothingTabSocks)
+                elsif "Length"
+                 Utility::ArrayUtilities.organise_array_by_length_short_to_long(window, ClothingTabSocks.owned_socks_array, ClothingTabSocks)
+                end
+                 sleep 0.15.seconds
+            end        
+     
+            if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
+                (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
+                 ClothingTabSocks.change_socks_sort_category
+                 @@clothing_socks_category_text.string = ClothingTabSocks.get_socks_category
+                 Utility::StringUtilities.center_text(@@clothing_socks_category_text)
                  sleep 0.15.seconds
             end  
         end
@@ -1363,6 +1639,11 @@ module Inventory
                 shoes_tab_y = @@shoes_tab.position.y
                 shoes_tab_width = @@shoes_tab.size.x
                 shoes_tab_height = @@shoes_tab.size.y
+                
+                socks_tab_x = @@socks_tab.position.x
+                socks_tab_y = @@socks_tab.position.y
+                socks_tab_width = @@socks_tab.size.x
+                socks_tab_height = @@socks_tab.size.y
                 
                 gloves_tab_x = @@gloves_tab.position.x
                 gloves_tab_y = @@gloves_tab.position.y
@@ -1435,6 +1716,13 @@ module Inventory
                 (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
 
                 InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+
+                InventoryManager.open_socks_tab(window)
                 sleep 0.15.seconds
             end 
 
@@ -1540,6 +1828,11 @@ module Inventory
                 shoes_tab_width = @@shoes_tab.size.x
                 shoes_tab_height = @@shoes_tab.size.y
                 
+                socks_tab_x = @@socks_tab.position.x
+                socks_tab_y = @@socks_tab.position.y
+                socks_tab_width = @@socks_tab.size.x
+                socks_tab_height = @@socks_tab.size.y
+                
                 gloves_tab_x = @@gloves_tab.position.x
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
@@ -1611,6 +1904,13 @@ module Inventory
                 (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
 
                 InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+
+                InventoryManager.open_socks_tab(window)
                 sleep 0.15.seconds
             end 
 
@@ -1709,6 +2009,11 @@ module Inventory
                 shoes_tab_width = @@shoes_tab.size.x
                 shoes_tab_height = @@shoes_tab.size.y
                 
+                socks_tab_x = @@socks_tab.position.x
+                socks_tab_y = @@socks_tab.position.y
+                socks_tab_width = @@socks_tab.size.x
+                socks_tab_height = @@socks_tab.size.y
+                
                 gloves_tab_x = @@gloves_tab.position.x
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
@@ -1780,6 +2085,13 @@ module Inventory
                 (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
 
                 InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+
+                InventoryManager.open_socks_tab(window)
                 sleep 0.15.seconds
             end 
 
@@ -1885,6 +2197,11 @@ module Inventory
                 shoes_tab_width = @@shoes_tab.size.x
                 shoes_tab_height = @@shoes_tab.size.y
                 
+                socks_tab_x = @@socks_tab.position.x
+                socks_tab_y = @@socks_tab.position.y
+                socks_tab_width = @@socks_tab.size.x
+                socks_tab_height = @@socks_tab.size.y
+                
                 gloves_tab_x = @@gloves_tab.position.x
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
@@ -1960,6 +2277,13 @@ module Inventory
                 (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
 
                 InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+
+                InventoryManager.open_socks_tab(window)
                 sleep 0.15.seconds
             end 
 
@@ -2065,6 +2389,11 @@ module Inventory
                 shoes_tab_width = @@shoes_tab.size.x
                 shoes_tab_height = @@shoes_tab.size.y
                 
+                socks_tab_x = @@socks_tab.position.x
+                socks_tab_y = @@socks_tab.position.y
+                socks_tab_width = @@socks_tab.size.x
+                socks_tab_height = @@socks_tab.size.y
+                
                 gloves_tab_x = @@gloves_tab.position.x
                 gloves_tab_y = @@gloves_tab.position.y
                 gloves_tab_width = @@gloves_tab.size.x
@@ -2140,6 +2469,13 @@ module Inventory
                 (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
 
                 InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+
+                InventoryManager.open_socks_tab(window)
                 sleep 0.15.seconds
             end 
 
@@ -6509,6 +6845,1065 @@ module Inventory
                 @@owned_shoes_array.uniq!
             end
             ClothingTabShoes.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+
+       end
+
+    end
+
+    class ClothingTabSocks
+        @@owned_socks_array = [] of Clothing::Socks
+
+        @@socks_sorting_category = "Length"
+
+        @@socks_slot_01 : Clothing::Socks? = nil
+        @@socks_slot_02 : Clothing::Socks? = nil
+        @@socks_slot_03 : Clothing::Socks? = nil
+        @@socks_slot_04 : Clothing::Socks? = nil
+        @@socks_slot_05 : Clothing::Socks? = nil
+        @@socks_slot_06 : Clothing::Socks? = nil
+        @@socks_slot_07 : Clothing::Socks? = nil
+        @@socks_slot_08 : Clothing::Socks? = nil
+        @@socks_slot_09 : Clothing::Socks? = nil
+        @@socks_slot_10 : Clothing::Socks? = nil
+        @@socks_slot_11 : Clothing::Socks? = nil
+        @@socks_slot_12 : Clothing::Socks? = nil
+        @@socks_slot_13 : Clothing::Socks? = nil
+        @@socks_slot_14 : Clothing::Socks? = nil
+        @@socks_slot_15 : Clothing::Socks? = nil
+
+       #---------------------------------debug-------------------------------------------
+        @@owned_socks_array.push(Clothing::Socks.get_socks("No Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("W/Socks").not_nil!)
+       #---------------------------------------------------------------------------------
+
+       #--------------------------------objects------------------------------------------
+        INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
+        INVENTORY_BOX.fill_color = SF.color( 137, 170, 208 )
+
+        
+        @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+
+        @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
+        @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_socks_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
+        @@clothing_socks_category_box.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_sort_button_text = SF::Text.new
+        @@clothing_sort_button_text.font = QUICKSAND
+        @@clothing_sort_button_text.character_size = 20
+        @@clothing_sort_button_text.color = SF::Color::Blue
+        @@clothing_sort_button_text.string = "Sort"
+
+
+        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@socks_tab.fill_color = SF.color(141, 163, 188)
+
+        @@socks_tab_text = SF::Text.new
+        @@socks_tab_text.font = QUICKSAND
+        @@socks_tab_text.character_size = 20
+        @@socks_tab_text.color = SF::Color::Blue
+        @@socks_tab_text.string = "Socks"
+
+        @@socks_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@socks_tab.fill_color = SF.color(161, 183, 208)
+
+        @@socks_tab_text = SF::Text.new
+        @@socks_tab_text.font = QUICKSAND
+        @@socks_tab_text.character_size = 20
+        @@socks_tab_text.color = SF::Color::Blue
+        @@socks_tab_text.string = "Socks"
+
+
+        @@socks_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_01_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_01_text = SF::Text.new
+        @@socks_slot_01_text.font = QUICKSAND
+        @@socks_slot_01_text.character_size = 12
+        @@socks_slot_01_text.color = SF::Color::Blue
+
+        @@socks_slot_01_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_02_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_02_text = SF::Text.new
+        @@socks_slot_02_text.font = QUICKSAND
+        @@socks_slot_02_text.character_size = 12
+        @@socks_slot_02_text.color = SF::Color::Blue
+
+        @@socks_slot_02_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_03_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_03_text = SF::Text.new
+        @@socks_slot_03_text.font = QUICKSAND
+        @@socks_slot_03_text.character_size = 12
+        @@socks_slot_03_text.color = SF::Color::Blue
+
+        @@socks_slot_03_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_04_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_04_text = SF::Text.new
+        @@socks_slot_04_text.font = QUICKSAND
+        @@socks_slot_04_text.character_size = 12
+        @@socks_slot_04_text.color = SF::Color::Blue
+
+        @@socks_slot_04_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_05_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_05_text = SF::Text.new
+        @@socks_slot_05_text.font = QUICKSAND
+        @@socks_slot_05_text.character_size = 12
+        @@socks_slot_05_text.color = SF::Color::Blue
+
+        @@socks_slot_05_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_06_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_06_text = SF::Text.new
+        @@socks_slot_06_text.font = QUICKSAND
+        @@socks_slot_06_text.character_size = 12
+        @@socks_slot_06_text.color = SF::Color::Blue
+        
+        @@socks_slot_06_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_07_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_07_text = SF::Text.new
+        @@socks_slot_07_text.font = QUICKSAND
+        @@socks_slot_07_text.character_size = 12
+        @@socks_slot_07_text.color = SF::Color::Blue
+
+        @@socks_slot_07_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_08_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_08_text = SF::Text.new
+        @@socks_slot_08_text.font = QUICKSAND
+        @@socks_slot_08_text.character_size = 12
+        @@socks_slot_08_text.color = SF::Color::Blue
+
+        @@socks_slot_08_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_09_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_09_text = SF::Text.new
+        @@socks_slot_09_text.font = QUICKSAND
+        @@socks_slot_09_text.character_size = 12
+        @@socks_slot_09_text.color = SF::Color::Blue
+
+        @@socks_slot_09_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_10_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_10_text = SF::Text.new
+        @@socks_slot_10_text.font = QUICKSAND
+        @@socks_slot_10_text.character_size = 12
+        @@socks_slot_10_text.color = SF::Color::Blue
+
+        @@socks_slot_10_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_11_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_11_text = SF::Text.new
+        @@socks_slot_11_text.font = QUICKSAND
+        @@socks_slot_11_text.character_size = 12
+        @@socks_slot_11_text.color = SF::Color::Blue
+
+        @@socks_slot_11_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_12_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_12_text = SF::Text.new
+        @@socks_slot_12_text.font = QUICKSAND
+        @@socks_slot_12_text.character_size = 12
+        @@socks_slot_12_text.color = SF::Color::Blue
+
+        @@socks_slot_12_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_13_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_13_text = SF::Text.new
+        @@socks_slot_13_text.font = QUICKSAND
+        @@socks_slot_13_text.character_size = 12
+        @@socks_slot_13_text.color = SF::Color::Blue
+
+        @@socks_slot_13_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_14_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_14_text = SF::Text.new
+        @@socks_slot_14_text.font = QUICKSAND
+        @@socks_slot_14_text.character_size = 12
+        @@socks_slot_14_text.color = SF::Color::Blue
+
+        @@socks_slot_14_image_sprite = SF::Sprite.new
+
+
+        @@socks_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@socks_slot_15_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@socks_slot_15_text = SF::Text.new
+        @@socks_slot_15_text.font = QUICKSAND
+        @@socks_slot_15_text.character_size = 12
+        @@socks_slot_15_text.color = SF::Color::Blue
+
+        @@socks_slot_15_image_sprite = SF::Sprite.new
+
+       #---------------------------------------------------------------------------------
+
+       def initialize(is_open : Bool, page : Int32)
+        @@is_open = is_open
+        @@page = page
+       end
+
+       def ClothingTabSocks.is_open
+        @@is_open
+       end
+
+       def ClothingTabSocks.page
+        @@page
+       end
+
+       def ClothingTabSocks.is_open=(this)
+        @@is_open = this
+       end
+
+       def ClothingTabSocks.page=(this)
+        @@page = this
+       end
+
+       def ClothingTabSocks.owned_socks_array
+        @@owned_socks_array
+       end
+
+       def ClothingTabSocks.owned_socks_array=(this)
+        @@owned_socks_array = this
+       end
+
+       def ClothingTabSocks.push_to_owned_socks_array(this)
+        @@owned_socks_array.push(this)
+       end
+
+       def ClothingTabSocks.change_socks_sort_category
+        case @@socks_sorting_category
+        when "Length"
+            @@socks_sorting_category = "Color"
+        when "Color"
+            @@socks_sorting_category = "Length"
+        end
+       end
+
+       def ClothingTabSocks.get_socks_category
+        return @@socks_sorting_category
+       end
+
+       def ClothingTabSocks.initialize_clothing_tab(window)
+        @@page = 1
+        INVENTORY_BOX.position = SF.vector2(20, 40)  
+       end
+
+       def ClothingTabSocks.assign_slot_textures(window)
+        if @@page == nil
+            @@page = 1
+        end
+        if @@owned_socks_array.size > 0
+            t = 0 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_01_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_01_text.string = @@owned_socks_array[t].name
+             @@socks_slot_01 = @@owned_socks_array[t]
+            else
+                @@socks_slot_01_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_01_text.string = ""
+                @@socks_slot_01 = nil
+            end
+        end
+        if @@owned_socks_array.size > 1
+            t = 1 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_02_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_02_text.string = @@owned_socks_array[t].name
+             @@socks_slot_02 = @@owned_socks_array[t]
+            else
+                @@socks_slot_02_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_02_text.string = ""
+                @@socks_slot_02 = nil
+            end
+        end
+        if @@owned_socks_array.size > 2
+            t = 2 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_03_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_03_text.string = @@owned_socks_array[t].name
+             @@socks_slot_03 = @@owned_socks_array[t]
+            else
+                @@socks_slot_03_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_03_text.string = ""
+                @@socks_slot_03 = nil
+            end
+        end
+        if @@owned_socks_array.size > 3
+            t = 3 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_04_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_04_text.string = @@owned_socks_array[t].name
+             @@socks_slot_04 = @@owned_socks_array[t]
+            else
+                @@socks_slot_04_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_04_text.string = ""
+                @@socks_slot_04 = nil
+            end
+        end
+        if @@owned_socks_array.size > 4
+            t = 4 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_05_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_05_text.string = @@owned_socks_array[t].name
+             @@socks_slot_05 = @@owned_socks_array[t]
+            else
+                @@socks_slot_05_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_05_text.string = ""
+                @@socks_slot_05 = nil
+            end
+        end
+        if @@owned_socks_array.size > 5
+            t = 5 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_06_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_06_text.string = @@owned_socks_array[t].name
+             @@socks_slot_06 = @@owned_socks_array[t]
+            else
+                @@socks_slot_06_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_06_text.string = ""
+                @@socks_slot_06 = nil
+            end
+        end
+        if @@owned_socks_array.size > 6
+            t = 6 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_07_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_07_text.string = @@owned_socks_array[t].name
+             @@socks_slot_07 = @@owned_socks_array[t]
+            else
+                @@socks_slot_07_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_07_text.string = ""
+                @@socks_slot_07 = nil
+            end
+        end
+        if @@owned_socks_array.size > 7
+            t = 7 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_08_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_08_text.string = @@owned_socks_array[t].name
+             @@socks_slot_08 = @@owned_socks_array[t]
+            else
+                @@socks_slot_08_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_08_text.string = ""
+                @@socks_slot_08 = nil
+            end
+        end
+        if @@owned_socks_array.size > 8
+            t = 8 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_09_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_09_text.string = @@owned_socks_array[t].name
+             @@socks_slot_09 = @@owned_socks_array[t]
+            else
+                @@socks_slot_09_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_09_text.string = ""
+                @@socks_slot_09 = nil
+            end
+        end
+        if @@owned_socks_array.size > 9
+            t = 9 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_10_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_10_text.string = @@owned_socks_array[t].name
+             @@socks_slot_10 = @@owned_socks_array[t]
+            else
+                @@socks_slot_10_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_10_text.string = ""
+                @@socks_slot_10 = nil
+            end
+        end
+        if @@owned_socks_array.size > 10
+            t = 10 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_11_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_11_text.string = @@owned_socks_array[t].name
+             @@socks_slot_11 = @@owned_socks_array[t]
+            else
+                @@socks_slot_11_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_11_text.string = ""
+                @@socks_slot_11 = nil
+            end
+        end
+        if @@owned_socks_array.size > 11
+            t = 11 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_12_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_12_text.string = @@owned_socks_array[t].name
+             @@socks_slot_12 = @@owned_socks_array[t]
+            else
+                @@socks_slot_12_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_12_text.string = ""
+                @@socks_slot_12 = nil
+            end
+        end
+        if @@owned_socks_array.size > 12
+            t = 12 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_13_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_13_text.string = @@owned_socks_array[t].name
+             @@socks_slot_13 = @@owned_socks_array[t]
+            else
+                @@socks_slot_13_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_13_text.string = ""
+                @@socks_slot_13 = nil
+            end
+        end
+        if @@owned_socks_array.size > 13
+            t = 13 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_14_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_14_text.string = @@owned_socks_array[t].name
+             @@socks_slot_14 = @@owned_socks_array[t]
+            else
+                @@socks_slot_14_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_14_text.string = ""
+                @@socks_slot_14 = nil
+            end
+        end
+        if @@owned_socks_array.size > 14
+            t = 14 + (@@page.not_nil! * 15) - 15
+            if t <= @@owned_socks_array.size - 1
+             @@socks_slot_15_image_sprite.texture = @@owned_socks_array[t].texture
+             @@socks_slot_15_text.string = @@owned_socks_array[t].name
+             @@socks_slot_15 = @@owned_socks_array[t]
+            else
+                @@socks_slot_15_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_15_text.string = ""
+                @@socks_slot_15 = nil
+            end
+        end
+       end
+       
+       def ClothingTabSocks.draw_clothing_tab(window)
+            current_size = window.size
+            original_width = 800 
+            original_height = 600
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+    
+            scale_ratio = [scale_x, scale_y].min
+            max_scale = 1.5
+            clamped_scale = [scale_ratio, max_scale].min
+
+        window.view = window.default_view
+
+        INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
+        INVENTORY_BOX.scale = SF.vector2(1, 1)
+
+
+        @@socks_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
+        @@socks_slot_01_sprite.scale = SF.vector2(1, 1)
+        
+        @@socks_slot_01_image_sprite.position = @@socks_slot_01_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_01_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_01_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        @@socks_slot_01_text.position = @@socks_slot_01_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_01_text)
+        
+
+        @@socks_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
+        @@socks_slot_02_sprite.scale = SF.vector2(1, 1)
+        
+        @@socks_slot_02_image_sprite.position = @@socks_slot_02_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_02_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_02_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        @@socks_slot_02_text.position = @@socks_slot_02_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_02_text)
+        
+
+        @@socks_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
+        @@socks_slot_03_sprite.scale = SF.vector2(1, 1)
+        
+        @@socks_slot_03_image_sprite.position = @@socks_slot_03_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_03_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_03_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+        @@socks_slot_03_text.position = @@socks_slot_03_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_03_text)
+        
+
+        @@socks_slot_04_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 40 * max_scale)
+        @@socks_slot_04_sprite.scale = SF.vector2(1, 1)
+
+        @@socks_slot_04_text.position = @@socks_slot_04_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_04_text)
+        
+        @@socks_slot_04_image_sprite.position = @@socks_slot_04_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_04_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_04_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+
+        @@socks_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
+        @@socks_slot_05_sprite.scale = SF.vector2(1, 1)
+
+        @@socks_slot_05_text.position = @@socks_slot_05_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_05_text)
+        
+        @@socks_slot_05_image_sprite.position = @@socks_slot_05_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_05_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_05_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@socks_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
+        @@socks_slot_06_sprite.scale = SF.vector2(1, 1)
+
+        @@socks_slot_06_text.position = @@socks_slot_06_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_06_text)
+        
+        @@socks_slot_06_image_sprite.position = @@socks_slot_06_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_06_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_06_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@socks_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
+        @@socks_slot_07_sprite.scale = SF.vector2(1, 1)
+        
+        @@socks_slot_07_text.position = @@socks_slot_07_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_07_text)
+        
+        @@socks_slot_07_image_sprite.position = @@socks_slot_07_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_07_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_07_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@socks_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
+        @@socks_slot_08_sprite.scale = SF.vector2(1, 1)
+                
+        @@socks_slot_08_text.position = @@socks_slot_08_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_08_text)
+        
+        @@socks_slot_08_image_sprite.position = @@socks_slot_08_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_08_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_08_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@socks_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
+        @@socks_slot_09_sprite.scale = SF.vector2(1, 1)
+                
+        @@socks_slot_09_text.position = @@socks_slot_09_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_09_text)
+        
+        @@socks_slot_09_image_sprite.position = @@socks_slot_09_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_09_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_09_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@socks_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
+        @@socks_slot_10_sprite.scale = SF.vector2(1, 1)
+                        
+        @@socks_slot_10_text.position = @@socks_slot_10_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_10_text)
+        
+        @@socks_slot_10_image_sprite.position = @@socks_slot_10_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_10_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_10_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@socks_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
+        @@socks_slot_11_sprite.scale = SF.vector2(1, 1)
+                        
+        @@socks_slot_11_text.position = @@socks_slot_11_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_11_text)
+        
+        @@socks_slot_11_image_sprite.position = @@socks_slot_11_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_11_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_11_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@socks_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
+        @@socks_slot_12_sprite.scale = SF.vector2(1, 1)
+                        
+        @@socks_slot_12_text.position = @@socks_slot_12_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_12_text)
+        
+        @@socks_slot_12_image_sprite.position = @@socks_slot_12_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_12_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_12_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@socks_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
+        @@socks_slot_13_sprite.scale = SF.vector2(1, 1)
+        
+        @@socks_slot_13_text.position = @@socks_slot_13_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_13_text)
+        
+        @@socks_slot_13_image_sprite.position = @@socks_slot_13_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_13_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_13_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@socks_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
+        @@socks_slot_14_sprite.scale = SF.vector2(1, 1)
+                        
+        @@socks_slot_14_text.position = @@socks_slot_14_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_14_text)
+        
+        @@socks_slot_14_image_sprite.position = @@socks_slot_14_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_14_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_14_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+        @@socks_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
+        @@socks_slot_15_sprite.scale = SF.vector2(1, 1)
+                        
+        @@socks_slot_15_text.position = @@socks_slot_15_sprite.position + SF.vector2(45, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@socks_slot_15_text)
+        
+        @@socks_slot_15_image_sprite.position = @@socks_slot_15_sprite.position - SF.vector2(30 * max_scale, 120 * max_scale)
+        @@socks_slot_15_image_sprite.scale = SF.vector2(2, 2)
+        @@socks_slot_15_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+
+        window.draw(@@socks_slot_01_sprite)
+        window.draw(@@socks_slot_01_image_sprite)
+        window.draw(@@socks_slot_01_text)
+
+        window.draw(@@socks_slot_02_sprite)
+        window.draw(@@socks_slot_02_image_sprite)
+        window.draw(@@socks_slot_02_text)
+
+        window.draw(@@socks_slot_03_sprite)
+        window.draw(@@socks_slot_03_image_sprite)
+        window.draw(@@socks_slot_03_text)
+        
+        window.draw(@@socks_slot_04_sprite)
+        window.draw(@@socks_slot_04_image_sprite)
+        window.draw(@@socks_slot_04_text)
+
+        window.draw(@@socks_slot_05_sprite)
+        window.draw(@@socks_slot_05_image_sprite)
+        window.draw(@@socks_slot_05_text)
+
+        window.draw(@@socks_slot_06_sprite)
+        window.draw(@@socks_slot_06_image_sprite)
+        window.draw(@@socks_slot_06_text)
+
+        window.draw(@@socks_slot_07_sprite)
+        window.draw(@@socks_slot_07_image_sprite)
+        window.draw(@@socks_slot_07_text)
+
+        window.draw(@@socks_slot_08_sprite)
+        window.draw(@@socks_slot_08_image_sprite)
+        window.draw(@@socks_slot_08_text)
+
+        window.draw(@@socks_slot_09_sprite)
+        window.draw(@@socks_slot_09_image_sprite)
+        window.draw(@@socks_slot_09_text)
+
+        window.draw(@@socks_slot_10_sprite)
+        window.draw(@@socks_slot_10_image_sprite)
+        window.draw(@@socks_slot_10_text)
+
+        window.draw(@@socks_slot_11_sprite)
+        window.draw(@@socks_slot_11_image_sprite)
+        window.draw(@@socks_slot_11_text)
+
+        window.draw(@@socks_slot_12_sprite)
+        window.draw(@@socks_slot_12_image_sprite)
+        window.draw(@@socks_slot_12_text)
+
+        window.draw(@@socks_slot_13_sprite)
+        window.draw(@@socks_slot_13_image_sprite)
+        window.draw(@@socks_slot_13_text)
+
+        window.draw(@@socks_slot_14_sprite)
+        window.draw(@@socks_slot_14_image_sprite)
+        window.draw(@@socks_slot_14_text)
+
+        window.draw(@@socks_slot_15_sprite)
+        window.draw(@@socks_slot_15_image_sprite)
+        window.draw(@@socks_slot_15_text)
+
+        if SF::Mouse.button_pressed?(SF::Mouse::Left)
+            ClothingTabSocks.clothes_mouse_handling(window)
+        end
+       end
+
+       def ClothingTabSocks.clothes_mouse_handling(window)
+        mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+        mouse_x = mouse_position.x
+        mouse_y = mouse_position.y
+        
+    
+        current_size = window.size
+        original_width = 800 
+        original_height = 600 
+
+        scale_x = (current_size.x.to_f / original_width)
+        scale_y = current_size.y.to_f / original_height
+        
+
+        #------------------------------------objects-------------------------------------------------
+
+            slot_01_x = @@socks_slot_01_sprite.position.x
+            slot_01_y = @@socks_slot_01_sprite.position.y
+            slot_01_width = @@socks_slot_01_sprite.size.x
+            slot_01_height = @@socks_slot_01_sprite.size.y
+
+            slot_02_x = @@socks_slot_02_sprite.position.x
+            slot_02_y = @@socks_slot_02_sprite.position.y
+            slot_02_width = @@socks_slot_02_sprite.size.x
+            slot_02_height = @@socks_slot_02_sprite.size.y
+
+            slot_03_x = @@socks_slot_03_sprite.position.x
+            slot_03_y = @@socks_slot_03_sprite.position.y
+            slot_03_width = @@socks_slot_03_sprite.size.x
+            slot_03_height = @@socks_slot_03_sprite.size.y
+
+            slot_04_x = @@socks_slot_04_sprite.position.x
+            slot_04_y = @@socks_slot_04_sprite.position.y
+            slot_04_width = @@socks_slot_04_sprite.size.x
+            slot_04_height = @@socks_slot_04_sprite.size.y
+
+            slot_05_x = @@socks_slot_05_sprite.position.x
+            slot_05_y = @@socks_slot_05_sprite.position.y
+            slot_05_width = @@socks_slot_05_sprite.size.x
+            slot_05_height = @@socks_slot_05_sprite.size.y
+
+            slot_06_x = @@socks_slot_06_sprite.position.x
+            slot_06_y = @@socks_slot_06_sprite.position.y
+            slot_06_width = @@socks_slot_06_sprite.size.x
+            slot_06_height = @@socks_slot_06_sprite.size.y
+
+            slot_07_x = @@socks_slot_07_sprite.position.x
+            slot_07_y = @@socks_slot_07_sprite.position.y
+            slot_07_width = @@socks_slot_07_sprite.size.x
+            slot_07_height = @@socks_slot_07_sprite.size.y
+
+            slot_08_x = @@socks_slot_08_sprite.position.x
+            slot_08_y = @@socks_slot_08_sprite.position.y
+            slot_08_width = @@socks_slot_08_sprite.size.x
+            slot_08_height = @@socks_slot_08_sprite.size.y
+
+            slot_09_x = @@socks_slot_09_sprite.position.x
+            slot_09_y = @@socks_slot_09_sprite.position.y
+            slot_09_width = @@socks_slot_09_sprite.size.x
+            slot_09_height = @@socks_slot_09_sprite.size.y
+
+            slot_10_x = @@socks_slot_10_sprite.position.x
+            slot_10_y = @@socks_slot_10_sprite.position.y
+            slot_10_width = @@socks_slot_10_sprite.size.x
+            slot_10_height = @@socks_slot_10_sprite.size.y
+
+            slot_11_x = @@socks_slot_11_sprite.position.x
+            slot_11_y = @@socks_slot_11_sprite.position.y
+            slot_11_width = @@socks_slot_11_sprite.size.x
+            slot_11_height = @@socks_slot_11_sprite.size.y
+
+            slot_12_x = @@socks_slot_12_sprite.position.x
+            slot_12_y = @@socks_slot_12_sprite.position.y
+            slot_12_width = @@socks_slot_12_sprite.size.x
+            slot_12_height = @@socks_slot_12_sprite.size.y
+
+            slot_13_x = @@socks_slot_13_sprite.position.x
+            slot_13_y = @@socks_slot_13_sprite.position.y
+            slot_13_width = @@socks_slot_13_sprite.size.x
+            slot_13_height = @@socks_slot_13_sprite.size.y
+
+            slot_14_x = @@socks_slot_14_sprite.position.x
+            slot_14_y = @@socks_slot_14_sprite.position.y
+            slot_14_width = @@socks_slot_14_sprite.size.x
+            slot_14_height = @@socks_slot_14_sprite.size.y
+
+            slot_15_x = @@socks_slot_15_sprite.position.x
+            slot_15_y = @@socks_slot_15_sprite.position.y
+            slot_15_width = @@socks_slot_15_sprite.size.x
+            slot_15_height = @@socks_slot_15_sprite.size.y
+        #---------------------------------------------------------------------------------------------
+        
+        if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
+           (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
+            if @@socks_slot_01 != nil   
+                t = 0 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_01.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+                
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
+           (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
+           
+            if @@socks_slot_02 != nil
+                t = 1 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_02.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
+           (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
+           
+            if @@socks_slot_03 != nil
+                t = 2 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_03.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
+           (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
+           
+            if @@socks_slot_04 != nil
+                t = 3 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_04.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
+           (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
+           
+            if @@socks_slot_05 != nil
+                t = 4 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_05.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
+           (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
+           
+            if @@socks_slot_06 != nil
+                t = 5 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_06.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
+           (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
+           
+            if @@socks_slot_07 != nil
+                t = 6 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_07.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
+           (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
+           
+            if @@socks_slot_08 != nil
+                t = 7 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_08.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
+           (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
+           
+            if @@socks_slot_09 != nil
+                t = 8 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_09.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
+           (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
+           
+            if @@socks_slot_10 != nil
+                t = 9 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_10.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
+           (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
+           
+            if @@socks_slot_11 != nil
+                t = 10 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_11.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
+           (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
+           
+            if @@socks_slot_12 != nil
+                t = 11 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_12.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
+           (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
+           
+            if @@socks_slot_13 != nil
+                t = 12 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_13.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
+           (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
+           
+            if @@socks_slot_14 != nil
+                t = 13 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_14.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
+           (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
+           
+            if @@socks_slot_15 != nil
+                t = 14 + ((@@page || 1) * 15) - 15
+                
+                @@owned_socks_array[t] = (Clothing::Socks.get_socks(
+                Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
+                Player::Appearance.change_socks(@@socks_slot_15.try &.name)
+                Sprites::Player.refresh_player_sprite(window)
+                @@owned_socks_array.uniq!
+            end
+            ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
         end
 
