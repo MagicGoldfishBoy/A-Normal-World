@@ -885,7 +885,9 @@ module Clothing
 
         @@nil_necklace = Necklace.new("No Necklace", 0, false, "nil", "plain", NIL_TEXTURE, "white")
 
-        @@ruby_necklace = Necklace.new("Ruby Necklace", 1, false, "ruby", "cool", RUBY_NECKLACE_TEXTURE, "red")
+        @@ruby_necklace = Necklace.new("Ruby Necklace", 1, false, "ruby", "fancy", RUBY_NECKLACE_TEXTURE, "red")
+        @@topaz_necklace = Necklace.new("Topaz Necklace", 2, false, "topaz", "fancy", TOPAZ_NECKLACE_TEXTURE, "yellow")
+        @@amber_necklace = Necklace.new("Amber Necklace", 3, false, "amber", "quirky", AMBER_NECKLACE_TEXTURE, "orange")
     end
 
     class Jacket
