@@ -37,6 +37,9 @@ module Player
         @@lvl_points = lvl_points
      end
 
+     property current_hp : Float64
+     property max_hp : Float64
+
      def Stats.name
         @@name
      end
