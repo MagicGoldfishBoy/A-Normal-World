@@ -13608,6 +13608,8 @@ module Inventory
         @@owned_necklace_array.push(Clothing::Necklace.get_necklace("No Necklace").not_nil!)
 
         @@owned_necklace_array.push(Clothing::Necklace.get_necklace("Ruby Necklace").not_nil!)
+        @@owned_necklace_array.push(Clothing::Necklace.get_necklace("Topaz Necklace").not_nil!)
+        @@owned_necklace_array.push(Clothing::Necklace.get_necklace("Amber Necklace").not_nil!)
         
         @@owned_necklace_array.uniq!
        #---------------------------------------------------------------------------------

@@ -488,6 +488,8 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
     #N                                        Necklace Textures                                         N
     #NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
          RUBY_NECKLACE_TEXTURE = SF::Texture.from_file("../graphics/ruby_necklace.png")
+         TOPAZ_NECKLACE_TEXTURE = SF::Texture.from_file("../graphics/topaz_necklace.png")
+         AMBER_NECKLACE_TEXTURE = SF::Texture.from_file("../graphics/amber_necklace.png")
     #JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
     #J                                         Jacket Textures                                          J
     #JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
