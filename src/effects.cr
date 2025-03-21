@@ -33,13 +33,17 @@ module Effects
     end
     
     class HealingEffects < Effects_Base
-       def self.heal_instant_10hp
+
+     HEALING_EFFECTS_HASH = Hash(String, HealingEffects).new
+     HEALING_EFFECTS_HASH["heal_instant_10hp"] = @@heal_instant_10hp
+
+     def self.heal_instant_10hp
         heal_instant_10hp = -> (stats : Player::Stats) { stats.current_hp += 10.0 
-    if stats.current_hp > stats.max_hp  
+      if stats.current_hp > stats.max_hp  
         stats.current_hp = stats.max_hp
-    end}
+      end}
         #{ puts "Healing the player!" }
-       end
+     end
 
         @@heal_instant_10hp = HealingEffects.new("Heal", 1, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_10hp)
     end
