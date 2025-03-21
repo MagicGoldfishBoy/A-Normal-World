@@ -484,7 +484,10 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
          BLUE_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/blue_knee_socks.png")
          PURPLE_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/purple_knee_socks.png")
          PINK_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/pink_knee_socks.png")
-
+    #NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+    #N                                        Necklace Textures                                         N
+    #NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+         RUBY_NECKLACE_TEXTURE = SF::Texture.from_file("../graphics/ruby_necklace.png")
     #JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
     #J                                         Jacket Textures                                          J
     #JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
