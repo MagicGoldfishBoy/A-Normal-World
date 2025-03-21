@@ -230,6 +230,22 @@ module Inventory
         @@clothing_makeup_category_text.string = ClothingTabMakeup.get_makeup_category
         Utility::StringUtilities.center_text(@@clothing_makeup_category_text)
 
+        @@necklace_tab = SF::RectangleShape.new(SF.vector2(100, 30))
+        @@necklace_tab.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_tab_text = SF::Text.new
+        @@necklace_tab_text.font = QUICKSAND
+        @@necklace_tab_text.character_size = 20
+        @@necklace_tab_text.color = SF::Color::Blue
+        @@necklace_tab_text.string = "Necklace"
+
+        @@clothing_necklace_category_text = SF::Text.new
+        @@clothing_necklace_category_text.font = QUICKSAND
+        @@clothing_necklace_category_text.character_size = 20
+        @@clothing_necklace_category_text.color = SF::Color::Blue
+        @@clothing_necklace_category_text.string = ClothingTabNecklace.get_necklace_category
+        Utility::StringUtilities.center_text(@@clothing_necklace_category_text)
+
         @@weapon_tab = SF::RectangleShape.new(SF.vector2(100, 50))
         @@weapon_tab.fill_color = SF.color(141, 163, 188)
 
@@ -324,6 +340,12 @@ module Inventory
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("makeup", window)
                 end
+            elsif @@tab == "Necklace"
+                InventoryManager.draw_universal_elements(window)
+                ClothingTabNecklace.draw_clothing_tab(window)
+                if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                    InventoryManager.universal_mouse_handling("necklace", window)
+                end
             end
           end
             if @@is_inventory_open == true && @@category == "Equipment"
@@ -395,6 +417,9 @@ module Inventory
             @@makeup_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(149 * max_scale))
             @@makeup_tab_text.position = @@makeup_tab.position + SF.vector2(10 * max_scale, 2 * max_scale)
 
+            @@necklace_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(213.5 * max_scale))
+            @@necklace_tab_text.position = @@necklace_tab.position + SF.vector2(4 * max_scale, 2 * max_scale)
+
 
             @@weapon_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, 0)
             @@weapon_tab_text.position = @@weapon_tab.position + SF.vector2(5 * max_scale, 7 * max_scale)
@@ -423,6 +448,8 @@ module Inventory
             @@clothing_glasses_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
             @@clothing_makeup_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+
+            @@clothing_necklace_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
             @@equipment_weapon_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
@@ -455,6 +482,8 @@ module Inventory
             window.draw(@@glasses_tab_text)
             window.draw(@@makeup_tab)
             window.draw(@@makeup_tab_text)
+            window.draw(@@necklace_tab)
+            window.draw(@@necklace_tab_text)
             end
             if @@category == "Equipment"
             window.draw(@@weapon_tab)
@@ -486,6 +515,8 @@ module Inventory
                  window.draw(@@clothing_glasses_category_text)
                 when  "Makeup"
                  window.draw(@@clothing_makeup_category_text)
+                when  "Necklace"
+                 window.draw(@@clothing_necklace_category_text)
                 when  "Weapon"
                  window.draw(@@equipment_weapon_category_text)
                 end
@@ -500,6 +531,7 @@ module Inventory
             ClothingTabHat.page=(1)
             ClothingTabGlasses.page=(1)
             ClothingTabMakeup.page=(1)
+            ClothingTabNecklace.page=(1)
         end
 
         def InventoryManager.open_shirt_tab(window)
@@ -562,6 +594,12 @@ module Inventory
             ClothingTabMakeup.assign_slot_textures(window)
         end
 
+        def InventoryManager.open_necklace_tab(window)
+            InventoryManager.reset_clothing_pages(window)
+            @@tab = "Necklace"
+            ClothingTabNecklace.assign_slot_textures(window)
+        end
+
         def InventoryManager.close_cosmetics_category(window)
             InventoryManager.reset_clothing_pages(window)
             ClothingTabShirt.is_open=(false)
@@ -574,6 +612,7 @@ module Inventory
             ClothingTabHat.is_open=(false)
             ClothingTabGlasses.is_open=(false)
             ClothingTabMakeup.is_open=(false)
+            ClothingTabNecklace.is_open=(false)
             ClothingTabMakeup.assign_slot_textures(window)
         end
 
@@ -589,6 +628,7 @@ module Inventory
             ClothingTabHat.is_open=(false)
             ClothingTabGlasses.is_open=(false)
             ClothingTabMakeup.is_open=(false)
+            ClothingTabNecklace.is_open=(false)
             ClothingTabMakeup.assign_slot_textures(window)
         end
 
@@ -657,6 +697,8 @@ module Inventory
                 InventoryManager.glasses_tab_mouse_handling(window)
             when "makeup"
                 InventoryManager.makeup_tab_mouse_handling(window)
+            when "necklace"
+                InventoryManager.necklace_tab_mouse_handling(window)
             when "weapon"
                 InventoryManager.weapon_tab_mouse_handling(window)
             end
@@ -743,6 +785,11 @@ module Inventory
                 makeup_tab_y = @@makeup_tab.position.y
                 makeup_tab_width = @@makeup_tab.size.x
                 makeup_tab_height = @@makeup_tab.size.y
+
+                necklace_tab_x = @@necklace_tab.position.x
+                necklace_tab_y = @@necklace_tab.position.y
+                necklace_tab_width = @@necklace_tab.size.x
+                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
 
             
@@ -823,6 +870,12 @@ module Inventory
             if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
                 (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
                 InventoryManager.open_makeup_tab(window)
+                sleep 0.15.seconds
+            end    
+
+            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
+                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
+                InventoryManager.open_necklace_tab(window)
                 sleep 0.15.seconds
             end    
 
@@ -926,6 +979,11 @@ module Inventory
                 makeup_tab_y = @@makeup_tab.position.y
                 makeup_tab_width = @@makeup_tab.size.x
                 makeup_tab_height = @@makeup_tab.size.y
+
+                necklace_tab_x = @@necklace_tab.position.x
+                necklace_tab_y = @@necklace_tab.position.y
+                necklace_tab_width = @@necklace_tab.size.x
+                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
 
             
@@ -1006,6 +1064,12 @@ module Inventory
             if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
                 (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
                 InventoryManager.open_makeup_tab(window)
+                sleep 0.15.seconds
+            end    
+
+            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
+                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
+                InventoryManager.open_necklace_tab(window)
                 sleep 0.15.seconds
             end    
 
@@ -1108,6 +1172,11 @@ module Inventory
                 makeup_tab_y = @@makeup_tab.position.y
                 makeup_tab_width = @@makeup_tab.size.x
                 makeup_tab_height = @@makeup_tab.size.y
+                
+                necklace_tab_x = @@necklace_tab.position.x
+                necklace_tab_y = @@necklace_tab.position.y
+                necklace_tab_width = @@necklace_tab.size.x
+                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1189,6 +1258,13 @@ module Inventory
                 (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
 
                 InventoryManager.open_makeup_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
+                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
+
+                InventoryManager.open_necklace_tab(window)
                 sleep 0.15.seconds
             end 
             
@@ -1295,6 +1371,11 @@ module Inventory
                 makeup_tab_y = @@makeup_tab.position.y
                 makeup_tab_width = @@makeup_tab.size.x
                 makeup_tab_height = @@makeup_tab.size.y
+                
+                necklace_tab_x = @@necklace_tab.position.x
+                necklace_tab_y = @@necklace_tab.position.y
+                necklace_tab_width = @@necklace_tab.size.x
+                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1376,6 +1457,13 @@ module Inventory
                 (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
 
                  InventoryManager.open_makeup_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
+                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
+
+                 InventoryManager.open_necklace_tab(window)
                  sleep 0.15.seconds
             end 
             
@@ -1482,6 +1570,11 @@ module Inventory
                 makeup_tab_y = @@makeup_tab.position.y
                 makeup_tab_width = @@makeup_tab.size.x
                 makeup_tab_height = @@makeup_tab.size.y
+                
+                necklace_tab_x = @@necklace_tab.position.x
+                necklace_tab_y = @@necklace_tab.position.y
+                necklace_tab_width = @@necklace_tab.size.x
+                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1563,6 +1656,13 @@ module Inventory
                 (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
 
                  InventoryManager.open_makeup_tab(window)
+                 sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
+                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
+
+                 InventoryManager.open_necklace_tab(window)
                  sleep 0.15.seconds
             end 
             
@@ -1669,6 +1769,11 @@ module Inventory
                 makeup_tab_y = @@makeup_tab.position.y
                 makeup_tab_width = @@makeup_tab.size.x
                 makeup_tab_height = @@makeup_tab.size.y
+                
+                necklace_tab_x = @@necklace_tab.position.x
+                necklace_tab_y = @@necklace_tab.position.y
+                necklace_tab_width = @@necklace_tab.size.x
+                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1751,6 +1856,13 @@ module Inventory
                 (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
 
                 InventoryManager.open_makeup_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
+                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
+
+                InventoryManager.open_necklace_tab(window)
                 sleep 0.15.seconds
             end 
             
@@ -1857,6 +1969,11 @@ module Inventory
                 makeup_tab_y = @@makeup_tab.position.y
                 makeup_tab_width = @@makeup_tab.size.x
                 makeup_tab_height = @@makeup_tab.size.y
+                
+                necklace_tab_x = @@necklace_tab.position.x
+                necklace_tab_y = @@necklace_tab.position.y
+                necklace_tab_width = @@necklace_tab.size.x
+                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -2038,6 +2155,11 @@ module Inventory
                 makeup_tab_y = @@makeup_tab.position.y
                 makeup_tab_width = @@makeup_tab.size.x
                 makeup_tab_height = @@makeup_tab.size.y
+                
+                necklace_tab_x = @@necklace_tab.position.x
+                necklace_tab_y = @@necklace_tab.position.y
+                necklace_tab_width = @@necklace_tab.size.x
+                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -2120,6 +2242,13 @@ module Inventory
                 (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
 
                 InventoryManager.open_makeup_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
+                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
+
+                InventoryManager.open_necklace_tab(window)
                 sleep 0.15.seconds
             end 
             
@@ -2226,6 +2355,11 @@ module Inventory
                 makeup_tab_y = @@makeup_tab.position.y
                 makeup_tab_width = @@makeup_tab.size.x
                 makeup_tab_height = @@makeup_tab.size.y
+                
+                necklace_tab_x = @@necklace_tab.position.x
+                necklace_tab_y = @@necklace_tab.position.y
+                necklace_tab_width = @@necklace_tab.size.x
+                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -2298,6 +2432,13 @@ module Inventory
                 (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
 
                 InventoryManager.open_makeup_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
+                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
+
+                InventoryManager.open_necklace_tab(window)
                 sleep 0.15.seconds
             end 
 
@@ -2524,6 +2665,198 @@ module Inventory
                  Utility::StringUtilities.center_text(@@clothing_makeup_category_text)
                  sleep 0.15.seconds
              end  
+        end
+
+        def InventoryManager.necklace_tab_mouse_handling(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+            
+        
+            current_size = window.size
+            original_width = 800 
+            original_height = 600 
+    
+            scale_x = (current_size.x.to_f / original_width)
+            scale_y = current_size.y.to_f / original_height
+    
+            #------------------------------------objects-------------------------------------------------
+                arrow_left_x = INVENTORY_LEFT_ARROW_SPRITE.position.x
+                arrow_left_y = INVENTORY_LEFT_ARROW_SPRITE.position.y
+                arrow_left_width = INVENTORY_LEFT_ARROW_SPRITE.size.x
+                arrow_left_height = INVENTORY_LEFT_ARROW_SPRITE.size.y
+
+                arrow_right_x = INVENTORY_RIGHT_ARROW_SPRITE.position.x
+                arrow_right_y = INVENTORY_RIGHT_ARROW_SPRITE.position.y
+                arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
+                arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
+
+
+                sort_button_x = @@clothing_sort_button_sprite.position.x
+                sort_button_y = @@clothing_sort_button_sprite.position.y
+                sort_button_width = @@clothing_sort_button_sprite.size.x
+                sort_button_height = @@clothing_sort_button_sprite.size.y
+    
+                category_button_x = @@clothing_shirt_category_box.position.x
+                category_button_y = @@clothing_shirt_category_box.position.y
+                category_button_width = @@clothing_shirt_category_box.size.x
+                category_button_height = @@clothing_shirt_category_box.size.y
+                
+                shirt_tab_x = @@shirt_tab.position.x
+                shirt_tab_y = @@shirt_tab.position.y
+                shirt_tab_width = @@shirt_tab.size.x
+                shirt_tab_height = @@shirt_tab.size.y
+                
+                pants_tab_x = @@pants_tab.position.x
+                pants_tab_y = @@pants_tab.position.y
+                pants_tab_width = @@pants_tab.size.x
+                pants_tab_height = @@pants_tab.size.y
+                
+                jacket_tab_x = @@jacket_tab.position.x
+                jacket_tab_y = @@jacket_tab.position.y
+                jacket_tab_width = @@jacket_tab.size.x
+                jacket_tab_height = @@jacket_tab.size.y
+                
+                shoes_tab_x = @@shoes_tab.position.x
+                shoes_tab_y = @@shoes_tab.position.y
+                shoes_tab_width = @@shoes_tab.size.x
+                shoes_tab_height = @@shoes_tab.size.y
+                
+                socks_tab_x = @@socks_tab.position.x
+                socks_tab_y = @@socks_tab.position.y
+                socks_tab_width = @@socks_tab.size.x
+                socks_tab_height = @@socks_tab.size.y
+                
+                gloves_tab_x = @@gloves_tab.position.x
+                gloves_tab_y = @@gloves_tab.position.y
+                gloves_tab_width = @@gloves_tab.size.x
+                gloves_tab_height = @@gloves_tab.size.y
+                
+                earrings_tab_x = @@earrings_tab.position.x
+                earrings_tab_y = @@earrings_tab.position.y
+                earrings_tab_width = @@earrings_tab.size.x
+                earrings_tab_height = @@earrings_tab.size.y
+                
+                hat_tab_x = @@hat_tab.position.x
+                hat_tab_y = @@hat_tab.position.y
+                hat_tab_width = @@hat_tab.size.x
+                hat_tab_height = @@hat_tab.size.y
+                
+                glasses_tab_x = @@glasses_tab.position.x
+                glasses_tab_y = @@glasses_tab.position.y
+                glasses_tab_width = @@glasses_tab.size.x
+                glasses_tab_height = @@glasses_tab.size.y
+                
+                makeup_tab_x = @@makeup_tab.position.x
+                makeup_tab_y = @@makeup_tab.position.y
+                makeup_tab_width = @@makeup_tab.size.x
+                makeup_tab_height = @@makeup_tab.size.y
+            #---------------------------------------------------------------------------------------------
+            if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
+                (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
+                if ClothingTabNecklace.page == nil
+                    ClothingTabNecklace.page = 1
+                end
+                 if ClothingTabNecklace.page.not_nil! > 1
+                    ClothingTabNecklace.page=(ClothingTabNecklace.page.not_nil! - 1)
+                 end
+                 ClothingTabNecklace.assign_slot_textures(window)
+                 sleep 0.15.seconds
+            end
+             
+            if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+                (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
+                 if ClothingTabNecklace.page == nil
+                    ClothingTabNecklace.page = 1
+                 end
+                 if ClothingTabNecklace.page.not_nil! <= 5
+                    ClothingTabNecklace.page=(ClothingTabNecklace.page.not_nil! + 1)
+                 end
+                 ClothingTabNecklace.assign_slot_textures(window)
+                 sleep 0.15.seconds
+            end  
+
+            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
+                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
+
+               InventoryManager.open_shirt_tab(window)
+
+               sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
+                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
+
+                InventoryManager.open_pants_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
+                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
+
+                InventoryManager.open_jacket_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
+                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
+
+                InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+
+                InventoryManager.open_socks_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
+                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
+
+                InventoryManager.open_glasses_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
+                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
+
+                InventoryManager.open_makeup_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
+                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
+
+                InventoryManager.open_hat_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
+                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
+
+                InventoryManager.open_gloves_tab(window)
+                sleep 0.15.seconds
+            end 
+            
+            if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
+                (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
+                if ClothingTabNecklace.get_necklace_category == "Color"
+                 Utility::ArrayUtilities.organise_array_by_color(window, ClothingTabNecklace.owned_necklace_array, ClothingTabNecklace)
+                elsif "Type"
+                 ClothingTabNecklace.organise_owned_necklace_array_by_type(window)
+                end
+                 sleep 0.15.seconds
+            end        
+     
+            if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
+                (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
+                 ClothingTabNecklace.change_necklace_sort_category
+                 @@clothing_necklace_category_text.string = ClothingTabNecklace.get_necklace_category
+                 Utility::StringUtilities.center_text(@@clothing_necklace_category_text)
+                 sleep 0.15.seconds
+            end  
         end
 
         def InventoryManager.weapon_tab_mouse_handling(window)
@@ -13249,6 +13582,1037 @@ module Inventory
        end
 
     end
+
+    class ClothingTabNecklace
+        @@owned_necklace_array = [] of Clothing::Necklace
+
+        @@necklace_sorting_category = "Type"
+
+        @@necklace_slot_01 : Clothing::Necklace? = nil
+        @@necklace_slot_02 : Clothing::Necklace? = nil
+        @@necklace_slot_03 : Clothing::Necklace? = nil
+        @@necklace_slot_04 : Clothing::Necklace? = nil
+        @@necklace_slot_05 : Clothing::Necklace? = nil
+        @@necklace_slot_06 : Clothing::Necklace? = nil
+        @@necklace_slot_07 : Clothing::Necklace? = nil
+        @@necklace_slot_08 : Clothing::Necklace? = nil
+        @@necklace_slot_09 : Clothing::Necklace? = nil
+        @@necklace_slot_10 : Clothing::Necklace? = nil
+        @@necklace_slot_11 : Clothing::Necklace? = nil
+        @@necklace_slot_12 : Clothing::Necklace? = nil
+        @@necklace_slot_13 : Clothing::Necklace? = nil
+        @@necklace_slot_14 : Clothing::Necklace? = nil
+        @@necklace_slot_15 : Clothing::Necklace? = nil
+
+       #---------------------------------debug-------------------------------------------
+        @@owned_necklace_array.push(Clothing::Necklace.get_necklace("No Necklace").not_nil!)
+
+        @@owned_necklace_array.push(Clothing::Necklace.get_necklace("Ruby Necklace").not_nil!)
+        
+        @@owned_necklace_array.uniq!
+       #---------------------------------------------------------------------------------
+
+       #--------------------------------objects------------------------------------------
+        INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
+        INVENTORY_BOX.fill_color = SF.color( 137, 170, 208 )
+
+        
+        @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+
+        @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
+        @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_necklace_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
+        @@clothing_necklace_category_box.fill_color = SF.color(161, 183, 208)
+
+        @@clothing_sort_button_text = SF::Text.new
+        @@clothing_sort_button_text.font = QUICKSAND
+        @@clothing_sort_button_text.character_size = 20
+        @@clothing_sort_button_text.color = SF::Color::Blue
+        @@clothing_sort_button_text.string = "Sort"
+
+
+        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@necklace_tab.fill_color = SF.color(141, 163, 188)
+
+        @@necklace_tab_text = SF::Text.new
+        @@necklace_tab_text.font = QUICKSAND
+        @@necklace_tab_text.character_size = 20
+        @@necklace_tab_text.color = SF::Color::Blue
+        @@necklace_tab_text.string = "Necklaces"
+
+        @@necklace_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+        @@necklace_tab.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_tab_text = SF::Text.new
+        @@necklace_tab_text.font = QUICKSAND
+        @@necklace_tab_text.character_size = 20
+        @@necklace_tab_text.color = SF::Color::Blue
+        @@necklace_tab_text.string = "Necklace"
+
+
+        @@necklace_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_01_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_01_text = SF::Text.new
+        @@necklace_slot_01_text.font = QUICKSAND
+        @@necklace_slot_01_text.character_size = 12
+        @@necklace_slot_01_text.color = SF::Color::Blue
+
+        @@necklace_slot_01_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_02_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_02_text = SF::Text.new
+        @@necklace_slot_02_text.font = QUICKSAND
+        @@necklace_slot_02_text.character_size = 12
+        @@necklace_slot_02_text.color = SF::Color::Blue
+
+        @@necklace_slot_02_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_03_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_03_text = SF::Text.new
+        @@necklace_slot_03_text.font = QUICKSAND
+        @@necklace_slot_03_text.character_size = 12
+        @@necklace_slot_03_text.color = SF::Color::Blue
+
+        @@necklace_slot_03_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_04_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_04_text = SF::Text.new
+        @@necklace_slot_04_text.font = QUICKSAND
+        @@necklace_slot_04_text.character_size = 12
+        @@necklace_slot_04_text.color = SF::Color::Blue
+
+        @@necklace_slot_04_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_05_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_05_text = SF::Text.new
+        @@necklace_slot_05_text.font = QUICKSAND
+        @@necklace_slot_05_text.character_size = 12
+        @@necklace_slot_05_text.color = SF::Color::Blue
+
+        @@necklace_slot_05_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_06_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_06_text = SF::Text.new
+        @@necklace_slot_06_text.font = QUICKSAND
+        @@necklace_slot_06_text.character_size = 12
+        @@necklace_slot_06_text.color = SF::Color::Blue
+        
+        @@necklace_slot_06_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_07_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_07_text = SF::Text.new
+        @@necklace_slot_07_text.font = QUICKSAND
+        @@necklace_slot_07_text.character_size = 12
+        @@necklace_slot_07_text.color = SF::Color::Blue
+
+        @@necklace_slot_07_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_08_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_08_text = SF::Text.new
+        @@necklace_slot_08_text.font = QUICKSAND
+        @@necklace_slot_08_text.character_size = 12
+        @@necklace_slot_08_text.color = SF::Color::Blue
+
+        @@necklace_slot_08_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_09_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_09_text = SF::Text.new
+        @@necklace_slot_09_text.font = QUICKSAND
+        @@necklace_slot_09_text.character_size = 12
+        @@necklace_slot_09_text.color = SF::Color::Blue
+
+        @@necklace_slot_09_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_10_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_10_text = SF::Text.new
+        @@necklace_slot_10_text.font = QUICKSAND
+        @@necklace_slot_10_text.character_size = 12
+        @@necklace_slot_10_text.color = SF::Color::Blue
+
+        @@necklace_slot_10_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_11_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_11_text = SF::Text.new
+        @@necklace_slot_11_text.font = QUICKSAND
+        @@necklace_slot_11_text.character_size = 12
+        @@necklace_slot_11_text.color = SF::Color::Blue
+
+        @@necklace_slot_11_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_12_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_12_text = SF::Text.new
+        @@necklace_slot_12_text.font = QUICKSAND
+        @@necklace_slot_12_text.character_size = 12
+        @@necklace_slot_12_text.color = SF::Color::Blue
+
+        @@necklace_slot_12_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_13_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_13_text = SF::Text.new
+        @@necklace_slot_13_text.font = QUICKSAND
+        @@necklace_slot_13_text.character_size = 12
+        @@necklace_slot_13_text.color = SF::Color::Blue
+
+        @@necklace_slot_13_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_14_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_14_text = SF::Text.new
+        @@necklace_slot_14_text.font = QUICKSAND
+        @@necklace_slot_14_text.character_size = 12
+        @@necklace_slot_14_text.color = SF::Color::Blue
+
+        @@necklace_slot_14_image_sprite = SF::Sprite.new
+
+
+        @@necklace_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+        @@necklace_slot_15_sprite.fill_color = SF.color(161, 183, 208)
+
+        @@necklace_slot_15_text = SF::Text.new
+        @@necklace_slot_15_text.font = QUICKSAND
+        @@necklace_slot_15_text.character_size = 12
+        @@necklace_slot_15_text.color = SF::Color::Blue
+
+        @@necklace_slot_15_image_sprite = SF::Sprite.new
+
+       #---------------------------------------------------------------------------------
+
+       def initialize(is_open : Bool, page : Int32)
+        @@is_open = is_open
+        @@page = page
+       end
+
+       def ClothingTabNecklace.is_open
+        @@is_open
+       end
+
+       def ClothingTabNecklace.page
+        @@page
+       end
+
+       def ClothingTabNecklace.is_open=(this)
+        @@is_open = this
+       end
+
+       def ClothingTabNecklace.page=(this)
+        @@page = this
+       end
+
+       def ClothingTabNecklace.owned_necklace_array
+        @@owned_necklace_array
+       end
+
+       def ClothingTabNecklace.owned_necklace_array=(this)
+        @@owned_necklace_array = this
+       end
+
+       def ClothingTabNecklace.push_to_owned_necklace_array(this)
+        @@owned_necklace_array.push(this)
+       end
+
+       def ClothingTabNecklace.change_necklace_sort_category
+        case @@necklace_sorting_category
+        when "Type"
+            @@necklace_sorting_category = "Color"
+        when "Color"
+            @@necklace_sorting_category = "Type"
+        end
+       end
+
+       def ClothingTabNecklace.get_necklace_category
+        return @@necklace_sorting_category
+       end
+
+       def ClothingTabNecklace.organise_owned_necklace_array_by_type(window)
+        temp_clothing_array_01 = [] of Clothing::Necklace
+        @@owned_necklace_array.each { |necklace| if necklace.necklace_type.includes?("eye") == true
+        temp_clothing_array_01.push(necklace)
+        end}
+
+        @@owned_necklace_array.each { |necklace| if necklace.necklace_type.includes?("cheek") == true
+        temp_clothing_array_01.push(necklace)
+        end}
+
+        @@owned_necklace_array.each { |necklace| if necklace.necklace_type.includes?("lips") == true
+        temp_clothing_array_01.push(necklace)
+        end}
+
+        @@owned_necklace_array.each { |necklace| if necklace.necklace_type.includes?("face") == true
+        temp_clothing_array_01.push(necklace)
+        end}
+
+        @@owned_necklace_array.clear
+        @@owned_necklace_array = temp_clothing_array_01
+        @@owned_necklace_array.uniq!
+        ClothingTabNecklace.assign_slot_textures(window)
+       end
+
+       def ClothingTabNecklace.initialize_clothing_tab(window)
+        @@page = 1
+        INVENTORY_BOX.position = SF.vector2(20, 40)  
+       end
+
+       def ClothingTabNecklace.assign_slot_textures(window)
+        if @@page == nil
+            @@page = 1
+        end
+        @@owned_necklace_array.uniq!
+            t = (@@page.not_nil! - 1) * 15
+            if t < @@owned_necklace_array.size 
+             @@necklace_slot_01_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_01_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_01 = @@owned_necklace_array[t]
+            else 
+                @@necklace_slot_01_image_sprite.texture = NIL_TEXTURE
+                @@necklace_slot_01_text.string = ""
+                @@necklace_slot_01 = nil
+            end
+            t = (@@page.not_nil! - 1) * 15 + 1
+            if t < @@owned_necklace_array.size 
+             @@necklace_slot_02_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_02_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_02 = @@owned_necklace_array[t]
+            else
+                @@necklace_slot_02_image_sprite.texture = NIL_TEXTURE
+                @@necklace_slot_02_text.string = ""
+                @@necklace_slot_02 = nil
+            end
+            t = 2 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size 
+             @@necklace_slot_03_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_03_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_03 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_03_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_03_text.string = ""
+             @@necklace_slot_03 = nil
+            end
+            t = 3 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_04_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_04_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_04 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_04_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_04_text.string = ""
+             @@necklace_slot_04 = nil
+            end
+            t = 4 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_05_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_05_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_05 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_05_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_05_text.string = ""
+             @@necklace_slot_05 = nil
+            end
+            t = 5 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_06_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_06_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_06 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_06_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_06_text.string = ""
+             @@necklace_slot_06 = nil
+            end
+            t = 6 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_07_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_07_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_07 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_07_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_07_text.string = ""
+             @@necklace_slot_07 = nil
+            end
+            t = 7 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_08_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_08_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_08 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_08_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_08_text.string = ""
+             @@necklace_slot_08 = nil
+            end
+            t = 8 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_09_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_09_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_09 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_09_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_09_text.string = ""
+             @@necklace_slot_09 = nil
+            end
+            t = 9 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_10_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_10_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_10 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_10_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_10_text.string = ""
+             @@necklace_slot_10 = nil
+            end
+            t = 10 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_11_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_11_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_11 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_11_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_11_text.string = ""
+             @@necklace_slot_11 = nil
+            end
+            t = 11 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_12_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_12_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_12 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_12_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_12_text.string = ""
+             @@necklace_slot_12 = nil
+            end
+            t = 12 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_13_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_13_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_13 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_13_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_13_text.string = ""
+             @@necklace_slot_13 = nil
+            end
+            t = 13 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_14_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_14_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_14 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_14_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_14_text.string = ""
+             @@necklace_slot_14 = nil
+            end
+            t = 14 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_necklace_array.size
+             @@necklace_slot_15_image_sprite.texture = @@owned_necklace_array[t].texture
+             @@necklace_slot_15_text.string = @@owned_necklace_array[t].name
+             @@necklace_slot_15 = @@owned_necklace_array[t]
+            else
+             @@necklace_slot_15_image_sprite.texture = NIL_TEXTURE
+             @@necklace_slot_15_text.string = ""
+             @@necklace_slot_15 = nil
+            end
+        @@owned_necklace_array.uniq!
+       end
+       
+
+       def ClothingTabNecklace.draw_clothing_tab(window)
+            current_size = window.size
+            original_width = 800 
+            original_height = 600
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+    
+            scale_ratio = [scale_x, scale_y].min
+            max_scale = 1.5
+            clamped_scale = [scale_ratio, max_scale].min
+
+        window.view = window.default_view
+
+        INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
+        INVENTORY_BOX.scale = SF.vector2(1, 1)
+
+
+        @@necklace_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
+        @@necklace_slot_01_sprite.scale = SF.vector2(1, 1)
+        
+        @@necklace_slot_01_image_sprite.position = @@necklace_slot_01_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_01_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_01_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+
+        @@necklace_slot_01_text.position = @@necklace_slot_01_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_01_text)
+        
+
+        @@necklace_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
+        @@necklace_slot_02_sprite.scale = SF.vector2(1, 1)
+        
+        @@necklace_slot_02_image_sprite.position = @@necklace_slot_02_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_02_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_02_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+
+        @@necklace_slot_02_text.position = @@necklace_slot_02_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_02_text)
+        
+
+        @@necklace_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
+        @@necklace_slot_03_sprite.scale = SF.vector2(1, 1)
+        
+        @@necklace_slot_03_image_sprite.position = @@necklace_slot_03_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_03_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_03_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+
+        @@necklace_slot_03_text.position = @@necklace_slot_03_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_03_text)
+        
+
+        @@necklace_slot_04_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 40 * max_scale)
+        @@necklace_slot_04_sprite.scale = SF.vector2(1, 1)
+
+        @@necklace_slot_04_text.position = @@necklace_slot_04_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_04_text)
+        
+        @@necklace_slot_04_image_sprite.position = @@necklace_slot_04_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_04_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_04_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+
+
+        @@necklace_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
+        @@necklace_slot_05_sprite.scale = SF.vector2(1, 1)
+
+        @@necklace_slot_05_text.position = @@necklace_slot_05_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_05_text)
+        
+        @@necklace_slot_05_image_sprite.position = @@necklace_slot_05_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_05_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_05_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+        
+
+        @@necklace_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
+        @@necklace_slot_06_sprite.scale = SF.vector2(1, 1)
+
+        @@necklace_slot_06_text.position = @@necklace_slot_06_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_06_text)
+        
+        @@necklace_slot_06_image_sprite.position = @@necklace_slot_06_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_06_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_06_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+        
+
+        @@necklace_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
+        @@necklace_slot_07_sprite.scale = SF.vector2(1, 1)
+        
+        @@necklace_slot_07_text.position = @@necklace_slot_07_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_07_text)
+        
+        @@necklace_slot_07_image_sprite.position = @@necklace_slot_07_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_07_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_07_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+        
+
+        @@necklace_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
+        @@necklace_slot_08_sprite.scale = SF.vector2(1, 1)
+                
+        @@necklace_slot_08_text.position = @@necklace_slot_08_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_08_text)
+        
+        @@necklace_slot_08_image_sprite.position = @@necklace_slot_08_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_08_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_08_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+        
+
+        @@necklace_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
+        @@necklace_slot_09_sprite.scale = SF.vector2(1, 1)
+                
+        @@necklace_slot_09_text.position = @@necklace_slot_09_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_09_text)
+        
+        @@necklace_slot_09_image_sprite.position = @@necklace_slot_09_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_09_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_09_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+        
+
+        @@necklace_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
+        @@necklace_slot_10_sprite.scale = SF.vector2(1, 1)
+                        
+        @@necklace_slot_10_text.position = @@necklace_slot_10_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_10_text)
+        
+        @@necklace_slot_10_image_sprite.position = @@necklace_slot_10_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_10_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_10_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+        
+
+        @@necklace_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
+        @@necklace_slot_11_sprite.scale = SF.vector2(1, 1)
+                        
+        @@necklace_slot_11_text.position = @@necklace_slot_11_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_11_text)
+        
+        @@necklace_slot_11_image_sprite.position = @@necklace_slot_11_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_11_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_11_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+        
+
+        @@necklace_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
+        @@necklace_slot_12_sprite.scale = SF.vector2(1, 1)
+                        
+        @@necklace_slot_12_text.position = @@necklace_slot_12_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_12_text)
+        
+        @@necklace_slot_12_image_sprite.position = @@necklace_slot_12_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_12_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_12_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+        
+
+        @@necklace_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
+        @@necklace_slot_13_sprite.scale = SF.vector2(1, 1)
+        
+        @@necklace_slot_13_text.position = @@necklace_slot_13_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_13_text)
+        
+        @@necklace_slot_13_image_sprite.position = @@necklace_slot_13_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_13_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_13_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+        
+
+        @@necklace_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
+        @@necklace_slot_14_sprite.scale = SF.vector2(1, 1)
+                        
+        @@necklace_slot_14_text.position = @@necklace_slot_14_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_14_text)
+        
+        @@necklace_slot_14_image_sprite.position = @@necklace_slot_14_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_14_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_14_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+        
+
+        @@necklace_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
+        @@necklace_slot_15_sprite.scale = SF.vector2(1, 1)
+                        
+        @@necklace_slot_15_text.position = @@necklace_slot_15_sprite.position + SF.vector2(25 * max_scale, 55 * max_scale)
+        Utility::StringUtilities.center_text(@@necklace_slot_15_text)
+        
+        @@necklace_slot_15_image_sprite.position = @@necklace_slot_15_sprite.position - SF.vector2(40 * max_scale, 25 * max_scale)
+        @@necklace_slot_15_image_sprite.scale = SF.vector2(2, 2)
+        @@necklace_slot_15_image_sprite.texture_rect = SF.int_rect(288, 638, 96, 100)
+
+
+        window.draw(@@necklace_slot_01_sprite)
+        window.draw(@@necklace_slot_01_image_sprite)
+        window.draw(@@necklace_slot_01_text)
+
+        window.draw(@@necklace_slot_02_sprite)
+        window.draw(@@necklace_slot_02_image_sprite)
+        window.draw(@@necklace_slot_02_text)
+
+        window.draw(@@necklace_slot_03_sprite)
+        window.draw(@@necklace_slot_03_image_sprite)
+        window.draw(@@necklace_slot_03_text)
+        
+        window.draw(@@necklace_slot_04_sprite)
+        window.draw(@@necklace_slot_04_image_sprite)
+        window.draw(@@necklace_slot_04_text)
+
+        window.draw(@@necklace_slot_05_sprite)
+        window.draw(@@necklace_slot_05_image_sprite)
+        window.draw(@@necklace_slot_05_text)
+
+        window.draw(@@necklace_slot_06_sprite)
+        window.draw(@@necklace_slot_06_image_sprite)
+        window.draw(@@necklace_slot_06_text)
+
+        window.draw(@@necklace_slot_07_sprite)
+        window.draw(@@necklace_slot_07_image_sprite)
+        window.draw(@@necklace_slot_07_text)
+
+        window.draw(@@necklace_slot_08_sprite)
+        window.draw(@@necklace_slot_08_image_sprite)
+        window.draw(@@necklace_slot_08_text)
+
+        window.draw(@@necklace_slot_09_sprite)
+        window.draw(@@necklace_slot_09_image_sprite)
+        window.draw(@@necklace_slot_09_text)
+
+        window.draw(@@necklace_slot_10_sprite)
+        window.draw(@@necklace_slot_10_image_sprite)
+        window.draw(@@necklace_slot_10_text)
+
+        window.draw(@@necklace_slot_11_sprite)
+        window.draw(@@necklace_slot_11_image_sprite)
+        window.draw(@@necklace_slot_11_text)
+
+        window.draw(@@necklace_slot_12_sprite)
+        window.draw(@@necklace_slot_12_image_sprite)
+        window.draw(@@necklace_slot_12_text)
+
+        window.draw(@@necklace_slot_13_sprite)
+        window.draw(@@necklace_slot_13_image_sprite)
+        window.draw(@@necklace_slot_13_text)
+
+        window.draw(@@necklace_slot_14_sprite)
+        window.draw(@@necklace_slot_14_image_sprite)
+        window.draw(@@necklace_slot_14_text)
+
+        window.draw(@@necklace_slot_15_sprite)
+        window.draw(@@necklace_slot_15_image_sprite)
+        window.draw(@@necklace_slot_15_text)
+
+        if SF::Mouse.button_pressed?(SF::Mouse::Left)
+            ClothingTabNecklace.clothes_mouse_handling(window)
+        end
+       end
+
+       def ClothingTabNecklace.clothes_mouse_handling(window)
+        mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+        mouse_x = mouse_position.x
+        mouse_y = mouse_position.y
+        
+    
+        current_size = window.size
+        original_width = 800 
+        original_height = 600 
+
+        scale_x = (current_size.x.to_f / original_width)
+        scale_y = current_size.y.to_f / original_height
+        
+
+        #------------------------------------objects-------------------------------------------------
+
+            slot_01_x = @@necklace_slot_01_sprite.position.x
+            slot_01_y = @@necklace_slot_01_sprite.position.y
+            slot_01_width = @@necklace_slot_01_sprite.size.x
+            slot_01_height = @@necklace_slot_01_sprite.size.y
+
+            slot_02_x = @@necklace_slot_02_sprite.position.x
+            slot_02_y = @@necklace_slot_02_sprite.position.y
+            slot_02_width = @@necklace_slot_02_sprite.size.x
+            slot_02_height = @@necklace_slot_02_sprite.size.y
+
+            slot_03_x = @@necklace_slot_03_sprite.position.x
+            slot_03_y = @@necklace_slot_03_sprite.position.y
+            slot_03_width = @@necklace_slot_03_sprite.size.x
+            slot_03_height = @@necklace_slot_03_sprite.size.y
+
+            slot_04_x = @@necklace_slot_04_sprite.position.x
+            slot_04_y = @@necklace_slot_04_sprite.position.y
+            slot_04_width = @@necklace_slot_04_sprite.size.x
+            slot_04_height = @@necklace_slot_04_sprite.size.y
+
+            slot_05_x = @@necklace_slot_05_sprite.position.x
+            slot_05_y = @@necklace_slot_05_sprite.position.y
+            slot_05_width = @@necklace_slot_05_sprite.size.x
+            slot_05_height = @@necklace_slot_05_sprite.size.y
+
+            slot_06_x = @@necklace_slot_06_sprite.position.x
+            slot_06_y = @@necklace_slot_06_sprite.position.y
+            slot_06_width = @@necklace_slot_06_sprite.size.x
+            slot_06_height = @@necklace_slot_06_sprite.size.y
+
+            slot_07_x = @@necklace_slot_07_sprite.position.x
+            slot_07_y = @@necklace_slot_07_sprite.position.y
+            slot_07_width = @@necklace_slot_07_sprite.size.x
+            slot_07_height = @@necklace_slot_07_sprite.size.y
+
+            slot_08_x = @@necklace_slot_08_sprite.position.x
+            slot_08_y = @@necklace_slot_08_sprite.position.y
+            slot_08_width = @@necklace_slot_08_sprite.size.x
+            slot_08_height = @@necklace_slot_08_sprite.size.y
+
+            slot_09_x = @@necklace_slot_09_sprite.position.x
+            slot_09_y = @@necklace_slot_09_sprite.position.y
+            slot_09_width = @@necklace_slot_09_sprite.size.x
+            slot_09_height = @@necklace_slot_09_sprite.size.y
+
+            slot_10_x = @@necklace_slot_10_sprite.position.x
+            slot_10_y = @@necklace_slot_10_sprite.position.y
+            slot_10_width = @@necklace_slot_10_sprite.size.x
+            slot_10_height = @@necklace_slot_10_sprite.size.y
+
+            slot_11_x = @@necklace_slot_11_sprite.position.x
+            slot_11_y = @@necklace_slot_11_sprite.position.y
+            slot_11_width = @@necklace_slot_11_sprite.size.x
+            slot_11_height = @@necklace_slot_11_sprite.size.y
+
+            slot_12_x = @@necklace_slot_12_sprite.position.x
+            slot_12_y = @@necklace_slot_12_sprite.position.y
+            slot_12_width = @@necklace_slot_12_sprite.size.x
+            slot_12_height = @@necklace_slot_12_sprite.size.y
+
+            slot_13_x = @@necklace_slot_13_sprite.position.x
+            slot_13_y = @@necklace_slot_13_sprite.position.y
+            slot_13_width = @@necklace_slot_13_sprite.size.x
+            slot_13_height = @@necklace_slot_13_sprite.size.y
+
+            slot_14_x = @@necklace_slot_14_sprite.position.x
+            slot_14_y = @@necklace_slot_14_sprite.position.y
+            slot_14_width = @@necklace_slot_14_sprite.size.x
+            slot_14_height = @@necklace_slot_14_sprite.size.y
+
+            slot_15_x = @@necklace_slot_15_sprite.position.x
+            slot_15_y = @@necklace_slot_15_sprite.position.y
+            slot_15_width = @@necklace_slot_15_sprite.size.x
+            slot_15_height = @@necklace_slot_15_sprite.size.y
+        #---------------------------------------------------------------------------------------------
+        if @@page == nil
+            @@page = 1
+        end
+        if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
+           (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
+            if @@necklace_slot_01 != nil   
+                t = 0 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_01.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
+           (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
+           
+            if @@necklace_slot_02 != nil
+                t = 1 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_02.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
+           (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
+           
+            if @@necklace_slot_03 != nil
+                t = 2 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_03.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
+           (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
+           
+            if @@necklace_slot_04 != nil
+                t = 3 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_04.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
+           (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
+           
+            if @@necklace_slot_05 != nil
+                t = 4 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_05.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
+           (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
+           
+            if @@necklace_slot_06 != nil
+                t = 5 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_06.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
+           (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
+           
+            if @@necklace_slot_07 != nil
+                t = 6 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_07.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
+           (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
+           
+            if @@necklace_slot_08 != nil
+                t = 7 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_08.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
+           (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
+           
+            if @@necklace_slot_09 != nil
+                t = 8 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_09.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
+           (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
+           
+            if @@necklace_slot_10 != nil
+                t = 9 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_10.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
+           (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
+           
+            if @@necklace_slot_11 != nil
+                t = 10 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_11.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
+           (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
+           
+            if @@necklace_slot_12 != nil
+                t = 11 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_12.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
+           (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
+           
+            if @@necklace_slot_13 != nil
+                t = 12 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_13.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
+           (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
+           
+            if @@necklace_slot_14 != nil
+                t = 13 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_14.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+        
+        if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
+           (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
+           
+            if @@necklace_slot_15 != nil
+                t = 14 + (@@page.not_nil! * 15) - 15
+                
+                @@owned_necklace_array[t] = (Clothing::Necklace.get_necklace(Player::Appearance.get_clothing("necklace").not_nil!).not_nil!)
+                Player::Appearance.change_necklace(@@necklace_slot_15.not_nil!.name)
+                Sprites::Player.refresh_player_sprite(window)
+            end
+            ClothingTabNecklace.assign_slot_textures(window)
+            sleep 0.15.seconds
+        end
+
+       end
+
+    end
+
 
     class WeaponTab
         @@owned_weapon_array = [] of Equipment::Weapon

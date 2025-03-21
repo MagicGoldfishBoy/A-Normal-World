@@ -817,6 +817,77 @@ module Clothing
         @@pink_makeup_button = Makeup.new("Pink Makeup Button", 4, false, "eye", "cool", PINK_MAKEUP_BUTTON_TEXTURE, "pink")
     end
 
+    class Necklace
+        NECKLACE_ARRAY = [] of Necklace
+        def initialize(name : String, id : Int32, is_owned : Bool, necklace_type : String, style : String, texture : SF::Texture, color : String)
+         @name = name
+         @@name = name
+         @id = id
+         @is_owned = is_owned
+         @necklace_type = necklace_type
+         @style = style
+         @texture = texture
+         @color = color
+         NECKLACE_ARRAY.push(self)
+        end
+ 
+        getter name : String
+        getter id : Int32
+        getter necklace_type : String
+        getter style : String
+        getter texture : SF::Texture
+        getter color : String
+        property is_owned : Bool
+ 
+        def Necklace.name
+         @@name
+        end
+ 
+        def Necklace.id
+         @@id
+        end
+ 
+        def Necklace.is_owned
+         @@is_owned
+        end
+ 
+        def Necklace.necklace_type
+         @@necklace_type
+        end
+ 
+        def Necklace.style
+         @@style
+        end
+ 
+        def Necklace.texture
+         @@texture
+        end
+ 
+        def Necklace.color
+         @@texture
+        end
+ 
+        def Necklace.is_owned=(this)
+         @@is_owned = this
+        end
+ 
+        def Necklace.get_necklace(this)
+         NECKLACE_ARRAY.each { |necklace| if necklace.name == this
+         return necklace
+         end }
+        end
+ 
+        def Necklace.get_necklace_texture(this)
+         NECKLACE_ARRAY.each { |necklace| if necklace.name == this
+         return necklace.texture
+         end }
+        end
+
+        @@nil_necklace = Necklace.new("No Necklace", 0, false, "nil", "plain", NIL_TEXTURE, "white")
+
+        @@ruby_necklace = Necklace.new("Ruby Necklace", 1, false, "ruby", "cool", RUBY_NECKLACE_TEXTURE, "red")
+    end
+
     class Jacket
         JACKET_ARRAY = [] of Jacket
         def initialize(name : String, id : Int32, is_owned : Bool, jacket_type : String, style : String, length : String, front_texture : SF::Texture, back_texture : SF::Texture, color : String)

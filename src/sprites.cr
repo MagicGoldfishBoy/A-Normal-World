@@ -245,6 +245,12 @@ module Sprites
         SF::Sprite.new
     end
 
+    current_necklace = if necklace = Clothing::Necklace.get_necklace(Appearance.get_clothing("necklace"))
+        SF::Sprite.new(necklace.texture)
+    else
+        SF::Sprite.new
+    end
+
     makeup = Clothing::Makeup.get_makeup(Appearance.get_clothing("makeup"))
 
         current_makeup = if makeup
@@ -292,6 +298,7 @@ module Sprites
         @@player_character_model.draw(current_socks)
         @@player_character_model.draw(current_pants)
         @@player_character_model.draw(current_shirt)
+        @@player_character_model.draw(current_necklace)
         @@player_character_model.draw(current_shoes)
         @@player_character_model.draw(current_gloves)
         @@player_character_model.draw(current_jacket_front)
@@ -308,6 +315,7 @@ module Sprites
         @@player_character_model.draw(current_socks)
         @@player_character_model.draw(current_pants)
         @@player_character_model.draw(current_shirt)
+        @@player_character_model.draw(current_necklace)
         @@player_character_model.draw(current_shoes)
         @@player_character_model.draw(current_gloves)
         @@player_character_model.draw(current_jacket_front)
