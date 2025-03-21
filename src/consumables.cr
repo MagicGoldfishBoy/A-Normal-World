@@ -1,15 +1,18 @@
 require "crsfml"
 require "../src/textures.cr"
+require "../src/effects.cr"
 
 module Consumables
     class Consumables_base
         CONSUMABLE_ARRAY = [] of Consumables_base
-        def initialize(name : String, id : Int32, stack_limit : Int32, amount_owned : Int32, texture : SF::Texture)
+        def initialize(name : String, id : Int32, stack_limit : Int32, amount_owned : Int32, texture : SF::Texture, effect : Effects_Base)
             @name = name
             @id = id
             @stack_limit = stack_limit
             @amount_owned = amount_owned
             @texture = texture
+            @effect = effect
+            CONSUMABLE_ARRAY.push(self)
         end
 
         getter name : String
