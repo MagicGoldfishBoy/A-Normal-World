@@ -5,7 +5,7 @@ require "../src/equipment.cr"
 require "../src/utility.cr"
 require "../src/consumables.cr"
 
-puts Consumables::Consumables_base::CONSUMABLE_ARRAY
+#puts Consumables::Consumables_base::CONSUMABLE_ARRAY
 INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
 INVENTORY_BOX.fill_color = SF.color( 137, 170, 208 )
 
@@ -653,6 +653,82 @@ module Inventory
             scale_x = (current_size.x.to_f / original_width)
             scale_y = current_size.y.to_f / original_height
             
+            arrow_left_x = INVENTORY_LEFT_ARROW_SPRITE.position.x
+            arrow_left_y = INVENTORY_LEFT_ARROW_SPRITE.position.y
+            arrow_left_width = INVENTORY_LEFT_ARROW_SPRITE.size.x
+            arrow_left_height = INVENTORY_LEFT_ARROW_SPRITE.size.y
+
+            arrow_right_x = INVENTORY_RIGHT_ARROW_SPRITE.position.x
+            arrow_right_y = INVENTORY_RIGHT_ARROW_SPRITE.position.y
+            arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
+            arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
+
+
+            sort_button_x = @@clothing_sort_button_sprite.position.x
+            sort_button_y = @@clothing_sort_button_sprite.position.y
+            sort_button_width = @@clothing_sort_button_sprite.size.x
+            sort_button_height = @@clothing_sort_button_sprite.size.y
+
+            category_button_x = @@clothing_shirt_category_box.position.x
+            category_button_y = @@clothing_shirt_category_box.position.y
+            category_button_width = @@clothing_shirt_category_box.size.x
+            category_button_height = @@clothing_shirt_category_box.size.y
+            
+            shirt_tab_x = @@shirt_tab.position.x
+            shirt_tab_y = @@shirt_tab.position.y
+            shirt_tab_width = @@shirt_tab.size.x
+            shirt_tab_height = @@shirt_tab.size.y
+            
+            pants_tab_x = @@pants_tab.position.x
+            pants_tab_y = @@pants_tab.position.y
+            pants_tab_width = @@pants_tab.size.x
+            pants_tab_height = @@pants_tab.size.y
+            
+            jacket_tab_x = @@jacket_tab.position.x
+            jacket_tab_y = @@jacket_tab.position.y
+            jacket_tab_width = @@jacket_tab.size.x
+            jacket_tab_height = @@jacket_tab.size.y
+            
+            shoes_tab_x = @@shoes_tab.position.x
+            shoes_tab_y = @@shoes_tab.position.y
+            shoes_tab_width = @@shoes_tab.size.x
+            shoes_tab_height = @@shoes_tab.size.y
+            
+            socks_tab_x = @@socks_tab.position.x
+            socks_tab_y = @@socks_tab.position.y
+            socks_tab_width = @@socks_tab.size.x
+            socks_tab_height = @@socks_tab.size.y
+            
+            gloves_tab_x = @@gloves_tab.position.x
+            gloves_tab_y = @@gloves_tab.position.y
+            gloves_tab_width = @@gloves_tab.size.x
+            gloves_tab_height = @@gloves_tab.size.y
+            
+            earrings_tab_x = @@earrings_tab.position.x
+            earrings_tab_y = @@earrings_tab.position.y
+            earrings_tab_width = @@earrings_tab.size.x
+            earrings_tab_height = @@earrings_tab.size.y
+            
+            hat_tab_x = @@hat_tab.position.x
+            hat_tab_y = @@hat_tab.position.y
+            hat_tab_width = @@hat_tab.size.x
+            hat_tab_height = @@hat_tab.size.y
+            
+            glasses_tab_x = @@glasses_tab.position.x
+            glasses_tab_y = @@glasses_tab.position.y
+            glasses_tab_width = @@glasses_tab.size.x
+            glasses_tab_height = @@glasses_tab.size.y
+            
+            makeup_tab_x = @@makeup_tab.position.x
+            makeup_tab_y = @@makeup_tab.position.y
+            makeup_tab_width = @@makeup_tab.size.x
+            makeup_tab_height = @@makeup_tab.size.y
+            
+            necklace_tab_x = @@necklace_tab.position.x
+            necklace_tab_y = @@necklace_tab.position.y
+            necklace_tab_width = @@necklace_tab.size.x
+            necklace_tab_height = @@necklace_tab.size.y
+
             cosmetics_tab_x = @@cosmetics_category_tab.position.x
             cosmetics_tab_y = @@cosmetics_category_tab.position.y
             cosmetics_tab_width = @@cosmetics_category_tab.size.x
@@ -677,6 +753,84 @@ module Inventory
                  InventoryManager.open_weapons_tab(window)
                  sleep 0.15.seconds
             end
+
+
+            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
+                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
+
+                InventoryManager.open_pants_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
+                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
+
+                InventoryManager.open_earrings_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
+                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
+
+                InventoryManager.open_shirt_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
+                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
+
+                InventoryManager.open_jacket_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
+                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
+
+                InventoryManager.open_shoes_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
+                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
+
+                InventoryManager.open_socks_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
+                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
+
+                InventoryManager.open_glasses_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
+                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
+
+                InventoryManager.open_makeup_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
+                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
+
+                InventoryManager.open_necklace_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
+                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
+
+                InventoryManager.open_hat_tab(window)
+                sleep 0.15.seconds
+            end 
+
+            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
+                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
+
+                InventoryManager.open_gloves_tab(window)
+                sleep 0.15.seconds
+            end 
 
             case tab
             when "shirt"
@@ -721,6 +875,7 @@ module Inventory
             scale_y = current_size.y.to_f / original_height
     
             #------------------------------------objects-------------------------------------------------
+
                 arrow_left_x = INVENTORY_LEFT_ARROW_SPRITE.position.x
                 arrow_left_y = INVENTORY_LEFT_ARROW_SPRITE.position.y
                 arrow_left_width = INVENTORY_LEFT_ARROW_SPRITE.size.x
@@ -742,61 +897,8 @@ module Inventory
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
 
-
-                pants_tab_x = @@pants_tab.position.x
-                pants_tab_y = @@pants_tab.position.y
-                pants_tab_width = @@pants_tab.size.x
-                pants_tab_height = @@pants_tab.size.y
-
-               jacket_tab_x = @@jacket_tab.position.x
-               jacket_tab_y = @@jacket_tab.position.y
-               jacket_tab_width = @@jacket_tab.size.x
-               jacket_tab_height = @@jacket_tab.size.y
-
-                shoes_tab_x = @@shoes_tab.position.x
-                shoes_tab_y = @@shoes_tab.position.y
-                shoes_tab_width = @@shoes_tab.size.x
-                shoes_tab_height = @@shoes_tab.size.y
-
-                socks_tab_x = @@socks_tab.position.x
-                socks_tab_y = @@socks_tab.position.y
-                socks_tab_width = @@socks_tab.size.x
-                socks_tab_height = @@socks_tab.size.y
-
-                gloves_tab_x = @@gloves_tab.position.x
-                gloves_tab_y = @@gloves_tab.position.y
-                gloves_tab_width = @@gloves_tab.size.x
-                gloves_tab_height = @@gloves_tab.size.y
-
-                earrings_tab_x = @@earrings_tab.position.x
-                earrings_tab_y = @@earrings_tab.position.y
-                earrings_tab_width = @@earrings_tab.size.x
-                earrings_tab_height = @@earrings_tab.size.y
-
-                hat_tab_x = @@hat_tab.position.x
-                hat_tab_y = @@hat_tab.position.y
-                hat_tab_width = @@hat_tab.size.x
-                hat_tab_height = @@hat_tab.size.y
-
-                glasses_tab_x = @@glasses_tab.position.x
-                glasses_tab_y = @@glasses_tab.position.y
-                glasses_tab_width = @@glasses_tab.size.x
-                glasses_tab_height = @@glasses_tab.size.y
-
-                makeup_tab_x = @@makeup_tab.position.x
-                makeup_tab_y = @@makeup_tab.position.y
-                makeup_tab_width = @@makeup_tab.size.x
-                makeup_tab_height = @@makeup_tab.size.y
-
-                necklace_tab_x = @@necklace_tab.position.x
-                necklace_tab_y = @@necklace_tab.position.y
-                necklace_tab_width = @@necklace_tab.size.x
-                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
-
-            
-
-            
+    
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
                 
@@ -816,70 +918,6 @@ module Inventory
                  ClothingTabShirt.assign_slot_textures(window)
                  sleep 0.15.seconds
             end  
-
-            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
-                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-
-                InventoryManager.open_pants_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
-                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
-
-                InventoryManager.open_jacket_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
-                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-
-                InventoryManager.open_shoes_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
-                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
-
-                InventoryManager.open_socks_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
-                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
-                InventoryManager.open_gloves_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
-                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
-                InventoryManager.open_earrings_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
-                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
-                InventoryManager.open_hat_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
-                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
-                InventoryManager.open_glasses_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
-                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
-                InventoryManager.open_makeup_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
-                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
-                InventoryManager.open_necklace_tab(window)
-                sleep 0.15.seconds
-            end    
 
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
@@ -935,61 +973,7 @@ module Inventory
                 category_button_y = @@clothing_shirt_category_box.position.y
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
-
-
-                shirt_tab_x = @@shirt_tab.position.x
-                shirt_tab_y = @@shirt_tab.position.y
-                shirt_tab_width = @@shirt_tab.size.x
-                shirt_tab_height = @@shirt_tab.size.y
-
-                pants_tab_x = @@pants_tab.position.x
-                pants_tab_y = @@pants_tab.position.y
-                pants_tab_width = @@pants_tab.size.x
-                pants_tab_height = @@pants_tab.size.y
-
-                shoes_tab_x = @@shoes_tab.position.x
-                shoes_tab_y = @@shoes_tab.position.y
-                shoes_tab_width = @@shoes_tab.size.x
-                shoes_tab_height = @@shoes_tab.size.y
-
-                socks_tab_x = @@socks_tab.position.x
-                socks_tab_y = @@socks_tab.position.y
-                socks_tab_width = @@socks_tab.size.x
-                socks_tab_height = @@socks_tab.size.y
-
-                gloves_tab_x = @@gloves_tab.position.x
-                gloves_tab_y = @@gloves_tab.position.y
-                gloves_tab_width = @@gloves_tab.size.x
-                gloves_tab_height = @@gloves_tab.size.y
-
-                earrings_tab_x = @@earrings_tab.position.x
-                earrings_tab_y = @@earrings_tab.position.y
-                earrings_tab_width = @@earrings_tab.size.x
-                earrings_tab_height = @@earrings_tab.size.y
-
-                hat_tab_x = @@hat_tab.position.x
-                hat_tab_y = @@hat_tab.position.y
-                hat_tab_width = @@hat_tab.size.x
-                hat_tab_height = @@hat_tab.size.y
-
-                glasses_tab_x = @@glasses_tab.position.x
-                glasses_tab_y = @@glasses_tab.position.y
-                glasses_tab_width = @@glasses_tab.size.x
-                glasses_tab_height = @@glasses_tab.size.y
-
-                makeup_tab_x = @@makeup_tab.position.x
-                makeup_tab_y = @@makeup_tab.position.y
-                makeup_tab_width = @@makeup_tab.size.x
-                makeup_tab_height = @@makeup_tab.size.y
-
-                necklace_tab_x = @@necklace_tab.position.x
-                necklace_tab_y = @@necklace_tab.position.y
-                necklace_tab_width = @@necklace_tab.size.x
-                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
-
-            
-
             
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1010,70 +994,6 @@ module Inventory
                  ClothingTabJacket.assign_slot_textures(window)
                  sleep 0.15.seconds
             end  
-
-            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
-                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-
-                InventoryManager.open_shirt_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
-                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-
-                InventoryManager.open_pants_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
-                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-
-                InventoryManager.open_shoes_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
-                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
-
-                InventoryManager.open_socks_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
-                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
-                InventoryManager.open_gloves_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
-                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
-                InventoryManager.open_earrings_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
-                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
-                InventoryManager.open_hat_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
-                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
-                InventoryManager.open_glasses_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
-                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
-                InventoryManager.open_makeup_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
-                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
-                InventoryManager.open_necklace_tab(window)
-                sleep 0.15.seconds
-            end    
 
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
@@ -1129,56 +1049,6 @@ module Inventory
                 category_button_y = @@clothing_shirt_category_box.position.y
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
-                
-                shirt_tab_x = @@shirt_tab.position.x
-                shirt_tab_y = @@shirt_tab.position.y
-                shirt_tab_width = @@shirt_tab.size.x
-                shirt_tab_height = @@shirt_tab.size.y
-
-                jacket_tab_x = @@jacket_tab.position.x
-                jacket_tab_y = @@jacket_tab.position.y
-                jacket_tab_width = @@jacket_tab.size.x
-                jacket_tab_height = @@jacket_tab.size.y
-                
-                shoes_tab_x = @@shoes_tab.position.x
-                shoes_tab_y = @@shoes_tab.position.y
-                shoes_tab_width = @@shoes_tab.size.x
-                shoes_tab_height = @@shoes_tab.size.y
-                
-                socks_tab_x = @@socks_tab.position.x
-                socks_tab_y = @@socks_tab.position.y
-                socks_tab_width = @@socks_tab.size.x
-                socks_tab_height = @@socks_tab.size.y
-                
-                gloves_tab_x = @@gloves_tab.position.x
-                gloves_tab_y = @@gloves_tab.position.y
-                gloves_tab_width = @@gloves_tab.size.x
-                gloves_tab_height = @@gloves_tab.size.y
-                
-                earrings_tab_x = @@earrings_tab.position.x
-                earrings_tab_y = @@earrings_tab.position.y
-                earrings_tab_width = @@earrings_tab.size.x
-                earrings_tab_height = @@earrings_tab.size.y
-                
-                hat_tab_x = @@hat_tab.position.x
-                hat_tab_y = @@hat_tab.position.y
-                hat_tab_width = @@hat_tab.size.x
-                hat_tab_height = @@hat_tab.size.y
-                
-                glasses_tab_x = @@glasses_tab.position.x
-                glasses_tab_y = @@glasses_tab.position.y
-                glasses_tab_width = @@glasses_tab.size.x
-                glasses_tab_height = @@glasses_tab.size.y
-                
-                makeup_tab_x = @@makeup_tab.position.x
-                makeup_tab_y = @@makeup_tab.position.y
-                makeup_tab_width = @@makeup_tab.size.x
-                makeup_tab_height = @@makeup_tab.size.y
-                
-                necklace_tab_x = @@necklace_tab.position.x
-                necklace_tab_y = @@necklace_tab.position.y
-                necklace_tab_width = @@necklace_tab.size.x
-                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1199,76 +1069,6 @@ module Inventory
                  ClothingTabPants.assign_slot_textures(window)
                  sleep 0.15.seconds
             end  
-
-            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
-                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-
-                InventoryManager.open_shirt_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
-                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
-
-                InventoryManager.open_jacket_tab(window)
-                sleep 0.15.seconds
-            end    
-
-            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
-                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-
-                InventoryManager.open_shoes_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
-                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
-
-                InventoryManager.open_socks_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
-                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
-
-                InventoryManager.open_gloves_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
-                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
-
-                InventoryManager.open_earrings_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
-                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
-
-                InventoryManager.open_hat_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
-                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
-
-                InventoryManager.open_glasses_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
-                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
-
-                InventoryManager.open_makeup_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
-                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
-
-                InventoryManager.open_necklace_tab(window)
-                sleep 0.15.seconds
-            end 
             
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
@@ -1323,61 +1123,6 @@ module Inventory
                 category_button_y = @@clothing_shirt_category_box.position.y
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
-                
-                shirt_tab_x = @@shirt_tab.position.x
-                shirt_tab_y = @@shirt_tab.position.y
-                shirt_tab_width = @@shirt_tab.size.x
-                shirt_tab_height = @@shirt_tab.size.y
-                
-                pants_tab_x = @@pants_tab.position.x
-                pants_tab_y = @@pants_tab.position.y
-                pants_tab_width = @@pants_tab.size.x
-                pants_tab_height = @@pants_tab.size.y
-                
-                jacket_tab_x = @@jacket_tab.position.x
-                jacket_tab_y = @@jacket_tab.position.y
-                jacket_tab_width = @@jacket_tab.size.x
-                jacket_tab_height = @@jacket_tab.size.y
-                
-                shoes_tab_x = @@shoes_tab.position.x
-                shoes_tab_y = @@shoes_tab.position.y
-                shoes_tab_width = @@shoes_tab.size.x
-                shoes_tab_height = @@shoes_tab.size.y
-                
-                socks_tab_x = @@socks_tab.position.x
-                socks_tab_y = @@socks_tab.position.y
-                socks_tab_width = @@socks_tab.size.x
-                socks_tab_height = @@socks_tab.size.y
-                
-                gloves_tab_x = @@gloves_tab.position.x
-                gloves_tab_y = @@gloves_tab.position.y
-                gloves_tab_width = @@gloves_tab.size.x
-                gloves_tab_height = @@gloves_tab.size.y
-                
-                earrings_tab_x = @@earrings_tab.position.x
-                earrings_tab_y = @@earrings_tab.position.y
-                earrings_tab_width = @@earrings_tab.size.x
-                earrings_tab_height = @@earrings_tab.size.y
-                
-                hat_tab_x = @@hat_tab.position.x
-                hat_tab_y = @@hat_tab.position.y
-                hat_tab_width = @@hat_tab.size.x
-                hat_tab_height = @@hat_tab.size.y
-                
-                glasses_tab_x = @@glasses_tab.position.x
-                glasses_tab_y = @@glasses_tab.position.y
-                glasses_tab_width = @@glasses_tab.size.x
-                glasses_tab_height = @@glasses_tab.size.y
-                
-                makeup_tab_x = @@makeup_tab.position.x
-                makeup_tab_y = @@makeup_tab.position.y
-                makeup_tab_width = @@makeup_tab.size.x
-                makeup_tab_height = @@makeup_tab.size.y
-                
-                necklace_tab_x = @@necklace_tab.position.x
-                necklace_tab_y = @@necklace_tab.position.y
-                necklace_tab_width = @@necklace_tab.size.x
-                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1396,76 +1141,6 @@ module Inventory
                     ClothingTabShoes.page=(ClothingTabShoes.page.not_nil! + 1)
                  end
                  ClothingTabShoes.assign_slot_textures(window)
-                 sleep 0.15.seconds
-            end  
-
-            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
-                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-
-                InventoryManager.open_shirt_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
-                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-                
-                 InventoryManager.open_pants_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
-                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
-                
-                 InventoryManager.open_jacket_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
-                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
-                
-                 InventoryManager.open_socks_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
-                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
-
-                 InventoryManager.open_gloves_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
-                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
-
-                 InventoryManager.open_earrings_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
-                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
-
-                 InventoryManager.open_hat_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
-                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
-
-                 InventoryManager.open_glasses_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
-                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
-
-                 InventoryManager.open_makeup_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
-                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
-
-                 InventoryManager.open_necklace_tab(window)
                  sleep 0.15.seconds
             end 
             
@@ -1522,61 +1197,6 @@ module Inventory
                 category_button_y = @@clothing_shirt_category_box.position.y
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
-                
-                shirt_tab_x = @@shirt_tab.position.x
-                shirt_tab_y = @@shirt_tab.position.y
-                shirt_tab_width = @@shirt_tab.size.x
-                shirt_tab_height = @@shirt_tab.size.y
-                
-                pants_tab_x = @@pants_tab.position.x
-                pants_tab_y = @@pants_tab.position.y
-                pants_tab_width = @@pants_tab.size.x
-                pants_tab_height = @@pants_tab.size.y
-                
-                jacket_tab_x = @@jacket_tab.position.x
-                jacket_tab_y = @@jacket_tab.position.y
-                jacket_tab_width = @@jacket_tab.size.x
-                jacket_tab_height = @@jacket_tab.size.y
-                
-                shoes_tab_x = @@shoes_tab.position.x
-                shoes_tab_y = @@shoes_tab.position.y
-                shoes_tab_width = @@shoes_tab.size.x
-                shoes_tab_height = @@shoes_tab.size.y
-                
-                socks_tab_x = @@socks_tab.position.x
-                socks_tab_y = @@socks_tab.position.y
-                socks_tab_width = @@socks_tab.size.x
-                socks_tab_height = @@socks_tab.size.y
-                
-                gloves_tab_x = @@gloves_tab.position.x
-                gloves_tab_y = @@gloves_tab.position.y
-                gloves_tab_width = @@gloves_tab.size.x
-                gloves_tab_height = @@gloves_tab.size.y
-                
-                earrings_tab_x = @@earrings_tab.position.x
-                earrings_tab_y = @@earrings_tab.position.y
-                earrings_tab_width = @@earrings_tab.size.x
-                earrings_tab_height = @@earrings_tab.size.y
-                
-                hat_tab_x = @@hat_tab.position.x
-                hat_tab_y = @@hat_tab.position.y
-                hat_tab_width = @@hat_tab.size.x
-                hat_tab_height = @@hat_tab.size.y
-                
-                glasses_tab_x = @@glasses_tab.position.x
-                glasses_tab_y = @@glasses_tab.position.y
-                glasses_tab_width = @@glasses_tab.size.x
-                glasses_tab_height = @@glasses_tab.size.y
-                
-                makeup_tab_x = @@makeup_tab.position.x
-                makeup_tab_y = @@makeup_tab.position.y
-                makeup_tab_width = @@makeup_tab.size.x
-                makeup_tab_height = @@makeup_tab.size.y
-                
-                necklace_tab_x = @@necklace_tab.position.x
-                necklace_tab_y = @@necklace_tab.position.y
-                necklace_tab_width = @@necklace_tab.size.x
-                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1597,76 +1217,6 @@ module Inventory
                  ClothingTabSocks.assign_slot_textures(window)
                  sleep 0.15.seconds
             end  
-
-            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
-                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-
-                InventoryManager.open_shirt_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
-                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-                
-                 InventoryManager.open_pants_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
-                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
-                
-                 InventoryManager.open_jacket_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
-                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-                
-                 InventoryManager.open_shoes_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
-                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
-
-                 InventoryManager.open_gloves_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
-                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
-
-                 InventoryManager.open_earrings_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
-                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
-
-                 InventoryManager.open_hat_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
-                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
-
-                 InventoryManager.open_glasses_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
-                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
-
-                 InventoryManager.open_makeup_tab(window)
-                 sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
-                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
-
-                 InventoryManager.open_necklace_tab(window)
-                 sleep 0.15.seconds
-            end 
             
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
@@ -1711,7 +1261,6 @@ module Inventory
                 arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
                 arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
 
-
                 sort_button_x = @@clothing_sort_button_sprite.position.x
                 sort_button_y = @@clothing_sort_button_sprite.position.y
                 sort_button_width = @@clothing_sort_button_sprite.size.x
@@ -1721,61 +1270,6 @@ module Inventory
                 category_button_y = @@clothing_shirt_category_box.position.y
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
-                
-                shirt_tab_x = @@shirt_tab.position.x
-                shirt_tab_y = @@shirt_tab.position.y
-                shirt_tab_width = @@shirt_tab.size.x
-                shirt_tab_height = @@shirt_tab.size.y
-                
-                pants_tab_x = @@pants_tab.position.x
-                pants_tab_y = @@pants_tab.position.y
-                pants_tab_width = @@pants_tab.size.x
-                pants_tab_height = @@pants_tab.size.y
-                
-                jacket_tab_x = @@jacket_tab.position.x
-                jacket_tab_y = @@jacket_tab.position.y
-                jacket_tab_width = @@jacket_tab.size.x
-                jacket_tab_height = @@jacket_tab.size.y
-                
-                shoes_tab_x = @@shoes_tab.position.x
-                shoes_tab_y = @@shoes_tab.position.y
-                shoes_tab_width = @@shoes_tab.size.x
-                shoes_tab_height = @@shoes_tab.size.y
-                
-                socks_tab_x = @@socks_tab.position.x
-                socks_tab_y = @@socks_tab.position.y
-                socks_tab_width = @@socks_tab.size.x
-                socks_tab_height = @@socks_tab.size.y
-                
-                gloves_tab_x = @@gloves_tab.position.x
-                gloves_tab_y = @@gloves_tab.position.y
-                gloves_tab_width = @@gloves_tab.size.x
-                gloves_tab_height = @@gloves_tab.size.y
-                
-                earrings_tab_x = @@earrings_tab.position.x
-                earrings_tab_y = @@earrings_tab.position.y
-                earrings_tab_width = @@earrings_tab.size.x
-                earrings_tab_height = @@earrings_tab.size.y
-                
-                hat_tab_x = @@hat_tab.position.x
-                hat_tab_y = @@hat_tab.position.y
-                hat_tab_width = @@hat_tab.size.x
-                hat_tab_height = @@hat_tab.size.y
-                
-                glasses_tab_x = @@glasses_tab.position.x
-                glasses_tab_y = @@glasses_tab.position.y
-                glasses_tab_width = @@glasses_tab.size.x
-                glasses_tab_height = @@glasses_tab.size.y
-                
-                makeup_tab_x = @@makeup_tab.position.x
-                makeup_tab_y = @@makeup_tab.position.y
-                makeup_tab_width = @@makeup_tab.size.x
-                makeup_tab_height = @@makeup_tab.size.y
-                
-                necklace_tab_x = @@necklace_tab.position.x
-                necklace_tab_y = @@necklace_tab.position.y
-                necklace_tab_width = @@necklace_tab.size.x
-                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1797,77 +1291,6 @@ module Inventory
                  sleep 0.15.seconds
             end  
 
-            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
-                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-
-               InventoryManager.open_shirt_tab(window)
-
-               sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
-                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-
-                InventoryManager.open_pants_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
-                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
-
-                InventoryManager.open_jacket_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
-                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-
-                InventoryManager.open_shoes_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
-                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
-
-                InventoryManager.open_socks_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
-                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
-
-                InventoryManager.open_earrings_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
-                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
-
-                InventoryManager.open_hat_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
-                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
-
-                InventoryManager.open_glasses_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
-                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
-
-                InventoryManager.open_makeup_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
-                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
-
-                InventoryManager.open_necklace_tab(window)
-                sleep 0.15.seconds
-            end 
-            
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
                 if ClothingTabGloves.get_gloves_category == "Color"
@@ -1911,7 +1334,6 @@ module Inventory
                 arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
                 arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
 
-
                 sort_button_x = @@clothing_sort_button_sprite.position.x
                 sort_button_y = @@clothing_sort_button_sprite.position.y
                 sort_button_width = @@clothing_sort_button_sprite.size.x
@@ -1921,61 +1343,6 @@ module Inventory
                 category_button_y = @@clothing_shirt_category_box.position.y
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
-                
-                shirt_tab_x = @@shirt_tab.position.x
-                shirt_tab_y = @@shirt_tab.position.y
-                shirt_tab_width = @@shirt_tab.size.x
-                shirt_tab_height = @@shirt_tab.size.y
-                
-                pants_tab_x = @@pants_tab.position.x
-                pants_tab_y = @@pants_tab.position.y
-                pants_tab_width = @@pants_tab.size.x
-                pants_tab_height = @@pants_tab.size.y
-                
-                jacket_tab_x = @@jacket_tab.position.x
-                jacket_tab_y = @@jacket_tab.position.y
-                jacket_tab_width = @@jacket_tab.size.x
-                jacket_tab_height = @@jacket_tab.size.y
-                
-                shoes_tab_x = @@shoes_tab.position.x
-                shoes_tab_y = @@shoes_tab.position.y
-                shoes_tab_width = @@shoes_tab.size.x
-                shoes_tab_height = @@shoes_tab.size.y
-                
-                socks_tab_x = @@socks_tab.position.x
-                socks_tab_y = @@socks_tab.position.y
-                socks_tab_width = @@socks_tab.size.x
-                socks_tab_height = @@socks_tab.size.y
-                
-                gloves_tab_x = @@gloves_tab.position.x
-                gloves_tab_y = @@gloves_tab.position.y
-                gloves_tab_width = @@gloves_tab.size.x
-                gloves_tab_height = @@gloves_tab.size.y
-                
-                earrings_tab_x = @@earrings_tab.position.x
-                earrings_tab_y = @@earrings_tab.position.y
-                earrings_tab_width = @@earrings_tab.size.x
-                earrings_tab_height = @@earrings_tab.size.y
-                
-                hat_tab_x = @@hat_tab.position.x
-                hat_tab_y = @@hat_tab.position.y
-                hat_tab_width = @@hat_tab.size.x
-                hat_tab_height = @@hat_tab.size.y
-                
-                glasses_tab_x = @@glasses_tab.position.x
-                glasses_tab_y = @@glasses_tab.position.y
-                glasses_tab_width = @@glasses_tab.size.x
-                glasses_tab_height = @@glasses_tab.size.y
-                
-                makeup_tab_x = @@makeup_tab.position.x
-                makeup_tab_y = @@makeup_tab.position.y
-                makeup_tab_width = @@makeup_tab.size.x
-                makeup_tab_height = @@makeup_tab.size.y
-                
-                necklace_tab_x = @@necklace_tab.position.x
-                necklace_tab_y = @@necklace_tab.position.y
-                necklace_tab_width = @@necklace_tab.size.x
-                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -1996,63 +1363,6 @@ module Inventory
                  ClothingTabEarrings.assign_slot_textures(window)
                  sleep 0.15.seconds
             end  
-
-            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
-                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-
-               InventoryManager.open_shirt_tab(window)
-
-               sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
-                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-
-                InventoryManager.open_pants_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
-                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
-
-                InventoryManager.open_jacket_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
-                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-
-                InventoryManager.open_shoes_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
-                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
-
-                InventoryManager.open_socks_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
-                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
-
-                InventoryManager.open_earrings_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
-                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
-
-                InventoryManager.open_hat_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
-                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
-
-                InventoryManager.open_gloves_tab(window)
-                sleep 0.15.seconds
-            end 
             
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
@@ -2097,7 +1407,6 @@ module Inventory
                 arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
                 arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
 
-
                 sort_button_x = @@clothing_sort_button_sprite.position.x
                 sort_button_y = @@clothing_sort_button_sprite.position.y
                 sort_button_width = @@clothing_sort_button_sprite.size.x
@@ -2107,61 +1416,6 @@ module Inventory
                 category_button_y = @@clothing_shirt_category_box.position.y
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
-                
-                shirt_tab_x = @@shirt_tab.position.x
-                shirt_tab_y = @@shirt_tab.position.y
-                shirt_tab_width = @@shirt_tab.size.x
-                shirt_tab_height = @@shirt_tab.size.y
-                
-                pants_tab_x = @@pants_tab.position.x
-                pants_tab_y = @@pants_tab.position.y
-                pants_tab_width = @@pants_tab.size.x
-                pants_tab_height = @@pants_tab.size.y
-                
-                jacket_tab_x = @@jacket_tab.position.x
-                jacket_tab_y = @@jacket_tab.position.y
-                jacket_tab_width = @@jacket_tab.size.x
-                jacket_tab_height = @@jacket_tab.size.y
-                
-                shoes_tab_x = @@shoes_tab.position.x
-                shoes_tab_y = @@shoes_tab.position.y
-                shoes_tab_width = @@shoes_tab.size.x
-                shoes_tab_height = @@shoes_tab.size.y
-                
-                socks_tab_x = @@socks_tab.position.x
-                socks_tab_y = @@socks_tab.position.y
-                socks_tab_width = @@socks_tab.size.x
-                socks_tab_height = @@socks_tab.size.y
-                
-                gloves_tab_x = @@gloves_tab.position.x
-                gloves_tab_y = @@gloves_tab.position.y
-                gloves_tab_width = @@gloves_tab.size.x
-                gloves_tab_height = @@gloves_tab.size.y
-                
-                earrings_tab_x = @@earrings_tab.position.x
-                earrings_tab_y = @@earrings_tab.position.y
-                earrings_tab_width = @@earrings_tab.size.x
-                earrings_tab_height = @@earrings_tab.size.y
-                
-                hat_tab_x = @@hat_tab.position.x
-                hat_tab_y = @@hat_tab.position.y
-                hat_tab_width = @@hat_tab.size.x
-                hat_tab_height = @@hat_tab.size.y
-                
-                glasses_tab_x = @@glasses_tab.position.x
-                glasses_tab_y = @@glasses_tab.position.y
-                glasses_tab_width = @@glasses_tab.size.x
-                glasses_tab_height = @@glasses_tab.size.y
-                
-                makeup_tab_x = @@makeup_tab.position.x
-                makeup_tab_y = @@makeup_tab.position.y
-                makeup_tab_width = @@makeup_tab.size.x
-                makeup_tab_height = @@makeup_tab.size.y
-                
-                necklace_tab_x = @@necklace_tab.position.x
-                necklace_tab_y = @@necklace_tab.position.y
-                necklace_tab_width = @@necklace_tab.size.x
-                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -2182,77 +1436,6 @@ module Inventory
                  ClothingTabHat.assign_slot_textures(window)
                  sleep 0.15.seconds
             end  
-
-            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
-                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-
-               InventoryManager.open_shirt_tab(window)
-
-               sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
-                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-
-                InventoryManager.open_pants_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
-                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
-
-                InventoryManager.open_jacket_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
-                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-
-                InventoryManager.open_shoes_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
-                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
-
-                InventoryManager.open_socks_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= earrings_tab_x && mouse_x <= earrings_tab_x + earrings_tab_width) &&
-                (mouse_y >= earrings_tab_y && mouse_y <= earrings_tab_y + earrings_tab_height)
-
-                InventoryManager.open_earrings_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
-                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
-
-                InventoryManager.open_gloves_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
-                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
-
-                InventoryManager.open_glasses_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
-                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
-
-                InventoryManager.open_makeup_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
-                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
-
-                InventoryManager.open_necklace_tab(window)
-                sleep 0.15.seconds
-            end 
             
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
@@ -2297,7 +1480,6 @@ module Inventory
                 arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
                 arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
 
-
                 sort_button_x = @@clothing_sort_button_sprite.position.x
                 sort_button_y = @@clothing_sort_button_sprite.position.y
                 sort_button_width = @@clothing_sort_button_sprite.size.x
@@ -2307,61 +1489,6 @@ module Inventory
                 category_button_y = @@clothing_shirt_category_box.position.y
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
-                
-                shirt_tab_x = @@shirt_tab.position.x
-                shirt_tab_y = @@shirt_tab.position.y
-                shirt_tab_width = @@shirt_tab.size.x
-                shirt_tab_height = @@shirt_tab.size.y
-                
-                jacket_tab_x = @@jacket_tab.position.x
-                jacket_tab_y = @@jacket_tab.position.y
-                jacket_tab_width = @@jacket_tab.size.x
-                jacket_tab_height = @@jacket_tab.size.y
-                
-                pants_tab_x = @@pants_tab.position.x
-                pants_tab_y = @@pants_tab.position.y
-                pants_tab_width = @@pants_tab.size.x
-                pants_tab_height = @@pants_tab.size.y
-                
-                shoes_tab_x = @@shoes_tab.position.x
-                shoes_tab_y = @@shoes_tab.position.y
-                shoes_tab_width = @@shoes_tab.size.x
-                shoes_tab_height = @@shoes_tab.size.y
-                
-                socks_tab_x = @@socks_tab.position.x
-                socks_tab_y = @@socks_tab.position.y
-                socks_tab_width = @@socks_tab.size.x
-                socks_tab_height = @@socks_tab.size.y
-                
-                gloves_tab_x = @@gloves_tab.position.x
-                gloves_tab_y = @@gloves_tab.position.y
-                gloves_tab_width = @@gloves_tab.size.x
-                gloves_tab_height = @@gloves_tab.size.y
-                
-                earrings_tab_x = @@earrings_tab.position.x
-                earrings_tab_y = @@earrings_tab.position.y
-                earrings_tab_width = @@earrings_tab.size.x
-                earrings_tab_height = @@earrings_tab.size.y
-                
-                hat_tab_x = @@hat_tab.position.x
-                hat_tab_y = @@hat_tab.position.y
-                hat_tab_width = @@hat_tab.size.x
-                hat_tab_height = @@hat_tab.size.y
-                
-                glasses_tab_x = @@glasses_tab.position.x
-                glasses_tab_y = @@glasses_tab.position.y
-                glasses_tab_width = @@glasses_tab.size.x
-                glasses_tab_height = @@glasses_tab.size.y
-                
-                makeup_tab_x = @@makeup_tab.position.x
-                makeup_tab_y = @@makeup_tab.position.y
-                makeup_tab_width = @@makeup_tab.size.x
-                makeup_tab_height = @@makeup_tab.size.y
-                
-                necklace_tab_x = @@necklace_tab.position.x
-                necklace_tab_y = @@necklace_tab.position.y
-                necklace_tab_width = @@necklace_tab.size.x
-                necklace_tab_height = @@necklace_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -2386,77 +1513,6 @@ module Inventory
                  ClothingTabGlasses.assign_slot_textures(window)
                  sleep 0.15.seconds
             end  
-
-            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
-                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-
-               InventoryManager.open_shirt_tab(window)
-
-               sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
-                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-
-                InventoryManager.open_pants_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
-                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
-
-                InventoryManager.open_jacket_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
-                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-
-                InventoryManager.open_shoes_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
-                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
-
-                InventoryManager.open_socks_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
-                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
-
-                InventoryManager.open_glasses_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
-                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
-
-                InventoryManager.open_makeup_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= necklace_tab_x && mouse_x <= necklace_tab_x + necklace_tab_width) &&
-                (mouse_y >= necklace_tab_y && mouse_y <= necklace_tab_y + necklace_tab_height)
-
-                InventoryManager.open_necklace_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
-                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
-
-                InventoryManager.open_hat_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
-                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
-
-                InventoryManager.open_gloves_tab(window)
-                sleep 0.15.seconds
-            end 
             
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
@@ -2501,7 +1557,6 @@ module Inventory
                 arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
                 arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
 
-
                 sort_button_x = @@clothing_sort_button_sprite.position.x
                 sort_button_y = @@clothing_sort_button_sprite.position.y
                 sort_button_width = @@clothing_sort_button_sprite.size.x
@@ -2511,56 +1566,7 @@ module Inventory
                 category_button_y = @@clothing_shirt_category_box.position.y
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
-                
-                shirt_tab_x = @@shirt_tab.position.x
-                shirt_tab_y = @@shirt_tab.position.y
-                shirt_tab_width = @@shirt_tab.size.x
-                shirt_tab_height = @@shirt_tab.size.y
-                
-                pants_tab_x = @@pants_tab.position.x
-                pants_tab_y = @@pants_tab.position.y
-                pants_tab_width = @@pants_tab.size.x
-                pants_tab_height = @@pants_tab.size.y
-                
-                jacket_tab_x = @@jacket_tab.position.x
-                jacket_tab_y = @@jacket_tab.position.y
-                jacket_tab_width = @@jacket_tab.size.x
-                jacket_tab_height = @@jacket_tab.size.y
-                
-                shoes_tab_x = @@shoes_tab.position.x
-                shoes_tab_y = @@shoes_tab.position.y
-                shoes_tab_width = @@shoes_tab.size.x
-                shoes_tab_height = @@shoes_tab.size.y
-                
-                socks_tab_x = @@socks_tab.position.x
-                socks_tab_y = @@socks_tab.position.y
-                socks_tab_width = @@socks_tab.size.x
-                socks_tab_height = @@socks_tab.size.y
-                
-                gloves_tab_x = @@gloves_tab.position.x
-                gloves_tab_y = @@gloves_tab.position.y
-                gloves_tab_width = @@gloves_tab.size.x
-                gloves_tab_height = @@gloves_tab.size.y
-                
-                earrings_tab_x = @@earrings_tab.position.x
-                earrings_tab_y = @@earrings_tab.position.y
-                earrings_tab_width = @@earrings_tab.size.x
-                earrings_tab_height = @@earrings_tab.size.y
-                
-                hat_tab_x = @@hat_tab.position.x
-                hat_tab_y = @@hat_tab.position.y
-                hat_tab_width = @@hat_tab.size.x
-                hat_tab_height = @@hat_tab.size.y
-                
-                glasses_tab_x = @@glasses_tab.position.x
-                glasses_tab_y = @@glasses_tab.position.y
-                glasses_tab_width = @@glasses_tab.size.x
-                glasses_tab_height = @@glasses_tab.size.y
-                
-                makeup_tab_x = @@makeup_tab.position.x
-                makeup_tab_y = @@makeup_tab.position.y
-                makeup_tab_width = @@makeup_tab.size.x
-                makeup_tab_height = @@makeup_tab.size.y
+
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -2585,71 +1591,7 @@ module Inventory
                  ClothingTabMakeup.assign_slot_textures(window)
                  sleep 0.15.seconds
             end  
-
-            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
-                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-
-               InventoryManager.open_shirt_tab(window)
-
-               sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
-                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-
-                InventoryManager.open_pants_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
-                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
-
-                InventoryManager.open_jacket_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
-                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-
-                InventoryManager.open_shoes_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
-                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
-
-                InventoryManager.open_socks_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
-                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
-
-                InventoryManager.open_glasses_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
-                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
-
-                InventoryManager.open_makeup_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
-                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
-
-                InventoryManager.open_hat_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
-                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
-
-                InventoryManager.open_gloves_tab(window)
-                sleep 0.15.seconds
-            end 
-            
+    
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
                 if ClothingTabMakeup.get_makeup_category == "Color"
@@ -2693,7 +1635,6 @@ module Inventory
                 arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
                 arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
 
-
                 sort_button_x = @@clothing_sort_button_sprite.position.x
                 sort_button_y = @@clothing_sort_button_sprite.position.y
                 sort_button_width = @@clothing_sort_button_sprite.size.x
@@ -2703,56 +1644,6 @@ module Inventory
                 category_button_y = @@clothing_shirt_category_box.position.y
                 category_button_width = @@clothing_shirt_category_box.size.x
                 category_button_height = @@clothing_shirt_category_box.size.y
-                
-                shirt_tab_x = @@shirt_tab.position.x
-                shirt_tab_y = @@shirt_tab.position.y
-                shirt_tab_width = @@shirt_tab.size.x
-                shirt_tab_height = @@shirt_tab.size.y
-                
-                pants_tab_x = @@pants_tab.position.x
-                pants_tab_y = @@pants_tab.position.y
-                pants_tab_width = @@pants_tab.size.x
-                pants_tab_height = @@pants_tab.size.y
-                
-                jacket_tab_x = @@jacket_tab.position.x
-                jacket_tab_y = @@jacket_tab.position.y
-                jacket_tab_width = @@jacket_tab.size.x
-                jacket_tab_height = @@jacket_tab.size.y
-                
-                shoes_tab_x = @@shoes_tab.position.x
-                shoes_tab_y = @@shoes_tab.position.y
-                shoes_tab_width = @@shoes_tab.size.x
-                shoes_tab_height = @@shoes_tab.size.y
-                
-                socks_tab_x = @@socks_tab.position.x
-                socks_tab_y = @@socks_tab.position.y
-                socks_tab_width = @@socks_tab.size.x
-                socks_tab_height = @@socks_tab.size.y
-                
-                gloves_tab_x = @@gloves_tab.position.x
-                gloves_tab_y = @@gloves_tab.position.y
-                gloves_tab_width = @@gloves_tab.size.x
-                gloves_tab_height = @@gloves_tab.size.y
-                
-                earrings_tab_x = @@earrings_tab.position.x
-                earrings_tab_y = @@earrings_tab.position.y
-                earrings_tab_width = @@earrings_tab.size.x
-                earrings_tab_height = @@earrings_tab.size.y
-                
-                hat_tab_x = @@hat_tab.position.x
-                hat_tab_y = @@hat_tab.position.y
-                hat_tab_width = @@hat_tab.size.x
-                hat_tab_height = @@hat_tab.size.y
-                
-                glasses_tab_x = @@glasses_tab.position.x
-                glasses_tab_y = @@glasses_tab.position.y
-                glasses_tab_width = @@glasses_tab.size.x
-                glasses_tab_height = @@glasses_tab.size.y
-                
-                makeup_tab_x = @@makeup_tab.position.x
-                makeup_tab_y = @@makeup_tab.position.y
-                makeup_tab_width = @@makeup_tab.size.x
-                makeup_tab_height = @@makeup_tab.size.y
             #---------------------------------------------------------------------------------------------
             if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
                 (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
@@ -2777,70 +1668,6 @@ module Inventory
                  ClothingTabNecklace.assign_slot_textures(window)
                  sleep 0.15.seconds
             end  
-
-            if (mouse_x >= shirt_tab_x && mouse_x <= shirt_tab_x + shirt_tab_width) &&
-                (mouse_y >= shirt_tab_y && mouse_y <= shirt_tab_y + shirt_tab_height)
-
-               InventoryManager.open_shirt_tab(window)
-
-               sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= pants_tab_x && mouse_x <= pants_tab_x + pants_tab_width) &&
-                (mouse_y >= pants_tab_y && mouse_y <= pants_tab_y + pants_tab_height)
-
-                InventoryManager.open_pants_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= jacket_tab_x && mouse_x <= jacket_tab_x + jacket_tab_width) &&
-                (mouse_y >= jacket_tab_y && mouse_y <= jacket_tab_y + jacket_tab_height)
-
-                InventoryManager.open_jacket_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= shoes_tab_x && mouse_x <= shoes_tab_x + shoes_tab_width) &&
-                (mouse_y >= shoes_tab_y && mouse_y <= shoes_tab_y + shoes_tab_height)
-
-                InventoryManager.open_shoes_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= socks_tab_x && mouse_x <= socks_tab_x + socks_tab_width) &&
-                (mouse_y >= socks_tab_y && mouse_y <= socks_tab_y + socks_tab_height)
-
-                InventoryManager.open_socks_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= glasses_tab_x && mouse_x <= glasses_tab_x + glasses_tab_width) &&
-                (mouse_y >= glasses_tab_y && mouse_y <= glasses_tab_y + glasses_tab_height)
-
-                InventoryManager.open_glasses_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= makeup_tab_x && mouse_x <= makeup_tab_x + makeup_tab_width) &&
-                (mouse_y >= makeup_tab_y && mouse_y <= makeup_tab_y + makeup_tab_height)
-
-                InventoryManager.open_makeup_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= hat_tab_x && mouse_x <= hat_tab_x + hat_tab_width) &&
-                (mouse_y >= hat_tab_y && mouse_y <= hat_tab_y + hat_tab_height)
-
-                InventoryManager.open_hat_tab(window)
-                sleep 0.15.seconds
-            end 
-
-            if (mouse_x >= gloves_tab_x && mouse_x <= gloves_tab_x + gloves_tab_width) &&
-                (mouse_y >= gloves_tab_y && mouse_y <= gloves_tab_y + gloves_tab_height)
-
-                InventoryManager.open_gloves_tab(window)
-                sleep 0.15.seconds
-            end 
             
             if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
                 (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
