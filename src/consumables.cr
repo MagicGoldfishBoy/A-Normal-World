@@ -5,7 +5,7 @@ require "../src/effects.cr"
 module Consumables
     class Consumables_base
         CONSUMABLE_ARRAY = [] of Consumables_base
-        def initialize(name : String, id : Int32, stack_limit : Int32, amount_owned : Int32, texture : SF::Texture, effect : Effects_Base)
+        def initialize(name : String, id : Int32, stack_limit : Int32, amount_owned : Int32, texture : SF::Texture, effect : Effects::Effects_Base)
             @name = name
             @id = id
             @stack_limit = stack_limit
@@ -30,5 +30,9 @@ module Consumables
         getter texture : SF::Texture
         setter texture : SF::Texture
 
+    end
+
+    class Potions < Consumables_base
+        @@weak_healing_potion = Potions.new("Weak HP Potion", 1, 99, 0, NIL_TEXTURE, Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_10hp"])
     end
 end
