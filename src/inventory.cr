@@ -6875,7 +6875,30 @@ module Inventory
 
        #---------------------------------debug-------------------------------------------
         @@owned_socks_array.push(Clothing::Socks.get_socks("No Socks").not_nil!)
+
         @@owned_socks_array.push(Clothing::Socks.get_socks("W/Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Gy/Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Bk/Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Br/Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("R/Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("O/Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Y/Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Gn/Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Bl/Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Pr/Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Pk/Socks").not_nil!)
+
+        @@owned_socks_array.push(Clothing::Socks.get_socks("W/Knee Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Gy/Knee Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Bk/Knee Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Br/Knee Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("R/Knee Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("O/Knee Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Y/Knee Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Gn/Knee Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Bl/Knee Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Pr/Knee Socks").not_nil!)
+        @@owned_socks_array.push(Clothing::Socks.get_socks("Pk/Knee Socks").not_nil!)
        #---------------------------------------------------------------------------------
 
        #--------------------------------objects------------------------------------------
@@ -8191,7 +8214,6 @@ module Inventory
         end
         if @@owned_gloves_array.size > 0
             t = 1 + (@@page.not_nil! * 15) - 15
-            puts t
             if t <= @@owned_gloves_array.size - 1
              @@gloves_slot_01_image_sprite.texture = @@owned_gloves_array[t].texture
              @@gloves_slot_01_text.string = @@owned_gloves_array[t].name

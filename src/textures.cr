@@ -462,6 +462,28 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
     #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
          WHITE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/white_socks.png")
+         GRAY_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/gray_socks.png")
+         BLACK_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/black_socks.png")
+         BROWN_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/brown_socks.png")
+         RED_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/red_socks.png")
+         ORANGE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/orange_socks.png")
+         YELLOW_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/yellow_socks.png")
+         GREEN_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/green_socks.png")
+         BLUE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/blue_socks.png")
+         PURPLE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/purple_socks.png")
+         PINK_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/pink_socks.png")
+
+         WHITE_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/white_knee_socks.png")
+         GRAY_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/gray_knee_socks.png")
+         BLACK_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/black_knee_socks.png")
+         BROWN_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/brown_knee_socks.png")
+         RED_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/red_knee_socks.png")
+         ORANGE_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/orange_knee_socks.png")
+         YELLOW_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/yellow_knee_socks.png")
+         GREEN_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/green_knee_socks.png")
+         BLUE_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/blue_knee_socks.png")
+         PURPLE_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/purple_knee_socks.png")
+         PINK_KNEE_SOCKS_TEXTURE = SF::Texture.from_file("../graphics/pink_knee_socks.png")
 
     #JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
     #J                                         Jacket Textures                                          J

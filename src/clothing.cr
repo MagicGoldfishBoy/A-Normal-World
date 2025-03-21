@@ -372,6 +372,28 @@ module Clothing
         @@nil_socks = Socks.new("No Socks", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
 
         @@white_socks = Socks.new("W/Socks", 1, false, "short", "plain", WHITE_SOCKS_TEXTURE, "white")
+        @@gray_socks = Socks.new("Gy/Socks", 2, false, "short", "plain", GRAY_SOCKS_TEXTURE, "gray")
+        @@black_socks = Socks.new("Bk/Socks", 3, false, "short", "plain", BLACK_SOCKS_TEXTURE, "black")
+        @@brown_socks = Socks.new("Br/Socks", 4, false, "short", "plain", BROWN_SOCKS_TEXTURE, "brown")
+        @@red_socks = Socks.new("R/Socks", 5, false, "short", "plain", RED_SOCKS_TEXTURE, "red")
+        @@orange_socks = Socks.new("O/Socks", 6, false, "short", "plain", ORANGE_SOCKS_TEXTURE, "orange")
+        @@yellow_socks = Socks.new("Y/Socks", 7, false, "short", "plain", YELLOW_SOCKS_TEXTURE, "yellow")
+        @@green_socks = Socks.new("Gn/Socks", 8, false, "short", "plain", GREEN_SOCKS_TEXTURE, "green")
+        @@blue_socks = Socks.new("Bl/Socks", 9, false, "short", "plain", BLUE_SOCKS_TEXTURE, "blue")
+        @@purple_socks = Socks.new("Pr/Socks", 10, false, "short", "plain", PURPLE_SOCKS_TEXTURE, "purple")
+        @@pink_socks = Socks.new("Pk/Socks", 11, false, "short", "plain", PINK_SOCKS_TEXTURE, "pink")
+
+        @@white_knee_socks = Socks.new("W/Knee Socks", 100, false, "long", "plain", WHITE_KNEE_SOCKS_TEXTURE, "white")
+        @@gray_knee_socks = Socks.new("Gy/Knee Socks", 102, false, "long", "plain", GRAY_KNEE_SOCKS_TEXTURE, "gray")
+        @@black_knee_socks = Socks.new("Bk/Knee Socks", 103, false, "long", "plain", BLACK_KNEE_SOCKS_TEXTURE, "black")
+        @@brown_knee_socks = Socks.new("Br/Knee Socks", 104, false, "long", "plain", BROWN_KNEE_SOCKS_TEXTURE, "brown")
+        @@red_knee_socks = Socks.new("R/Knee Socks", 105, false, "long", "plain", RED_KNEE_SOCKS_TEXTURE, "red")
+        @@orange_knee_socks = Socks.new("O/Knee Socks", 106, false, "long", "plain", ORANGE_KNEE_SOCKS_TEXTURE, "orange")
+        @@yellow_knee_socks = Socks.new("Y/Knee Socks", 107, false, "long", "plain", YELLOW_KNEE_SOCKS_TEXTURE, "yellow")
+        @@green_knee_socks = Socks.new("Gn/Knee Socks", 108, false, "long", "plain", GREEN_KNEE_SOCKS_TEXTURE, "green")
+        @@blue_knee_socks = Socks.new("Bl/Knee Socks", 109, false, "long", "plain", BLUE_KNEE_SOCKS_TEXTURE, "blue")
+        @@purple_knee_socks = Socks.new("Pr/Knee Socks", 110, false, "long", "plain", PURPLE_KNEE_SOCKS_TEXTURE, "purple")
+        @@pink_knee_socks = Socks.new("Pk/Knee Socks", 111, false, "long", "plain", PINK_KNEE_SOCKS_TEXTURE, "pink")
     end
 
     class Gloves
