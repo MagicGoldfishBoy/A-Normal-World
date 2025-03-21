@@ -7147,9 +7147,8 @@ module Inventory
             @@page = 1
         end
         @@owned_socks_array.uniq!
-        if @@owned_socks_array.size > 0
-            t = 0 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_socks_array.size 
+            t = (@@page.not_nil! - 1) * 15
+            if t < @@owned_socks_array.size 
              @@socks_slot_01_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_01_text.string = @@owned_socks_array[t].name
              @@socks_slot_01 = @@owned_socks_array[t]
@@ -7158,175 +7157,146 @@ module Inventory
                 @@socks_slot_01_text.string = ""
                 @@socks_slot_01 = nil
             end
-        end
-        if @@owned_socks_array.size > 1
-            t = 1 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_socks_array.size 
+            t = (@@page.not_nil! - 1) * 15 + 1
+            if t < @@owned_socks_array.size 
              @@socks_slot_02_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_02_text.string = @@owned_socks_array[t].name
              @@socks_slot_02 = @@owned_socks_array[t]
             else
-                @@socks_slot_01_image_sprite.texture = NIL_TEXTURE
-                @@socks_slot_01_text.string = ""
-                @@socks_slot_01 = nil
+                @@socks_slot_02_image_sprite.texture = NIL_TEXTURE
+                @@socks_slot_02_text.string = ""
+                @@socks_slot_02 = nil
             end
-        end
-        if @@owned_socks_array.size > 2
             t = 2 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size 
              @@socks_slot_03_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_03_text.string = @@owned_socks_array[t].name
              @@socks_slot_03 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_03_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_03_text.string = ""
              @@socks_slot_03 = nil
             end
-        end
-        if @@owned_socks_array.size > 3
             t = 3 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_04_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_04_text.string = @@owned_socks_array[t].name
              @@socks_slot_04 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_04_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_04_text.string = ""
              @@socks_slot_04 = nil
             end
-        end
-        if @@owned_socks_array.size > 4
             t = 4 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_05_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_05_text.string = @@owned_socks_array[t].name
              @@socks_slot_05 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_05_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_05_text.string = ""
              @@socks_slot_05 = nil
             end
-        end
-        if @@owned_socks_array.size > 5
             t = 5 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_06_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_06_text.string = @@owned_socks_array[t].name
              @@socks_slot_06 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_06_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_06_text.string = ""
              @@socks_slot_06 = nil
             end
-        end
-        if @@owned_socks_array.size > 6
             t = 6 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_07_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_07_text.string = @@owned_socks_array[t].name
              @@socks_slot_07 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_07_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_07_text.string = ""
              @@socks_slot_07 = nil
             end
-        end
-        if @@owned_socks_array.size > 7
             t = 7 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_08_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_08_text.string = @@owned_socks_array[t].name
              @@socks_slot_08 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_08_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_08_text.string = ""
              @@socks_slot_08 = nil
             end
-        end
-        if @@owned_socks_array.size > 8
             t = 8 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_09_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_09_text.string = @@owned_socks_array[t].name
              @@socks_slot_09 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_09_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_09_text.string = ""
              @@socks_slot_09 = nil
             end
-        end
-        if @@owned_socks_array.size > 9
             t = 9 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_10_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_10_text.string = @@owned_socks_array[t].name
              @@socks_slot_10 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_10_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_10_text.string = ""
              @@socks_slot_10 = nil
             end
-        end
-        if @@owned_socks_array.size > 10
             t = 10 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_11_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_11_text.string = @@owned_socks_array[t].name
              @@socks_slot_11 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_11_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_11_text.string = ""
              @@socks_slot_11 = nil
             end
-        end
-        if @@owned_socks_array.size > 11
             t = 11 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_12_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_12_text.string = @@owned_socks_array[t].name
              @@socks_slot_12 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_12_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_12_text.string = ""
              @@socks_slot_12 = nil
             end
-        end
-        if @@owned_socks_array.size > 12
             t = 12 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_13_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_13_text.string = @@owned_socks_array[t].name
              @@socks_slot_13 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_13_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_13_text.string = ""
              @@socks_slot_13 = nil
             end
-        end
-        if @@owned_socks_array.size > 13
             t = 13 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_14_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_14_text.string = @@owned_socks_array[t].name
              @@socks_slot_14 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_14_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_14_text.string = ""
              @@socks_slot_14 = nil
             end
-        end
-        if @@owned_socks_array.size > 14
             t = 14 + (@@page.not_nil! * 15) - 15
             if t < @@owned_socks_array.size
              @@socks_slot_15_image_sprite.texture = @@owned_socks_array[t].texture
              @@socks_slot_15_text.string = @@owned_socks_array[t].name
              @@socks_slot_15 = @@owned_socks_array[t]
-        else
+            else
              @@socks_slot_15_image_sprite.texture = NIL_TEXTURE
              @@socks_slot_15_text.string = ""
              @@socks_slot_15 = nil
             end
-        end
         @@owned_socks_array.uniq!
        end
        
@@ -7678,7 +7648,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_01.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
                 
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7695,7 +7664,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_02.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7711,7 +7679,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_03.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7727,7 +7694,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_04.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7743,7 +7709,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_05.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7759,7 +7724,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_06.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7775,7 +7739,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_07.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7791,7 +7754,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_08.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7807,7 +7769,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_09.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7823,7 +7784,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_10.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7839,7 +7799,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_11.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7855,7 +7814,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_12.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7871,7 +7829,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_13.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7887,7 +7844,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_14.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -7903,7 +7859,6 @@ module Inventory
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
                 Player::Appearance.change_socks(@@socks_slot_15.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_socks_array.uniq!
             end
             ClothingTabSocks.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8235,7 +8190,8 @@ module Inventory
             @@page = 1
         end
         if @@owned_gloves_array.size > 0
-            t = 0 + (@@page.not_nil! * 15) - 15
+            t = 1 + (@@page.not_nil! * 15) - 15
+            puts t
             if t <= @@owned_gloves_array.size - 1
              @@gloves_slot_01_image_sprite.texture = @@owned_gloves_array[t].texture
              @@gloves_slot_01_text.string = @@owned_gloves_array[t].name
@@ -8247,12 +8203,13 @@ module Inventory
             end
         end
         if @@owned_gloves_array.size > 1
-            t = 1 + (@@page.not_nil! * 15) - 15
+            t = 2 + (@@page.not_nil! * 15) - 15
             if t <= @@owned_gloves_array.size - 1
              @@gloves_slot_02_image_sprite.texture = @@owned_gloves_array[t].texture
              @@gloves_slot_02_text.string = @@owned_gloves_array[t].name
              @@gloves_slot_02 = @@owned_gloves_array[t]
             else
+                puts "nil slot 2"
                 @@gloves_slot_02_image_sprite.texture = NIL_TEXTURE
                 @@gloves_slot_02_text.string = ""
                 @@gloves_slot_02 = nil
@@ -8767,7 +8724,6 @@ module Inventory
                 Sprites::Player.refresh_player_sprite(window)
                 
             end
-            @@owned_gloves_array.uniq!
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
         end
@@ -8782,7 +8738,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_02.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8798,7 +8753,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_03.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8814,7 +8768,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_04.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8830,7 +8783,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_04.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8846,7 +8798,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_06.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8862,7 +8813,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_07.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8878,7 +8828,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_08.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8894,7 +8843,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_09.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8910,7 +8858,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_10.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8926,7 +8873,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_11.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8942,7 +8888,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_12.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8958,7 +8903,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_13.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8974,7 +8918,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_14.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
@@ -8990,7 +8933,6 @@ module Inventory
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
                 Player::Appearance.change_gloves(@@gloves_slot_15.try &.name)
                 Sprites::Player.refresh_player_sprite(window)
-                @@owned_gloves_array.uniq!
             end
             ClothingTabGloves.assign_slot_textures(window)
             sleep 0.15.seconds
