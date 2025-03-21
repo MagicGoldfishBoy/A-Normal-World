@@ -13634,163 +13634,161 @@ module Inventory
             INVENTORY_BOX.position = SF.vector2(20, 40)  
            end
     
-           def WeaponTab.assign_slot_textures(window)
-            if @@page == nil
-                @@page = 1
-            end
-            @@owned_weapon_array.uniq!
-            if @@owned_weapon_array.size > 0
-                t = 0 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_01_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_01_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_01 = @@owned_weapon_array[t]
-            else
+       def WeaponTab.assign_slot_textures(window)
+        if @@page == nil
+            @@page = 1
+        end
+            t = (@@page.not_nil! - 1) * 15
+            if t < @@owned_weapon_array.size 
+             @@weapon_slot_01_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_01_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_01 = @@owned_weapon_array[t]
+            else 
                 @@weapon_slot_01_image_sprite.texture = NIL_TEXTURE
                 @@weapon_slot_01_text.string = ""
                 @@weapon_slot_01 = nil
             end
-            if @@owned_weapon_array.size > 1
-                t = 1 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_02_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_02_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_02 = @@owned_weapon_array[t]
+            t = (@@page.not_nil! - 1) * 15 + 1
+            if t < @@owned_weapon_array.size 
+             @@weapon_slot_02_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_02_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_02 = @@owned_weapon_array[t]
             else
                 @@weapon_slot_02_image_sprite.texture = NIL_TEXTURE
                 @@weapon_slot_02_text.string = ""
                 @@weapon_slot_02 = nil
             end
-            if @@owned_weapon_array.size > 2
-                t = 2 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_03_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_03_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_03 = @@owned_weapon_array[t]
-                else
-                    @@weapon_slot_03_image_sprite.texture = NIL_TEXTURE
-                    @@weapon_slot_03_text.string = ""
-                    @@weapon_slot_03 = nil
-            end
-            if @@owned_weapon_array.size > 3
-                t = 3 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_04_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_04_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_04 = @@owned_weapon_array[t]
-                else
-                    @@weapon_slot_04_image_sprite.texture = NIL_TEXTURE
-                    @@weapon_slot_04_text.string = ""
-                    @@weapon_slot_04 = nil
-            end
-            if @@owned_weapon_array.size > 4
-                t = 4 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_05_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_05_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_05 = @@owned_weapon_array[t]
+            t = 2 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size 
+             @@weapon_slot_03_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_03_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_03 = @@owned_weapon_array[t]
             else
-                @@weapon_slot_05_image_sprite.texture = NIL_TEXTURE
-                @@weapon_slot_05_text.string = ""
-                @@weapon_slot_05 = nil
+             @@weapon_slot_03_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_03_text.string = ""
+             @@weapon_slot_03 = nil
             end
-            if @@owned_weapon_array.size > 5
-                t = 5 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_06_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_06_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_06 = @@owned_weapon_array[t]
+            t = 3 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_04_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_04_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_04 = @@owned_weapon_array[t]
             else
-                @@weapon_slot_06_image_sprite.texture = NIL_TEXTURE
-                @@weapon_slot_06_text.string = ""
-                @@weapon_slot_06 = nil
+             @@weapon_slot_04_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_04_text.string = ""
+             @@weapon_slot_04 = nil
             end
-            if @@owned_weapon_array.size > 6
-                t = 6 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_07_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_07_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_07 = @@owned_weapon_array[t]
+            t = 4 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_05_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_05_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_05 = @@owned_weapon_array[t]
             else
-                @@weapon_slot_07_image_sprite.texture = NIL_TEXTURE
-                @@weapon_slot_07_text.string = ""
-                @@weapon_slot_07 = nil
+             @@weapon_slot_05_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_05_text.string = ""
+             @@weapon_slot_05 = nil
             end
-            if @@owned_weapon_array.size > 7
-                t = 7 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_08_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_08_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_08 = @@owned_weapon_array[t]
+            t = 5 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_06_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_06_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_06 = @@owned_weapon_array[t]
             else
-                @@weapon_slot_08_image_sprite.texture = NIL_TEXTURE
-                @@weapon_slot_08_text.string = ""
-                @@weapon_slot_08 = nil
+             @@weapon_slot_06_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_06_text.string = ""
+             @@weapon_slot_06 = nil
             end
-            if @@owned_weapon_array.size > 8
-                t = 8 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_09_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_09_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_09 = @@owned_weapon_array[t]
+            t = 6 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_07_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_07_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_07 = @@owned_weapon_array[t]
             else
-                @@weapon_slot_09_image_sprite.texture = NIL_TEXTURE
-                @@weapon_slot_09_text.string = ""
-                @@weapon_slot_09 = nil
+             @@weapon_slot_07_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_07_text.string = ""
+             @@weapon_slot_07 = nil
             end
-            if @@owned_weapon_array.size > 9
-                t = 9 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_10_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_10_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_10 = @@owned_weapon_array[t]
+            t = 7 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_08_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_08_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_08 = @@owned_weapon_array[t]
             else
-                @@weapon_slot_10_image_sprite.texture = NIL_TEXTURE
-                @@weapon_slot_10_text.string = ""
-                @@weapon_slot_10 = nil
+             @@weapon_slot_08_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_08_text.string = ""
+             @@weapon_slot_08 = nil
             end
-            if @@owned_weapon_array.size > 10
-                t = 10 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_11_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_11_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_11 = @@owned_weapon_array[t]
+            t = 8 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_09_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_09_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_09 = @@owned_weapon_array[t]
             else
-                @@weapon_slot_11_image_sprite.texture = NIL_TEXTURE
-                @@weapon_slot_11_text.string = ""
-                @@weapon_slot_11 = nil
+             @@weapon_slot_09_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_09_text.string = ""
+             @@weapon_slot_09 = nil
             end
-            if @@owned_weapon_array.size > 11
-                t = 11 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_12_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_12_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_12 = @@owned_weapon_array[t]
+            t = 9 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_10_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_10_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_10 = @@owned_weapon_array[t]
             else
-                @@weapon_slot_12_image_sprite.texture = NIL_TEXTURE
-                @@weapon_slot_12_text.string = ""
-                @@weapon_slot_12 = nil
+             @@weapon_slot_10_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_10_text.string = ""
+             @@weapon_slot_10 = nil
             end
-            if @@owned_weapon_array.size > 12
-                t = 12 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_13_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_13_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_13 = @@owned_weapon_array[t]
+            t = 10 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_11_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_11_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_11 = @@owned_weapon_array[t]
             else
-                @@weapon_slot_13_image_sprite.texture = NIL_TEXTURE
-                @@weapon_slot_13_text.string = ""
-                @@weapon_slot_13 = nil
+             @@weapon_slot_11_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_11_text.string = ""
+             @@weapon_slot_11 = nil
             end
-            if @@owned_weapon_array.size > 13
-                t = 13 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_14_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_14_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_14 = @@owned_weapon_array[t]
+            t = 11 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_12_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_12_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_12 = @@owned_weapon_array[t]
             else
-                @@weapon_slot_14_image_sprite.texture = NIL_TEXTURE
-                @@weapon_slot_14_text.string = ""
-                @@weapon_slot_14 = nil
+             @@weapon_slot_12_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_12_text.string = ""
+             @@weapon_slot_12 = nil
             end
-            if @@owned_weapon_array.size > 14
-                t = 14 + (@@page.not_nil! * 15) - 15
-                 @@weapon_slot_15_image_sprite.texture = @@owned_weapon_array[t].texture
-                 @@weapon_slot_15_text.string = @@owned_weapon_array[t].name
-                 @@weapon_slot_15 = @@owned_weapon_array[t]
+            t = 12 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_13_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_13_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_13 = @@owned_weapon_array[t]
             else
-                @@weapon_slot_15_image_sprite.texture = NIL_TEXTURE
-                @@weapon_slot_15_text.string = ""
-                @@weapon_slot_15 = nil
+             @@weapon_slot_13_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_13_text.string = ""
+             @@weapon_slot_13 = nil
             end
-            @@owned_weapon_array.uniq!
-           end
+            t = 13 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_14_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_14_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_14 = @@owned_weapon_array[t]
+            else
+             @@weapon_slot_14_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_14_text.string = ""
+             @@weapon_slot_14 = nil
+            end
+            t = 14 + (@@page.not_nil! * 15) - 15
+            if t < @@owned_weapon_array.size
+             @@weapon_slot_15_image_sprite.texture = @@owned_weapon_array[t].texture
+             @@weapon_slot_15_text.string = @@owned_weapon_array[t].name
+             @@weapon_slot_15 = @@owned_weapon_array[t]
+            else
+             @@weapon_slot_15_image_sprite.texture = NIL_TEXTURE
+             @@weapon_slot_15_text.string = ""
+             @@weapon_slot_15 = nil
+            end
+       end
            
            def WeaponTab.draw_equipment_tab(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
