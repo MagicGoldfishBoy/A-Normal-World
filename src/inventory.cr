@@ -46,6 +46,15 @@ module Inventory
         @@equipment_category_tab_text.color = SF::Color::Blue
         @@equipment_category_tab_text.string = "Equipment"
 
+        @@consumables_category_tab = SF::RectangleShape.new(SF.vector2(128, 50))
+        @@consumables_category_tab.fill_color = SF.color(161, 183, 208)
+
+        @@consumables_category_tab_text = SF::Text.new
+        @@consumables_category_tab_text.font = QUICKSAND
+        @@consumables_category_tab_text.character_size = 20
+        @@consumables_category_tab_text.color = SF::Color::Blue
+        @@consumables_category_tab_text.string = "Consumables"
+
 
         @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
         @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
@@ -282,67 +291,68 @@ module Inventory
 
         def InventoryManager.draw_inventory(window)
           if @@is_inventory_open == true && @@category == "Cosmetics"
-            if @@tab == "Shirt"
+            case @@tab
+             when "Shirt"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabShirt.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("shirt", window)
                 end
-            elsif @@tab == "Jacket"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabJacket.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("jacket", window)
-                end
-            elsif @@tab == "Pants"
+             when "Pants"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabPants.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("pants", window)
                 end
-            elsif @@tab == "Shoes"
+             when "Shoes"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabShoes.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("shoes", window)
                 end
-            elsif @@tab == "Socks"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabSocks.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("socks", window)
-                end
-            elsif @@tab == "Gloves"
+             when "Gloves"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabGloves.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("gloves", window)
                 end
-            elsif @@tab == "Earrings"
+             when "Earrings"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabEarrings.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("earrings", window)
                 end
-            elsif @@tab == "Hat"
+             when "Hat"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabHat.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("hat", window)
                 end
-            elsif @@tab == "Glasses"
+             when "Glasses"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabGlasses.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("glasses", window)
                 end
-            elsif @@tab == "Makeup"
+             when "Makeup"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabMakeup.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("makeup", window)
                 end
-            elsif @@tab == "Necklace"
+             when "Jacket"
+                InventoryManager.draw_universal_elements(window)
+                ClothingTabJacket.draw_clothing_tab(window)
+                if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                    InventoryManager.universal_mouse_handling("jacket", window)
+                end
+             when "Socks"
+                InventoryManager.draw_universal_elements(window)
+                ClothingTabSocks.draw_clothing_tab(window)
+                if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                    InventoryManager.universal_mouse_handling("socks", window)
+                end
+             when "Necklace"
                 InventoryManager.draw_universal_elements(window)
                 ClothingTabNecklace.draw_clothing_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
@@ -350,13 +360,13 @@ module Inventory
                 end
             end
           end
-            if @@is_inventory_open == true && @@category == "Equipment"
+          if @@is_inventory_open == true && @@category == "Equipment"
                 InventoryManager.draw_universal_elements(window)
                 WeaponTab.draw_equipment_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("weapon", window)
                 end
-            end
+          end
         end
 
         def InventoryManager.draw_universal_elements(window)
@@ -387,6 +397,9 @@ module Inventory
 
             @@equipment_category_tab.position = INVENTORY_BOX.position - SF.vector2(-70 * max_scale, 50)
             @@equipment_category_tab_text.position = @@equipment_category_tab.position + SF.vector2(0.5 * max_scale, 7 * max_scale)
+
+            @@consumables_category_tab.position = INVENTORY_BOX.position - SF.vector2(-138 * max_scale, 50)
+            @@consumables_category_tab_text.position = @@consumables_category_tab.position + SF.vector2(0.5 * max_scale, 7 * max_scale)
 
 
             @@shirt_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, 0)
@@ -463,6 +476,8 @@ module Inventory
             window.draw(@@cosmetics_category_tab_text)
             window.draw(@@equipment_category_tab)
             window.draw(@@equipment_category_tab_text)
+            window.draw(@@consumables_category_tab)
+            window.draw(@@consumables_category_tab_text)
             if @@category == "Cosmetics"
             window.draw(@@shirt_tab)
             window.draw(@@shirt_tab_text)
@@ -7375,7 +7390,7 @@ module Inventory
             @@page = 1
         end
         if @@owned_gloves_array.size > 0
-            t = 1 + (@@page.not_nil! * 15) - 15
+            t = (@@page.not_nil! * 15) - 15
             if t <= @@owned_gloves_array.size - 1
              @@gloves_slot_01_image_sprite.texture = @@owned_gloves_array[t].texture
              @@gloves_slot_01_text.string = @@owned_gloves_array[t].name
@@ -7387,7 +7402,7 @@ module Inventory
             end
         end
         if @@owned_gloves_array.size > 1
-            t = 2 + (@@page.not_nil! * 15) - 15
+            t = 1 + (@@page.not_nil! * 15) - 15
             if t <= @@owned_gloves_array.size - 1
              @@gloves_slot_02_image_sprite.texture = @@owned_gloves_array[t].texture
              @@gloves_slot_02_text.string = @@owned_gloves_array[t].name
@@ -15041,7 +15056,285 @@ module Inventory
            end
     end
 
+
     class ConsumableTab
+        @@owned_consumable_array = [] of Consumables::Consumables_base
+
+        @@consumable_sorting_category = "Type"
+
+        @@consumable_slot_01 : Consumables::Consumables_base? = nil
+        @@consumable_slot_02 : Consumables::Consumables_base? = nil
+        @@consumable_slot_03 : Consumables::Consumables_base? = nil
+        @@consumable_slot_04 : Consumables::Consumables_base? = nil
+        @@consumable_slot_05 : Consumables::Consumables_base? = nil
+        @@consumable_slot_06 : Consumables::Consumables_base? = nil
+        @@consumable_slot_07 : Consumables::Consumables_base? = nil
+        @@consumable_slot_08 : Consumables::Consumables_base? = nil
+        @@consumable_slot_09 : Consumables::Consumables_base? = nil
+        @@consumable_slot_10 : Consumables::Consumables_base? = nil
+        @@consumable_slot_11 : Consumables::Consumables_base? = nil
+        @@consumable_slot_12 : Consumables::Consumables_base? = nil
+        @@consumable_slot_13 : Consumables::Consumables_base? = nil
+        @@consumable_slot_14 : Consumables::Consumables_base? = nil
+        @@consumable_slot_15 : Consumables::Consumables_base? = nil
+
+       #--------------------------------objects------------------------------------------
+              INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
+              INVENTORY_BOX.fill_color = SF.color( 137, 170, 208 )
+      
+              
+              @@consumables_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+              @@consumables_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumables_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+              @@consumables_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+      
+      
+              @@consumables_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
+              @@consumables_sort_button_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumables_weapon_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
+              @@consumables_weapon_category_box.fill_color = SF.color(161, 183, 208)
+      
+              @@consumables_sort_button_text = SF::Text.new
+              @@consumables_sort_button_text.font = QUICKSAND
+              @@consumables_sort_button_text.character_size = 20
+              @@consumables_sort_button_text.color = SF::Color::Blue
+              @@consumables_sort_button_text.string = "Sort"
+      
+      
+              @@consumables_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+              @@consumables_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+
+
+            #   @@weapon_info_box = SF::RectangleShape.new(SF.vector2(200, 200))
+            #   @@weapon_info_box.fill_color = SF.color(200, 212, 219)
+            #   @@weapon_info_box.outline_thickness = 10
+            #   @@weapon_info_box.outline_color = SF.color(151, 179, 194)
+
+            #   @@weapon_info_box_name_text = SF::Text.new
+            #   @@weapon_info_box_name_text.font = QUICKSAND
+            #   @@weapon_info_box_name_text.character_size = 14
+            #   @@weapon_info_box_name_text.color = SF::Color::Blue
+
+            #   @@weapon_info_box_attack_type_text = SF::Text.new
+            #   @@weapon_info_box_attack_type_text.font = QUICKSAND
+            #   @@weapon_info_box_attack_type_text.character_size = 14
+            #   @@weapon_info_box_attack_type_text.color = SF::Color::Blue
+
+            #   @@weapon_info_box_attack_strength_text = SF::Text.new
+            #   @@weapon_info_box_attack_strength_text.font = QUICKSAND
+            #   @@weapon_info_box_attack_strength_text.character_size = 14
+            #   @@weapon_info_box_attack_strength_text.color = SF::Color::Blue
+
+            #   @@weapon_info_box_minimum_strength_text = SF::Text.new
+            #   @@weapon_info_box_minimum_strength_text.font = QUICKSAND
+            #   @@weapon_info_box_minimum_strength_text.character_size = 14
+            #   @@weapon_info_box_minimum_strength_text.color = SF::Color::Blue
+
+            #   @@weapon_info_box_minimum_dexterity_text = SF::Text.new
+            #   @@weapon_info_box_minimum_dexterity_text.font = QUICKSAND
+            #   @@weapon_info_box_minimum_dexterity_text.character_size = 14
+            #   @@weapon_info_box_minimum_dexterity_text.color = SF::Color::Blue
+
+            #   @@weapon_info_box_minimum_intelligence_text = SF::Text.new
+            #   @@weapon_info_box_minimum_intelligence_text.font = QUICKSAND
+            #   @@weapon_info_box_minimum_intelligence_text.character_size = 14
+            #   @@weapon_info_box_minimum_intelligence_text.color = SF::Color::Blue
+
+            #   @@weapon_info_box_minimum_luck_text = SF::Text.new
+            #   @@weapon_info_box_minimum_luck_text.font = QUICKSAND
+            #   @@weapon_info_box_minimum_luck_text.character_size = 14
+            #   @@weapon_info_box_minimum_luck_text.color = SF::Color::Blue
+
+            #   @@weapon_info_box_minimum_status_effects_text = SF::Text.new
+            #   @@weapon_info_box_minimum_status_effects_text.font = QUICKSAND
+            #   @@weapon_info_box_minimum_status_effects_text.character_size = 14
+            #   @@weapon_info_box_minimum_status_effects_text.color = SF::Color::Blue
+      
+
+              @@consumable_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+              @@consumable_tab.fill_color = SF.color(141, 163, 188)
+      
+              @@consumable_tab_text = SF::Text.new
+              @@consumable_tab_text.font = QUICKSAND
+              @@consumable_tab_text.color = SF::Color::Blue
+              @@consumable_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+              @@consumable_tab.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_tab_text = SF::Text.new
+              @@consumable_tab_text.font = QUICKSAND
+              @@consumable_tab_text.character_size = 20
+              @@consumable_tab_text.color = SF::Color::Blue
+              @@consumable_tab_text.string = "Consumable"
+      
+      
+              @@consumable_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_01_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_01_text = SF::Text.new
+              @@consumable_slot_01_text.font = QUICKSAND
+              @@consumable_slot_01_text.character_size = 12
+              @@consumable_slot_01_text.color = SF::Color::Blue
+      
+              @@consumable_slot_01_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_02_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_02_text = SF::Text.new
+              @@consumable_slot_02_text.font = QUICKSAND
+              @@consumable_slot_02_text.character_size = 12
+              @@consumable_slot_02_text.color = SF::Color::Blue
+      
+              @@consumable_slot_02_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_03_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_03_text = SF::Text.new
+              @@consumable_slot_03_text.font = QUICKSAND
+              @@consumable_slot_03_text.character_size = 12
+              @@consumable_slot_03_text.color = SF::Color::Blue
+      
+              @@consumable_slot_03_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_04_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_04_text = SF::Text.new
+              @@consumable_slot_04_text.font = QUICKSAND
+              @@consumable_slot_04_text.character_size = 12
+              @@consumable_slot_04_text.color = SF::Color::Blue
+      
+              @@consumable_slot_04_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_05_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_05_text = SF::Text.new
+              @@consumable_slot_05_text.font = QUICKSAND
+              @@consumable_slot_05_text.character_size = 12
+              @@consumable_slot_05_text.color = SF::Color::Blue
+      
+              @@consumable_slot_05_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_06_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_06_text = SF::Text.new
+              @@consumable_slot_06_text.font = QUICKSAND
+              @@consumable_slot_06_text.character_size = 12
+              @@consumable_slot_06_text.color = SF::Color::Blue
+              
+              @@consumable_slot_06_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_07_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_07_text = SF::Text.new
+              @@consumable_slot_07_text.font = QUICKSAND
+              @@consumable_slot_07_text.character_size = 12
+              @@consumable_slot_07_text.color = SF::Color::Blue
+      
+              @@consumable_slot_07_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_08_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_08_text = SF::Text.new
+              @@consumable_slot_08_text.font = QUICKSAND
+              @@consumable_slot_08_text.character_size = 12
+              @@consumable_slot_08_text.color = SF::Color::Blue
+      
+              @@consumable_slot_08_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_09_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_09_text = SF::Text.new
+              @@consumable_slot_09_text.font = QUICKSAND
+              @@consumable_slot_09_text.character_size = 12
+              @@consumable_slot_09_text.color = SF::Color::Blue
+      
+              @@consumable_slot_09_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_10_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_10_text = SF::Text.new
+              @@consumable_slot_10_text.font = QUICKSAND
+              @@consumable_slot_10_text.character_size = 12
+              @@consumable_slot_10_text.color = SF::Color::Blue
+      
+              @@consumable_slot_10_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_11_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_11_text = SF::Text.new
+              @@consumable_slot_11_text.font = QUICKSAND
+              @@consumable_slot_11_text.character_size = 12
+              @@consumable_slot_11_text.color = SF::Color::Blue
+      
+              @@consumable_slot_11_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_12_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_12_text = SF::Text.new
+              @@consumable_slot_12_text.font = QUICKSAND
+              @@consumable_slot_12_text.character_size = 12
+              @@consumable_slot_12_text.color = SF::Color::Blue
+      
+              @@consumable_slot_12_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_13_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_13_text = SF::Text.new
+              @@consumable_slot_13_text.font = QUICKSAND
+              @@consumable_slot_13_text.character_size = 12
+              @@consumable_slot_13_text.color = SF::Color::Blue
+      
+              @@consumable_slot_13_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_14_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_14_text = SF::Text.new
+              @@consumable_slot_14_text.font = QUICKSAND
+              @@consumable_slot_14_text.character_size = 12
+              @@consumable_slot_14_text.color = SF::Color::Blue
+      
+              @@consumable_slot_14_image_sprite = SF::Sprite.new
+      
+      
+              @@consumable_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+              @@consumable_slot_15_sprite.fill_color = SF.color(161, 183, 208)
+      
+              @@consumable_slot_15_text = SF::Text.new
+              @@consumable_slot_15_text.font = QUICKSAND
+              @@consumable_slot_15_text.character_size = 12
+              @@consumable_slot_15_text.color = SF::Color::Blue
+      
+              @@consumable_slot_15_image_sprite = SF::Sprite.new
+      
+       #---------------------------------------------------------------------------------
+
         def initialize(is_open : Bool)
             @@is_open = is_open
         end
