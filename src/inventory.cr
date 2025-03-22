@@ -796,6 +796,7 @@ module Inventory
                 (mouse_y >= consumables_tab_y && mouse_y <= consumables_tab_y + consumables_tab_height)
                  InventoryManager.close_cosmetics_category(window)
                  @@category = "Consumables"
+                 ConsumableTab.assign_slot_textures(window)
                  #InventoryManager.open_weapons_tab(window)
                  sleep 0.15.seconds
             end
@@ -15108,7 +15109,9 @@ module Inventory
         @@consumable_slot_13 : Consumables::Consumables_base? = nil
         @@consumable_slot_14 : Consumables::Consumables_base? = nil
         @@consumable_slot_15 : Consumables::Consumables_base? = nil
-
+       #---------------------------------debug-------------------------------------------
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!)
+       #---------------------------------------------------------------------------------
        #--------------------------------objects------------------------------------------
               INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
               INVENTORY_BOX.fill_color = SF.color( 137, 170, 208 )

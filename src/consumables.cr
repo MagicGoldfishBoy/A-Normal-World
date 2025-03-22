@@ -15,20 +15,21 @@ module Consumables
             CONSUMABLE_ARRAY.push(self)
         end
 
-        getter name : String
-        setter name : String
+        property name : String
 
-        getter id : Int32
-        setter id : Int32
+        property id : Int32
 
-        getter stack_limit : Int32
-        setter stack_limit : Int32
+        property stack_limit : Int32
 
-        getter amount_owned : Int32
-        setter amount_owned : Int32
+        property amount_owned : Int32
 
-        getter texture : SF::Texture
-        setter texture : SF::Texture
+        property texture : SF::Texture
+
+        def Consumables_base.get_consumable(this)
+            CONSUMABLE_ARRAY.each { |consumable| if consumable.name == this
+            return consumable
+            end }
+        end
 
     end
 
