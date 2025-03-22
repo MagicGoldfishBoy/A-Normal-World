@@ -3,6 +3,7 @@ require "../src/sprites.cr"
 require "../src/inventory.cr"
 require "../src/clothing.cr"
 require "../src/combat.cr"
+require "../src/consumables.cr"
 
 module Keyboard
     class Gameplay
@@ -63,6 +64,10 @@ module Keyboard
                 Inventory::ClothingTabShirt.initialize_clothing_tab(window)
                 Inventory::WeaponTab.initialize_equipment_tab(window)
                 Inventory::ClothingTabShirt.assign_slot_textures(window)
+                sleep 0.25.seconds
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::E)
+                Inventory::ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!, 1)
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::A)
