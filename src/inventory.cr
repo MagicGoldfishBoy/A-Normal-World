@@ -273,6 +273,13 @@ module Inventory
         @@equipment_weapon_category_text.string = ClothingTabMakeup.get_makeup_category
         Utility::StringUtilities.center_text(@@equipment_weapon_category_text)
 
+        @@consumables_consumable_category_text = SF::Text.new
+        @@consumables_consumable_category_text.font = QUICKSAND
+        @@consumables_consumable_category_text.character_size = 20
+        @@consumables_consumable_category_text.color = SF::Color::Blue
+        @@consumables_consumable_category_text.string = ClothingTabMakeup.get_makeup_category
+        Utility::StringUtilities.center_text(@@consumables_consumable_category_text)
+
      #-----------------------------------------------------------------------------------------
 
         def InventoryManager.is_inventory_open
@@ -365,6 +372,13 @@ module Inventory
                 WeaponTab.draw_equipment_tab(window)
                 if SF::Mouse.button_pressed?(SF::Mouse::Left)
                     InventoryManager.universal_mouse_handling("weapon", window)
+                end
+          end
+          if @@is_inventory_open == true && @@category == "Consumables"
+                InventoryManager.draw_universal_elements(window)
+                ConsumableTab.draw_consumables_tab(window)
+                if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                    InventoryManager.universal_mouse_handling("consumable", window)
                 end
           end
         end
@@ -468,6 +482,8 @@ module Inventory
 
             @@equipment_weapon_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
+            @@consumables_consumable_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+
             window.draw(INVENTORY_BOX)
 
             window.draw(INVENTORY_LEFT_ARROW_SPRITE)
@@ -536,6 +552,8 @@ module Inventory
                  window.draw(@@clothing_necklace_category_text)
                 when  "Weapon"
                  window.draw(@@equipment_weapon_category_text)
+                when  "Consumable"
+                 window.draw(@@consumables_consumable_category_text)
                 end
         end
 
@@ -753,6 +771,11 @@ module Inventory
             equipment_tab_y = @@equipment_category_tab.position.y
             equipment_tab_width = @@equipment_category_tab.size.x
             equipment_tab_height = @@equipment_category_tab.size.y
+            
+            consumables_tab_x = @@consumables_category_tab.position.x
+            consumables_tab_y = @@consumables_category_tab.position.y
+            consumables_tab_width = @@consumables_category_tab.size.x
+            consumables_tab_height = @@consumables_category_tab.size.y
 
             if (mouse_x >= cosmetics_tab_x && mouse_x <= cosmetics_tab_x + cosmetics_tab_width) &&
                 (mouse_y >= cosmetics_tab_y && mouse_y <= cosmetics_tab_y + cosmetics_tab_height)
@@ -766,6 +789,14 @@ module Inventory
                  InventoryManager.close_cosmetics_category(window)
                  @@category = "Equipment"
                  InventoryManager.open_weapons_tab(window)
+                 sleep 0.15.seconds
+            end
+            
+            if (mouse_x >= consumables_tab_x && mouse_x <= consumables_tab_x + consumables_tab_width) &&
+                (mouse_y >= consumables_tab_y && mouse_y <= consumables_tab_y + consumables_tab_height)
+                 InventoryManager.close_cosmetics_category(window)
+                 @@category = "Consumables"
+                 #InventoryManager.open_weapons_tab(window)
                  sleep 0.15.seconds
             end
 
@@ -13862,10 +13893,10 @@ module Inventory
             WeaponTab.assign_slot_textures(window)
         end
     
-           def WeaponTab.initialize_equipment_tab(window)
+        def WeaponTab.initialize_equipment_tab(window)
             @@page = 1
             INVENTORY_BOX.position = SF.vector2(20, 40)  
-           end
+        end
     
        def WeaponTab.assign_slot_textures(window)
         if @@page == nil
@@ -14023,7 +14054,7 @@ module Inventory
             end
        end
            
-           def WeaponTab.draw_equipment_tab(window)
+        def WeaponTab.draw_equipment_tab(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
             mouse_x = mouse_position.x
             mouse_y = mouse_position.y
@@ -14273,7 +14304,7 @@ module Inventory
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
                 WeaponTab.mouse_handling(window)
             end
-           end
+        end
 
            def WeaponTab.weapon_info_box_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
@@ -14749,7 +14780,7 @@ module Inventory
              end
            end
     
-           def WeaponTab.mouse_handling(window)
+        def WeaponTab.mouse_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
             mouse_x = mouse_position.x
             mouse_y = mouse_position.y
@@ -15053,7 +15084,7 @@ module Inventory
                 sleep 0.15.seconds
             end
     
-           end
+        end
     end
 
 
@@ -15335,17 +15366,757 @@ module Inventory
       
        #---------------------------------------------------------------------------------
 
-        def initialize(is_open : Bool)
-            @@is_open = is_open
+        def initialize(is_open : Bool, page : Int32)
+            @is_open = is_open
+            @page = page
         end
 
-        def is_open
-            @@is_open
+        property is_open : Bool
+        property page : Int32
+
+
+        def ConsumableTab.owned_consumable_array
+            @@owned_consumable_array
+        end
+        def ConsumableTab.owned_consumable_array=(this)
+            @@owned_consumable_array = this
+        end
+        def ConsumableTab.push_to_owned_consumable_array(this)
+            @@owned_consumable_array.push(this)
         end
 
-        def is_open=(this)
-            @@is_open = this
-        end 
+        def ConsumableTab.change_consumable_sort_category
+           case @@consumable_sorting_category
+            when "Type"
+                @@consumable_sorting_category = "Strength"
+            when "Strength"
+                @@consumable_sorting_category = "Type"
+           end
+        end
+    
+        def ConsumableTab.get_consumable_category
+            return @@consumable_sorting_category
+        end
+
+        def ConsumableTab.initialize_consumables_tab(window)
+            @@page = 1
+            INVENTORY_BOX.position = SF.vector2(20, 40)  
+        end
+
+        def ConsumableTab.assign_slot_textures(window)
+            if @@page == nil
+                @@page = 1
+            end
+                t = (@@page.not_nil! - 1) * 15
+                if t < @@owned_consumable_array.size 
+                 @@consumable_slot_01_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_01_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_01 = @@owned_consumable_array[t]
+                else 
+                    @@consumable_slot_01_image_sprite.texture = NIL_TEXTURE
+                    @@consumable_slot_01_text.string = ""
+                    @@consumable_slot_01 = nil
+                end
+                t = (@@page.not_nil! - 1) * 15 + 1
+                if t < @@owned_consumable_array.size 
+                 @@consumable_slot_02_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_02_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_02 = @@owned_consumable_array[t]
+                else
+                    @@consumable_slot_02_image_sprite.texture = NIL_TEXTURE
+                    @@consumable_slot_02_text.string = ""
+                    @@consumable_slot_02 = nil
+                end
+                t = 2 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size 
+                 @@consumable_slot_03_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_03_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_03 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_03_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_03_text.string = ""
+                 @@consumable_slot_03 = nil
+                end
+                t = 3 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_04_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_04_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_04 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_04_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_04_text.string = ""
+                 @@consumable_slot_04 = nil
+                end
+                t = 4 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_05_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_05_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_05 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_05_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_05_text.string = ""
+                 @@consumable_slot_05 = nil
+                end
+                t = 5 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_06_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_06_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_06 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_06_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_06_text.string = ""
+                 @@consumable_slot_06 = nil
+                end
+                t = 6 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_07_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_07_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_07 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_07_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_07_text.string = ""
+                 @@consumable_slot_07 = nil
+                end
+                t = 7 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_08_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_08_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_08 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_08_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_08_text.string = ""
+                 @@consumable_slot_08 = nil
+                end
+                t = 8 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_09_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_09_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_09 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_09_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_09_text.string = ""
+                 @@consumable_slot_09 = nil
+                end
+                t = 9 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_10_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_10_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_10 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_10_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_10_text.string = ""
+                 @@consumable_slot_10 = nil
+                end
+                t = 10 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_11_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_11_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_11 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_11_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_11_text.string = ""
+                 @@consumable_slot_11 = nil
+                end
+                t = 11 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_12_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_12_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_12 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_12_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_12_text.string = ""
+                 @@consumable_slot_12 = nil
+                end
+                t = 12 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_13_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_13_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_13 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_13_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_13_text.string = ""
+                 @@consumable_slot_13 = nil
+                end
+                t = 13 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_14_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_14_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_14 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_14_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_14_text.string = ""
+                 @@consumable_slot_14 = nil
+                end
+                t = 14 + (@@page.not_nil! * 15) - 15
+                if t < @@owned_consumable_array.size
+                 @@consumable_slot_15_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_15_text.string = @@owned_consumable_array[t].name
+                 @@consumable_slot_15 = @@owned_consumable_array[t]
+                else
+                 @@consumable_slot_15_image_sprite.texture = NIL_TEXTURE
+                 @@consumable_slot_15_text.string = ""
+                 @@consumable_slot_15 = nil
+                end
+        end
+
+        def ConsumableTab.draw_consumables_tab(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+
+                current_size = window.size
+                original_width = 800 
+                original_height = 600
+                scale_x = current_size.x.to_f / original_width
+                scale_y = current_size.y.to_f / original_height
+        
+                scale_ratio = [scale_x, scale_y].min
+                max_scale = 1.5
+                clamped_scale = [scale_ratio, max_scale].min
+    
+            window.view = window.default_view
+    
+            INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
+            INVENTORY_BOX.scale = SF.vector2(1, 1)
+    
+
+            @@consumable_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
+            @@consumable_slot_01_sprite.scale = SF.vector2(1, 1)
+            
+            @@consumable_slot_01_image_sprite.position = @@consumable_slot_01_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_01_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_01_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+    
+            @@consumable_slot_01_text.position = @@consumable_slot_01_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_01_text)
+            
+    
+            @@consumable_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
+            @@consumable_slot_02_sprite.scale = SF.vector2(1, 1)
+            
+            @@consumable_slot_02_image_sprite.position = @@consumable_slot_02_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_02_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_02_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+    
+            @@consumable_slot_02_text.position = @@consumable_slot_02_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_02_text)
+            
+    
+            @@consumable_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
+            @@consumable_slot_03_sprite.scale = SF.vector2(1, 1)
+            
+            @@consumable_slot_03_image_sprite.position = @@consumable_slot_03_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_03_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_03_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+    
+            @@consumable_slot_03_text.position = @@consumable_slot_03_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_03_text)
+            
+    
+            @@consumable_slot_04_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 40 * max_scale)
+            @@consumable_slot_04_sprite.scale = SF.vector2(1, 1)
+    
+            @@consumable_slot_04_text.position = @@consumable_slot_04_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_04_text)
+            
+            @@consumable_slot_04_image_sprite.position = @@consumable_slot_04_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_04_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_04_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+    
+    
+            @@consumable_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
+            @@consumable_slot_05_sprite.scale = SF.vector2(1, 1)
+    
+            @@consumable_slot_05_text.position = @@consumable_slot_05_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_05_text)
+            
+            @@consumable_slot_05_image_sprite.position = @@consumable_slot_05_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_05_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_05_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+            
+    
+            @@consumable_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
+            @@consumable_slot_06_sprite.scale = SF.vector2(1, 1)
+    
+            @@consumable_slot_06_text.position = @@consumable_slot_06_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_06_text)
+            
+            @@consumable_slot_06_image_sprite.position = @@consumable_slot_06_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_06_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_06_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+            
+    
+            @@consumable_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
+            @@consumable_slot_07_sprite.scale = SF.vector2(1, 1)
+            
+            @@consumable_slot_07_text.position = @@consumable_slot_07_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_07_text)
+            
+            @@consumable_slot_07_image_sprite.position = @@consumable_slot_07_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_07_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_07_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+            
+    
+            @@consumable_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
+            @@consumable_slot_08_sprite.scale = SF.vector2(1, 1)
+                    
+            @@consumable_slot_08_text.position = @@consumable_slot_08_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_08_text)
+            
+            @@consumable_slot_08_image_sprite.position = @@consumable_slot_08_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_08_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_08_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+            
+    
+            @@consumable_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
+            @@consumable_slot_09_sprite.scale = SF.vector2(1, 1)
+                    
+            @@consumable_slot_09_text.position = @@consumable_slot_09_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_09_text)
+            
+            @@consumable_slot_09_image_sprite.position = @@consumable_slot_09_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_09_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_09_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+            
+    
+            @@consumable_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
+            @@consumable_slot_10_sprite.scale = SF.vector2(1, 1)
+                            
+            @@consumable_slot_10_text.position = @@consumable_slot_10_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_10_text)
+            
+            @@consumable_slot_10_image_sprite.position = @@consumable_slot_10_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_10_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_10_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+            
+    
+            @@consumable_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
+            @@consumable_slot_11_sprite.scale = SF.vector2(1, 1)
+                            
+            @@consumable_slot_11_text.position = @@consumable_slot_11_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_11_text)
+            
+            @@consumable_slot_11_image_sprite.position = @@consumable_slot_11_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_11_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_11_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+            
+    
+            @@consumable_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
+            @@consumable_slot_12_sprite.scale = SF.vector2(1, 1)
+                            
+            @@consumable_slot_12_text.position = @@consumable_slot_12_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_12_text)
+            
+            @@consumable_slot_12_image_sprite.position = @@consumable_slot_12_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_12_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_12_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+            
+    
+            @@consumable_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
+            @@consumable_slot_13_sprite.scale = SF.vector2(1, 1)
+            
+            @@consumable_slot_13_text.position = @@consumable_slot_13_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_13_text)
+            
+            @@consumable_slot_13_image_sprite.position = @@consumable_slot_13_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_13_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_13_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+            
+    
+            @@consumable_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
+            @@consumable_slot_14_sprite.scale = SF.vector2(1, 1)
+                            
+            @@consumable_slot_14_text.position = @@consumable_slot_14_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_14_text)
+            
+            @@consumable_slot_14_image_sprite.position = @@consumable_slot_14_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_14_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_14_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+            
+    
+            @@consumable_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
+            @@consumable_slot_15_sprite.scale = SF.vector2(1, 1)
+                            
+            @@consumable_slot_15_text.position = @@consumable_slot_15_sprite.position + SF.vector2(45, 55 * max_scale)
+            Utility::StringUtilities.center_text(@@consumable_slot_15_text)
+            
+            @@consumable_slot_15_image_sprite.position = @@consumable_slot_15_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_15_image_sprite.scale = SF.vector2(1.5, 1.5)
+            @@consumable_slot_15_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
+
+            window.draw(@@consumable_slot_01_sprite)
+            window.draw(@@consumable_slot_01_image_sprite)
+            window.draw(@@consumable_slot_01_text)
+    
+            window.draw(@@consumable_slot_02_sprite)
+            window.draw(@@consumable_slot_02_image_sprite)
+            window.draw(@@consumable_slot_02_text)
+    
+            window.draw(@@consumable_slot_03_sprite)
+            window.draw(@@consumable_slot_03_image_sprite)
+            window.draw(@@consumable_slot_03_text)
+            
+            window.draw(@@consumable_slot_04_sprite)
+            window.draw(@@consumable_slot_04_image_sprite)
+            window.draw(@@consumable_slot_04_text)
+    
+            window.draw(@@consumable_slot_05_sprite)
+            window.draw(@@consumable_slot_05_image_sprite)
+            window.draw(@@consumable_slot_05_text)
+    
+            window.draw(@@consumable_slot_06_sprite)
+            window.draw(@@consumable_slot_06_image_sprite)
+            window.draw(@@consumable_slot_06_text)
+    
+            window.draw(@@consumable_slot_07_sprite)
+            window.draw(@@consumable_slot_07_image_sprite)
+            window.draw(@@consumable_slot_07_text)
+    
+            window.draw(@@consumable_slot_08_sprite)
+            window.draw(@@consumable_slot_08_image_sprite)
+            window.draw(@@consumable_slot_08_text)
+    
+            window.draw(@@consumable_slot_09_sprite)
+            window.draw(@@consumable_slot_09_image_sprite)
+            window.draw(@@consumable_slot_09_text)
+    
+            window.draw(@@consumable_slot_10_sprite)
+            window.draw(@@consumable_slot_10_image_sprite)
+            window.draw(@@consumable_slot_10_text)
+    
+            window.draw(@@consumable_slot_11_sprite)
+            window.draw(@@consumable_slot_11_image_sprite)
+            window.draw(@@consumable_slot_11_text)
+    
+            window.draw(@@consumable_slot_12_sprite)
+            window.draw(@@consumable_slot_12_image_sprite)
+            window.draw(@@consumable_slot_12_text)
+    
+            window.draw(@@consumable_slot_13_sprite)
+            window.draw(@@consumable_slot_13_image_sprite)
+            window.draw(@@consumable_slot_13_text)
+    
+            window.draw(@@consumable_slot_14_sprite)
+            window.draw(@@consumable_slot_14_image_sprite)
+            window.draw(@@consumable_slot_14_text)
+    
+            window.draw(@@consumable_slot_15_sprite)
+            window.draw(@@consumable_slot_15_image_sprite)
+            window.draw(@@consumable_slot_15_text)
+
+            #ConsumableTab.consumable_info_box_handling(window)
+    
+            if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                ConsumableTab.mouse_handling(window)
+            end
+        end
+
+        def ConsumableTab.mouse_handling(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+            
+        
+            current_size = window.size
+            original_width = 800 
+            original_height = 600 
+    
+            scale_x = (current_size.x.to_f / original_width)
+            scale_y = current_size.y.to_f / original_height
+            
+    
+            #------------------------------------objects-------------------------------------------------
+    
+                slot_01_x = @@consumable_slot_01_sprite.position.x
+                slot_01_y = @@consumable_slot_01_sprite.position.y
+                slot_01_width = @@consumable_slot_01_sprite.size.x
+                slot_01_height = @@consumable_slot_01_sprite.size.y
+    
+                slot_02_x = @@consumable_slot_02_sprite.position.x
+                slot_02_y = @@consumable_slot_02_sprite.position.y
+                slot_02_width = @@consumable_slot_02_sprite.size.x
+                slot_02_height = @@consumable_slot_02_sprite.size.y
+    
+                slot_03_x = @@consumable_slot_03_sprite.position.x
+                slot_03_y = @@consumable_slot_03_sprite.position.y
+                slot_03_width = @@consumable_slot_03_sprite.size.x
+                slot_03_height = @@consumable_slot_03_sprite.size.y
+    
+                slot_04_x = @@consumable_slot_04_sprite.position.x
+                slot_04_y = @@consumable_slot_04_sprite.position.y
+                slot_04_width = @@consumable_slot_04_sprite.size.x
+                slot_04_height = @@consumable_slot_04_sprite.size.y
+    
+                slot_05_x = @@consumable_slot_05_sprite.position.x
+                slot_05_y = @@consumable_slot_05_sprite.position.y
+                slot_05_width = @@consumable_slot_05_sprite.size.x
+                slot_05_height = @@consumable_slot_05_sprite.size.y
+    
+                slot_06_x = @@consumable_slot_06_sprite.position.x
+                slot_06_y = @@consumable_slot_06_sprite.position.y
+                slot_06_width = @@consumable_slot_06_sprite.size.x
+                slot_06_height = @@consumable_slot_06_sprite.size.y
+    
+                slot_07_x = @@consumable_slot_07_sprite.position.x
+                slot_07_y = @@consumable_slot_07_sprite.position.y
+                slot_07_width = @@consumable_slot_07_sprite.size.x
+                slot_07_height = @@consumable_slot_07_sprite.size.y
+    
+                slot_08_x = @@consumable_slot_08_sprite.position.x
+                slot_08_y = @@consumable_slot_08_sprite.position.y
+                slot_08_width = @@consumable_slot_08_sprite.size.x
+                slot_08_height = @@consumable_slot_08_sprite.size.y
+    
+                slot_09_x = @@consumable_slot_09_sprite.position.x
+                slot_09_y = @@consumable_slot_09_sprite.position.y
+                slot_09_width = @@consumable_slot_09_sprite.size.x
+                slot_09_height = @@consumable_slot_09_sprite.size.y
+    
+                slot_10_x = @@consumable_slot_10_sprite.position.x
+                slot_10_y = @@consumable_slot_10_sprite.position.y
+                slot_10_width = @@consumable_slot_10_sprite.size.x
+                slot_10_height = @@consumable_slot_10_sprite.size.y
+    
+                slot_11_x = @@consumable_slot_11_sprite.position.x
+                slot_11_y = @@consumable_slot_11_sprite.position.y
+                slot_11_width = @@consumable_slot_11_sprite.size.x
+                slot_11_height = @@consumable_slot_11_sprite.size.y
+    
+                slot_12_x = @@consumable_slot_12_sprite.position.x
+                slot_12_y = @@consumable_slot_12_sprite.position.y
+                slot_12_width = @@consumable_slot_12_sprite.size.x
+                slot_12_height = @@consumable_slot_12_sprite.size.y
+    
+                slot_13_x = @@consumable_slot_13_sprite.position.x
+                slot_13_y = @@consumable_slot_13_sprite.position.y
+                slot_13_width = @@consumable_slot_13_sprite.size.x
+                slot_13_height = @@consumable_slot_13_sprite.size.y
+    
+                slot_14_x = @@consumable_slot_14_sprite.position.x
+                slot_14_y = @@consumable_slot_14_sprite.position.y
+                slot_14_width = @@consumable_slot_14_sprite.size.x
+                slot_14_height = @@consumable_slot_14_sprite.size.y
+    
+                slot_15_x = @@consumable_slot_15_sprite.position.x
+                slot_15_y = @@consumable_slot_15_sprite.position.y
+                slot_15_width = @@consumable_slot_15_sprite.size.x
+                slot_15_height = @@consumable_slot_15_sprite.size.y
+            #---------------------------------------------------------------------------------------------
+            if @@page == nil
+                @@page = 1
+            end
+            # if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
+            #    (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
+            #     if @@consumable_slot_01 != nil   
+            #         t = 0 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_01.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+                    
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
+            #    (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
+               
+            #     if @@consumable_slot_02 != nil
+            #         t = 1 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_02.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
+            #    (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
+               
+            #     if @@consumable_slot_03 != nil
+            #         t = 2 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_03.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
+            #    (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
+               
+            #     if @@consumable_slot_04 != nil
+            #         t = 3 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_04.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
+            #    (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
+               
+            #     if @@consumable_slot_05 != nil
+            #         t = 4 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_05.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
+            #    (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
+               
+            #     if @@consumable_slot_06 != nil
+            #         t = 5 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_06.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
+            #    (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
+               
+            #     if @@consumable_slot_07 != nil
+            #         t = 6 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_07.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
+            #    (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
+               
+            #     if @@consumable_slot_08 != nil
+            #         t = 7 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_08.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
+            #    (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
+               
+            #     if @@consumable_slot_09 != nil
+            #         t = 8 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_09.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
+            #    (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
+               
+            #     if @@consumable_slot_10 != nil
+            #         t = 9 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_10.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
+            #    (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
+               
+            #     if @@consumable_slot_11 != nil
+            #         t = 10 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_11.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
+            #    (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
+               
+            #     if @@consumable_slot_12 != nil
+            #         t = 11 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_12.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
+            #    (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
+               
+            #     if @@consumable_slot_13 != nil
+            #         t = 12 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_13.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
+            #    (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
+               
+            #     if @@consumable_slot_14 != nil
+            #         t = 13 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_14.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+            
+            # if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
+            #    (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
+               
+            #     if @@consumable_slot_15 != nil
+            #         t = 14 + (@@page.not_nil! * 15) - 15
+                    
+            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+            #         Player::Appearance.change_consumable(@@consumable_slot_15.not_nil!.name)
+            #         Sprites::Player.refresh_player_sprite(window)
+            #     end
+            #     ConsumableTab.assign_slot_textures(window)
+            #     sleep 0.15.seconds
+            # end
+    
+        end
+
     end
 
     class Ingredients
