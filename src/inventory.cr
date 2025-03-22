@@ -15112,11 +15112,12 @@ module Inventory
        #---------------------------------debug-------------------------------------------
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!)
             ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!, 1)
-            #Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!.amount_owned = 1
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("HP Potion").not_nil!)
             Consumables::Consumables_base.get_consumable("HP Potion").not_nil!.amount_owned = 1
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Weak MP Potion").not_nil!)
             Consumables::Consumables_base.get_consumable("Weak MP Potion").not_nil!.amount_owned = 1
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("MP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("MP Potion").not_nil!, 1)
        #---------------------------------------------------------------------------------
        #--------------------------------objects------------------------------------------
               INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
