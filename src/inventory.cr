@@ -15111,6 +15111,7 @@ module Inventory
         @@consumable_slot_15 : Consumables::Consumables_base? = nil
        #---------------------------------debug-------------------------------------------
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!)
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Weak MP Potion").not_nil!)
        #---------------------------------------------------------------------------------
        #--------------------------------objects------------------------------------------
               INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
@@ -15424,6 +15425,7 @@ module Inventory
                 t = (@@page.not_nil! - 1) * 15 + 1
                 if t < @@owned_consumable_array.size 
                  @@consumable_slot_02_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_02_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
                  @@consumable_slot_02_text.string = @@owned_consumable_array[t].name
                  @@consumable_slot_02 = @@owned_consumable_array[t]
                 else
@@ -15599,7 +15601,6 @@ module Inventory
             
             @@consumable_slot_02_image_sprite.position = @@consumable_slot_02_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_02_image_sprite.scale = SF.vector2(1.5, 1.5)
-            @@consumable_slot_02_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
     
             @@consumable_slot_02_text.position = @@consumable_slot_02_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_02_text)
@@ -15922,19 +15923,17 @@ module Inventory
                 sleep 0.15.seconds
             end
             
-            # if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
-            #    (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
+            if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
+               (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
                
-            #     if @@consumable_slot_02 != nil
-            #         t = 1 + (@@page.not_nil! * 15) - 15
+                if @@consumable_slot_02 != nil
+                    t = 1 + (@@page.not_nil! * 15) - 15
                     
-            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
-            #         Player::Appearance.change_consumable(@@consumable_slot_02.not_nil!.name)
-            #         Sprites::Player.refresh_player_sprite(window)
-            #     end
-            #     ConsumableTab.assign_slot_textures(window)
-            #     sleep 0.15.seconds
-            # end
+                    @@owned_consumable_array[t].effect.apply
+                end
+                ConsumableTab.assign_slot_textures(window)
+                sleep 0.15.seconds
+            end
             
             # if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
             #    (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)

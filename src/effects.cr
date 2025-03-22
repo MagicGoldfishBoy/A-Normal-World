@@ -41,6 +41,9 @@ module Effects
      HEALING_EFFECTS_HASH = Hash(String, HealingEffects).new
      
      @@heal_instant_10hp : HealingEffects
+
+     @@heal_instant_10mp : HealingEffects
+
      def self.heal_instant_10hp
         -> {
           puts "Healing the player!"
@@ -49,10 +52,21 @@ module Effects
             Player::Stats.current_hp = Player::Stats.max_hp.not_nil!
           end
         }
-      end
+     end
+     def self.heal_instant_10mp
+        -> {
+          puts "Healing the player!"
+          Player::Stats.current_mp = Player::Stats.current_mp.not_nil! + 10.0
+          if Player::Stats.current_mp.not_nil! > Player::Stats.max_mp.not_nil!
+            Player::Stats.current_mp = Player::Stats.max_mp.not_nil!
+          end
+        }
+     end
       
      HEALING_EFFECTS_HASH["heal_instant_10hp"] = @@heal_instant_10hp
-        @@heal_instant_10hp = HealingEffects.new("Heal", 1, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_10hp)
+     HEALING_EFFECTS_HASH["heal_instant_10mp"] = @@heal_instant_10mp
+        @@heal_instant_10hp = HealingEffects.new("Heal 10", 1, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_10hp)
+        @@heal_instant_10mp = HealingEffects.new("Restore MP 10", 2, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_10mp)
     end
 end
 
