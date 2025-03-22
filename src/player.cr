@@ -40,6 +40,9 @@ module Player
      property current_hp : Float64
      property max_hp : Float64
 
+     property current_mp : Float64
+     property max_mp : Float64
+
      def Stats.name
         @@name
      end
