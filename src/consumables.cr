@@ -36,6 +36,18 @@ module Consumables
             end }
         end
 
+        def self.clone
+            self.class.new(
+                name: @name,
+                id: @id,
+                stack_limit: @stack_limit,
+                amount_owned: @amount_owned,
+                texture: @texture,
+                texture_rectangle: @texture_rectangle,
+                effect: @effect
+            )
+        end
+
     end
 
     class Potions < Consumables_base

@@ -15111,7 +15111,8 @@ module Inventory
         @@consumable_slot_15 : Consumables::Consumables_base? = nil
        #---------------------------------debug-------------------------------------------
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!)
-            Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!.amount_owned = 1
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!, 1)
+            #Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!.amount_owned = 1
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("HP Potion").not_nil!)
             Consumables::Consumables_base.get_consumable("HP Potion").not_nil!.amount_owned = 1
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Weak MP Potion").not_nil!)
@@ -15828,6 +15829,27 @@ module Inventory
                 @@owned_consumable_array.delete_at(t)
             end
             ConsumableTab.assign_slot_textures(window)
+        end
+
+        def ConsumableTab.add_item(item, amount)
+            found = false
+            @@owned_consumable_array.each do |i|
+                if item.name == i.name
+                    remaining_space = i.stack_limit - i.amount_owned
+                    if remaining_space > 0
+                        to_add = Math.min(amount, remaining_space)
+                        i.amount_owned += to_add
+                        amount -= to_add
+                    end
+                    found = true if amount == 0
+                end
+            end
+        
+            unless found
+                new_item = Consumables::Consumables_base.new(item.name, item.id, item.stack_limit, amount, item.texture, item.texture_rectangle, item.effect)
+                new_item.amount_owned = amount
+                @@owned_consumable_array.push(new_item)
+            end
         end
 
         def ConsumableTab.mouse_handling(window)
