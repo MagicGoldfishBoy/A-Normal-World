@@ -559,3 +559,7 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
 
          PINK_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_pink_front.png")
          PINK_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_pink_back.png")
+    #CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+    #C                                       Consumable Textures                                        C
+    #CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+         CONSUMABLES_TEXTURE_01 = SF::Texture.from_file("../graphics/consumables.png")
