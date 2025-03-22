@@ -39,7 +39,10 @@ module Consumables
     end
 
     class Potions < Consumables_base
-        @@weak_healing_potion = Potions.new("Weak HP Potion", 1, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 0, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_hp"])
-        @@weak_mp_restore_potion = Potions.new("Weak MP Potion", 2, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 100, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_mp"])
+        @@weak_healing_potion = Potions.new("Weak HP Potion", 1, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 0, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_10hp"])
+        @@weak_mp_restore_potion = Potions.new("Weak MP Potion", 2, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 100, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_10mp"])
+
+        @@healing_potion = Potions.new("HP Potion", 3, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(100, 0, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_25hp"])
+        @@mp_restore_potion = Potions.new("MP Potion", 4, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(100, 100, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_25mp"])
     end
 end
