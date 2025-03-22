@@ -72,6 +72,8 @@ module Effects
      HEALING_EFFECTS_HASH["heal_instant_50hp"] = @@heal_instant_50hp
      HEALING_EFFECTS_HASH["heal_instant_50mp"] = @@heal_instant_50mp
 
+     HEALING_EFFECTS_HASH["heal_instant_100hp"] = @@heal_instant_100hp
+
         @@heal_instant_10hp = HealingEffects.new("Heal 10", 1, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_hp(10.0))
         @@heal_instant_10mp = HealingEffects.new("Restore MP 10", 2, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_mp(10.0))
 
@@ -79,7 +81,9 @@ module Effects
         @@heal_instant_25mp = HealingEffects.new("Restore MP 25", 4, 0.0, 25.0, false, NIL_TEXTURE, heal_instant_mp(25.0))
 
         @@heal_instant_50hp = HealingEffects.new("Heal 50", 5, 0.0, 50.0, false, NIL_TEXTURE, heal_instant_hp(50.0))
-        @@heal_instant_50mp = HealingEffects.new("Restore MP 50", 5, 0.0, 50.0, false, NIL_TEXTURE, heal_instant_mp(50.0))
+        @@heal_instant_50mp = HealingEffects.new("Restore MP 50", 6, 0.0, 50.0, false, NIL_TEXTURE, heal_instant_mp(50.0))
+
+        @@heal_instant_100hp = HealingEffects.new("Heal 100", 7, 0.0, 100.0, false, NIL_TEXTURE, heal_instant_hp(100.0))
     end
 end
 
