@@ -15413,6 +15413,7 @@ module Inventory
                 t = (@@page.not_nil! - 1) * 15
                 if t < @@owned_consumable_array.size 
                  @@consumable_slot_01_image_sprite.texture = @@owned_consumable_array[t].texture
+                 @@consumable_slot_01_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
                  @@consumable_slot_01_text.string = @@owned_consumable_array[t].name
                  @@consumable_slot_01 = @@owned_consumable_array[t]
                 else 
@@ -15586,9 +15587,8 @@ module Inventory
             @@consumable_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
             @@consumable_slot_01_sprite.scale = SF.vector2(1, 1)
             
-            @@consumable_slot_01_image_sprite.position = @@consumable_slot_01_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_01_image_sprite.position = @@consumable_slot_01_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_01_image_sprite.scale = SF.vector2(1.5, 1.5)
-            @@consumable_slot_01_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
     
             @@consumable_slot_01_text.position = @@consumable_slot_01_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_01_text)
@@ -15597,7 +15597,7 @@ module Inventory
             @@consumable_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
             @@consumable_slot_02_sprite.scale = SF.vector2(1, 1)
             
-            @@consumable_slot_02_image_sprite.position = @@consumable_slot_02_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_02_image_sprite.position = @@consumable_slot_02_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_02_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_02_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
     
@@ -15608,7 +15608,7 @@ module Inventory
             @@consumable_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
             @@consumable_slot_03_sprite.scale = SF.vector2(1, 1)
             
-            @@consumable_slot_03_image_sprite.position = @@consumable_slot_03_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_03_image_sprite.position = @@consumable_slot_03_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_03_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_03_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
     
@@ -15622,7 +15622,7 @@ module Inventory
             @@consumable_slot_04_text.position = @@consumable_slot_04_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_04_text)
             
-            @@consumable_slot_04_image_sprite.position = @@consumable_slot_04_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_04_image_sprite.position = @@consumable_slot_04_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_04_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_04_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
     
@@ -15633,7 +15633,7 @@ module Inventory
             @@consumable_slot_05_text.position = @@consumable_slot_05_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_05_text)
             
-            @@consumable_slot_05_image_sprite.position = @@consumable_slot_05_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_05_image_sprite.position = @@consumable_slot_05_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_05_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_05_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
@@ -15644,7 +15644,7 @@ module Inventory
             @@consumable_slot_06_text.position = @@consumable_slot_06_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_06_text)
             
-            @@consumable_slot_06_image_sprite.position = @@consumable_slot_06_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_06_image_sprite.position = @@consumable_slot_06_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_06_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_06_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
@@ -15655,7 +15655,7 @@ module Inventory
             @@consumable_slot_07_text.position = @@consumable_slot_07_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_07_text)
             
-            @@consumable_slot_07_image_sprite.position = @@consumable_slot_07_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_07_image_sprite.position = @@consumable_slot_07_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_07_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_07_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
@@ -15666,7 +15666,7 @@ module Inventory
             @@consumable_slot_08_text.position = @@consumable_slot_08_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_08_text)
             
-            @@consumable_slot_08_image_sprite.position = @@consumable_slot_08_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_08_image_sprite.position = @@consumable_slot_08_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_08_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_08_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
@@ -15677,7 +15677,7 @@ module Inventory
             @@consumable_slot_09_text.position = @@consumable_slot_09_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_09_text)
             
-            @@consumable_slot_09_image_sprite.position = @@consumable_slot_09_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_09_image_sprite.position = @@consumable_slot_09_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_09_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_09_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
@@ -15688,7 +15688,7 @@ module Inventory
             @@consumable_slot_10_text.position = @@consumable_slot_10_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_10_text)
             
-            @@consumable_slot_10_image_sprite.position = @@consumable_slot_10_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_10_image_sprite.position = @@consumable_slot_10_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_10_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_10_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
@@ -15699,7 +15699,7 @@ module Inventory
             @@consumable_slot_11_text.position = @@consumable_slot_11_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_11_text)
             
-            @@consumable_slot_11_image_sprite.position = @@consumable_slot_11_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_11_image_sprite.position = @@consumable_slot_11_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_11_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_11_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
@@ -15710,7 +15710,7 @@ module Inventory
             @@consumable_slot_12_text.position = @@consumable_slot_12_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_12_text)
             
-            @@consumable_slot_12_image_sprite.position = @@consumable_slot_12_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_12_image_sprite.position = @@consumable_slot_12_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_12_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_12_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
@@ -15721,7 +15721,7 @@ module Inventory
             @@consumable_slot_13_text.position = @@consumable_slot_13_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_13_text)
             
-            @@consumable_slot_13_image_sprite.position = @@consumable_slot_13_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_13_image_sprite.position = @@consumable_slot_13_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_13_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_13_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
@@ -15732,7 +15732,7 @@ module Inventory
             @@consumable_slot_14_text.position = @@consumable_slot_14_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_14_text)
             
-            @@consumable_slot_14_image_sprite.position = @@consumable_slot_14_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_14_image_sprite.position = @@consumable_slot_14_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_14_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_14_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
             
@@ -15743,7 +15743,7 @@ module Inventory
             @@consumable_slot_15_text.position = @@consumable_slot_15_sprite.position + SF.vector2(45, 55 * max_scale)
             Utility::StringUtilities.center_text(@@consumable_slot_15_text)
             
-            @@consumable_slot_15_image_sprite.position = @@consumable_slot_15_sprite.position - SF.vector2(15 * max_scale, 45 * max_scale)
+            @@consumable_slot_15_image_sprite.position = @@consumable_slot_15_sprite.position - SF.vector2(18 * max_scale, 25 * max_scale)
             @@consumable_slot_15_image_sprite.scale = SF.vector2(1.5, 1.5)
             @@consumable_slot_15_image_sprite.texture_rect = SF.int_rect(288, 640, 96, 128)
 
@@ -15908,19 +15908,19 @@ module Inventory
             if @@page == nil
                 @@page = 1
             end
-            # if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
-            #    (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
-            #     if @@consumable_slot_01 != nil   
-            #         t = 0 + (@@page.not_nil! * 15) - 15
+            if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
+               (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
+                if @@consumable_slot_01 != nil   
+                    t = 0 + (@@page.not_nil! * 15) - 15
+                    @@owned_consumable_array[t].effect.apply
+                    # @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
+                    # Player::Appearance.change_consumable(@@consumable_slot_01.not_nil!.name)
+                    # Sprites::Player.refresh_player_sprite(window)
                     
-            #         @@owned_consumable_array[t] = (Consumables::Consumable.get_consumable(Player::Appearance.get_clothing("consumable").not_nil!).not_nil!)
-            #         Player::Appearance.change_consumable(@@consumable_slot_01.not_nil!.name)
-            #         Sprites::Player.refresh_player_sprite(window)
-                    
-            #     end
-            #     ConsumableTab.assign_slot_textures(window)
-            #     sleep 0.15.seconds
-            # end
+                end
+                ConsumableTab.assign_slot_textures(window)
+                sleep 0.15.seconds
+            end
             
             # if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
             #    (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
