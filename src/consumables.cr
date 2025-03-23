@@ -70,8 +70,12 @@ module Consumables
 
         @@small_advanced_healing_potion = Potions.new("Small Advanced HP Potion", "Sm/Adv/HP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(400, 0, 100, 100), 
         Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_200hp"], 2000)
-
         @@small_advanced_mp_restore_potion = Potions.new("Small Advanced MP Potion", "Sm/Adv/MP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(400, 100, 100, 100), 
         Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_200mp"], 2000)
+
+        @@advanced_healing_potion = Potions.new("Advanced HP Potion", "Adv/HP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(500, 0, 100, 100), 
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_500hp"], 5000)
+        @@advanced_mp_restore_potion = Potions.new("Advanced MP Potion", "Adv/MP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(500, 100, 100, 100), 
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_500mp"], 5000)
     end
 end
