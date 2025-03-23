@@ -5,20 +5,21 @@ require "../src/effects.cr"
 module Consumables
     class Consumables_base
         CONSUMABLE_ARRAY = [] of Consumables_base
-        def initialize(name : String, id : Int32, stack_limit : Int32, amount_owned : Int32, texture : SF::Texture, texture_rectangle : SF::IntRect, effect : Effects::Effects_Base)
+        def initialize(name : String, short_name : String, stack_limit : Int32, amount_owned : Int32, texture : SF::Texture, texture_rectangle : SF::IntRect, effect : Effects::Effects_Base, base_value : Int32)
             @name = name
-            @id = id
+            @short_name = short_name
             @stack_limit = stack_limit
             @amount_owned = amount_owned
             @texture = texture
             @texture_rectangle = texture_rectangle
             @effect = effect
+            @base_value = base_value
             CONSUMABLE_ARRAY.push(self)
         end
 
         property name : String
 
-        property id : Int32
+        property short_name : String
 
         property stack_limit : Int32
 
@@ -29,6 +30,8 @@ module Consumables
         property texture_rectangle : SF::IntRect
 
         property effect : Effects::Effects_Base
+
+        property base_value  : Int32
 
         def Consumables_base.get_consumable(this)
             CONSUMABLE_ARRAY.each { |consumable| if consumable.name == this
@@ -51,16 +54,24 @@ module Consumables
     end
 
     class Potions < Consumables_base
-        @@weak_healing_potion = Potions.new("Weak HP Potion", 1, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 0, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_10hp"])
-        @@weak_mp_restore_potion = Potions.new("Weak MP Potion", 2, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 100, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_10mp"])
+        @@small_healing_potion = Potions.new("Small HP Potion", "Sm/HP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 0, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_10hp"], 50)
+        @@small_mp_restore_potion = Potions.new("Small MP Potion", "Sm/HP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 100, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_10mp"], 50)
 
-        @@healing_potion = Potions.new("HP Potion", 3, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(100, 0, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_25hp"])
-        @@mp_restore_potion = Potions.new("MP Potion", 4, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(100, 100, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_25mp"])
+        @@healing_potion = Potions.new("HP Potion", "HP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(100, 0, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_25hp"], 200)
+        @@mp_restore_potion = Potions.new("MP Potion", "HP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(100, 100, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_25mp"], 200)
 
-        @@large_healing_potion = Potions.new("L/HP Potion", 5, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(200, 0, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_50hp"])
-        @@large_mp_restore_potion = Potions.new("L/MP Potion", 6, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(200, 100, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_50mp"])
+        @@large_healing_potion = Potions.new("Large HP Potion", "L/HP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(200, 0, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_50hp"], 500)
+        @@large_mp_restore_potion = Potions.new("Large MP Potion", "L/MP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(200, 100, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_50mp"], 500)
 
-        @@x_large_healing_potion = Potions.new("XL/HP Potion", 7, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(300, 0, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_100hp"])
-        @@x_large_mp_restore_potion = Potions.new("XL/MP Potion", 8, 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(300, 100, 100, 100), Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_100mp"])
+        @@x_large_healing_potion = Potions.new("Extra Large HP Potion", "XL/HP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(300, 0, 100, 100), 
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_100hp"], 1000)
+        @@x_large_mp_restore_potion = Potions.new("Extra Large MP Potion", "XL/HP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(300, 100, 100, 100), 
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_100mp"], 1000)
+
+        @@small_advanced_healing_potion = Potions.new("Small Advanced HP Potion", "Sm/Adv/HP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(400, 0, 100, 100), 
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_200hp"], 2000)
+
+        @@small_advanced_mp_restore_potion = Potions.new("Small Advanced MP Potion", "Sm/Adv/MP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(400, 100, 100, 100), 
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_200mp"], 2000)
     end
 end
