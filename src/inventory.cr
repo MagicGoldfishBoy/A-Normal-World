@@ -15110,29 +15110,35 @@ module Inventory
         @@consumable_slot_14 : Consumables::Consumables_base? = nil
         @@consumable_slot_15 : Consumables::Consumables_base? = nil
        #---------------------------------debug-------------------------------------------
-            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!)
-            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!, 1)
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Small HP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Small HP Potion").not_nil!, 1)
 
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("HP Potion").not_nil!)
             Consumables::Consumables_base.get_consumable("HP Potion").not_nil!.amount_owned = 1
 
-            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Weak MP Potion").not_nil!)
-            Consumables::Consumables_base.get_consumable("Weak MP Potion").not_nil!.amount_owned = 1
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Small MP Potion").not_nil!)
+            Consumables::Consumables_base.get_consumable("Small MP Potion").not_nil!.amount_owned = 1
 
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("MP Potion").not_nil!)
             ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("MP Potion").not_nil!, 1)
 
-            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("L/HP Potion").not_nil!)
-            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("L/HP Potion").not_nil!, 1)
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Large HP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Large HP Potion").not_nil!, 1)
 
-            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("L/MP Potion").not_nil!)
-            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("L/MP Potion").not_nil!, 1)
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Large MP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Large MP Potion").not_nil!, 1)
 
-            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("XL/HP Potion").not_nil!)
-            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("XL/HP Potion").not_nil!, 1)
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Extra Large HP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Extra Large HP Potion").not_nil!, 1)
 
-            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("XL/MP Potion").not_nil!)
-            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("XL/MP Potion").not_nil!, 1)
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Extra Large MP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Extra Large MP Potion").not_nil!, 1)
+
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Small Advanced HP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Small Advanced HP Potion").not_nil!, 1)
+
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Small Advanced MP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Small Advanced MP Potion").not_nil!, 1)
        #---------------------------------------------------------------------------------
        #--------------------------------objects------------------------------------------
               INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
@@ -15436,7 +15442,7 @@ module Inventory
                 if t < @@owned_consumable_array.size 
                  @@consumable_slot_01_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_01_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_01_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_01_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_01 = @@owned_consumable_array[t]
                 else 
                     @@consumable_slot_01_image_sprite.texture = NIL_TEXTURE
@@ -15447,7 +15453,7 @@ module Inventory
                 if t < @@owned_consumable_array.size 
                  @@consumable_slot_02_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_02_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_02_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_02_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_02 = @@owned_consumable_array[t]
                 else
                     @@consumable_slot_02_image_sprite.texture = NIL_TEXTURE
@@ -15458,7 +15464,7 @@ module Inventory
                 if t < @@owned_consumable_array.size 
                  @@consumable_slot_03_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_03_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_03_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_03_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_03 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_03_image_sprite.texture = NIL_TEXTURE
@@ -15469,7 +15475,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_04_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_04_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_04_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_04_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_04 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_04_image_sprite.texture = NIL_TEXTURE
@@ -15480,7 +15486,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_05_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_05_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_05_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_05_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_05 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_05_image_sprite.texture = NIL_TEXTURE
@@ -15491,7 +15497,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_06_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_06_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_06_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_06_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_06 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_06_image_sprite.texture = NIL_TEXTURE
@@ -15502,7 +15508,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_07_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_07_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_07_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_07_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_07 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_07_image_sprite.texture = NIL_TEXTURE
@@ -15513,7 +15519,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_08_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_08_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_08_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_08_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_08 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_08_image_sprite.texture = NIL_TEXTURE
@@ -15524,7 +15530,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_09_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_09_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_09_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_09_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_09 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_09_image_sprite.texture = NIL_TEXTURE
@@ -15535,7 +15541,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_10_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_10_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_10_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_10_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_10 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_10_image_sprite.texture = NIL_TEXTURE
@@ -15546,7 +15552,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_11_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_11_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_11_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_11_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_11 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_11_image_sprite.texture = NIL_TEXTURE
@@ -15557,7 +15563,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_12_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_12_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_12_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_12_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_12 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_12_image_sprite.texture = NIL_TEXTURE
@@ -15568,7 +15574,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_13_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_13_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_13_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_13_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_13 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_13_image_sprite.texture = NIL_TEXTURE
@@ -15579,7 +15585,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_14_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_14_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_14_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_14_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_14 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_14_image_sprite.texture = NIL_TEXTURE
@@ -15590,7 +15596,7 @@ module Inventory
                 if t < @@owned_consumable_array.size
                  @@consumable_slot_15_image_sprite.texture = @@owned_consumable_array[t].texture
                  @@consumable_slot_15_image_sprite.texture_rect = @@owned_consumable_array[t].texture_rectangle
-                 @@consumable_slot_15_text.string = "#{@@owned_consumable_array[t].name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
+                 @@consumable_slot_15_text.string = "#{@@owned_consumable_array[t].short_name + " " + @@owned_consumable_array[t].amount_owned.to_s + "x"}"
                  @@consumable_slot_15 = @@owned_consumable_array[t]
                 else
                  @@consumable_slot_15_image_sprite.texture = NIL_TEXTURE
@@ -15862,7 +15868,7 @@ module Inventory
             end
         
             unless found
-                new_item = Consumables::Consumables_base.new(item.name, item.id, item.stack_limit, amount, item.texture, item.texture_rectangle, item.effect)
+                new_item = Consumables::Consumables_base.new(item.name, item.short_name, item.stack_limit, amount, item.texture, item.texture_rectangle, item.effect, item.base_value)
                 new_item.amount_owned = amount
                 @@owned_consumable_array.push(new_item)
             end
