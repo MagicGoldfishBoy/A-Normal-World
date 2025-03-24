@@ -15233,6 +15233,12 @@ module Inventory
 
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Large Advanced MP Potion").not_nil!)
             ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Large Advanced MP Potion").not_nil!, 1)
+
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Extra Large Advanced HP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Extra Large Advanced HP Potion").not_nil!, 1)
+
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Extra Large Advanced MP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Extra Large Advanced MP Potion").not_nil!, 1)
        #---------------------------------------------------------------------------------
        #--------------------------------objects------------------------------------------
               INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
@@ -15498,26 +15504,7 @@ module Inventory
 
         class_property is_open : Bool = false
         class_property page : Int32 = 1
-
-        class_property last_click_time : Time = Time.utc - 1.second
-        class_property is_clicking : Bool = false
-
           
-        def self.handle_click(window)
-            return unless SF::Mouse.button_pressed?(SF::Mouse::Left)
-            return if is_clicking
-        
-            self.is_clicking = true
-        
-            current_time = Time.utc
-            self.last_click_time = current_time
-        
-            sleep 0.15.seconds
-        
-            self.is_clicking = false
-          end
-          
-
         def ConsumableTab.owned_consumable_array
             @@owned_consumable_array
         end
@@ -16087,7 +16074,7 @@ module Inventory
                     ConsumableTab.use_item(window, t)
                 end
                 ConsumableTab.assign_slot_textures(window)
-                ConsumableTab.handle_click(window)
+                Utility::ClickUtilities.handle_click(window)
                 #sleep 0.15.seconds
             end
             

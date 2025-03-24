@@ -67,7 +67,7 @@ module Keyboard
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::E)
-                Inventory::ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Weak HP Potion").not_nil!, 1)
+                Inventory::ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Small HP Potion").not_nil!, 51)
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::A)
