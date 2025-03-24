@@ -157,70 +157,40 @@ module Player
         @@weapon = weapon
     end
 
-    def skin
-        @skin
-    end
+    class_property skin : String = "pale_skin"
 
-    def hair
-        @hair
-    end
+    class_property hair : String = "Black Shounen Hair"
 
-    def face
-        @face
-    end
+    class_property face : String = "Blue Button Eyes"
 
-    def hat
-        @hat
-    end
+    class_property hat : String = "No Hat"
 
-    def glasses
-        @glasses
-    end
+    class_property glasses : String = "No Glasses"
 
-    def earrings
-        @earrings
-    end
+    class_property earrings : String = "No Earrings"
 
-    def shirt
-        @shirt
-    end
+    class_property shirt : String = "Yellow T-Shirt"
 
-    def gloves
-        @gloves
-    end
+    class_property gloves : String = "No Gloves"
 
-    def pants
-        @pants
-    end
+    class_property pants : String = "Blue Jeans"
 
-    def shoes
-        @shoes
-    end
+    class_property shoes : String = "Red Rain Boots"
 
-    def socks
-        @socks
-    end
+    class_property socks : String = "W/Socks"
 
-    def makeup
-        @makeup
-    end
+    class_property makeup : String = "No Makeup"
 
-    def necklace
-        @necklace
-    end
+    class_property necklace : String = "No Necklace"
 
-    def jacket
-        @jacket
-    end
+    class_property jacket : String = "No Jacket"
 
-    def weapon
-        @weapon
-    end
+    class_property weapon : String = "No Weapon"
 
     def Appearance.initialize_player_model
         @@skin = "pale_skin"
-        @@hair = "black_shounen_hair"
-        @@face = "Blue Shounen Eyes"
+        @@hair = "Black Shounen Hair"
+        @@face = "Pink Shounen Eyes"
         @@hat = "No Hat"
         @@earrings = "No Earrings"
         @@shirt = "White Tank Top"
