@@ -81,23 +81,32 @@ module Effects
      HEALING_EFFECTS_HASH["heal_instant_500hp"] = @@heal_instant_500hp
      HEALING_EFFECTS_HASH["heal_instant_500mp"] = @@heal_instant_500mp
 
-        @@heal_instant_10hp = HealingEffects.new("Heal 10", 1, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_hp(10.0))
-        @@heal_instant_10mp = HealingEffects.new("Restore MP 10", 2, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_mp(10.0))
+     HEALING_EFFECTS_HASH["heal_instant_500hp"] = @@heal_instant_500hp
+     HEALING_EFFECTS_HASH["heal_instant_500mp"] = @@heal_instant_500mp
 
-        @@heal_instant_25hp = HealingEffects.new("Heal 25", 3, 0.0, 25.0, false, NIL_TEXTURE, heal_instant_hp(25.0))
-        @@heal_instant_25mp = HealingEffects.new("Restore MP 25", 4, 0.0, 25.0, false, NIL_TEXTURE, heal_instant_mp(25.0))
+     HEALING_EFFECTS_HASH["heal_instant_1000hp"] = @@heal_instant_1000hp
+     HEALING_EFFECTS_HASH["heal_instant_1000mp"] = @@heal_instant_1000mp
 
-        @@heal_instant_50hp = HealingEffects.new("Heal 50", 5, 0.0, 50.0, false, NIL_TEXTURE, heal_instant_hp(50.0))
-        @@heal_instant_50mp = HealingEffects.new("Restore MP 50", 6, 0.0, 50.0, false, NIL_TEXTURE, heal_instant_mp(50.0))
+      @@heal_instant_10hp = HealingEffects.new("Heal 10", 1, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_hp(10.0))
+      @@heal_instant_10mp = HealingEffects.new("Restore MP 10", 2, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_mp(10.0))
 
-        @@heal_instant_100hp = HealingEffects.new("Heal 100", 7, 0.0, 100.0, false, NIL_TEXTURE, heal_instant_hp(100.0))
-        @@heal_instant_100mp = HealingEffects.new("Restore MP 100", 8, 0.0, 100.0, false, NIL_TEXTURE, heal_instant_mp(100.0))
+      @@heal_instant_25hp = HealingEffects.new("Heal 25", 3, 0.0, 25.0, false, NIL_TEXTURE, heal_instant_hp(25.0))
+      @@heal_instant_25mp = HealingEffects.new("Restore MP 25", 4, 0.0, 25.0, false, NIL_TEXTURE, heal_instant_mp(25.0))
 
-        @@heal_instant_200hp = HealingEffects.new("Heal 200", 7, 0.0, 200.0, false, NIL_TEXTURE, heal_instant_hp(200.0))
-        @@heal_instant_200mp = HealingEffects.new("Restore MP 200", 8, 0.0, 200.0, false, NIL_TEXTURE, heal_instant_mp(200.0))
+      @@heal_instant_50hp = HealingEffects.new("Heal 50", 5, 0.0, 50.0, false, NIL_TEXTURE, heal_instant_hp(50.0))
+      @@heal_instant_50mp = HealingEffects.new("Restore MP 50", 6, 0.0, 50.0, false, NIL_TEXTURE, heal_instant_mp(50.0))
 
-        @@heal_instant_500hp = HealingEffects.new("Heal 500", 7, 0.0, 500.0, false, NIL_TEXTURE, heal_instant_hp(500.0))
-        @@heal_instant_500mp = HealingEffects.new("Restore MP 500", 8, 0.0, 200.0, false, NIL_TEXTURE, heal_instant_mp(500.0))
+      @@heal_instant_100hp = HealingEffects.new("Heal 100", 7, 0.0, 100.0, false, NIL_TEXTURE, heal_instant_hp(100.0))
+      @@heal_instant_100mp = HealingEffects.new("Restore MP 100", 8, 0.0, 100.0, false, NIL_TEXTURE, heal_instant_mp(100.0))
+
+      @@heal_instant_200hp = HealingEffects.new("Heal 200", 9, 0.0, 200.0, false, NIL_TEXTURE, heal_instant_hp(200.0))
+      @@heal_instant_200mp = HealingEffects.new("Restore MP 200", 10, 0.0, 200.0, false, NIL_TEXTURE, heal_instant_mp(200.0))
+
+      @@heal_instant_500hp = HealingEffects.new("Heal 500", 11, 0.0, 500.0, false, NIL_TEXTURE, heal_instant_hp(500.0))
+      @@heal_instant_500mp = HealingEffects.new("Restore MP 500", 12, 0.0, 500.0, false, NIL_TEXTURE, heal_instant_mp(500.0))
+
+      @@heal_instant_1000hp = HealingEffects.new("Heal 1000", 13, 0.0, 1000.0, false, NIL_TEXTURE, heal_instant_hp(1000.0))
+      @@heal_instant_1000mp = HealingEffects.new("Restore MP 1000", 14, 0.0, 1000.0, false, NIL_TEXTURE, heal_instant_mp(1000.0))
     end
 end
 
