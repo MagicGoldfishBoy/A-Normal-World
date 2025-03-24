@@ -2713,7 +2713,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                 Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_01.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_01.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2729,7 +2729,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                 Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_02.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_02.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2745,7 +2745,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_03.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_03.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2761,7 +2761,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_04.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_04.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2777,7 +2777,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_05.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_05.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2793,7 +2793,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_06.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_06.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2809,7 +2809,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_07.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_07.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2825,7 +2825,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_08.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_08.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2841,7 +2841,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_09.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_09.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2857,7 +2857,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_10.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_10.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2873,7 +2873,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_11.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_11.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2889,7 +2889,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_12.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_12.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2905,7 +2905,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_13.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_13.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2921,7 +2921,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                     Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_14.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_14.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -2937,7 +2937,7 @@ module Inventory
                 
                 @@owned_shirt_array[t] = (Clothing::Shirt.get_shirt(
                 Player::Appearance.get_clothing("shirt").try(&.to_s) || Clothing::Shirt.get_shirt("No Shirt").not_nil!)).not_nil!
-                Player::Appearance.change_shirt(@@shirt_slot_15.try &.name)
+                Player::Appearance.change_shirt(@@shirt_slot_15.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shirt_array.uniq!
             end
@@ -3750,7 +3750,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                 Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_01.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_01.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3766,7 +3766,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                 Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_02.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_02.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3782,7 +3782,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_03.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_03.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3798,7 +3798,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_04.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_04.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3814,7 +3814,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_05.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_05.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3830,7 +3830,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_06.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_06.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3846,7 +3846,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_07.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_07.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3862,7 +3862,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_08.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_08.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3878,7 +3878,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_09.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_09.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3894,7 +3894,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_10.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_10.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3910,7 +3910,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_11.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_11.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3926,7 +3926,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_12.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_12.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3942,7 +3942,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_13.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_13.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3958,7 +3958,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                     Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_14.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_14.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -3974,7 +3974,7 @@ module Inventory
                 
                 @@owned_jacket_array[t] = (Clothing::Jacket.get_jacket(
                 Player::Appearance.get_clothing("jacket").try(&.to_s) || Clothing::Jacket.get_jacket("No Jacket").not_nil!)).not_nil!
-                Player::Appearance.change_jacket(@@jacket_slot_15.try &.name)
+                Player::Appearance.change_jacket(@@jacket_slot_15.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_jacket_array.uniq!
             end
@@ -4832,7 +4832,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_01.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_01.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -4848,7 +4848,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_02.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_02.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -4864,7 +4864,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_03.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_03.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -4880,7 +4880,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_04.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_04.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -4896,7 +4896,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_05.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_05.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -4912,7 +4912,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_06.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_06.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -4928,7 +4928,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_07.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_07.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -4944,7 +4944,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_08.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_08.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -4960,7 +4960,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_09.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_09.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -4976,7 +4976,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_10.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_10.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -4992,7 +4992,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_11.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_11.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -5008,7 +5008,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_12.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_12.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -5024,7 +5024,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_13.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_13.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -5040,7 +5040,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_14.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_14.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -5056,7 +5056,7 @@ module Inventory
                 
                 @@owned_pants_array[t] = (Clothing::Pants.get_pants(
                 Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_15.try &.name)
+                Player::Appearance.change_pants(@@pants_slot_15.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_pants_array.uniq!
             end
@@ -5907,7 +5907,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_01.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_01.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
                 
@@ -5924,7 +5924,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_02.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_02.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -5940,7 +5940,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_03.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_03.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -5956,7 +5956,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_04.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_04.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -5972,7 +5972,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_05.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_05.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -5988,7 +5988,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_06.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_06.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -6004,7 +6004,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_07.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_07.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -6020,7 +6020,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_08.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_08.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -6036,7 +6036,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_09.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_09.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -6052,7 +6052,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_10.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_10.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -6068,7 +6068,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_11.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_11.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -6084,7 +6084,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_12.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_12.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -6100,7 +6100,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_13.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_13.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -6116,7 +6116,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_14.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_14.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -6132,7 +6132,7 @@ module Inventory
                 
                 @@owned_shoes_array[t] = (Clothing::Shoes.get_shoes(
                 Player::Appearance.get_clothing("shoes").try(&.to_s) || Clothing::Shoes.get_shoes("No Shoes").not_nil!)).not_nil!
-                Player::Appearance.change_shoes(@@shoes_slot_15.try &.name)
+                Player::Appearance.change_shoes(@@shoes_slot_15.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_shoes_array.uniq!
             end
@@ -6961,7 +6961,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_01.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_01.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 
             end
@@ -6977,7 +6977,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_02.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_02.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -6992,7 +6992,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_03.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_03.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7007,7 +7007,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_04.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_04.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7022,7 +7022,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_05.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_05.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7037,7 +7037,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_06.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_06.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7052,7 +7052,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_07.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_07.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7067,7 +7067,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_08.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_08.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7082,7 +7082,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_09.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_09.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7097,7 +7097,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_10.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_10.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7112,7 +7112,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_11.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_11.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7127,7 +7127,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_12.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_12.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7142,7 +7142,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_13.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_13.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7157,7 +7157,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_14.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_14.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -7172,7 +7172,7 @@ module Inventory
                 
                 @@owned_socks_array[t] = (Clothing::Socks.get_socks(
                 Player::Appearance.get_clothing("socks").try(&.to_s) || Clothing::Socks.get_socks("No Socks").not_nil!)).not_nil!
-                Player::Appearance.change_socks(@@socks_slot_15.try &.name)
+                Player::Appearance.change_socks(@@socks_slot_15.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabSocks.assign_slot_textures(window)
@@ -8034,7 +8034,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_01.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_01.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 
             end
@@ -8050,7 +8050,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_02.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_02.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8065,7 +8065,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_03.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_03.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8080,7 +8080,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_04.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_04.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8095,7 +8095,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_04.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_04.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8110,7 +8110,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_06.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_06.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8125,7 +8125,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_07.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_07.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8140,7 +8140,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_08.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_08.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8155,7 +8155,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_09.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_09.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8170,7 +8170,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_10.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_10.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8185,7 +8185,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_11.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_11.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8200,7 +8200,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_12.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_12.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8215,7 +8215,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_13.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_13.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8230,7 +8230,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_14.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_14.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -8245,7 +8245,7 @@ module Inventory
                 
                 @@owned_gloves_array[t] = (Clothing::Gloves.get_gloves(
                 Player::Appearance.get_clothing("gloves").try(&.to_s) || Clothing::Gloves.get_gloves("No Gloves").not_nil!)).not_nil!
-                Player::Appearance.change_gloves(@@gloves_slot_15.try &.name)
+                Player::Appearance.change_gloves(@@gloves_slot_15.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
             end
             ClothingTabGloves.assign_slot_textures(window)
@@ -9163,7 +9163,7 @@ module Inventory
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(
                 Player::Appearance.get_clothing("earrings").try(&.to_s) || Clothing::Earrings.get_earrings("No Earrings").not_nil!)).not_nil!
-                Player::Appearance.change_earrings(@@earrings_slot_01.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_01.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9180,7 +9180,7 @@ module Inventory
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(
                 Player::Appearance.get_clothing("earrings").try(&.to_s) || Clothing::Earrings.get_earrings("No Earrings").not_nil!)).not_nil!
-                Player::Appearance.change_earrings(@@earrings_slot_02.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_02.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9197,7 +9197,7 @@ module Inventory
                 if t < @@owned_earrings_array.size
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(
                 Player::Appearance.get_clothing("earrings").try(&.to_s) || Clothing::Earrings.get_earrings("No Earrings").not_nil!)).not_nil!
-                Player::Appearance.change_earrings(@@earrings_slot_03.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_03.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9214,7 +9214,7 @@ module Inventory
                 t = 3 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_04.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_04.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9230,7 +9230,7 @@ module Inventory
                 t = 4 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_05.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_05.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9246,7 +9246,7 @@ module Inventory
                 t = 5 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_06.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_06.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9262,7 +9262,7 @@ module Inventory
                 t = 6 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_07.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_07.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9278,7 +9278,7 @@ module Inventory
                 t = 7 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_08.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_08.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9294,7 +9294,7 @@ module Inventory
                 t = 8 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_09.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_09.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9310,7 +9310,7 @@ module Inventory
                 t = 9 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_10.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_10.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9326,7 +9326,7 @@ module Inventory
                 t = 10 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_11.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_11.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9342,7 +9342,7 @@ module Inventory
                 t = 11 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_12.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_12.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9358,7 +9358,7 @@ module Inventory
                 t = 12 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_13.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_13.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9374,7 +9374,7 @@ module Inventory
                 t = 13 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_14.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_14.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
@@ -9390,7 +9390,7 @@ module Inventory
                 t = 14 + ((@@page || 1) * 15) - 15
                 
                 @@owned_earrings_array[t] = (Clothing::Earrings.get_earrings(Player::Appearance.get_clothing("earrings").not_nil!).not_nil!)
-                Player::Appearance.change_earrings(@@earrings_slot_15.try &.name)
+                Player::Appearance.change_earrings(@@earrings_slot_15.not_nil!.name)
                 Sprites::Player.refresh_player_sprite(window)
                 @@owned_earrings_array.uniq!
                 @@owned_earrings_array.compact!
