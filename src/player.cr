@@ -3,22 +3,40 @@ require "../src/sprites.cr"
 
 module Player
   class Stats
-     def initialize(name : String, money : Int32, max_hp : Float64, current_hp : Float64, max_mp : Float64, current_mp : Float64, lvl : Int32, 
-        exp : Float64, exp_cap : Float64, defense : Float64, str : Float64, dex : Float64, luk : Float64, int : Float64, lvl_points : Int32)
+     def initialize(name : String, money : Int32, max_hp : Float64, current_hp : Float64, buff_hp : Float64,
+        max_mp : Float64, current_mp : Float64, buff_mp : Float64, lvl : Int32, exp : Float64, exp_cap : Float64, 
+        defense : Float64, buff_defense : Float64, str : Float64, buff_str : Float64, dex : Float64, buff_dex : Float64,
+        luk : Float64, buff_luk : Float64, int : Float64, buff_int : Float64, lvl_points : Int32)
         @name = name
         @money = money
+
         @max_hp = max_hp
         @current_hp = current_hp
+        @buff_hp = buff_hp
+
         @max_mp = max_mp
         @current_mp = current_mp
+        @buff_mp = buff_mp
+
         @exp = exp
         @exp_cap = exp_cap
         @lvl = lvl
+
         @defense = defense
+        @buff_defense = buff_defense
+
         @str = str
+        @buff_str = buff_str
+
         @dex = dex
+        @buff_dex = buff_dex
+
         @luk = luk
+        @buff_luk = buff_luk
+
         @int = int
+        @buff_int = buff_int
+
         @lvl_points = lvl_points
      end
 
@@ -28,9 +46,11 @@ module Player
 
      class_property current_hp : Float64 = 10
      class_property max_hp : Float64 = 10
+     class_property buff_hp : Float64 = 0
 
      class_property current_mp : Float64 = 10
      class_property max_mp : Float64 = 10
+     class_property buff_mp : Float64 = 0
 
      class_property lvl : Int32 = 1
 
@@ -38,14 +58,19 @@ module Player
      class_property exp_cap : Float64 = 10
 
      class_property defense : Float64 = 5
+     class_property buff_defense : Float64 = 0
 
      class_property str : Float64 = 5
+     class_property buff_str : Float64 = 0
 
      class_property dex : Float64 = 5
+     class_property buff_dex : Float64 = 0
 
      class_property luk : Float64 = 5
+     class_property buff_luk : Float64 = 0
 
      class_property int : Float64 = 5
+     class_property buff_int : Float64 = 0
 
      class_property lvl_points : Int32 = 0
 
