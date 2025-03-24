@@ -796,6 +796,7 @@ module Inventory
                 (mouse_y >= consumables_tab_y && mouse_y <= consumables_tab_y + consumables_tab_height)
                  InventoryManager.close_cosmetics_category(window)
                  @@category = "Consumables"
+                 @@tab = "consumables"
                  ConsumableTab.assign_slot_textures(window)
                  #InventoryManager.open_weapons_tab(window)
                  sleep 0.15.seconds
@@ -904,6 +905,8 @@ module Inventory
                 InventoryManager.necklace_tab_mouse_handling(window)
             when "weapon"
                 InventoryManager.weapon_tab_mouse_handling(window)
+            when "consumable"
+                InventoryManager.consumable_tab_mouse_handling(window)
             end
 
         end
@@ -1810,6 +1813,85 @@ module Inventory
                  WeaponTab.change_weapon_sort_category
                  @@equipment_weapon_category_text.string = WeaponTab.get_weapon_category
                  Utility::StringUtilities.center_text(@@equipment_weapon_category_text)
+                 sleep 0.15.seconds
+             end  
+        end
+
+        def InventoryManager.consumable_tab_mouse_handling(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+            
+        
+            current_size = window.size
+            original_width = 800 
+            original_height = 600 
+    
+            scale_x = (current_size.x.to_f / original_width)
+            scale_y = current_size.y.to_f / original_height
+    
+            #------------------------------------objects-------------------------------------------------
+                arrow_left_x = INVENTORY_LEFT_ARROW_SPRITE.position.x
+                arrow_left_y = INVENTORY_LEFT_ARROW_SPRITE.position.y
+                arrow_left_width = INVENTORY_LEFT_ARROW_SPRITE.size.x
+                arrow_left_height = INVENTORY_LEFT_ARROW_SPRITE.size.y
+
+                arrow_right_x = INVENTORY_RIGHT_ARROW_SPRITE.position.x
+                arrow_right_y = INVENTORY_RIGHT_ARROW_SPRITE.position.y
+                arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
+                arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
+
+
+                sort_button_x = @@clothing_sort_button_sprite.position.x
+                sort_button_y = @@clothing_sort_button_sprite.position.y
+                sort_button_width = @@clothing_sort_button_sprite.size.x
+                sort_button_height = @@clothing_sort_button_sprite.size.y
+    
+                category_button_x = @@clothing_shirt_category_box.position.x
+                category_button_y = @@clothing_shirt_category_box.position.y
+                category_button_width = @@clothing_shirt_category_box.size.x
+                category_button_height = @@clothing_shirt_category_box.size.y
+
+            #---------------------------------------------------------------------------------------------
+            if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
+                (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
+                if ConsumableTab.page == nil
+                    ConsumableTab.page = 1
+                end
+                 if ConsumableTab.page.not_nil! > 1
+                    ConsumableTab.page=(ConsumableTab.page.not_nil! - 1)
+                 end
+                 ConsumableTab.assign_slot_textures(window)
+                 sleep 0.15.seconds
+            end
+             
+            if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
+                (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
+                 if ConsumableTab.page == nil
+                    ConsumableTab.page = 1
+                 end
+                 if ConsumableTab.page.not_nil! <= 5
+                    ConsumableTab.page=(ConsumableTab.page.not_nil! + 1)
+                 end
+                 ConsumableTab.assign_slot_textures(window)
+                 sleep 0.15.seconds
+            end  
+            
+            if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
+                (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
+                # if ConsumableTab.get_consumable_category == "Color"
+                #  ConsumableTab.organise_owned_consumable_array_by_color(window)
+                # elsif "Type"
+                #  ConsumableTab.organise_owned_consumable_array_by_type(window)
+                # end
+                 sleep 0.15.seconds
+             end        
+     
+             if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
+                (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
+                 ConsumableTab.change_consumable_sort_category
+                 @@consumables_consumable_category_text.string = ConsumableTab.get_consumable_category
+                 Utility::StringUtilities.center_text(@@consumables_consumable_category_text)
                  sleep 0.15.seconds
              end  
         end
@@ -15145,6 +15227,12 @@ module Inventory
 
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Advanced MP Potion").not_nil!)
             ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Advanced MP Potion").not_nil!, 1)
+
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Large Advanced HP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Large Advanced HP Potion").not_nil!, 1)
+
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Large Advanced MP Potion").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Large Advanced MP Potion").not_nil!, 1)
        #---------------------------------------------------------------------------------
        #--------------------------------objects------------------------------------------
               INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
@@ -15408,9 +15496,27 @@ module Inventory
             @page = page
         end
 
-        property is_open : Bool
-        property page : Int32
+        class_property is_open : Bool = false
+        class_property page : Int32 = 1
 
+        class_property last_click_time : Time = Time.utc - 1.second
+        class_property is_clicking : Bool = false
+
+          
+        def self.handle_click(window)
+            return unless SF::Mouse.button_pressed?(SF::Mouse::Left)
+            return if is_clicking
+        
+            self.is_clicking = true
+        
+            current_time = Time.utc
+            self.last_click_time = current_time
+        
+            sleep 0.15.seconds
+        
+            self.is_clicking = false
+          end
+          
 
         def ConsumableTab.owned_consumable_array
             @@owned_consumable_array
@@ -15981,7 +16087,8 @@ module Inventory
                     ConsumableTab.use_item(window, t)
                 end
                 ConsumableTab.assign_slot_textures(window)
-                sleep 0.15.seconds
+                ConsumableTab.handle_click(window)
+                #sleep 0.15.seconds
             end
             
             if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
