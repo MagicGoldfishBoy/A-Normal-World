@@ -98,4 +98,24 @@ module Utility
 
     end
 
+    class ClickUtilities
+        class_property last_click_time : Time = Time.utc - 1.second
+        class_property is_clicking : Bool = false
+
+          
+        def ClickUtilities.handle_click(window)
+            return unless SF::Mouse.button_pressed?(SF::Mouse::Left)
+            return if is_clicking
+        
+            self.is_clicking = true
+        
+            current_time = Time.utc
+            self.last_click_time = current_time
+        
+            sleep 0.15.seconds
+        
+            self.is_clicking = false
+          end
+    end
+
 end
