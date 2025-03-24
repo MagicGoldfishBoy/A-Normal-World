@@ -780,6 +780,7 @@ module Inventory
             if (mouse_x >= cosmetics_tab_x && mouse_x <= cosmetics_tab_x + cosmetics_tab_width) &&
                 (mouse_y >= cosmetics_tab_y && mouse_y <= cosmetics_tab_y + cosmetics_tab_height)
                  InventoryManager.open_cosmetics_category(window)
+                 @@tab = "Shirt"
                  @@category = "Cosmetics"
                  sleep 0.15.seconds
             end

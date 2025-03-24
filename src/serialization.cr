@@ -7,7 +7,6 @@ module Serialization
 
     @@stat_save_hash = Hash(String, Float64 | Nil | String | Int32).new
     if Player::Stats.max_hp == nil
-    Player::Stats.initialize_player_stats  #it doesn't get the right values without this, but it makes me nervous
     Player::Appearance.initialize_player_model
     end
     @@stat_save_hash["name"] = Player::Stats.name 
@@ -37,6 +36,7 @@ module Serialization
     @@stat_save_hash["necklace"] = Player::Appearance.get_clothing("necklace")
     @@stat_save_hash["glasses"] = Player::Appearance.get_clothing("glasses")
     @@stat_save_hash["jacket"] = Player::Appearance.get_clothing("jacket")
+    @@stat_save_hash["socks"] = Player::Appearance.get_clothing("socks")
     @@stat_save_hash["weapon"] = Player::Appearance.get_clothing("weapon")
 
     def initialize(save_file : String, max_hp : Float64)
@@ -98,6 +98,7 @@ module Serialization
         Player::Appearance.change_necklace(player_stats["necklace"].to_s) 
         Player::Appearance.change_glasses(player_stats["glasses"].to_s) 
         Player::Appearance.change_jacket(player_stats["jacket"].to_s) 
+        Player::Appearance.change_socks(player_stats["socks"].to_s) 
         Player::Appearance.change_weapon(player_stats["weapon"].to_s) 
     end
 
@@ -139,6 +140,7 @@ module Serialization
         @@stat_save_hash["necklace"] = Player::Appearance.get_clothing("necklace")
         @@stat_save_hash["glasses"] = Player::Appearance.get_clothing("glasses")
         @@stat_save_hash["jacket"] = Player::Appearance.get_clothing("jacket")
+        @@stat_save_hash["socks"] = Player::Appearance.get_clothing("socks")
         @@stat_save_hash["weapon"] = Player::Appearance.get_clothing("weapon")
     end
 
