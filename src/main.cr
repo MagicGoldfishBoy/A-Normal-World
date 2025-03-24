@@ -25,7 +25,6 @@ window.vertical_sync_enabled = true
 this = "main_menu"
 Menus::SystemMenus.system_menu=(this)
 Sprites::Player.is_drawn=(false)
-Player::Stats.initialize_player_stats
 Keyboard::Gameplay.gameplay_mode=("none")
 Levels::LevelSelectionLogic.level=("none")
 

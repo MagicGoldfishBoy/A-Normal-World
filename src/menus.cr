@@ -502,7 +502,7 @@ module Menus
         end
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
             if !File.exists?("src/saves/save01")
-            Player::Stats.initialize_player_stats
+            #Player::Stats.initialize_player_stats
             Serialization::SaveFile.save_file=("save01")
             Serialization::SaveFile.initial_save("save01")
             SystemMenus.initialize_character_creation_menu(window)
@@ -519,37 +519,31 @@ module Menus
             end
         end
         if (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + MENU_BOX_03.size.x) && (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + MENU_BOX_03.size.y)
-            Player::Stats.initialize_player_stats
             Serialization::SaveFile.save_file=("save02")
             Serialization::SaveFile.initial_save("save02")
             SystemMenus.initialize_character_creation_menu(window)
         end
         if (scaled_mouse_x >= menu_box_4_x && scaled_mouse_x <= menu_box_4_x + MENU_BOX_04.size.x) && (scaled_mouse_y >= menu_box_4_y && scaled_mouse_y <= menu_box_4_y + MENU_BOX_04.size.y)
-            Player::Stats.initialize_player_stats
             Serialization::SaveFile.save_file=("save03")
             Serialization::SaveFile.initial_save("save03")
             SystemMenus.initialize_character_creation_menu(window)
         end
         if (scaled_mouse_x >= menu_box_5_x && scaled_mouse_x <= menu_box_5_x + MENU_BOX_05.size.x) && (scaled_mouse_y >= menu_box_5_y && scaled_mouse_y <= menu_box_5_y + MENU_BOX_05.size.y)
-            Player::Stats.initialize_player_stats
             Serialization::SaveFile.save_file=("save04")
             Serialization::SaveFile.initial_save("save04")
             SystemMenus.initialize_character_creation_menu(window)
         end
         if (scaled_mouse_x >= menu_box_6_x && scaled_mouse_x <= menu_box_6_x + MENU_BOX_06.size.x) && (scaled_mouse_y >= menu_box_6_y && scaled_mouse_y <= menu_box_6_y + MENU_BOX_06.size.y)
-            Player::Stats.initialize_player_stats
             Serialization::SaveFile.save_file=("save05")
             Serialization::SaveFile.initial_save("save05")
             SystemMenus.initialize_character_creation_menu(window)
         end
         if (scaled_mouse_x >= menu_box_7_x && scaled_mouse_x <= menu_box_7_x + MENU_BOX_07.size.x) && (scaled_mouse_y >= menu_box_7_y && scaled_mouse_y <= menu_box_7_y + MENU_BOX_07.size.y)
-            Player::Stats.initialize_player_stats
             Serialization::SaveFile.save_file=("save06")
             Serialization::SaveFile.initial_save("save06")
             SystemMenus.initialize_character_creation_menu(window)
         end
         if (scaled_mouse_x >= menu_box_8_x && scaled_mouse_x <= menu_box_8_x + MENU_BOX_08.size.x) && (scaled_mouse_y >= menu_box_8_y && scaled_mouse_y <= menu_box_8_y + MENU_BOX_08.size.y)
-            Player::Stats.initialize_player_stats
             Serialization::SaveFile.save_file=("save07")
             Serialization::SaveFile.initial_save("save07")
             SystemMenus.initialize_character_creation_menu(window)
