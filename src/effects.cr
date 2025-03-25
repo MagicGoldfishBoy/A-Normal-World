@@ -63,6 +63,19 @@ module Effects
         }
      end
       
+     def self.heal_instant_both(this)
+        -> {
+          Player::Stats.current_mp = Player::Stats.current_mp.not_nil! + this
+          Player::Stats.current_hp = Player::Stats.current_hp.not_nil! + this
+          if Player::Stats.current_mp.not_nil! > Player::Stats.max_mp.not_nil!
+            Player::Stats.current_mp = Player::Stats.max_mp.not_nil!
+          end
+          if Player::Stats.current_hp.not_nil! > Player::Stats.max_hp.not_nil!
+            Player::Stats.current_hp = Player::Stats.max_hp.not_nil!
+          end
+        }
+     end
+      
      HEALING_EFFECTS_HASH["heal_instant_10hp"] = @@heal_instant_10hp
      HEALING_EFFECTS_HASH["heal_instant_10mp"] = @@heal_instant_10mp
       
@@ -90,6 +103,8 @@ module Effects
      HEALING_EFFECTS_HASH["heal_instant_2500hp"] = @@heal_instant_2500hp
      HEALING_EFFECTS_HASH["heal_instant_2500mp"] = @@heal_instant_2500mp
 
+     HEALING_EFFECTS_HASH["heal_instant_10both"] = @@heal_instant_10both
+
 
       @@heal_instant_10hp = HealingEffects.new("Heal 10", 1, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_hp(10.0))
       @@heal_instant_10mp = HealingEffects.new("Restore MP 10", 2, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_mp(10.0))
@@ -114,7 +129,12 @@ module Effects
 
       @@heal_instant_2500hp = HealingEffects.new("Heal 2500", 15, 0.0, 2500.0, false, NIL_TEXTURE, heal_instant_hp(2500.0))
       @@heal_instant_2500mp = HealingEffects.new("Restore MP 2500", 16, 0.0, 2500.0, false, NIL_TEXTURE, heal_instant_mp(2500.0))
+
+      @@heal_instant_10both = HealingEffects.new("Heal Both 10", 17, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_both(10.0))
+
+      @@heal_instant_25both = HealingEffects.new("Heal Both 25", 18, 0.0, 25.0, false, NIL_TEXTURE, heal_instant_both(25.0))
     end
+
 end
 
 # heal = -> { puts "Healing the player!" }

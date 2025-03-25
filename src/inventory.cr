@@ -15240,6 +15240,9 @@ module Inventory
 
             @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Extra Large Advanced MP Potion").not_nil!)
             ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Extra Large Advanced MP Potion").not_nil!, 1)
+
+            @@owned_consumable_array.push(Consumables::Consumables_base.get_consumable("Small Elixir").not_nil!)
+            ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Small Elixir").not_nil!, 1)
        #---------------------------------------------------------------------------------
        #--------------------------------objects------------------------------------------
               INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
