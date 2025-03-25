@@ -1,7 +1,7 @@
 require "crsfml"
 require "../src/textures.cr"
 require "../src/player.cr"
-
+#tfw my motherboard breaks on my main pc so I have to dig up my old college laptop and work on this with that
 module Effects
     class Effects_Base
         EFFECTS_ARRAY = [] of Effects_Base
@@ -105,6 +105,20 @@ module Effects
 
      HEALING_EFFECTS_HASH["heal_instant_10both"] = @@heal_instant_10both
 
+     HEALING_EFFECTS_HASH["heal_instant_25both"] = @@heal_instant_25both
+
+     HEALING_EFFECTS_HASH["heal_instant_50both"] = @@heal_instant_50both
+
+     HEALING_EFFECTS_HASH["heal_instant_100both"] = @@heal_instant_100both
+
+     HEALING_EFFECTS_HASH["heal_instant_200both"] = @@heal_instant_200both
+
+     HEALING_EFFECTS_HASH["heal_instant_500both"] = @@heal_instant_500both
+
+     HEALING_EFFECTS_HASH["heal_instant_1000both"] = @@heal_instant_1000both
+
+     HEALING_EFFECTS_HASH["heal_instant_2500both"] = @@heal_instant_2500both
+
 
       @@heal_instant_10hp = HealingEffects.new("Heal 10", 1, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_hp(10.0))
       @@heal_instant_10mp = HealingEffects.new("Restore MP 10", 2, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_mp(10.0))
@@ -133,6 +147,18 @@ module Effects
       @@heal_instant_10both = HealingEffects.new("Heal Both 10", 17, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_both(10.0))
 
       @@heal_instant_25both = HealingEffects.new("Heal Both 25", 18, 0.0, 25.0, false, NIL_TEXTURE, heal_instant_both(25.0))
+
+      @@heal_instant_50both = HealingEffects.new("Heal Both 50", 19, 0.0, 50.0, false, NIL_TEXTURE, heal_instant_both(50.0))
+
+      @@heal_instant_100both = HealingEffects.new("Heal Both 100", 20, 0.0, 100.0, false, NIL_TEXTURE, heal_instant_both(100.0))
+
+      @@heal_instant_200both = HealingEffects.new("Heal Both 200", 21, 0.0, 200.0, false, NIL_TEXTURE, heal_instant_both(200.0))
+
+      @@heal_instant_500both = HealingEffects.new("Heal Both 500", 22, 0.0, 500.0, false, NIL_TEXTURE, heal_instant_both(500.0))
+
+      @@heal_instant_1000both = HealingEffects.new("Heal Both 1000", 23, 0.0, 1000.0, false, NIL_TEXTURE, heal_instant_both(1000.0))
+
+      @@heal_instant_2500both = HealingEffects.new("Heal Both 2500", 24, 0.0, 2500.0, false, NIL_TEXTURE, heal_instant_both(2500.0))
     end
 
 end

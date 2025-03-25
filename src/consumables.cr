@@ -90,5 +90,26 @@ module Consumables
 
         @@small_elixir = Potions.new("Small Elixir", "Sm/Elixir", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 200, 100, 100), 
         Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_10both"], 500)
+
+        @@elixir = Potions.new("Elixir", "Elixir", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(100, 200, 100, 100),
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_25both"], 2000)
+
+        @@large_elixir = Potions.new("Large Elixir", "L/Elixir", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(200, 200, 100, 100),
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_50both"], 5000)
+
+        @@x_large_elixir = Potions.new("Extra Large Elixir", "XL/Elixir", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(300, 200, 100, 100),
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_100both"], 10000)
+
+        @@small_advanced_elixir = Potions.new("Small Advanced Elixir", "Sm/Adv/Elixir", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(400, 200, 100, 100),
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_200both"], 20000)
+
+        @@advanced_elixir = Potions.new("Advanced Elixir", "Adv/Elixir", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(500, 200, 100, 100),
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_500both"], 50000)
+
+        @@large_advanced_elixir = Potions.new("Large Advanced Elixir", "L/Adv/Elixir", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(600, 200, 100, 100),
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_1000both"], 100000)
+
+        @@x_large_advanced_elixir = Potions.new("Extra Large Advanced Elixir", "XL/Adv/Elixir", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(700, 200, 100, 100),
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_2500both"], 500000)
     end
 end
