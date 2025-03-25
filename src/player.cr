@@ -1,12 +1,13 @@
 require "../src/textures.cr"
 require "../src/sprites.cr"
+require "../src/effects.cr"
 
 module Player
   class Stats
      def initialize(name : String, money : Int32, max_hp : Float64, current_hp : Float64, buff_hp : Float64,
         max_mp : Float64, current_mp : Float64, buff_mp : Float64, lvl : Int32, exp : Float64, exp_cap : Float64, 
         defense : Float64, buff_defense : Float64, str : Float64, buff_str : Float64, dex : Float64, buff_dex : Float64,
-        luk : Float64, buff_luk : Float64, int : Float64, buff_int : Float64, lvl_points : Int32)
+        luk : Float64, buff_luk : Float64, int : Float64, buff_int : Float64, lvl_points : Int32, status_effects : Array(Effects_Base))
         @name = name
         @money = money
 
@@ -38,6 +39,8 @@ module Player
         @buff_int = buff_int
 
         @lvl_points = lvl_points
+
+        @status_effects = status_effects
      end
 
      class_property name : String = "doll-3001"
@@ -73,6 +76,8 @@ module Player
      class_property buff_int : Float64 = 0
 
      class_property lvl_points : Int32 = 0
+
+     class_property status_effects : Array(Effects::Effects_Base) = [] of Effects::Effects_Base
 
  end
 
