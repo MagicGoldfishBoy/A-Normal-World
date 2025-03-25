@@ -161,6 +161,60 @@ module Effects
       @@heal_instant_2500both = HealingEffects.new("Heal Both 2500", 24, 0.0, 2500.0, false, NIL_TEXTURE, heal_instant_both(2500.0))
     end
 
+    class HarmfulEffects < Effects_Base
+      POISON_CLOCK = SF::Clock.new
+
+      POISON_TICK = SF::Clock.new
+
+      def restart_poison_clock
+        POISON_CLOCK.restart
+      end
+
+      def self.restart_poison_tick
+        POISON_TICK.restart
+      end
+
+      def self.poison(time, potency)
+        -> {
+          if POISON_CLOCK.elapsed_time  < SF.seconds(time)
+            if POISON_TICK.elapsed_time < SF.seconds(25.0)
+             Player::Stats.current_hp = Player::Stats.current_hp.not_nil! - potency
+             restart_poison_tick
+             return Player::Stats.current_hp.not_nil!
+            else
+             return Player::Stats.current_hp = Player::Stats.current_hp.not_nil!
+            end
+          end
+        }
+     end
+
+    #TODO: Add effect checking to game loop
+
+    #  def self.poison(time : Float64, potency : Float64) : Proc(Float64 | Nil)
+    #   -> : Float64 | Nil {
+    #     start_time = POISON_CLOCK.elapsed_time # Capture start time
+    #     -> : Float64 | Nil {
+    #       if POISON_CLOCK.elapsed_time - start_time < SF.seconds(time)
+    #         if POISON_TICK.elapsed_time > SF.seconds(5.0)
+    #           Player::Stats.current_hp = Player::Stats.current_hp.not_nil! - potency
+    #           restart_poison_tick
+    #         end
+    #         return Player::Stats.current_hp.not_nil!
+    #       end
+    #       return nil # Poison expires
+    #     }
+    #   }
+    # end
+
+    #active_effects << poison(25.0, 1.0)
+    #active_effects.reject! { |effect| effect.call.nil? }
+
+
+    
+
+     @@weak_poison = HarmfulEffects.new("Weak Poison", 1, 25.0, 1.0, true, NIL_TEXTURE, poison(25.0, 1.0))
+    end
+
 end
 
 # heal = -> { puts "Healing the player!" }
