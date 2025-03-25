@@ -87,5 +87,8 @@ module Consumables
         Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_2500hp"], 50000)
         @@x_large_advanced_mp_restore_potion = Potions.new("Extra Large Advanced MP Potion", "XL/Adv/MP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(700, 100, 100, 100),
         Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_2500mp"], 50000)
+
+        @@small_elixir = Potions.new("Small Elixir", "Sm/Elixir", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 200, 100, 100), 
+        Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_10both"], 500)
     end
 end
