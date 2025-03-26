@@ -202,6 +202,8 @@ module Effects
 
       POISON_ARRAY = [] of Effects_Base
 
+      @@has_poison_clock_been_restarted = false
+
       def self.restart_poison_clock
         POISON_CLOCK.restart
       end
@@ -212,6 +214,10 @@ module Effects
 
       def self.poison(time, potency, type)
         -> {
+          if @@has_poison_clock_been_restarted == false
+            restart_poison_clock
+            @@has_poison_clock_been_restarted = true
+          end
           if POISON_CLOCK.elapsed_time < SF.seconds(time)
             HARMFUL_EFFECTS_HASH[type].is_active = true
             if POISON_TICK.elapsed_time > SF.seconds(5.0)
@@ -222,6 +228,7 @@ module Effects
           else
             HARMFUL_EFFECTS_HASH[type].is_active = false
             restart_poison_clock
+            @@has_poison_clock_been_restarted = false
             return Player::Stats.current_hp = Player::Stats.current_hp.not_nil!
           end
         }
