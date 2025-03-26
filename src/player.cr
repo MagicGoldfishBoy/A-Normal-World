@@ -81,16 +81,18 @@ module Player
 
      def self.check_status_effects(window)
         Effects::HarmfulEffects::POISON_ARRAY.each do |effect|
+            effect_01 = SF::Sprite.new
             if effect.is_active == true
-                effect_01 = SF::Sprite.new
                 effect_01.texture = effect.texture
                 effect_01.texture_rect = effect.texture_rectangle
                 status_effects.push(effect_01)
                 status_effects.uniq!
                 effect.apply
+            else
+                status_effects.clear
             end
             if status_effects.size > 0
-            status_effects[0].position = Sprites::Player.retrieve_sprite.position - {275, 200}
+            status_effects[0].position = Sprites::Player.retrieve_sprite.position - {250, 175}
             window.draw(status_effects[0])
             end
         end
