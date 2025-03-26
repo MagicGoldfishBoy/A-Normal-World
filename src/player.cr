@@ -79,6 +79,13 @@ module Player
 
      class_property status_effects : Array(Effects::Effects_Base) = [] of Effects::Effects_Base
 
+     def self.check_status_effects(window)
+        status_effects.each do |effect|
+            if effect.is_active == true
+                effect.apply
+            end
+        end
+     end
  end
 
   class Movement

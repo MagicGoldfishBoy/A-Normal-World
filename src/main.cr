@@ -3,6 +3,7 @@ require "../src/textures.cr"
 require "../src/menus.cr"
 require "../src/keyboard.cr"
 require "../src/levels.cr"
+require "../src/player.cr"
 
 puts "A Normal World"
 #TODO: add screaming trees lol
@@ -41,6 +42,7 @@ while window.open?
     Menus::SystemMenus.draw_system_menu(window)
     Menus::Windows.which_views_are_open(window)
     Inventory::InventoryManager.draw_inventory(window)
+    Player::Stats.check_status_effects(window)
     window.display
   end
 end
