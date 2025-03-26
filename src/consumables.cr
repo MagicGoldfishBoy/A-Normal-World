@@ -111,5 +111,8 @@ module Consumables
 
         @@x_large_advanced_elixir = Potions.new("Extra Large Advanced Elixir", "XL/Adv/Elixir", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(700, 200, 100, 100),
         Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_2500both"], 500000)
+
+        @@small_failed_hp_potion = Potions.new("Failed Small HP Potion", "Sm/Failed/Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 300, 100, 100),
+        Effects::HarmfulEffects::HARMFUL_EFFECTS_HASH["weak_poison"], 0)
     end
 end

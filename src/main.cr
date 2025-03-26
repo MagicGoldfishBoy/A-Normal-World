@@ -6,6 +6,12 @@ require "../src/levels.cr"
 require "../src/player.cr"
 
 puts "A Normal World"
+
+#  ___
+# (. .)  < This rude ass bitch refused to believe me when I told her where the cheese is, then bitched at me because she couldn't find it
+#(  *  )   
+#((___))
+# 0   0
 #TODO: add screaming trees lol
 #5005
 module GameLoop
@@ -39,10 +45,10 @@ while window.open?
     Levels::LevelSelectionLogic.current_area(window)
     Sprites::Player.draw_sprite(window)
     Keyboard::Gameplay.determine_gameplay_controls(window)
+    Player::Stats.check_status_effects(window)
     Menus::SystemMenus.draw_system_menu(window)
     Menus::Windows.which_views_are_open(window)
     Inventory::InventoryManager.draw_inventory(window)
-    Player::Stats.check_status_effects(window)
     window.display
   end
 end

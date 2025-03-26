@@ -6,13 +6,14 @@ module Effects
     class Effects_Base
         EFFECTS_ARRAY = [] of Effects_Base
         def initialize(name : String, id : Int32, duration : Float64, strength : Float64, is_harmful : Bool, texture : SF::Texture, 
-          action : Proc((Float64 | Nil)), is_active : Bool)
+          texture_rectangle : SF::IntRect, action : Proc((Float64 | Nil)), is_active : Bool)
             @name = name
             @id = id
             @duration = duration
             @strength = strength
             @is_harmful = is_harmful
             @texture = texture
+            @texture_rectangle = texture_rectangle
             @action = action
             @is_active = is_active
             EFFECTS_ARRAY.push(self)
@@ -31,6 +32,8 @@ module Effects
         property is_harmful : Bool
 
         property texture : SF::Texture
+
+        property texture_rectangle : SF::IntRect
 
         property is_active : Bool
 
@@ -124,53 +127,82 @@ module Effects
      HEALING_EFFECTS_HASH["heal_instant_2500both"] = @@heal_instant_2500both
 
 
-      @@heal_instant_10hp = HealingEffects.new("Heal 10", 1, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_hp(10.0), false)
-      @@heal_instant_10mp = HealingEffects.new("Restore MP 10", 2, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_mp(10.0), false)
+      @@heal_instant_10hp = HealingEffects.new("Heal 10", 1, 0.0, 10.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_hp(10.0), false)
+      @@heal_instant_10mp = HealingEffects.new("Restore MP 10", 2, 0.0, 10.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_mp(10.0), false)
 
-      @@heal_instant_25hp = HealingEffects.new("Heal 25", 3, 0.0, 25.0, false, NIL_TEXTURE, heal_instant_hp(25.0), false)
-      @@heal_instant_25mp = HealingEffects.new("Restore MP 25", 4, 0.0, 25.0, false, NIL_TEXTURE, heal_instant_mp(25.0), false)
+      @@heal_instant_25hp = HealingEffects.new("Heal 25", 3, 0.0, 25.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_hp(25.0), false)
+      @@heal_instant_25mp = HealingEffects.new("Restore MP 25", 4, 0.0, 25.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_mp(25.0), false)
 
-      @@heal_instant_50hp = HealingEffects.new("Heal 50", 5, 0.0, 50.0, false, NIL_TEXTURE, heal_instant_hp(50.0), false)
-      @@heal_instant_50mp = HealingEffects.new("Restore MP 50", 6, 0.0, 50.0, false, NIL_TEXTURE, heal_instant_mp(50.0), false)
+      @@heal_instant_50hp = HealingEffects.new("Heal 50", 5, 0.0, 50.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_hp(50.0), false)
+      @@heal_instant_50mp = HealingEffects.new("Restore MP 50", 6, 0.0, 50.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_mp(50.0), false)
 
-      @@heal_instant_100hp = HealingEffects.new("Heal 100", 7, 0.0, 100.0, false, NIL_TEXTURE, heal_instant_hp(100.0), false)
-      @@heal_instant_100mp = HealingEffects.new("Restore MP 100", 8, 0.0, 100.0, false, NIL_TEXTURE, heal_instant_mp(100.0), false)
+      @@heal_instant_100hp = HealingEffects.new("Heal 100", 7, 0.0, 100.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_hp(100.0), false)
+      @@heal_instant_100mp = HealingEffects.new("Restore MP 100", 8, 0.0, 100.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_mp(100.0), false)
 
-      @@heal_instant_200hp = HealingEffects.new("Heal 200", 9, 0.0, 200.0, false, NIL_TEXTURE, heal_instant_hp(200.0), false)
-      @@heal_instant_200mp = HealingEffects.new("Restore MP 200", 10, 0.0, 200.0, false, NIL_TEXTURE, heal_instant_mp(200.0), false)
+      @@heal_instant_200hp = HealingEffects.new("Heal 200", 9, 0.0, 200.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_hp(200.0), false)
+      @@heal_instant_200mp = HealingEffects.new("Restore MP 200", 10, 0.0, 200.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_mp(200.0), false)
 
-      @@heal_instant_500hp = HealingEffects.new("Heal 500", 11, 0.0, 500.0, false, NIL_TEXTURE, heal_instant_hp(500.0), false)
-      @@heal_instant_500mp = HealingEffects.new("Restore MP 500", 12, 0.0, 500.0, false, NIL_TEXTURE, heal_instant_mp(500.0), false)
+      @@heal_instant_500hp = HealingEffects.new("Heal 500", 11, 0.0, 500.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_hp(500.0), false)
+      @@heal_instant_500mp = HealingEffects.new("Restore MP 500", 12, 0.0, 500.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_mp(500.0), false)
 
-      @@heal_instant_1000hp = HealingEffects.new("Heal 1000", 13, 0.0, 1000.0, false, NIL_TEXTURE, heal_instant_hp(1000.0), false)
-      @@heal_instant_1000mp = HealingEffects.new("Restore MP 1000", 14, 0.0, 1000.0, false, NIL_TEXTURE, heal_instant_mp(1000.0), false)
+      @@heal_instant_1000hp = HealingEffects.new("Heal 1000", 13, 0.0, 1000.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_hp(1000.0), false)
+      @@heal_instant_1000mp = HealingEffects.new("Restore MP 1000", 14, 0.0, 1000.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_mp(1000.0), false)
 
-      @@heal_instant_2500hp = HealingEffects.new("Heal 2500", 15, 0.0, 2500.0, false, NIL_TEXTURE, heal_instant_hp(2500.0), false)
-      @@heal_instant_2500mp = HealingEffects.new("Restore MP 2500", 16, 0.0, 2500.0, false, NIL_TEXTURE, heal_instant_mp(2500.0), false)
+      @@heal_instant_2500hp = HealingEffects.new("Heal 2500", 15, 0.0, 2500.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_hp(2500.0), false)
+      @@heal_instant_2500mp = HealingEffects.new("Restore MP 2500", 16, 0.0, 2500.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_mp(2500.0), false)
 
-      @@heal_instant_10both = HealingEffects.new("Heal Both 10", 17, 0.0, 10.0, false, NIL_TEXTURE, heal_instant_both(10.0), false)
+      @@heal_instant_10both = HealingEffects.new("Heal Both 10", 17, 0.0, 10.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_both(10.0), false)
 
-      @@heal_instant_25both = HealingEffects.new("Heal Both 25", 18, 0.0, 25.0, false, NIL_TEXTURE, heal_instant_both(25.0), false)
+      @@heal_instant_25both = HealingEffects.new("Heal Both 25", 18, 0.0, 25.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_both(25.0), false)
 
-      @@heal_instant_50both = HealingEffects.new("Heal Both 50", 19, 0.0, 50.0, false, NIL_TEXTURE, heal_instant_both(50.0), false)
+      @@heal_instant_50both = HealingEffects.new("Heal Both 50", 19, 0.0, 50.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_both(50.0), false)
 
-      @@heal_instant_100both = HealingEffects.new("Heal Both 100", 20, 0.0, 100.0, false, NIL_TEXTURE, heal_instant_both(100.0), false)
+      @@heal_instant_100both = HealingEffects.new("Heal Both 100", 20, 0.0, 100.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_both(100.0), false)
 
-      @@heal_instant_200both = HealingEffects.new("Heal Both 200", 21, 0.0, 200.0, false, NIL_TEXTURE, heal_instant_both(200.0), false)
+      @@heal_instant_200both = HealingEffects.new("Heal Both 200", 21, 0.0, 200.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_both(200.0), false)
 
-      @@heal_instant_500both = HealingEffects.new("Heal Both 500", 22, 0.0, 500.0, false, NIL_TEXTURE, heal_instant_both(500.0), false)
+      @@heal_instant_500both = HealingEffects.new("Heal Both 500", 22, 0.0, 500.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_both(500.0), false)
 
-      @@heal_instant_1000both = HealingEffects.new("Heal Both 1000", 23, 0.0, 1000.0, false, NIL_TEXTURE, heal_instant_both(1000.0), false)
+      @@heal_instant_1000both = HealingEffects.new("Heal Both 1000", 23, 0.0, 1000.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_both(1000.0), false)
 
-      @@heal_instant_2500both = HealingEffects.new("Heal Both 2500", 24, 0.0, 2500.0, false, NIL_TEXTURE, heal_instant_both(2500.0), false)
+      @@heal_instant_2500both = HealingEffects.new("Heal Both 2500", 24, 0.0, 2500.0, false, NIL_TEXTURE, SF::Rect.new(0, 0, 0, 0), 
+      heal_instant_both(2500.0), false)
     end
 
     class HarmfulEffects < Effects_Base
+
+      HARMFUL_EFFECTS_HASH = Hash(String, HarmfulEffects).new
+
       POISON_CLOCK = SF::Clock.new
 
       POISON_TICK = SF::Clock.new
 
-      def restart_poison_clock
+      POISON_ARRAY = [] of Effects_Base
+
+      def self.restart_poison_clock
         POISON_CLOCK.restart
       end
 
@@ -178,16 +210,19 @@ module Effects
         POISON_TICK.restart
       end
 
-      def self.poison(time, potency)
+      def self.poison(time, potency, type)
         -> {
-          if POISON_CLOCK.elapsed_time  < SF.seconds(time)
-            if POISON_TICK.elapsed_time < SF.seconds(25.0)
+          if POISON_CLOCK.elapsed_time < SF.seconds(time)
+            HARMFUL_EFFECTS_HASH[type].is_active = true
+            if POISON_TICK.elapsed_time > SF.seconds(5.0)
              Player::Stats.current_hp = Player::Stats.current_hp.not_nil! - potency
              restart_poison_tick
              return Player::Stats.current_hp.not_nil!
-            else
-             return Player::Stats.current_hp = Player::Stats.current_hp.not_nil!
             end
+          else
+            HARMFUL_EFFECTS_HASH[type].is_active = false
+            restart_poison_clock
+            return Player::Stats.current_hp = Player::Stats.current_hp.not_nil!
           end
         }
      end
@@ -214,9 +249,11 @@ module Effects
     #active_effects.reject! { |effect| effect.call.nil? }
 
 
-    
+    HARMFUL_EFFECTS_HASH["weak_poison"] = @@weak_poison
 
-     @@weak_poison = HarmfulEffects.new("Weak Poison", 1, 25.0, 1.0, true, NIL_TEXTURE, poison(25.0, 1.0), false)
+     @@weak_poison = HarmfulEffects.new("Weak Poison", 1, 60.0, 1.0, true, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 0, 100, 100), 
+     poison(25.0, 1.0, "weak_poison"), false)
+     POISON_ARRAY.push(@@weak_poison)
     end
 
 end
