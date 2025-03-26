@@ -7,7 +7,7 @@ module Player
      def initialize(name : String, money : Int32, max_hp : Float64, current_hp : Float64, buff_hp : Float64,
         max_mp : Float64, current_mp : Float64, buff_mp : Float64, lvl : Int32, exp : Float64, exp_cap : Float64, 
         defense : Float64, buff_defense : Float64, str : Float64, buff_str : Float64, dex : Float64, buff_dex : Float64,
-        luk : Float64, buff_luk : Float64, int : Float64, buff_int : Float64, lvl_points : Int32, status_effects : Array(Effects_Base))
+        luk : Float64, buff_luk : Float64, int : Float64, buff_int : Float64, lvl_points : Int32, status_effects : Array(SF::Sprite))
         @name = name
         @money = money
 
@@ -77,12 +77,21 @@ module Player
 
      class_property lvl_points : Int32 = 0
 
-     class_property status_effects : Array(Effects::Effects_Base) = [] of Effects::Effects_Base
+     class_property status_effects : Array(SF::Sprite) = [] of SF::Sprite
 
      def self.check_status_effects(window)
-        status_effects.each do |effect|
+        Effects::HarmfulEffects::POISON_ARRAY.each do |effect|
             if effect.is_active == true
+                effect_01 = SF::Sprite.new
+                effect_01.texture = effect.texture
+                effect_01.texture_rect = effect.texture_rectangle
+                status_effects.push(effect_01)
+                status_effects.uniq!
                 effect.apply
+            end
+            if status_effects.size > 0
+            status_effects[0].position = Sprites::Player.retrieve_sprite.position - {275, 200}
+            window.draw(status_effects[0])
             end
         end
      end
