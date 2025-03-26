@@ -227,31 +227,10 @@ module Effects
         }
      end
 
-    #TODO: Add effect checking to game loop
-
-    #  def self.poison(time : Float64, potency : Float64) : Proc(Float64 | Nil)
-    #   -> : Float64 | Nil {
-    #     start_time = POISON_CLOCK.elapsed_time # Capture start time
-    #     -> : Float64 | Nil {
-    #       if POISON_CLOCK.elapsed_time - start_time < SF.seconds(time)
-    #         if POISON_TICK.elapsed_time > SF.seconds(5.0)
-    #           Player::Stats.current_hp = Player::Stats.current_hp.not_nil! - potency
-    #           restart_poison_tick
-    #         end
-    #         return Player::Stats.current_hp.not_nil!
-    #       end
-    #       return nil # Poison expires
-    #     }
-    #   }
-    # end
-
-    #active_effects << poison(25.0, 1.0)
-    #active_effects.reject! { |effect| effect.call.nil? }
-
 
     HARMFUL_EFFECTS_HASH["weak_poison"] = @@weak_poison
 
-     @@weak_poison = HarmfulEffects.new("Weak Poison", 1, 60.0, 1.0, true, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 0, 100, 100), 
+     @@weak_poison = HarmfulEffects.new("Weak Poison", 1, 60.0, 1.0, true, EFFECT_TEXTURE_01, SF::Rect.new(0, 0, 50, 50), 
      poison(25.0, 1.0, "weak_poison"), false)
      POISON_ARRAY.push(@@weak_poison)
     end

@@ -563,3 +563,4 @@ NIL_TEXTURE = SF::Texture.new(672, 1024)
     #C                                       Consumable Textures                                        C
     #CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
          CONSUMABLES_TEXTURE_01 = SF::Texture.from_file("../graphics/consumables.png")
+         EFFECT_TEXTURE_01 = SF::Texture.from_file("../graphics/status_effects.png")
