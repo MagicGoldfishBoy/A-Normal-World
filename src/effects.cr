@@ -197,11 +197,8 @@ module Effects
       HARMFUL_EFFECTS_HASH = Hash(String, HarmfulEffects).new
 
       POISON_CLOCK = SF::Clock.new
-
       POISON_TICK = SF::Clock.new
-
       POISON_ARRAY = [] of Effects_Base
-
       @@has_poison_clock_been_restarted = false
 
       def self.restart_poison_clock
@@ -212,7 +209,42 @@ module Effects
         POISON_TICK.restart
       end
 
+      DEMENTIA_CLOCK = SF::Clock.new
+      DEMENTIA_TICK = SF::Clock.new
+      DEMENTIA_ARRAY = [] of Effects_Base
+      @@has_dementia_clock_been_restarted = false
+
+      def self.restart_dementia_clock
+        DEMENTIA_CLOCK.restart
+      end
+
+      def self.restart_dementia_tick
+        DEMENTIA_TICK.restart
+      end
+
       def self.poison(time, potency, type)
+        -> {
+          if @@has_dementia_clock_been_restarted == false
+            restart_dementia_clock
+            @@has_dementia_clock_been_restarted = true
+          end
+          if DEMENTIA_CLOCK.elapsed_time < SF.seconds(time)
+            HARMFUL_EFFECTS_HASH[type].is_active = true
+            if DEMENTIA_TICK.elapsed_time > SF.seconds(5.0)
+             Player::Stats.current_hp = Player::Stats.current_hp.not_nil! - potency
+             restart_dementia_tick
+             return Player::Stats.current_hp.not_nil!
+            end
+          else
+            HARMFUL_EFFECTS_HASH[type].is_active = false
+            restart_dementia_clock
+            @@has_poison_clock_been_restarted = false
+            return Player::Stats.current_hp = Player::Stats.current_hp.not_nil!
+          end
+        }
+      end
+
+      def self.dementia(time, potency, type)
         -> {
           if @@has_poison_clock_been_restarted == false
             restart_poison_clock
@@ -221,7 +253,7 @@ module Effects
           if POISON_CLOCK.elapsed_time < SF.seconds(time)
             HARMFUL_EFFECTS_HASH[type].is_active = true
             if POISON_TICK.elapsed_time > SF.seconds(5.0)
-             Player::Stats.current_hp = Player::Stats.current_hp.not_nil! - potency
+             Player::Stats.current_mp = Player::Stats.current_mp.not_nil! - potency
              restart_poison_tick
              return Player::Stats.current_hp.not_nil!
             end
@@ -229,17 +261,32 @@ module Effects
             HARMFUL_EFFECTS_HASH[type].is_active = false
             restart_poison_clock
             @@has_poison_clock_been_restarted = false
-            return Player::Stats.current_hp = Player::Stats.current_hp.not_nil!
+            return Player::Stats.current_mp = Player::Stats.current_mp.not_nil!
           end
         }
-     end
+      end
 
 
     HARMFUL_EFFECTS_HASH["weak_poison"] = @@weak_poison
+    HARMFUL_EFFECTS_HASH["poison"] = @@poison
+    HARMFUL_EFFECTS_HASH["strong_poison"] = @@strong_poison
+    HARMFUL_EFFECTS_HASH["very_strong_poison"] = @@very_strong_poison
 
-     @@weak_poison = HarmfulEffects.new("Weak Poison", 1, 60.0, 1.0, true, EFFECT_TEXTURE_01, SF::Rect.new(0, 0, 50, 50), 
-     poison(25.0, 1.0, "weak_poison"), false)
+     @@weak_poison = HarmfulEffects.new("Weak Poison", 1, 30.0, 1.0, true, EFFECT_TEXTURE_01, SF::Rect.new(0, 0, 50, 50), 
+     poison(30.0, 1.0, "weak_poison"), false)
      POISON_ARRAY.push(@@weak_poison)
+
+     @@poison = HarmfulEffects.new("Poison", 2, 60.0, 2.0, true, EFFECT_TEXTURE_01, SF::Rect.new(0, 0, 50, 50),
+     poison(60.0, 2.0, "poison"), false)
+     POISON_ARRAY.push(@@poison)
+
+     @@strong_poison = HarmfulEffects.new("Strong Poison", 3, 60.0, 5.0, true, EFFECT_TEXTURE_01, SF::Rect.new(0, 0, 50, 50),
+     poison(60.0, 5.0, "strong_poison"), false)
+     POISON_ARRAY.push(@@strong_poison)
+
+     @@very_strong_poison = HarmfulEffects.new("Very Strong Poison", 4, 60.0, 10.0, true, EFFECT_TEXTURE_01, SF::Rect.new(0, 0, 50, 50),
+     poison(60.0, 10.0, "very_strong_poison"), false)
+     POISON_ARRAY.push(@@very_strong_poison)
     end
 
 end
