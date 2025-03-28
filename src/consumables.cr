@@ -129,5 +129,14 @@ module Consumables
 
         @@small_failed_mp_potion = Potions.new("Failed Small MP Potion", "Sm/Failed/MP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(400, 300, 100, 100),
         Effects::HarmfulEffects::HARMFUL_EFFECTS_HASH["early_dementia"], 0)
+
+        @@failed_mp_potion = Potions.new("Failed MP Potion", "Failed/MP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(500, 300, 100, 100),
+        Effects::HarmfulEffects::HARMFUL_EFFECTS_HASH["mid_dementia"], 0)
+
+        @@large_failed_mp_potion = Potions.new("Failed Large MP Potion", "L/Failed/MP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(600, 300, 100, 100),
+        Effects::HarmfulEffects::HARMFUL_EFFECTS_HASH["late_dementia"], 0)
+
+        @@x_large_failed_mp_potion = Potions.new("Failed Extra Large MP Potion", "XL/Failed/MP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(700, 300, 100, 100),
+        Effects::HarmfulEffects::HARMFUL_EFFECTS_HASH["very_late_dementia"], 0)
     end
 end

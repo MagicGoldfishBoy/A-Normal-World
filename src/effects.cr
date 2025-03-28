@@ -270,6 +270,9 @@ module Effects
     HARMFUL_EFFECTS_HASH["very_strong_poison"] = @@very_strong_poison
 
     HARMFUL_EFFECTS_HASH["early_dementia"] = @@early_dementia
+    HARMFUL_EFFECTS_HASH["mid_dementia"] = @@mid_dementia
+    HARMFUL_EFFECTS_HASH["late_dementia"] = @@late_dementia
+    HARMFUL_EFFECTS_HASH["very_late_dementia"] = @@very_late_dementia
 
      @@weak_poison = HarmfulEffects.new("Weak Poison", 1, 30.0, 1.0, true, SF::Sprite.new(EFFECT_TEXTURE_01, SF::Rect.new(0, 0, 50, 50)), 
      poison(30.0, 1.0, "weak_poison"), false)
@@ -291,6 +294,18 @@ module Effects
      @@early_dementia = HarmfulEffects.new("Early Dementia", 5, 30.0, 0.5, true, SF::Sprite.new(EFFECT_TEXTURE_01, SF::Rect.new(50, 0, 50, 50)),
      dementia(30.0, 0.5, "early_dementia"), false)
      DEMENTIA_ARRAY.push(@@early_dementia)
+
+     @@mid_dementia = HarmfulEffects.new("Mid Dementia", 6, 60.0, 1.0, true, SF::Sprite.new(EFFECT_TEXTURE_01, SF::Rect.new(50, 0, 50, 50)),
+     dementia(60.0, 1.0, "mid_dementia"), false)
+     DEMENTIA_ARRAY.push(@@mid_dementia)
+
+     @@late_dementia = HarmfulEffects.new("Late Dementia", 7, 60.0, 2.5, true, SF::Sprite.new(EFFECT_TEXTURE_01, SF::Rect.new(50, 0, 50, 50)),
+     dementia(60.0, 2.5, "late_dementia"), false)
+     DEMENTIA_ARRAY.push(@@late_dementia)
+
+     @@very_late_dementia = HarmfulEffects.new("Very Late Dementia", 7, 60.0, 5.0, true, SF::Sprite.new(EFFECT_TEXTURE_01, SF::Rect.new(50, 0, 50, 50)),
+     dementia(60.0, 5.0, "very_late_dementia"), false)
+     DEMENTIA_ARRAY.push(@@very_late_dementia)
     end
 
 end
