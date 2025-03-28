@@ -5,6 +5,7 @@ require "../src/fonts.cr"
 require "../src/sprites.cr"
 require "../src/serialization.cr"
 require "../src/keyboard.cr"
+require "../src/ui_elements.cr"
 
 module Menus
 
@@ -179,14 +180,13 @@ module Menus
         scale_x = current_size.x.to_f / original_width
         scale_y = current_size.y.to_f / original_height
 
-        MENU_BOX_01.position = SF.vector2(scale_x + 50, scale_y + 300)
-        MENU_BOX_01.size = SF.vector2(150, 80)
+        Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position = SF.vector2(scale_x + 50, scale_y + 300)
         MENU_TEXT_01.character_size = 34
-        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(35, 15)
+        MENU_TEXT_01.position = Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position + SF.vector2(35, 15)
         MENU_TEXT_01.string = "Play                    Settings                    Quit"
         MENU_TEXT_01.color = SF::Color::Black
 
-        MENU_BOX_02.position = MENU_BOX_01.position + SF.vector2(250, 0)
+        MENU_BOX_02.position = Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position + SF.vector2(250, 0)
         MENU_BOX_02.size = SF.vector2(200, 80)
         MENU_TEXT_02.color = SF::Color::White
         MENU_TEXT_02.string = "A Normal World"
@@ -196,7 +196,7 @@ module Menus
         MENU_BOX_03.position = MENU_BOX_02.position + SF.vector2(300, 0)
         MENU_BOX_03.size = SF.vector2(150, 80)
 
-        window.draw(MENU_BOX_01)
+        window.draw(Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite)
         window.draw(MENU_BOX_02)
         window.draw(MENU_BOX_03)
         window.draw(MENU_TEXT_01)
@@ -210,8 +210,8 @@ module Menus
         mouse_position = SF::Mouse.get_position(window)
         mouse_x = mouse_position.x
         mouse_y = mouse_position.y
-        menu_box_1_x = MENU_BOX_01.position.x
-        menu_box_1_y = MENU_BOX_01.position.y
+        menu_box_1_x = Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position.x
+        menu_box_1_y = Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position.y
         menu_box_2_x = MENU_BOX_02.position.x
         menu_box_2_y = MENU_BOX_02.position.y
         menu_box_3_x = MENU_BOX_03.position.x
@@ -226,11 +226,10 @@ module Menus
         scaled_mouse_x = mouse_x / scale_x
         scaled_mouse_y = mouse_y / scale_y
         
-        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
-            MENU_BOX_01.outline_color = SF.color(97, 140, 165)
-            this = "save_menu"
+        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.global_bounds.top) && 
+           (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.global_bounds.width)
             SystemMenus.initialize_save_menu(window)
-            SystemMenus.system_menu=(this)
+            SystemMenus.system_menu=("save_menu")
         elsif (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + 200) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + 80)
             MENU_BOX_02.outline_color = SF.color(97, 140, 165)
             SystemMenus.initialize_settings_menu(window)

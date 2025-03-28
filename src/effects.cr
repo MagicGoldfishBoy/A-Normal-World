@@ -1,6 +1,7 @@
 require "crsfml"
 require "../src/textures.cr"
 require "../src/player.cr"
+require "../src/ui_elements.cr"
 #tfw my motherboard breaks on my main pc so I have to dig up my old college laptop and work on this with that
 module Effects
     class Effects_Base
@@ -34,9 +35,16 @@ module Effects
 
         property is_active : Bool
 
+        # class_property : Tuple(Int32, Int32, Int32, Int32) = (255, 0, 0, 0)
+
         def apply
             @action.call
-          end
+        end
+
+        # @@effect_info_box = SF::RectangleShape.new(SF.vector2(200, 200))
+        # @@effect_info_box.fill_color
+        def self.effect_info_box_handling(window)
+        end
 
     end
     

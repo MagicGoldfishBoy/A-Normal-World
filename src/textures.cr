@@ -1,4 +1,5 @@
-NIL_TEXTURE = SF::Texture.new(672, 1024)
+     NIL_TEXTURE = SF::Texture.new(672, 1024)
+     BLANK_TEXTURE = SF::Texture.from_file("../graphics/blank.png")
 
     #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
     #W                                         Wood Textures                                             W
