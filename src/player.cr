@@ -82,9 +82,12 @@ module Player
      @@effect_iterator = 0
      @@x_iterator = 250
 
+     COMBINED_EFFECTS_ARRAY = [] of Effects::Effects_Base
+     COMBINED_EFFECTS_ARRAY.concat(Effects::HarmfulEffects::POISON_ARRAY)
+     COMBINED_EFFECTS_ARRAY.concat(Effects::HarmfulEffects::DEMENTIA_ARRAY)
+
      def self.check_status_effects(window)
-        Effects::HarmfulEffects::POISON_ARRAY.each do |effect|
-            effect_01 = SF::Sprite.new
+        COMBINED_EFFECTS_ARRAY.each do |effect|
             if effect.is_active == true
                 status_effects.push(effect.sprite)
                 status_effects.uniq!
@@ -92,17 +95,23 @@ module Player
             else
                 status_effects.clear
             end
-            if status_effects.size > @@effect_iterator
-            status_effects[@@effect_iterator].position = Sprites::Player.retrieve_sprite.position - {@@x_iterator, 175}
-            window.draw(status_effects[@@effect_iterator])
-            @@effect_iterator += 1
-            @@x_iterator -= 50
-            else 
-                @@effect_iterator = 0
-                @@x_iterator = 250
-            end
+            Stats.draw_status_effects(window)
         end
      end
+
+     def self.draw_status_effects(window)
+        x_offset = 250
+        status_effects.size #it may look pointless, but this needs to be here for this to work
+    
+        status_effects.each_with_index do |effect, i|
+            effect.position = Sprites::Player.retrieve_sprite.position - {x_offset, 175}
+            window.draw(effect)
+    
+            x_offset -= 50
+        end
+    end
+    
+    
  end
 
   class Movement
