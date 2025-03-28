@@ -13597,7 +13597,6 @@ module Inventory
         @@weapon_slot_15 : Equipment::Weapon? = nil
 
        #---------------------------------debug-------------------------------------------
-            #Note: Duplicates fuck this shit up. Under NO circumstances should duplicates be allowed
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("No Weapon").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Stick").not_nil!)
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Wood Sword").not_nil!)
