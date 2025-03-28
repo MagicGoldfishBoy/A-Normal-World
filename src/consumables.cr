@@ -88,6 +88,7 @@ module Consumables
         @@x_large_advanced_mp_restore_potion = Potions.new("Extra Large Advanced MP Potion", "XL/Adv/MP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(700, 100, 100, 100),
         Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_2500mp"], 50000)
 
+
         @@small_elixir = Potions.new("Small Elixir", "Sm/Elixir", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(0, 200, 100, 100), 
         Effects::HealingEffects::HEALING_EFFECTS_HASH["heal_instant_10both"], 500)
 
@@ -124,5 +125,9 @@ module Consumables
 
         @@x_large_failed_hp_potion = Potions.new("Failed Extra Large HP Potion", "XL/Failed/HP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(300, 300, 100, 100),
         Effects::HarmfulEffects::HARMFUL_EFFECTS_HASH["very_strong_poison"], 0)
+
+
+        @@small_failed_mp_potion = Potions.new("Failed Small MP Potion", "Sm/Failed/MP Pot", 99, 0, CONSUMABLES_TEXTURE_01, SF::Rect.new(400, 300, 100, 100),
+        Effects::HarmfulEffects::HARMFUL_EFFECTS_HASH["early_dementia"], 0)
     end
 end

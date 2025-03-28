@@ -269,6 +269,8 @@ module Effects
     HARMFUL_EFFECTS_HASH["strong_poison"] = @@strong_poison
     HARMFUL_EFFECTS_HASH["very_strong_poison"] = @@very_strong_poison
 
+    HARMFUL_EFFECTS_HASH["early_dementia"] = @@early_dementia
+
      @@weak_poison = HarmfulEffects.new("Weak Poison", 1, 30.0, 1.0, true, SF::Sprite.new(EFFECT_TEXTURE_01, SF::Rect.new(0, 0, 50, 50)), 
      poison(30.0, 1.0, "weak_poison"), false)
      POISON_ARRAY.push(@@weak_poison)
@@ -284,6 +286,11 @@ module Effects
      @@very_strong_poison = HarmfulEffects.new("Very Strong Poison", 4, 60.0, 10.0, true, SF::Sprite.new(EFFECT_TEXTURE_01, SF::Rect.new(0, 0, 50, 50)),
      poison(60.0, 10.0, "very_strong_poison"), false)
      POISON_ARRAY.push(@@very_strong_poison)
+
+
+     @@early_dementia = HarmfulEffects.new("Early Dementia", 5, 30.0, 0.5, true, SF::Sprite.new(EFFECT_TEXTURE_01, SF::Rect.new(50, 0, 50, 50)),
+     dementia(30.0, 0.5, "early_dementia"), false)
+     DEMENTIA_ARRAY.push(@@early_dementia)
     end
 
 end
