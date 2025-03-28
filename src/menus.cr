@@ -26,11 +26,6 @@ module Menus
         EXP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
         EXP_COLOR_BAR.fill_color = SF.color( 170, 183, 38 )
 
-        MENU_BOX_01 = SF::RectangleShape.new(SF.vector2(150, 80))
-        MENU_BOX_01.fill_color = SF.color(200, 212, 219)
-        MENU_BOX_01.outline_thickness = 10
-        MENU_BOX_01.outline_color = SF.color(151, 179, 194)
-
         MENU_BOX_02 = SF::RectangleShape.new(SF.vector2(200, 80))
         MENU_BOX_02.fill_color = SF.color(200, 212, 219)
         MENU_BOX_02.outline_thickness = 10
@@ -248,9 +243,8 @@ module Menus
         scale_x = current_size.x.to_f / original_width
         scale_y = current_size.y.to_f / original_height
 
-        MENU_BOX_01.position = SF.vector2(scale_x + 20, scale_y + 540)
-        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
-        MENU_BOX_01.size = SF.vector2(115, 40)
+        Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position = SF.vector2(scale_x + 20, scale_y + 540)
+        MENU_TEXT_01.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(15, 1)
         MENU_TEXT_01.string = "Back"
 
         MENU_BOX_02.size = SF.vector2(100, 50)
@@ -263,7 +257,7 @@ module Menus
      end
 
      def SystemMenus.draw_settings_menu(window)
-        window.draw(MENU_BOX_01)
+        window.draw(Ui_Elements::MenuBoxes::BACK_BUTTON.sprite)
         window.draw(MENU_TEXT_01)
         window.draw(MENU_BOX_02)
         window.draw(MENU_TEXT_02)
@@ -276,8 +270,8 @@ module Menus
         mouse_position = SF::Mouse.get_position(window)
         mouse_x = mouse_position.x
         mouse_y = mouse_position.y
-        menu_box_1_x = MENU_BOX_01.position.x
-        menu_box_1_y = MENU_BOX_01.position.y
+        menu_box_1_x = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position.x
+        menu_box_1_y = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position.y
         menu_box_2_x = MENU_BOX_02.position.x
         menu_box_2_y = MENU_BOX_02.position.y
 
@@ -291,7 +285,8 @@ module Menus
         scaled_mouse_x = mouse_x / scale_x
         scaled_mouse_y = mouse_y / scale_y
 
-        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
+        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.global_bounds.top) && 
+           (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.global_bounds.width)
             SystemMenus.system_menu=("main_menu")
         end
 
@@ -309,9 +304,8 @@ module Menus
         scale_x = current_size.x.to_f / original_width
         scale_y = current_size.y.to_f / original_height
 
-        MENU_BOX_01.position = SF.vector2(scale_x + 20, scale_y + 540)
-        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
-        MENU_BOX_01.size = SF.vector2(115, 40)
+        Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position = SF.vector2(scale_x + 20, scale_y + 540)
+        MENU_TEXT_01.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(15, 1)
         MENU_TEXT_01.string = "Back"
 
         MENU_BOX_02.size = SF.vector2(155, 50)
@@ -323,7 +317,7 @@ module Menus
      end
 
      def SystemMenus.draw_debug_menu(window)
-        window.draw(MENU_BOX_01)
+        window.draw(Ui_Elements::MenuBoxes::BACK_BUTTON.sprite)
         window.draw(MENU_TEXT_01)
         window.draw(MENU_BOX_02)
         window.draw(MENU_TEXT_02)
@@ -340,9 +334,8 @@ module Menus
         scale_x = current_size.x.to_f / original_width
         scale_y = current_size.y.to_f / original_height
 
-        MENU_BOX_01.position = SF.vector2(scale_x + 20, scale_y + 540)
-        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
-        MENU_BOX_01.size = SF.vector2(115, 40)
+        Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position = SF.vector2(scale_x + 20, scale_y + 540)
+        MENU_TEXT_01.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(15, 1)
         MENU_TEXT_01.string = "Back"
 
         MENU_BOX_02.size = SF.vector2(150, 250)
@@ -433,7 +426,7 @@ module Menus
 
      def SystemMenus.draw_save_menu(window)
 
-        window.draw(MENU_BOX_01)
+        window.draw(Ui_Elements::MenuBoxes::BACK_BUTTON.sprite)
         window.draw(MENU_BOX_02)
         window.draw(MENU_BOX_03)
         window.draw(MENU_BOX_04)
@@ -471,8 +464,8 @@ module Menus
         mouse_position = SF::Mouse.get_position(window)
         mouse_x = mouse_position.x
         mouse_y = mouse_position.y
-        menu_box_1_x = MENU_BOX_01.position.x
-        menu_box_1_y = MENU_BOX_01.position.y
+        menu_box_1_x = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position.x
+        menu_box_1_y = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position.y
         menu_box_2_x = MENU_BOX_02.position.x
         menu_box_2_y = MENU_BOX_02.position.y
         menu_box_3_x = MENU_BOX_03.position.x
@@ -496,7 +489,8 @@ module Menus
     
         scaled_mouse_x = mouse_x / scale_x
         scaled_mouse_y = mouse_y / scale_y
-        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
+        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.global_bounds.top) && 
+           (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.global_bounds.width)
             SystemMenus.system_menu=("main_menu")
         end
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + MENU_BOX_02.size.x) && (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + MENU_BOX_02.size.y)
@@ -563,9 +557,8 @@ module Menus
         scale_y = current_size.y.to_f / original_height
 
 
-        MENU_BOX_01.position = SF.vector2(scale_x + 20, scale_y + 540)
-        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(15, 1)
-        MENU_BOX_01.size = SF.vector2(115, 40)
+        Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position = SF.vector2(scale_x + 20, scale_y + 540)
+        MENU_TEXT_01.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(15, 1)
         MENU_TEXT_01.string = "Back"
         MENU_TEXT_01.character_size = 24
 
@@ -667,7 +660,7 @@ module Menus
 
      def SystemMenus.draw_charater_creation_menu(window)
 
-        window.draw(MENU_BOX_01)
+        window.draw(Ui_Elements::MenuBoxes::BACK_BUTTON.sprite)
         window.draw(MENU_BOX_02)
         window.draw(MENU_BOX_03)
         window.draw(MENU_BOX_04)
@@ -706,8 +699,8 @@ module Menus
         mouse_x = mouse_position.x
         mouse_y = mouse_position.y
 
-        menu_box_1_x = MENU_BOX_01.position.x
-        menu_box_1_y = MENU_BOX_01.position.y
+        menu_box_1_x = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position.x
+        menu_box_1_y = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position.y
 
         menu_box_2_x = MENU_BOX_02.position.x
         menu_box_2_y = MENU_BOX_02.position.y
@@ -757,7 +750,8 @@ module Menus
     
         scaled_mouse_x = mouse_x / scale_x
         scaled_mouse_y = mouse_y / scale_y
-        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + MENU_BOX_01.size.x) && (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + MENU_BOX_01.size.y)
+        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.global_bounds.top) && 
+           (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.global_bounds.width)
             Sprites::Player.is_drawn=(false)
             SystemMenus.system_menu=("save_menu")
             SystemMenus.initialize_save_menu(window)
@@ -847,16 +841,13 @@ module Menus
         scale_y = current_size.y.to_f / original_height
         HUD_BOTTOM.scale = SF.vector2(scale_x, scale_y / 5)
         HUD_BOTTOM.position = SF.vector2(0_f32, current_size.y.to_f32 - HUD_BOTTOM.global_bounds.height)
-
-        MENU_BOX_01.position = SF.vector2(HUD_BOTTOM.position.x + 150, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 10)
-        MENU_BOX_01.scale = SF.vector2(scale_x, scale_y)
+        Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
 
         MENU_BOX_02.position = SF.vector2(HUD_BOTTOM.position.x + 550, current_size.y.to_f32 - MENU_BOX_02.global_bounds.height - 10)
         MENU_BOX_02.size = SF.vector2(120, 40)
         MENU_BOX_02.scale = SF.vector2(scale_x, scale_y)
 
-        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2(50 - Player::Stats.lvl.to_s.size, 1)
-        MENU_BOX_01.size = SF.vector2(115, 40)
+        MENU_TEXT_01.position = Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.position + SF.vector2(50 - Player::Stats.lvl.to_s.size, 1)
 
         MENU_TEXT_01.string = Player::Stats.lvl.to_s
         MENU_TEXT_01.character_size = 24
@@ -866,8 +857,8 @@ module Menus
         MENU_TEXT_02.character_size = 24
         MENU_TEXT_02.scale = SF.vector2(scale_x, scale_y)
 
-        HP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 10)
-        MP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190, current_size.y.to_f32 - MENU_BOX_01.global_bounds.height - 20)
+        HP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190, current_size.y.to_f32 - Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.global_bounds.height - 10)
+        MP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190, current_size.y.to_f32 - Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.global_bounds.height - 20)
         
      end
 
@@ -882,36 +873,37 @@ module Menus
         HUD_BOTTOM.position = SF.vector2(0_f32, current_size.y.to_f32 - HUD_BOTTOM.global_bounds.height)
 
         scale_ratio = [scale_x, scale_y].min
-        MENU_BOX_01.scale = SF.vector2(scale_x, scale_y)
-        MENU_BOX_01.position = SF.vector2(30_f32 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 90 * scale_y)
+        Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
+        Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.position = SF.vector2(30_f32 * scale_x, 
+        HUD_BOTTOM.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.global_bounds.height + 70 * scale_y)
 
         MENU_TEXT_01.scale = SF.vector2(scale_ratio, scale_ratio)
-        MENU_TEXT_01.position = MENU_BOX_01.position + SF.vector2((50 - Player::Stats.lvl.to_s.size) * scale_x, 1 * scale_y)
+        MENU_TEXT_01.position = Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.position + SF.vector2((50 - Player::Stats.lvl.to_s.size) * scale_x, 1 * scale_y)
 
         MENU_BOX_02.scale = SF.vector2(scale_x, scale_y)
-        MENU_BOX_02.position = SF.vector2(650_f32 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 90 * scale_y)
+        MENU_BOX_02.position = SF.vector2(650_f32 * scale_x, HUD_BOTTOM.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.global_bounds.height + 70 * scale_y)
 
         MENU_TEXT_02.scale = SF.vector2(scale_ratio, scale_ratio)
         MENU_TEXT_02.position = MENU_BOX_02.position + SF.vector2(28 + scale_x, scale_y)
 
         #so much math lol
 
-        HP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 85 * scale_y)
+        HP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.global_bounds.height + 65 * scale_y)
         HP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
 
-        HP_COLOR_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 85 * scale_y)
+        HP_COLOR_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.global_bounds.height + 65 * scale_y)
         HP_COLOR_BAR.scale = SF.vector2((Player::Stats.current_hp.not_nil! / Player::Stats.max_hp.not_nil!) * scale_ratio, scale_ratio) 
 
-        MP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 105 * scale_y)
+        MP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.global_bounds.height + 85 * scale_y)
         MP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
 
-        MP_COLOR_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 105 * scale_y)
+        MP_COLOR_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.global_bounds.height + 85 * scale_y)
         MP_COLOR_BAR.scale = SF.vector2((Player::Stats.current_mp.not_nil! / Player::Stats.max_mp.not_nil!) * scale_ratio, scale_ratio) 
 
-        EXP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 125 * scale_y)
+        EXP_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.global_bounds.height + 105 * scale_y)
         EXP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
 
-        EXP_COLOR_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - MENU_BOX_01.global_bounds.height + 125 * scale_y)
+        EXP_COLOR_BAR.position = SF.vector2(HUD_BOTTOM.position.x + 190 * scale_x, HUD_BOTTOM.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.global_bounds.height + 105 * scale_y)
         EXP_COLOR_BAR.scale = SF.vector2((Player::Stats.exp.not_nil! / Player::Stats.exp_cap.not_nil!) * scale_ratio, scale_ratio) 
       end
         window_size = window.size
@@ -919,7 +911,7 @@ module Menus
         hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
         window.view = hud_view
         window.draw(HUD_BOTTOM)
-        window.draw(MENU_BOX_01)
+        window.draw(Ui_Elements::MenuBoxes::LEVEL_BOX.sprite)
         window.draw(MENU_TEXT_01)
         window.draw(MENU_BOX_02)
         window.draw(MENU_TEXT_02)

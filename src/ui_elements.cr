@@ -29,6 +29,8 @@ require "../src/textures.cr"
 
     class MenuBoxes < Ui_BoxBase
         PLAY_BUTTON = MenuBoxes.new("Play Button", "Main1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 80)))
+        BACK_BUTTON = MenuBoxes.new("Back Button", "Main2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)))
+        LEVEL_BOX = MenuBoxes.new("Level Box", "Lvl1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)))
 
     end
   end
