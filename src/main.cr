@@ -4,6 +4,7 @@ require "../src/menus.cr"
 require "../src/keyboard.cr"
 require "../src/levels.cr"
 require "../src/player.cr"
+require "../src/ui_elements.cr"
 
 puts "A Normal World"
 
@@ -34,6 +35,7 @@ Menus::SystemMenus.system_menu=(this)
 Sprites::Player.is_drawn=(false)
 Keyboard::Gameplay.gameplay_mode=("none")
 Levels::LevelSelectionLogic.level=("none")
+Ui_Elements::MenuThemes.apply_theme
 
 while window.open?
     while event = window.poll_event
