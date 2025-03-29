@@ -52,12 +52,17 @@ require "../src/textures.cr"
         SAVE_BOX_03 = MenuBoxes.new("Save Box 3", "Save03", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 250)), 150.0, 250.0)
         SAVE_BOX_04 = MenuBoxes.new("Save Box 4", "Save04", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 250)), 150.0, 250.0)
         SAVE_BOX_05 = MenuBoxes.new("Save Box 5", "Save05", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 250)), 150.0, 250.0)
+        SAVE_BOX_06 = MenuBoxes.new("Save Box 6", "Save06", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 250)), 150.0, 250.0)
+        SAVE_BOX_07 = MenuBoxes.new("Save Box 7", "Save07", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 250)), 150.0, 250.0)
 
         SKIN_BOX_LEFT = MenuBoxes.new("Skin Box Left", "SkinL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
         SKIN_BOX_RIGHT = MenuBoxes.new("Skin Box Right", "SkinR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
         HAIR_BOX_LEFT = MenuBoxes.new("Hair Box Left", "HairL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
         HAIR_BOX_RIGHT = MenuBoxes.new("Hair Box Right", "HairR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
         FACE_BOX_LEFT = MenuBoxes.new("Face Box Left", "FaceL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
+        FACE_BOX_RIGHT = MenuBoxes.new("Face Box Right", "FaceR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
+        SHIRT_BOX_LEFT = MenuBoxes.new("Shirt Box Left", "ShirtL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
+        SHIRT_BOX_RIGHT = MenuBoxes.new("Shirt Box Right", "ShirtR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
 
         MENU_BOX = MenuBoxes.new("Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 120, 40)), 120.0, 40.0)
 
