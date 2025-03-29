@@ -565,3 +565,9 @@
     #CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
          CONSUMABLES_TEXTURE_01 = SF::Texture.from_file("../graphics/consumables.png")
          EFFECT_TEXTURE_01 = SF::Texture.from_file("../graphics/status_effects.png")
+    #TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+    #T                                          Theme Textures                                          T
+    #TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+         PRE_ALPHA_THEME_TEXTURE = SF::Texture.from_file("../graphics/pre_alpha_theme.png")
+        #  ALPHA_THEME_TEXTURE = SF::Texture.from_file("../graphics/alpha_theme.png")
+        #  BETA_THEME_TEXTURE = SF::Texture.from_file("../graphics/beta_theme.png")   
