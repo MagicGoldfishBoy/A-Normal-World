@@ -26,16 +26,6 @@ module Menus
         EXP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
         EXP_COLOR_BAR.fill_color = SF.color( 170, 183, 38 )
 
-        MENU_BOX_07 = SF::RectangleShape.new(SF.vector2(150, 80))
-        MENU_BOX_07.fill_color = SF.color(200, 212, 219)
-        MENU_BOX_07.outline_thickness = 10
-        MENU_BOX_07.outline_color = SF.color(151, 179, 194)
-
-        MENU_BOX_08 = SF::RectangleShape.new(SF.vector2(150, 80))
-        MENU_BOX_08.fill_color = SF.color(200, 212, 219)
-        MENU_BOX_08.outline_thickness = 10
-        MENU_BOX_08.outline_color = SF.color(151, 179, 194)
-
         MENU_BOX_09 = SF::RectangleShape.new(SF.vector2(150, 80))
         MENU_BOX_09.fill_color = SF.color(200, 212, 219)
         MENU_BOX_09.outline_thickness = 10
@@ -335,15 +325,15 @@ module Menus
         MENU_TEXT_06.character_size = MENU_TEXT_02.character_size
         MENU_TEXT_06.position = Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position + SF.vector2(35, 200)
 
-        MENU_BOX_07.position = Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
+        Ui_Elements::MenuBoxes::SAVE_BOX_06.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
         MENU_TEXT_07.color = MENU_TEXT_06.color
         MENU_TEXT_07.character_size = MENU_TEXT_06.character_size
-        MENU_TEXT_07.position = MENU_BOX_07.position + SF.vector2(35, 200)
+        MENU_TEXT_07.position = Ui_Elements::MenuBoxes::SAVE_BOX_06.sprite.position + SF.vector2(35, 200)
 
-        MENU_BOX_08.position = MENU_BOX_07.position + SF.vector2(scale_x + 180, scale_y + 0)
+        Ui_Elements::MenuBoxes::SAVE_BOX_07.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_06.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
         MENU_TEXT_08.color = MENU_TEXT_07.color
         MENU_TEXT_08.character_size = MENU_TEXT_07.character_size
-        MENU_TEXT_08.position = MENU_BOX_08.position + SF.vector2(35, 200)
+        MENU_TEXT_08.position = Ui_Elements::MenuBoxes::SAVE_BOX_07.sprite.position + SF.vector2(35, 200)
 
         if !File.exists?("src/saves/save01")
             MENU_TEXT_02.string = "Empty"
@@ -397,8 +387,8 @@ module Menus
         window.draw(Ui_Elements::MenuBoxes::SAVE_BOX_03.sprite)
         window.draw(Ui_Elements::MenuBoxes::SAVE_BOX_04.sprite)
         window.draw(Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite)
-        window.draw(MENU_BOX_07)
-        window.draw(MENU_BOX_08)
+        window.draw(Ui_Elements::MenuBoxes::SAVE_BOX_06.sprite)
+        window.draw(Ui_Elements::MenuBoxes::SAVE_BOX_07.sprite)
 
         window.draw(MENU_TEXT_01)
         window.draw(MENU_TEXT_02)
@@ -441,10 +431,10 @@ module Menus
         menu_box_5_y = Ui_Elements::MenuBoxes::SAVE_BOX_04.sprite.position.y
         menu_box_6_x = Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position.x
         menu_box_6_y = Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position.y
-        menu_box_7_x = MENU_BOX_07.position.x
-        menu_box_7_y = MENU_BOX_07.position.y
-        menu_box_8_x = MENU_BOX_08.position.x
-        menu_box_8_y = MENU_BOX_08.position.y
+        menu_box_7_x = Ui_Elements::MenuBoxes::SAVE_BOX_06.sprite.position.x
+        menu_box_7_y = Ui_Elements::MenuBoxes::SAVE_BOX_06.sprite.position.y
+        menu_box_8_x = Ui_Elements::MenuBoxes::SAVE_BOX_07.sprite.position.x
+        menu_box_8_y = Ui_Elements::MenuBoxes::SAVE_BOX_07.sprite.position.y
         current_size = window.size
         original_width = 800
         original_height = 600
@@ -501,12 +491,14 @@ module Menus
             Serialization::SaveFile.initial_save("save05")
             SystemMenus.initialize_character_creation_menu(window)
         end
-        if (scaled_mouse_x >= menu_box_7_x && scaled_mouse_x <= menu_box_7_x + MENU_BOX_07.size.x) && (scaled_mouse_y >= menu_box_7_y && scaled_mouse_y <= menu_box_7_y + MENU_BOX_07.size.y)
+        if (scaled_mouse_x >= menu_box_7_x && scaled_mouse_x <= menu_box_7_x + Ui_Elements::MenuBoxes::SAVE_BOX_06.width) && 
+           (scaled_mouse_y >= menu_box_7_y && scaled_mouse_y <= menu_box_7_y + Ui_Elements::MenuBoxes::SAVE_BOX_06.height)
             Serialization::SaveFile.save_file=("save06")
             Serialization::SaveFile.initial_save("save06")
             SystemMenus.initialize_character_creation_menu(window)
         end
-        if (scaled_mouse_x >= menu_box_8_x && scaled_mouse_x <= menu_box_8_x + MENU_BOX_08.size.x) && (scaled_mouse_y >= menu_box_8_y && scaled_mouse_y <= menu_box_8_y + MENU_BOX_08.size.y)
+        if (scaled_mouse_x >= menu_box_8_x && scaled_mouse_x <= menu_box_8_x + Ui_Elements::MenuBoxes::SAVE_BOX_07.width) && 
+           (scaled_mouse_y >= menu_box_8_y && scaled_mouse_y <= menu_box_8_y + Ui_Elements::MenuBoxes::SAVE_BOX_07.height)
             Serialization::SaveFile.save_file=("save07")
             Serialization::SaveFile.initial_save("save07")
             SystemMenus.initialize_character_creation_menu(window)
@@ -562,16 +554,14 @@ module Menus
         MENU_TEXT_06.color = SF::Color::Black
         MENU_TEXT_06.character_size = 24
 
-        MENU_BOX_07.position = SF.vector2(scale_x + 560, scale_y + 200)
-        MENU_BOX_07.size = SF.vector2(115, 40)
-        MENU_TEXT_07.position = MENU_BOX_07.position + SF.vector2(30, 1)
+        Ui_Elements::MenuBoxes::FACE_BOX_RIGHT.sprite.position = SF.vector2(scale_x + 560, scale_y + 200)
+        MENU_TEXT_07.position = Ui_Elements::MenuBoxes::FACE_BOX_RIGHT.sprite.position + SF.vector2(30, 1)
         MENU_TEXT_07.string = "Face"
         MENU_TEXT_07.color = SF::Color::Black
         MENU_TEXT_07.character_size = 24
 
-        MENU_BOX_08.position = SF.vector2(scale_x + 80, scale_y + 270)
-        MENU_BOX_08.size = SF.vector2(115, 40)
-        MENU_TEXT_08.position = MENU_BOX_08.position + SF.vector2(30, 1)
+        Ui_Elements::MenuBoxes::SHIRT_BOX_LEFT.sprite.position = SF.vector2(scale_x + 80, scale_y + 270)
+        MENU_TEXT_08.position = Ui_Elements::MenuBoxes::SHIRT_BOX_LEFT.sprite.position + SF.vector2(30, 1)
         MENU_TEXT_08.string = "Shirt"
         MENU_TEXT_08.color = SF::Color::Black
         MENU_TEXT_08.character_size = 24
@@ -631,8 +621,8 @@ module Menus
         window.draw(Ui_Elements::MenuBoxes::HAIR_BOX_LEFT.sprite)
         window.draw(Ui_Elements::MenuBoxes::HAIR_BOX_RIGHT.sprite)
         window.draw(Ui_Elements::MenuBoxes::FACE_BOX_LEFT.sprite)
-        window.draw(MENU_BOX_07)
-        window.draw(MENU_BOX_08)
+        window.draw(Ui_Elements::MenuBoxes::FACE_BOX_RIGHT.sprite)
+        window.draw(Ui_Elements::MenuBoxes::SHIRT_BOX_LEFT.sprite)
         window.draw(MENU_BOX_09)
         window.draw(MENU_BOX_10)
         window.draw(MENU_BOX_11)
@@ -682,11 +672,11 @@ module Menus
         menu_box_6_x = Ui_Elements::MenuBoxes::FACE_BOX_LEFT.sprite.position.x
         menu_box_6_y = Ui_Elements::MenuBoxes::FACE_BOX_LEFT.sprite.position.y
 
-        menu_box_7_x = MENU_BOX_07.position.x
-        menu_box_7_y = MENU_BOX_07.position.y
+        menu_box_7_x = Ui_Elements::MenuBoxes::FACE_BOX_RIGHT.sprite.position.x
+        menu_box_7_y = Ui_Elements::MenuBoxes::FACE_BOX_RIGHT.sprite.position.y
 
-        menu_box_8_x = MENU_BOX_08.position.x
-        menu_box_8_y = MENU_BOX_08.position.y
+        menu_box_8_x = Ui_Elements::MenuBoxes::SHIRT_BOX_LEFT.sprite.position.x
+        menu_box_8_y = Ui_Elements::MenuBoxes::SHIRT_BOX_LEFT.sprite.position.y
 
         menu_box_9_x = MENU_BOX_09.position.x
         menu_box_9_y = MENU_BOX_09.position.y
@@ -752,12 +742,14 @@ module Menus
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
         end
-        if (scaled_mouse_x >= menu_box_7_x && scaled_mouse_x <= menu_box_7_x + MENU_BOX_07.size.x) && (scaled_mouse_y >= menu_box_7_y && scaled_mouse_y <= menu_box_7_y + MENU_BOX_07.size.y)
+        if (scaled_mouse_x >= menu_box_7_x && scaled_mouse_x <= menu_box_7_x + Ui_Elements::MenuBoxes::FACE_BOX_RIGHT.width) && 
+           (scaled_mouse_y >= menu_box_7_y && scaled_mouse_y <= menu_box_7_y + Ui_Elements::MenuBoxes::FACE_BOX_RIGHT.height)
             Player::Appearance.change_face(Sprites::Player.change_face("character_creation", "right"))
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
         end
-        if (scaled_mouse_x >= menu_box_8_x && scaled_mouse_x <= menu_box_8_x + MENU_BOX_08.size.x) && (scaled_mouse_y >= menu_box_8_y && scaled_mouse_y <= menu_box_8_y + MENU_BOX_08.size.y)
+        if (scaled_mouse_x >= menu_box_8_x && scaled_mouse_x <= menu_box_8_x + Ui_Elements::MenuBoxes::SHIRT_BOX_LEFT.width) && 
+           (scaled_mouse_y >= menu_box_8_y && scaled_mouse_y <= menu_box_8_y + Ui_Elements::MenuBoxes::SHIRT_BOX_LEFT.height)
             Player::Appearance.change_shirt(Sprites::Player.change_shirt("character_creation", "left"))
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
