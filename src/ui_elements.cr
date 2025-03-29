@@ -3,6 +3,7 @@ require "../src/textures.cr"
 #Note: Stay away from people with the last name "Calloway"
   module Ui_Elements
     class Ui_BoxBase
+        BOX_ARRAY = [] of Ui_BoxBase
         def initialize(name : String, id : String, sprite : SF::Sprite, width : Float64, height : Float64)
             @name = name
             @id = id
@@ -42,6 +43,7 @@ require "../src/textures.cr"
         BACK_BUTTON = MenuBoxes.new("Back Button", "Main2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
         SETTINGS_BUTTON = MenuBoxes.new("Settings Button", "Main3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 200, 80)), 200.0, 80.0)
         QUIT_BUTTON = MenuBoxes.new("Quit Button", "Main4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0)
+        NEXT_BUTTON = MenuBoxes.new("Next Button", "Main5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
 
         DEBUG_BUTTON = MenuBoxes.new("Debug Button", "Settings1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 100, 50)), 100.0, 50.0)
 
@@ -65,9 +67,13 @@ require "../src/textures.cr"
         SHIRT_BOX_RIGHT = MenuBoxes.new("Shirt Box Right", "ShirtR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
         PANTS_BOX_LEFT = MenuBoxes.new("Pants Box Left", "PantsL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
         PANTS_BOX_RIGHT = MenuBoxes.new("Pants Box Right", "PantsR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
+        SHOES_BOX_LEFT = MenuBoxes.new("Shoes Box Left", "ShoesL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
+        SHOES_BOX_RIGHT = MenuBoxes.new("Shoes Box Right", "ShoesR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
 
         MENU_BOX = MenuBoxes.new("Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 120, 40)), 120.0, 40.0)
 
+        MAIN_HUD_BOX = MenuBoxes.new("Main Hud Box", "HUD1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 1000, 500)), 1000.0, 100.0)
+        MAIN_HUD_BOX.sprite.texture.not_nil!.repeated = true
         LEVEL_BOX = MenuBoxes.new("Level Box", "Stats1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 115, 40)), 115.0, 40.0)
 
     end
