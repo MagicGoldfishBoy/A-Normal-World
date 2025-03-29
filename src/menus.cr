@@ -26,11 +26,6 @@ module Menus
         EXP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
         EXP_COLOR_BAR.fill_color = SF.color( 170, 183, 38 )
 
-        MENU_BOX_11 = SF::RectangleShape.new(SF.vector2(150, 80))
-        MENU_BOX_11.fill_color = SF.color(200, 212, 219)
-        MENU_BOX_11.outline_thickness = 10
-        MENU_BOX_11.outline_color = SF.color(151, 179, 194)
-
         MENU_BOX_12 = SF::RectangleShape.new(SF.vector2(150, 80))
         MENU_BOX_12.fill_color = SF.color(200, 212, 219)
         MENU_BOX_12.outline_thickness = 10
@@ -568,9 +563,8 @@ module Menus
         MENU_TEXT_10.color = SF::Color::Black
         MENU_TEXT_10.character_size = 24
 
-        MENU_BOX_11.position = SF.vector2(scale_x + 560, scale_y + 340)
-        MENU_BOX_11.size = SF.vector2(115, 40)
-        MENU_TEXT_11.position = MENU_BOX_11.position + SF.vector2(20, 1)
+        Ui_Elements::MenuBoxes::PANTS_BOX_RIGHT.sprite.position = SF.vector2(scale_x + 560, scale_y + 340)
+        MENU_TEXT_11.position = Ui_Elements::MenuBoxes::PANTS_BOX_RIGHT.sprite.position + SF.vector2(20, 1)
         MENU_TEXT_11.string = "Pants"
         MENU_TEXT_11.color = SF::Color::Black
         MENU_TEXT_11.character_size = 24
@@ -613,7 +607,7 @@ module Menus
         window.draw(Ui_Elements::MenuBoxes::SHIRT_BOX_LEFT.sprite)
         window.draw(Ui_Elements::MenuBoxes::SHIRT_BOX_RIGHT.sprite)
         window.draw(Ui_Elements::MenuBoxes::PANTS_BOX_LEFT.sprite)
-        window.draw(MENU_BOX_11)
+        window.draw(Ui_Elements::MenuBoxes::PANTS_BOX_RIGHT.sprite)
         window.draw(MENU_BOX_12)
         window.draw(MENU_BOX_13)
         window.draw(MENU_BOX_14)
@@ -672,8 +666,8 @@ module Menus
         menu_box_10_x = Ui_Elements::MenuBoxes::PANTS_BOX_LEFT.sprite.position.x
         menu_box_10_y = Ui_Elements::MenuBoxes::PANTS_BOX_LEFT.sprite.position.y
 
-        menu_box_11_x = MENU_BOX_11.position.x
-        menu_box_11_y = MENU_BOX_11.position.y
+        menu_box_11_x = Ui_Elements::MenuBoxes::PANTS_BOX_RIGHT.sprite.position.x
+        menu_box_11_y = Ui_Elements::MenuBoxes::PANTS_BOX_RIGHT.sprite.position.y
 
         menu_box_12_x = MENU_BOX_12.position.x
         menu_box_12_y = MENU_BOX_12.position.y
@@ -754,7 +748,8 @@ module Menus
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
         end
-        if (scaled_mouse_x >= menu_box_11_x && scaled_mouse_x <= menu_box_11_x + MENU_BOX_11.size.x) && (scaled_mouse_y >= menu_box_11_y && scaled_mouse_y <= menu_box_11_y + MENU_BOX_11.size.y)
+        if (scaled_mouse_x >= menu_box_11_x && scaled_mouse_x <= menu_box_11_x + Ui_Elements::MenuBoxes::PANTS_BOX_RIGHT.width) && 
+           (scaled_mouse_y >= menu_box_11_y && scaled_mouse_y <= menu_box_11_y + Ui_Elements::MenuBoxes::PANTS_BOX_RIGHT.height)
             Player::Appearance.change_pants(Sprites::Player.change_pants("character_creation", "right"))
             Sprites::Player.refresh_player_sprite(window)
             sleep 0.15.seconds
