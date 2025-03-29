@@ -33,10 +33,118 @@ require "../src/textures.cr"
     end
 
     class MenuThemes
-        def initialize(texture01 : SF::Texture, rectangle01 : SF::Rect, color01 : Array(Int32),
-        texture02 : SF::Texture, rectangle02 : SF::Rect, color02 : Array(Int32))
+        def initialize(
+            name : String,
+            texture01 : SF::Texture, color01 : SF::Color,
+            texture02 : SF::Texture, color02 : SF::Color,
+            texture03 : SF::Texture, color03 : SF::Color,
+            texture04 : SF::Texture, color04 : SF::Color
+            )
+
+            @name = name
+            @texture01 = texture01
+            @color01 = color01
+            @texture02 = texture02
+            @color02 = color02
+            @texture03 = texture03
+            @color03 = color03
+            @texture04 = texture04
+            @color04 = color04
         end
+
+        property name : String
+        property texture01 : SF::Texture
+        property color01 : SF::Color
+        property texture02 : SF::Texture
+        property color02 : SF::Color
+        property texture03 : SF::Texture
+        property color03 : SF::Color
+        property texture04 : SF::Texture
+        property color04 : SF::Color
+
+        class_property current_theme : MenuThemes = PRE_ALPHA_THEME
+
+        PRE_ALPHA_THEME = MenuThemes.new(
+            "Pre Alpha Theme",
+            BLANK_TEXTURE, SF::Color.new(91, 173, 240),
+            BLANK_TEXTURE, SF::Color.new(52, 152, 235),
+            BLANK_TEXTURE, SF::Color.new(41, 110, 166),
+            BLANK_TEXTURE, SF::Color.new(19, 66, 105)
+        )
+
+        def self.apply_theme
+            MenuBoxes::PLAY_BUTTON.sprite.texture = current_theme.texture01
+            MenuBoxes::PLAY_BUTTON.sprite.color = current_theme.color01
+
+            MenuBoxes::BACK_BUTTON.sprite.texture = current_theme.texture01
+            MenuBoxes::BACK_BUTTON.sprite.color = current_theme.color01
+
+            MenuBoxes::SETTINGS_BUTTON.sprite.texture = current_theme.texture01
+            MenuBoxes::SETTINGS_BUTTON.sprite.color = current_theme.color01
+
+            MenuBoxes::QUIT_BUTTON.sprite.texture = current_theme.texture01
+            MenuBoxes::QUIT_BUTTON.sprite.color = current_theme.color01
+
+            MenuBoxes::NEXT_BUTTON.sprite.texture = current_theme.texture01
+            MenuBoxes::NEXT_BUTTON.sprite.color = current_theme.color01
+
+            MenuBoxes::DEBUG_BUTTON.sprite.texture = current_theme.texture01
+            MenuBoxes::DEBUG_BUTTON.sprite.color = current_theme.color01
+
+            MenuBoxes::LEVEL_EDITOR_BUTTON.sprite.texture = current_theme.texture01
+            MenuBoxes::LEVEL_EDITOR_BUTTON.sprite.color = current_theme.color01
+
+            MenuBoxes::SAVE_BOX_01.sprite.texture = current_theme.texture02
+            MenuBoxes::SAVE_BOX_01.sprite.color = current_theme.color02
+            MenuBoxes::SAVE_BOX_02.sprite.texture = current_theme.texture02
+            MenuBoxes::SAVE_BOX_02.sprite.color = current_theme.color02
+            MenuBoxes::SAVE_BOX_03.sprite.texture = current_theme.texture02
+            MenuBoxes::SAVE_BOX_03.sprite.color = current_theme.color02
+            MenuBoxes::SAVE_BOX_04.sprite.texture = current_theme.texture02
+            MenuBoxes::SAVE_BOX_04.sprite.color = current_theme.color02
+            MenuBoxes::SAVE_BOX_05.sprite.texture = current_theme.texture02
+            MenuBoxes::SAVE_BOX_05.sprite.color = current_theme.color02
+            MenuBoxes::SAVE_BOX_06.sprite.texture = current_theme.texture02
+            MenuBoxes::SAVE_BOX_06.sprite.color = current_theme.color02
+            MenuBoxes::SAVE_BOX_07.sprite.texture = current_theme.texture02
+
+            MenuBoxes::SKIN_BOX_LEFT.sprite.texture = current_theme.texture01
+            MenuBoxes::SKIN_BOX_LEFT.sprite.color = current_theme.color01
+            MenuBoxes::SKIN_BOX_RIGHT.sprite.texture = current_theme.texture01
+            MenuBoxes::SKIN_BOX_RIGHT.sprite.color = current_theme.color01
+            MenuBoxes::HAIR_BOX_LEFT.sprite.texture = current_theme.texture01
+            MenuBoxes::HAIR_BOX_LEFT.sprite.color = current_theme.color01
+            MenuBoxes::HAIR_BOX_RIGHT.sprite.texture = current_theme.texture01
+            MenuBoxes::HAIR_BOX_RIGHT.sprite.color = current_theme.color01
+            MenuBoxes::FACE_BOX_LEFT.sprite.texture = current_theme.texture01
+            MenuBoxes::FACE_BOX_LEFT.sprite.color = current_theme.color01
+            MenuBoxes::FACE_BOX_RIGHT.sprite.texture = current_theme.texture01
+            MenuBoxes::FACE_BOX_RIGHT.sprite.color = current_theme.color01
+            MenuBoxes::SHIRT_BOX_LEFT.sprite.texture = current_theme.texture01
+            MenuBoxes::SHIRT_BOX_LEFT.sprite.color = current_theme.color01
+            MenuBoxes::SHIRT_BOX_RIGHT.sprite.texture = current_theme.texture01
+            MenuBoxes::SHIRT_BOX_RIGHT.sprite.color = current_theme.color01
+            MenuBoxes::PANTS_BOX_LEFT.sprite.texture = current_theme.texture01
+            MenuBoxes::PANTS_BOX_LEFT.sprite.color = current_theme.color01
+            MenuBoxes::PANTS_BOX_RIGHT.sprite.texture = current_theme.texture01
+            MenuBoxes::PANTS_BOX_RIGHT.sprite.color = current_theme.color01
+            MenuBoxes::SHOES_BOX_LEFT.sprite.texture = current_theme.texture01
+            MenuBoxes::SHOES_BOX_LEFT.sprite.color = current_theme.color01
+            MenuBoxes::SHOES_BOX_RIGHT.sprite.texture = current_theme.texture01
+            MenuBoxes::SHOES_BOX_RIGHT.sprite.color = current_theme.color01
+
+            MenuBoxes::MENU_BOX.sprite.texture = current_theme.texture01
+            MenuBoxes::MENU_BOX.sprite.color = current_theme.color01
+
+            MenuBoxes::MAIN_HUD_BOX.sprite.texture = current_theme.texture04
+            MenuBoxes::MAIN_HUD_BOX.sprite.color = current_theme.color04
+
+            MenuBoxes::LEVEL_BOX.sprite.texture = current_theme.texture01
+            MenuBoxes::LEVEL_BOX.sprite.color = current_theme.color01
+        end
+
     end
+    
 
     class MenuBoxes < Ui_BoxBase
         PLAY_BUTTON = MenuBoxes.new("Play Button", "Main1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0)
