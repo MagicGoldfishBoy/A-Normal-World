@@ -1,5 +1,6 @@
 require "crsfml"
 require "../src/textures.cr"
+require "../src/fonts.cr"
 #Note: Stay away from people with the last name "Calloway"
   module Ui_Elements
     class Ui_BoxBase
@@ -184,6 +185,38 @@ require "../src/textures.cr"
         MAIN_HUD_BOX = MenuBoxes.new("Main Hud Box", "HUD1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 200, 1000, 500)), 1000.0, 100.0)
         MAIN_HUD_BOX.sprite.texture.not_nil!.repeated = true
         LEVEL_BOX = MenuBoxes.new("Level Box", "Stats1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0)
+    end
+    class MenuText < Ui_TextBase
+        PLAY_BUTTON_TEXT = MenuText.new("Play Button Text", "Main1", SF::Text.new("Play                    Settings                    Quit", QUICKSAND, 34))
 
+        BACK_BUTTON_TEXT = MenuText.new("Back Button Text", "Main2", SF::Text.new("Back", QUICKSAND, 34))
+        
+        SETTINGS_BUTTON_TEXT = MenuText.new("Settings Button Text", "Main3", SF::Text.new("Settings", QUICKSAND, 34))
+        QUIT_BUTTON_TEXT = MenuText.new("Quit Button Text", "Main4", SF::Text.new("Quit", QUICKSAND, 34))
+        NEXT_BUTTON_TEXT = MenuText.new("Next Button Text", "Main5", SF::Text.new("Next", QUICKSAND, 34))
+        DEBUG_BUTTON_TEXT = MenuText.new("Debug Button Text", "Settings1", SF::Text.new("Debug", QUICKSAND, 34))
+        LEVEL_EDITOR_BUTTON_TEXT = MenuText.new("Level Editor Button Text", "Debug1", SF::Text.new("Level Editor", QUICKSAND, 34))
+        SAVE_BOX_01_TEXT = MenuText.new("Save Box 1 Text", "Save01", SF::Text.new("Save 1", QUICKSAND, 34))
+        SAVE_BOX_02_TEXT = MenuText.new("Save Box 2 Text", "Save02", SF::Text.new("Save 2", QUICKSAND, 34))
+        SAVE_BOX_03_TEXT = MenuText.new("Save Box 3 Text", "Save03", SF::Text.new("Save 3", QUICKSAND, 34))
+        SAVE_BOX_04_TEXT = MenuText.new("Save Box 4 Text", "Save04", SF::Text.new("Save 4", QUICKSAND, 34))
+        SAVE_BOX_05_TEXT = MenuText.new("Save Box 5 Text", "Save05", SF::Text.new("Save 5", QUICKSAND, 34))
+        SAVE_BOX_06_TEXT = MenuText.new("Save Box 6 Text", "Save06", SF::Text.new("Save 6", QUICKSAND, 34))
+        SAVE_BOX_07_TEXT = MenuText.new("Save Box 7 Text", "Save07", SF::Text.new("Save 7", QUICKSAND, 34))
+        SKIN_BOX_LEFT_TEXT = MenuText.new("Skin Box Left Text", "SkinL1", SF::Text.new("Skin Left", QUICKSAND, 34))
+        SKIN_BOX_RIGHT_TEXT = MenuText.new("Skin Box Right Text", "SkinR1", SF::Text.new("Skin Right", QUICKSAND, 34))
+        HAIR_BOX_LEFT_TEXT = MenuText.new("Hair Box Left Text", "HairL1", SF::Text.new("Hair Left", QUICKSAND, 34))
+        HAIR_BOX_RIGHT_TEXT = MenuText.new("Hair Box Right Text", "HairR1", SF::Text.new("Hair Right", QUICKSAND, 34))
+        FACE_BOX_LEFT_TEXT = MenuText.new("Face Box Left Text", "FaceL1", SF::Text.new("Face Left", QUICKSAND, 34))
+        FACE_BOX_RIGHT_TEXT = MenuText.new("Face Box Right Text", "FaceR1", SF::Text.new("Face Right", QUICKSAND, 34))
+        SHIRT_BOX_LEFT_TEXT = MenuText.new("Shirt Box Left Text", "ShirtL1", SF::Text.new("Shirt Left", QUICKSAND, 34))
+        SHIRT_BOX_RIGHT_TEXT = MenuText.new("Shirt Box Right Text", "ShirtR1", SF::Text.new("Shirt Right", QUICKSAND, 34))
+        PANTS_BOX_LEFT_TEXT = MenuText.new("Pants Box Left Text", "PantsL1", SF::Text.new("Pants Left", QUICKSAND, 34))
+        PANTS_BOX_RIGHT_TEXT = MenuText.new("Pants Box Right Text", "PantsR1", SF::Text.new("Pants Right", QUICKSAND, 34))
+        SHOES_BOX_LEFT_TEXT = MenuText.new("Shoes Box Left Text", "ShoesL1", SF::Text.new("Shoes Left", QUICKSAND, 34))
+        SHOES_BOX_RIGHT_TEXT = MenuText.new("Shoes Box Right Text", "ShoesR1", SF::Text.new("Shoes Right", QUICKSAND, 34))
+        MENU_BOX_TEXT = MenuText.new("Menu Box Text", "HudMen1", SF::Text.new("Menu", QUICKSAND, 34))
+        MAIN_HUD_BOX_TEXT = MenuText.new("Main Hud Box Text", "HUD1", SF::Text.new("Main Hud", QUICKSAND, 34))
+        LEVEL_BOX_TEXT = MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 34))
     end
   end
