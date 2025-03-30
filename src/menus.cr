@@ -780,11 +780,6 @@ module Menus
     class Windows # I now know why everyone hates coding UI shit -_-
         #I hate coding ui, I haaaate it!
 
-        WINDOW_01 = SF::RectangleShape.new(SF.vector2(260, 80)) #it ain't perfect, but it's good enough :P
-        WINDOW_01.fill_color = SF.color(200, 212, 219)
-        WINDOW_01.outline_thickness = 10
-        WINDOW_01.outline_color = SF.color(151, 179, 194)
-
         WINDOW_02 = SF::RectangleShape.new(SF.vector2(260, 20))
         WINDOW_02.fill_color = SF.color(116, 153, 195)
 
@@ -1000,7 +995,7 @@ module Menus
                 scale_ratio = [scale_x, scale_y].min
             end
             window.draw(Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite)
-            window.draw(WINDOW_02)
+            window.draw(Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite)
             window.draw(WINDOW_02_TEXT)
             window.draw(WINDOW_03)
             window.draw(WINDOW_03_TEXT)
@@ -1082,8 +1077,8 @@ module Menus
               Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position = SF.vector2(510 * scale_x, 470 * scale_y)
               Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_ratio)
               
-              WINDOW_02.position = SF.vector2(510 * scale_x, 465 * scale_y)
-              WINDOW_02.scale = SF.vector2(scale_x, scale_ratio)
+              Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position + SF.vector2(5, 0)
+              Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.scale = SF.vector2(scale_x, scale_ratio)
               
               WINDOW_02_TEXT.position = SF.vector2(605 * scale_x, 460 * scale_y)
               WINDOW_02_TEXT.scale = SF.vector2(scale_ratio, scale_ratio)
@@ -1250,10 +1245,10 @@ module Menus
             scaled_mouse_x = (mouse_x + window_size.x * window_01_view.viewport.left) * scale_x
             scaled_mouse_y = (mouse_y + window_size.y * window_01_view.viewport.top) * scale_y
         
-            menu_box_2_x = (WINDOW_02.position.x + window_size.x * window_01_view.viewport.left) * scale_x
-            menu_box_2_y = (WINDOW_02.position.y + window_size.y * window_01_view.viewport.top) * scale_y
-            menu_box_2_width = WINDOW_02.size.x * scale_x
-            menu_box_2_height = WINDOW_02.size.y * scale_y
+            menu_box_2_x = (Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position.x + window_size.x * window_01_view.viewport.left) * scale_x
+            menu_box_2_y = (Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position.y + window_size.y * window_01_view.viewport.top) * scale_y
+            menu_box_2_width = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.global_bounds.width * scale_x
+            menu_box_2_height = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.global_bounds.height * scale_y
         
             menu_box_3_x = (WINDOW_03.position.x + window_size.x * window_01_view.viewport.left) * scale_x
             menu_box_3_y = (WINDOW_03.position.y + window_size.y * window_01_view.viewport.top) * scale_y
