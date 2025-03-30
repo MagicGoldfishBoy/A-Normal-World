@@ -206,7 +206,6 @@ require "../src/fonts.cr"
         
         LEVEL_EDITOR_BUTTON_TEXT = MenuText.new("Level Editor Button Text", "Debug1", SF::Text.new("Level Editor", QUICKSAND, 25))
  
-
         SAVE_BOX_01_TEXT = MenuText.new("Save Box 1 Text", "Save01", SF::Text.new("Save 1", QUICKSAND, 25))
 
         SAVE_BOX_02_TEXT = MenuText.new("Save Box 2 Text", "Save02", SF::Text.new("Save 2", QUICKSAND, 25))
@@ -232,5 +231,8 @@ require "../src/fonts.cr"
         MENU_BOX_TEXT = MenuText.new("Menu Box Text", "HudMen1", SF::Text.new("Menu", QUICKSAND, 24))
         MAIN_HUD_BOX_TEXT = MenuText.new("Main Hud Box Text", "HUD1", SF::Text.new("Main Hud", QUICKSAND, 34))
         LEVEL_BOX_TEXT = MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 34))
+    end
+    class WindowBoxes < Ui_BoxBase
+        HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 260, 95)), 260.0, 95.0)
     end
   end
