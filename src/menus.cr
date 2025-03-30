@@ -23,9 +23,6 @@ module Menus
         EXP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
         EXP_COLOR_BAR.fill_color = SF.color( 170, 183, 38 )
 
-        MENU_TEXT_02 = SF::Text.new
-        MENU_TEXT_02.font = QUICKSAND
-
         MENU_TEXT_03 = SF::Text.new
         MENU_TEXT_03.font = QUICKSAND
 
@@ -108,10 +105,7 @@ module Menus
         Ui_Elements::MenuText::PLAY_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position + SF.vector2(35, 15)
 
         Ui_Elements::MenuBoxes::SETTINGS_BUTTON.sprite.position = Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position + SF.vector2(250, 0)
-        MENU_TEXT_02.color = SF::Color::White
-        MENU_TEXT_02.string = "A Normal World"
-        MENU_TEXT_02.character_size = 50
-        MENU_TEXT_02.position = SF.vector2(200, 100)
+        Ui_Elements::MenuText::TITLE_TEXT.text.position = SF.vector2(200, 100)
 
         Ui_Elements::MenuBoxes::QUIT_BUTTON.sprite.position = Ui_Elements::MenuBoxes::SETTINGS_BUTTON.sprite.position + SF.vector2(300, 0)
 
@@ -119,7 +113,7 @@ module Menus
         window.draw(Ui_Elements::MenuBoxes::SETTINGS_BUTTON.sprite)
         window.draw(Ui_Elements::MenuBoxes::QUIT_BUTTON.sprite)
         window.draw(Ui_Elements::MenuText::PLAY_BUTTON_TEXT.text)
-        window.draw(MENU_TEXT_02)
+        window.draw(Ui_Elements::MenuText::TITLE_TEXT.text)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.main_menu_mouse_handling(window)
         end
@@ -168,13 +162,10 @@ module Menus
         scale_y = current_size.y.to_f / original_height
 
         Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position = SF.vector2(scale_x + 20, scale_y + 540)
-        Ui_Elements::MenuText::BACK_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(15, 1)
+        Ui_Elements::MenuText::BACK_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(28, 1)
 
         Ui_Elements::MenuBoxes::DEBUG_BUTTON.sprite.position = SF.vector2(scale_x + 50, scale_y + 20)
-        MENU_TEXT_02.color = SF::Color::Blue
-        MENU_TEXT_02.character_size = 25
-        MENU_TEXT_02.position = Ui_Elements::MenuBoxes::DEBUG_BUTTON.sprite.position + SF.vector2(8, 8)
-        MENU_TEXT_02.string = "Debug"
+        Ui_Elements::MenuText::DEBUG_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::DEBUG_BUTTON.sprite.position + SF.vector2(8, 8)
 
      end
 
@@ -182,7 +173,7 @@ module Menus
         window.draw(Ui_Elements::MenuBoxes::BACK_BUTTON.sprite)
         window.draw(Ui_Elements::MenuText::BACK_BUTTON_TEXT.text)
         window.draw(Ui_Elements::MenuBoxes::DEBUG_BUTTON.sprite)
-        window.draw(MENU_TEXT_02)
+        window.draw(Ui_Elements::MenuText::DEBUG_BUTTON_TEXT.text)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
         SystemMenus.settings_menu_mouse_handling(window)
         end
@@ -228,20 +219,17 @@ module Menus
         scale_y = current_size.y.to_f / original_height
 
         Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position = SF.vector2(scale_x + 20, scale_y + 540)
-        Ui_Elements::MenuText::BACK_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(15, 1)
+        Ui_Elements::MenuText::BACK_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(28, 1)
 
         Ui_Elements::MenuBoxes::LEVEL_EDITOR_BUTTON.sprite.position = SF.vector2(scale_x + 50, scale_y + 20)
-        MENU_TEXT_02.color = SF::Color::Blue
-        MENU_TEXT_02.character_size = 25
-        MENU_TEXT_02.position = Ui_Elements::MenuBoxes::LEVEL_EDITOR_BUTTON.sprite.position + SF.vector2(8, 8)
-        MENU_TEXT_02.string = "level_editor"
+        Ui_Elements::MenuText::LEVEL_EDITOR_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::LEVEL_EDITOR_BUTTON.sprite.position + SF.vector2(8, 8)
      end
 
      def SystemMenus.draw_debug_menu(window)
         window.draw(Ui_Elements::MenuBoxes::BACK_BUTTON.sprite)
         window.draw(Ui_Elements::MenuText::BACK_BUTTON_TEXT.text)
         window.draw(Ui_Elements::MenuBoxes::LEVEL_EDITOR_BUTTON.sprite)
-        window.draw(MENU_TEXT_02)
+        window.draw(Ui_Elements::MenuText::LEVEL_EDITOR_BUTTON_TEXT.text)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
         SystemMenus.settings_menu_mouse_handling(window)
         end
@@ -256,16 +244,12 @@ module Menus
         scale_y = current_size.y.to_f / original_height
 
         Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position = SF.vector2(scale_x + 20, scale_y + 540)
-        Ui_Elements::MenuText::BACK_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(15, 1)
+        Ui_Elements::MenuText::BACK_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(28, 1)
 
         Ui_Elements::MenuBoxes::SAVE_BOX_01.sprite.position = SF.vector2(scale_x + 50, scale_y + 20)
-        MENU_TEXT_02.color = SF::Color::Blue
-        MENU_TEXT_02.character_size = 25
-        MENU_TEXT_02.position = Ui_Elements::MenuBoxes::SAVE_BOX_01.sprite.position + SF.vector2(35, 200)
+        Ui_Elements::MenuText::SAVE_BOX_01_TEXT.text.position = Ui_Elements::MenuBoxes::SAVE_BOX_01.sprite.position + SF.vector2(35, 200)
 
         Ui_Elements::MenuBoxes::SAVE_BOX_02.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_01.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
-        MENU_TEXT_03.color = MENU_TEXT_02.color
-        MENU_TEXT_03.character_size = MENU_TEXT_02.character_size
         MENU_TEXT_03.position = Ui_Elements::MenuBoxes::SAVE_BOX_02.sprite.position + SF.vector2(35, 200)
 
         Ui_Elements::MenuBoxes::SAVE_BOX_03.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_02.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
@@ -279,8 +263,6 @@ module Menus
         MENU_TEXT_05.position = Ui_Elements::MenuBoxes::SAVE_BOX_04.sprite.position + SF.vector2(35, 200)
 
         Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_01.sprite.position + SF.vector2(scale_x + 180, scale_y + 300)
-        MENU_TEXT_06.color = MENU_TEXT_02.color
-        MENU_TEXT_06.character_size = MENU_TEXT_02.character_size
         MENU_TEXT_06.position = Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position + SF.vector2(35, 200)
 
         Ui_Elements::MenuBoxes::SAVE_BOX_06.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
@@ -294,10 +276,10 @@ module Menus
         MENU_TEXT_08.position = Ui_Elements::MenuBoxes::SAVE_BOX_07.sprite.position + SF.vector2(35, 200)
 
         if !File.exists?("src/saves/save01")
-            MENU_TEXT_02.string = "Empty"
+            Ui_Elements::MenuText::SAVE_BOX_01_TEXT.text.string = "Empty"
         else
-            MENU_TEXT_02.string = Serialization::SaveFile.retrieve_data("src/saves/save01", "name").to_s
-            SystemMenus.center_save_file_text(MENU_TEXT_02)
+            Ui_Elements::MenuText::SAVE_BOX_01_TEXT.text.string = Serialization::SaveFile.retrieve_data("src/saves/save01", "name").to_s
+            SystemMenus.center_save_file_text(Ui_Elements::MenuText::SAVE_BOX_01_TEXT.text)
         end
         if !File.exists?("src/saves/save02")
             MENU_TEXT_03.string = "Empty"
@@ -349,7 +331,7 @@ module Menus
         window.draw(Ui_Elements::MenuBoxes::SAVE_BOX_07.sprite)
 
         window.draw(Ui_Elements::MenuText::BACK_BUTTON_TEXT.text)
-        window.draw(MENU_TEXT_02)
+        window.draw(Ui_Elements::MenuText::SAVE_BOX_01_TEXT.text)
         window.draw(MENU_TEXT_03)
         window.draw(MENU_TEXT_04)
         window.draw(MENU_TEXT_05)
@@ -478,13 +460,10 @@ module Menus
 
 
         Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position = SF.vector2(scale_x + 20, scale_y + 540)
-        Ui_Elements::MenuText::BACK_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(15, 1)
+        Ui_Elements::MenuText::BACK_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(28, 1)
 
         Ui_Elements::MenuBoxes::SKIN_BOX_LEFT.sprite.position = SF.vector2(scale_x + 80, scale_y + 60)
-        MENU_TEXT_02.position = Ui_Elements::MenuBoxes::SKIN_BOX_LEFT.sprite.position + SF.vector2(30, 1)
-        MENU_TEXT_02.string = "Skin"
-        MENU_TEXT_02.color = SF::Color::Black
-        MENU_TEXT_02.character_size = 24
+        Ui_Elements::MenuText::SKIN_BOX_LEFT_TEXT.text.position = Ui_Elements::MenuBoxes::SKIN_BOX_LEFT.sprite.position + SF.vector2(30, 1)
 
         Ui_Elements::MenuBoxes::SKIN_BOX_RIGHT.sprite.position = SF.vector2(scale_x + 560, scale_y + 60)
         MENU_TEXT_03.position = Ui_Elements::MenuBoxes::SKIN_BOX_RIGHT.sprite.position + SF.vector2(30, 1)
@@ -581,7 +560,7 @@ module Menus
         window.draw(Ui_Elements::MenuBoxes::NEXT_BUTTON.sprite)
 
         window.draw(Ui_Elements::MenuText::BACK_BUTTON_TEXT.text)
-        window.draw(MENU_TEXT_02)
+        window.draw(Ui_Elements::MenuText::SKIN_BOX_LEFT_TEXT.text)
         window.draw(MENU_TEXT_03)
         window.draw(MENU_TEXT_04)
         window.draw(MENU_TEXT_05)
@@ -770,9 +749,7 @@ module Menus
         Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.string = Player::Stats.lvl.to_s
         Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.scale = SF.vector2(scale_x, scale_y)
 
-        MENU_TEXT_02.string = "Menu"
-        MENU_TEXT_02.character_size = 24
-        MENU_TEXT_02.scale = SF.vector2(scale_x, scale_y)
+        Ui_Elements::MenuText::MENU_BOX_TEXT.text.scale = SF.vector2(scale_x, scale_y)
 
         HP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190, current_size.y.to_f32 - Ui_Elements::MenuBoxes::LEVEL_BOX.height - 10)
         MP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190, current_size.y.to_f32 - Ui_Elements::MenuBoxes::LEVEL_BOX.height - 20)
@@ -800,8 +777,8 @@ module Menus
         Ui_Elements::MenuBoxes::MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
         Ui_Elements::MenuBoxes::MENU_BOX.sprite.position = SF.vector2(650_f32 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 70 * scale_y)
 
-        MENU_TEXT_02.scale = SF.vector2(scale_ratio, scale_ratio)
-        MENU_TEXT_02.position = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position + SF.vector2(28 + scale_x, scale_y)
+        Ui_Elements::MenuText::MENU_BOX_TEXT.text.scale = SF.vector2(scale_ratio, scale_ratio)
+        Ui_Elements::MenuText::MENU_BOX_TEXT.text.position = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position + SF.vector2(28 + scale_x, scale_y)
 
         #so much math lol
 
@@ -831,7 +808,7 @@ module Menus
         window.draw(Ui_Elements::MenuBoxes::LEVEL_BOX.sprite)
         window.draw(Ui_Elements::MenuText::LEVEL_BOX_TEXT.text)
         window.draw(Ui_Elements::MenuBoxes::MENU_BOX.sprite)
-        window.draw(MENU_TEXT_02)
+        window.draw(Ui_Elements::MenuText::MENU_BOX_TEXT.text)
         window.draw(HP_BAR)
         window.draw(HP_COLOR_BAR)
         window.draw(MP_BAR)
