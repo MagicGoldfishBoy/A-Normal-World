@@ -49,7 +49,7 @@ while window.open?
     Keyboard::Gameplay.determine_gameplay_controls(window)
     Player::Stats.check_status_effects(window)
     Menus::SystemMenus.draw_system_menu(window)
-    Menus::Windows.which_views_are_open(window)
+    Menus::Windows.update_open_views(window)
     Inventory::InventoryManager.draw_inventory(window)
     window.display
   end

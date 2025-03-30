@@ -990,7 +990,16 @@ module Menus
         end
 
         def Windows.draw_hud_menu(window)
-            window.draw(WINDOW_01)
+            if SF::Event::Resized
+                current_size = window.size
+                original_width = 800 
+                original_height = 600
+                scale_x = current_size.x.to_f / original_width
+                scale_y = current_size.y.to_f / original_height
+        
+                scale_ratio = [scale_x, scale_y].min
+            end
+            window.draw(Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite)
             window.draw(WINDOW_02)
             window.draw(WINDOW_02_TEXT)
             window.draw(WINDOW_03)
@@ -1052,7 +1061,7 @@ module Menus
             window.draw(RIGHT_ARROW_06)
         end
 
-        def Windows.which_views_are_open(window)
+        def Windows.update_open_views(window)
             current_size = window.size
             original_width = 800 
             original_height = 600
@@ -1065,13 +1074,13 @@ module Menus
             max_scale = 1.5
             clamped_scale = [scale_ratio, max_scale].min
           
-            if @@is_hud_menu_open == true
+            if @@is_hud_menu_open
     
               margin_right = 30 
               margin_bottom = 30 
               
-              WINDOW_01.position = SF.vector2(510 * scale_x, 470 * scale_y)
-              WINDOW_01.scale = SF.vector2(scale_x, scale_ratio)
+              Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position = SF.vector2(510 * scale_x, 470 * scale_y)
+              Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_ratio)
               
               WINDOW_02.position = SF.vector2(510 * scale_x, 465 * scale_y)
               WINDOW_02.scale = SF.vector2(scale_x, scale_ratio)
@@ -1098,7 +1107,7 @@ module Menus
               Windows.draw_hud_menu(window)
             end
 
-            if @@is_stats_menu_open == true
+            if @@is_stats_menu_open
                 window.view = window.default_view
                 STATS_MENU.position = SF.vector2(50 * max_scale, 50 * max_scale)
                 STATS_MENU.scale = SF.vector2(0.5, 1)
