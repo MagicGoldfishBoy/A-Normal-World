@@ -40,7 +40,8 @@ require "../src/fonts.cr"
             name : String,
             menu_texture : SF::Texture, color01 : SF::Color,
             effect_texture : SF::Texture, color02 : SF::Color,
-            color03 : SF::Color, color04 : SF::Color
+            color03 : SF::Color, color04 : SF::Color, font01 : SF::Font,
+            font02 : SF::Font
             )
 
             @name = name
@@ -50,6 +51,8 @@ require "../src/fonts.cr"
             @color02 = color02
             @color03 = color03
             @color04 = color04
+            @font01 = font01
+            @font02 = font02
         end
 
         property name : String
@@ -59,6 +62,8 @@ require "../src/fonts.cr"
         property color02 : SF::Color
         property color03 : SF::Color
         property color04 : SF::Color
+        property font01 : SF::Font
+        property font02 : SF::Font
 
         class_property current_theme : MenuThemes = PRE_ALPHA_THEME
 
@@ -66,7 +71,8 @@ require "../src/fonts.cr"
             "Pre Alpha Theme",
             PRE_ALPHA_THEME_TEXTURE, SF::Color.new(91, 173, 240),
             BLANK_TEXTURE, SF::Color.new(52, 152, 235),
-            SF::Color.new(41, 110, 166), SF::Color.new(19, 66, 105)
+            SF::Color.new(41, 110, 166), SF::Color.new(19, 66, 105),
+            QUICKSAND, QUICKSAND_BOLD
         )
 
         def self.apply_theme
@@ -141,7 +147,9 @@ require "../src/fonts.cr"
             MenuBoxes::LEVEL_BOX.sprite.color = current_theme.color01
             MenuText::TEXT_ARRAY.each do |text|
                 text.text.color = current_theme.color04
+                text.text.font = current_theme.font01
             end
+            MenuText::TITLE_TEXT.text.font = current_theme.font02
         end
 
     end
@@ -208,18 +216,18 @@ require "../src/fonts.cr"
         SAVE_BOX_06_TEXT = MenuText.new("Save Box 6 Text", "Save06", SF::Text.new("Save 6", QUICKSAND, 25))
         SAVE_BOX_07_TEXT = MenuText.new("Save Box 7 Text", "Save07", SF::Text.new("Save 7", QUICKSAND, 25))
 
-        SKIN_BOX_LEFT_TEXT = MenuText.new("Skin Box Left Text", "SkinL1", SF::Text.new("Skin Left", QUICKSAND, 24))
-        SKIN_BOX_RIGHT_TEXT = MenuText.new("Skin Box Right Text", "SkinR1", SF::Text.new("Skin Right", QUICKSAND, 34))
-        HAIR_BOX_LEFT_TEXT = MenuText.new("Hair Box Left Text", "HairL1", SF::Text.new("Hair Left", QUICKSAND, 34))
-        HAIR_BOX_RIGHT_TEXT = MenuText.new("Hair Box Right Text", "HairR1", SF::Text.new("Hair Right", QUICKSAND, 34))
-        FACE_BOX_LEFT_TEXT = MenuText.new("Face Box Left Text", "FaceL1", SF::Text.new("Face Left", QUICKSAND, 34))
-        FACE_BOX_RIGHT_TEXT = MenuText.new("Face Box Right Text", "FaceR1", SF::Text.new("Face Right", QUICKSAND, 34))
-        SHIRT_BOX_LEFT_TEXT = MenuText.new("Shirt Box Left Text", "ShirtL1", SF::Text.new("Shirt Left", QUICKSAND, 34))
-        SHIRT_BOX_RIGHT_TEXT = MenuText.new("Shirt Box Right Text", "ShirtR1", SF::Text.new("Shirt Right", QUICKSAND, 34))
-        PANTS_BOX_LEFT_TEXT = MenuText.new("Pants Box Left Text", "PantsL1", SF::Text.new("Pants Left", QUICKSAND, 34))
-        PANTS_BOX_RIGHT_TEXT = MenuText.new("Pants Box Right Text", "PantsR1", SF::Text.new("Pants Right", QUICKSAND, 34))
-        SHOES_BOX_LEFT_TEXT = MenuText.new("Shoes Box Left Text", "ShoesL1", SF::Text.new("Shoes Left", QUICKSAND, 34))
-        SHOES_BOX_RIGHT_TEXT = MenuText.new("Shoes Box Right Text", "ShoesR1", SF::Text.new("Shoes Right", QUICKSAND, 34))
+        SKIN_BOX_LEFT_TEXT = MenuText.new("Skin Box Left Text", "SkinL1", SF::Text.new("Skin", QUICKSAND, 24))
+        SKIN_BOX_RIGHT_TEXT = MenuText.new("Skin Box Right Text", "SkinR1", SF::Text.new("Skin", QUICKSAND, 24))
+        HAIR_BOX_LEFT_TEXT = MenuText.new("Hair Box Left Text", "HairL1", SF::Text.new("Hair", QUICKSAND, 24))
+        HAIR_BOX_RIGHT_TEXT = MenuText.new("Hair Box Right Text", "HairR1", SF::Text.new("Hair", QUICKSAND, 24))
+        FACE_BOX_LEFT_TEXT = MenuText.new("Face Box Left Text", "FaceL1", SF::Text.new("Face Left", QUICKSAND, 24))
+        FACE_BOX_RIGHT_TEXT = MenuText.new("Face Box Right Text", "FaceR1", SF::Text.new("Face Right", QUICKSAND, 24))
+        SHIRT_BOX_LEFT_TEXT = MenuText.new("Shirt Box Left Text", "ShirtL1", SF::Text.new("Shirt Left", QUICKSAND, 24))
+        SHIRT_BOX_RIGHT_TEXT = MenuText.new("Shirt Box Right Text", "ShirtR1", SF::Text.new("Shirt Right", QUICKSAND, 24))
+        PANTS_BOX_LEFT_TEXT = MenuText.new("Pants Box Left Text", "PantsL1", SF::Text.new("Pants Left", QUICKSAND, 24))
+        PANTS_BOX_RIGHT_TEXT = MenuText.new("Pants Box Right Text", "PantsR1", SF::Text.new("Pants Right", QUICKSAND, 24))
+        SHOES_BOX_LEFT_TEXT = MenuText.new("Shoes Box Left Text", "ShoesL1", SF::Text.new("Shoes Left", QUICKSAND, 24))
+        SHOES_BOX_RIGHT_TEXT = MenuText.new("Shoes Box Right Text", "ShoesR1", SF::Text.new("Shoes Right", QUICKSAND, 24))
 
         MENU_BOX_TEXT = MenuText.new("Menu Box Text", "HudMen1", SF::Text.new("Menu", QUICKSAND, 24))
         MAIN_HUD_BOX_TEXT = MenuText.new("Main Hud Box Text", "HUD1", SF::Text.new("Main Hud", QUICKSAND, 34))
