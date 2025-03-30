@@ -23,39 +23,6 @@ module Menus
         EXP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
         EXP_COLOR_BAR.fill_color = SF.color( 170, 183, 38 )
 
-        MENU_TEXT_04 = SF::Text.new
-        MENU_TEXT_04.font = QUICKSAND
-
-        MENU_TEXT_05 = SF::Text.new
-        MENU_TEXT_05.font = QUICKSAND
-
-        MENU_TEXT_06 = SF::Text.new
-        MENU_TEXT_06.font = QUICKSAND
-
-        MENU_TEXT_07 = SF::Text.new
-        MENU_TEXT_07.font = QUICKSAND
-
-        MENU_TEXT_08 = SF::Text.new
-        MENU_TEXT_08.font = QUICKSAND
-
-        MENU_TEXT_09 = SF::Text.new
-        MENU_TEXT_09.font = QUICKSAND
-
-        MENU_TEXT_10 = SF::Text.new
-        MENU_TEXT_10.font = QUICKSAND
-
-        MENU_TEXT_11 = SF::Text.new
-        MENU_TEXT_11.font = QUICKSAND
-
-        MENU_TEXT_12 = SF::Text.new
-        MENU_TEXT_12.font = QUICKSAND
-
-        MENU_TEXT_13 = SF::Text.new
-        MENU_TEXT_13.font = QUICKSAND
-
-        MENU_TEXT_14 = SF::Text.new
-        MENU_TEXT_14.font = QUICKSAND
-
      def initialize(system_menu : String)
         @system_menu = system_menu
         @@system_menu = system_menu
@@ -458,70 +425,37 @@ module Menus
         Ui_Elements::MenuText::SKIN_BOX_RIGHT_TEXT.text.position = Ui_Elements::MenuBoxes::SKIN_BOX_RIGHT.sprite.position + SF.vector2(30, 1)
 
         Ui_Elements::MenuBoxes::HAIR_BOX_LEFT.sprite.position = SF.vector2(scale_x + 80, scale_y + 130)
-        MENU_TEXT_04.position = Ui_Elements::MenuBoxes::HAIR_BOX_LEFT.sprite.position + SF.vector2(30, 1)
-        MENU_TEXT_04.string = "Hair"
-        MENU_TEXT_04.color = SF::Color::Black
-        MENU_TEXT_04.character_size = 24
+        Ui_Elements::MenuText::HAIR_BOX_LEFT_TEXT.text.position = Ui_Elements::MenuBoxes::HAIR_BOX_LEFT.sprite.position + SF.vector2(30, 1)
 
         Ui_Elements::MenuBoxes::HAIR_BOX_RIGHT.sprite.position = SF.vector2(scale_x + 560, scale_y + 130)
-        MENU_TEXT_05.position = Ui_Elements::MenuBoxes::HAIR_BOX_RIGHT.sprite.position + SF.vector2(30, 1)
-        MENU_TEXT_05.string = "Hair"
-        MENU_TEXT_05.color = SF::Color::Black
-        MENU_TEXT_05.character_size = 24
+        Ui_Elements::MenuText::HAIR_BOX_RIGHT_TEXT.text.position = Ui_Elements::MenuBoxes::HAIR_BOX_RIGHT.sprite.position + SF.vector2(30, 1)
 
         Ui_Elements::MenuBoxes::FACE_BOX_LEFT.sprite.position = SF.vector2(scale_x + 80, scale_y + 200)
-        MENU_TEXT_06.position = Ui_Elements::MenuBoxes::FACE_BOX_LEFT.sprite.position + SF.vector2(30, 1)
-        MENU_TEXT_06.string = "Face"
-        MENU_TEXT_06.color = SF::Color::Black
-        MENU_TEXT_06.character_size = 24
+        Ui_Elements::MenuText::FACE_BOX_LEFT_TEXT.text.position = Ui_Elements::MenuBoxes::FACE_BOX_LEFT.sprite.position + SF.vector2(30, 1)
 
         Ui_Elements::MenuBoxes::FACE_BOX_RIGHT.sprite.position = SF.vector2(scale_x + 560, scale_y + 200)
-        MENU_TEXT_07.position = Ui_Elements::MenuBoxes::FACE_BOX_RIGHT.sprite.position + SF.vector2(30, 1)
-        MENU_TEXT_07.string = "Face"
-        MENU_TEXT_07.color = SF::Color::Black
-        MENU_TEXT_07.character_size = 24
+        Ui_Elements::MenuText::FACE_BOX_RIGHT_TEXT.text.position = Ui_Elements::MenuBoxes::FACE_BOX_RIGHT.sprite.position + SF.vector2(30, 1)
 
         Ui_Elements::MenuBoxes::SHIRT_BOX_LEFT.sprite.position = SF.vector2(scale_x + 80, scale_y + 270)
-        MENU_TEXT_08.position = Ui_Elements::MenuBoxes::SHIRT_BOX_LEFT.sprite.position + SF.vector2(30, 1)
-        MENU_TEXT_08.string = "Shirt"
-        MENU_TEXT_08.color = SF::Color::Black
-        MENU_TEXT_08.character_size = 24
+        Ui_Elements::MenuText::SHIRT_BOX_LEFT_TEXT.text.position = Ui_Elements::MenuBoxes::SHIRT_BOX_LEFT.sprite.position + SF.vector2(30, 1)
 
         Ui_Elements::MenuBoxes::SHIRT_BOX_RIGHT.sprite.position = SF.vector2(scale_x + 560, scale_y + 270)
-        MENU_TEXT_09.position = Ui_Elements::MenuBoxes::SHIRT_BOX_RIGHT.sprite.position + SF.vector2(30, 1)
-        MENU_TEXT_09.string = "Shirt"
-        MENU_TEXT_09.color = SF::Color::Black
-        MENU_TEXT_09.character_size = 24
+        Ui_Elements::MenuText::SHIRT_BOX_RIGHT_TEXT.text.position = Ui_Elements::MenuBoxes::SHIRT_BOX_RIGHT.sprite.position + SF.vector2(30, 1)
 
         Ui_Elements::MenuBoxes::PANTS_BOX_LEFT.sprite.position = SF.vector2(scale_x + 80, scale_y + 340)
-        MENU_TEXT_10.position = Ui_Elements::MenuBoxes::PANTS_BOX_LEFT.sprite.position + SF.vector2(20, 1)
-        MENU_TEXT_10.string = "Pants"
-        MENU_TEXT_10.color = SF::Color::Black
-        MENU_TEXT_10.character_size = 24
+        Ui_Elements::MenuText::PANTS_BOX_LEFT_TEXT.text.position = Ui_Elements::MenuBoxes::PANTS_BOX_LEFT.sprite.position + SF.vector2(20, 1)
 
         Ui_Elements::MenuBoxes::PANTS_BOX_RIGHT.sprite.position = SF.vector2(scale_x + 560, scale_y + 340)
-        MENU_TEXT_11.position = Ui_Elements::MenuBoxes::PANTS_BOX_RIGHT.sprite.position + SF.vector2(20, 1)
-        MENU_TEXT_11.string = "Pants"
-        MENU_TEXT_11.color = SF::Color::Black
-        MENU_TEXT_11.character_size = 24
+        Ui_Elements::MenuText::PANTS_BOX_RIGHT_TEXT.text.position = Ui_Elements::MenuBoxes::PANTS_BOX_RIGHT.sprite.position + SF.vector2(20, 1)
 
         Ui_Elements::MenuBoxes::SHOES_BOX_LEFT.sprite.position = SF.vector2(scale_x + 80, scale_y + 410)
-        MENU_TEXT_12.position = Ui_Elements::MenuBoxes::SHOES_BOX_LEFT.sprite.position + SF.vector2(20, 1)
-        MENU_TEXT_12.string = "Shoes"
-        MENU_TEXT_12.color = SF::Color::Black
-        MENU_TEXT_12.character_size = 24
+        Ui_Elements::MenuText::SHOES_BOX_LEFT_TEXT.text.position = Ui_Elements::MenuBoxes::SHOES_BOX_LEFT.sprite.position + SF.vector2(20, 1)
 
         Ui_Elements::MenuBoxes::SHOES_BOX_RIGHT.sprite.position = SF.vector2(scale_x + 560, scale_y + 410)
-        MENU_TEXT_13.position = Ui_Elements::MenuBoxes::SHOES_BOX_RIGHT.sprite.position + SF.vector2(20, 1)
-        MENU_TEXT_13.string = "Shoes"
-        MENU_TEXT_13.color = SF::Color::Black
-        MENU_TEXT_13.character_size = 24
+        Ui_Elements::MenuText::SHOES_BOX_RIGHT_TEXT.text.position = Ui_Elements::MenuBoxes::SHOES_BOX_RIGHT.sprite.position + SF.vector2(20, 1)
 
         Ui_Elements::MenuBoxes::NEXT_BUTTON.sprite.position = SF.vector2(scale_x + 660, scale_y + 540)
-        MENU_TEXT_14.position = Ui_Elements::MenuBoxes::NEXT_BUTTON.sprite.position + SF.vector2(15, 1)
-        MENU_TEXT_14.string = "Next"
-        MENU_TEXT_14.color = SF::Color::Black
-        MENU_TEXT_14.character_size = 24
+        Ui_Elements::MenuText::NEXT_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::NEXT_BUTTON.sprite.position + SF.vector2(15, 1)
 
         sleep 0.15.seconds
         SystemMenus.system_menu=("character_creation_menu")
@@ -548,17 +482,17 @@ module Menus
         window.draw(Ui_Elements::MenuText::BACK_BUTTON_TEXT.text)
         window.draw(Ui_Elements::MenuText::SKIN_BOX_LEFT_TEXT.text)
         window.draw(Ui_Elements::MenuText::SKIN_BOX_RIGHT_TEXT.text)
-        window.draw(MENU_TEXT_04)
-        window.draw(MENU_TEXT_05)
-        window.draw(MENU_TEXT_06)
-        window.draw(MENU_TEXT_07)
-        window.draw(MENU_TEXT_08)
-        window.draw(MENU_TEXT_09)
-        window.draw(MENU_TEXT_10)
-        window.draw(MENU_TEXT_11)
-        window.draw(MENU_TEXT_12)
-        window.draw(MENU_TEXT_13)
-        window.draw(MENU_TEXT_14)
+        window.draw(Ui_Elements::MenuText::HAIR_BOX_LEFT_TEXT.text)
+        window.draw(Ui_Elements::MenuText::HAIR_BOX_RIGHT_TEXT.text)
+        window.draw(Ui_Elements::MenuText::FACE_BOX_LEFT_TEXT.text)
+        window.draw(Ui_Elements::MenuText::FACE_BOX_RIGHT_TEXT.text)
+        window.draw(Ui_Elements::MenuText::SHIRT_BOX_LEFT_TEXT.text)
+        window.draw(Ui_Elements::MenuText::SHIRT_BOX_RIGHT_TEXT.text)
+        window.draw(Ui_Elements::MenuText::PANTS_BOX_LEFT_TEXT.text)
+        window.draw(Ui_Elements::MenuText::PANTS_BOX_RIGHT_TEXT.text)
+        window.draw(Ui_Elements::MenuText::SHOES_BOX_LEFT_TEXT.text)
+        window.draw(Ui_Elements::MenuText::SHOES_BOX_RIGHT_TEXT.text)
+        window.draw(Ui_Elements::MenuText::NEXT_BUTTON_TEXT.text)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.character_creation_menu_mouse_handling(window)
         end
