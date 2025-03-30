@@ -1,1 +1,5 @@
 QUICKSAND = SF::Font.from_file("../fonts/Quicksand-Medium.ttf")
+QUICKSAND_BOLD = SF::Font.from_file("../fonts/Quicksand-Bold.ttf")
+QUICKSAND_LIGHT = SF::Font.from_file("../fonts/Quicksand-Light.ttf")
+QUICKSAND_REGULAR = SF::Font.from_file("../fonts/Quicksand-Regular.ttf")
+QUICKSAND_SEMIBOLD = SF::Font.from_file("../fonts/Quicksand-SemiBold.ttf")

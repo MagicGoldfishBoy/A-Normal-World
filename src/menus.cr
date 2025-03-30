@@ -23,9 +23,6 @@ module Menus
         EXP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
         EXP_COLOR_BAR.fill_color = SF.color( 170, 183, 38 )
 
-        MENU_TEXT_03 = SF::Text.new
-        MENU_TEXT_03.font = QUICKSAND
-
         MENU_TEXT_04 = SF::Text.new
         MENU_TEXT_04.font = QUICKSAND
 
@@ -250,30 +247,22 @@ module Menus
         Ui_Elements::MenuText::SAVE_BOX_01_TEXT.text.position = Ui_Elements::MenuBoxes::SAVE_BOX_01.sprite.position + SF.vector2(35, 200)
 
         Ui_Elements::MenuBoxes::SAVE_BOX_02.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_01.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
-        MENU_TEXT_03.position = Ui_Elements::MenuBoxes::SAVE_BOX_02.sprite.position + SF.vector2(35, 200)
+        Ui_Elements::MenuText::SAVE_BOX_02_TEXT.text.position = Ui_Elements::MenuBoxes::SAVE_BOX_02.sprite.position + SF.vector2(35, 200)
 
         Ui_Elements::MenuBoxes::SAVE_BOX_03.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_02.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
-        MENU_TEXT_04.color = MENU_TEXT_03.color
-        MENU_TEXT_04.character_size = MENU_TEXT_03.character_size
-        MENU_TEXT_04.position = Ui_Elements::MenuBoxes::SAVE_BOX_03.sprite.position + SF.vector2(35, 200)
+        Ui_Elements::MenuText::SAVE_BOX_03_TEXT.text.position = Ui_Elements::MenuBoxes::SAVE_BOX_03.sprite.position + SF.vector2(35, 200)
 
         Ui_Elements::MenuBoxes::SAVE_BOX_04.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_03.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
-        MENU_TEXT_05.color = MENU_TEXT_04.color
-        MENU_TEXT_05.character_size = MENU_TEXT_04.character_size
-        MENU_TEXT_05.position = Ui_Elements::MenuBoxes::SAVE_BOX_04.sprite.position + SF.vector2(35, 200)
+        Ui_Elements::MenuText::SAVE_BOX_04_TEXT.text.position = Ui_Elements::MenuBoxes::SAVE_BOX_04.sprite.position + SF.vector2(35, 200)
 
         Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_01.sprite.position + SF.vector2(scale_x + 180, scale_y + 300)
-        MENU_TEXT_06.position = Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position + SF.vector2(35, 200)
+        Ui_Elements::MenuText::SAVE_BOX_05_TEXT.text.position = Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position + SF.vector2(35, 200)
 
         Ui_Elements::MenuBoxes::SAVE_BOX_06.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_05.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
-        MENU_TEXT_07.color = MENU_TEXT_06.color
-        MENU_TEXT_07.character_size = MENU_TEXT_06.character_size
-        MENU_TEXT_07.position = Ui_Elements::MenuBoxes::SAVE_BOX_06.sprite.position + SF.vector2(35, 200)
+        Ui_Elements::MenuText::SAVE_BOX_06_TEXT.text.position = Ui_Elements::MenuBoxes::SAVE_BOX_06.sprite.position + SF.vector2(35, 200)
 
         Ui_Elements::MenuBoxes::SAVE_BOX_07.sprite.position = Ui_Elements::MenuBoxes::SAVE_BOX_06.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
-        MENU_TEXT_08.color = MENU_TEXT_07.color
-        MENU_TEXT_08.character_size = MENU_TEXT_07.character_size
-        MENU_TEXT_08.position = Ui_Elements::MenuBoxes::SAVE_BOX_07.sprite.position + SF.vector2(35, 200)
+        Ui_Elements::MenuText::SAVE_BOX_07_TEXT.text.position = Ui_Elements::MenuBoxes::SAVE_BOX_07.sprite.position + SF.vector2(35, 200)
 
         if !File.exists?("src/saves/save01")
             Ui_Elements::MenuText::SAVE_BOX_01_TEXT.text.string = "Empty"
@@ -282,40 +271,40 @@ module Menus
             SystemMenus.center_save_file_text(Ui_Elements::MenuText::SAVE_BOX_01_TEXT.text)
         end
         if !File.exists?("src/saves/save02")
-            MENU_TEXT_03.string = "Empty"
+            Ui_Elements::MenuText::SAVE_BOX_02_TEXT.text.string = "Empty"
         else
-            MENU_TEXT_03.string = Serialization::SaveFile.retrieve_data("src/saves/save02", "name").to_s
-            SystemMenus.center_save_file_text(MENU_TEXT_03)
+            Ui_Elements::MenuText::SAVE_BOX_02_TEXT.text.string = Serialization::SaveFile.retrieve_data("src/saves/save02", "name").to_s
+            SystemMenus.center_save_file_text(Ui_Elements::MenuText::SAVE_BOX_02_TEXT.text)
         end
         if !File.exists?("src/saves/save03")
-            MENU_TEXT_04.string = "Empty"
+            Ui_Elements::MenuText::SAVE_BOX_03_TEXT.text.string = "Empty"
         else
-            MENU_TEXT_04.string = Serialization::SaveFile.retrieve_data("src/saves/save03", "name").to_s
-            SystemMenus.center_save_file_text(MENU_TEXT_04)
+            Ui_Elements::MenuText::SAVE_BOX_03_TEXT.text.string = Serialization::SaveFile.retrieve_data("src/saves/save03", "name").to_s
+            SystemMenus.center_save_file_text(Ui_Elements::MenuText::SAVE_BOX_03_TEXT.text)
         end
         if !File.exists?("src/saves/save04")
-            MENU_TEXT_05.string = "Empty"
+            Ui_Elements::MenuText::SAVE_BOX_04_TEXT.text.string = "Empty"
         else
-            MENU_TEXT_05.string = Serialization::SaveFile.retrieve_data("src/saves/save04", "name").to_s
-            SystemMenus.center_save_file_text(MENU_TEXT_05)
+            Ui_Elements::MenuText::SAVE_BOX_04_TEXT.text.string = Serialization::SaveFile.retrieve_data("src/saves/save04", "name").to_s
+            SystemMenus.center_save_file_text(Ui_Elements::MenuText::SAVE_BOX_04_TEXT.text)
         end
         if !File.exists?("src/saves/save05")
-            MENU_TEXT_06.string = "Empty"
+            Ui_Elements::MenuText::SAVE_BOX_05_TEXT.text.string = "Empty"
         else
-            MENU_TEXT_06.string = Serialization::SaveFile.retrieve_data("src/saves/save05", "name").to_s
-            SystemMenus.center_save_file_text(MENU_TEXT_06)
+            Ui_Elements::MenuText::SAVE_BOX_05_TEXT.text.string = Serialization::SaveFile.retrieve_data("src/saves/save05", "name").to_s
+            SystemMenus.center_save_file_text(Ui_Elements::MenuText::SAVE_BOX_05_TEXT.text)
         end
         if !File.exists?("src/saves/save06")
-            MENU_TEXT_07.string = "Empty"
+            Ui_Elements::MenuText::SAVE_BOX_06_TEXT.text.string = "Empty"
         else
-            MENU_TEXT_07.string = Serialization::SaveFile.retrieve_data("src/saves/save06", "name").to_s
-            SystemMenus.center_save_file_text(MENU_TEXT_07)
+            Ui_Elements::MenuText::SAVE_BOX_06_TEXT.text.string = Serialization::SaveFile.retrieve_data("src/saves/save06", "name").to_s
+            SystemMenus.center_save_file_text(Ui_Elements::MenuText::SAVE_BOX_06_TEXT.text)
         end
         if !File.exists?("src/saves/save07")
-            MENU_TEXT_08.string = "Empty"
+            Ui_Elements::MenuText::SAVE_BOX_07_TEXT.text.string = "Empty"
         else
-            MENU_TEXT_08.string = Serialization::SaveFile.retrieve_data("src/saves/save07", "name").to_s
-            SystemMenus.center_save_file_text(MENU_TEXT_08)
+            Ui_Elements::MenuText::SAVE_BOX_07_TEXT.text.string = Serialization::SaveFile.retrieve_data("src/saves/save07", "name").to_s
+            SystemMenus.center_save_file_text(Ui_Elements::MenuText::SAVE_BOX_07_TEXT.text)
         end
      end
 
@@ -332,12 +321,12 @@ module Menus
 
         window.draw(Ui_Elements::MenuText::BACK_BUTTON_TEXT.text)
         window.draw(Ui_Elements::MenuText::SAVE_BOX_01_TEXT.text)
-        window.draw(MENU_TEXT_03)
-        window.draw(MENU_TEXT_04)
-        window.draw(MENU_TEXT_05)
-        window.draw(MENU_TEXT_06)
-        window.draw(MENU_TEXT_07)
-        window.draw(MENU_TEXT_08)
+        window.draw(Ui_Elements::MenuText::SAVE_BOX_02_TEXT.text)
+        window.draw(Ui_Elements::MenuText::SAVE_BOX_03_TEXT.text)
+        window.draw(Ui_Elements::MenuText::SAVE_BOX_04_TEXT.text)
+        window.draw(Ui_Elements::MenuText::SAVE_BOX_05_TEXT.text)
+        window.draw(Ui_Elements::MenuText::SAVE_BOX_06_TEXT.text)
+        window.draw(Ui_Elements::MenuText::SAVE_BOX_07_TEXT.text)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.save_menu_mouse_handling(window)
         end
@@ -466,10 +455,7 @@ module Menus
         Ui_Elements::MenuText::SKIN_BOX_LEFT_TEXT.text.position = Ui_Elements::MenuBoxes::SKIN_BOX_LEFT.sprite.position + SF.vector2(30, 1)
 
         Ui_Elements::MenuBoxes::SKIN_BOX_RIGHT.sprite.position = SF.vector2(scale_x + 560, scale_y + 60)
-        MENU_TEXT_03.position = Ui_Elements::MenuBoxes::SKIN_BOX_RIGHT.sprite.position + SF.vector2(30, 1)
-        MENU_TEXT_03.string = "Skin"
-        MENU_TEXT_03.color = SF::Color::Black
-        MENU_TEXT_03.character_size = 24
+        Ui_Elements::MenuText::SKIN_BOX_RIGHT_TEXT.text.position = Ui_Elements::MenuBoxes::SKIN_BOX_RIGHT.sprite.position + SF.vector2(30, 1)
 
         Ui_Elements::MenuBoxes::HAIR_BOX_LEFT.sprite.position = SF.vector2(scale_x + 80, scale_y + 130)
         MENU_TEXT_04.position = Ui_Elements::MenuBoxes::HAIR_BOX_LEFT.sprite.position + SF.vector2(30, 1)
@@ -561,7 +547,7 @@ module Menus
 
         window.draw(Ui_Elements::MenuText::BACK_BUTTON_TEXT.text)
         window.draw(Ui_Elements::MenuText::SKIN_BOX_LEFT_TEXT.text)
-        window.draw(MENU_TEXT_03)
+        window.draw(Ui_Elements::MenuText::SKIN_BOX_RIGHT_TEXT.text)
         window.draw(MENU_TEXT_04)
         window.draw(MENU_TEXT_05)
         window.draw(MENU_TEXT_06)
