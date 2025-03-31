@@ -792,11 +792,6 @@ module Menus
         HP_BOX_TEXT.font = QUICKSAND
         HP_BOX_TEXT.character_size = 24
 
-        MP_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
-        MP_BOX.fill_color = SF.color(116, 153, 195)
-        MP_BOX.outline_thickness = 5
-        MP_BOX.outline_color = SF.color(151, 179, 194)
-
         MP_BOX_TEXT = SF::Text.new
         MP_BOX_TEXT.font = QUICKSAND
         MP_BOX_TEXT.character_size = 24
@@ -980,7 +975,7 @@ module Menus
             window.draw(MONEY_BOX_TEXT)
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite)
             window.draw(HP_BOX_TEXT)
-            window.draw(MP_BOX)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite)
             window.draw(MP_BOX_TEXT)
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite)
             window.draw(LVL_BOX_TEXT)
@@ -1095,18 +1090,18 @@ module Menus
                 RIGHT_ARROW_01.position = Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
                 RIGHT_ARROW_01.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                MP_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 90 * max_scale)
-                MP_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 90 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                MP_BOX_TEXT.position = MP_BOX.position + SF.vector2(11 * max_scale, 5 * max_scale)
-                MP_BOX_TEXT.scale = MP_BOX.scale
+                MP_BOX_TEXT.position = Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite.position + SF.vector2(11 * max_scale, 5 * max_scale)
+                MP_BOX_TEXT.scale = Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite.scale
                 MP_BOX_TEXT.string = "MP: #{Player::Stats.current_mp.not_nil!.to_s}/#{Player::Stats.max_mp.not_nil!.to_s}"
                 SystemMenus.center_save_file_text(MP_BOX_TEXT)
 
-                LEFT_ARROW_02.position = MP_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                LEFT_ARROW_02.position = Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
                 LEFT_ARROW_02.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                RIGHT_ARROW_02.position = MP_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                RIGHT_ARROW_02.position = Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
                 RIGHT_ARROW_02.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 48 * max_scale)
