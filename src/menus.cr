@@ -780,11 +780,6 @@ module Menus
     class Windows # I now know why everyone hates coding UI shit -_-
         #I hate coding ui, I haaaate it!
 
-        NAME_BOX = SF::RectangleShape.new(SF.vector2(250, 50))
-        NAME_BOX.fill_color = SF.color(116, 153, 195)
-        NAME_BOX.outline_thickness = 5
-        NAME_BOX.outline_color = SF.color(151, 179, 194)
-
         NAME_BOX_TEXT = SF::Text.new
         NAME_BOX_TEXT.font = QUICKSAND
         NAME_BOX_TEXT.character_size = 24
@@ -999,7 +994,7 @@ module Menus
                 scale_ratio = [scale_x, scale_y].min
             end
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite)
-            window.draw(NAME_BOX)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_NAME_BOX.sprite)
             window.draw(NAME_BOX_TEXT)
             window.draw(MONEY_BOX)
             window.draw(MONEY_BOX_TEXT)
@@ -1090,11 +1085,11 @@ module Menus
                 Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position = SF.vector2(50 * max_scale, 50 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale = SF.vector2(0.5, 1)
 
-                NAME_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 7 * max_scale)
-                NAME_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_NAME_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 7 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_NAME_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                NAME_BOX_TEXT.position = NAME_BOX.position + SF.vector2(32 * max_scale, 5 * max_scale)
-                NAME_BOX_TEXT.scale = NAME_BOX.scale
+                NAME_BOX_TEXT.position = Ui_Elements::WindowBoxes::STATS_MENU_NAME_BOX.sprite.position + SF.vector2(32 * max_scale, 5 * max_scale)
+                NAME_BOX_TEXT.scale = Ui_Elements::WindowBoxes::STATS_MENU_NAME_BOX.sprite.scale
                 NAME_BOX_TEXT.string = Player::Stats.name.not_nil!
                 SystemMenus.center_save_file_text(NAME_BOX_TEXT)
 
