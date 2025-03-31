@@ -148,6 +148,9 @@ require "../src/fonts.cr"
 
             WindowBoxes::HUD_MENU_SAVE_BOX.sprite.texture = current_theme.menu_texture
             WindowBoxes::HUD_MENU_SAVE_BOX.sprite.color = current_theme.color01
+
+            WindowBoxes::HUD_MENU_QUIT_BOX.sprite.texture = current_theme.menu_texture
+            WindowBoxes::HUD_MENU_QUIT_BOX.sprite.color = current_theme.color01
             MenuText::TEXT_ARRAY.each do |text|
                 text.text.color = current_theme.color04
                 text.text.font = current_theme.font01
@@ -238,6 +241,7 @@ require "../src/fonts.cr"
     class WindowBoxes < Ui_BoxBase
         HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 120, 195)), 120.0, 195.0)
         HUD_MENU_SAVE_BOX = WindowBoxes.new("Hud Menu Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
+        HUD_MENU_QUIT_BOX = WindowBoxes.new("Hud Menu Quit Box", "HudMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
         HUD_MENU_SAVE_BOX.sprite.position = HUD_MENU_BOX.sprite.position + SF.vector2(5, 0)
     end
   end
