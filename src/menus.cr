@@ -1070,14 +1070,15 @@ module Menus
             clamped_scale = [scale_ratio, max_scale].min
           
             if @@is_hud_menu_open
-    
-              margin_right = 30 
-              margin_bottom = 30 
+            window_size = window.size
+            hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+            hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
+            window.view = hud_view
+
+            Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position + SF.vector2(0, -Ui_Elements::WindowBoxes::HUD_MENU_BOX.height * clamped_scale - 10)
+            Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_ratio)
               
-              Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position = SF.vector2(510 * scale_x, 470 * scale_y)
-              Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_ratio)
-              
-              Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position + SF.vector2(5, 0)
+              Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position + SF.vector2(2, 2)
               Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.scale = SF.vector2(scale_x, scale_ratio)
               
               WINDOW_02_TEXT.position = SF.vector2(605 * scale_x, 460 * scale_y)
@@ -1095,10 +1096,7 @@ module Menus
               WINDOW_04_TEXT.position = SF.vector2(610 * scale_x, 506 * scale_y)
               WINDOW_04_TEXT.scale = SF.vector2(scale_ratio, scale_ratio)
 
-               window_size = window.size
-               window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
-               window_01_view.viewport = SF::FloatRect.new(0.485_f32, 0_f32, 0.5_f32, 1_f32)
-              window.view = window_01_view
+
               Windows.draw_hud_menu(window)
             end
 
@@ -1228,10 +1226,15 @@ module Menus
         end
 
         def Windows.hud_menu_mouse_handling(window)
+            # window_size = window.size
+            # window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+            # window_01_view.viewport = SF::FloatRect.new(0.485_f32, 0_f32, 0.5_f32, 1_f32)
+            # window.view = window_01_view
             window_size = window.size
-            window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
-            window_01_view.viewport = SF::FloatRect.new(0.485_f32, 0_f32, 0.5_f32, 1_f32)
-            window.view = window_01_view
+            hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+            hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
+            window.view = hud_view
+
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
             mouse_x = mouse_position.x
             mouse_y = mouse_position.y
@@ -1239,24 +1242,24 @@ module Menus
             original_width = 800
             original_height = 600
         
-            scale_x = window_01_view.size.x / original_width
-            scale_y = window_01_view.size.y / original_height
+            scale_x = window.view.size.x / original_width
+            scale_y = window.view.size.y / original_height
         
-            scaled_mouse_x = (mouse_x + window_size.x * window_01_view.viewport.left) * scale_x
-            scaled_mouse_y = (mouse_y + window_size.y * window_01_view.viewport.top) * scale_y
+            scaled_mouse_x = (mouse_x + window_size.x * window.view.viewport.left) * scale_x
+            scaled_mouse_y = (mouse_y + window_size.y * window.view.viewport.top) * scale_y
         
-            menu_box_2_x = (Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position.x + window_size.x * window_01_view.viewport.left) * scale_x
-            menu_box_2_y = (Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position.y + window_size.y * window_01_view.viewport.top) * scale_y
+            menu_box_2_x = (Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position.x + window_size.x * window.view.viewport.left) * scale_x
+            menu_box_2_y = (Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position.y + window_size.y * window.view.viewport.top) * scale_y
             menu_box_2_width = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.global_bounds.width * scale_x
             menu_box_2_height = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.global_bounds.height * scale_y
         
-            menu_box_3_x = (WINDOW_03.position.x + window_size.x * window_01_view.viewport.left) * scale_x
-            menu_box_3_y = (WINDOW_03.position.y + window_size.y * window_01_view.viewport.top) * scale_y
+            menu_box_3_x = (WINDOW_03.position.x + window_size.x * window.view.viewport.left) * scale_x
+            menu_box_3_y = (WINDOW_03.position.y + window_size.y * window.view.viewport.top) * scale_y
             menu_box_3_width = WINDOW_03.size.x * scale_x
             menu_box_3_height = WINDOW_03.size.y * scale_y
         
-            menu_box_4_x = (WINDOW_04.position.x + window_size.x * window_01_view.viewport.left) * scale_x
-            menu_box_4_y = (WINDOW_04.position.y + window_size.y * window_01_view.viewport.top) * scale_y
+            menu_box_4_x = (WINDOW_04.position.x + window_size.x * window.view.viewport.left) * scale_x
+            menu_box_4_y = (WINDOW_04.position.y + window_size.y * window.view.viewport.top) * scale_y
             menu_box_4_width = WINDOW_04.size.x * scale_x
             menu_box_4_height = WINDOW_04.size.y * scale_y
         

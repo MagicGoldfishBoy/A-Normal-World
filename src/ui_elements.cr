@@ -236,8 +236,8 @@ require "../src/fonts.cr"
         LEVEL_BOX_TEXT = MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 34))
     end
     class WindowBoxes < Ui_BoxBase
-        HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 260, 95)), 260.0, 95.0)
-        HUD_MENU_SAVE_BOX = WindowBoxes.new("Hud Menu Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 260, 20)), 260.0, 20.0)
+        HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 120, 195)), 120.0, 195.0)
+        HUD_MENU_SAVE_BOX = WindowBoxes.new("Hud Menu Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
         HUD_MENU_SAVE_BOX.sprite.position = HUD_MENU_BOX.sprite.position + SF.vector2(5, 0)
     end
   end
