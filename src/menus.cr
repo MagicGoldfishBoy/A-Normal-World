@@ -780,30 +780,6 @@ module Menus
     class Windows # I now know why everyone hates coding UI shit -_-
         #I hate coding ui, I haaaate it!
 
-        WINDOW_02 = SF::RectangleShape.new(SF.vector2(260, 20))
-        WINDOW_02.fill_color = SF.color(116, 153, 195)
-
-        WINDOW_02_TEXT = SF::Text.new
-        WINDOW_02_TEXT.font = QUICKSAND
-        WINDOW_02_TEXT.string = "Save"
-        WINDOW_02_TEXT.character_size = 24
-
-        WINDOW_03 = SF::RectangleShape.new(SF.vector2(260, 20))
-        WINDOW_03.fill_color = SF.color(116, 153, 195)
-
-        WINDOW_03_TEXT = SF::Text.new
-        WINDOW_03_TEXT.font = QUICKSAND
-        WINDOW_03_TEXT.string = "Save & Quit"
-        WINDOW_03_TEXT.character_size = 24
-
-        WINDOW_04 = SF::RectangleShape.new(SF.vector2(260, 20))
-        WINDOW_04.fill_color = SF.color(116, 153, 195)
-
-        WINDOW_04_TEXT = SF::Text.new
-        WINDOW_04_TEXT.font = QUICKSAND
-        WINDOW_04_TEXT.string = "Stats"
-        WINDOW_04_TEXT.character_size = 24
-
         STATS_MENU = SF::RectangleShape.new(SF.vector2(500, 400))
         STATS_MENU.fill_color = SF.color(116, 153, 195)
         STATS_MENU.outline_thickness = 10
@@ -1240,10 +1216,6 @@ module Menus
         end
 
         def Windows.hud_menu_mouse_handling(window)
-            # window_size = window.size
-            # window_01_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
-            # window_01_view.viewport = SF::FloatRect.new(0.485_f32, 0_f32, 0.5_f32, 1_f32)
-            # window.view = window_01_view
             window_size = window.size
             hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
             hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
