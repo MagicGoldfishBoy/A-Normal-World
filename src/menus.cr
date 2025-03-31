@@ -788,11 +788,6 @@ module Menus
         MONEY_BOX_TEXT.font = QUICKSAND
         MONEY_BOX_TEXT.character_size = 24
 
-        HP_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
-        HP_BOX.fill_color = SF.color(116, 153, 195)
-        HP_BOX.outline_thickness = 5
-        HP_BOX.outline_color = SF.color(151, 179, 194)
-
         HP_BOX_TEXT = SF::Text.new
         HP_BOX_TEXT.font = QUICKSAND
         HP_BOX_TEXT.character_size = 24
@@ -993,7 +988,7 @@ module Menus
             window.draw(NAME_BOX_TEXT)
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_MONEY_BOX.sprite)
             window.draw(MONEY_BOX_TEXT)
-            window.draw(HP_BOX)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite)
             window.draw(HP_BOX_TEXT)
             window.draw(MP_BOX)
             window.draw(MP_BOX_TEXT)
@@ -1096,18 +1091,18 @@ module Menus
                 MONEY_BOX_TEXT.string = "Cash: " + Player::Stats.money.not_nil!.to_s
                 SystemMenus.center_save_file_text(MONEY_BOX_TEXT)
 
-                HP_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 90 * max_scale)
-                HP_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 90 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                HP_BOX_TEXT.position = HP_BOX.position + SF.vector2(11 * max_scale, 5 * max_scale)
-                HP_BOX_TEXT.scale = HP_BOX.scale
+                HP_BOX_TEXT.position = Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.position + SF.vector2(11 * max_scale, 5 * max_scale)
+                HP_BOX_TEXT.scale = Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.scale
                 HP_BOX_TEXT.string = "HP: #{Player::Stats.current_hp.not_nil!.to_s}/#{Player::Stats.max_hp.not_nil!.to_s}"
                 SystemMenus.center_save_file_text(HP_BOX_TEXT)
 
-                LEFT_ARROW_01.position = HP_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                LEFT_ARROW_01.position = Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
                 LEFT_ARROW_01.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                RIGHT_ARROW_01.position = HP_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                RIGHT_ARROW_01.position = Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
                 RIGHT_ARROW_01.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 MP_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 90 * max_scale)
