@@ -805,11 +805,6 @@ module Menus
         LVL_BOX_TEXT.font = QUICKSAND
         LVL_BOX_TEXT.character_size = 24
 
-        EXP_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
-        EXP_BOX.fill_color = SF.color(116, 153, 195)
-        EXP_BOX.outline_thickness = 5
-        EXP_BOX.outline_color = SF.color(151, 179, 194)
-
         EXP_BOX_TEXT = SF::Text.new
         EXP_BOX_TEXT.font = QUICKSAND
         EXP_BOX_TEXT.character_size = 24
@@ -989,7 +984,7 @@ module Menus
             window.draw(MP_BOX_TEXT)
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite)
             window.draw(LVL_BOX_TEXT)
-            window.draw(EXP_BOX)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_EXP_BOX.sprite)
             window.draw(EXP_BOX_TEXT)
             window.draw(STR_BOX)
             window.draw(STR_BOX_TEXT)
@@ -1122,11 +1117,11 @@ module Menus
                 LVL_BOX_TEXT.string = "Lvl: " + Player::Stats.lvl.not_nil!.to_s + " Pts: " + Player::Stats.lvl_points.not_nil!.to_s
                 SystemMenus.center_save_file_text(LVL_BOX_TEXT)
 
-                EXP_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 48 * max_scale)
-                EXP_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_EXP_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 48 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_EXP_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                EXP_BOX_TEXT.position = EXP_BOX.position + SF.vector2(14 * max_scale, 5 * max_scale)
-                EXP_BOX_TEXT.scale = EXP_BOX.scale
+                EXP_BOX_TEXT.position = Ui_Elements::WindowBoxes::STATS_MENU_EXP_BOX.sprite.position + SF.vector2(14 * max_scale, 5 * max_scale)
+                EXP_BOX_TEXT.scale = Ui_Elements::WindowBoxes::STATS_MENU_EXP_BOX.sprite.scale
                 EXP_BOX_TEXT.string = "EXP: #{Player::Stats.exp.not_nil!.to_s}/#{Player::Stats.exp_cap.not_nil!.to_s}"
                 SystemMenus.center_save_file_text(EXP_BOX_TEXT)
 
