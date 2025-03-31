@@ -780,11 +780,6 @@ module Menus
     class Windows # I now know why everyone hates coding UI shit -_-
         #I hate coding ui, I haaaate it!
 
-        STATS_MENU = SF::RectangleShape.new(SF.vector2(500, 400))
-        STATS_MENU.fill_color = SF.color(116, 153, 195)
-        STATS_MENU.outline_thickness = 10
-        STATS_MENU.outline_color = SF.color(151, 179, 194)
-
         NAME_BOX = SF::RectangleShape.new(SF.vector2(250, 50))
         NAME_BOX.fill_color = SF.color(116, 153, 195)
         NAME_BOX.outline_thickness = 5
@@ -1003,7 +998,7 @@ module Menus
         
                 scale_ratio = [scale_x, scale_y].min
             end
-            window.draw(STATS_MENU)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite)
             window.draw(NAME_BOX)
             window.draw(NAME_BOX_TEXT)
             window.draw(MONEY_BOX)
@@ -1092,27 +1087,27 @@ module Menus
 
             if @@is_stats_menu_open
                 window.view = window.default_view
-                STATS_MENU.position = SF.vector2(50 * max_scale, 50 * max_scale)
-                STATS_MENU.scale = SF.vector2(0.5, 1)
+                Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position = SF.vector2(50 * max_scale, 50 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale = SF.vector2(0.5, 1)
 
-                NAME_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 5 * max_scale)
-                NAME_BOX.scale = STATS_MENU.scale
+                NAME_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 7 * max_scale)
+                NAME_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 NAME_BOX_TEXT.position = NAME_BOX.position + SF.vector2(32 * max_scale, 5 * max_scale)
                 NAME_BOX_TEXT.scale = NAME_BOX.scale
                 NAME_BOX_TEXT.string = Player::Stats.name.not_nil!
                 SystemMenus.center_save_file_text(NAME_BOX_TEXT)
 
-                MONEY_BOX.position = STATS_MENU.position + SF.vector2(98 * max_scale, 5 * max_scale)
-                MONEY_BOX.scale = STATS_MENU.scale
+                MONEY_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(98 * max_scale, 7 * max_scale)
+                MONEY_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 MONEY_BOX_TEXT.position = MONEY_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
                 MONEY_BOX_TEXT.scale = MONEY_BOX.scale
                 MONEY_BOX_TEXT.string = "Cash: " + Player::Stats.money.not_nil!.to_s
                 SystemMenus.center_save_file_text(MONEY_BOX_TEXT)
 
-                HP_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 90 * max_scale)
-                HP_BOX.scale = STATS_MENU.scale
+                HP_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 90 * max_scale)
+                HP_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 HP_BOX_TEXT.position = HP_BOX.position + SF.vector2(11 * max_scale, 5 * max_scale)
                 HP_BOX_TEXT.scale = HP_BOX.scale
@@ -1120,13 +1115,13 @@ module Menus
                 SystemMenus.center_save_file_text(HP_BOX_TEXT)
 
                 LEFT_ARROW_01.position = HP_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
-                LEFT_ARROW_01.scale = STATS_MENU.scale
+                LEFT_ARROW_01.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 RIGHT_ARROW_01.position = HP_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
-                RIGHT_ARROW_01.scale = STATS_MENU.scale
+                RIGHT_ARROW_01.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                MP_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 90 * max_scale)
-                MP_BOX.scale = STATS_MENU.scale
+                MP_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 90 * max_scale)
+                MP_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 MP_BOX_TEXT.position = MP_BOX.position + SF.vector2(11 * max_scale, 5 * max_scale)
                 MP_BOX_TEXT.scale = MP_BOX.scale
@@ -1134,29 +1129,29 @@ module Menus
                 SystemMenus.center_save_file_text(MP_BOX_TEXT)
 
                 LEFT_ARROW_02.position = MP_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
-                LEFT_ARROW_02.scale = STATS_MENU.scale
+                LEFT_ARROW_02.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 RIGHT_ARROW_02.position = MP_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
-                RIGHT_ARROW_02.scale = STATS_MENU.scale
+                RIGHT_ARROW_02.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                LVL_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 48 * max_scale)
-                LVL_BOX.scale = STATS_MENU.scale
+                LVL_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 48 * max_scale)
+                LVL_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 LVL_BOX_TEXT.position = LVL_BOX.position + SF.vector2(14 * max_scale, 5 * max_scale)
                 LVL_BOX_TEXT.scale = LVL_BOX.scale
                 LVL_BOX_TEXT.string = "Lvl: " + Player::Stats.lvl.not_nil!.to_s + " Pts: " + Player::Stats.lvl_points.not_nil!.to_s
                 SystemMenus.center_save_file_text(LVL_BOX_TEXT)
 
-                EXP_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 48 * max_scale)
-                EXP_BOX.scale = STATS_MENU.scale
+                EXP_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 48 * max_scale)
+                EXP_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 EXP_BOX_TEXT.position = EXP_BOX.position + SF.vector2(14 * max_scale, 5 * max_scale)
                 EXP_BOX_TEXT.scale = EXP_BOX.scale
                 EXP_BOX_TEXT.string = "EXP: #{Player::Stats.exp.not_nil!.to_s}/#{Player::Stats.exp_cap.not_nil!.to_s}"
                 SystemMenus.center_save_file_text(EXP_BOX_TEXT)
 
-                STR_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 152 * max_scale)
-                STR_BOX.scale = STATS_MENU.scale
+                STR_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 152 * max_scale)
+                STR_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 STR_BOX_TEXT.position = STR_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
                 STR_BOX_TEXT.scale = STR_BOX.scale
@@ -1164,13 +1159,13 @@ module Menus
                 SystemMenus.center_save_file_text(STR_BOX_TEXT)
 
                 LEFT_ARROW_03.position = STR_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
-                LEFT_ARROW_03.scale = STATS_MENU.scale
+                LEFT_ARROW_03.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 RIGHT_ARROW_03.position = STR_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
-                RIGHT_ARROW_03.scale = STATS_MENU.scale
+                RIGHT_ARROW_03.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                DEX_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 152 * max_scale)
-                DEX_BOX.scale = STATS_MENU.scale
+                DEX_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 152 * max_scale)
+                DEX_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 DEX_BOX_TEXT.position = DEX_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
                 DEX_BOX_TEXT.scale = DEX_BOX.scale
@@ -1178,13 +1173,13 @@ module Menus
                 SystemMenus.center_save_file_text(DEX_BOX_TEXT)
 
                 LEFT_ARROW_04.position = DEX_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
-                LEFT_ARROW_04.scale = STATS_MENU.scale
+                LEFT_ARROW_04.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 RIGHT_ARROW_04.position = DEX_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
-                RIGHT_ARROW_04.scale = STATS_MENU.scale
+                RIGHT_ARROW_04.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                INT_BOX.position = STATS_MENU.position + SF.vector2(5 * max_scale, 214 * max_scale)
-                INT_BOX.scale = STATS_MENU.scale
+                INT_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 214 * max_scale)
+                INT_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 INT_BOX_TEXT.position = INT_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
                 INT_BOX_TEXT.scale = INT_BOX.scale
@@ -1192,13 +1187,13 @@ module Menus
                 SystemMenus.center_save_file_text(INT_BOX_TEXT)
 
                 LEFT_ARROW_05.position = INT_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
-                LEFT_ARROW_05.scale = STATS_MENU.scale
+                LEFT_ARROW_05.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 RIGHT_ARROW_05.position = INT_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
-                RIGHT_ARROW_05.scale = STATS_MENU.scale
+                RIGHT_ARROW_05.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                LUK_BOX.position = STATS_MENU.position + SF.vector2(87 * max_scale, 214 * max_scale)
-                LUK_BOX.scale = STATS_MENU.scale
+                LUK_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 214 * max_scale)
+                LUK_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 LUK_BOX_TEXT.position = LUK_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
                 LUK_BOX_TEXT.scale = LUK_BOX.scale
@@ -1206,10 +1201,10 @@ module Menus
                 SystemMenus.center_save_file_text(LUK_BOX_TEXT)
 
                 LEFT_ARROW_06.position = LUK_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
-                LEFT_ARROW_06.scale = STATS_MENU.scale
+                LEFT_ARROW_06.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 RIGHT_ARROW_06.position = LUK_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
-                RIGHT_ARROW_06.scale = STATS_MENU.scale
+                RIGHT_ARROW_06.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 Windows.draw_stats_menu(window)
             end
