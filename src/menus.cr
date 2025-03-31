@@ -995,12 +995,15 @@ module Menus
                 scale_ratio = [scale_x, scale_y].min
             end
             window.draw(Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite)
+
             window.draw(Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite)
-            window.draw(WINDOW_02_TEXT)
+            window.draw(Ui_Elements::WindowText::HUD_MENU_SAVE_TEXT.text)
+
             window.draw(Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite)
             window.draw(WINDOW_03_TEXT)
-            window.draw(WINDOW_04)
+            window.draw(Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite)
             window.draw(WINDOW_04_TEXT)
+            window.draw(Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite)
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
                 if Windows.is_hud_menu_open == true
                 Windows.hud_menu_mouse_handling(window)
@@ -1080,12 +1083,18 @@ module Menus
               
               Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position + SF.vector2(2 * clamped_scale, 2 * clamped_scale)
               Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
+
+              Ui_Elements::WindowText::HUD_MENU_SAVE_TEXT.text.position = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position + SF.vector2((40 * (scale_x - 0.25)), 2 * clamped_scale)
+              Ui_Elements::WindowText::HUD_MENU_SAVE_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
               
               Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
               Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
               
-              WINDOW_03.position = SF.vector2(510 * scale_x, 488 * scale_y)
-              WINDOW_03.scale = SF.vector2(scale_x, scale_ratio)
+              Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
+              Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
+
+              Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
+              Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
               
               WINDOW_03_TEXT.position = SF.vector2(580 * scale_x, 482 * scale_y)
               WINDOW_03_TEXT.scale = SF.vector2(scale_ratio, scale_ratio)
@@ -1253,16 +1262,21 @@ module Menus
             menu_box_2_width = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.global_bounds.width * scale_x
             menu_box_2_height = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.global_bounds.height * scale_y
         
-            menu_box_3_x = (WINDOW_03.position.x + window_size.x * window.view.viewport.left) * scale_x
-            menu_box_3_y = (WINDOW_03.position.y + window_size.y * window.view.viewport.top) * scale_y
-            menu_box_3_width = WINDOW_03.size.x * scale_x
-            menu_box_3_height = WINDOW_03.size.y * scale_y
+            menu_box_3_x = (Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position.x + window_size.x * window.view.viewport.left) * scale_x
+            menu_box_3_y = (Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position.y + window_size.y * window.view.viewport.top) * scale_y
+            menu_box_3_width = Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.global_bounds.width * scale_x
+            menu_box_3_height = Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.global_bounds.height * scale_y
         
-            menu_box_4_x = (WINDOW_04.position.x + window_size.x * window.view.viewport.left) * scale_x
-            menu_box_4_y = (WINDOW_04.position.y + window_size.y * window.view.viewport.top) * scale_y
-            menu_box_4_width = WINDOW_04.size.x * scale_x
-            menu_box_4_height = WINDOW_04.size.y * scale_y
+            menu_box_4_x = (Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position.x + window_size.x * window.view.viewport.left) * scale_x
+            menu_box_4_y = (Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position.y + window_size.y * window.view.viewport.top) * scale_y
+            menu_box_4_width = Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.global_bounds.width * scale_x
+            menu_box_4_height = Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.global_bounds.height * scale_y
         
+            menu_box_5_x = (Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position.x + window_size.x * window.view.viewport.left) * scale_x
+            menu_box_5_y = (Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position.y + window_size.y * window.view.viewport.top) * scale_y
+            menu_box_5_width = Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.global_bounds.width * scale_x
+            menu_box_5_height = Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.global_bounds.height * scale_y
+
             if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + menu_box_2_width) &&
                (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + menu_box_2_height)
                 Serialization::SaveFile.normal_save
@@ -1278,6 +1292,12 @@ module Menus
             elsif (scaled_mouse_x >= menu_box_4_x && scaled_mouse_x <= menu_box_4_x + menu_box_4_width) &&
                   (scaled_mouse_y >= menu_box_4_y && scaled_mouse_y <= menu_box_4_y + menu_box_4_height)
                 Windows.is_stats_menu_open = !Windows.is_stats_menu_open
+                sleep 0.15.seconds
+
+            elsif (scaled_mouse_x >= menu_box_5_x && scaled_mouse_x <= menu_box_5_x + menu_box_5_width) &&
+                  (scaled_mouse_y >= menu_box_5_y && scaled_mouse_y <= menu_box_5_y + menu_box_5_height)
+                  puts "settings"
+                #Settings::SettingsMenu.is_settings_menu_open = !Settings::SettingsMenu.is_settings_menu_open
                 sleep 0.15.seconds
             end
         end
