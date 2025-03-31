@@ -997,7 +997,7 @@ module Menus
             window.draw(Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite)
             window.draw(Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite)
             window.draw(WINDOW_02_TEXT)
-            window.draw(WINDOW_03)
+            window.draw(Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite)
             window.draw(WINDOW_03_TEXT)
             window.draw(WINDOW_04)
             window.draw(WINDOW_04_TEXT)
@@ -1078,11 +1078,11 @@ module Menus
             Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position + SF.vector2(0, -Ui_Elements::WindowBoxes::HUD_MENU_BOX.height * clamped_scale - 10)
             Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_ratio)
               
-              Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position + SF.vector2(2, 2)
-              Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.scale = SF.vector2(scale_x, scale_ratio)
+              Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position + SF.vector2(2 * clamped_scale, 2 * clamped_scale)
+              Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
               
-              WINDOW_02_TEXT.position = SF.vector2(605 * scale_x, 460 * scale_y)
-              WINDOW_02_TEXT.scale = SF.vector2(scale_ratio, scale_ratio)
+              Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
+              Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
               
               WINDOW_03.position = SF.vector2(510 * scale_x, 488 * scale_y)
               WINDOW_03.scale = SF.vector2(scale_x, scale_ratio)
