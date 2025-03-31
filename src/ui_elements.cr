@@ -151,6 +151,13 @@ require "../src/fonts.cr"
 
             WindowBoxes::HUD_MENU_QUIT_BOX.sprite.texture = current_theme.menu_texture
             WindowBoxes::HUD_MENU_QUIT_BOX.sprite.color = current_theme.color01
+
+            WindowBoxes::HUD_MENU_STATS_BOX.sprite.texture = current_theme.menu_texture
+            WindowBoxes::HUD_MENU_STATS_BOX.sprite.color = current_theme.color01
+
+            WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.texture = current_theme.menu_texture
+            WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.color = current_theme.color01
+
             MenuText::TEXT_ARRAY.each do |text|
                 text.text.color = current_theme.color04
                 text.text.font = current_theme.font01
@@ -242,6 +249,14 @@ require "../src/fonts.cr"
         HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 120, 195)), 120.0, 195.0)
         HUD_MENU_SAVE_BOX = WindowBoxes.new("Hud Menu Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
         HUD_MENU_QUIT_BOX = WindowBoxes.new("Hud Menu Quit Box", "HudMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
+        HUD_MENU_STATS_BOX = WindowBoxes.new("Hud Menu Stats Box", "HudMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
+        HUD_MENU_SETTINGS_BOX = WindowBoxes.new("Hud Menu Settings Box", "HudMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
         HUD_MENU_SAVE_BOX.sprite.position = HUD_MENU_BOX.sprite.position + SF.vector2(5, 0)
+    end
+    class WindowText < Ui_TextBase
+        HUD_MENU_SAVE_TEXT = WindowText.new("Hud Menu Save Text", "HudMen1", SF::Text.new("Save", QUICKSAND, 24))
+        HUD_MENU_QUIT_BOX_TEXT = WindowText.new("Hud Menu Quit Box Text", "HudMen2", SF::Text.new("Save & Quit", QUICKSAND, 24))
+        HUD_MENU_STATS_BOX_TEXT = WindowText.new("Hud Menu Stats Box Text", "HudMen3", SF::Text.new("Stats", QUICKSAND, 24))
+        HUD_MENU_SETTINGS_BOX_TEXT = WindowText.new("Hud Menu Settings Box Text", "HudMen4", SF::Text.new("Settings", QUICKSAND, 24))
     end
   end
