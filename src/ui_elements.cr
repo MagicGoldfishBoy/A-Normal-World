@@ -184,6 +184,15 @@ require "../src/fonts.cr"
             WindowBoxes::STATS_MENU_MP_BOX.sprite.texture = current_theme.menu_texture
             WindowBoxes::STATS_MENU_MP_BOX.sprite.color = current_theme.color02
 
+            WindowBoxes::STATS_MENU_STR_BOX.sprite.texture = current_theme.menu_texture
+            WindowBoxes::STATS_MENU_STR_BOX.sprite.color = current_theme.color02
+
+            WindowBoxes::STATS_MENU_DEX_BOX.sprite.texture = current_theme.menu_texture
+            WindowBoxes::STATS_MENU_DEX_BOX.sprite.color = current_theme.color02
+
+            WindowBoxes::STATS_MENU_INT_BOX.sprite.texture = current_theme.menu_texture
+            WindowBoxes::STATS_MENU_INT_BOX.sprite.color = current_theme.color02
+
             MenuText::TEXT_ARRAY.each do |text|
                 text.text.color = current_theme.color04
                 text.text.font = current_theme.font01
@@ -286,6 +295,9 @@ require "../src/fonts.cr"
         STATS_MENU_EXP_BOX = WindowBoxes.new("Stats Menu Exp Box", "StatMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
         STATS_MENU_HP_BOX = WindowBoxes.new("Stats Menu HP Box", "StatMen6", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
         STATS_MENU_MP_BOX = WindowBoxes.new("Stats Menu MP Box", "StatMen7", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
+        STATS_MENU_STR_BOX = WindowBoxes.new("Stats Menu STR Box", "StatMen8", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
+        STATS_MENU_DEX_BOX = WindowBoxes.new("Stats Menu DEX Box", "StatMen9", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
+        STATS_MENU_INT_BOX = WindowBoxes.new("Stats Menu INT Box", "StatMen10", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
         
     end
     class WindowText < Ui_TextBase
