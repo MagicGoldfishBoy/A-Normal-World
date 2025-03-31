@@ -172,8 +172,11 @@ require "../src/fonts.cr"
             WindowBoxes::STATS_MENU_MONEY_BOX.sprite.texture = current_theme.menu_texture
             WindowBoxes::STATS_MENU_MONEY_BOX.sprite.color = current_theme.color03
 
+            WindowBoxes::STATS_MENU_LVL_BOX.sprite.texture = current_theme.menu_texture
+            WindowBoxes::STATS_MENU_LVL_BOX.sprite.color = current_theme.color03
+
             WindowBoxes::STATS_MENU_HP_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_HP_BOX.sprite.color = current_theme.color03
+            WindowBoxes::STATS_MENU_HP_BOX.sprite.color = current_theme.color02
 
             MenuText::TEXT_ARRAY.each do |text|
                 text.text.color = current_theme.color04
@@ -273,7 +276,9 @@ require "../src/fonts.cr"
         STATS_MENU_BOX = WindowBoxes.new("Stats Menu Box", "StatMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 200, 500, 410)), 500.0, 410.0)
         STATS_MENU_NAME_BOX = WindowBoxes.new("Stats Menu Name Box", "StatMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 100, 250, 50)), 250.0, 50.0)
         STATS_MENU_MONEY_BOX = WindowBoxes.new("Stats Menu Money Box", "StatMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(700, 100, 190, 50)), 190.0, 50.0)
-        STATS_MENU_HP_BOX = WindowBoxes.new("Stats Menu HP Box", "StatMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
+        STATS_MENU_LVL_BOX = WindowBoxes.new("Stats Menu Level Box", "StatMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
+        STATS_MENU_HP_BOX = WindowBoxes.new("Stats Menu HP Box", "StatMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
+        
     end
     class WindowText < Ui_TextBase
         HUD_MENU_SAVE_TEXT = WindowText.new("Hud Menu Save Text", "HudMen1", SF::Text.new("Save", QUICKSAND, 24))
