@@ -820,11 +820,6 @@ module Menus
         LUK_BOX_TEXT.font = QUICKSAND
         LUK_BOX_TEXT.character_size = 24
 
-        LEFT_ARROW_01 = SF::RectangleShape.new(SF.vector2(50, 15))
-        LEFT_ARROW_01.fill_color = SF.color( 137, 170, 208 )
-        LEFT_ARROW_01.outline_thickness = 5
-        LEFT_ARROW_01.outline_color = SF.color( 154, 191, 232 )
-
         RIGHT_ARROW_01 = SF::RectangleShape.new(SF.vector2(50, 15))
         RIGHT_ARROW_01.fill_color = SF.color( 137, 170, 208 )
         RIGHT_ARROW_01.outline_thickness = 5
@@ -969,7 +964,7 @@ module Menus
             window.draw(INT_BOX_TEXT)
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite)
             window.draw(LUK_BOX_TEXT)
-            window.draw(LEFT_ARROW_01)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_HP_ARROW.sprite)
             window.draw(RIGHT_ARROW_01)
             window.draw(LEFT_ARROW_02)
             window.draw(RIGHT_ARROW_02)
@@ -1064,8 +1059,8 @@ module Menus
                 HP_BOX_TEXT.string = "HP: #{Player::Stats.current_hp.not_nil!.to_s}/#{Player::Stats.max_hp.not_nil!.to_s}"
                 SystemMenus.center_save_file_text(HP_BOX_TEXT)
 
-                LEFT_ARROW_01.position = Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
-                LEFT_ARROW_01.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_LEFT_HP_ARROW.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_LEFT_HP_ARROW.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 RIGHT_ARROW_01.position = Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
                 RIGHT_ARROW_01.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
@@ -1242,8 +1237,8 @@ module Menus
         
 
     
-            arrow_left_1_x = LEFT_ARROW_01.position.x
-            arrow_left_1_y = LEFT_ARROW_01.position.y
+            arrow_left_1_x = Ui_Elements::WindowBoxes::STATS_MENU_LEFT_HP_ARROW.sprite.position.x
+            arrow_left_1_y = Ui_Elements::WindowBoxes::STATS_MENU_LEFT_HP_ARROW.sprite.position.y
     
             arrow_right_1_x = RIGHT_ARROW_01.position.x
             arrow_right_1_y = RIGHT_ARROW_01.position.y
@@ -1290,7 +1285,8 @@ module Menus
     
 
     
-            if (scaled_mouse_x >= arrow_left_1_x && scaled_mouse_x <= arrow_left_1_x + LEFT_ARROW_01.size.x) && (scaled_mouse_y >= arrow_left_1_y && scaled_mouse_y <= arrow_left_1_y + LEFT_ARROW_01.size.y)
+            if (scaled_mouse_x >= arrow_left_1_x && scaled_mouse_x <= arrow_left_1_x + Ui_Elements::WindowBoxes::STATS_MENU_LEFT_HP_ARROW.sprite.global_bounds.width) && 
+               (scaled_mouse_y >= arrow_left_1_y && scaled_mouse_y <= arrow_left_1_y + Ui_Elements::WindowBoxes::STATS_MENU_LEFT_HP_ARROW.sprite.global_bounds.height)
                 if Player::Stats.max_hp.not_nil! >= 5
                     Player::Stats.max_hp=(Player::Stats.max_hp.not_nil! - 1)
                     Player::Stats.current_hp=(Player::Stats.current_hp.not_nil! - 1)
