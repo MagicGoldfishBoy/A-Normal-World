@@ -784,11 +784,6 @@ module Menus
         NAME_BOX_TEXT.font = QUICKSAND
         NAME_BOX_TEXT.character_size = 24
 
-        MONEY_BOX = SF::RectangleShape.new(SF.vector2(190, 50))
-        MONEY_BOX.fill_color = SF.color(116, 153, 195)
-        MONEY_BOX.outline_thickness = 5
-        MONEY_BOX.outline_color = SF.color(151, 179, 194)
-
         MONEY_BOX_TEXT = SF::Text.new
         MONEY_BOX_TEXT.font = QUICKSAND
         MONEY_BOX_TEXT.character_size = 24
@@ -996,7 +991,7 @@ module Menus
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite)
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_NAME_BOX.sprite)
             window.draw(NAME_BOX_TEXT)
-            window.draw(MONEY_BOX)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_MONEY_BOX.sprite)
             window.draw(MONEY_BOX_TEXT)
             window.draw(HP_BOX)
             window.draw(HP_BOX_TEXT)
@@ -1093,11 +1088,11 @@ module Menus
                 NAME_BOX_TEXT.string = Player::Stats.name.not_nil!
                 SystemMenus.center_save_file_text(NAME_BOX_TEXT)
 
-                MONEY_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(98 * max_scale, 7 * max_scale)
-                MONEY_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_MONEY_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(98 * max_scale, 7 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_MONEY_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                MONEY_BOX_TEXT.position = MONEY_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
-                MONEY_BOX_TEXT.scale = MONEY_BOX.scale
+                MONEY_BOX_TEXT.position = Ui_Elements::WindowBoxes::STATS_MENU_MONEY_BOX.sprite.position + SF.vector2(28 * max_scale, 5 * max_scale)
+                MONEY_BOX_TEXT.scale = Ui_Elements::WindowBoxes::STATS_MENU_MONEY_BOX.sprite.scale
                 MONEY_BOX_TEXT.string = "Cash: " + Player::Stats.money.not_nil!.to_s
                 SystemMenus.center_save_file_text(MONEY_BOX_TEXT)
 
