@@ -801,11 +801,6 @@ module Menus
         MP_BOX_TEXT.font = QUICKSAND
         MP_BOX_TEXT.character_size = 24
 
-        LVL_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
-        LVL_BOX.fill_color = SF.color(116, 153, 195)
-        LVL_BOX.outline_thickness = 5
-        LVL_BOX.outline_color = SF.color(151, 179, 194)
-
         LVL_BOX_TEXT = SF::Text.new
         LVL_BOX_TEXT.font = QUICKSAND
         LVL_BOX_TEXT.character_size = 24
@@ -992,7 +987,7 @@ module Menus
             window.draw(HP_BOX_TEXT)
             window.draw(MP_BOX)
             window.draw(MP_BOX_TEXT)
-            window.draw(LVL_BOX)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite)
             window.draw(LVL_BOX_TEXT)
             window.draw(EXP_BOX)
             window.draw(EXP_BOX_TEXT)
@@ -1119,11 +1114,11 @@ module Menus
                 RIGHT_ARROW_02.position = MP_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
                 RIGHT_ARROW_02.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                LVL_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 48 * max_scale)
-                LVL_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 48 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                LVL_BOX_TEXT.position = LVL_BOX.position + SF.vector2(14 * max_scale, 5 * max_scale)
-                LVL_BOX_TEXT.scale = LVL_BOX.scale
+                LVL_BOX_TEXT.position = Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite.position + SF.vector2(14 * max_scale, 5 * max_scale)
+                LVL_BOX_TEXT.scale = Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite.scale
                 LVL_BOX_TEXT.string = "Lvl: " + Player::Stats.lvl.not_nil!.to_s + " Pts: " + Player::Stats.lvl_points.not_nil!.to_s
                 SystemMenus.center_save_file_text(LVL_BOX_TEXT)
 
