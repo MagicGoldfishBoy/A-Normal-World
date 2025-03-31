@@ -816,11 +816,6 @@ module Menus
         INT_BOX_TEXT.font = QUICKSAND
         INT_BOX_TEXT.character_size = 24
 
-        LUK_BOX = SF::RectangleShape.new(SF.vector2(220, 50))
-        LUK_BOX.fill_color = SF.color(116, 153, 195)
-        LUK_BOX.outline_thickness = 5
-        LUK_BOX.outline_color = SF.color(151, 179, 194)
-
         LUK_BOX_TEXT = SF::Text.new
         LUK_BOX_TEXT.font = QUICKSAND
         LUK_BOX_TEXT.character_size = 24
@@ -972,7 +967,7 @@ module Menus
             window.draw(DEX_BOX_TEXT)
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_INT_BOX.sprite)
             window.draw(INT_BOX_TEXT)
-            window.draw(LUK_BOX)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite)
             window.draw(LUK_BOX_TEXT)
             window.draw(LEFT_ARROW_01)
             window.draw(RIGHT_ARROW_01)
@@ -1147,18 +1142,18 @@ module Menus
                 RIGHT_ARROW_05.position = Ui_Elements::WindowBoxes::STATS_MENU_INT_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
                 RIGHT_ARROW_05.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                LUK_BOX.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 214 * max_scale)
-                LUK_BOX.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 214 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                LUK_BOX_TEXT.position = LUK_BOX.position + SF.vector2(28 * max_scale, 5 * max_scale)
-                LUK_BOX_TEXT.scale = LUK_BOX.scale
+                LUK_BOX_TEXT.position = Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.position + SF.vector2(28 * max_scale, 5 * max_scale)
+                LUK_BOX_TEXT.scale = Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.scale
                 LUK_BOX_TEXT.string = "Luk: " + Player::Stats.luk.not_nil!.to_s
                 SystemMenus.center_save_file_text(LUK_BOX_TEXT)
 
-                LEFT_ARROW_06.position = LUK_BOX.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                LEFT_ARROW_06.position = Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
                 LEFT_ARROW_06.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                RIGHT_ARROW_06.position = LUK_BOX.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                RIGHT_ARROW_06.position = Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
                 RIGHT_ARROW_06.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 Windows.draw_stats_menu(window)
