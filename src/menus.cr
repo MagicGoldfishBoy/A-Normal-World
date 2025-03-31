@@ -1006,6 +1006,7 @@ module Menus
             window.draw(Ui_Elements::WindowText::HUD_MENU_STATS_TEXT.text)
 
             window.draw(Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite)
+            window.draw(Ui_Elements::WindowText::HUD_MENU_SETTINGS_TEXT.text)
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
                 if Windows.is_hud_menu_open == true
                 Windows.hud_menu_mouse_handling(window)
@@ -1106,6 +1107,9 @@ module Menus
 
               Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
               Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
+
+              Ui_Elements::WindowText::HUD_MENU_SETTINGS_TEXT.text.position = Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position + SF.vector2((15 * (scale_x * clamped_scale * scale_ratio)), 2 * clamped_scale)
+              Ui_Elements::WindowText::HUD_MENU_SETTINGS_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
               
               WINDOW_03_TEXT.position = SF.vector2(580 * scale_x, 482 * scale_y)
               WINDOW_03_TEXT.scale = SF.vector2(scale_ratio, scale_ratio)
