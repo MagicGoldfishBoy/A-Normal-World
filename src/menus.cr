@@ -1081,8 +1081,8 @@ module Menus
             hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
             window.view = hud_view
 
-            Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position + SF.vector2(0, -Ui_Elements::WindowBoxes::HUD_MENU_BOX.height * clamped_scale - 10)
-            Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_ratio)
+            Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position + SF.vector2(-2.75 * clamped_scale, -Ui_Elements::WindowBoxes::HUD_MENU_BOX.height * clamped_scale)
+            Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.scale = SF.vector2(scale_x - clamped_scale * 0.005, scale_ratio)
               
               Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_BOX.sprite.position + SF.vector2(2 * clamped_scale, 2 * clamped_scale)
               Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
@@ -1110,16 +1110,6 @@ module Menus
 
               Ui_Elements::WindowText::HUD_MENU_SETTINGS_TEXT.text.position = Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position + SF.vector2((15 * (scale_x * clamped_scale * scale_ratio)), 2 * clamped_scale)
               Ui_Elements::WindowText::HUD_MENU_SETTINGS_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
-              
-              WINDOW_03_TEXT.position = SF.vector2(580 * scale_x, 482 * scale_y)
-              WINDOW_03_TEXT.scale = SF.vector2(scale_ratio, scale_ratio)
-              
-              WINDOW_04.position = SF.vector2(510 * scale_x, 511 * scale_y)
-              WINDOW_04.scale = SF.vector2(scale_x, scale_ratio)
-              
-              WINDOW_04_TEXT.position = SF.vector2(610 * scale_x, 506 * scale_y)
-              WINDOW_04_TEXT.scale = SF.vector2(scale_ratio, scale_ratio)
-
 
               Windows.draw_hud_menu(window)
             end

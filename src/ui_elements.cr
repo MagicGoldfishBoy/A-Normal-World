@@ -146,6 +146,9 @@ require "../src/fonts.cr"
             MenuBoxes::LEVEL_BOX.sprite.texture = current_theme.menu_texture
             MenuBoxes::LEVEL_BOX.sprite.color = current_theme.color01
 
+            WindowBoxes::HUD_MENU_BOX.sprite.texture = current_theme.menu_texture
+            WindowBoxes::HUD_MENU_BOX.sprite.color = current_theme.color03
+
             WindowBoxes::HUD_MENU_SAVE_BOX.sprite.texture = current_theme.menu_texture
             WindowBoxes::HUD_MENU_SAVE_BOX.sprite.color = current_theme.color01
 
@@ -246,7 +249,7 @@ require "../src/fonts.cr"
         LEVEL_BOX_TEXT = MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 34))
     end
     class WindowBoxes < Ui_BoxBase
-        HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 120, 195)), 120.0, 195.0)
+        HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 800, 120, 176)), 120.0, 176.0)
         HUD_MENU_SAVE_BOX = WindowBoxes.new("Hud Menu Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
         HUD_MENU_QUIT_BOX = WindowBoxes.new("Hud Menu Quit Box", "HudMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
         HUD_MENU_STATS_BOX = WindowBoxes.new("Hud Menu Stats Box", "HudMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
