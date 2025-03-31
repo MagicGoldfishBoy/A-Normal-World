@@ -255,7 +255,7 @@ require "../src/fonts.cr"
     end
     class WindowText < Ui_TextBase
         HUD_MENU_SAVE_TEXT = WindowText.new("Hud Menu Save Text", "HudMen1", SF::Text.new("Save", QUICKSAND, 24))
-        HUD_MENU_QUIT_BOX_TEXT = WindowText.new("Hud Menu Quit Box Text", "HudMen2", SF::Text.new("Save & Quit", QUICKSAND, 24))
+        HUD_MENU_QUIT_TEXT = WindowText.new("Hud Menu Quit Text", "HudMen2", SF::Text.new("Save & Quit", QUICKSAND, 20))
         HUD_MENU_STATS_BOX_TEXT = WindowText.new("Hud Menu Stats Box Text", "HudMen3", SF::Text.new("Stats", QUICKSAND, 24))
         HUD_MENU_SETTINGS_BOX_TEXT = WindowText.new("Hud Menu Settings Box Text", "HudMen4", SF::Text.new("Settings", QUICKSAND, 24))
     end
