@@ -142,6 +142,10 @@ require "../src/fonts.cr"
         MAIN_HUD_BOX = MenuBoxes.new("Main Hud Box", "HUD1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 200, 1000, 500)), 1000.0, 100.0, 4)
         MAIN_HUD_BOX.sprite.texture.not_nil!.repeated = true
         LEVEL_BOX = MenuBoxes.new("Level Box", "Stats1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0, 1)
+
+        CURRENT_LEVEL_ELEMENT_BOX = MenuBoxes.new("Current Level Element Box", "LevEdMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 0, 160, 40)), 160.0, 40.0, 1)
+        CURRENT_LEVEL_LEFT_ARROW = MenuBoxes.new("Current Level Left Arrow", "LevEdMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 50, 50, 40)), 50.0, 40.0, 2)
+        CURRENT_LEVEL_RIGHT_ARROW = MenuBoxes.new("Current Level Right Arrow", "LevEdMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), 50.0, 40.0, 2)
     end
     class MenuText < Ui_TextBase
         PLAY_BUTTON_TEXT = MenuText.new("Play Button Text", "Main1", SF::Text.new("Play                    Settings                    Quit", QUICKSAND, 34))
@@ -181,6 +185,8 @@ require "../src/fonts.cr"
         MENU_BOX_TEXT = MenuText.new("Menu Box Text", "HudMen1", SF::Text.new("Menu", QUICKSAND, 24))
         MAIN_HUD_BOX_TEXT = MenuText.new("Main Hud Box Text", "HUD1", SF::Text.new("Main Hud", QUICKSAND, 34))
         LEVEL_BOX_TEXT = MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 34))
+
+        CURRENT_LEVEL_ELEMENT_BOX_TEXT = MenuText.new("Current Level Element Box Text", "LevEdMen1", SF::Text.new("Current Level Element", QUICKSAND, 12))
     end
     class WindowBoxes < Ui_BoxBase
         HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 800, 120, 176)), 120.0, 176.0, 3)

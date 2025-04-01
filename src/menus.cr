@@ -6,6 +6,7 @@ require "../src/sprites.cr"
 require "../src/serialization.cr"
 require "../src/keyboard.cr"
 require "../src/ui_elements.cr"
+require "../src/level_editor.cr"
 
 module Menus
 
@@ -51,6 +52,8 @@ module Menus
             SystemMenus.draw_hud(window)
         when "debug"
             SystemMenus.draw_debug_menu(window)
+        when "level_editor"
+            SystemMenus.draw_level_editor_ui(window)
         else
             puts @@system_menu
             window.close
@@ -165,13 +168,16 @@ module Menus
         if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + Ui_Elements::MenuBoxes::BACK_BUTTON.width) && 
            (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + Ui_Elements::MenuBoxes::BACK_BUTTON.height)
             SystemMenus.system_menu=("main_menu")
+            sleep 0.15.seconds
         end
 
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::DEBUG_BUTTON.width) && 
            (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + Ui_Elements::MenuBoxes::DEBUG_BUTTON.height)
             SystemMenus.initialize_debug_menu(window)
             SystemMenus.system_menu=("debug")
+            sleep 0.15.seconds
         end
+
      end
 
      def SystemMenus.initialize_debug_menu(window)
@@ -195,7 +201,40 @@ module Menus
         window.draw(Ui_Elements::MenuBoxes::LEVEL_EDITOR_BUTTON.sprite)
         window.draw(Ui_Elements::MenuText::LEVEL_EDITOR_BUTTON_TEXT.text)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
-        SystemMenus.settings_menu_mouse_handling(window)
+        SystemMenus.debug_menu_mouse_handling(window)
+        end
+     end
+
+     def SystemMenus.debug_menu_mouse_handling(window)
+        mouse_position = SF::Mouse.get_position(window)
+        mouse_x = mouse_position.x
+        mouse_y = mouse_position.y
+        current_size = window.size
+        original_width = 800
+        original_height = 600
+    
+        scale_x = current_size.x.to_f / original_width
+        scale_y = current_size.y.to_f / original_height
+    
+        scaled_mouse_x = mouse_x / scale_x
+        scaled_mouse_y = mouse_y / scale_y
+
+        menu_box_1_x = Ui_Elements::MenuBoxes::LEVEL_EDITOR_BUTTON.sprite.position.x
+        menu_box_1_y = Ui_Elements::MenuBoxes::LEVEL_EDITOR_BUTTON.sprite.position.y
+        menu_box_2_x = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position.x
+        menu_box_2_y = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position.y
+
+        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + Ui_Elements::MenuBoxes::LEVEL_EDITOR_BUTTON.width) && 
+           (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + Ui_Elements::MenuBoxes::LEVEL_EDITOR_BUTTON.height)
+            #SystemMenus.initialize_level_editor_ui(window)
+            SystemMenus.system_menu=("level_editor")
+            sleep 0.15.seconds
+        end
+
+        if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::BACK_BUTTON.width) && 
+           (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + Ui_Elements::MenuBoxes::BACK_BUTTON.height)
+            SystemMenus.system_menu=("settings_menu")
+            sleep 0.15.seconds
         end
      end
 
@@ -775,7 +814,48 @@ module Menus
         end
      end
 
+     def SystemMenus.draw_level_editor_ui(window)
+        if SF::Event::Resized #the HUD will never scale correctly without this
+            current_size = window.size
+            original_width = 800 
+            original_height = 600
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+            scale_ratio = [scale_x, scale_y].min
+            max_scale = 1.5
+            clamped_scale = [scale_ratio, max_scale].min
+            Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.scale = SF.vector2(scale_x, scale_y / 5)
+            Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position = SF.vector2(0_f32, current_size.y.to_f32 - Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.global_bounds.height)
+    
+            Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
+            Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.position = Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position + SF.vector2(55 * scale_x, 55 * scale_y)
+
+            Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text.scale = SF.vector2(scale_x, scale_y)
+            Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text.position = Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.position + SF.vector2(75 * clamped_scale, 12 * scale_ratio)
+
+            Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.sprite.scale = SF.vector2(scale_x, scale_y)
+            Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.sprite.position = Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.position - SF.vector2(50 * scale_x, 0)
+
+            Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.sprite.scale = SF.vector2(scale_x, scale_y)
+            Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.sprite.position = Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.position + 
+            SF.vector2(Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.global_bounds.width * scale_x, 0)
+            
+        end
+        window_size = window.size
+        hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+        hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
+        window.view = hud_view
+
+        Utility::StringUtilities.center_text(Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text)
+
+        window.draw(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite)
+        window.draw(Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite)
+        window.draw(Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text)
+        window.draw(Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.sprite)
+        window.draw(Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.sprite)
+
     end
+  end
 
     class Windows # I now know why everyone hates coding UI shit -_-
         #I hate coding ui, I haaaate it!

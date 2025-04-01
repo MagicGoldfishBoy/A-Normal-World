@@ -4,6 +4,7 @@ require "../src/inventory.cr"
 require "../src/clothing.cr"
 require "../src/combat.cr"
 require "../src/consumables.cr"
+require "../src/level_editor.cr"
 
 module Keyboard
     class Gameplay
