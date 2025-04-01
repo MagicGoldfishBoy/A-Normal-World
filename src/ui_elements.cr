@@ -82,7 +82,6 @@ require "../src/fonts.cr"
         def self.apply_theme
 
             Ui_BoxBase::BOX_ARRAY.each do |box|
-                puts box.name
                 box.sprite.texture = current_theme.menu_texture
                 case box.color_num
                 when 1
@@ -207,6 +206,14 @@ require "../src/fonts.cr"
         STATS_MENU_RIGHT_HP_ARROW = WindowBoxes.new("Stats Menu Right HP Arrow", "StatMen13", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
         STATS_MENU_LEFT_MP_ARROW = WindowBoxes.new("Stats Menu Left MP Arrow", "StatMen14", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
         STATS_MENU_RIGHT_MP_ARROW = WindowBoxes.new("Stats Menu Right MP Arrow", "StatMen15", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
+        STATS_MENU_LEFT_STR_ARROW = WindowBoxes.new("Stats Menu Left STR Arrow", "StatMen16", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
+        STATS_MENU_RIGHT_STR_ARROW = WindowBoxes.new("Stats Menu Right STR Arrow", "StatMen17", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
+        STATS_MENU_LEFT_DEX_ARROW = WindowBoxes.new("Stats Menu Left DEX Arrow", "StatMen18", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
+        STATS_MENU_RIGHT_DEX_ARROW = WindowBoxes.new("Stats Menu Right DEX Arrow", "StatMen19", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
+        STATS_MENU_LEFT_INT_ARROW = WindowBoxes.new("Stats Menu Left INT Arrow", "StatMen20", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
+        STATS_MENU_RIGHT_INT_ARROW = WindowBoxes.new("Stats Menu Right INT Arrow", "StatMen21", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
+        STATS_MENU_LEFT_LUK_ARROW = WindowBoxes.new("Stats Menu Left LUK Arrow", "StatMen22", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
+        STATS_MENU_RIGHT_LUK_ARROW = WindowBoxes.new("Stats Menu Right LUK Arrow", "StatMen23", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
         
     end
     class WindowText < Ui_TextBase
