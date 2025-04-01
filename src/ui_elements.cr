@@ -5,12 +5,15 @@ require "../src/fonts.cr"
   module Ui_Elements
     class Ui_BoxBase
         BOX_ARRAY = [] of Ui_BoxBase
-        def initialize(name : String, id : String, sprite : SF::Sprite, width : Float64, height : Float64)
+        def initialize(name : String, id : String, sprite : SF::Sprite, width : Float64, height : Float64, 
+            color_num : Int32)
             @name = name
             @id = id
             @sprite = sprite
             @width = width
             @height = height
+            @color_num = color_num
+            BOX_ARRAY.push(self)
         end
 
         property name : String
@@ -18,6 +21,7 @@ require "../src/fonts.cr"
         property sprite : SF::Sprite
         property width : Float64
         property height : Float64
+        property color_num : Int32
 
     end
     class Ui_TextBase
@@ -76,128 +80,21 @@ require "../src/fonts.cr"
         )
 
         def self.apply_theme
-            MenuBoxes::PLAY_BUTTON.sprite.texture = current_theme.menu_texture
-            MenuBoxes::PLAY_BUTTON.sprite.color = current_theme.color01
 
-            MenuBoxes::BACK_BUTTON.sprite.texture = current_theme.menu_texture
-            MenuBoxes::BACK_BUTTON.sprite.color = current_theme.color03
-
-            MenuBoxes::SETTINGS_BUTTON.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SETTINGS_BUTTON.sprite.color = current_theme.color01
-
-            MenuBoxes::QUIT_BUTTON.sprite.texture = current_theme.menu_texture
-            MenuBoxes::QUIT_BUTTON.sprite.color = current_theme.color01
-
-            MenuBoxes::NEXT_BUTTON.sprite.texture = current_theme.menu_texture
-            MenuBoxes::NEXT_BUTTON.sprite.color = current_theme.color01
-
-            MenuBoxes::DEBUG_BUTTON.sprite.texture = current_theme.menu_texture
-            MenuBoxes::DEBUG_BUTTON.sprite.color = current_theme.color01
-
-            MenuBoxes::LEVEL_EDITOR_BUTTON.sprite.texture = current_theme.menu_texture
-            MenuBoxes::LEVEL_EDITOR_BUTTON.sprite.color = current_theme.color01
-
-            MenuBoxes::SAVE_BOX_01.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SAVE_BOX_01.sprite.color = current_theme.color02
-            MenuBoxes::SAVE_BOX_02.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SAVE_BOX_02.sprite.color = current_theme.color02
-            MenuBoxes::SAVE_BOX_03.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SAVE_BOX_03.sprite.color = current_theme.color02
-            MenuBoxes::SAVE_BOX_04.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SAVE_BOX_04.sprite.color = current_theme.color02
-            MenuBoxes::SAVE_BOX_05.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SAVE_BOX_05.sprite.color = current_theme.color02
-            MenuBoxes::SAVE_BOX_06.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SAVE_BOX_06.sprite.color = current_theme.color02
-            MenuBoxes::SAVE_BOX_07.sprite.color = current_theme.color02
-            MenuBoxes::SAVE_BOX_07.sprite.texture = current_theme.menu_texture
-
-            MenuBoxes::SKIN_BOX_LEFT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SKIN_BOX_LEFT.sprite.color = current_theme.color01
-            MenuBoxes::SKIN_BOX_RIGHT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SKIN_BOX_RIGHT.sprite.color = current_theme.color01
-            MenuBoxes::HAIR_BOX_LEFT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::HAIR_BOX_LEFT.sprite.color = current_theme.color01
-            MenuBoxes::HAIR_BOX_RIGHT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::HAIR_BOX_RIGHT.sprite.color = current_theme.color01
-            MenuBoxes::FACE_BOX_LEFT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::FACE_BOX_LEFT.sprite.color = current_theme.color01
-            MenuBoxes::FACE_BOX_RIGHT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::FACE_BOX_RIGHT.sprite.color = current_theme.color01
-            MenuBoxes::SHIRT_BOX_LEFT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SHIRT_BOX_LEFT.sprite.color = current_theme.color01
-            MenuBoxes::SHIRT_BOX_RIGHT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SHIRT_BOX_RIGHT.sprite.color = current_theme.color01
-            MenuBoxes::PANTS_BOX_LEFT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::PANTS_BOX_LEFT.sprite.color = current_theme.color01
-            MenuBoxes::PANTS_BOX_RIGHT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::PANTS_BOX_RIGHT.sprite.color = current_theme.color01
-            MenuBoxes::SHOES_BOX_LEFT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SHOES_BOX_LEFT.sprite.color = current_theme.color01
-            MenuBoxes::SHOES_BOX_RIGHT.sprite.texture = current_theme.menu_texture
-            MenuBoxes::SHOES_BOX_RIGHT.sprite.color = current_theme.color01
-
-            MenuBoxes::MENU_BOX.sprite.texture = current_theme.menu_texture
-            MenuBoxes::MENU_BOX.sprite.color = current_theme.color01
-
-            MenuBoxes::MAIN_HUD_BOX.sprite.texture = current_theme.menu_texture
-            MenuBoxes::MAIN_HUD_BOX.sprite.color = current_theme.color04
-
-            MenuBoxes::LEVEL_BOX.sprite.texture = current_theme.menu_texture
-            MenuBoxes::LEVEL_BOX.sprite.color = current_theme.color01
-
-
-
-            WindowBoxes::HUD_MENU_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::HUD_MENU_BOX.sprite.color = current_theme.color03
-
-            WindowBoxes::HUD_MENU_SAVE_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::HUD_MENU_SAVE_BOX.sprite.color = current_theme.color01
-
-            WindowBoxes::HUD_MENU_QUIT_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::HUD_MENU_QUIT_BOX.sprite.color = current_theme.color01
-
-            WindowBoxes::HUD_MENU_STATS_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::HUD_MENU_STATS_BOX.sprite.color = current_theme.color01
-
-            WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.color = current_theme.color01
-
-            WindowBoxes::STATS_MENU_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_BOX.sprite.color = current_theme.color04
-
-            WindowBoxes::STATS_MENU_NAME_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_NAME_BOX.sprite.color = current_theme.color03
-
-            WindowBoxes::STATS_MENU_MONEY_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_MONEY_BOX.sprite.color = current_theme.color03
-
-            WindowBoxes::STATS_MENU_LVL_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_LVL_BOX.sprite.color = current_theme.color03
-
-            WindowBoxes::STATS_MENU_EXP_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_EXP_BOX.sprite.color = current_theme.color03
-
-            WindowBoxes::STATS_MENU_HP_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_HP_BOX.sprite.color = current_theme.color02
-
-            WindowBoxes::STATS_MENU_MP_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_MP_BOX.sprite.color = current_theme.color02
-
-            WindowBoxes::STATS_MENU_STR_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_STR_BOX.sprite.color = current_theme.color02
-
-            WindowBoxes::STATS_MENU_DEX_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_DEX_BOX.sprite.color = current_theme.color02
-
-            WindowBoxes::STATS_MENU_INT_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_INT_BOX.sprite.color = current_theme.color02
-
-            WindowBoxes::STATS_MENU_LUK_BOX.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_LUK_BOX.sprite.color = current_theme.color02
-
-            WindowBoxes::STATS_MENU_LEFT_HP_ARROW.sprite.texture = current_theme.menu_texture
-            WindowBoxes::STATS_MENU_LEFT_HP_ARROW.sprite.color = current_theme.color02
+            Ui_BoxBase::BOX_ARRAY.each do |box|
+                puts box.name
+                box.sprite.texture = current_theme.menu_texture
+                case box.color_num
+                when 1
+                    box.sprite.color = current_theme.color01
+                when 2
+                    box.sprite.color = current_theme.color02
+                when 3
+                    box.sprite.color = current_theme.color03
+                when 4
+                    box.sprite.color = current_theme.color04
+                end
+            end
 
             MenuText::TEXT_ARRAY.each do |text|
                 text.text.color = current_theme.color04
@@ -210,42 +107,42 @@ require "../src/fonts.cr"
     
 
     class MenuBoxes < Ui_BoxBase
-        PLAY_BUTTON = MenuBoxes.new("Play Button", "Main1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0)
-        BACK_BUTTON = MenuBoxes.new("Back Button", "Main2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0)
-        SETTINGS_BUTTON = MenuBoxes.new("Settings Button", "Main3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 0, 200, 80)), 200.0, 80.0)
-        QUIT_BUTTON = MenuBoxes.new("Quit Button", "Main4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0)
-        NEXT_BUTTON = MenuBoxes.new("Next Button", "Main5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0)
+        PLAY_BUTTON = MenuBoxes.new("Play Button", "Main1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0, 1)
+        BACK_BUTTON = MenuBoxes.new("Back Button", "Main2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
+        SETTINGS_BUTTON = MenuBoxes.new("Settings Button", "Main3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 0, 200, 80)), 200.0, 80.0, 1)
+        QUIT_BUTTON = MenuBoxes.new("Quit Button", "Main4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0, 1)
+        NEXT_BUTTON = MenuBoxes.new("Next Button", "Main5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
 
-        DEBUG_BUTTON = MenuBoxes.new("Debug Button", "Settings1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(600, 0, 100, 50)), 100.0, 50.0)
+        DEBUG_BUTTON = MenuBoxes.new("Debug Button", "Settings1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(600, 0, 100, 50)), 100.0, 50.0, 1)
 
-        LEVEL_EDITOR_BUTTON = MenuBoxes.new("Level Editor Button", "Debug1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(700, 0, 155, 50)), 155.0, 50.0)
+        LEVEL_EDITOR_BUTTON = MenuBoxes.new("Level Editor Button", "Debug1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(700, 0, 155, 50)), 155.0, 50.0, 1)
 
-        SAVE_BOX_01 = MenuBoxes.new("Save Box 1", "Save01", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0)
-        SAVE_BOX_02 = MenuBoxes.new("Save Box 2", "Save02", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0)
-        SAVE_BOX_03 = MenuBoxes.new("Save Box 3", "Save03", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0)
-        SAVE_BOX_04 = MenuBoxes.new("Save Box 4", "Save04", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0)
-        SAVE_BOX_05 = MenuBoxes.new("Save Box 5", "Save05", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0)
-        SAVE_BOX_06 = MenuBoxes.new("Save Box 6", "Save06", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0)
-        SAVE_BOX_07 = MenuBoxes.new("Save Box 7", "Save07", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0)
+        SAVE_BOX_01 = MenuBoxes.new("Save Box 1", "Save01", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
+        SAVE_BOX_02 = MenuBoxes.new("Save Box 2", "Save02", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
+        SAVE_BOX_03 = MenuBoxes.new("Save Box 3", "Save03", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
+        SAVE_BOX_04 = MenuBoxes.new("Save Box 4", "Save04", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
+        SAVE_BOX_05 = MenuBoxes.new("Save Box 5", "Save05", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
+        SAVE_BOX_06 = MenuBoxes.new("Save Box 6", "Save06", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
+        SAVE_BOX_07 = MenuBoxes.new("Save Box 7", "Save07", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
 
-        SKIN_BOX_LEFT = MenuBoxes.new("Skin Box Left", "SkinL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0)
-        SKIN_BOX_RIGHT = MenuBoxes.new("Skin Box Right", "SkinR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0)
-        HAIR_BOX_LEFT = MenuBoxes.new("Hair Box Left", "HairL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0)
-        HAIR_BOX_RIGHT = MenuBoxes.new("Hair Box Right", "HairR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0)
-        FACE_BOX_LEFT = MenuBoxes.new("Face Box Left", "FaceL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0)
-        FACE_BOX_RIGHT = MenuBoxes.new("Face Box Right", "FaceR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0)
-        SHIRT_BOX_LEFT = MenuBoxes.new("Shirt Box Left", "ShirtL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0)
-        SHIRT_BOX_RIGHT = MenuBoxes.new("Shirt Box Right", "ShirtR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0)
-        PANTS_BOX_LEFT = MenuBoxes.new("Pants Box Left", "PantsL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0)
-        PANTS_BOX_RIGHT = MenuBoxes.new("Pants Box Right", "PantsR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0)
-        SHOES_BOX_LEFT = MenuBoxes.new("Shoes Box Left", "ShoesL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0)
-        SHOES_BOX_RIGHT = MenuBoxes.new("Shoes Box Right", "ShoesR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0)
+        SKIN_BOX_LEFT = MenuBoxes.new("Skin Box Left", "SkinL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
+        SKIN_BOX_RIGHT = MenuBoxes.new("Skin Box Right", "SkinR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
+        HAIR_BOX_LEFT = MenuBoxes.new("Hair Box Left", "HairL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
+        HAIR_BOX_RIGHT = MenuBoxes.new("Hair Box Right", "HairR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
+        FACE_BOX_LEFT = MenuBoxes.new("Face Box Left", "FaceL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
+        FACE_BOX_RIGHT = MenuBoxes.new("Face Box Right", "FaceR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
+        SHIRT_BOX_LEFT = MenuBoxes.new("Shirt Box Left", "ShirtL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
+        SHIRT_BOX_RIGHT = MenuBoxes.new("Shirt Box Right", "ShirtR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
+        PANTS_BOX_LEFT = MenuBoxes.new("Pants Box Left", "PantsL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
+        PANTS_BOX_RIGHT = MenuBoxes.new("Pants Box Right", "PantsR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
+        SHOES_BOX_LEFT = MenuBoxes.new("Shoes Box Left", "ShoesL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
+        SHOES_BOX_RIGHT = MenuBoxes.new("Shoes Box Right", "ShoesR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
 
-        MENU_BOX = MenuBoxes.new("Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0)
+        MENU_BOX = MenuBoxes.new("Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0, 1)
 
-        MAIN_HUD_BOX = MenuBoxes.new("Main Hud Box", "HUD1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 200, 1000, 500)), 1000.0, 100.0)
+        MAIN_HUD_BOX = MenuBoxes.new("Main Hud Box", "HUD1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 200, 1000, 500)), 1000.0, 100.0, 4)
         MAIN_HUD_BOX.sprite.texture.not_nil!.repeated = true
-        LEVEL_BOX = MenuBoxes.new("Level Box", "Stats1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0)
+        LEVEL_BOX = MenuBoxes.new("Level Box", "Stats1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0, 1)
     end
     class MenuText < Ui_TextBase
         PLAY_BUTTON_TEXT = MenuText.new("Play Button Text", "Main1", SF::Text.new("Play                    Settings                    Quit", QUICKSAND, 34))
@@ -287,26 +184,29 @@ require "../src/fonts.cr"
         LEVEL_BOX_TEXT = MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 34))
     end
     class WindowBoxes < Ui_BoxBase
-        HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 800, 120, 176)), 120.0, 176.0)
-        HUD_MENU_SAVE_BOX = WindowBoxes.new("Hud Menu Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
-        HUD_MENU_QUIT_BOX = WindowBoxes.new("Hud Menu Quit Box", "HudMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
-        HUD_MENU_STATS_BOX = WindowBoxes.new("Hud Menu Stats Box", "HudMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
-        HUD_MENU_SETTINGS_BOX = WindowBoxes.new("Hud Menu Settings Box", "HudMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0)
+        HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 800, 120, 176)), 120.0, 176.0, 3)
+        HUD_MENU_SAVE_BOX = WindowBoxes.new("Hud Menu Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
+        HUD_MENU_QUIT_BOX = WindowBoxes.new("Hud Menu Quit Box", "HudMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
+        HUD_MENU_STATS_BOX = WindowBoxes.new("Hud Menu Stats Box", "HudMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
+        HUD_MENU_SETTINGS_BOX = WindowBoxes.new("Hud Menu Settings Box", "HudMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
         HUD_MENU_SAVE_BOX.sprite.position = HUD_MENU_BOX.sprite.position + SF.vector2(5, 0)
 
-        STATS_MENU_BOX = WindowBoxes.new("Stats Menu Box", "StatMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 200, 500, 410)), 500.0, 410.0)
-        STATS_MENU_NAME_BOX = WindowBoxes.new("Stats Menu Name Box", "StatMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 100, 250, 50)), 250.0, 50.0)
-        STATS_MENU_MONEY_BOX = WindowBoxes.new("Stats Menu Money Box", "StatMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(700, 100, 190, 50)), 190.0, 50.0)
-        STATS_MENU_LVL_BOX = WindowBoxes.new("Stats Menu Level Box", "StatMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
-        STATS_MENU_EXP_BOX = WindowBoxes.new("Stats Menu Exp Box", "StatMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
-        STATS_MENU_HP_BOX = WindowBoxes.new("Stats Menu HP Box", "StatMen6", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
-        STATS_MENU_MP_BOX = WindowBoxes.new("Stats Menu MP Box", "StatMen7", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
-        STATS_MENU_STR_BOX = WindowBoxes.new("Stats Menu STR Box", "StatMen8", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
-        STATS_MENU_DEX_BOX = WindowBoxes.new("Stats Menu DEX Box", "StatMen9", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
-        STATS_MENU_INT_BOX = WindowBoxes.new("Stats Menu INT Box", "StatMen10", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
-        STATS_MENU_LUK_BOX = WindowBoxes.new("Stats Menu LUK Box", "StatMen11", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0)
+        STATS_MENU_BOX = WindowBoxes.new("Stats Menu Box", "StatMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 200, 500, 410)), 500.0, 410.0, 4)
+        STATS_MENU_NAME_BOX = WindowBoxes.new("Stats Menu Name Box", "StatMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 100, 250, 50)), 250.0, 50.0, 3)
+        STATS_MENU_MONEY_BOX = WindowBoxes.new("Stats Menu Money Box", "StatMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(700, 100, 190, 50)), 190.0, 50.0, 3)
+        STATS_MENU_LVL_BOX = WindowBoxes.new("Stats Menu Level Box", "StatMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 3)
+        STATS_MENU_EXP_BOX = WindowBoxes.new("Stats Menu Exp Box", "StatMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 3)
+        STATS_MENU_HP_BOX = WindowBoxes.new("Stats Menu HP Box", "StatMen6", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
+        STATS_MENU_MP_BOX = WindowBoxes.new("Stats Menu MP Box", "StatMen7", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
+        STATS_MENU_STR_BOX = WindowBoxes.new("Stats Menu STR Box", "StatMen8", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
+        STATS_MENU_DEX_BOX = WindowBoxes.new("Stats Menu DEX Box", "StatMen9", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
+        STATS_MENU_INT_BOX = WindowBoxes.new("Stats Menu INT Box", "StatMen10", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
+        STATS_MENU_LUK_BOX = WindowBoxes.new("Stats Menu LUK Box", "StatMen11", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
 
-        STATS_MENU_LEFT_HP_ARROW = WindowBoxes.new("Stats Menu Left HP Arrow", "StatMen12", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0)
+        STATS_MENU_LEFT_HP_ARROW = WindowBoxes.new("Stats Menu Left HP Arrow", "StatMen12", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
+        STATS_MENU_RIGHT_HP_ARROW = WindowBoxes.new("Stats Menu Right HP Arrow", "StatMen13", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
+        STATS_MENU_LEFT_MP_ARROW = WindowBoxes.new("Stats Menu Left MP Arrow", "StatMen14", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
+        STATS_MENU_RIGHT_MP_ARROW = WindowBoxes.new("Stats Menu Right MP Arrow", "StatMen15", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
         
     end
     class WindowText < Ui_TextBase
