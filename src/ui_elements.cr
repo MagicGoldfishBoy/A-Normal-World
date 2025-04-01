@@ -221,5 +221,16 @@ require "../src/fonts.cr"
         HUD_MENU_QUIT_TEXT = WindowText.new("Hud Menu Quit Text", "HudMen2", SF::Text.new("Save & Quit", QUICKSAND, 20))
         HUD_MENU_STATS_TEXT = WindowText.new("Hud Menu Stats Text", "HudMen3", SF::Text.new("Stats", QUICKSAND, 24))
         HUD_MENU_SETTINGS_TEXT = WindowText.new("Hud Menu Settings Text", "HudMen4", SF::Text.new("Settings", QUICKSAND, 24))
+
+        STATS_MENU_NAME_TEXT = WindowText.new("Stats Menu Name Text", "StatMen1", SF::Text.new("Name", QUICKSAND, 24))
+        STATS_MENU_MONEY_TEXT = WindowText.new("Stats Menu Money Text", "StatMen2", SF::Text.new("Money", QUICKSAND, 24))
+        STATS_MENU_LVL_TEXT = WindowText.new("Stats Menu Level Text", "StatMen3", SF::Text.new("Level", QUICKSAND, 24))
+        STATS_MENU_EXP_TEXT = WindowText.new("Stats Menu Exp Text", "StatMen4", SF::Text.new("Exp", QUICKSAND, 24))
+        STATS_MENU_HP_TEXT = WindowText.new("Stats Menu HP Text", "StatMen5", SF::Text.new("HP", QUICKSAND, 24))
+        STATS_MENU_MP_TEXT = WindowText.new("Stats Menu MP Text", "StatMen6", SF::Text.new("MP", QUICKSAND, 24))
+        STATS_MENU_STR_TEXT = WindowText.new("Stats Menu STR Text", "StatMen7", SF::Text.new("STR", QUICKSAND, 24))
+        STATS_MENU_DEX_TEXT = WindowText.new("Stats Menu DEX Text", "StatMen8", SF::Text.new("DEX", QUICKSAND, 24))
+        STATS_MENU_INT_TEXT = WindowText.new("Stats Menu INT Text", "StatMen9", SF::Text.new("INT", QUICKSAND, 24))
+        STATS_MENU_LUK_TEXT = WindowText.new("Stats Menu LUK Text", "StatMen10", SF::Text.new("LUK", QUICKSAND, 24))
     end
   end
