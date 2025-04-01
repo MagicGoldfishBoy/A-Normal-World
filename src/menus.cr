@@ -820,46 +820,6 @@ module Menus
         LUK_BOX_TEXT.font = QUICKSAND
         LUK_BOX_TEXT.character_size = 24
 
-        LEFT_ARROW_03 = SF::RectangleShape.new(SF.vector2(50, 15))
-        LEFT_ARROW_03.fill_color = SF.color( 137, 170, 208 )
-        LEFT_ARROW_03.outline_thickness = 5
-        LEFT_ARROW_03.outline_color = SF.color( 154, 191, 232 )
-
-        RIGHT_ARROW_03 = SF::RectangleShape.new(SF.vector2(50, 15))
-        RIGHT_ARROW_03.fill_color = SF.color( 137, 170, 208 )
-        RIGHT_ARROW_03.outline_thickness = 5
-        RIGHT_ARROW_03.outline_color = SF.color( 154, 191, 232 )
-
-        LEFT_ARROW_04 = SF::RectangleShape.new(SF.vector2(50, 15))
-        LEFT_ARROW_04.fill_color = SF.color( 137, 170, 208 )
-        LEFT_ARROW_04.outline_thickness = 5
-        LEFT_ARROW_04.outline_color = SF.color( 154, 191, 232 )
-
-        RIGHT_ARROW_04 = SF::RectangleShape.new(SF.vector2(50, 15))
-        RIGHT_ARROW_04.fill_color = SF.color( 137, 170, 208 )
-        RIGHT_ARROW_04.outline_thickness = 5
-        RIGHT_ARROW_04.outline_color = SF.color( 154, 191, 232 )
-
-        LEFT_ARROW_05 = SF::RectangleShape.new(SF.vector2(50, 15))
-        LEFT_ARROW_05.fill_color = SF.color( 137, 170, 208 )
-        LEFT_ARROW_05.outline_thickness = 5
-        LEFT_ARROW_05.outline_color = SF.color( 154, 191, 232 )
-
-        RIGHT_ARROW_05 = SF::RectangleShape.new(SF.vector2(50, 15))
-        RIGHT_ARROW_05.fill_color = SF.color( 137, 170, 208 )
-        RIGHT_ARROW_05.outline_thickness = 5
-        RIGHT_ARROW_05.outline_color = SF.color( 154, 191, 232 )
-
-        LEFT_ARROW_06 = SF::RectangleShape.new(SF.vector2(50, 15))
-        LEFT_ARROW_06.fill_color = SF.color( 137, 170, 208 )
-        LEFT_ARROW_06.outline_thickness = 5
-        LEFT_ARROW_06.outline_color = SF.color( 154, 191, 232 )
-
-        RIGHT_ARROW_06 = SF::RectangleShape.new(SF.vector2(50, 15))
-        RIGHT_ARROW_06.fill_color = SF.color( 137, 170, 208 )
-        RIGHT_ARROW_06.outline_thickness = 5
-        RIGHT_ARROW_06.outline_color = SF.color( 154, 191, 232 )
-
 
         def initialize(is_hud_menu_open : Bool, @@is_stats_menu_open : Bool)
             @@is_hud_menu_open = is_hud_menu_open
@@ -953,14 +913,14 @@ module Menus
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_HP_ARROW.sprite)
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_MP_ARROW.sprite)
             window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_MP_ARROW.sprite)
-            window.draw(LEFT_ARROW_03)
-            window.draw(RIGHT_ARROW_03)
-            window.draw(LEFT_ARROW_04)
-            window.draw(RIGHT_ARROW_04)
-            window.draw(LEFT_ARROW_05)
-            window.draw(RIGHT_ARROW_05)
-            window.draw(LEFT_ARROW_06)
-            window.draw(RIGHT_ARROW_06)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_STR_ARROW.sprite)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_STR_ARROW.sprite)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_DEX_ARROW.sprite)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_DEX_ARROW.sprite)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_INT_ARROW.sprite)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_INT_ARROW.sprite)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_LUK_ARROW.sprite)
+            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_LUK_ARROW.sprite)
         end
 
         def Windows.update_open_views(window)
@@ -1020,6 +980,7 @@ module Menus
                 Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position = SF.vector2(50 * max_scale, 50 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale = SF.vector2(0.5, 1)
 
+
                 Ui_Elements::WindowBoxes::STATS_MENU_NAME_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 7 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_NAME_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
@@ -1028,6 +989,7 @@ module Menus
                 NAME_BOX_TEXT.string = Player::Stats.name.not_nil!
                 SystemMenus.center_save_file_text(NAME_BOX_TEXT)
 
+
                 Ui_Elements::WindowBoxes::STATS_MENU_MONEY_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(98 * max_scale, 7 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_MONEY_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
@@ -1035,6 +997,7 @@ module Menus
                 MONEY_BOX_TEXT.scale = Ui_Elements::WindowBoxes::STATS_MENU_MONEY_BOX.sprite.scale
                 MONEY_BOX_TEXT.string = "Cash: " + Player::Stats.money.not_nil!.to_s
                 SystemMenus.center_save_file_text(MONEY_BOX_TEXT)
+
 
                 Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 90 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
@@ -1050,6 +1013,7 @@ module Menus
                 Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_HP_ARROW.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_HP_ARROW.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
+
                 Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 90 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
@@ -1064,6 +1028,7 @@ module Menus
                 Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_MP_ARROW.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_MP_ARROW.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
+
                 Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 48 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
@@ -1071,6 +1036,7 @@ module Menus
                 LVL_BOX_TEXT.scale = Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite.scale
                 LVL_BOX_TEXT.string = "Lvl: " + Player::Stats.lvl.not_nil!.to_s + " Pts: " + Player::Stats.lvl_points.not_nil!.to_s
                 SystemMenus.center_save_file_text(LVL_BOX_TEXT)
+
 
                 Ui_Elements::WindowBoxes::STATS_MENU_EXP_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 48 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_EXP_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
@@ -1080,6 +1046,7 @@ module Menus
                 EXP_BOX_TEXT.string = "EXP: #{Player::Stats.exp.not_nil!.to_s}/#{Player::Stats.exp_cap.not_nil!.to_s}"
                 SystemMenus.center_save_file_text(EXP_BOX_TEXT)
 
+
                 Ui_Elements::WindowBoxes::STATS_MENU_STR_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 152 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_STR_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
@@ -1088,11 +1055,12 @@ module Menus
                 STR_BOX_TEXT.string = "Str: " + Player::Stats.str.not_nil!.to_s
                 SystemMenus.center_save_file_text(STR_BOX_TEXT)
 
-                LEFT_ARROW_03.position = Ui_Elements::WindowBoxes::STATS_MENU_STR_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
-                LEFT_ARROW_03.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_LEFT_STR_ARROW.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_STR_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_LEFT_STR_ARROW.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                RIGHT_ARROW_03.position = Ui_Elements::WindowBoxes::STATS_MENU_STR_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
-                RIGHT_ARROW_03.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_STR_ARROW.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_STR_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_STR_ARROW.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+
 
                 Ui_Elements::WindowBoxes::STATS_MENU_DEX_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 152 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_DEX_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
@@ -1102,11 +1070,12 @@ module Menus
                 DEX_BOX_TEXT.string = "Dex: " + Player::Stats.dex.not_nil!.to_s
                 SystemMenus.center_save_file_text(DEX_BOX_TEXT)
 
-                LEFT_ARROW_04.position = Ui_Elements::WindowBoxes::STATS_MENU_DEX_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
-                LEFT_ARROW_04.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_LEFT_DEX_ARROW.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_DEX_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_LEFT_DEX_ARROW.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                RIGHT_ARROW_04.position = Ui_Elements::WindowBoxes::STATS_MENU_DEX_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
-                RIGHT_ARROW_04.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_DEX_ARROW.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_DEX_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_DEX_ARROW.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+
 
                 Ui_Elements::WindowBoxes::STATS_MENU_INT_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(5 * max_scale, 214 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_INT_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
@@ -1116,11 +1085,12 @@ module Menus
                 INT_BOX_TEXT.string = "Int: " + Player::Stats.int.not_nil!.to_s
                 SystemMenus.center_save_file_text(INT_BOX_TEXT)
 
-                LEFT_ARROW_05.position = Ui_Elements::WindowBoxes::STATS_MENU_INT_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
-                LEFT_ARROW_05.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_LEFT_INT_ARROW.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_INT_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_LEFT_INT_ARROW.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                RIGHT_ARROW_05.position = Ui_Elements::WindowBoxes::STATS_MENU_INT_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
-                RIGHT_ARROW_05.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_INT_ARROW.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_INT_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_INT_ARROW.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+
 
                 Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.position + SF.vector2(87 * max_scale, 214 * max_scale)
                 Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
@@ -1130,11 +1100,11 @@ module Menus
                 LUK_BOX_TEXT.string = "Luk: " + Player::Stats.luk.not_nil!.to_s
                 SystemMenus.center_save_file_text(LUK_BOX_TEXT)
 
-                LEFT_ARROW_06.position = Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
-                LEFT_ARROW_06.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_LEFT_LUK_ARROW.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.position + SF.vector2(0 * max_scale, 42 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_LEFT_LUK_ARROW.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
-                RIGHT_ARROW_06.position = Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
-                RIGHT_ARROW_06.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
+                Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_LUK_ARROW.sprite.position = Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite.position + SF.vector2(56 * max_scale, 42 * max_scale)
+                Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_LUK_ARROW.sprite.scale = Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite.scale
 
                 Windows.draw_stats_menu(window)
             end
@@ -1234,29 +1204,29 @@ module Menus
             arrow_right_2_x = Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_MP_ARROW.sprite.position.x
             arrow_right_2_y = Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_MP_ARROW.sprite.position.y
     
-            arrow_left_3_x = LEFT_ARROW_03.position.x
-            arrow_left_3_y = LEFT_ARROW_03.position.y
+            arrow_left_3_x = Ui_Elements::WindowBoxes::STATS_MENU_LEFT_STR_ARROW.sprite.position.x
+            arrow_left_3_y = Ui_Elements::WindowBoxes::STATS_MENU_LEFT_STR_ARROW.sprite.position.y
     
-            arrow_right_3_x = RIGHT_ARROW_03.position.x
-            arrow_right_3_y = RIGHT_ARROW_03.position.y
+            arrow_right_3_x = Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_STR_ARROW.sprite.position.x
+            arrow_right_3_y = Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_STR_ARROW.sprite.position.y
     
-            arrow_left_4_x = LEFT_ARROW_04.position.x
-            arrow_left_4_y = LEFT_ARROW_04.position.y
+            arrow_left_4_x = Ui_Elements::WindowBoxes::STATS_MENU_LEFT_DEX_ARROW.sprite.position.x
+            arrow_left_4_y = Ui_Elements::WindowBoxes::STATS_MENU_LEFT_DEX_ARROW.sprite.position.y
     
-            arrow_right_4_x = RIGHT_ARROW_04.position.x
-            arrow_right_4_y = RIGHT_ARROW_04.position.y
+            arrow_right_4_x = Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_DEX_ARROW.sprite.position.x
+            arrow_right_4_y = Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_DEX_ARROW.sprite.position.y
     
-            arrow_left_5_x = LEFT_ARROW_05.position.x
-            arrow_left_5_y = LEFT_ARROW_05.position.y
+            arrow_left_5_x = Ui_Elements::WindowBoxes::STATS_MENU_LEFT_INT_ARROW.sprite.position.x
+            arrow_left_5_y = Ui_Elements::WindowBoxes::STATS_MENU_LEFT_INT_ARROW.sprite.position.y
     
-            arrow_right_5_x = RIGHT_ARROW_05.position.x
-            arrow_right_5_y = RIGHT_ARROW_05.position.y
+            arrow_right_5_x = Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_INT_ARROW.sprite.position.x
+            arrow_right_5_y = Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_INT_ARROW.sprite.position.y
     
-            arrow_left_6_x = LEFT_ARROW_06.position.x
-            arrow_left_6_y = LEFT_ARROW_06.position.y
+            arrow_left_6_x = Ui_Elements::WindowBoxes::STATS_MENU_LEFT_LUK_ARROW.sprite.position.x
+            arrow_left_6_y = Ui_Elements::WindowBoxes::STATS_MENU_LEFT_LUK_ARROW.sprite.position.y
     
-            arrow_right_6_x = RIGHT_ARROW_06.position.x
-            arrow_right_6_y = RIGHT_ARROW_06.position.y
+            arrow_right_6_x = Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_LUK_ARROW.sprite.position.x
+            arrow_right_6_y = Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_LUK_ARROW.sprite.position.y
     
             current_size = window.size
             original_width = 800
@@ -1310,7 +1280,8 @@ module Menus
                 sleep 0.15.seconds
            
     
-            elsif (scaled_mouse_x >= arrow_left_3_x && scaled_mouse_x <= arrow_left_3_x + LEFT_ARROW_03.size.x) && (scaled_mouse_y >= arrow_left_3_y && scaled_mouse_y <= arrow_left_3_y + LEFT_ARROW_03.size.y)
+            elsif (scaled_mouse_x >= arrow_left_3_x && scaled_mouse_x <= arrow_left_3_x + Ui_Elements::WindowBoxes::STATS_MENU_LEFT_STR_ARROW.sprite.global_bounds.width) && 
+                  (scaled_mouse_y >= arrow_left_3_y && scaled_mouse_y <= arrow_left_3_y + Ui_Elements::WindowBoxes::STATS_MENU_LEFT_STR_ARROW.sprite.global_bounds.height)
                 if Player::Stats.str.not_nil! >= 5
                     Player::Stats.str=(Player::Stats.str.not_nil! - 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
@@ -1318,7 +1289,8 @@ module Menus
                 sleep 0.15.seconds
            
     
-            elsif (scaled_mouse_x >= arrow_right_3_x && scaled_mouse_x <= arrow_right_3_x + RIGHT_ARROW_03.size.x) && (scaled_mouse_y >= arrow_right_3_y && scaled_mouse_y <= arrow_right_3_y + RIGHT_ARROW_03.size.y)
+            elsif (scaled_mouse_x >= arrow_right_3_x && scaled_mouse_x <= arrow_right_3_x + Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_STR_ARROW.sprite.global_bounds.width) && 
+                  (scaled_mouse_y >= arrow_right_3_y && scaled_mouse_y <= arrow_right_3_y + Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_STR_ARROW.sprite.global_bounds.height)
                 if Player::Stats.lvl_points.not_nil! > 0
                     Player::Stats.str=(Player::Stats.str.not_nil! + 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
@@ -1326,7 +1298,8 @@ module Menus
                 sleep 0.15.seconds
            
     
-            elsif (scaled_mouse_x >= arrow_left_4_x && scaled_mouse_x <= arrow_left_4_x + LEFT_ARROW_04.size.x) && (scaled_mouse_y >= arrow_left_4_y && scaled_mouse_y <= arrow_left_4_y + LEFT_ARROW_04.size.y)
+            elsif (scaled_mouse_x >= arrow_left_4_x && scaled_mouse_x <= arrow_left_4_x + Ui_Elements::WindowBoxes::STATS_MENU_LEFT_DEX_ARROW.sprite.global_bounds.width) && 
+                  (scaled_mouse_y >= arrow_left_4_y && scaled_mouse_y <= arrow_left_4_y + Ui_Elements::WindowBoxes::STATS_MENU_LEFT_DEX_ARROW.sprite.global_bounds.height)
                 if Player::Stats.dex.not_nil! >= 5
                     Player::Stats.dex=(Player::Stats.dex.not_nil! - 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
@@ -1334,7 +1307,8 @@ module Menus
                 sleep 0.15.seconds
         
     
-            elsif (scaled_mouse_x >= arrow_right_4_x && scaled_mouse_x <= arrow_right_4_x + RIGHT_ARROW_04.size.x) && (scaled_mouse_y >= arrow_right_4_y && scaled_mouse_y <= arrow_right_4_y + RIGHT_ARROW_04.size.y)
+            elsif (scaled_mouse_x >= arrow_right_4_x && scaled_mouse_x <= arrow_right_4_x + Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_DEX_ARROW.sprite.global_bounds.width) && 
+                  (scaled_mouse_y >= arrow_right_4_y && scaled_mouse_y <= arrow_right_4_y + Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_DEX_ARROW.sprite.global_bounds.height)
                 if Player::Stats.lvl_points.not_nil! > 0
                     Player::Stats.dex=(Player::Stats.dex.not_nil! + 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
@@ -1342,7 +1316,8 @@ module Menus
                 sleep 0.15.seconds
        
     
-            elsif (scaled_mouse_x >= arrow_left_5_x && scaled_mouse_x <= arrow_left_5_x + LEFT_ARROW_05.size.x) && (scaled_mouse_y >= arrow_left_5_y && scaled_mouse_y <= arrow_left_5_y + LEFT_ARROW_05.size.y)
+            elsif (scaled_mouse_x >= arrow_left_5_x && scaled_mouse_x <= arrow_left_5_x + Ui_Elements::WindowBoxes::STATS_MENU_LEFT_INT_ARROW.sprite.global_bounds.width) && 
+                  (scaled_mouse_y >= arrow_left_5_y && scaled_mouse_y <= arrow_left_5_y + Ui_Elements::WindowBoxes::STATS_MENU_LEFT_INT_ARROW.sprite.global_bounds.height)
                 if Player::Stats.int.not_nil! >= 5
                     Player::Stats.int=(Player::Stats.int.not_nil! - 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
@@ -1350,7 +1325,8 @@ module Menus
                 sleep 0.15.seconds
       
     
-            elsif (scaled_mouse_x >= arrow_right_5_x && scaled_mouse_x <= arrow_right_5_x + RIGHT_ARROW_05.size.x) && (scaled_mouse_y >= arrow_right_5_y && scaled_mouse_y <= arrow_right_5_y + RIGHT_ARROW_05.size.y)
+            elsif (scaled_mouse_x >= arrow_right_5_x && scaled_mouse_x <= arrow_right_5_x + Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_INT_ARROW.sprite.global_bounds.width) && 
+                  (scaled_mouse_y >= arrow_right_5_y && scaled_mouse_y <= arrow_right_5_y + Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_INT_ARROW.sprite.global_bounds.height)
                 if Player::Stats.lvl_points.not_nil! > 0
                     Player::Stats.int=(Player::Stats.int.not_nil! + 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
@@ -1358,7 +1334,8 @@ module Menus
                 sleep 0.15.seconds
         
     
-            elsif (scaled_mouse_x >= arrow_left_6_x && scaled_mouse_x <= arrow_left_6_x + LEFT_ARROW_06.size.x) && (scaled_mouse_y >= arrow_left_6_y && scaled_mouse_y <= arrow_left_6_y + LEFT_ARROW_06.size.y)
+            elsif (scaled_mouse_x >= arrow_left_6_x && scaled_mouse_x <= arrow_left_6_x + Ui_Elements::WindowBoxes::STATS_MENU_LEFT_LUK_ARROW.sprite.global_bounds.width) && 
+                  (scaled_mouse_y >= arrow_left_6_y && scaled_mouse_y <= arrow_left_6_y + Ui_Elements::WindowBoxes::STATS_MENU_LEFT_LUK_ARROW.sprite.global_bounds.height)
                 if Player::Stats.luk.not_nil! >= 5
                     Player::Stats.luk=(Player::Stats.luk.not_nil! - 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
@@ -1366,7 +1343,8 @@ module Menus
                 sleep 0.15.seconds
       
     
-            elsif (scaled_mouse_x >= arrow_right_6_x && scaled_mouse_x <= arrow_right_6_x + RIGHT_ARROW_06.size.x) && (scaled_mouse_y >= arrow_right_6_y && scaled_mouse_y <= arrow_right_6_y + RIGHT_ARROW_06.size.y)
+            elsif (scaled_mouse_x >= arrow_right_6_x && scaled_mouse_x <= arrow_right_6_x + Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_LUK_ARROW.sprite.global_bounds.width) && 
+                  (scaled_mouse_y >= arrow_right_6_y && scaled_mouse_y <= arrow_right_6_y + Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_LUK_ARROW.sprite.global_bounds.height)
                 if Player::Stats.lvl_points.not_nil! > 0
                     Player::Stats.luk=(Player::Stats.luk.not_nil! + 1)
                     Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
