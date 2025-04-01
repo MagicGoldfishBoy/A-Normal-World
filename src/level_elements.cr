@@ -19,8 +19,8 @@ module LevelElements
         property y : Float64
         property sprite : SF::Sprite
         property can_jump_down : Bool
-        class_property current_platform_array : Array(PlatformBase) = [] of PlatformBase
-        
+        class_property current_platform_array : Array(PlatformBase) = Array(PlatformBase).new
+
         def self.add_platform(platform : PlatformBase)
             PLATFORM_ARRAY << platform
         end
@@ -50,7 +50,24 @@ module LevelElements
             return false
          end
         end
-    end
+
+        # def self.to_json(io : JSON::Builder)
+        #     io.object do
+        #       io.field "name", @name
+        #       io.field "x", @x
+        #       io.field "y", @y
+        #       io.field "can_jump_down", @can_jump_down
+        #     end
+        # end
+        # def self.to_json : JSON::Any
+        #     {
+        #       "name" => @name
+        #     }
+        #   end
+        def to_json(io : IO)
+            io << "{\"name\": \"#{@name}\", \"height\": #{@height}}"
+          end
+        end
     class WallBase
     end
     class ClimbeableBase

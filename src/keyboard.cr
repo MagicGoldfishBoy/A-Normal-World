@@ -5,6 +5,8 @@ require "../src/clothing.cr"
 require "../src/combat.cr"
 require "../src/consumables.cr"
 require "../src/level_editor.cr"
+require "../src/level_elements.cr"
+require "../src/serialization.cr"
 
 module Keyboard
     class Gameplay
@@ -69,7 +71,9 @@ module Keyboard
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::E)
                 #Inventory::ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Small HP Potion").not_nil!, 51)
-                Player::Stats.current_hp = Player::Stats.current_hp - 2
+                #Player::Stats.current_hp = Player::Stats.current_hp - 2
+                Serialization::LevelFile.save_level("serialization_fucking_sucks")
+                #Serialization::LevelFile.load_level("serialization_fucking_sucks")
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::A)

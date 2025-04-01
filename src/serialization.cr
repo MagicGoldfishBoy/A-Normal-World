@@ -1,5 +1,6 @@
 
 require "json"
+require "../src/level_elements.cr"
 
 module Serialization
   class SaveFile
@@ -160,5 +161,49 @@ module Serialization
         puts "name: #{player_stats["name"].as_s}"
     end
   end
+
+  class LevelFile
+    def self.save_level(file : String)
+      platforms = LevelElements::PlatformBase::PLATFORM_ARRAY
+  #this is ugly as fuck, but I HATE serialization too much to care
+      json_data = JSON.build do |json|
+        json.object do
+        json.field "level" do
+        json.object do
+        json.field "platforms" do
+        json.array do
+        platforms.each do |platform|
+        json.object do
+        json.field "name", platform.name
+        end
+        end
+        end
+        end
+        end
+        end
+        end
+        end
+  
+      sanitized_file = file.gsub(/[^\w\-.]/, "_")
+      path = "levels/#{sanitized_file}"
+  
+      Dir.mkdir_p(File.dirname(path))
+      File.write(path, json_data)
+    end
+    # def self.load_level(file : String)
+    #     path = "levels/#{file}"
+    #     return nil unless File.exists?(path)
+    
+    #     json_data = File.read(path)
+    #     parsed = JSON.parse(json_data)
+    
+    #     platforms = parsed["level"]["platforms"].as_a.map do |platform_json|
+    #       name = platform_json["name"].as_s
+    #       LevelElements::PlatformBase.new(name)
+    #     end
+    
+    #     platforms
+    #    end
+    # end
 end
 
