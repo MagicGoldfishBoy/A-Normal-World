@@ -8,8 +8,10 @@ module LevelElements
         PLATFORM_SPRITE_HASH = Hash(String, SF::Sprite).new
         PLATFORM_SPRITE_HASH["test"] = SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40))
 
-        def initialize(name : String, x : Float32, y : Float32, sprite : SF::Sprite, can_jump_down : Bool)
+        def initialize(name : String, id : String, x : Float32, y : Float32, 
+            sprite : SF::Sprite, can_jump_down : Bool)
             @name = name
+            @id = id
             @x = x
             @y = y
             @sprite = sprite
@@ -18,13 +20,14 @@ module LevelElements
         end
 
         property name : String
+        property id : String
         property x : Float32
         property y : Float32
         property sprite : SF::Sprite
         property can_jump_down : Bool
         class_property current_platform_array : Array(PlatformBase) = Array(PlatformBase).new
 
-        @@test_platform = PlatformBase.new("test", 0.0, 0.0, 
+        @@test_platform = PlatformBase.new("test", "test", 0.0, 0.0, 
         SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), true)
 
         def self.add_platform(platform : PlatformBase)
@@ -57,7 +60,7 @@ module LevelElements
          end
         end
         def to_json(io : IO)
-            io << "{\"name\": \"#{@name}\", \"x\": #{@x}, \"y\": #{@y}, \"can_jump_down\": #{@can_jump_down}}"
+            io << "{\"name\": \"#{@name}\", \"id\": \"#{@id}\", \"x\": #{@x}, \"y\": #{@y}, \"can_jump_down\": #{@can_jump_down}}"
         end
         end
     end
