@@ -175,6 +175,7 @@ module Serialization
         platforms.each do |platform|
         json.object do
         json.field "name", platform.name
+        json.field "id", platform.id
         json.field "x", platform.x
         json.field "y", platform.y
         json.field "can_jump_down", platform.can_jump_down
@@ -204,11 +205,13 @@ module Serialization
     
         platforms = parsed["level"]["platforms"].as_a.map do |platform_json|
           name = platform_json["name"].as_s
+          id = platform_json["id"].as_s
           x = platform_json["x"].as_f32
           y = platform_json["y"].as_f32
           can_jump_down = platform_json["can_jump_down"].as_bool
-          sprite = LevelElements::PlatformBase::PLATFORM_SPRITE_HASH[name]
-          LevelElements::PlatformBase.current_platform_array << LevelElements::PlatformBase.new(name, x, y, sprite, can_jump_down)
+          sprite = LevelElements::PlatformBase::PLATFORM_SPRITE_HASH[id]
+          LevelElements::PlatformBase.current_platform_array << LevelElements::PlatformBase.new(name, id, x, y, sprite, can_jump_down)
+          puts "Loaded platform: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Can Jump Down: #{can_jump_down}"
         end
     
         platforms
