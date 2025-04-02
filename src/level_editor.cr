@@ -40,7 +40,6 @@ module LevelEditor
                     platform.x = mouse_position.x.to_f32 - platform.sprite.global_bounds.width / 2
                     platform.y = mouse_position.y.to_f32 - platform.sprite.global_bounds.height / 2
                     platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
-                    puts "Platform #{platform.name} moved to (#{platform.x}, #{platform.y})"
                     window.draw(platform.sprite)
                 end
             end
@@ -51,6 +50,7 @@ module LevelEditor
      class_property view_center : SF::Vector2f = SF::Vector2f.new(350, 300)
      class_property move_speed : Float32 = 5.0
      class_property zoom_level : Float32 = 1.0
+     class_property selector_rectangle : SF::RectangleShape = SF::RectangleShape.new(SF::Vector2f.new(50, 50))
      
      def LevelDisplay.move_view(window, x : Float32, y : Float32)
         view_center.x += x
@@ -78,12 +78,22 @@ module LevelEditor
             scale_y = current_size.y.to_f / original_height
     
             scale_ratio = [scale_x, scale_y].min
-        
-        current_element.sprite.position = SF::Vector2f.new(100, 100)
+
+        self.current_element.sprite.position = SF::Vector2f.new(current_element.x, current_element.y)
+
+        self.selector_rectangle.size = (SF::Vector2f.new(current_element.sprite.global_bounds.width * scale_ratio,
+        current_element.sprite.global_bounds.height * scale_ratio))
+        self.selector_rectangle.position = current_element.sprite.position
+        self.selector_rectangle.fill_color = SF::Color.new(0, 0, 255, 100)
         LevelElements::PlatformBase.current_platform_array.each do |platform|
             platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
+            window.draw(selector_rectangle)
             window.draw(platform.sprite)
         end
+        current_element.sprite.position = SF::Vector2f.new(current_element.x, current_element.y)
+        selector_rectangle = SF::RectangleShape.new(SF::Vector2f.new(current_element.sprite.global_bounds.width * scale_ratio,
+        current_element.sprite.global_bounds.height * scale_ratio))
+        selector_rectangle.position = current_element.sprite.position
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             LevelEditorLogic.mouse_handling(window)
         end

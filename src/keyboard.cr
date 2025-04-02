@@ -112,10 +112,10 @@ module Keyboard
                 LevelEditor::LevelDisplay.move_view(window, 0, LevelEditor::LevelDisplay.move_speed)
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::Hyphen)
-                LevelEditor::LevelDisplay.zoom_view(window, 0.25)
+                LevelEditor::LevelDisplay.zoom_view(window, 0.05)
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::Equal)
-                LevelEditor::LevelDisplay.zoom_view(window, -0.25)
+                LevelEditor::LevelDisplay.zoom_view(window, -0.05)
             end
         end
     end
