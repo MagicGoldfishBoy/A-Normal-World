@@ -27,6 +27,8 @@ module Keyboard
                 "does nothing lol"
             when "normal"
                 Gameplay.normal_gameplay(window)
+            when "level_editor"
+                Gameplay.level_editor(window)
             end
         end
 
@@ -72,7 +74,7 @@ module Keyboard
             if SF::Keyboard.key_pressed?(SF::Keyboard::E)
                 #Inventory::ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Small HP Potion").not_nil!, 51)
                 #Player::Stats.current_hp = Player::Stats.current_hp - 2
-                Serialization::LevelFile.save_level("test1")
+                Serialization::LevelFile.save_level("test2")
                 #Serialization::LevelFile.load_level("serialization_fucking_sucks")
                 sleep 0.25.seconds
             end
@@ -82,6 +84,16 @@ module Keyboard
                 player_strength = Player::Stats.str
                 Combat::Player.normal_attack(window, player_strength)
                 Sprites::Player.refresh_player_sprite(window)
+            end
+        end
+        def Gameplay.level_editor(window)
+            if SF::Keyboard.key_pressed?(SF::Keyboard::S)
+                Serialization::LevelFile.save_level("test2")
+                sleep 0.25.seconds
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::L)
+                Serialization::LevelFile.load_level("test2")
+                sleep 0.25.seconds
             end
         end
     end

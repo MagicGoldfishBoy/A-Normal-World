@@ -39,9 +39,7 @@ module LevelEditor
             scale_ratio = [scale_x, scale_y].min
         
         current_element.sprite.position = SF::Vector2f.new(100, 100)
-        #window.draw(current_element.sprite)
         LevelElements::PlatformBase.current_platform_array.each do |platform|
-            #platform.sprite.scale(scale_ratio, scale_ratio)
             platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
             window.draw(platform.sprite)
         end
