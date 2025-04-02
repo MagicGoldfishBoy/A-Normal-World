@@ -7,9 +7,10 @@ module LevelEditor
     class LevelEditorLogic
         class_property current_platform_index : Int32 = 0
         class_property platform_number : Int32 = 1
+        class_property current_template : LevelElements::PlatformBase = Platforms::Natural_Platform.very_small_grassy_platform
 
         def LevelEditorLogic.spawn_platform(window)
-            if current_platform_index < 0 || current_platform_index >= LevelElements::PlatformBase.get_platforms.size
+            if current_platform_index < 0 || current_platform_index >= LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size
                 puts "Error: current_platform_index #{current_platform_index} is out of bounds."
                 return
             end
@@ -40,6 +41,7 @@ module LevelEditor
                     platform.x = mouse_position.x.to_f32 - platform.sprite.global_bounds.width / 2
                     platform.y = mouse_position.y.to_f32 - platform.sprite.global_bounds.height / 2
                     platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
+                    LevelDisplay.current_element = platform
                     window.draw(platform.sprite)
                 end
             end

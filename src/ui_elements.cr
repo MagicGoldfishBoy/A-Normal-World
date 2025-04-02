@@ -146,6 +146,9 @@ require "../src/fonts.cr"
         CURRENT_LEVEL_ELEMENT_BOX = MenuBoxes.new("Current Level Element Box", "LevEdMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 0, 160, 40)), 160.0, 40.0, 1)
         CURRENT_LEVEL_LEFT_ARROW = MenuBoxes.new("Current Level Left Arrow", "LevEdMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 50, 50, 40)), 50.0, 40.0, 2)
         CURRENT_LEVEL_RIGHT_ARROW = MenuBoxes.new("Current Level Right Arrow", "LevEdMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), 50.0, 40.0, 2)
+        SELECTED_LEVEL_ELEMENT_BOX = MenuBoxes.new("Selected Level Element Box", "LevEdMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 0, 160, 40)), 160.0, 40.0, 1)
+        SELECTED_LEVEL_LEFT_ARROW = MenuBoxes.new("Selected Level Left Arrow", "LevEdMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 50, 50, 40)), 50.0, 40.0, 2)
+        SELECTED_LEVEL_RIGHT_ARROW = MenuBoxes.new("Selected Level Right Arrow", "LevEdMen6", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), 50.0, 40.0, 2)
     end
     class MenuText < Ui_TextBase
         PLAY_BUTTON_TEXT = MenuText.new("Play Button Text", "Main1", SF::Text.new("Play                    Settings                    Quit", QUICKSAND, 34))
@@ -187,6 +190,7 @@ require "../src/fonts.cr"
         LEVEL_BOX_TEXT = MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 34))
 
         CURRENT_LEVEL_ELEMENT_BOX_TEXT = MenuText.new("Current Level Element Box Text", "LevEdMen1", SF::Text.new("Current Level Element", QUICKSAND, 12))
+        CURRENT_LEVEL_TEXT = MenuText.new("Current Level Text", "LevEdMen2", SF::Text.new("", QUICKSAND, 12))
     end
     class WindowBoxes < Ui_BoxBase
         HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 800, 120, 176)), 120.0, 176.0, 3)

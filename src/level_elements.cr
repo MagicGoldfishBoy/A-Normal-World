@@ -5,6 +5,7 @@ require "../src/sprites.cr"
 module LevelElements
     class PlatformBase
         PLATFORM_ARRAY = [] of PlatformBase
+        PLATFORM_TEMPLATE_ARRAY = [] of PlatformBase
         PLATFORM_SPRITE_HASH = Hash(String, SF::Sprite).new
         PLATFORM_SPRITE_HASH["test"] = SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40))
 
@@ -29,6 +30,7 @@ module LevelElements
 
         @@test_platform = PlatformBase.new("test", "test", 0.0, 0.0, 
         SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), true)
+        PLATFORM_TEMPLATE_ARRAY << @@test_platform
 
         def self.add_platform(platform : PlatformBase)
             PLATFORM_ARRAY << platform
