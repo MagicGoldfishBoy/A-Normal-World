@@ -177,7 +177,6 @@ module Serialization
         json.field "name", platform.name
         json.field "x", platform.x
         json.field "y", platform.y
-        #json.field "sprite", platform.name
         json.field "can_jump_down", platform.can_jump_down
         end
         end
