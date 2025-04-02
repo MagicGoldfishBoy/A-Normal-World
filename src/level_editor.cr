@@ -44,6 +44,13 @@ module LevelEditor
                 end
             end
         end
+
+        def LevelEditorLogic.move_current_element(window, x : Float32, y : Float32)
+            current_element = LevelDisplay.current_element
+            current_element.x += x
+            current_element.y += y
+            current_element.sprite.position = SF::Vector2f.new(current_element.x, current_element.y)
+        end
     end
     class LevelDisplay
      class_property current_element : LevelElements::PlatformBase = Platforms::Natural_Platform.very_small_grassy_platform
