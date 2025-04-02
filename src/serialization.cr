@@ -164,7 +164,7 @@ module Serialization
 
   class LevelFile
     def self.save_level(file : String)
-      platforms = LevelElements::PlatformBase::PLATFORM_ARRAY
+      platforms = LevelElements::PlatformBase.current_platform_array
   #this is ugly as fuck, but I HATE serialization too much to care
       json_data = JSON.build do |json|
         json.object do
@@ -199,14 +199,16 @@ module Serialization
     
         json_data = File.read(path)
         parsed = JSON.parse(json_data)
+
+        LevelElements::PlatformBase.current_platform_array.clear
     
         platforms = parsed["level"]["platforms"].as_a.map do |platform_json|
           name = platform_json["name"].as_s
-          x = platform_json["x"].as_f
-          y = platform_json["y"].as_f
+          x = platform_json["x"].as_f32
+          y = platform_json["y"].as_f32
           can_jump_down = platform_json["can_jump_down"].as_bool
           sprite = LevelElements::PlatformBase::PLATFORM_SPRITE_HASH[name]
-          LevelElements::PlatformBase.new(name, x, y, sprite, can_jump_down)
+          LevelElements::PlatformBase.current_platform_array << LevelElements::PlatformBase.new(name, x, y, sprite, can_jump_down)
         end
     
         platforms
