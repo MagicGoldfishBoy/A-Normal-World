@@ -95,6 +95,28 @@ module Keyboard
                 Serialization::LevelFile.load_level("test2")
                 sleep 0.25.seconds
             end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::Left)
+                LevelEditor::LevelDisplay.view_center.x -= LevelEditor::LevelDisplay.move_speed
+                LevelEditor::LevelDisplay.move_view(window, -LevelEditor::LevelDisplay.move_speed, 0)
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::Right)
+                LevelEditor::LevelDisplay.view_center.x += LevelEditor::LevelDisplay.move_speed
+                LevelEditor::LevelDisplay.move_view(window, LevelEditor::LevelDisplay.move_speed, 0)
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::Up)
+                LevelEditor::LevelDisplay.view_center.y -= LevelEditor::LevelDisplay.move_speed
+                LevelEditor::LevelDisplay.move_view(window, 0, -LevelEditor::LevelDisplay.move_speed)
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::Down)
+                LevelEditor::LevelDisplay.view_center.y += LevelEditor::LevelDisplay.move_speed
+                LevelEditor::LevelDisplay.move_view(window, 0, LevelEditor::LevelDisplay.move_speed)
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::Hyphen)
+                LevelEditor::LevelDisplay.zoom_view(window, 0.25)
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::Equal)
+                LevelEditor::LevelDisplay.zoom_view(window, -0.25)
+            end
         end
     end
 end
