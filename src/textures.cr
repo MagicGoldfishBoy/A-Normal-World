@@ -571,3 +571,7 @@
          PRE_ALPHA_THEME_TEXTURE = SF::Texture.from_file("../graphics/pre_alpha_theme.png")
         #  ALPHA_THEME_TEXTURE = SF::Texture.from_file("../graphics/alpha_theme.png")
         #  BETA_THEME_TEXTURE = SF::Texture.from_file("../graphics/beta_theme.png")   
+    #LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+    #L                                      Level Asset Textures                                        L
+    #LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+        PLATFORM_TEXTURE = SF::Texture.from_file("../graphics/platforms.png")
