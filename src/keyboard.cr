@@ -117,6 +117,18 @@ module Keyboard
             if SF::Keyboard.key_pressed?(SF::Keyboard::Equal)
                 LevelEditor::LevelDisplay.zoom_view(window, -0.05)
             end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::A)
+                LevelEditor::LevelEditorLogic.move_current_element(window, -LevelEditor::LevelDisplay.move_speed, 0)
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::D)
+                LevelEditor::LevelEditorLogic.move_current_element(window, LevelEditor::LevelDisplay.move_speed, 0)
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::W)
+                LevelEditor::LevelEditorLogic.move_current_element(window, 0, -LevelEditor::LevelDisplay.move_speed)
+            end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::S)
+                LevelEditor::LevelEditorLogic.move_current_element(window, 0, LevelEditor::LevelDisplay.move_speed)
+            end
         end
     end
 end
