@@ -824,6 +824,7 @@ module Menus
             scale_ratio = [scale_x, scale_y].min
             max_scale = 1.5
             clamped_scale = [scale_ratio, max_scale].min
+            
             Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.scale = SF.vector2(scale_x, scale_y / 5)
             Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position = SF.vector2(0_f32, current_size.y.to_f32 - Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.global_bounds.height)
     
@@ -838,16 +839,16 @@ module Menus
 
             Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.sprite.scale = SF.vector2(scale_x, scale_y)
             Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.sprite.position = Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.position + 
-            SF.vector2(Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.global_bounds.width * scale_x, 0)
+            SF.vector2(Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.global_bounds.width, 0)
             
         end
+        LevelEditor::LevelDisplay.draw_level(window)
         window_size = window.size
         hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
         hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
         window.view = hud_view
 
         Utility::StringUtilities.center_text(Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text)
-        LevelEditor::LevelDisplay.draw_level(window)
         window.draw(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite)
         window.draw(Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite)
         window.draw(Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text)
@@ -884,23 +885,39 @@ module Menus
         scaled_mouse_x = mouse_x / scale_x
         scaled_mouse_y = mouse_y / scale_y
 
+        # if (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.width / scale_x) && 
+        #     (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.height / scale_y)
+        #     if LevelElements::PlatformBase.current_platform_array.size > 0 && LevelEditor::LevelEditorLogic.current_platform_index > 0
+        #         LevelEditor::LevelEditorLogic.current_platform_index -= 1
+        #     elsif LevelElements::PlatformBase.current_platform_array.size > 1
+        #         LevelEditor::LevelEditorLogic.current_platform_index = LevelElements::PlatformBase.current_platform_array.size - 1
+        #     end
+        #     sleep 0.15.seconds
+        # end
+        # if (scaled_mouse_x >= menu_box_3_x / scale_x && scaled_mouse_x <= menu_box_3_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.width / scale_x) && 
+        #     (scaled_mouse_y >= menu_box_3_y / scale_y && scaled_mouse_y <= menu_box_3_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.height / scale_y)
+        #     if LevelElements::PlatformBase.current_platform_array.size > 0 && LevelEditor::LevelEditorLogic.current_platform_index < LevelElements::PlatformBase.current_platform_array.size - 1
+        #         LevelEditor::LevelEditorLogic.current_platform_index += 1
+        #     else
+        #         LevelEditor::LevelEditorLogic.current_platform_index = 0
+        #     end
+        #     sleep 0.15.seconds
+        # end
         if (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.width / scale_x) && 
             (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.height / scale_y)
-            if LevelElements::PlatformBase.current_platform_array.size > 0 && LevelEditor::LevelEditorLogic.current_platform_index > 0
-                LevelEditor::LevelEditorLogic.current_platform_index -= 1
-            elsif LevelElements::PlatformBase.current_platform_array.size > 1
-                LevelEditor::LevelEditorLogic.current_platform_index = LevelElements::PlatformBase.current_platform_array.size - 1
-            end
-            sleep 0.15.seconds
+          if LevelElements::PlatformBase::PLATFORM_ARRAY.size > 0 && LevelEditor::LevelEditorLogic.current_platform_index > 0
+            LevelEditor::LevelEditorLogic.current_platform_index -= 1
+          else
+            LevelEditor::LevelEditorLogic.current_platform_index = LevelElements::PlatformBase::PLATFORM_ARRAY.size - 1
+          end
         end
         if (scaled_mouse_x >= menu_box_3_x / scale_x && scaled_mouse_x <= menu_box_3_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.width / scale_x) && 
             (scaled_mouse_y >= menu_box_3_y / scale_y && scaled_mouse_y <= menu_box_3_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.height / scale_y)
-            if LevelElements::PlatformBase.current_platform_array.size > 0 && LevelEditor::LevelEditorLogic.current_platform_index < LevelElements::PlatformBase.current_platform_array.size - 1
-                LevelEditor::LevelEditorLogic.current_platform_index += 1
-            else
-                LevelEditor::LevelEditorLogic.current_platform_index = 0
-            end
-            sleep 0.15.seconds
+          if LevelElements::PlatformBase::PLATFORM_ARRAY.size > 0 && LevelEditor::LevelEditorLogic.current_platform_index < LevelElements::PlatformBase::PLATFORM_ARRAY.size - 1
+            LevelEditor::LevelEditorLogic.current_platform_index += 1
+          else
+            LevelEditor::LevelEditorLogic.current_platform_index = 0
+          end
         end
         if (scaled_mouse_x >= menu_box_4_x / scale_x && scaled_mouse_x <= menu_box_4_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.width / scale_x) && 
             (scaled_mouse_y >= menu_box_4_y / scale_y && scaled_mouse_y <= menu_box_4_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.height / scale_y)
