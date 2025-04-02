@@ -847,14 +847,67 @@ module Menus
         window.view = hud_view
 
         Utility::StringUtilities.center_text(Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text)
-
+        LevelEditor::LevelDisplay.draw_level(window)
         window.draw(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite)
         window.draw(Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite)
         window.draw(Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text)
         window.draw(Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.sprite)
         window.draw(Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.sprite)
-
+        if SF::Mouse.button_pressed?(SF::Mouse::Left)
+            SystemMenus.level_editor_ui_mouse_handling(window)
+        end
     end
+    def SystemMenus.level_editor_ui_mouse_handling(window)
+        window_size = window.size
+        hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+        hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
+        window.view = hud_view
+        mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
+
+        mouse_x = mouse_position.x
+        mouse_y = mouse_position.y
+
+        menu_box_2_x = Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.sprite.position.x
+        menu_box_2_y = Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.sprite.position.y
+        menu_box_3_x = Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.sprite.position.x
+        menu_box_3_y = Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.sprite.position.y
+        menu_box_4_x = Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.position.x
+        menu_box_4_y = Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.position.y
+
+        current_size = window.size
+        original_width = 800
+        original_height = 600
+    
+        scale_x = current_size.x.to_f / original_width
+        scale_y = current_size.y.to_f / original_height
+    
+        scaled_mouse_x = mouse_x / scale_x
+        scaled_mouse_y = mouse_y / scale_y
+
+        if (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.width / scale_x) && 
+            (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.height / scale_y)
+            if LevelElements::PlatformBase.current_platform_array.size > 0 && LevelEditor::LevelEditorLogic.current_platform_index > 0
+                LevelEditor::LevelEditorLogic.current_platform_index -= 1
+            elsif LevelElements::PlatformBase.current_platform_array.size > 1
+                LevelEditor::LevelEditorLogic.current_platform_index = LevelElements::PlatformBase.current_platform_array.size - 1
+            end
+            sleep 0.15.seconds
+        end
+        if (scaled_mouse_x >= menu_box_3_x / scale_x && scaled_mouse_x <= menu_box_3_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.width / scale_x) && 
+            (scaled_mouse_y >= menu_box_3_y / scale_y && scaled_mouse_y <= menu_box_3_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.height / scale_y)
+            if LevelElements::PlatformBase.current_platform_array.size > 0 && LevelEditor::LevelEditorLogic.current_platform_index < LevelElements::PlatformBase.current_platform_array.size - 1
+                LevelEditor::LevelEditorLogic.current_platform_index += 1
+            else
+                LevelEditor::LevelEditorLogic.current_platform_index = 0
+            end
+            sleep 0.15.seconds
+        end
+        if (scaled_mouse_x >= menu_box_4_x / scale_x && scaled_mouse_x <= menu_box_4_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.width / scale_x) && 
+            (scaled_mouse_y >= menu_box_4_y / scale_y && scaled_mouse_y <= menu_box_4_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.height / scale_y)
+            LevelEditor::LevelEditorLogic.spawn_platform(window)
+            sleep 0.15.seconds
+        end
+     end
   end
 
     class Windows # I now know why everyone hates coding UI shit -_-

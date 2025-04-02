@@ -8,7 +8,7 @@ module LevelElements
         PLATFORM_SPRITE_HASH = Hash(String, SF::Sprite).new
         PLATFORM_SPRITE_HASH["test"] = SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40))
 
-        def initialize(name : String, x : Float64, y : Float64, sprite : SF::Sprite, can_jump_down : Bool)
+        def initialize(name : String, x : Float32, y : Float32, sprite : SF::Sprite, can_jump_down : Bool)
             @name = name
             @x = x
             @y = y
@@ -18,13 +18,13 @@ module LevelElements
         end
 
         property name : String
-        property x : Float64
-        property y : Float64
+        property x : Float32
+        property y : Float32
         property sprite : SF::Sprite
         property can_jump_down : Bool
         class_property current_platform_array : Array(PlatformBase) = Array(PlatformBase).new
 
-        @@test_platform = PlatformBase.new("test", 0, 0, 
+        @@test_platform = PlatformBase.new("test", 0.0, 0.0, 
         SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), true)
 
         def self.add_platform(platform : PlatformBase)

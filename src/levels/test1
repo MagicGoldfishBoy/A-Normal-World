@@ -1,1 +1,1 @@
-{"level":{"platforms":[{"name":"test","x":0.0,"y":0.0,"sprite":"test","can_jump_down":true}]}}
+{"level":{"platforms":[{"name":"test","x":0.0,"y":0.0,"can_jump_down":true},{"name":"very_small_grassy_platform","x":0.0,"y":0.0,"can_jump_down":true},{"name":"small_grassy_platform","x":0.0,"y":0.0,"can_jump_down":true}]}}
