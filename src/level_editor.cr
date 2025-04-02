@@ -14,7 +14,7 @@ module LevelEditor
                 return
             end
 
-            current_platform = LevelElements::PlatformBase.get_platforms[current_platform_index]
+            current_platform = LevelDisplay.current_element
             name = "Platform_#{platform_number}"
             platform = LevelElements::PlatformBase.new(
                 name,
