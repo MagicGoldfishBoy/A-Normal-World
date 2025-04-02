@@ -175,6 +175,10 @@ module Serialization
         platforms.each do |platform|
         json.object do
         json.field "name", platform.name
+        json.field "x", platform.x
+        json.field "y", platform.y
+        #json.field "sprite", platform.name
+        json.field "can_jump_down", platform.can_jump_down
         end
         end
         end
@@ -190,20 +194,24 @@ module Serialization
       Dir.mkdir_p(File.dirname(path))
       File.write(path, json_data)
     end
-    # def self.load_level(file : String)
-    #     path = "levels/#{file}"
-    #     return nil unless File.exists?(path)
+    def self.load_level(file : String)
+        path = "levels/#{file}"
+        return nil unless File.exists?(path)
     
-    #     json_data = File.read(path)
-    #     parsed = JSON.parse(json_data)
+        json_data = File.read(path)
+        parsed = JSON.parse(json_data)
     
-    #     platforms = parsed["level"]["platforms"].as_a.map do |platform_json|
-    #       name = platform_json["name"].as_s
-    #       LevelElements::PlatformBase.new(name)
-    #     end
+        platforms = parsed["level"]["platforms"].as_a.map do |platform_json|
+          name = platform_json["name"].as_s
+          x = platform_json["x"].as_f
+          y = platform_json["y"].as_f
+          can_jump_down = platform_json["can_jump_down"].as_bool
+          sprite = LevelElements::PlatformBase::PLATFORM_SPRITE_HASH[name]
+          LevelElements::PlatformBase.new(name, x, y, sprite, can_jump_down)
+        end
     
-    #     platforms
-    #    end
-    # end
+        platforms
+       end
+    end
 end
 

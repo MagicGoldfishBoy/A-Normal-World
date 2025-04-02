@@ -5,6 +5,9 @@ require "../src/sprites.cr"
 module LevelElements
     class PlatformBase
         PLATFORM_ARRAY = [] of PlatformBase
+        PLATFORM_SPRITE_HASH = Hash(String, SF::Sprite).new
+        PLATFORM_SPRITE_HASH["test"] = SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40))
+
         def initialize(name : String, x : Float64, y : Float64, sprite : SF::Sprite, can_jump_down : Bool)
             @name = name
             @x = x
@@ -20,6 +23,9 @@ module LevelElements
         property sprite : SF::Sprite
         property can_jump_down : Bool
         class_property current_platform_array : Array(PlatformBase) = Array(PlatformBase).new
+
+        @@test_platform = PlatformBase.new("test", 0, 0, 
+        SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), true)
 
         def self.add_platform(platform : PlatformBase)
             PLATFORM_ARRAY << platform
@@ -50,24 +56,11 @@ module LevelElements
             return false
          end
         end
-
-        # def self.to_json(io : JSON::Builder)
-        #     io.object do
-        #       io.field "name", @name
-        #       io.field "x", @x
-        #       io.field "y", @y
-        #       io.field "can_jump_down", @can_jump_down
-        #     end
-        # end
-        # def self.to_json : JSON::Any
-        #     {
-        #       "name" => @name
-        #     }
-        #   end
         def to_json(io : IO)
-            io << "{\"name\": \"#{@name}\", \"height\": #{@height}}"
-          end
+            io << "{\"name\": \"#{@name}\", \"x\": #{@x}, \"y\": #{@y}, \"can_jump_down\": #{@can_jump_down}}"
         end
+        end
+    end
     class WallBase
     end
     class ClimbeableBase
@@ -82,4 +75,5 @@ module LevelElements
     end
     class SpikeBase
     end
-end
+    class WhackeableObjects
+    end

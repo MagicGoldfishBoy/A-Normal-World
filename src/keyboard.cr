@@ -72,7 +72,7 @@ module Keyboard
             if SF::Keyboard.key_pressed?(SF::Keyboard::E)
                 #Inventory::ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Small HP Potion").not_nil!, 51)
                 #Player::Stats.current_hp = Player::Stats.current_hp - 2
-                Serialization::LevelFile.save_level("serialization_fucking_sucks")
+                Serialization::LevelFile.save_level("test1")
                 #Serialization::LevelFile.load_level("serialization_fucking_sucks")
                 sleep 0.25.seconds
             end
