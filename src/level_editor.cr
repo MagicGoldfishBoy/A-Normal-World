@@ -9,12 +9,26 @@ module LevelEditor
         class_property current_element_type : String = "Platform"
         class_property element_array : Array(String) = ["Platform", "Decor"]
 
+        class_property current_element_array : Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) = 
+        self.spawned_platform_array
+
         class_property current_platform_index : Int32 = 0
         class_property spawned_platform_index : Int32 = 0
         class_property spawned_platform_array : Array(LevelElements::PlatformBase) = [] of LevelElements::PlatformBase
+        class_property spawned_decor_array : Array(LevelElements::DecorBase) = [] of LevelElements::DecorBase
         class_property platform_number : Int32 = 1
         class_property current_template : (LevelElements::PlatformBase | LevelElements::DecorBase) = Platforms::Natural_Platform.very_small_grassy_platform
 
+        def LevelEditorLogic.set_current_array
+            case current_element_type
+            when "Platform"
+                self.current_element_array = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY
+            when "Decor"
+                self.current_element_array = LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY
+            else
+                puts "Error: Unknown element type '#{current_element_type}'"
+            end
+        end
 
         def LevelEditorLogic.spawn_element(window)
             if current_platform_index < 0 || current_platform_index >= LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size
