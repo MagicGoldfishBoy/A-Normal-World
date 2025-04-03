@@ -3,6 +3,33 @@ require "../src/textures.cr"
 require "../src/level_elements.cr"
 
 module Platforms include LevelElements
+    class PlatformMethods
+        class_property platform_number : Int32 = 1
+        def PlatformMethods.spawn_platform(window)
+            if LevelEditor::LevelEditorLogic.current_platform_index >= LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size
+                puts "Error: No platform available to spawn. Index was '#{LevelEditor::LevelEditorLogic.current_platform_index}'"
+                if LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.empty?
+                    puts "Platform array is empty."
+                end
+                return
+            end
+            current_platform = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY[LevelEditor::LevelEditorLogic.current_platform_index]
+            name = "Platform_#{platform_number}"
+            platform = LevelElements::PlatformBase.new(
+                name,
+                current_platform.id,
+                current_platform.x,
+                current_platform.y,
+                LevelElements::PlatformBase::PLATFORM_SPRITE_HASH[current_platform.id].dup,
+                current_platform.can_jump_down
+            )
+            platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
+            LevelElements::PlatformBase.current_platform_array << platform
+            LevelEditor::LevelEditorLogic.spawned_platform_array << platform
+            LevelEditor::LevelDisplay.current_element = platform
+            self.platform_number += 1
+        end
+    end
     class Natural_Platform < PlatformBase
 
         class_property very_small_grassy_platform : Natural_Platform = new("very_small_grassy_platform", 

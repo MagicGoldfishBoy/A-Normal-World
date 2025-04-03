@@ -1,1 +1,1 @@
-{"level":{"platforms":[{"name":"Platform_2","id":"test","x":121.0,"y":320.0,"can_jump_down":true},{"name":"Platform_3","id":"small_grassy_platform","x":226.5,"y":365.0,"can_jump_down":true}]}}
+{"level":{"platforms":[{"name":"Platform_2","id":"test","x":239.0,"y":203.0,"can_jump_down":true},{"name":"Platform_3","id":"small_grassy_platform","x":305.5,"y":286.0,"can_jump_down":true},{"name":"Platform_2","id":"very_small_grassy_platform","x":414.0,"y":190.0,"can_jump_down":true}]}}
