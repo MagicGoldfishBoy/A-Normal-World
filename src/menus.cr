@@ -900,6 +900,8 @@ module Menus
         menu_box_4_y = Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.position.y
         menu_box_5_x = Ui_Elements::MenuBoxes::SELECTED_LEVEL_LEFT_ARROW.sprite.position.x
         menu_box_5_y = Ui_Elements::MenuBoxes::SELECTED_LEVEL_LEFT_ARROW.sprite.position.y
+        menu_box_6_x = Ui_Elements::MenuBoxes::SELECTED_LEVEL_RIGHT_ARROW.sprite.position.x
+        menu_box_6_y = Ui_Elements::MenuBoxes::SELECTED_LEVEL_RIGHT_ARROW.sprite.position.y
 
         current_size = window.size
         original_width = 800
@@ -940,6 +942,18 @@ module Menus
                 LevelEditor::LevelEditorLogic.spawned_platform_index -= 1
             elsif LevelEditor::LevelEditorLogic.spawned_platform_array.size > 0
                 LevelEditor::LevelEditorLogic.spawned_platform_index = LevelEditor::LevelEditorLogic.spawned_platform_array.size - 1
+            end
+            if LevelEditor::LevelEditorLogic.spawned_platform_array.size > 0
+                LevelEditor::LevelDisplay.current_element = LevelEditor::LevelEditorLogic.spawned_platform_array[LevelEditor::LevelEditorLogic.spawned_platform_index]
+            end
+          sleep 0.15.seconds
+        end
+        if (scaled_mouse_x >= menu_box_6_x / scale_x && scaled_mouse_x <= menu_box_6_x + Ui_Elements::MenuBoxes::SELECTED_LEVEL_LEFT_ARROW.width / scale_x) && 
+            (scaled_mouse_y >= menu_box_6_y / scale_y && scaled_mouse_y <= menu_box_6_y / scale_y + Ui_Elements::MenuBoxes::SELECTED_LEVEL_LEFT_ARROW.height / scale_y)
+            if LevelEditor::LevelEditorLogic.spawned_platform_array.size > 0 && LevelEditor::LevelEditorLogic.spawned_platform_index < LevelEditor::LevelEditorLogic.spawned_platform_array.size
+                LevelEditor::LevelEditorLogic.spawned_platform_index += 1
+            elsif LevelEditor::LevelEditorLogic.spawned_platform_array.size > 0
+                LevelEditor::LevelEditorLogic.spawned_platform_index = 0
             end
             if LevelEditor::LevelEditorLogic.spawned_platform_array.size > 0
                 LevelEditor::LevelDisplay.current_element = LevelEditor::LevelEditorLogic.spawned_platform_array[LevelEditor::LevelEditorLogic.spawned_platform_index]
