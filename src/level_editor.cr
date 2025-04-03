@@ -39,7 +39,7 @@ module LevelEditor
         def LevelEditorLogic.mouse_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
             bounding_box_size = 50.0
-            LevelElements::PlatformBase.current_platform_array.select do |platform|
+            LevelEditor::LevelEditorLogic.spawned_platform_array.select do |platform|
                 (platform.x - mouse_position.x).abs <= bounding_box_size &&
                 (platform.y - mouse_position.y).abs <= bounding_box_size
             end.each do |platform|
@@ -100,7 +100,7 @@ module LevelEditor
         current_element.sprite.global_bounds.height * scale_ratio))
         self.selector_rectangle.position = current_element.sprite.position
         self.selector_rectangle.fill_color = SF::Color.new(0, 0, 255, 100)
-        LevelElements::PlatformBase.current_platform_array.each do |platform|
+        LevelEditor::LevelEditorLogic.spawned_platform_array.each do |platform|
             platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
             window.draw(selector_rectangle)
             window.draw(platform.sprite)

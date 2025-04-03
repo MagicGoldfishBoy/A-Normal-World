@@ -918,7 +918,6 @@ module Menus
           else
             LevelEditor::LevelEditorLogic.current_platform_index = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size - 1
           end
-          LevelEditor::LevelDisplay.current_element = LevelElements::PlatformBase.get_platforms[LevelEditor::LevelEditorLogic.current_platform_index]
           sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_3_x / scale_x && scaled_mouse_x <= menu_box_3_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.width / scale_x) && 
@@ -928,7 +927,6 @@ module Menus
           else
             LevelEditor::LevelEditorLogic.current_platform_index = 0
           end
-          LevelEditor::LevelDisplay.current_element = LevelElements::PlatformBase.get_platforms[LevelEditor::LevelEditorLogic.current_platform_index]
           sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_4_x / scale_x && scaled_mouse_x <= menu_box_4_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.width / scale_x) && 
