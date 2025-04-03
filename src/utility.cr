@@ -25,6 +25,20 @@ module Utility
 
     class ArrayUtilities
 
+        def self.navigate_array(direction, array, index)
+            return 0 if array.empty?
+            case direction
+            when "forward"
+              index = (index + 1) % array.size
+            when "backward"
+              index = (index - 1) % array.size
+            else
+              index = 0
+            end
+          
+            index
+          end
+
         def ArrayUtilities.organise_array_by_length_short_to_long(window, array : Array(T), tab)forall T
             none_array = [] of T
             very_short_array = [] of T
