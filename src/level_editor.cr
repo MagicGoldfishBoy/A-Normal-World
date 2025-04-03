@@ -5,7 +5,10 @@ require "../src/platforms.cr"
 
 module LevelEditor 
     class LevelEditorLogic
+        class_property current_element_index : Int32 = 0
         class_property current_element_type : String = "Platform"
+        class_property element_array : Array(String) = ["Platform", "Decor"]
+
         class_property current_platform_index : Int32 = 0
         class_property spawned_platform_index : Int32 = 0
         class_property spawned_platform_array : Array(LevelElements::PlatformBase) = [] of LevelElements::PlatformBase
