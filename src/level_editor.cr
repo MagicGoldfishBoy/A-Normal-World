@@ -3,15 +3,17 @@ require "../src/textures.cr"
 require "../src/level_elements.cr"
 require "../src/platforms.cr"
 
-module LevelEditor
+module LevelEditor 
     class LevelEditorLogic
+        class_property current_element_type : String = "Platform"
         class_property current_platform_index : Int32 = 0
         class_property spawned_platform_index : Int32 = 0
         class_property spawned_platform_array : Array(LevelElements::PlatformBase) = [] of LevelElements::PlatformBase
         class_property platform_number : Int32 = 1
-        class_property current_template : LevelElements::PlatformBase = Platforms::Natural_Platform.very_small_grassy_platform
+        class_property current_template : (LevelElements::PlatformBase | LevelElements::DecorBase) = Platforms::Natural_Platform.very_small_grassy_platform
 
-        def LevelEditorLogic.spawn_platform(window)
+
+        def LevelEditorLogic.spawn_element(window)
             if current_platform_index < 0 || current_platform_index >= LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size
                 puts "Error: current_platform_index #{current_platform_index} is out of bounds."
                 return
@@ -60,8 +62,9 @@ module LevelEditor
             current_element.sprite.position = SF::Vector2f.new(current_element.x, current_element.y)
         end
     end
-    class LevelDisplay
-     class_property current_element : LevelElements::PlatformBase = Platforms::Natural_Platform.very_small_grassy_platform
+    class LevelDisplay 
+     class_property current_element : (LevelElements::PlatformBase | LevelElements::DecorBase) = 
+     Platforms::Natural_Platform.very_small_grassy_platform
      class_property view_center : SF::Vector2f = SF::Vector2f.new(350, 300)
      class_property move_speed : Float32 = 5.0
      class_property zoom_level : Float32 = 1.0

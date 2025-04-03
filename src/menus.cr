@@ -843,6 +843,7 @@ module Menus
             Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.sprite.position = Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.position + 
             SF.vector2(Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.global_bounds.width, 0)
 
+
             Ui_Elements::MenuBoxes::SELECTED_LEVEL_ELEMENT_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
             Ui_Elements::MenuBoxes::SELECTED_LEVEL_ELEMENT_BOX.sprite.position = Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position + SF.vector2(55 * scale_x, 5 * scale_y)
 
@@ -858,7 +859,22 @@ module Menus
             Ui_Elements::MenuBoxes::SELECTED_LEVEL_RIGHT_ARROW.sprite.position = Ui_Elements::MenuBoxes::SELECTED_LEVEL_ELEMENT_BOX.sprite.position +
             SF.vector2(Ui_Elements::MenuBoxes::SELECTED_LEVEL_ELEMENT_BOX.sprite.global_bounds.width, 0)
 
-            
+
+            Ui_Elements::MenuBoxes::LEVEL_ELEMENT_TYPE_MENU.sprite.scale = SF.vector2(scale_x, scale_y)
+            Ui_Elements::MenuBoxes::LEVEL_ELEMENT_TYPE_MENU.sprite.position = Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position + SF.vector2(325 * scale_x, 55 * scale_y)
+
+            Ui_Elements::MenuText::LEVEL_ELEMENT_TYPE_TEXT.text.scale = SF.vector2(scale_x, scale_y)
+            Ui_Elements::MenuText::LEVEL_ELEMENT_TYPE_TEXT.text.position = Ui_Elements::MenuBoxes::LEVEL_ELEMENT_TYPE_MENU.sprite.position + SF.vector2(75 * clamped_scale, 12 * scale_ratio)
+            Ui_Elements::MenuText::LEVEL_ELEMENT_TYPE_TEXT.text.string = LevelEditor::LevelEditorLogic.current_element_type
+            Utility::StringUtilities.center_text(Ui_Elements::MenuText::LEVEL_ELEMENT_TYPE_TEXT.text)
+
+            Ui_Elements::MenuBoxes::LEVEL_ELEMENT_LEFT_ARROW.sprite.scale = SF.vector2(scale_x, scale_y)
+            Ui_Elements::MenuBoxes::LEVEL_ELEMENT_LEFT_ARROW.sprite.position = Ui_Elements::MenuBoxes::LEVEL_ELEMENT_TYPE_MENU.sprite.position - SF.vector2(50 * scale_x, 0)
+            Ui_Elements::MenuBoxes::LEVEL_ELEMENT_LEFT_ARROW.sprite.scale = SF.vector2(scale_x, scale_y)
+
+            Ui_Elements::MenuBoxes::LEVEL_ELEMENT_RIGHT_ARROW.sprite.scale = SF.vector2(scale_x, scale_y)
+            Ui_Elements::MenuBoxes::LEVEL_ELEMENT_RIGHT_ARROW.sprite.position = Ui_Elements::MenuBoxes::LEVEL_ELEMENT_TYPE_MENU.sprite.position +
+            SF.vector2(Ui_Elements::MenuBoxes::LEVEL_ELEMENT_TYPE_MENU.sprite.global_bounds.width, 0)
         end
         LevelEditor::LevelDisplay.draw_level(window)
         window_size = window.size
@@ -870,14 +886,21 @@ module Menus
         Utility::StringUtilities.center_text(Ui_Elements::MenuText::CURRENT_LEVEL_TEXT.text)
 
         window.draw(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite)
+
         window.draw(Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite)
         window.draw(Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text)
         window.draw(Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.sprite)
         window.draw(Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.sprite)
+
         window.draw(Ui_Elements::MenuBoxes::SELECTED_LEVEL_ELEMENT_BOX.sprite)
         window.draw(Ui_Elements::MenuText::CURRENT_LEVEL_TEXT.text)
         window.draw(Ui_Elements::MenuBoxes::SELECTED_LEVEL_LEFT_ARROW.sprite)
         window.draw(Ui_Elements::MenuBoxes::SELECTED_LEVEL_RIGHT_ARROW.sprite)
+
+        window.draw(Ui_Elements::MenuBoxes::LEVEL_ELEMENT_TYPE_MENU.sprite)
+        window.draw(Ui_Elements::MenuText::LEVEL_ELEMENT_TYPE_TEXT.text)
+        window.draw(Ui_Elements::MenuBoxes::LEVEL_ELEMENT_LEFT_ARROW.sprite)
+        window.draw(Ui_Elements::MenuBoxes::LEVEL_ELEMENT_RIGHT_ARROW.sprite)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             SystemMenus.level_editor_ui_mouse_handling(window)
         end
@@ -933,7 +956,7 @@ module Menus
         end
         if (scaled_mouse_x >= menu_box_4_x / scale_x && scaled_mouse_x <= menu_box_4_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.width / scale_x) && 
             (scaled_mouse_y >= menu_box_4_y / scale_y && scaled_mouse_y <= menu_box_4_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.height / scale_y)
-            LevelEditor::LevelEditorLogic.spawn_platform(window)
+            LevelEditor::LevelEditorLogic.spawn_element(window)
             sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_5_x / scale_x && scaled_mouse_x <= menu_box_5_x + Ui_Elements::MenuBoxes::SELECTED_LEVEL_LEFT_ARROW.width / scale_x) && 
@@ -948,9 +971,9 @@ module Menus
             end
           sleep 0.15.seconds
         end
-        if (scaled_mouse_x >= menu_box_6_x / scale_x && scaled_mouse_x <= menu_box_6_x + Ui_Elements::MenuBoxes::SELECTED_LEVEL_LEFT_ARROW.width / scale_x) && 
-            (scaled_mouse_y >= menu_box_6_y / scale_y && scaled_mouse_y <= menu_box_6_y / scale_y + Ui_Elements::MenuBoxes::SELECTED_LEVEL_LEFT_ARROW.height / scale_y)
-            if LevelEditor::LevelEditorLogic.spawned_platform_array.size > 0 && LevelEditor::LevelEditorLogic.spawned_platform_index < LevelEditor::LevelEditorLogic.spawned_platform_array.size
+        if (scaled_mouse_x >= menu_box_6_x / scale_x && scaled_mouse_x <= menu_box_6_x + Ui_Elements::MenuBoxes::SELECTED_LEVEL_RIGHT_ARROW.width / scale_x) && 
+            (scaled_mouse_y >= menu_box_6_y / scale_y && scaled_mouse_y <= menu_box_6_y / scale_y + Ui_Elements::MenuBoxes::SELECTED_LEVEL_RIGHT_ARROW.height / scale_y)
+            if LevelEditor::LevelEditorLogic.spawned_platform_array.size > 0 && LevelEditor::LevelEditorLogic.spawned_platform_index < LevelEditor::LevelEditorLogic.spawned_platform_array.size - 1
                 LevelEditor::LevelEditorLogic.spawned_platform_index += 1
             elsif LevelEditor::LevelEditorLogic.spawned_platform_array.size > 0
                 LevelEditor::LevelEditorLogic.spawned_platform_index = 0

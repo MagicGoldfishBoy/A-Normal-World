@@ -61,20 +61,49 @@ module LevelElements
             return false
          end
         end
+
         def to_json(io : IO)
             io << "{\"name\": \"#{@name}\", \"id\": \"#{@id}\", \"x\": #{@x}, \"y\": #{@y}, \"can_jump_down\": #{@can_jump_down}}"
         end
-        end
-    end
-    class WallBase
-    end
-    class ClimbeableBase
-    end
-    class TeleportBase
-    end
-    class FluidBase
-    end
+    end  # <-- This was missing
+    # class WallBase
+    # end
+    # class ClimbeableBase
+    # end
+    # class TeleportBase
+    # end
+    # class FluidBase
     class DecorBase
+        DECOR_TEMPLATE_ARRAY = [] of DecorBase
+        DECOR_SPRITE_HASH = Hash(String, SF::Sprite).new
+
+        def initialize(name : String, id : String, x : Float32, y : Float32, sprite : SF::Sprite, layer : Int32)
+            @name = name
+            @id = id
+            @x = x
+            @y = y
+            @sprite = sprite
+            @layer = layer
+        end
+
+        property name : String
+        property id : String
+        property x : Float32
+        property y : Float32
+        property sprite : SF::Sprite
+        property layer : Int32
+
+        def to_json(io : IO)
+            JSON.build(io) do |json|
+                json.object do
+                    json.field("name", @name)
+                    json.field("id", @id)
+                    json.field("x", @x)
+                    json.field("y", @y)
+                    json.field("layer", @layer)
+                end
+            end
+        end
     end
     class EnemyBase
     end
@@ -82,3 +111,4 @@ module LevelElements
     end
     class WhackeableObjects
     end
+end
