@@ -18,7 +18,6 @@ module LevelEditor
         class_property current_platform_index : Int32 = 0
         class_property spawned_platform_index : Int32 = 0
         class_property spawned_platform_array : Array(LevelElements::PlatformBase) = [] of LevelElements::PlatformBase
-        class_property platform_number : Int32 = 1
 
         class_property current_decor_index : Int32 = 0
         class_property spawned_decor_index : Int32 = 0
@@ -46,29 +45,12 @@ module LevelEditor
         def LevelEditorLogic.spawn_element(window)
             case self.current_element_type
             when "Platform"
-                spawn_platform(window)
+                Platforms::PlatformMethods.spawn_platform(window)
             when "Decor"
                 spawn_decor(window)
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
-        end
-        def LevelEditorLogic.spawn_platform(window)
-            current_platform = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY[LevelEditor::LevelEditorLogic.current_platform_index]
-            name = "Platform_#{platform_number}"
-            platform = LevelElements::PlatformBase.new(
-                name,
-                current_platform.id,
-                current_platform.x,
-                current_platform.y,
-                LevelElements::PlatformBase::PLATFORM_SPRITE_HASH[current_platform.id].dup,
-                current_platform.can_jump_down
-            )
-            platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
-            LevelElements::PlatformBase.current_platform_array << platform
-            spawned_platform_array << platform
-            LevelDisplay.current_element = platform
-            self.platform_number += 1
         end
         def LevelEditorLogic.spawn_decor(window)
             if LevelEditor::LevelEditorLogic.current_decor_index >= LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY.size
@@ -79,7 +61,7 @@ module LevelEditor
                 return
             end
             current_decor = LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY[LevelEditor::LevelEditorLogic.current_decor_index]
-            name = "Decor_#{platform_number}"
+            name = "Decor_#{decor_number}"
             decor = LevelElements::DecorBase.new(
                 name,
                 current_decor.id,
@@ -90,7 +72,7 @@ module LevelEditor
             )
             decor.sprite.position = SF::Vector2f.new(decor.x, decor.y)
             spawned_decor_array << decor
-            self.platform_number += 1
+            self.decor_number += 1
         end
         def LevelEditorLogic.mouse_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)

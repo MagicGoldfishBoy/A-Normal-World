@@ -214,7 +214,7 @@ module Serialization
           LevelEditor::LevelEditorLogic.spawned_platform_array << LevelElements::PlatformBase.new(name, id, x, y, sprite, can_jump_down)
           puts "Loaded platform: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Can Jump Down: #{can_jump_down}"
         end
-        LevelEditor::LevelEditorLogic.platform_number = LevelEditor::LevelEditorLogic.spawned_platform_array.size
+        Platforms::PlatformMethods.platform_number = LevelEditor::LevelEditorLogic.spawned_platform_array.size
     
         platforms
        end
