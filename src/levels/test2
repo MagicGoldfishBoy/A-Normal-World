@@ -1,1 +1,1 @@
-{"level":{"platforms":[{"name":"Platform_1","id":"very_large_grassy_platform","x":456.0,"y":458.0,"can_jump_down":true}]}}
+{"level":{"platforms":[{"name":"Platform_2","id":"test","x":121.0,"y":320.0,"can_jump_down":true},{"name":"Platform_3","id":"small_grassy_platform","x":226.5,"y":365.0,"can_jump_down":true}]}}

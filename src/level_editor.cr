@@ -2,24 +2,31 @@ require "crsfml"
 require "../src/textures.cr"
 require "../src/level_elements.cr"
 require "../src/platforms.cr"
+require "../src/decor.cr"
 
 module LevelEditor 
     class LevelEditorLogic
+        class_property current_element_array : Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) = 
+        self.spawned_platform_array
+        class_property current_index : Int32 = self.current_platform_index
+
         class_property current_element_index : Int32 = 0
         class_property current_element_type : String = "Platform"
         class_property element_array : Array(String) = ["Platform", "Decor"]
-
-        class_property current_element_array : Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) = 
-        self.spawned_platform_array
+        class_property current_template : (LevelElements::PlatformBase | LevelElements::DecorBase) = Platforms::Natural_Platform.very_small_grassy_platform
 
         class_property current_platform_index : Int32 = 0
         class_property spawned_platform_index : Int32 = 0
         class_property spawned_platform_array : Array(LevelElements::PlatformBase) = [] of LevelElements::PlatformBase
-        class_property spawned_decor_array : Array(LevelElements::DecorBase) = [] of LevelElements::DecorBase
         class_property platform_number : Int32 = 1
-        class_property current_template : (LevelElements::PlatformBase | LevelElements::DecorBase) = Platforms::Natural_Platform.very_small_grassy_platform
+
+        class_property current_decor_index : Int32 = 0
+        class_property spawned_decor_index : Int32 = 0
+        class_property spawned_decor_array : Array(LevelElements::DecorBase) = [] of LevelElements::DecorBase
+        class_property decor_number : Int32 = 1
 
         def LevelEditorLogic.set_current_array
+            self.reset_indexes
             case current_element_type
             when "Platform"
                 self.current_element_array = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY
@@ -29,13 +36,24 @@ module LevelEditor
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
         end
+        def LevelEditorLogic.reset_indexes
+            self.current_platform_index = 0
+            self.current_decor_index = 0
+            self.spawned_platform_index = 0
+            self.spawned_decor_index = 0
+        end
 
         def LevelEditorLogic.spawn_element(window)
-            if current_platform_index < 0 || current_platform_index >= LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size
-                puts "Error: current_platform_index #{current_platform_index} is out of bounds."
-                return
+            case self.current_element_type
+            when "Platform"
+                spawn_platform(window)
+            when "Decor"
+                spawn_decor(window)
+            else
+                puts "Error: Unknown element type '#{current_element_type}'"
             end
-            
+        end
+        def LevelEditorLogic.spawn_platform(window)
             current_platform = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY[LevelEditor::LevelEditorLogic.current_platform_index]
             name = "Platform_#{platform_number}"
             platform = LevelElements::PlatformBase.new(
@@ -52,8 +70,27 @@ module LevelEditor
             LevelDisplay.current_element = platform
             self.platform_number += 1
         end
-        def LevelEditorLogic.set_current_element(platform)
-            LevelDisplay.current_element = platform
+        def LevelEditorLogic.spawn_decor(window)
+            if LevelEditor::LevelEditorLogic.current_decor_index >= LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY.size
+                puts "Error: No decor available to spawn. Index was '#{LevelEditor::LevelEditorLogic.current_decor_index}'"
+                if LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY.empty?
+                    puts "Decor array is empty."
+                end
+                return
+            end
+            current_decor = LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY[LevelEditor::LevelEditorLogic.current_decor_index]
+            name = "Decor_#{platform_number}"
+            decor = LevelElements::DecorBase.new(
+                name,
+                current_decor.id,
+                current_decor.x,
+                current_decor.y,
+                LevelElements::DecorBase::DECOR_SPRITE_HASH[current_decor.id].dup,
+                current_decor.layer
+            )
+            decor.sprite.position = SF::Vector2f.new(decor.x, decor.y)
+            spawned_decor_array << decor
+            self.platform_number += 1
         end
         def LevelEditorLogic.mouse_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
@@ -68,6 +105,18 @@ module LevelEditor
                     platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
                     LevelDisplay.current_element = platform
                     window.draw(platform.sprite)
+                end
+            end
+            LevelEditor::LevelEditorLogic.spawned_decor_array.select do |decor|
+                (decor.x - mouse_position.x).abs <= bounding_box_size &&
+                (decor.y - mouse_position.y).abs <= bounding_box_size
+            end.each do |decor|
+                if decor.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
+                    decor.x = mouse_position.x.to_f32 - decor.sprite.global_bounds.width / 2
+                    decor.y = mouse_position.y.to_f32 - decor.sprite.global_bounds.height / 2
+                    decor.sprite.position = SF::Vector2f.new(decor.x, decor.y)
+                    LevelDisplay.current_element = decor
+                    window.draw(decor.sprite)
                 end
             end
         end
@@ -120,10 +169,17 @@ module LevelEditor
         current_element.sprite.global_bounds.height * scale_ratio))
         self.selector_rectangle.position = current_element.sprite.position
         self.selector_rectangle.fill_color = SF::Color.new(0, 0, 255, 100)
+
         LevelEditor::LevelEditorLogic.spawned_platform_array.each do |platform|
             platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
             window.draw(selector_rectangle)
             window.draw(platform.sprite)
+        end
+        LevelEditor::LevelEditorLogic.spawned_decor_array.each do |decor|
+            if decor.layer == 1
+            decor.sprite.position = SF::Vector2f.new(decor.x, decor.y)
+            window.draw(decor.sprite)
+            end
         end
         current_element.sprite.position = SF::Vector2f.new(current_element.x, current_element.y)
         selector_rectangle = SF::RectangleShape.new(SF::Vector2f.new(current_element.sprite.global_bounds.width * scale_ratio,
