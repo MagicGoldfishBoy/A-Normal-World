@@ -6,6 +6,8 @@ require "../src/platforms.cr"
 module LevelEditor
     class LevelEditorLogic
         class_property current_platform_index : Int32 = 0
+        class_property spawned_platform_index : Int32 = 0
+        class_property spawned_platform_array : Array(LevelElements::PlatformBase) = [] of LevelElements::PlatformBase
         class_property platform_number : Int32 = 1
         class_property current_template : LevelElements::PlatformBase = Platforms::Natural_Platform.very_small_grassy_platform
 
@@ -14,8 +16,8 @@ module LevelEditor
                 puts "Error: current_platform_index #{current_platform_index} is out of bounds."
                 return
             end
-
-            current_platform = LevelDisplay.current_element
+            
+            current_platform = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY[LevelEditor::LevelEditorLogic.current_platform_index]
             name = "Platform_#{platform_number}"
             platform = LevelElements::PlatformBase.new(
                 name,
@@ -27,9 +29,13 @@ module LevelEditor
             )
             platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
             LevelElements::PlatformBase.current_platform_array << platform
+            spawned_platform_array << platform
+            LevelDisplay.current_element = platform
             self.platform_number += 1
         end
-
+        def LevelEditorLogic.set_current_element(platform)
+            LevelDisplay.current_element = platform
+        end
         def LevelEditorLogic.mouse_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
             bounding_box_size = 50.0
