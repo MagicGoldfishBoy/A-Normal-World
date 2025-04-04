@@ -834,7 +834,10 @@ module Menus
 
             Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text.scale = SF.vector2(scale_x, scale_y)
             Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text.position = Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.position + SF.vector2(75 * clamped_scale, 12 * scale_ratio)
-            Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text.string = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY[LevelEditor::LevelEditorLogic.current_platform_index].name
+            Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text.string = "" #LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY[LevelEditor::LevelEditorLogic.current_platform_index].name
+            if !LevelEditor::LevelEditorLogic.current_element_array.empty?
+                Ui_Elements::MenuText::CURRENT_LEVEL_ELEMENT_BOX_TEXT.text.string = LevelEditor::LevelEditorLogic.current_element_array[LevelEditor::LevelEditorLogic.current_index].name 
+            end
 
             Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.sprite.scale = SF.vector2(scale_x, scale_y)
             Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.sprite.position = Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.sprite.position - SF.vector2(50 * scale_x, 0)
@@ -948,20 +951,17 @@ module Menus
 
         if (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.width / scale_x) && 
             (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_LEFT_ARROW.height / scale_y)
-          if LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size > 0 && LevelEditor::LevelEditorLogic.current_platform_index > 0
-            LevelEditor::LevelEditorLogic.current_platform_index -= 1
-          else
-            LevelEditor::LevelEditorLogic.current_platform_index = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size - 1
-          end
+
+            LevelEditor::LevelEditorLogic.current_index = Utility::ArrayUtilities.navigate_array("backward", LevelEditor::LevelEditorLogic.current_element_array, 
+            LevelEditor::LevelEditorLogic.current_index)
+
           sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_3_x / scale_x && scaled_mouse_x <= menu_box_3_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.width / scale_x) && 
             (scaled_mouse_y >= menu_box_3_y / scale_y && scaled_mouse_y <= menu_box_3_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_RIGHT_ARROW.height / scale_y)
-          if LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size > 0 && LevelEditor::LevelEditorLogic.current_platform_index < LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size - 1
-            LevelEditor::LevelEditorLogic.current_platform_index += 1
-          else
-            LevelEditor::LevelEditorLogic.current_platform_index = 0
-          end
+
+            LevelEditor::LevelEditorLogic.current_index = Utility::ArrayUtilities.navigate_array("forward", LevelEditor::LevelEditorLogic.current_element_array, 
+            LevelEditor::LevelEditorLogic.current_index)
           sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_4_x / scale_x && scaled_mouse_x <= menu_box_4_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.width / scale_x) && 
@@ -997,6 +997,7 @@ module Menus
             (scaled_mouse_y >= menu_box_7_y / scale_y && scaled_mouse_y <= menu_box_7_y / scale_y + Ui_Elements::MenuBoxes::SELECTED_LEVEL_RIGHT_ARROW.height / scale_y)
             LevelEditor::LevelEditorLogic.current_element_index = Utility::ArrayUtilities.navigate_array("backward", LevelEditor::LevelEditorLogic.element_array, LevelEditor::LevelEditorLogic.current_element_index)
             LevelEditor::LevelEditorLogic.current_element_type = LevelEditor::LevelEditorLogic.element_array[LevelEditor::LevelEditorLogic.current_element_index]
+            LevelEditor::LevelEditorLogic.set_current_index
             LevelEditor::LevelEditorLogic.set_current_array
             sleep 0.15.seconds
         end
@@ -1004,6 +1005,7 @@ module Menus
             (scaled_mouse_y >= menu_box_8_y / scale_y && scaled_mouse_y <= menu_box_8_y / scale_y + Ui_Elements::MenuBoxes::SELECTED_LEVEL_RIGHT_ARROW.height / scale_y)
             LevelEditor::LevelEditorLogic.current_element_index = Utility::ArrayUtilities.navigate_array("forward", LevelEditor::LevelEditorLogic.element_array, LevelEditor::LevelEditorLogic.current_element_index)
             LevelEditor::LevelEditorLogic.current_element_type = LevelEditor::LevelEditorLogic.element_array[LevelEditor::LevelEditorLogic.current_element_index]
+            LevelEditor::LevelEditorLogic.set_current_index
             LevelEditor::LevelEditorLogic.set_current_array
             sleep 0.15.seconds
         end

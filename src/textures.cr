@@ -575,3 +575,5 @@
     #L                                      Level Asset Textures                                        L
     #LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
         PLATFORM_TEXTURE = SF::Texture.from_file("../graphics/platforms.png")
+
+        NATURAL_DECOR_TEXTURE = SF::Texture.from_file("../graphics/natural_decor.png")
