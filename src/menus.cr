@@ -229,6 +229,8 @@ module Menus
             #SystemMenus.initialize_level_editor_ui(window)
             SystemMenus.system_menu=("level_editor")
             Keyboard::Gameplay.gameplay_mode=("level_editor")
+            LevelEditor::LevelEditorLogic.set_current_index
+            LevelEditor::LevelEditorLogic.set_current_array
             sleep 0.15.seconds
         end
 
