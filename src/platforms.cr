@@ -6,14 +6,14 @@ module Platforms include LevelElements
     class PlatformMethods
         class_property platform_number : Int32 = 1
         def PlatformMethods.spawn_platform(window)
-            if LevelEditor::LevelEditorLogic.current_platform_index >= LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size
-                puts "Error: No platform available to spawn. Index was '#{LevelEditor::LevelEditorLogic.current_platform_index}'"
+            if LevelEditor::LevelEditorLogic.current_index >= LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.size
+                puts "Error: No platform available to spawn. Index was '#{LevelEditor::LevelEditorLogic.current_index}'"
                 if LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY.empty?
                     puts "Platform array is empty."
                 end
                 return
             end
-            current_platform = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY[LevelEditor::LevelEditorLogic.current_platform_index]
+            current_platform = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY[LevelEditor::LevelEditorLogic.current_index]
             name = "Platform_#{platform_number}"
             platform = LevelElements::PlatformBase.new(
                 name,
