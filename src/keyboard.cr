@@ -87,7 +87,7 @@ module Keyboard
             end
         end
         def Gameplay.level_editor(window)
-            if SF::Keyboard.key_pressed?(SF::Keyboard::S)
+            if SF::Keyboard.key_pressed?(SF::Keyboard::K)
                 Serialization::LevelFile.save_level("test2")
                 sleep 0.25.seconds
             end
