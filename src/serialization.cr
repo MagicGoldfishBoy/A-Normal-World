@@ -164,7 +164,6 @@ module Serialization
 
   class LevelFile
     def self.save_level(file : String)
-      platforms = LevelEditor::LevelEditorLogic.spawned_platform_array
   #this is ugly as fuck, but I HATE serialization too much to care
       json_data = JSON.build do |json|
         json.object do
@@ -172,15 +171,7 @@ module Serialization
         json.object do
         json.field "platforms" do
         json.array do
-        platforms.each do |platform|
-        json.object do
-        json.field "name", platform.name
-        json.field "id", platform.id
-        json.field "x", platform.x
-        json.field "y", platform.y
-        json.field "can_jump_down", platform.can_jump_down
-        end
-        end
+        Platforms::PlatformMethods.save_platforms(json)
         end
         end
         end
@@ -201,21 +192,7 @@ module Serialization
         json_data = File.read(path)
         parsed = JSON.parse(json_data)
 
-        LevelEditor::LevelEditorLogic.spawned_platform_array.clear
-    
-        platforms = parsed["level"]["platforms"].as_a.map do |platform_json|
-          name = platform_json["name"].as_s
-          id = platform_json["id"].as_s
-          x = platform_json["x"].as_f32
-          y = platform_json["y"].as_f32
-          can_jump_down = platform_json["can_jump_down"].as_bool
-          sprite = LevelElements::PlatformBase::PLATFORM_SPRITE_HASH[id].dup
-          LevelEditor::LevelEditorLogic.spawned_platform_array << LevelElements::PlatformBase.new(name, id, x, y, sprite, can_jump_down)
-          puts "Loaded platform: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Can Jump Down: #{can_jump_down}"
-        end
-        Platforms::PlatformMethods.platform_number = LevelEditor::LevelEditorLogic.spawned_platform_array.size
-    
-        platforms
+        Platforms::PlatformMethods.load_platforms(path, json_data, parsed)
        end
     end
 end
