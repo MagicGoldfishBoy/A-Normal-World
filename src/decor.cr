@@ -28,6 +28,7 @@ module Decor include LevelElements
             LevelEditor::LevelDisplay.current_element = decor
             self.decor_number += 1
         end
+        
         def DecorMethods.save_decor(json)
             decor = LevelEditor::LevelEditorLogic.spawned_decor_array
             decor.each do |decor|

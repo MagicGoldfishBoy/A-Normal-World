@@ -163,8 +163,23 @@ module Serialization
   end
 
   class LevelFile
+    #TODO: get this working so I can delete the fucking abomination that is the current serialization
+    # def self.save_level(file : String)
+    #   platforms_data = Platforms::PlatformMethods.save_platforms(json)
+    #   decors_data = Decor::DecorMethods.save_decor(json)
+    
+    #   json_data = JSON.build do |json|
+    #     json.field "level", {
+    #       "platforms" => platforms_data,
+    #       "decors" => decors_data
+    #     }
+    #   end
+    #   sanitized_file = file.gsub(/[^\w\-.]/, "_")
+    #   path = "levels/#{sanitized_file}"
+    #   Dir.mkdir_p(File.dirname(path))
+    #   File.write("levels/#{file}", json_data)
+    # end
     def self.save_level(file : String)
-  #this is ugly as fuck, but I HATE serialization too much to care
       json_data = JSON.build do |json|
         json.object do
         json.field "level" do
@@ -172,15 +187,11 @@ module Serialization
         json.field "platforms" do
         json.array do
         Platforms::PlatformMethods.save_platforms(json)
-        Decor::DecorMethods.save_decor(json)
-        end
-        end
+        end; end
         json.field "decors" do
-          json.array do
-            # Save decor objects
-            Decor::DecorMethods.save_decor(json)
-          end
-        end
+        json.array do
+        Decor::DecorMethods.save_decor(json)
+        end; end
         end
         end
         end
