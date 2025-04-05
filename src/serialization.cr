@@ -203,6 +203,7 @@ module Serialization
       Dir.mkdir_p(File.dirname(path))
       File.write(path, json_data)
     end
+    
     def self.load_level(file : String)
       path = "levels/#{file}"
       puts "Checking path: #{path}"
@@ -220,7 +221,6 @@ module Serialization
   
       puts "Parsed JSON successfully."
       
-      # Load platforms and decor
       puts "Loading platforms..."
       Platforms::PlatformMethods.load_platforms(path, json_data, parsed)
       
