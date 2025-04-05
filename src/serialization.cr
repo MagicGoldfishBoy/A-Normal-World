@@ -210,7 +210,6 @@ module Serialization
           y = platform_json["y"].as_f32
           can_jump_down = platform_json["can_jump_down"].as_bool
           sprite = LevelElements::PlatformBase::PLATFORM_SPRITE_HASH[id].dup
-          #LevelElements::PlatformBase.current_platform_array << LevelElements::PlatformBase.new(name, id, x, y, sprite, can_jump_down)
           LevelEditor::LevelEditorLogic.spawned_platform_array << LevelElements::PlatformBase.new(name, id, x, y, sprite, can_jump_down)
           puts "Loaded platform: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Can Jump Down: #{can_jump_down}"
         end

@@ -102,7 +102,7 @@ module LevelEditor
      class_property current_element : (LevelElements::PlatformBase | LevelElements::DecorBase) = 
      Platforms::Natural_Platform.very_small_grassy_platform
      class_property view_center : SF::Vector2f = SF::Vector2f.new(350, 300)
-     class_property move_speed : Float32 = 5.0
+     class_property move_speed : Float32 = 1.0
      class_property zoom_level : Float32 = 1.0
      class_property selector_rectangle : SF::RectangleShape = SF::RectangleShape.new(SF::Vector2f.new(50, 50))
      
