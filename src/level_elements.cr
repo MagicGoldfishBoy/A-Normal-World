@@ -65,7 +65,7 @@ module LevelElements
         def to_json(io : IO)
             io << "{\"name\": \"#{@name}\", \"id\": \"#{@id}\", \"x\": #{@x}, \"y\": #{@y}, \"can_jump_down\": #{@can_jump_down}}"
         end
-    end  # <-- This was missing
+    end 
     # class WallBase
     # end
     # class ClimbeableBase
