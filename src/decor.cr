@@ -28,6 +28,41 @@ module Decor include LevelElements
             LevelEditor::LevelDisplay.current_element = decor
             self.decor_number += 1
         end
+        def DecorMethods.save_decor(json)
+            decor = LevelEditor::LevelEditorLogic.spawned_decor_array
+            decor.each do |decor|
+                json.object do
+                json.field "name", decor.name
+                json.field "id", decor.id
+                json.field "x", decor.x
+                json.field "y", decor.y
+                json.field "layer", decor.layer
+                end
+                end
+        end
+        def DecorMethods.load_decor(path, json_data, parsed)
+            LevelEditor::LevelEditorLogic.spawned_decor_array.clear
+          
+            decors = parsed["level"]?.try &.["decors"]?.try &.as_a? || [] of JSON::Any
+          
+            decor = decors.map do |decor_json|
+              name  = decor_json["name"]?.try(&.as_s?) || "unknown"
+              id    = decor_json["id"]?.try(&.as_s?) || "missing_id"
+              x     = decor_json["x"]?.try(&.as_f32?) || 0.0_f32
+              y     = decor_json["y"]?.try(&.as_f32?) || 0.0_f32
+              layer = decor_json["layer"]?.try(&.as_i?) || 0
+          
+              sprite = LevelElements::DecorBase::DECOR_SPRITE_HASH[id]?.try(&.dup) || next
+          
+              LevelEditor::LevelEditorLogic.spawned_decor_array << LevelElements::DecorBase.new(name, id, x, y, sprite, layer)
+              puts "Loaded decor: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Layer: #{layer}"
+            end
+          
+            Decor::DecorMethods.decor_number = LevelEditor::LevelEditorLogic.spawned_decor_array.size
+          
+            decor
+          end
+          
     end
     class DecorPlants < DecorBase
         @@fallen_leaves01 = DecorPlants.new("Red Fallen Leaves", "fallen_leaves01", 0, 0, 

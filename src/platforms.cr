@@ -43,21 +43,29 @@ module Platforms include LevelElements
         end
         def PlatformMethods.load_platforms(path, json_data, parsed)
             LevelEditor::LevelEditorLogic.spawned_platform_array.clear
-    
-            platforms = parsed["level"]["platforms"].as_a.map do |platform_json|
-              name = platform_json["name"].as_s
-              id = platform_json["id"].as_s
-              x = platform_json["x"].as_f32
-              y = platform_json["y"].as_f32
-              can_jump_down = platform_json["can_jump_down"].as_bool
-              sprite = LevelElements::PlatformBase::PLATFORM_SPRITE_HASH[id].dup
+          
+            # Safely get the "platforms" array or return empty array
+            platforms_json = parsed["level"]?.try &.["platforms"]?.try &.as_a? || [] of JSON::Any
+          
+            platforms = platforms_json.map do |platform_json|
+              name          = platform_json["name"]?.try(&.as_s?) || "unknown"
+              id            = platform_json["id"]?.try(&.as_s?) || "missing_id"
+              x             = platform_json["x"]?.try(&.as_f32?) || 0.0_f32
+              y             = platform_json["y"]?.try(&.as_f32?) || 0.0_f32
+              can_jump_down = platform_json["can_jump_down"]?.try(&.as_bool?) || false
+          
+              # If sprite is missing from hash, skip this platform
+              sprite = LevelElements::PlatformBase::PLATFORM_SPRITE_HASH[id]?.try(&.dup) || next
+          
               LevelEditor::LevelEditorLogic.spawned_platform_array << LevelElements::PlatformBase.new(name, id, x, y, sprite, can_jump_down)
               puts "Loaded platform: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Can Jump Down: #{can_jump_down}"
             end
+          
             Platforms::PlatformMethods.platform_number = LevelEditor::LevelEditorLogic.spawned_platform_array.size
-        
+          
             platforms
-        end
+          end
+          
     end
     class Natural_Platform < PlatformBase
 

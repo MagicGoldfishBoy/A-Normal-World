@@ -172,7 +172,14 @@ module Serialization
         json.field "platforms" do
         json.array do
         Platforms::PlatformMethods.save_platforms(json)
+        Decor::DecorMethods.save_decor(json)
         end
+        end
+        json.field "decors" do
+          json.array do
+            # Save decor objects
+            Decor::DecorMethods.save_decor(json)
+          end
         end
         end
         end
@@ -186,14 +193,30 @@ module Serialization
       File.write(path, json_data)
     end
     def self.load_level(file : String)
-        path = "levels/#{file}"
-        return nil unless File.exists?(path)
-    
-        json_data = File.read(path)
-        parsed = JSON.parse(json_data)
-
-        Platforms::PlatformMethods.load_platforms(path, json_data, parsed)
-       end
-    end
+      path = "levels/#{file}"
+      puts "Checking path: #{path}"
+      return nil unless File.exists?(path)
+      
+      json_data = File.read(path)
+      puts "File read successfully."
+  
+      begin
+          parsed = JSON.parse(json_data)
+      rescue e
+          puts "Error parsing JSON: #{e.message}"
+          return nil
+      end
+  
+      puts "Parsed JSON successfully."
+      
+      # Load platforms and decor
+      puts "Loading platforms..."
+      Platforms::PlatformMethods.load_platforms(path, json_data, parsed)
+      
+      puts "Loading decor..."
+      Decor::DecorMethods.load_decor(path, json_data, parsed)
+  end
+end
+  
 end
 
