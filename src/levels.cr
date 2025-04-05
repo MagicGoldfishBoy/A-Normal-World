@@ -131,4 +131,15 @@ module Levels
             window.draw(TEST_PLATFORM_02_HITBOX)
         end
     end
+    class LevelHandler
+        def LevelHandler.initialize_level(level : String)
+            case level
+            when "none"
+                LevelSelectionLogic.level = "none"
+            when "physics_test"
+                LevelSelectionLogic.level = "physics_test"
+                PhysicsTest.initialize_platform_test(window)
+            end
+        end
+    end
 end
