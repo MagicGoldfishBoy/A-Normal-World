@@ -58,8 +58,24 @@ module Climbeable include LevelElements
         end
     end
     class Ladders < ClimbeableBase
-        @@short_rusty_ladder = Ladders.new("Rusty Ladder", "short_ladder_rusty", 0, 0, SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 0, 20, 20)))
+        @@short_rusty_ladder = Ladders.new("Short Rusty Ladder", "short_ladder_rusty", 0, 0, SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 0, 20, 20)))
         CLIMBEABLE_SPRITE_HASH["short_ladder_rusty"] = SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 0, 20, 20))
         LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@short_rusty_ladder
+
+        @@rusty_ladder = Ladders.new("Rusty Ladder", "ladder_rusty", 0, 0, SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 20, 20, 30)))
+        CLIMBEABLE_SPRITE_HASH["ladder_rusty"] = SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 20, 20, 30))
+        LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@rusty_ladder
+
+        @@tall_rusty_ladder = Ladders.new("Tall Rusty Ladder", "tall_ladder_rusty", 0, 0, SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 50, 20, 50)))
+        CLIMBEABLE_SPRITE_HASH["tall_ladder_rusty"] = SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 50, 20, 50))
+        LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@tall_rusty_ladder
+
+        @@very_tall_rusty_ladder = Ladders.new("Very Tall Rusty Ladder", "very_tall_ladder_rusty", 0, 0, SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 100, 20, 70)))
+        CLIMBEABLE_SPRITE_HASH["very_tall_ladder_rusty"] = SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 100, 20, 70))
+        LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@very_tall_rusty_ladder
+
+        @@extremely_tall_rusty_ladder = Ladders.new("Extremely Tall Rusty Ladder", "extremely_tall_ladder_rusty", 0, 0, SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 170, 20, 100)))
+        CLIMBEABLE_SPRITE_HASH["extremely_tall_ladder_rusty"] = SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 170, 20, 100))
+        LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@extremely_tall_rusty_ladder
     end
 end
