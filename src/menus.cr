@@ -970,6 +970,7 @@ module Menus
         if (scaled_mouse_x >= menu_box_4_x / scale_x && scaled_mouse_x <= menu_box_4_x + Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.width / scale_x) && 
             (scaled_mouse_y >= menu_box_4_y / scale_y && scaled_mouse_y <= menu_box_4_y / scale_y + Ui_Elements::MenuBoxes::CURRENT_LEVEL_ELEMENT_BOX.height / scale_y)
             LevelEditor::LevelEditorLogic.spawn_element(window)
+            LevelEditor::LevelEditorLogic.update_spawned_element_array
             sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_5_x / scale_x && scaled_mouse_x <= menu_box_5_x + Ui_Elements::MenuBoxes::SELECTED_LEVEL_LEFT_ARROW.width / scale_x) && 
@@ -978,9 +979,10 @@ module Menus
             LevelEditor::LevelEditorLogic.spawned_element_index = Utility::ArrayUtilities.navigate_array("backward", LevelEditor::LevelEditorLogic.spawned_element_array, 
             LevelEditor::LevelEditorLogic.spawned_element_index)
 
-            if LevelEditor::LevelEditorLogic.spawned_platform_array.size > 0
+            if LevelEditor::LevelEditorLogic.spawned_element_array.size > 0
                 LevelEditor::LevelDisplay.current_element = LevelEditor::LevelEditorLogic.spawned_element_array[LevelEditor::LevelEditorLogic.spawned_element_index]
             end
+            puts LevelEditor::LevelEditorLogic.spawned_element_array
           sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_6_x / scale_x && scaled_mouse_x <= menu_box_6_x + Ui_Elements::MenuBoxes::SELECTED_LEVEL_RIGHT_ARROW.width / scale_x) && 
@@ -988,7 +990,7 @@ module Menus
             LevelEditor::LevelEditorLogic.spawned_element_index = Utility::ArrayUtilities.navigate_array("forward", LevelEditor::LevelEditorLogic.spawned_element_array, 
             LevelEditor::LevelEditorLogic.spawned_element_index)
 
-            if LevelEditor::LevelEditorLogic.spawned_platform_array.size > 0
+            if LevelEditor::LevelEditorLogic.spawned_element_array.size > 0
                 LevelEditor::LevelDisplay.current_element = LevelEditor::LevelEditorLogic.spawned_element_array[LevelEditor::LevelEditorLogic.spawned_element_index]
             end
           sleep 0.15.seconds

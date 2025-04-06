@@ -233,6 +233,7 @@ module Serialization
 
       puts "Loading walls..."
       Walls::WallsMethods.load_wall(path, json_data, parsed)
+      LevelEditor::LevelEditorLogic.update_spawned_element_array
   end
 end
   
