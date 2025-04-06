@@ -982,7 +982,6 @@ module Menus
             if LevelEditor::LevelEditorLogic.spawned_element_array.size > 0
                 LevelEditor::LevelDisplay.current_element = LevelEditor::LevelEditorLogic.spawned_element_array[LevelEditor::LevelEditorLogic.spawned_element_index]
             end
-            puts LevelEditor::LevelEditorLogic.spawned_element_array
           sleep 0.15.seconds
         end
         if (scaled_mouse_x >= menu_box_6_x / scale_x && scaled_mouse_x <= menu_box_6_x + Ui_Elements::MenuBoxes::SELECTED_LEVEL_RIGHT_ARROW.width / scale_x) && 
