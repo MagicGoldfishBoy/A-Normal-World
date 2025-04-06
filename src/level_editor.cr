@@ -23,6 +23,9 @@ module LevelEditor
         class_property spawned_decor_index : Int32 = 0
         class_property spawned_decor_array : Array(LevelElements::DecorBase) = [] of LevelElements::DecorBase
 
+        class_property spawned_element_array : Array(LevelElements::DecorBase | LevelElements::PlatformBase) = spawned_platform_array + spawned_decor_array
+        class_property spawned_element_index : Int32 = 0
+
         def LevelEditorLogic.set_current_array
             #self.reset_indexes
             case current_element_type
