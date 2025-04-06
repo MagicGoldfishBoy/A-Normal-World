@@ -5,17 +5,18 @@ require "../src/platforms.cr"
 require "../src/decor.cr"
 require "../src/walls.cr"
 require "../src/climbeable.cr"
+require "../src/teleporters.cr"
 
 module LevelEditor 
     class LevelEditorLogic
         class_property current_element_array : (Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) | Array(LevelElements::WallBase) |
-        Array(LevelElements::ClimbeableBase)) = 
+        Array(LevelElements::ClimbeableBase) | Array(LevelElements::TeleportBase)) = 
         self.spawned_platform_array
         class_property current_index : Int32 = self.current_platform_index
 
         class_property current_element_index : Int32 = 0
         class_property current_element_type : String = "Platform"
-        class_property element_array : Array(String) = ["Platform", "Decor", "Wall", "Climbeable"]
+        class_property element_array : Array(String) = ["Platform", "Decor", "Wall", "Climbeable", "Teleporter"]
         class_property current_template : (LevelElements::LevelElementBase) = 
         Platforms::Natural_Platform.very_small_grassy_platform
 
@@ -35,9 +36,12 @@ module LevelEditor
         class_property spawned_climbeable_index : Int32 = 0
         class_property spawned_climbeable_array : Array(LevelElements::ClimbeableBase) = [] of LevelElements::ClimbeableBase
         
+        class_property current_teleport_index : Int32 = 0
+        class_property spawned_teleport_index : Int32 = 0
+        class_property spawned_teleport_array : Array(LevelElements::TeleportBase) = [] of LevelElements::TeleportBase
 
         class_property spawned_element_array : Array(LevelElements::LevelElementBase) = (spawned_platform_array + spawned_decor_array + spawned_wall_array + 
-        spawned_climbeable_array)
+        spawned_climbeable_array + spawned_teleport_array)
         class_property spawned_element_index : Int32 = 0
 
         def self.update_spawned_element_array
@@ -45,6 +49,7 @@ module LevelEditor
             self.spawned_element_array = self.spawned_platform_array + self.spawned_decor_array + self.spawned_wall_array
             self.spawned_element_array = self.spawned_element_array + self.spawned_wall_array
             self.spawned_element_array = self.spawned_element_array + self.spawned_climbeable_array
+            self.spawned_element_array = self.spawned_element_array + self.spawned_teleport_array
         end
 
         def LevelEditorLogic.set_current_array
@@ -57,6 +62,8 @@ module LevelEditor
                 self.current_element_array = LevelElements::WallBase::WALL_TEMPLATE_ARRAY
             when "Climbeable"
                 self.current_element_array = LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY
+            when "Teleporter"
+                self.current_element_array = LevelElements::TeleportBase::TELEPORT_TEMPLATE_ARRAY
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -72,6 +79,8 @@ module LevelEditor
                 self.current_index = self.current_wall_index
             when "Climbeable"
                 self.current_index = self.current_climbeable_index
+            when "Teleporter"
+                self.current_index = self.current_teleport_index
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -85,7 +94,10 @@ module LevelEditor
             self.spawned_wall_index = 0
             self.current_climbeable_index = 0
             self.spawned_climbeable_index = 0
+            self.current_teleport_index = 0
+            self.spawned_teleport_index = 0
             self.spawned_element_index = 0
+            #Do NOT put this line back
             #self.current_element_index = 0
         end
 
@@ -99,6 +111,8 @@ module LevelEditor
                 Walls::WallsMethods.spawn_wall(window)
             when "Climbeable"
                 Climbeable::ClimbeableMethods.spawn_climbeable(window)
+            when "Teleporter"
+                Teleporters::TeleporterMethods.spawn_teleporter(window)
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -154,6 +168,18 @@ module LevelEditor
                     window.draw(climbeable.sprite)
                 end
             end
+            LevelEditor::LevelEditorLogic.spawned_teleport_array.select do |teleporter|
+                (teleporter.x - mouse_position.x).abs <= bounding_box_size &&
+                (teleporter.y - mouse_position.y).abs <= bounding_box_size
+            end.each do |teleporter|
+                if teleporter.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
+                    teleporter.x = mouse_position.x.to_f32 - teleporter.sprite.global_bounds.width / 2
+                    teleporter.y = mouse_position.y.to_f32 - teleporter.sprite.global_bounds.height / 2
+                    teleporter.sprite.position = SF::Vector2f.new(teleporter.x, teleporter.y)
+                    LevelDisplay.current_element = teleporter
+                    window.draw(teleporter.sprite)
+                end
+            end
         end
 
         def LevelEditorLogic.move_current_element(window, x : Float32, y : Float32)
@@ -203,11 +229,10 @@ module LevelEditor
         self.selector_rectangle.size = (SF::Vector2f.new(current_element.sprite.global_bounds.width * scale_ratio,
         current_element.sprite.global_bounds.height * scale_ratio))
         self.selector_rectangle.position = current_element.sprite.position
-        self.selector_rectangle.fill_color = SF::Color.new(0, 0, 255, 100)
+        self.selector_rectangle.fill_color = SF::Color.new(0, 0, 255, 80)
 
         LevelEditor::LevelEditorLogic.spawned_platform_array.each do |platform|
             platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
-            window.draw(selector_rectangle)
             window.draw(platform.sprite)
         end
         LevelEditor::LevelEditorLogic.spawned_wall_array.each do |wall|
@@ -224,6 +249,11 @@ module LevelEditor
             climbeable.sprite.position = SF::Vector2f.new(climbeable.x, climbeable.y)
             window.draw(climbeable.sprite)
         end
+        LevelEditor::LevelEditorLogic.spawned_teleport_array.each do |teleporter|
+            teleporter.sprite.position = SF::Vector2f.new(teleporter.x, teleporter.y)
+            window.draw(teleporter.sprite)
+        end
+        window.draw(selector_rectangle)
         current_element.sprite.position = SF::Vector2f.new(current_element.x, current_element.y)
         selector_rectangle = SF::RectangleShape.new(SF::Vector2f.new(current_element.sprite.global_bounds.width * scale_ratio,
         current_element.sprite.global_bounds.height * scale_ratio))
