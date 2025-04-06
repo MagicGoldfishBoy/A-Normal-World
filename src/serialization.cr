@@ -196,10 +196,14 @@ module Serialization
         json.array do
         Walls::WallsMethods.save_wall(json)
         end; end
+        json.field "climbeables" do
+        json.array do
+        Climbeable::ClimbeableMethods.save_climbeable(json)
+        end; end
         end
         end
         end
-        end
+      end
   
       sanitized_file = file.gsub(/[^\w\-.]/, "_")
       path = "levels/#{sanitized_file}"
@@ -233,6 +237,10 @@ module Serialization
 
       puts "Loading walls..."
       Walls::WallsMethods.load_wall(path, json_data, parsed)
+
+      puts "Loading climbeables..."
+      Climbeable::ClimbeableMethods.load_climbeable(path, json_data, parsed)
+
       LevelEditor::LevelEditorLogic.update_spawned_element_array
   end
 end

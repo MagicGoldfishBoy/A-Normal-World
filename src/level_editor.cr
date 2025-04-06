@@ -4,16 +4,18 @@ require "../src/level_elements.cr"
 require "../src/platforms.cr"
 require "../src/decor.cr"
 require "../src/walls.cr"
+require "../src/climbeable.cr"
 
 module LevelEditor 
     class LevelEditorLogic
-        class_property current_element_array : Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) | Array(LevelElements::WallBase) = 
+        class_property current_element_array : (Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) | Array(LevelElements::WallBase) |
+        Array(LevelElements::ClimbeableBase)) = 
         self.spawned_platform_array
         class_property current_index : Int32 = self.current_platform_index
 
         class_property current_element_index : Int32 = 0
         class_property current_element_type : String = "Platform"
-        class_property element_array : Array(String) = ["Platform", "Decor", "Wall"]
+        class_property element_array : Array(String) = ["Platform", "Decor", "Wall", "Climbeable"]
         class_property current_template : (LevelElements::LevelElementBase) = 
         Platforms::Natural_Platform.very_small_grassy_platform
 
@@ -29,13 +31,20 @@ module LevelEditor
         class_property spawned_wall_index : Int32 = 0
         class_property spawned_wall_array : Array(LevelElements::WallBase) = [] of LevelElements::WallBase
 
-        class_property spawned_element_array : Array(LevelElements::LevelElementBase) = spawned_platform_array + spawned_decor_array + spawned_wall_array
+        class_property current_climbeable_index : Int32 = 0
+        class_property spawned_climbeable_index : Int32 = 0
+        class_property spawned_climbeable_array : Array(LevelElements::ClimbeableBase) = [] of LevelElements::ClimbeableBase
+        
+
+        class_property spawned_element_array : Array(LevelElements::LevelElementBase) = (spawned_platform_array + spawned_decor_array + spawned_wall_array + 
+        spawned_climbeable_array)
         class_property spawned_element_index : Int32 = 0
 
         def self.update_spawned_element_array
             self.spawned_element_array.clear
             self.spawned_element_array = self.spawned_platform_array + self.spawned_decor_array + self.spawned_wall_array
             self.spawned_element_array = self.spawned_element_array + self.spawned_wall_array
+            self.spawned_element_array = self.spawned_element_array + self.spawned_climbeable_array
         end
 
         def LevelEditorLogic.set_current_array
@@ -46,6 +55,8 @@ module LevelEditor
                 self.current_element_array = LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY
             when "Wall"
                 self.current_element_array = LevelElements::WallBase::WALL_TEMPLATE_ARRAY
+            when "Climbeable"
+                self.current_element_array = LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -59,6 +70,8 @@ module LevelEditor
                 self.current_index = self.current_decor_index
             when "Wall"
                 self.current_index = self.current_wall_index
+            when "Climbeable"
+                self.current_index = self.current_climbeable_index
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -68,6 +81,12 @@ module LevelEditor
             self.current_decor_index = 0
             self.spawned_platform_index = 0
             self.spawned_decor_index = 0
+            self.current_wall_index = 0
+            self.spawned_wall_index = 0
+            self.current_climbeable_index = 0
+            self.spawned_climbeable_index = 0
+            self.spawned_element_index = 0
+            #self.current_element_index = 0
         end
 
         def LevelEditorLogic.spawn_element(window)
@@ -78,6 +97,8 @@ module LevelEditor
                 Decor::DecorMethods.spawn_decor(window)
             when "Wall"
                 Walls::WallsMethods.spawn_wall(window)
+            when "Climbeable"
+                Climbeable::ClimbeableMethods.spawn_climbeable(window)
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -119,6 +140,18 @@ module LevelEditor
                     wall.sprite.position = SF::Vector2f.new(wall.x, wall.y)
                     LevelDisplay.current_element = wall
                     window.draw(wall.sprite)
+                end
+            end
+            LevelEditor::LevelEditorLogic.spawned_climbeable_array.select do |climbeable|
+                (climbeable.x - mouse_position.x).abs <= bounding_box_size &&
+                (climbeable.y - mouse_position.y).abs <= bounding_box_size
+            end.each do |climbeable|
+                if climbeable.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
+                    climbeable.x = mouse_position.x.to_f32 - climbeable.sprite.global_bounds.width / 2
+                    climbeable.y = mouse_position.y.to_f32 - climbeable.sprite.global_bounds.height / 2
+                    climbeable.sprite.position = SF::Vector2f.new(climbeable.x, climbeable.y)
+                    LevelDisplay.current_element = climbeable
+                    window.draw(climbeable.sprite)
                 end
             end
         end
@@ -186,6 +219,10 @@ module LevelEditor
             decor.sprite.position = SF::Vector2f.new(decor.x, decor.y)
             window.draw(decor.sprite)
             end
+        end
+        LevelEditor::LevelEditorLogic.spawned_climbeable_array.each do |climbeable|
+            climbeable.sprite.position = SF::Vector2f.new(climbeable.x, climbeable.y)
+            window.draw(climbeable.sprite)
         end
         current_element.sprite.position = SF::Vector2f.new(current_element.x, current_element.y)
         selector_rectangle = SF::RectangleShape.new(SF::Vector2f.new(current_element.sprite.global_bounds.width * scale_ratio,

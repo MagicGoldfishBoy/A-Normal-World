@@ -579,3 +579,5 @@
         NATURAL_DECOR_TEXTURE = SF::Texture.from_file("../graphics/natural_decor.png")
 
         WALL_TEXTURE = SF::Texture.from_file("../graphics/walls.png")
+
+        LADDER_TEXTURE = SF::Texture.from_file("../graphics/ladders.png")
