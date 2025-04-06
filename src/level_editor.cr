@@ -1,5 +1,6 @@
 require "crsfml"
 require "../src/textures.cr"
+require "../src/animations.cr"
 require "../src/level_elements.cr"
 require "../src/platforms.cr"
 require "../src/decor.cr"
@@ -251,6 +252,7 @@ module LevelEditor
         end
         LevelEditor::LevelEditorLogic.spawned_teleport_array.each do |teleporter|
             teleporter.sprite.position = SF::Vector2f.new(teleporter.x, teleporter.y)
+            teleporter.sprite.texture_rect = Animations::Portal.portal_animation
             window.draw(teleporter.sprite)
         end
         window.draw(selector_rectangle)
