@@ -32,6 +32,12 @@ module LevelEditor
         class_property spawned_element_array : Array(LevelElements::LevelElementBase) = spawned_platform_array + spawned_decor_array + spawned_wall_array
         class_property spawned_element_index : Int32 = 0
 
+        def self.update_spawned_element_array
+            self.spawned_element_array.clear
+            self.spawned_element_array = self.spawned_platform_array + self.spawned_decor_array + self.spawned_wall_array
+            self.spawned_element_array = self.spawned_element_array + self.spawned_wall_array
+        end
+
         def LevelEditorLogic.set_current_array
             case current_element_type
             when "Platform"
