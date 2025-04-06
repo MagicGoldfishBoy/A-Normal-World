@@ -200,6 +200,10 @@ module Serialization
         json.array do
         Climbeable::ClimbeableMethods.save_climbeable(json)
         end; end
+        json.field "teleports" do
+        json.array do
+        Teleporters::TeleporterMethods.save_teleporters(json)
+        end; end
         end
         end
         end
@@ -240,6 +244,9 @@ module Serialization
 
       puts "Loading climbeables..."
       Climbeable::ClimbeableMethods.load_climbeable(path, json_data, parsed)
+
+      puts "Loading teleporters..."
+      Teleporters::TeleporterMethods.load_teleporters(path, json_data, parsed)
 
       LevelEditor::LevelEditorLogic.update_spawned_element_array
   end

@@ -581,3 +581,5 @@
         WALL_TEXTURE = SF::Texture.from_file("../graphics/walls.png")
 
         LADDER_TEXTURE = SF::Texture.from_file("../graphics/ladders.png")
+
+        TELEPORTER_TEXTURE = SF::Texture.from_file("../graphics/teleporters.png")

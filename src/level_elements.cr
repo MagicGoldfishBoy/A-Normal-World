@@ -150,8 +150,41 @@ module LevelElements
             end
         end
     end
-    # class TeleportBase
-    # end
+    class TeleportBase < LevelElementBase
+        TELEPORT_TEMPLATE_ARRAY = [] of TeleportBase
+        TELEPORT_SPRITE_HASH = Hash(String, SF::Sprite).new
+        def initialize(name : String, id : String, x : Float32, y : Float32, sprite : SF::Sprite,
+            destination : String, requirement : String, sound : String)
+            @name = name
+            @id = id
+            @x = x
+            @y = y
+            @sprite = sprite
+            @destination = destination
+            @requirement = requirement
+            @sound = sound
+        end
+
+        property name : String
+        property id : String
+        property x : Float32
+        property y : Float32
+        property sprite : SF::Sprite
+        property destination : String
+        property requirement : String
+        property sound : String
+
+        def to_json(io : IO)
+            JSON.build(io) do |json|
+                json.object do
+                    json.field("name", @name)
+                    json.field("id", @id)
+                    json.field("x", @x)
+                    json.field("y", @y)
+                end
+            end
+        end
+    end
     # class FluidBase
     class DecorBase < LevelElementBase
         DECOR_TEMPLATE_ARRAY = [] of DecorBase
