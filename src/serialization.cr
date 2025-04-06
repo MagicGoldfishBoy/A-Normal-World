@@ -200,6 +200,7 @@ module Serialization
         json.array do
         Climbeable::ClimbeableMethods.save_climbeable(json)
         end; end
+        puts "Saving teleporters..."
         json.field "teleports" do
         json.array do
         Teleporters::TeleporterMethods.save_teleporters(json)

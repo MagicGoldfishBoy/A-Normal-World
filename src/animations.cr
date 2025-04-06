@@ -163,4 +163,23 @@ module Animations
                 return @@walking_animation_right_array[@@walking_animation_frame]
         end
     end
+    class Portal
+        @@portal_animation_timer = SF::Clock.new
+        @@portal_animation_frame = 0
+
+        @@portal_animation_array = [SF.int_rect(0, 0, 40, 100), SF.int_rect(40, 0, 40, 100), 
+        SF.int_rect(80, 0, 40, 100), SF.int_rect(120, 0, 40, 100)]
+
+        def self.portal_animation
+            if @@portal_animation_timer.elapsed_time >= SF.seconds(0.15) 
+                if @@portal_animation_frame < @@portal_animation_array.size - 1
+                @@portal_animation_frame += 1
+                else @@portal_animation_frame = 0
+                end
+                @@portal_animation_timer.restart
+                return @@portal_animation_array[@@portal_animation_frame]
+            end
+                return @@portal_animation_array[@@portal_animation_frame]
+        end
+    end
 end

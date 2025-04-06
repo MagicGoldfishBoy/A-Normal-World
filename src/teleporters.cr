@@ -50,7 +50,8 @@ module Teleporters include LevelElements
         def TeleporterMethods.load_teleporters(path, json_data, parsed)
             LevelEditor::LevelEditorLogic.spawned_teleport_array.clear
 
-            teleporters = parsed["level"]?.try &.["teleporters"]?.try &.as_a? || [] of JSON::Any
+            teleporters = parsed["level"]?.try &.["teleports"]?.try &.as_a? || [] of JSON::Any
+            puts "Teleporters: #{teleporters}"
 
             teleporters.map do |teleporter_json|
                 name  = teleporter_json["name"]?.try(&.as_s?) || "unknown"
