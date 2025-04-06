@@ -3,17 +3,19 @@ require "../src/textures.cr"
 require "../src/level_elements.cr"
 require "../src/platforms.cr"
 require "../src/decor.cr"
+require "../src/walls.cr"
 
 module LevelEditor 
     class LevelEditorLogic
-        class_property current_element_array : Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) = 
+        class_property current_element_array : Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) | Array(LevelElements::WallBase) = 
         self.spawned_platform_array
         class_property current_index : Int32 = self.current_platform_index
 
         class_property current_element_index : Int32 = 0
         class_property current_element_type : String = "Platform"
-        class_property element_array : Array(String) = ["Platform", "Decor"]
-        class_property current_template : (LevelElements::PlatformBase | LevelElements::DecorBase) = Platforms::Natural_Platform.very_small_grassy_platform
+        class_property element_array : Array(String) = ["Platform", "Decor", "Wall"]
+        class_property current_template : (LevelElements::LevelElementBase) = 
+        Platforms::Natural_Platform.very_small_grassy_platform
 
         class_property current_platform_index : Int32 = 0
         class_property spawned_platform_index : Int32 = 0
@@ -23,16 +25,21 @@ module LevelEditor
         class_property spawned_decor_index : Int32 = 0
         class_property spawned_decor_array : Array(LevelElements::DecorBase) = [] of LevelElements::DecorBase
 
-        class_property spawned_element_array : Array(LevelElements::DecorBase | LevelElements::PlatformBase) = spawned_platform_array + spawned_decor_array
+        class_property current_wall_index : Int32 = 0
+        class_property spawned_wall_index : Int32 = 0
+        class_property spawned_wall_array : Array(LevelElements::WallBase) = [] of LevelElements::WallBase
+
+        class_property spawned_element_array : Array(LevelElements::LevelElementBase) = spawned_platform_array + spawned_decor_array + spawned_wall_array
         class_property spawned_element_index : Int32 = 0
 
         def LevelEditorLogic.set_current_array
-            #self.reset_indexes
             case current_element_type
             when "Platform"
                 self.current_element_array = LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY
             when "Decor"
                 self.current_element_array = LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY
+            when "Wall"
+                self.current_element_array = LevelElements::WallBase::WALL_TEMPLATE_ARRAY
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -44,6 +51,8 @@ module LevelEditor
                 self.current_index = self.current_platform_index
             when "Decor"
                 self.current_index = self.current_decor_index
+            when "Wall"
+                self.current_index = self.current_wall_index
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -61,6 +70,8 @@ module LevelEditor
                 Platforms::PlatformMethods.spawn_platform(window)
             when "Decor"
                 Decor::DecorMethods.spawn_decor(window)
+            when "Wall"
+                Walls::WallsMethods.spawn_wall(window)
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -92,6 +103,18 @@ module LevelEditor
                     window.draw(decor.sprite)
                 end
             end
+            LevelEditor::LevelEditorLogic.spawned_wall_array.select do |wall|
+                (wall.x - mouse_position.x).abs <= bounding_box_size &&
+                (wall.y - mouse_position.y).abs <= bounding_box_size
+            end.each do |wall|
+                if wall.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
+                    wall.x = mouse_position.x.to_f32 - wall.sprite.global_bounds.width / 2
+                    wall.y = mouse_position.y.to_f32 - wall.sprite.global_bounds.height / 2
+                    wall.sprite.position = SF::Vector2f.new(wall.x, wall.y)
+                    LevelDisplay.current_element = wall
+                    window.draw(wall.sprite)
+                end
+            end
         end
 
         def LevelEditorLogic.move_current_element(window, x : Float32, y : Float32)
@@ -102,7 +125,7 @@ module LevelEditor
         end
     end
     class LevelDisplay 
-     class_property current_element : (LevelElements::PlatformBase | LevelElements::DecorBase) = 
+     class_property current_element : (LevelElements::LevelElementBase) = 
      Platforms::Natural_Platform.very_small_grassy_platform
      class_property view_center : SF::Vector2f = SF::Vector2f.new(350, 300)
      class_property move_speed : Float32 = 1.0
@@ -147,6 +170,10 @@ module LevelEditor
             platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
             window.draw(selector_rectangle)
             window.draw(platform.sprite)
+        end
+        LevelEditor::LevelEditorLogic.spawned_wall_array.each do |wall|
+            wall.sprite.position = SF::Vector2f.new(wall.x, wall.y)
+            window.draw(wall.sprite)
         end
         LevelEditor::LevelEditorLogic.spawned_decor_array.each do |decor|
             if decor.layer == 1

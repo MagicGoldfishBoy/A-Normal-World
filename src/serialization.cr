@@ -192,6 +192,10 @@ module Serialization
         json.array do
         Decor::DecorMethods.save_decor(json)
         end; end
+        json.field "walls" do
+        json.array do
+        Walls::WallsMethods.save_wall(json)
+        end; end
         end
         end
         end
@@ -226,6 +230,9 @@ module Serialization
       
       puts "Loading decor..."
       Decor::DecorMethods.load_decor(path, json_data, parsed)
+
+      puts "Loading walls..."
+      Walls::WallsMethods.load_wall(path, json_data, parsed)
   end
 end
   

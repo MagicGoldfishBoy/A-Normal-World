@@ -3,7 +3,21 @@ require "../src/textures.cr"
 require "../src/sprites.cr"
 
 module LevelElements
-    class PlatformBase
+    class LevelElementBase
+        def initialize(name : String, id : String, x : Float32, y : Float32, sprite : SF::Sprite)
+            @name = name
+            @id = id
+            @x = x
+            @y = y
+            @sprite = sprite
+        end
+        property name : String
+        property id : String
+        property x : Float32
+        property y : Float32
+        property sprite : SF::Sprite
+    end
+    class PlatformBase < LevelElementBase
         PLATFORM_ARRAY = [] of PlatformBase
         PLATFORM_TEMPLATE_ARRAY = [] of PlatformBase
         PLATFORM_SPRITE_HASH = Hash(String, SF::Sprite).new
@@ -66,14 +80,47 @@ module LevelElements
             io << "{\"name\": \"#{@name}\", \"id\": \"#{@id}\", \"x\": #{@x}, \"y\": #{@y}, \"can_jump_down\": #{@can_jump_down}}"
         end
     end 
-    # class WallBase
-    # end
+    class WallBase < LevelElementBase
+        WALL_TEMPLATE_ARRAY = [] of WallBase
+        WALL_SPRITE_HASH = Hash(String, SF::Sprite).new
+        def initialize(name : String, id : String, x : Float32, y : Float32, sprite : SF::Sprite)
+            @name = name
+            @id = id
+            @x = x
+            @y = y
+            @sprite = sprite
+        end
+
+        property name : String
+        property id : String
+        property x : Float32
+        property y : Float32
+        property sprite : SF::Sprite
+
+        def to_json(io : IO)
+            JSON.build(io) do |json|
+                json.object do
+                    json.field("name", @name)
+                    json.field("id", @id)
+                    json.field("x", @x)
+                    json.field("y", @y)
+                end
+            end
+        end
+        def self.wall_collision(window)
+            if WALL_TEMPLATE_ARRAY.all? { |wall| Sprites::Player.check_sprite_collision(window, wall) == false }
+                return true
+            else
+                return false
+            end
+        end
+    end
     # class ClimbeableBase
     # end
     # class TeleportBase
     # end
     # class FluidBase
-    class DecorBase
+    class DecorBase < LevelElementBase
         DECOR_TEMPLATE_ARRAY = [] of DecorBase
         DECOR_SPRITE_HASH = Hash(String, SF::Sprite).new
 
