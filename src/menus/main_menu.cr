@@ -6,19 +6,20 @@ require "../../src/mouse.cr"
 
 module MainMenu
     class MainMenuElements
-        PLAY_BUTTON = Ui_Elements::MenuBoxes.new("Play Button", "Main1", SF::Sprite.new(BLANK_TEXTURE, 
+        PLAY_BUTTON = Ui_Elements::Ui_BoxBase.new("Play Button", "Main1", SF::Sprite.new(BLANK_TEXTURE, 
         SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0, 1)
 
-        PLAY_BUTTON_TEXT = Ui_Elements::MenuText.new("Play Button Text", "Main1", 
+        PLAY_BUTTON_TEXT = Ui_Elements::Ui_TextBase.new("Play Button Text", "Main1", 
         SF::Text.new("Play                    Settings                    Quit", QUICKSAND, 34))
 
-        SETTINGS_BUTTON = Ui_Elements::MenuBoxes.new("Settings Button", "Main3", SF::Sprite.new(BLANK_TEXTURE, 
+        SETTINGS_BUTTON = Ui_Elements::Ui_BoxBase.new("Settings Button", "Main3", SF::Sprite.new(BLANK_TEXTURE, 
         SF::Rect.new(200, 0, 200, 80)), 200.0, 80.0, 1)
 
-        QUIT_BUTTON = Ui_Elements::MenuBoxes.new("Quit Button", "Main4", SF::Sprite.new(BLANK_TEXTURE, 
+        QUIT_BUTTON = Ui_Elements::Ui_BoxBase.new("Quit Button", "Main4", SF::Sprite.new(BLANK_TEXTURE, 
         SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0, 1)
 
-        NEXT_BUTTON = Ui_Elements::MenuBoxes.new("Next Button", "Main5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
+        TITLE_TEXT = Ui_Elements::Ui_TextBase.new("Settings Button Text", "Main3", SF::Text.new("A Normal World", 
+        QUICKSAND, 50))
     end
     class MainMenuDisplay
         def self.draw_main_menu(window)
@@ -33,7 +34,7 @@ module MainMenu
             MainMenuElements::PLAY_BUTTON_TEXT.text.position = MainMenuElements::PLAY_BUTTON.sprite.position + SF.vector2(35, 15)
     
             MainMenuElements::SETTINGS_BUTTON.sprite.position = MainMenuElements::PLAY_BUTTON.sprite.position + SF.vector2(250, 0)
-            Ui_Elements::MenuText::TITLE_TEXT.text.position = SF.vector2(200, 100)
+            MainMenuElements::TITLE_TEXT.text.position = SF.vector2(200, 100)
     
             MainMenuElements::QUIT_BUTTON.sprite.position = MainMenuElements::SETTINGS_BUTTON.sprite.position + SF.vector2(300, 0)
     
@@ -42,7 +43,7 @@ module MainMenu
             window.draw(MainMenuElements::QUIT_BUTTON.sprite)
 
             window.draw(MainMenuElements::PLAY_BUTTON_TEXT.text)
-            window.draw(Ui_Elements::MenuText::TITLE_TEXT.text)
+            window.draw(MainMenuElements::TITLE_TEXT.text)
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
                 MainMenuMouseHandling.main_menu_mouse_handling(window)
             end

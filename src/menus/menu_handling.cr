@@ -16,7 +16,6 @@ module MenuHandling
         def self.draw_menu(window)
             case self.current_menu
             when "main_menu"
-                #Menus::SystemMenus.draw_main_menu(window)
                 MainMenu::MainMenuDisplay.draw_main_menu(window)
             when "save_menu"
                 Menus::SystemMenus.draw_save_menu(window)
