@@ -15,7 +15,9 @@ module MainMenu
         SETTINGS_BUTTON = Ui_Elements::MenuBoxes.new("Settings Button", "Main3", SF::Sprite.new(BLANK_TEXTURE, 
         SF::Rect.new(200, 0, 200, 80)), 200.0, 80.0, 1)
 
-        QUIT_BUTTON = Ui_Elements::MenuBoxes.new("Quit Button", "Main4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0, 1)
+        QUIT_BUTTON = Ui_Elements::MenuBoxes.new("Quit Button", "Main4", SF::Sprite.new(BLANK_TEXTURE, 
+        SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0, 1)
+
         NEXT_BUTTON = Ui_Elements::MenuBoxes.new("Next Button", "Main5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
     end
     class MainMenuDisplay
@@ -33,11 +35,12 @@ module MainMenu
             MainMenuElements::SETTINGS_BUTTON.sprite.position = MainMenuElements::PLAY_BUTTON.sprite.position + SF.vector2(250, 0)
             Ui_Elements::MenuText::TITLE_TEXT.text.position = SF.vector2(200, 100)
     
-            Ui_Elements::MenuBoxes::QUIT_BUTTON.sprite.position = MainMenuElements::SETTINGS_BUTTON.sprite.position + SF.vector2(300, 0)
+            MainMenuElements::QUIT_BUTTON.sprite.position = MainMenuElements::SETTINGS_BUTTON.sprite.position + SF.vector2(300, 0)
     
             window.draw(MainMenuElements::PLAY_BUTTON.sprite)
             window.draw(MainMenuElements::SETTINGS_BUTTON.sprite)
-            window.draw(Ui_Elements::MenuBoxes::QUIT_BUTTON.sprite)
+            window.draw(MainMenuElements::QUIT_BUTTON.sprite)
+
             window.draw(MainMenuElements::PLAY_BUTTON_TEXT.text)
             window.draw(Ui_Elements::MenuText::TITLE_TEXT.text)
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
@@ -66,7 +69,7 @@ module MainMenu
             elsif MouseHandling::ClickHandling.button_clicked?(MainMenuElements::SETTINGS_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
                 Menus::SystemMenus.initialize_settings_menu(window)
                 MenuHandling::Menu.current_menu = "settings_menu"
-            elsif MouseHandling::ClickHandling.button_clicked?(Ui_Elements::MenuBoxes::QUIT_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
+            elsif MouseHandling::ClickHandling.button_clicked?(MainMenuElements::QUIT_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
                 window.close
             end
          end
