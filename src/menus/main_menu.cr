@@ -2,6 +2,7 @@ require "crsfml"
 require "../../src/textures.cr"
 require "../../src/fonts.cr"
 require "../../src/ui_elements.cr"
+require "../../src/mouse.cr"
 
 module MainMenu
     class MainMenuElements
@@ -34,7 +35,7 @@ module MainMenu
             window.draw(Ui_Elements::MenuText::PLAY_BUTTON_TEXT.text)
             window.draw(Ui_Elements::MenuText::TITLE_TEXT.text)
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                Menus::SystemMenus.main_menu_mouse_handling(window)
+                MainMenuMouseHandling.main_menu_mouse_handling(window)
             end
          end
     end
@@ -53,13 +54,13 @@ module MainMenu
             scaled_mouse_x = mouse_x / scale_x
             scaled_mouse_y = mouse_y / scale_y
 
-            if button_clicked?(Ui_Elements::MenuBoxes::PLAY_BUTTON, scaled_mouse_x, scaled_mouse_y)
+            if MouseHandling::ClickHandling.button_clicked?(Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
                 Menus::SystemMenus.initialize_save_menu(window)
                 MenuHandling::Menu.current_menu = "save_menu"
-            elsif button_clicked?(Ui_Elements::MenuBoxes::SETTINGS_BUTTON, scaled_mouse_x, scaled_mouse_y)
+            elsif MouseHandling::ClickHandling.button_clicked?(Ui_Elements::MenuBoxes::SETTINGS_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
                 Menus::SystemMenus.initialize_settings_menu(window)
                 MenuHandling::Menu.current_menu = "settings_menu"
-            elsif button_clicked?(Ui_Elements::MenuBoxes::QUIT_BUTTON, scaled_mouse_x, scaled_mouse_y)
+            elsif MouseHandling::ClickHandling.button_clicked?(Ui_Elements::MenuBoxes::QUIT_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
                 window.close
             end
          end
