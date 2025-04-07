@@ -5,6 +5,7 @@ require "../src/keyboard.cr"
 require "../src/levels.cr"
 require "../src/player.cr"
 require "../src/ui_elements.cr"
+require "../src/menus/menu_handling.cr"
 
 puts "A Normal World"
 
@@ -48,7 +49,10 @@ while window.open?
     Sprites::Player.draw_sprite(window)
     Keyboard::Gameplay.determine_gameplay_controls(window)
     Player::Stats.check_status_effects(window)
+    
+    #MenuHandling::Menu.draw_menu(window)
     Menus::SystemMenus.draw_system_menu(window)
+
     Menus::Windows.update_open_views(window)
     Inventory::InventoryManager.draw_inventory(window)
     window.display
