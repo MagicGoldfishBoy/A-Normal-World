@@ -9,8 +9,8 @@ require "../src/equipment.cr"
 module Sprites
     include Player
     extend self
-    CLOTHES_HASH = Hash(String, SF::Texture).new
-    CLOTHES_HASH["nil"] = NIL_TEXTURE
+     CLOTHES_HASH = Hash(String, SF::Texture).new
+     CLOTHES_HASH["nil"] = NIL_TEXTURE
 
     CLOTHES_HASH["pale_skin"] = PALE_SKIN_TEXTURE
     CLOTHES_HASH["tan_skin"] = TAN_SKIN_TEXTURE
@@ -22,60 +22,6 @@ module Sprites
     CLOTHES_HASH["green_skin"] = GREEN_SKIN_TEXTURE
     CLOTHES_HASH["purple_skin"] = PURPLE_SKIN_TEXTURE
     CLOTHES_HASH["red_skin"] = RED_SKIN_TEXTURE
-
-
-    CLOTHES_HASH["white_shounen_hair"] = SHOUNEN_HAIR_WHITE_TEXTURE
-    CLOTHES_HASH["black_shounen_hair"] = SHOUNEN_HAIR_BLACK_TEXTURE
-    CLOTHES_HASH["blond_shounen_hair"] = SHOUNEN_HAIR_BLOND_TEXTURE
-    CLOTHES_HASH["light_blond_shounen_hair"] = SHOUNEN_HAIR_LIGHT_BLOND_TEXTURE
-    CLOTHES_HASH["brown_shounen_hair"] = SHOUNEN_HAIR_BROWN_TEXTURE
-    CLOTHES_HASH["orange_shounen_hair"] = SHOUNEN_HAIR_ORANGE_TEXTURE
-    CLOTHES_HASH["red_shounen_hair"] = SHOUNEN_HAIR_RED_TEXTURE
-    CLOTHES_HASH["blue_shounen_hair"] = SHOUNEN_HAIR_BLUE_TEXTURE
-    CLOTHES_HASH["pink_shounen_hair"] = SHOUNEN_HAIR_PINK_TEXTURE
-    CLOTHES_HASH["green_shounen_hair"] = SHOUNEN_HAIR_GREEN_TEXTURE
-    CLOTHES_HASH["purple_shounen_hair"] = SHOUNEN_HAIR_PURPLE_TEXTURE
-
-    CLOTHES_HASH["White_Ponytail_Hair"] = PONYTAIL_HAIR_WHITE_TEXTURE
-    CLOTHES_HASH["Black_Ponytail_Hair"] = PONYTAIL_HAIR_BLACK_TEXTURE
-    CLOTHES_HASH["Blonde_Ponytail_Hair"] = PONYTAIL_HAIR_BLONDE_TEXTURE
-    CLOTHES_HASH["Light_blonde_Ponytail_Hair"] = PONYTAIL_HAIR_LIGHT_BLONDE_TEXTURE
-    CLOTHES_HASH["Brown_Ponytail_Hair"] = PONYTAIL_HAIR_BROWN_TEXTURE
-    CLOTHES_HASH["Orange_Ponytail_Hair"] = PONYTAIL_HAIR_ORANGE_TEXTURE
-    CLOTHES_HASH["Red_Ponytail_Hair"] = PONYTAIL_HAIR_RED_TEXTURE
-    CLOTHES_HASH["Blue_Ponytail_Hair"] = PONYTAIL_HAIR_BLUE_TEXTURE
-    CLOTHES_HASH["Pink_Ponytail_Hair"] = PONYTAIL_HAIR_PINK_TEXTURE
-    CLOTHES_HASH["Green_Ponytail_Hair"] = PONYTAIL_HAIR_GREEN_TEXTURE
-    CLOTHES_HASH["Purple_Ponytail_Hair"] = PONYTAIL_HAIR_PURPLE_TEXTURE
-
-
-    CLOTHES_HASH["blue_button_eyes"] = BUTTON_EYES_BLUE_TEXTURE
-    CLOTHES_HASH["black_button_eyes"] = BUTTON_EYES_BLACK_TEXTURE
-    CLOTHES_HASH["brown_button_eyes"] = BUTTON_EYES_BROWN_TEXTURE
-    CLOTHES_HASH["green_button_eyes"] = BUTTON_EYES_GREEN_TEXTURE
-    CLOTHES_HASH["yellow_button_eyes"] = BUTTON_EYES_YELLOW_TEXTURE
-    CLOTHES_HASH["red_button_eyes"] = BUTTON_EYES_RED_TEXTURE
-    CLOTHES_HASH["pink_button_eyes"] = BUTTON_EYES_PINK_TEXTURE
-    CLOTHES_HASH["purple_button_eyes"] = BUTTON_EYES_PURPLE_TEXTURE
-    CLOTHES_HASH["white_button_eyes"] = BUTTON_EYES_WHITE_TEXTURE
-
-    CLOTHES_HASH["gray_shounen_face"] = SHOUNEN_FACE_GRAY_TEXTURE
-    CLOTHES_HASH["pink_shounen_face"] = SHOUNEN_FACE_PINK_TEXTURE
-    CLOTHES_HASH["purple_shounen_face"] = SHOUNEN_FACE_PURPLE_TEXTURE
-
-    CLOTHES_HASH["white_fingerless_gloves"] = FINGERLESS_GLOVES_WHITE_TEXTURE
-
-
-    CLOTHES_HASH["white_jeans"] = JEANS_WHITE_TEXTURE
-    CLOTHES_HASH["black_jeans"] = JEANS_BLACK_TEXTURE
-
-
-    CLOTHES_HASH["white_rain_boots"] = RAIN_BOOTS_WHITE_TEXTURE
-    CLOTHES_HASH["black_rain_boots"] = RAIN_BOOTS_BLACK_TEXTURE
-
-
-    CLOTHES_HASH["wooden_stick"] = WOODEN_STICK_TEXTURE
-    
     
   class Player 
 

@@ -218,9 +218,9 @@ module LevelElements
             end
         end
     end
-    class EnemyBase
-    end
     class SpikeBase
+    end    
+    class EnemyBase
     end
     class WhackeableObjects
     end
