@@ -61,68 +61,6 @@ module Menus
         end
      end
 
-     def SystemMenus.draw_main_menu(window)
-        current_size = window.size
-        original_width = 800 
-        original_height = 600
-    
-        scale_x = current_size.x.to_f / original_width
-        scale_y = current_size.y.to_f / original_height
-
-        Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position = SF.vector2(scale_x + 50, scale_y + 300)
-        Ui_Elements::MenuText::PLAY_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position + SF.vector2(35, 15)
-
-        Ui_Elements::MenuBoxes::SETTINGS_BUTTON.sprite.position = Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position + SF.vector2(250, 0)
-        Ui_Elements::MenuText::TITLE_TEXT.text.position = SF.vector2(200, 100)
-
-        Ui_Elements::MenuBoxes::QUIT_BUTTON.sprite.position = Ui_Elements::MenuBoxes::SETTINGS_BUTTON.sprite.position + SF.vector2(300, 0)
-
-        window.draw(Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite)
-        window.draw(Ui_Elements::MenuBoxes::SETTINGS_BUTTON.sprite)
-        window.draw(Ui_Elements::MenuBoxes::QUIT_BUTTON.sprite)
-        window.draw(Ui_Elements::MenuText::PLAY_BUTTON_TEXT.text)
-        window.draw(Ui_Elements::MenuText::TITLE_TEXT.text)
-        if SF::Mouse.button_pressed?(SF::Mouse::Left)
-            SystemMenus.main_menu_mouse_handling(window)
-        end
-     end
-     
-     def SystemMenus.main_menu_mouse_handling(window)
-        mouse_position = SF::Mouse.get_position(window)
-        mouse_x = mouse_position.x
-        mouse_y = mouse_position.y
-        menu_box_1_x = Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position.x
-        menu_box_1_y = Ui_Elements::MenuBoxes::PLAY_BUTTON.sprite.position.y
-        menu_box_2_x = Ui_Elements::MenuBoxes::SETTINGS_BUTTON.sprite.position.x
-        menu_box_2_y = Ui_Elements::MenuBoxes::SETTINGS_BUTTON.sprite.position.y
-        menu_box_3_x = Ui_Elements::MenuBoxes::QUIT_BUTTON.sprite.position.x
-        menu_box_3_y = Ui_Elements::MenuBoxes::QUIT_BUTTON.sprite.position.y
-        current_size = window.size
-        original_width = 800
-        original_height = 600
-    
-        scale_x = current_size.x.to_f / original_width
-        scale_y = current_size.y.to_f / original_height
-    
-        scaled_mouse_x = mouse_x / scale_x
-        scaled_mouse_y = mouse_y / scale_y
-        
-        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + Ui_Elements::MenuBoxes::PLAY_BUTTON.width) && 
-           (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + Ui_Elements::MenuBoxes::PLAY_BUTTON.height)
-            SystemMenus.initialize_save_menu(window)
-            SystemMenus.system_menu=("save_menu")
-            MenuHandling::Menu.current_menu = "save_menu"
-        elsif (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::SETTINGS_BUTTON.width) && 
-              (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + Ui_Elements::MenuBoxes::SETTINGS_BUTTON.height)
-            SystemMenus.initialize_settings_menu(window)
-            SystemMenus.system_menu=("settings_menu")
-            MenuHandling::Menu.current_menu = "settings_menu"
-        elsif (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + Ui_Elements::MenuBoxes::QUIT_BUTTON.width) && 
-              (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + Ui_Elements::MenuBoxes::QUIT_BUTTON.height)
-            window.close
-        end
-     end
-
      def SystemMenus.initialize_settings_menu(window)
         current_size = window.size
         original_width = 800 
