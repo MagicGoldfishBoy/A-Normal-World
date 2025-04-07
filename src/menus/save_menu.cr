@@ -177,42 +177,35 @@ module SaveMenu
         
             scaled_mouse_x = mouse_x / scale_x
             scaled_mouse_y = mouse_y / scale_y
-            if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + SaveMenuElements::SAVE_MENU_BACK_BUTTON.width) && 
-               (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + SaveMenuElements::SAVE_MENU_BACK_BUTTON.height)
-                #Menus::SystemMenus.system_menu=("main_menu")
+
+            if MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_MENU_BACK_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
+                SaveMenu::SaveMenuDislay.initialize_save_menu(window)
+                Sprites::Player.is_drawn=(false)
                 MenuHandling::Menu.current_menu = "main_menu"
-            end
-            if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + SaveMenuElements::SAVE_BOX_01.width) && 
-               (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + SaveMenuElements::SAVE_BOX_01.height)
-                if !File.exists?("src/saves/save01")
-                #Player::Stats.initialize_player_stats
-                Serialization::SaveFile.save_file=("save01")
-                Serialization::SaveFile.initial_save("save01")
-                Menus::SystemMenus.initialize_character_creation_menu(window)
+            elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_01.sprite, scaled_mouse_x, scaled_mouse_y)
+                if File.exists?("saves/save01")
+                    SaveMenuMethods.open_save("save01", window)
                 else
-                 Serialization::SaveFile.save_file=("save01")
-                 Serialization::SaveFile.load_game("src/saves/save01")
-                 Sprites::Player.is_drawn=(true)
-                 Menus::SystemMenus.system_menu=("hud")
-                 MenuHandling::Menu.current_menu = "hud"
-                 Menus::SystemMenus.initialize_hud(window)
-                 Keyboard::Gameplay.gameplay_mode=("normal")
-                 Levels::PhysicsTest.initialize_platform_test(window)
-                 Levels::LevelSelectionLogic.level=("physics_test")
-                 Menus::SystemMenus.initialize_hud(window)
+                    Serialization::SaveFile.save_file=("save01")
+                    Serialization::SaveFile.initial_save("save01")
+                    Menus::SystemMenus.initialize_character_creation_menu(window)
                 end
-            end
-            if (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + SaveMenuElements::SAVE_BOX_02.width) && 
-               (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + SaveMenuElements::SAVE_BOX_02.height)
-                Serialization::SaveFile.save_file=("save02")
-                Serialization::SaveFile.initial_save("save02")
-                Menus::SystemMenus.initialize_character_creation_menu(window)
-            end
-            if (scaled_mouse_x >= menu_box_4_x && scaled_mouse_x <= menu_box_4_x + SaveMenuElements::SAVE_BOX_03.width) && 
-               (scaled_mouse_y >= menu_box_4_y && scaled_mouse_y <= menu_box_4_y + SaveMenuElements::SAVE_BOX_03.height)
-                Serialization::SaveFile.save_file=("save03")
-                Serialization::SaveFile.initial_save("save03")
-                Menus::SystemMenus.initialize_character_creation_menu(window)
+            elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_02.sprite, scaled_mouse_x, scaled_mouse_y)
+                if File.exists?("saves/save02")
+                    SaveMenuMethods.open_save("save02", window)
+                else
+                    Serialization::SaveFile.save_file=("save02")
+                    Serialization::SaveFile.initial_save("save02")
+                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                end
+            elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_03.sprite, scaled_mouse_x, scaled_mouse_y)
+                if File.exists?("saves/save03")
+                    SaveMenuMethods.open_save("save03", window)
+                else
+                    Serialization::SaveFile.save_file=("save03")
+                    Serialization::SaveFile.initial_save("sav03")
+                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                end
             end
             if (scaled_mouse_x >= menu_box_5_x && scaled_mouse_x <= menu_box_5_x + SaveMenuElements::SAVE_BOX_04.width) && 
                (scaled_mouse_y >= menu_box_5_y && scaled_mouse_y <= menu_box_5_y + SaveMenuElements::SAVE_BOX_04.height)
@@ -239,5 +232,19 @@ module SaveMenu
                 Menus::SystemMenus.initialize_character_creation_menu(window)
             end
          end
+    end
+    class SaveMenuMethods
+        def self.open_save(save, window)
+            Serialization::SaveFile.save_file=(save)
+            Serialization::SaveFile.load_game("saves/#{save}")
+            Sprites::Player.is_drawn=(true)
+            Menus::SystemMenus.system_menu=("hud")
+            MenuHandling::Menu.current_menu = "hud"
+            Menus::SystemMenus.initialize_hud(window)
+            Keyboard::Gameplay.gameplay_mode=("normal")
+            Levels::PhysicsTest.initialize_platform_test(window)
+            Levels::LevelSelectionLogic.level=("physics_test")
+            Menus::SystemMenus.initialize_hud(window)
+        end
     end
 end
