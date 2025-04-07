@@ -18,7 +18,8 @@ module MenuHandling
             when "main_menu"
                 MainMenu::MainMenuDisplay.draw_main_menu(window)
             when "save_menu"
-                Menus::SystemMenus.draw_save_menu(window)
+                #Menus::SystemMenus.draw_save_menu(window)
+                SaveMenu::SaveMenuDislay.draw_save_menu(window)
             when "character_creation_menu"
                 Menus::SystemMenus.draw_charater_creation_menu(window)
             when "settings_menu"
