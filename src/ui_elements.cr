@@ -99,7 +99,7 @@ require "../src/fonts.cr"
                 text.text.color = current_theme.color04
                 text.text.font = current_theme.font01
             end
-            MenuText::TITLE_TEXT.text.font = current_theme.font02
+            MainMenu::MainMenuElements::TITLE_TEXT.text.font = current_theme.font02
         end
 
     end
@@ -107,7 +107,7 @@ require "../src/fonts.cr"
 
     class MenuBoxes < Ui_BoxBase
         BACK_BUTTON = MenuBoxes.new("Back Button", "Main2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
-        #QUIT_BUTTON = MenuBoxes.new("Quit Button", "Main4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0, 1)
+
         NEXT_BUTTON = MenuBoxes.new("Next Button", "Main5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
 
         DEBUG_BUTTON = MenuBoxes.new("Debug Button", "Settings1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(600, 0, 100, 50)), 100.0, 50.0, 1)
@@ -156,8 +156,6 @@ require "../src/fonts.cr"
     class MenuText < Ui_TextBase
 
         BACK_BUTTON_TEXT = MenuText.new("Back Button Text", "Main2", SF::Text.new("Back", QUICKSAND, 28))
-
-        TITLE_TEXT = MenuText.new("Settings Button Text", "Main3", SF::Text.new("A Normal World", QUICKSAND, 50))
 
         NEXT_BUTTON_TEXT = MenuText.new("Next Button Text", "Main5", SF::Text.new("Next", QUICKSAND, 28))
 
