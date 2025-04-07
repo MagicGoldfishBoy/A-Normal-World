@@ -106,7 +106,6 @@ require "../src/fonts.cr"
     
 
     class MenuBoxes < Ui_BoxBase
-        PLAY_BUTTON = MenuBoxes.new("Play Button", "Main1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0, 1)
         BACK_BUTTON = MenuBoxes.new("Back Button", "Main2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
         SETTINGS_BUTTON = MenuBoxes.new("Settings Button", "Main3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 0, 200, 80)), 200.0, 80.0, 1)
         QUIT_BUTTON = MenuBoxes.new("Quit Button", "Main4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 150, 80)), 150.0, 80.0, 1)
@@ -156,7 +155,6 @@ require "../src/fonts.cr"
         LEVEL_ELEMENT_RIGHT_ARROW = MenuBoxes.new("Level Element Right Arrow", "LevEdMen9", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), 50.0, 40.0, 2)
     end
     class MenuText < Ui_TextBase
-        PLAY_BUTTON_TEXT = MenuText.new("Play Button Text", "Main1", SF::Text.new("Play                    Settings                    Quit", QUICKSAND, 34))
 
         BACK_BUTTON_TEXT = MenuText.new("Back Button Text", "Main2", SF::Text.new("Back", QUICKSAND, 28))
 
