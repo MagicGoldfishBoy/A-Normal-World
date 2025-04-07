@@ -66,7 +66,6 @@ module MainMenu
             scaled_mouse_y = mouse_y / scale_y
 
             if MouseHandling::ClickHandling.button_clicked?(MainMenuElements::PLAY_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
-                #Menus::SystemMenus.initialize_save_menu(window)
                 SaveMenu::SaveMenuDislay.initialize_save_menu(window)
                 MenuHandling::Menu.current_menu = "save_menu"
             elsif MouseHandling::ClickHandling.button_clicked?(MainMenuElements::SETTINGS_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)

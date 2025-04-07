@@ -105,7 +105,7 @@ module Serialization
 
     def SaveFile.initial_save(file)
       SaveFile.save_file=(file)
-      path = "src/saves/" + file
+      path = "saves/" + file
       Dir.mkdir_p(File.dirname(path))
       stats = @@stat_save_hash.to_json
       File.write(path, stats)
@@ -147,7 +147,7 @@ module Serialization
 
     def SaveFile.normal_save
         SaveFile.update_stats_hash
-        path = "src/saves/" + @@save_file.not_nil! # SaveFile.save_file.not_nil!
+        path = "saves/" + @@save_file.not_nil! # SaveFile.save_file.not_nil!
         File.delete?(path)
         Dir.mkdir_p(File.dirname(path))
         stats = @@stat_save_hash.to_json
