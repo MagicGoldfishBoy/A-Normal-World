@@ -7,6 +7,7 @@ require "../src/serialization.cr"
 require "../src/keyboard.cr"
 require "../src/ui_elements.cr"
 require "../src/level_editor.cr"
+require "../src/menus/menu_handling.cr"
 
 module Menus
 
@@ -110,10 +111,12 @@ module Menus
            (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + Ui_Elements::MenuBoxes::PLAY_BUTTON.height)
             SystemMenus.initialize_save_menu(window)
             SystemMenus.system_menu=("save_menu")
+            MenuHandling::Menu.current_menu = "save_menu"
         elsif (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::SETTINGS_BUTTON.width) && 
               (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + Ui_Elements::MenuBoxes::SETTINGS_BUTTON.height)
             SystemMenus.initialize_settings_menu(window)
             SystemMenus.system_menu=("settings_menu")
+            MenuHandling::Menu.current_menu = "settings_menu"
         elsif (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + Ui_Elements::MenuBoxes::QUIT_BUTTON.width) && 
               (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + Ui_Elements::MenuBoxes::QUIT_BUTTON.height)
             window.close
@@ -168,6 +171,7 @@ module Menus
         if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + Ui_Elements::MenuBoxes::BACK_BUTTON.width) && 
            (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + Ui_Elements::MenuBoxes::BACK_BUTTON.height)
             SystemMenus.system_menu=("main_menu")
+            MenuHandling::Menu.current_menu = "main_menu"
             sleep 0.15.seconds
         end
 
@@ -175,6 +179,7 @@ module Menus
            (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + Ui_Elements::MenuBoxes::DEBUG_BUTTON.height)
             SystemMenus.initialize_debug_menu(window)
             SystemMenus.system_menu=("debug")
+            MenuHandling::Menu.current_menu = "debug"
             sleep 0.15.seconds
         end
 
@@ -229,6 +234,7 @@ module Menus
             #SystemMenus.initialize_level_editor_ui(window)
             SystemMenus.system_menu=("level_editor")
             Keyboard::Gameplay.gameplay_mode=("level_editor")
+            MenuHandling::Menu.current_menu = "level_editor"
             LevelEditor::LevelEditorLogic.set_current_index
             LevelEditor::LevelEditorLogic.set_current_array
             sleep 0.15.seconds
@@ -237,6 +243,7 @@ module Menus
         if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::BACK_BUTTON.width) && 
            (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + Ui_Elements::MenuBoxes::BACK_BUTTON.height)
             SystemMenus.system_menu=("settings_menu")
+            MenuHandling::Menu.current_menu = "settings_menu"
             sleep 0.15.seconds
         end
      end
@@ -398,6 +405,7 @@ module Menus
              Serialization::SaveFile.load_game("src/saves/save01")
              Sprites::Player.is_drawn=(true)
              SystemMenus.system_menu=("hud")
+             MenuHandling::Menu.current_menu = "hud"
              SystemMenus.initialize_hud(window)
              Keyboard::Gameplay.gameplay_mode=("normal")
              Levels::PhysicsTest.initialize_platform_test(window)
@@ -600,6 +608,7 @@ module Menus
            (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + Ui_Elements::MenuBoxes::BACK_BUTTON.height)
             Sprites::Player.is_drawn=(false)
             SystemMenus.system_menu=("save_menu")
+            MenuHandling::Menu.current_menu = "save_menu"
             SystemMenus.initialize_save_menu(window)
             sleep 0.15.seconds
         end
@@ -679,6 +688,7 @@ module Menus
            (scaled_mouse_y >= menu_box_14_y && scaled_mouse_y <= menu_box_14_y + Ui_Elements::MenuBoxes::NEXT_BUTTON.height)
             Sprites::Player.is_drawn=(true)
             SystemMenus.system_menu=("hud")
+            MenuHandling::Menu.current_menu = "hud"
             SystemMenus.initialize_hud(window)
             Keyboard::Gameplay.gameplay_mode=("normal")
             Levels::PhysicsTest.initialize_platform_test(window)
