@@ -49,9 +49,9 @@ while window.open?
     Sprites::Player.draw_sprite(window)
     Keyboard::Gameplay.determine_gameplay_controls(window)
     Player::Stats.check_status_effects(window)
-    
-    #MenuHandling::Menu.draw_menu(window)
-    Menus::SystemMenus.draw_system_menu(window)
+
+    MenuHandling::Menu.draw_menu(window)
+    #Menus::SystemMenus.draw_system_menu(window)
 
     Menus::Windows.update_open_views(window)
     Inventory::InventoryManager.draw_inventory(window)

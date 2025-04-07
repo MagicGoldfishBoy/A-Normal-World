@@ -3,6 +3,7 @@ require "../../src/textures.cr"
 require "../../src/fonts.cr"
 require "../../src/ui_elements.cr"
 require "../../src/menus.cr"
+require "../menus/main_menu.cr"
 
 module MenuHandling
     class Menu
@@ -15,7 +16,8 @@ module MenuHandling
         def self.draw_menu(window)
             case self.current_menu
             when "main_menu"
-                Menus::SystemMenus.draw_main_menu(window)
+                #Menus::SystemMenus.draw_main_menu(window)
+                MainMenu::MainMenuDisplay.draw_main_menu(window)
             when "save_menu"
                 Menus::SystemMenus.draw_save_menu(window)
             when "character_creation_menu"
