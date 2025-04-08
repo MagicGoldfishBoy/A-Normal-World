@@ -110,13 +110,11 @@ require "../src/fonts.cr"
 
         NEXT_BUTTON = MenuBoxes.new("Next Button", "Main5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
 
-        #LEVEL_EDITOR_BUTTON = MenuBoxes.new("Level Editor Button", "Debug1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(700, 0, 155, 50)), 155.0, 50.0, 1)
-
         MENU_BOX = MenuBoxes.new("Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0, 1)
 
         MAIN_HUD_BOX = MenuBoxes.new("Main Hud Box", "HUD1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 200, 1000, 500)), 1000.0, 100.0, 4)
-        MAIN_HUD_BOX.sprite.texture.not_nil!.repeated = true
-        LEVEL_BOX = MenuBoxes.new("Level Box", "Stats1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0, 1)
+        #MAIN_HUD_BOX.sprite.texture.not_nil!.repeated = true
+        #LEVEL_BOX = MenuBoxes.new("Level Box", "Stats1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0, 1)
 
         CURRENT_LEVEL_ELEMENT_BOX = MenuBoxes.new("Current Level Element Box", "LevEdMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 0, 160, 40)), 160.0, 40.0, 1)
         CURRENT_LEVEL_LEFT_ARROW = MenuBoxes.new("Current Level Left Arrow", "LevEdMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 50, 50, 40)), 50.0, 40.0, 2)
@@ -135,12 +133,10 @@ require "../src/fonts.cr"
         BACK_BUTTON_TEXT = MenuText.new("Back Button Text", "Main2", SF::Text.new("Back", QUICKSAND, 28))
 
         NEXT_BUTTON_TEXT = MenuText.new("Next Button Text", "Main5", SF::Text.new("Next", QUICKSAND, 28))
-        
-        #LEVEL_EDITOR_BUTTON_TEXT = MenuText.new("Level Editor Button Text", "Debug1", SF::Text.new("Level Editor", QUICKSAND, 25))
 
-        MENU_BOX_TEXT = MenuText.new("Menu Box Text", "HudMen1", SF::Text.new("Menu", QUICKSAND, 24))
+        #MENU_BOX_TEXT = MenuText.new("Menu Box Text", "HudMen1", SF::Text.new("Menu", QUICKSAND, 24))
         MAIN_HUD_BOX_TEXT = MenuText.new("Main Hud Box Text", "HUD1", SF::Text.new("Main Hud", QUICKSAND, 34))
-        LEVEL_BOX_TEXT = MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 34))
+        #LEVEL_BOX_TEXT = MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 34))
 
         CURRENT_LEVEL_ELEMENT_BOX_TEXT = MenuText.new("Current Level Element Box Text", "LevEdMen1", SF::Text.new("Current Level Element", QUICKSAND, 12))
         CURRENT_LEVEL_TEXT = MenuText.new("Current Level Text", "LevEdMen2", SF::Text.new("", QUICKSAND, 12))

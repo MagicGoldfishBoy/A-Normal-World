@@ -250,11 +250,11 @@ module SaveMenu
             #Menus::SystemMenus.system_menu=("hud")
             MenuHandling::Gui.current_gui = "gameplay_hud"
             MenuHandling::Menu.current_menu = "none"
-            Menus::SystemMenus.initialize_hud(window)
+            GameplayGui::GameplayGuiDisplay.initialize_hud(window)
             Keyboard::Gameplay.gameplay_mode=("normal")
             Levels::PhysicsTest.initialize_platform_test(window)
             Levels::LevelSelectionLogic.level=("physics_test")
-            Menus::SystemMenus.initialize_hud(window)
+            GameplayGui::GameplayGuiDisplay.initialize_hud(window)
         end
     end
 end
