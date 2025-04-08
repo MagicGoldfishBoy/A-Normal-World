@@ -183,7 +183,7 @@ module CharacterCreationMenu
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(CharacterCreationMenuElements::NEXT_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
                 Sprites::Player.is_drawn=(true)
-                MenuHandling::Menu.current_menu = "hud"
+                MenuHandling::Gui.current_gui = "gameplay_hud"
                 Keyboard::Gameplay.gameplay_mode=("normal")
                 Levels::PhysicsTest.initialize_platform_test(window)
                 Sprites::Player.resize_player_sprite(window, 1, 1)
