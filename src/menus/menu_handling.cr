@@ -5,6 +5,8 @@ require "../../src/ui_elements.cr"
 require "../../src/menus.cr"
 require "../menus/main_menu.cr"
 
+#menus take up the whole screen, guis overlay gameplay, windows are smoll
+
 module MenuHandling
     class Menu
         def initialize(current_menu : String)
@@ -18,7 +20,6 @@ module MenuHandling
             when "main_menu"
                 MainMenu::MainMenuDisplay.draw_main_menu(window)
             when "save_menu"
-                #Menus::SystemMenus.draw_save_menu(window)
                 SaveMenu::SaveMenuDislay.draw_save_menu(window)
             when "character_creation_menu"
                 Menus::SystemMenus.draw_charater_creation_menu(window)
