@@ -54,69 +54,78 @@ module SaveMenu
         
             scale_x = current_size.x.to_f / original_width
             scale_y = current_size.y.to_f / original_height
+
+            save_text_offset = SF.vector2(70, 200)
     
             SaveMenuElements::SAVE_MENU_BACK_BUTTON.sprite.position = SF.vector2(scale_x + 20, scale_y + 540)
             SaveMenuElements::SAVE_MENU_BACK_BUTTON_TEXT.text.position = SaveMenuElements::SAVE_MENU_BACK_BUTTON.sprite.position + SF.vector2(28, 1)
     
             SaveMenuElements::SAVE_BOX_01.sprite.position = SF.vector2(scale_x + 50, scale_y + 20)
-            SaveMenuElements::SAVE_BOX_01_TEXT.text.position = SaveMenuElements::SAVE_BOX_01.sprite.position + SF.vector2(35, 200)
+            SaveMenuElements::SAVE_BOX_01_TEXT.text.position = SaveMenuElements::SAVE_BOX_01.sprite.position + save_text_offset
     
             SaveMenuElements::SAVE_BOX_02.sprite.position = SaveMenuElements::SAVE_BOX_01.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
-            SaveMenuElements::SAVE_BOX_02_TEXT.text.position = SaveMenuElements::SAVE_BOX_02.sprite.position + SF.vector2(35, 200)
+            SaveMenuElements::SAVE_BOX_02_TEXT.text.position = SaveMenuElements::SAVE_BOX_02.sprite.position + save_text_offset
     
             SaveMenuElements::SAVE_BOX_03.sprite.position = SaveMenuElements::SAVE_BOX_02.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
-            SaveMenuElements::SAVE_BOX_03_TEXT.text.position = SaveMenuElements::SAVE_BOX_03.sprite.position + SF.vector2(35, 200)
+            SaveMenuElements::SAVE_BOX_03_TEXT.text.position = SaveMenuElements::SAVE_BOX_03.sprite.position + save_text_offset
     
             SaveMenuElements::SAVE_BOX_04.sprite.position = SaveMenuElements::SAVE_BOX_03.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
-            SaveMenuElements::SAVE_BOX_04_TEXT.text.position = SaveMenuElements::SAVE_BOX_04.sprite.position + SF.vector2(35, 200)
+            SaveMenuElements::SAVE_BOX_04_TEXT.text.position = SaveMenuElements::SAVE_BOX_04.sprite.position + save_text_offset
     
             SaveMenuElements::SAVE_BOX_05.sprite.position = SaveMenuElements::SAVE_BOX_01.sprite.position + SF.vector2(scale_x + 180, scale_y + 300)
-            SaveMenuElements::SAVE_BOX_05_TEXT.text.position = SaveMenuElements::SAVE_BOX_05.sprite.position + SF.vector2(35, 200)
+            SaveMenuElements::SAVE_BOX_05_TEXT.text.position = SaveMenuElements::SAVE_BOX_05.sprite.position + save_text_offset
     
             SaveMenuElements::SAVE_BOX_06.sprite.position = SaveMenuElements::SAVE_BOX_05.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
-            SaveMenuElements::SAVE_BOX_06_TEXT.text.position = SaveMenuElements::SAVE_BOX_06.sprite.position + SF.vector2(35, 200)
+            SaveMenuElements::SAVE_BOX_06_TEXT.text.position = SaveMenuElements::SAVE_BOX_06.sprite.position + save_text_offset
     
             SaveMenuElements::SAVE_BOX_07.sprite.position = SaveMenuElements::SAVE_BOX_06.sprite.position + SF.vector2(scale_x + 180, scale_y + 0)
-            SaveMenuElements::SAVE_BOX_07_TEXT.text.position = SaveMenuElements::SAVE_BOX_07.sprite.position + SF.vector2(35, 200)
+            SaveMenuElements::SAVE_BOX_07_TEXT.text.position = SaveMenuElements::SAVE_BOX_07.sprite.position + save_text_offset
     
             if !File.exists?("saves/save01")
                 SaveMenuElements::SAVE_BOX_01_TEXT.text.string = "Empty"
+                Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_01_TEXT.text)
             else
                 SaveMenuElements::SAVE_BOX_01_TEXT.text.string = Serialization::SaveFile.retrieve_data("saves/save01", "name").to_s
                 Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_01_TEXT.text)
             end
             if !File.exists?("saves/save02")
                 SaveMenuElements::SAVE_BOX_02_TEXT.text.string = "Empty"
+                Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_02_TEXT.text)
             else
                 SaveMenuElements::SAVE_BOX_02_TEXT.text.string = Serialization::SaveFile.retrieve_data("saves/save02", "name").to_s
                 Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_02_TEXT.text)
             end
             if !File.exists?("saves/save03")
                 SaveMenuElements::SAVE_BOX_03_TEXT.text.string = "Empty"
+                Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_03_TEXT.text)
             else
                 SaveMenuElements::SAVE_BOX_03_TEXT.text.string = Serialization::SaveFile.retrieve_data("saves/save03", "name").to_s
                 Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_03_TEXT.text)
             end
             if !File.exists?("saves/save04")
                 SaveMenuElements::SAVE_BOX_04_TEXT.text.string = "Empty"
+                Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_04_TEXT.text)
             else
                 SaveMenuElements::SAVE_BOX_04_TEXT.text.string = Serialization::SaveFile.retrieve_data("saves/save04", "name").to_s
                 Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_04_TEXT.text)
             end
             if !File.exists?("saves/save05")
                 SaveMenuElements::SAVE_BOX_05_TEXT.text.string = "Empty"
+                Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_05_TEXT.text)
             else
                 SaveMenuElements::SAVE_BOX_05_TEXT.text.string = Serialization::SaveFile.retrieve_data("saves/save05", "name").to_s
                 Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_05_TEXT.text)
             end
             if !File.exists?("saves/save06")
                 SaveMenuElements::SAVE_BOX_06_TEXT.text.string = "Empty"
+                Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_06_TEXT.text)
             else
                 SaveMenuElements::SAVE_BOX_06_TEXT.text.string = Serialization::SaveFile.retrieve_data("saves/save06", "name").to_s
                 Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_06_TEXT.text)
             end
             if !File.exists?("saves/save07")
                 SaveMenuElements::SAVE_BOX_07_TEXT.text.string = "Empty"
+                Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_07_TEXT.text)
             else
                 SaveMenuElements::SAVE_BOX_07_TEXT.text.string = Serialization::SaveFile.retrieve_data("saves/save07", "name").to_s
                 Utility::StringUtilities.center_text(SaveMenuElements::SAVE_BOX_07_TEXT.text)
