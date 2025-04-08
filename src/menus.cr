@@ -61,68 +61,6 @@ module Menus
         end
      end
 
-     def SystemMenus.initialize_settings_menu(window)
-        current_size = window.size
-        original_width = 800 
-        original_height = 600
-    
-        scale_x = current_size.x.to_f / original_width
-        scale_y = current_size.y.to_f / original_height
-
-        Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position = SF.vector2(scale_x + 20, scale_y + 540)
-        Ui_Elements::MenuText::BACK_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position + SF.vector2(28, 1)
-
-        Ui_Elements::MenuBoxes::DEBUG_BUTTON.sprite.position = SF.vector2(scale_x + 50, scale_y + 20)
-        Ui_Elements::MenuText::DEBUG_BUTTON_TEXT.text.position = Ui_Elements::MenuBoxes::DEBUG_BUTTON.sprite.position + SF.vector2(8, 8)
-
-     end
-
-     def SystemMenus.draw_settings_menu(window)
-        window.draw(Ui_Elements::MenuBoxes::BACK_BUTTON.sprite)
-        window.draw(Ui_Elements::MenuText::BACK_BUTTON_TEXT.text)
-        window.draw(Ui_Elements::MenuBoxes::DEBUG_BUTTON.sprite)
-        window.draw(Ui_Elements::MenuText::DEBUG_BUTTON_TEXT.text)
-        if SF::Mouse.button_pressed?(SF::Mouse::Left)
-        SystemMenus.settings_menu_mouse_handling(window)
-        end
-     end
-
-     def SystemMenus.settings_menu_mouse_handling(window)
-        mouse_position = SF::Mouse.get_position(window)
-        mouse_x = mouse_position.x
-        mouse_y = mouse_position.y
-        menu_box_1_x = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position.x
-        menu_box_1_y = Ui_Elements::MenuBoxes::BACK_BUTTON.sprite.position.y
-        menu_box_2_x = Ui_Elements::MenuBoxes::DEBUG_BUTTON.sprite.position.x
-        menu_box_2_y = Ui_Elements::MenuBoxes::DEBUG_BUTTON.sprite.position.y
-
-        current_size = window.size
-        original_width = 800
-        original_height = 600
-    
-        scale_x = current_size.x.to_f / original_width
-        scale_y = current_size.y.to_f / original_height
-    
-        scaled_mouse_x = mouse_x / scale_x
-        scaled_mouse_y = mouse_y / scale_y
-
-        if (scaled_mouse_x >= menu_box_1_x && scaled_mouse_x <= menu_box_1_x + Ui_Elements::MenuBoxes::BACK_BUTTON.width) && 
-           (scaled_mouse_y >= menu_box_1_y && scaled_mouse_y <= menu_box_1_y + Ui_Elements::MenuBoxes::BACK_BUTTON.height)
-            SystemMenus.system_menu=("main_menu")
-            MenuHandling::Menu.current_menu = "main_menu"
-            sleep 0.15.seconds
-        end
-
-        if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::DEBUG_BUTTON.width) && 
-           (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + Ui_Elements::MenuBoxes::DEBUG_BUTTON.height)
-            SystemMenus.initialize_debug_menu(window)
-            SystemMenus.system_menu=("debug")
-            MenuHandling::Menu.current_menu = "debug"
-            sleep 0.15.seconds
-        end
-
-     end
-
      def SystemMenus.initialize_debug_menu(window)
         current_size = window.size
         original_width = 800 

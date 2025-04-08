@@ -24,7 +24,7 @@ module MenuHandling
             when "character_creation_menu"
                 CharacterCreationMenu::CharacterCreationMenuDisplay.draw_charater_creation_menu(window)
             when "settings_menu"
-                Menus::SystemMenus.draw_settings_menu(window)
+                SettingsMenu::SettingsMenuDisplay.draw_settings_menu(window)
                 when "hud"
                     Menus::SystemMenus.draw_hud(window)
             when "debug"
