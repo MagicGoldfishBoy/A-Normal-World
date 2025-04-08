@@ -28,7 +28,7 @@ module MenuHandling
                 when "hud"
                     Menus::SystemMenus.draw_hud(window)
             when "debug"
-                Menus::SystemMenus.draw_debug_menu(window)
+                DebugMenu::DebugMenuDisplay.draw_debug_menu(window)
                 when "level_editor"
                     Menus::SystemMenus.draw_level_editor_ui(window)
             else
