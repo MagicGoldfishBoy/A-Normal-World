@@ -114,27 +114,6 @@ require "../src/fonts.cr"
 
         LEVEL_EDITOR_BUTTON = MenuBoxes.new("Level Editor Button", "Debug1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(700, 0, 155, 50)), 155.0, 50.0, 1)
 
-        SAVE_BOX_01 = MenuBoxes.new("Save Box 1", "Save01", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
-        SAVE_BOX_02 = MenuBoxes.new("Save Box 2", "Save02", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
-        SAVE_BOX_03 = MenuBoxes.new("Save Box 3", "Save03", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
-        SAVE_BOX_04 = MenuBoxes.new("Save Box 4", "Save04", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
-        SAVE_BOX_05 = MenuBoxes.new("Save Box 5", "Save05", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
-        SAVE_BOX_06 = MenuBoxes.new("Save Box 6", "Save06", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
-        SAVE_BOX_07 = MenuBoxes.new("Save Box 7", "Save07", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 800, 150, 250)), 150.0, 250.0, 2)
-
-        SKIN_BOX_LEFT = MenuBoxes.new("Skin Box Left", "SkinL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
-        SKIN_BOX_RIGHT = MenuBoxes.new("Skin Box Right", "SkinR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
-        HAIR_BOX_LEFT = MenuBoxes.new("Hair Box Left", "HairL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
-        HAIR_BOX_RIGHT = MenuBoxes.new("Hair Box Right", "HairR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
-        FACE_BOX_LEFT = MenuBoxes.new("Face Box Left", "FaceL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
-        FACE_BOX_RIGHT = MenuBoxes.new("Face Box Right", "FaceR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
-        SHIRT_BOX_LEFT = MenuBoxes.new("Shirt Box Left", "ShirtL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
-        SHIRT_BOX_RIGHT = MenuBoxes.new("Shirt Box Right", "ShirtR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
-        PANTS_BOX_LEFT = MenuBoxes.new("Pants Box Left", "PantsL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
-        PANTS_BOX_RIGHT = MenuBoxes.new("Pants Box Right", "PantsR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
-        SHOES_BOX_LEFT = MenuBoxes.new("Shoes Box Left", "ShoesL1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 100, 115, 40)), 115.0, 40.0, 1)
-        SHOES_BOX_RIGHT = MenuBoxes.new("Shoes Box Right", "ShoesR1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 140, 115, 40)), 115.0, 40.0, 1)
-
         MENU_BOX = MenuBoxes.new("Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0, 1)
 
         MAIN_HUD_BOX = MenuBoxes.new("Main Hud Box", "HUD1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 200, 1000, 500)), 1000.0, 100.0, 4)
@@ -162,28 +141,6 @@ require "../src/fonts.cr"
         DEBUG_BUTTON_TEXT = MenuText.new("Debug Button Text", "Settings1", SF::Text.new("Debug", QUICKSAND, 25))
         
         LEVEL_EDITOR_BUTTON_TEXT = MenuText.new("Level Editor Button Text", "Debug1", SF::Text.new("Level Editor", QUICKSAND, 25))
- 
-        SAVE_BOX_01_TEXT = MenuText.new("Save Box 1 Text", "Save01", SF::Text.new("Save 1", QUICKSAND, 25))
-
-        SAVE_BOX_02_TEXT = MenuText.new("Save Box 2 Text", "Save02", SF::Text.new("Save 2", QUICKSAND, 25))
-        SAVE_BOX_03_TEXT = MenuText.new("Save Box 3 Text", "Save03", SF::Text.new("Save 3", QUICKSAND, 25))
-        SAVE_BOX_04_TEXT = MenuText.new("Save Box 4 Text", "Save04", SF::Text.new("Save 4", QUICKSAND, 25))
-        SAVE_BOX_05_TEXT = MenuText.new("Save Box 5 Text", "Save05", SF::Text.new("Save 5", QUICKSAND, 25))
-        SAVE_BOX_06_TEXT = MenuText.new("Save Box 6 Text", "Save06", SF::Text.new("Save 6", QUICKSAND, 25))
-        SAVE_BOX_07_TEXT = MenuText.new("Save Box 7 Text", "Save07", SF::Text.new("Save 7", QUICKSAND, 25))
-
-        SKIN_BOX_LEFT_TEXT = MenuText.new("Skin Box Left Text", "SkinL1", SF::Text.new("Skin", QUICKSAND, 24))
-        SKIN_BOX_RIGHT_TEXT = MenuText.new("Skin Box Right Text", "SkinR1", SF::Text.new("Skin", QUICKSAND, 24))
-        HAIR_BOX_LEFT_TEXT = MenuText.new("Hair Box Left Text", "HairL1", SF::Text.new("Hair", QUICKSAND, 24))
-        HAIR_BOX_RIGHT_TEXT = MenuText.new("Hair Box Right Text", "HairR1", SF::Text.new("Hair", QUICKSAND, 24))
-        FACE_BOX_LEFT_TEXT = MenuText.new("Face Box Left Text", "FaceL1", SF::Text.new("Face", QUICKSAND, 24))
-        FACE_BOX_RIGHT_TEXT = MenuText.new("Face Box Right Text", "FaceR1", SF::Text.new("Face", QUICKSAND, 24))
-        SHIRT_BOX_LEFT_TEXT = MenuText.new("Shirt Box Left Text", "ShirtL1", SF::Text.new("Shirt", QUICKSAND, 24))
-        SHIRT_BOX_RIGHT_TEXT = MenuText.new("Shirt Box Right Text", "ShirtR1", SF::Text.new("Shirt", QUICKSAND, 24))
-        PANTS_BOX_LEFT_TEXT = MenuText.new("Pants Box Left Text", "PantsL1", SF::Text.new("Pants", QUICKSAND, 24))
-        PANTS_BOX_RIGHT_TEXT = MenuText.new("Pants Box Right Text", "PantsR1", SF::Text.new("Pants", QUICKSAND, 24))
-        SHOES_BOX_LEFT_TEXT = MenuText.new("Shoes Box Left Text", "ShoesL1", SF::Text.new("Shoes", QUICKSAND, 24))
-        SHOES_BOX_RIGHT_TEXT = MenuText.new("Shoes Box Right Text", "ShoesR1", SF::Text.new("Shoes", QUICKSAND, 24))
 
         MENU_BOX_TEXT = MenuText.new("Menu Box Text", "HudMen1", SF::Text.new("Menu", QUICKSAND, 24))
         MAIN_HUD_BOX_TEXT = MenuText.new("Main Hud Box Text", "HUD1", SF::Text.new("Main Hud", QUICKSAND, 34))

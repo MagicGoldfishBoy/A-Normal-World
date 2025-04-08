@@ -22,7 +22,7 @@ module MenuHandling
             when "save_menu"
                 SaveMenu::SaveMenuDislay.draw_save_menu(window)
             when "character_creation_menu"
-                Menus::SystemMenus.draw_charater_creation_menu(window)
+                CharacterCreationMenu::CharacterCreationMenuDisplay.draw_charater_creation_menu(window)
             when "settings_menu"
                 Menus::SystemMenus.draw_settings_menu(window)
                 when "hud"
