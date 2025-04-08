@@ -152,22 +152,6 @@ module SaveMenu
             mouse_position = SF::Mouse.get_position(window)
             mouse_x = mouse_position.x
             mouse_y = mouse_position.y
-            menu_box_1_x = SaveMenuElements::SAVE_MENU_BACK_BUTTON.sprite.position.x
-            menu_box_1_y = SaveMenuElements::SAVE_MENU_BACK_BUTTON.sprite.position.y
-            menu_box_2_x = SaveMenuElements::SAVE_BOX_01.sprite.position.x
-            menu_box_2_y = SaveMenuElements::SAVE_BOX_01.sprite.position.y
-            menu_box_3_x = SaveMenuElements::SAVE_BOX_02.sprite.position.x
-            menu_box_3_y = SaveMenuElements::SAVE_BOX_02.sprite.position.y
-            menu_box_4_x = SaveMenuElements::SAVE_BOX_03.sprite.position.x
-            menu_box_4_y = SaveMenuElements::SAVE_BOX_03.sprite.position.y
-            menu_box_5_x = SaveMenuElements::SAVE_BOX_04.sprite.position.x
-            menu_box_5_y = SaveMenuElements::SAVE_BOX_04.sprite.position.y
-            menu_box_6_x = SaveMenuElements::SAVE_BOX_05.sprite.position.x
-            menu_box_6_y = SaveMenuElements::SAVE_BOX_05.sprite.position.y
-            menu_box_7_x = SaveMenuElements::SAVE_BOX_06.sprite.position.x
-            menu_box_7_y = SaveMenuElements::SAVE_BOX_06.sprite.position.y
-            menu_box_8_x = SaveMenuElements::SAVE_BOX_07.sprite.position.x
-            menu_box_8_y = SaveMenuElements::SAVE_BOX_07.sprite.position.y
             current_size = window.size
             original_width = 800
             original_height = 600
@@ -189,6 +173,7 @@ module SaveMenu
                     Serialization::SaveFile.save_file=("save01")
                     Serialization::SaveFile.initial_save("save01")
                     Menus::SystemMenus.initialize_character_creation_menu(window)
+                    MenuHandling::Menu.current_menu = "character_creation_menu"
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_02.sprite, scaled_mouse_x, scaled_mouse_y)
                 if File.exists?("saves/save02")
@@ -197,39 +182,53 @@ module SaveMenu
                     Serialization::SaveFile.save_file=("save02")
                     Serialization::SaveFile.initial_save("save02")
                     Menus::SystemMenus.initialize_character_creation_menu(window)
+                    MenuHandling::Menu.current_menu = "character_creation_menu"
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_03.sprite, scaled_mouse_x, scaled_mouse_y)
                 if File.exists?("saves/save03")
                     SaveMenuMethods.open_save("save03", window)
                 else
                     Serialization::SaveFile.save_file=("save03")
-                    Serialization::SaveFile.initial_save("sav03")
+                    Serialization::SaveFile.initial_save("save03")
                     Menus::SystemMenus.initialize_character_creation_menu(window)
+                    MenuHandling::Menu.current_menu = "character_creation_menu"
                 end
-            end
-            if (scaled_mouse_x >= menu_box_5_x && scaled_mouse_x <= menu_box_5_x + SaveMenuElements::SAVE_BOX_04.width) && 
-               (scaled_mouse_y >= menu_box_5_y && scaled_mouse_y <= menu_box_5_y + SaveMenuElements::SAVE_BOX_04.height)
-                Serialization::SaveFile.save_file=("save04")
-                Serialization::SaveFile.initial_save("save04")
-                Menus::SystemMenus.initialize_character_creation_menu(window)
-            end
-            if (scaled_mouse_x >= menu_box_6_x && scaled_mouse_x <= menu_box_6_x + SaveMenuElements::SAVE_BOX_05.width) && 
-               (scaled_mouse_y >= menu_box_6_y && scaled_mouse_y <= menu_box_6_y + SaveMenuElements::SAVE_BOX_05.height)
-                Serialization::SaveFile.save_file=("save05")
-                Serialization::SaveFile.initial_save("save05")
-                Menus::SystemMenus.initialize_character_creation_menu(window)
-            end
-            if (scaled_mouse_x >= menu_box_7_x && scaled_mouse_x <= menu_box_7_x + SaveMenuElements::SAVE_BOX_06.width) && 
-               (scaled_mouse_y >= menu_box_7_y && scaled_mouse_y <= menu_box_7_y + SaveMenuElements::SAVE_BOX_06.height)
-                Serialization::SaveFile.save_file=("save06")
-                Serialization::SaveFile.initial_save("save06")
-                Menus::SystemMenus.initialize_character_creation_menu(window)
-            end
-            if (scaled_mouse_x >= menu_box_8_x && scaled_mouse_x <= menu_box_8_x + SaveMenuElements::SAVE_BOX_07.width) && 
-               (scaled_mouse_y >= menu_box_8_y && scaled_mouse_y <= menu_box_8_y + SaveMenuElements::SAVE_BOX_07.height)
-                Serialization::SaveFile.save_file=("save07")
-                Serialization::SaveFile.initial_save("save07")
-                Menus::SystemMenus.initialize_character_creation_menu(window)
+            elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_04.sprite, scaled_mouse_x, scaled_mouse_y)
+                if File.exists?("saves/save04")
+                    SaveMenuMethods.open_save("save04", window)
+                else
+                    Serialization::SaveFile.save_file=("save04")
+                    Serialization::SaveFile.initial_save("save04")
+                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                    MenuHandling::Menu.current_menu = "character_creation_menu"
+                end
+            elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_05.sprite, scaled_mouse_x, scaled_mouse_y)
+                if File.exists?("saves/save05")
+                    SaveMenuMethods.open_save("save05", window)
+                else
+                    Serialization::SaveFile.save_file=("save05")
+                    Serialization::SaveFile.initial_save("save05")
+                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                    MenuHandling::Menu.current_menu = "character_creation_menu"
+                end
+            elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_06.sprite, scaled_mouse_x, scaled_mouse_y)
+                if File.exists?("saves/save06")
+                    SaveMenuMethods.open_save("save06", window)
+                else
+                    Serialization::SaveFile.save_file=("save06")
+                    Serialization::SaveFile.initial_save("save06")
+                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                    MenuHandling::Menu.current_menu = "character_creation_menu"
+                end
+            elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_07.sprite, scaled_mouse_x, scaled_mouse_y)
+                if File.exists?("saves/save07")
+                    SaveMenuMethods.open_save("save07", window)
+                else
+                    Serialization::SaveFile.save_file=("save07")
+                    Serialization::SaveFile.initial_save("save07")
+                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                    MenuHandling::Menu.current_menu = "character_creation_menu"
+                end
             end
          end
     end
