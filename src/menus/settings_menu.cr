@@ -6,6 +6,7 @@ require "../../src/mouse.cr"
 require "../../src/sprites.cr"
 require "../menus/save_menu.cr"
 require "../menus/main_menu.cr"
+require "../menus/debug_menu.cr"
 
 module SettingsMenu
     class SettingsMenuElements
@@ -71,7 +72,7 @@ module SettingsMenu
                 MenuHandling::Menu.current_menu = "main_menu"
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(SettingsMenuElements::DEBUG_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
-                Menus::SystemMenus.initialize_debug_menu(window)
+                DebugMenu::DebugMenuDisplay.initialize_debug_menu(window)
                 MenuHandling::Menu.current_menu = "debug"
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(SettingsMenuElements::THEMES_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
