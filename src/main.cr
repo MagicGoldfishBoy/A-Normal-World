@@ -50,8 +50,13 @@ while window.open?
     Keyboard::Gameplay.determine_gameplay_controls(window)
     Player::Stats.check_status_effects(window)
 
-    MenuHandling::Menu.draw_menu(window)
-    #Menus::SystemMenus.draw_system_menu(window)
+    if MenuHandling::Menu.current_menu != "none"
+     MenuHandling::Menu.draw_menu(window)
+    end
+
+    if MenuHandling::Gui.current_gui != "none"
+      MenuHandling::Gui.draw_gui(window)
+    end
 
     Menus::Windows.update_open_views(window)
     Inventory::InventoryManager.draw_inventory(window)

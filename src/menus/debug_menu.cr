@@ -61,7 +61,8 @@ module DebugMenu
 
             if MouseHandling::ClickHandling.button_clicked?(DebugMenuElements::LEVEL_EDITOR_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
                 Keyboard::Gameplay.gameplay_mode=("level_editor")
-                MenuHandling::Menu.current_menu = "level_editor"
+                MenuHandling::Gui.current_gui = "level_editor_hud"
+                MenuHandling::Menu.current_menu = "none"
                 LevelEditor::LevelEditorLogic.set_current_index
                 LevelEditor::LevelEditorLogic.set_current_array
                 sleep 0.15.seconds

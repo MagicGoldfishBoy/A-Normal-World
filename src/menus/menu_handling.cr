@@ -38,6 +38,23 @@ module MenuHandling
          end
     end
     class Gui
+        def initialize(current_gui : String)
+            @current_gui = current_gui
+        end
+
+        class_property current_gui : String = "none"
+
+        def self.draw_gui(window)
+         case self.current_gui
+            when "gameplay_hud"
+             Menus::SystemMenus.draw_hud(window)
+            when "level_editor_hud"
+             Menus::SystemMenus.draw_level_editor_ui(window)
+         else
+            puts self.current_gui
+            window.close
+         end
+        end
     end
     class Window
     end
