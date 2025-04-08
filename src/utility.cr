@@ -7,18 +7,28 @@ module Utility
     class StringUtilities
 
         def StringUtilities.center_text(this)
+          if this.character_size < 30 && this.character_size > 10
+            base_size = this.character_size
+          else
             base_size = 16
-            min_size = 11
-            max_size = 16
-        
-            this.character_size = (base_size - (this.string.size / 2)).to_i
-            this.character_size = this.character_size.clamp(min_size, max_size)
-        
-            text_width = this.string.size * this.character_size / 2
-            x = this.position.x - (text_width / 2)
-            y = this.position.y
-        
-            this.position = SF.vector2(x, y)
+          end
+
+          min_size = 11
+          max_size = 30
+
+          string_size = this.string.size
+          if string_size > 1000
+            raise "String size too large to safely calculate center text"
+          end
+
+          calculated_size = base_size - (string_size / 2)
+          this.character_size = calculated_size.to_i.clamp(min_size, max_size)
+
+          text_width = string_size * this.character_size / 2
+          x = this.position.x - (text_width / 2)
+          y = this.position.y
+
+          this.position = SF.vector2(x, y)
         end
 
     end
