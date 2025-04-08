@@ -3,6 +3,7 @@ require "../../src/textures.cr"
 require "../../src/fonts.cr"
 require "../../src/ui_elements.cr"
 require "../../src/mouse.cr"
+require "../menus/character_creation_menu.cr"
 
 module SaveMenu
     class SaveMenuElements
@@ -181,7 +182,7 @@ module SaveMenu
                 else
                     Serialization::SaveFile.save_file=("save01")
                     Serialization::SaveFile.initial_save("save01")
-                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                    CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_02.sprite, scaled_mouse_x, scaled_mouse_y)
@@ -190,7 +191,7 @@ module SaveMenu
                 else
                     Serialization::SaveFile.save_file=("save02")
                     Serialization::SaveFile.initial_save("save02")
-                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                    CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_03.sprite, scaled_mouse_x, scaled_mouse_y)
@@ -199,7 +200,7 @@ module SaveMenu
                 else
                     Serialization::SaveFile.save_file=("save03")
                     Serialization::SaveFile.initial_save("save03")
-                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                    CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_04.sprite, scaled_mouse_x, scaled_mouse_y)
@@ -208,7 +209,7 @@ module SaveMenu
                 else
                     Serialization::SaveFile.save_file=("save04")
                     Serialization::SaveFile.initial_save("save04")
-                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                    CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_05.sprite, scaled_mouse_x, scaled_mouse_y)
@@ -217,7 +218,7 @@ module SaveMenu
                 else
                     Serialization::SaveFile.save_file=("save05")
                     Serialization::SaveFile.initial_save("save05")
-                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                    CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_06.sprite, scaled_mouse_x, scaled_mouse_y)
@@ -226,7 +227,7 @@ module SaveMenu
                 else
                     Serialization::SaveFile.save_file=("save06")
                     Serialization::SaveFile.initial_save("save06")
-                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                    CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_07.sprite, scaled_mouse_x, scaled_mouse_y)
@@ -235,7 +236,7 @@ module SaveMenu
                 else
                     Serialization::SaveFile.save_file=("save07")
                     Serialization::SaveFile.initial_save("save07")
-                    Menus::SystemMenus.initialize_character_creation_menu(window)
+                    CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
                 end
             end
