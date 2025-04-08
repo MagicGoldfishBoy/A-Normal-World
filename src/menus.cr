@@ -13,17 +13,17 @@ module Menus
 
     class SystemMenus
 
-        HP_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
-        HP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
-        HP_COLOR_BAR.fill_color = SF.color( 122, 14, 14 )
+        # HP_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
+        # HP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
+        # HP_COLOR_BAR.fill_color = SF.color( 122, 14, 14 )
 
-        MP_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
-        MP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
-        MP_COLOR_BAR.fill_color = SF.color( 23, 81, 159 )
+        # MP_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
+        # MP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
+        # MP_COLOR_BAR.fill_color = SF.color( 23, 81, 159 )
 
-        EXP_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
-        EXP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
-        EXP_COLOR_BAR.fill_color = SF.color( 170, 183, 38 )
+        # EXP_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
+        # EXP_COLOR_BAR = SF::RectangleShape.new(SF.vector2(300, 15))
+        # EXP_COLOR_BAR.fill_color = SF.color( 170, 183, 38 )
 
      def initialize(system_menu : String)
         @system_menu = system_menu
@@ -73,135 +73,135 @@ module Menus
         end
      end
 
-     def SystemMenus.initialize_hud(window)
-        Sprites::Player.refresh_player_sprite(window)
-        Sprites::Player.resize_player_sprite(window, 1, 1)
-        Sprites::Player.position_player_sprite(window, 250, 50)
+    #  def SystemMenus.initialize_hud(window)
+    #     Sprites::Player.refresh_player_sprite(window)
+    #     Sprites::Player.resize_player_sprite(window, 1, 1)
+    #     Sprites::Player.position_player_sprite(window, 250, 50)
 
-        current_size = window.size
-        original_width = 800 
-        original_height = 600
+    #     current_size = window.size
+    #     original_width = 800 
+    #     original_height = 600
     
-        scale_x = current_size.x.to_f / original_width
-        scale_y = current_size.y.to_f / original_height
-        Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.scale = SF.vector2(scale_x, scale_y / 5)
-        Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position = SF.vector2(0_f32, current_size.y.to_f32 - Ui_Elements::MenuBoxes::MAIN_HUD_BOX.height)
-        Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
+    #     scale_x = current_size.x.to_f / original_width
+    #     scale_y = current_size.y.to_f / original_height
+    #     Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.scale = SF.vector2(scale_x, scale_y / 5)
+    #     Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position = SF.vector2(0_f32, current_size.y.to_f32 - Ui_Elements::MenuBoxes::MAIN_HUD_BOX.height)
+    #     Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
 
-        Ui_Elements::MenuBoxes::MENU_BOX.sprite.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 550, 
-        current_size.y.to_f32 - Ui_Elements::MenuBoxes::MENU_BOX.height - 10)
-        Ui_Elements::MenuBoxes::MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
+    #     Ui_Elements::MenuBoxes::MENU_BOX.sprite.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 550, 
+    #     current_size.y.to_f32 - Ui_Elements::MenuBoxes::MENU_BOX.height - 10)
+    #     Ui_Elements::MenuBoxes::MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
 
-        Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.position = Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.position + SF.vector2(50 - Player::Stats.lvl.to_s.size, 1)
+    #     Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.position = Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.position + SF.vector2(50 - Player::Stats.lvl.to_s.size, 1)
 
-        Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.string = Player::Stats.lvl.to_s
-        Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.scale = SF.vector2(scale_x, scale_y)
+    #     Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.string = Player::Stats.lvl.to_s
+    #     Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.scale = SF.vector2(scale_x, scale_y)
 
-        Ui_Elements::MenuText::MENU_BOX_TEXT.text.scale = SF.vector2(scale_x, scale_y)
+    #     Ui_Elements::MenuText::MENU_BOX_TEXT.text.scale = SF.vector2(scale_x, scale_y)
 
-        HP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190, current_size.y.to_f32 - Ui_Elements::MenuBoxes::LEVEL_BOX.height - 10)
-        MP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190, current_size.y.to_f32 - Ui_Elements::MenuBoxes::LEVEL_BOX.height - 20)
+    #     HP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190, current_size.y.to_f32 - Ui_Elements::MenuBoxes::LEVEL_BOX.height - 10)
+    #     MP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190, current_size.y.to_f32 - Ui_Elements::MenuBoxes::LEVEL_BOX.height - 20)
         
-     end
+    #  end
 
-     def SystemMenus.draw_hud(window) 
-      if SF::Event::Resized #the HUD will never scale correctly without this
-        current_size = window.size
-        original_width = 800 
-        original_height = 600
-        scale_x = current_size.x.to_f / original_width
-        scale_y = current_size.y.to_f / original_height
-        Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.scale = SF.vector2(scale_x, scale_y / 5)
-        Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position = SF.vector2(0_f32, current_size.y.to_f32 - Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.global_bounds.height)
+    #  def SystemMenus.draw_hud(window) 
+    #   if SF::Event::Resized #the HUD will never scale correctly without this
+    #     current_size = window.size
+    #     original_width = 800 
+    #     original_height = 600
+    #     scale_x = current_size.x.to_f / original_width
+    #     scale_y = current_size.y.to_f / original_height
+    #     Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.scale = SF.vector2(scale_x, scale_y / 5)
+    #     Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position = SF.vector2(0_f32, current_size.y.to_f32 - Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.global_bounds.height)
 
-        scale_ratio = [scale_x, scale_y].min
-        Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
-        Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.position = SF.vector2(30_f32 * scale_x, 
-        Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 70 * scale_y)
+    #     scale_ratio = [scale_x, scale_y].min
+    #     Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
+    #     Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.position = SF.vector2(30_f32 * scale_x, 
+    #     Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 70 * scale_y)
 
-        Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.scale = SF.vector2(scale_ratio, scale_ratio)
-        Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.position = Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.position + SF.vector2((50 - Player::Stats.lvl.to_s.size) * scale_x, 1 * scale_y)
+    #     Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.scale = SF.vector2(scale_ratio, scale_ratio)
+    #     Ui_Elements::MenuText::LEVEL_BOX_TEXT.text.position = Ui_Elements::MenuBoxes::LEVEL_BOX.sprite.position + SF.vector2((50 - Player::Stats.lvl.to_s.size) * scale_x, 1 * scale_y)
 
-        Ui_Elements::MenuBoxes::MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
-        Ui_Elements::MenuBoxes::MENU_BOX.sprite.position = SF.vector2(650_f32 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 70 * scale_y)
+    #     Ui_Elements::MenuBoxes::MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
+    #     Ui_Elements::MenuBoxes::MENU_BOX.sprite.position = SF.vector2(650_f32 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 70 * scale_y)
 
-        Ui_Elements::MenuText::MENU_BOX_TEXT.text.scale = SF.vector2(scale_ratio, scale_ratio)
-        Ui_Elements::MenuText::MENU_BOX_TEXT.text.position = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position + SF.vector2(28 + scale_x, scale_y)
+    #     Ui_Elements::MenuText::MENU_BOX_TEXT.text.scale = SF.vector2(scale_ratio, scale_ratio)
+    #     Ui_Elements::MenuText::MENU_BOX_TEXT.text.position = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position + SF.vector2(28 + scale_x, scale_y)
 
-        #so much math lol
+    #     #so much math lol
 
-        HP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 65 * scale_y)
-        HP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
+    #     HP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 65 * scale_y)
+    #     HP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
 
-        HP_COLOR_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 65 * scale_y)
-        HP_COLOR_BAR.scale = SF.vector2((Player::Stats.current_hp.not_nil! / Player::Stats.max_hp.not_nil!) * scale_ratio, scale_ratio) 
+    #     HP_COLOR_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 65 * scale_y)
+    #     HP_COLOR_BAR.scale = SF.vector2((Player::Stats.current_hp.not_nil! / Player::Stats.max_hp.not_nil!) * scale_ratio, scale_ratio) 
 
-        MP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 85 * scale_y)
-        MP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
+    #     MP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 85 * scale_y)
+    #     MP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
 
-        MP_COLOR_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 85 * scale_y)
-        MP_COLOR_BAR.scale = SF.vector2((Player::Stats.current_mp.not_nil! / Player::Stats.max_mp.not_nil!) * scale_ratio, scale_ratio) 
+    #     MP_COLOR_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 85 * scale_y)
+    #     MP_COLOR_BAR.scale = SF.vector2((Player::Stats.current_mp.not_nil! / Player::Stats.max_mp.not_nil!) * scale_ratio, scale_ratio) 
 
-        EXP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 105 * scale_y)
-        EXP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
+    #     EXP_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 105 * scale_y)
+    #     EXP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
 
-        EXP_COLOR_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 105 * scale_y)
-        EXP_COLOR_BAR.scale = SF.vector2((Player::Stats.exp.not_nil! / Player::Stats.exp_cap.not_nil!) * scale_ratio, scale_ratio) 
-      end
-        window_size = window.size
-        hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
-        hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
-        window.view = hud_view
-        window.draw(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite)
-        window.draw(Ui_Elements::MenuBoxes::LEVEL_BOX.sprite)
-        window.draw(Ui_Elements::MenuText::LEVEL_BOX_TEXT.text)
-        window.draw(Ui_Elements::MenuBoxes::MENU_BOX.sprite)
-        window.draw(Ui_Elements::MenuText::MENU_BOX_TEXT.text)
-        window.draw(HP_BAR)
-        window.draw(HP_COLOR_BAR)
-        window.draw(MP_BAR)
-        window.draw(MP_COLOR_BAR)
-        window.draw(EXP_BAR)
-        window.draw(EXP_COLOR_BAR)
-        window.view = window.default_view
-        if SF::Mouse.button_pressed?(SF::Mouse::Left)
-            SystemMenus.hud_mouse_handling(window)
-        end
-     end
+    #     EXP_COLOR_BAR.position = SF.vector2(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite.position.y - Ui_Elements::MenuBoxes::LEVEL_BOX.height + 105 * scale_y)
+    #     EXP_COLOR_BAR.scale = SF.vector2((Player::Stats.exp.not_nil! / Player::Stats.exp_cap.not_nil!) * scale_ratio, scale_ratio) 
+    #   end
+    #     window_size = window.size
+    #     hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+    #     hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
+    #     window.view = hud_view
+    #     window.draw(Ui_Elements::MenuBoxes::MAIN_HUD_BOX.sprite)
+    #     window.draw(Ui_Elements::MenuBoxes::LEVEL_BOX.sprite)
+    #     window.draw(Ui_Elements::MenuText::LEVEL_BOX_TEXT.text)
+    #     window.draw(Ui_Elements::MenuBoxes::MENU_BOX.sprite)
+    #     window.draw(Ui_Elements::MenuText::MENU_BOX_TEXT.text)
+    #     window.draw(HP_BAR)
+    #     window.draw(HP_COLOR_BAR)
+    #     window.draw(MP_BAR)
+    #     window.draw(MP_COLOR_BAR)
+    #     window.draw(EXP_BAR)
+    #     window.draw(EXP_COLOR_BAR)
+    #     window.view = window.default_view
+    #     if SF::Mouse.button_pressed?(SF::Mouse::Left)
+    #         SystemMenus.hud_mouse_handling(window)
+    #     end
+    #  end
 
-     def SystemMenus.hud_mouse_handling(window)
-        window_size = window.size
-        hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
-        hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
-        window.view = hud_view
-        mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
+    #  def SystemMenus.hud_mouse_handling(window)
+    #     window_size = window.size
+    #     hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+    #     hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
+    #     window.view = hud_view
+    #     mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
 
-        mouse_x = mouse_position.x
-        mouse_y = mouse_position.y
+    #     mouse_x = mouse_position.x
+    #     mouse_y = mouse_position.y
 
-        menu_box_2_x = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position.x
-        menu_box_2_y = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position.y
+    #     menu_box_2_x = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position.x
+    #     menu_box_2_y = Ui_Elements::MenuBoxes::MENU_BOX.sprite.position.y
 
-        current_size = window.size
-        original_width = 800
-        original_height = 600
+    #     current_size = window.size
+    #     original_width = 800
+    #     original_height = 600
     
-        scale_x = current_size.x.to_f / original_width
-        scale_y = current_size.y.to_f / original_height
+    #     scale_x = current_size.x.to_f / original_width
+    #     scale_y = current_size.y.to_f / original_height
     
-        scaled_mouse_x = mouse_x / scale_x
-        scaled_mouse_y = mouse_y / scale_y
+    #     scaled_mouse_x = mouse_x / scale_x
+    #     scaled_mouse_y = mouse_y / scale_y
 
-        if (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::MENU_BOX.width / scale_x) && 
-            (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + Ui_Elements::MenuBoxes::MENU_BOX.height / scale_y)
-            if Windows.is_hud_menu_open == false
-                Windows.is_hud_menu_open=(true)
-            else
-                Windows.is_hud_menu_open=(false)
-            end
-            sleep 0.25.seconds
-        end
-     end
+    #     if (scaled_mouse_x >= menu_box_2_x / scale_x && scaled_mouse_x <= menu_box_2_x + Ui_Elements::MenuBoxes::MENU_BOX.width / scale_x) && 
+    #         (scaled_mouse_y >= menu_box_2_y / scale_y && scaled_mouse_y <= menu_box_2_y / scale_y + Ui_Elements::MenuBoxes::MENU_BOX.height / scale_y)
+    #         if Windows.is_hud_menu_open == false
+    #             Windows.is_hud_menu_open=(true)
+    #         else
+    #             Windows.is_hud_menu_open=(false)
+    #         end
+    #         sleep 0.25.seconds
+    #     end
+    #  end
 
      def SystemMenus.draw_level_editor_ui(window)
         if SF::Event::Resized #the HUD will never scale correctly without this

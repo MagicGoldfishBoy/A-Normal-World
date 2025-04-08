@@ -4,6 +4,7 @@ require "../../src/fonts.cr"
 require "../../src/ui_elements.cr"
 require "../../src/menus.cr"
 require "../menus/main_menu.cr"
+require "../gui/gameplay_gui.cr"
 
 #menus take up the whole screen, guis overlay gameplay, windows are smoll
 
@@ -25,8 +26,6 @@ module MenuHandling
                 CharacterCreationMenu::CharacterCreationMenuDisplay.draw_charater_creation_menu(window)
             when "settings_menu"
                 SettingsMenu::SettingsMenuDisplay.draw_settings_menu(window)
-                when "hud"
-                    Menus::SystemMenus.draw_hud(window)
             when "debug"
                 DebugMenu::DebugMenuDisplay.draw_debug_menu(window)
                 when "level_editor"
@@ -47,7 +46,7 @@ module MenuHandling
         def self.draw_gui(window)
          case self.current_gui
             when "gameplay_hud"
-             Menus::SystemMenus.draw_hud(window)
+                GameplayGui::GameplayGuiDisplay.draw_hud(window)
             when "level_editor_hud"
              Menus::SystemMenus.draw_level_editor_ui(window)
          else
