@@ -4,6 +4,7 @@ require "../../src/fonts.cr"
 require "../../src/ui_elements.cr"
 require "../../src/mouse.cr"
 require "../menus/save_menu.cr"
+require "../menus/settings_menu.cr"
 
 module MainMenu
     class MainMenuElements
@@ -69,7 +70,7 @@ module MainMenu
                 SaveMenu::SaveMenuDislay.initialize_save_menu(window)
                 MenuHandling::Menu.current_menu = "save_menu"
             elsif MouseHandling::ClickHandling.button_clicked?(MainMenuElements::SETTINGS_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
-                Menus::SystemMenus.initialize_settings_menu(window)
+                SettingsMenu::SettingsMenuDisplay.initialize_settings_menu(window)
                 MenuHandling::Menu.current_menu = "settings_menu"
             elsif MouseHandling::ClickHandling.button_clicked?(MainMenuElements::QUIT_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
                 window.close
