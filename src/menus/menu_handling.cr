@@ -5,6 +5,7 @@ require "../../src/ui_elements.cr"
 require "../../src/menus.cr"
 require "../menus/main_menu.cr"
 require "../gui/gameplay_gui.cr"
+require "../gui/level_editor_gui.cr"
 
 #menus take up the whole screen, guis overlay gameplay, windows are smoll
 
@@ -29,7 +30,7 @@ module MenuHandling
             when "debug"
                 DebugMenu::DebugMenuDisplay.draw_debug_menu(window)
                 when "level_editor"
-                    Menus::SystemMenus.draw_level_editor_ui(window)
+                    #Menus::SystemMenus.draw_level_editor_ui(window)
             else
                 puts self.current_menu
                 window.close
@@ -48,7 +49,7 @@ module MenuHandling
             when "gameplay_hud"
                 GameplayGui::GameplayGuiDisplay.draw_hud(window)
             when "level_editor_hud"
-             Menus::SystemMenus.draw_level_editor_ui(window)
+                LevelEditorGui::LevelEditorGuiDisplay.draw_level_editor_ui(window)
          else
             puts self.current_gui
             window.close

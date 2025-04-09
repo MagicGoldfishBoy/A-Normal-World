@@ -147,6 +147,7 @@ module GameplayGui
         
             scaled_mouse_x = mouse_x / scale_x
             scaled_mouse_y = mouse_y / scale_y
+            
             if MouseHandling::ClickHandling.button_clicked?(GameplayGuiElements::MENU_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 Menus::Windows.is_hud_menu_open=(!Menus::Windows.is_hud_menu_open)
                 sleep 0.25.seconds
