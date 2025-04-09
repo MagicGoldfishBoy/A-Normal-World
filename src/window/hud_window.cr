@@ -45,35 +45,35 @@ module HudWindow
         hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
         window.view = hud_view
 
-         HudWindowElements::HUD_WINDOW_BOX.sprite.position = GameplayGui::GameplayGuiElements::MENU_BOX.sprite.position + SF.vector2(-2.75 * clamped_scale, -GameplayGui::GameplayGuiElements::MENU_BOX.height * clamped_scale * 4.25)
-         HudWindowElements::HUD_WINDOW_BOX.sprite.scale = SF.vector2(scale_x - clamped_scale * 0.005, scale_ratio)
+          HudWindowElements::HUD_WINDOW_BOX.sprite.position = GameplayGui::GameplayGuiElements::MENU_BOX.sprite.position + SF.vector2(-2.75 * clamped_scale, -GameplayGui::GameplayGuiElements::MENU_BOX.height * clamped_scale * 4.25)
+          HudWindowElements::HUD_WINDOW_BOX.sprite.scale = SF.vector2(scale_x - clamped_scale * 0.005, scale_ratio)
               
-         HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite.position = HudWindowElements::HUD_WINDOW_BOX.sprite.position + SF.vector2(2 * clamped_scale, 2 * clamped_scale)
-         HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
+          HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite.position = HudWindowElements::HUD_WINDOW_BOX.sprite.position + SF.vector2(2 * clamped_scale, 2 * clamped_scale)
+          HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
 
-        #       Ui_Elements::WindowText::HUD_MENU_SAVE_TEXT.text.position = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position + SF.vector2((40 * (scale_x - 0.25)), 2 * clamped_scale)
-        #       Ui_Elements::WindowText::HUD_MENU_SAVE_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
-              
-
-        #       Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
-        #       Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
-
-        #       Ui_Elements::WindowText::HUD_MENU_QUIT_TEXT.text.position = Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position + SF.vector2(18 * (scale_x * scale_ratio), 6 * clamped_scale)
-        #       Ui_Elements::WindowText::HUD_MENU_QUIT_TEXT.text.scale = SF.vector2(clamped_scale - 0.25, clamped_scale)
+          HudWindowElements::HUD_WINDOW_SAVE_TEXT.text.position = HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite.position + SF.vector2((40 * (scale_x - 0.25)), 2 * clamped_scale)
+          HudWindowElements::HUD_WINDOW_SAVE_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
               
 
-        #       Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
-        #       Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
+          HudWindowElements::HUD_WINDOW_QUIT_BOX.sprite.position = HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
+          HudWindowElements::HUD_WINDOW_QUIT_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
 
-        #       Ui_Elements::WindowText::HUD_MENU_STATS_TEXT.text.position = Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position + SF.vector2((40 * (scale_x - 0.25)), 2 * clamped_scale)
-        #       Ui_Elements::WindowText::HUD_MENU_STATS_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
+          HudWindowElements::HUD_WINDOW_QUIT_TEXT.text.position = HudWindowElements::HUD_WINDOW_QUIT_BOX.sprite.position + SF.vector2(18 * (scale_x * scale_ratio), 6 * clamped_scale)
+          HudWindowElements::HUD_WINDOW_QUIT_TEXT.text.scale = SF.vector2(clamped_scale - 0.25, clamped_scale)
+              
+
+          HudWindowElements::HUD_WINDOW_STATS_BOX.sprite.position = HudWindowElements::HUD_WINDOW_QUIT_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
+          HudWindowElements::HUD_WINDOW_STATS_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
+
+          HudWindowElements::HUD_WINDOW_STATS_TEXT.text.position = HudWindowElements::HUD_WINDOW_STATS_BOX.sprite.position + SF.vector2((40 * (scale_x - 0.25)), 2 * clamped_scale)
+          HudWindowElements::HUD_WINDOW_STATS_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
 
 
-        #       Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
-        #       Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
+          HudWindowElements::HUD_WINDOW_SETTINGS_BOX.sprite.position = HudWindowElements::HUD_WINDOW_STATS_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
+          HudWindowElements::HUD_WINDOW_SETTINGS_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
 
-        #       Ui_Elements::WindowText::HUD_MENU_SETTINGS_TEXT.text.position = Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position + SF.vector2((15 * (scale_x * clamped_scale * scale_ratio)), 2 * clamped_scale)
-        #       Ui_Elements::WindowText::HUD_MENU_SETTINGS_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
+          HudWindowElements::HUD_WINDOW_SETTINGS_TEXT.text.position = HudWindowElements::HUD_WINDOW_SETTINGS_BOX.sprite.position + SF.vector2((15 * (scale_x * clamped_scale * scale_ratio)), 2 * clamped_scale)
+          HudWindowElements::HUD_WINDOW_SETTINGS_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
 
     end
 
@@ -109,5 +109,7 @@ module HudWindow
             #Windows.hud_window_mouse_handling(window)
         end
     end
+ end
+ class HudWindowMouseHndling
  end
 end
