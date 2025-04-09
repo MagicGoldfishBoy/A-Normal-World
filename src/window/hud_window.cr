@@ -1,0 +1,113 @@
+require "crsfml"
+require "../../src/textures.cr"
+require "../../src/fonts.cr"
+require "../../src/ui_elements.cr"
+require "../menus/menu_handling.cr"
+require "../gui/gameplay_gui.cr"
+
+module HudWindow
+ class HudWindowElements
+
+    HUD_WINDOW_BOX = Ui_Elements::WindowBoxes.new("Hud Window Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, 
+    SF::Rect.new(200, 800, 120, 176)), 120.0, 176.0, 3)
+
+    HUD_WINDOW_SAVE_BOX = Ui_Elements::WindowBoxes.new("Hud Window Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, 
+    SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
+
+    HUD_WINDOW_QUIT_BOX = Ui_Elements::WindowBoxes.new("Hud Window Quit Box", "HudMen3", SF::Sprite.new(BLANK_TEXTURE, 
+    SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
+
+    HUD_WINDOW_STATS_BOX = Ui_Elements::WindowBoxes.new("Hud Window Stats Box", "HudMen4", SF::Sprite.new(BLANK_TEXTURE, 
+    SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
+
+    HUD_WINDOW_SETTINGS_BOX = Ui_Elements::WindowBoxes.new("Hud Window Settings Box", "HudMen5", SF::Sprite.new(
+    BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
+
+    HUD_WINDOW_SAVE_TEXT = Ui_Elements::WindowText.new("Hud Window Save Text", "HudMen1", SF::Text.new("Save", QUICKSAND, 24))
+    HUD_WINDOW_QUIT_TEXT = Ui_Elements::WindowText.new("Hud Window Quit Text", "HudMen2", SF::Text.new("Save & Quit", QUICKSAND, 20))
+    HUD_WINDOW_STATS_TEXT = Ui_Elements::WindowText.new("Hud Window Stats Text", "HudMen3", SF::Text.new("Stats", QUICKSAND, 24))
+    HUD_WINDOW_SETTINGS_TEXT = Ui_Elements::WindowText.new("Hud Window Settings Text", "HudMen4", SF::Text.new("Settings", QUICKSAND, 24))
+
+    def self.position_hud_window_elements(window)
+        current_size = window.size
+        original_width = 800 
+        original_height = 600
+        scale_x = current_size.x.to_f / original_width
+        scale_y = current_size.y.to_f / original_height
+        window_width = current_size.x.to_f
+        window_height = current_size.y.to_f
+        scale_ratio = [scale_x, scale_y].min
+
+        max_scale = 1.5
+        clamped_scale = [scale_ratio, max_scale].min
+        window_size = window.size
+        hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+        hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
+        window.view = hud_view
+
+         HudWindowElements::HUD_WINDOW_BOX.sprite.position = GameplayGui::GameplayGuiElements::MENU_BOX.sprite.position + SF.vector2(-2.75 * clamped_scale, -GameplayGui::GameplayGuiElements::MENU_BOX.height * clamped_scale * 4.25)
+         HudWindowElements::HUD_WINDOW_BOX.sprite.scale = SF.vector2(scale_x - clamped_scale * 0.005, scale_ratio)
+              
+         HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite.position = HudWindowElements::HUD_WINDOW_BOX.sprite.position + SF.vector2(2 * clamped_scale, 2 * clamped_scale)
+         HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
+
+        #       Ui_Elements::WindowText::HUD_MENU_SAVE_TEXT.text.position = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position + SF.vector2((40 * (scale_x - 0.25)), 2 * clamped_scale)
+        #       Ui_Elements::WindowText::HUD_MENU_SAVE_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
+              
+
+        #       Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
+        #       Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
+
+        #       Ui_Elements::WindowText::HUD_MENU_QUIT_TEXT.text.position = Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position + SF.vector2(18 * (scale_x * scale_ratio), 6 * clamped_scale)
+        #       Ui_Elements::WindowText::HUD_MENU_QUIT_TEXT.text.scale = SF.vector2(clamped_scale - 0.25, clamped_scale)
+              
+
+        #       Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
+        #       Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
+
+        #       Ui_Elements::WindowText::HUD_MENU_STATS_TEXT.text.position = Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position + SF.vector2((40 * (scale_x - 0.25)), 2 * clamped_scale)
+        #       Ui_Elements::WindowText::HUD_MENU_STATS_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
+
+
+        #       Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position = Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position + SF.vector2(0, 44 * clamped_scale)
+        #       Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.scale = SF.vector2(scale_x, clamped_scale)
+
+        #       Ui_Elements::WindowText::HUD_MENU_SETTINGS_TEXT.text.position = Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position + SF.vector2((15 * (scale_x * clamped_scale * scale_ratio)), 2 * clamped_scale)
+        #       Ui_Elements::WindowText::HUD_MENU_SETTINGS_TEXT.text.scale = SF.vector2(clamped_scale, clamped_scale)
+
+    end
+
+
+ end
+ class HudWindowDisplay
+
+    def self.draw_hud_window(window)
+        if SF::Event::Resized
+            current_size = window.size
+            original_width = 800 
+            original_height = 600
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+    
+            scale_ratio = [scale_x, scale_y].min
+            HudWindowElements.position_hud_window_elements(window)
+        end
+        window.draw(HudWindowElements::HUD_WINDOW_BOX.sprite)
+
+        window.draw(HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite)
+        window.draw(HudWindowElements::HUD_WINDOW_SAVE_TEXT.text)
+
+        window.draw(HudWindowElements::HUD_WINDOW_QUIT_BOX.sprite)
+        window.draw(HudWindowElements::HUD_WINDOW_QUIT_TEXT.text)
+
+        window.draw(HudWindowElements::HUD_WINDOW_STATS_BOX.sprite)
+        window.draw(HudWindowElements::HUD_WINDOW_STATS_TEXT.text)
+
+        window.draw(HudWindowElements::HUD_WINDOW_SETTINGS_BOX.sprite)
+        window.draw(HudWindowElements::HUD_WINDOW_SETTINGS_TEXT.text)
+        if SF::Mouse.button_pressed?(SF::Mouse::Left)
+            #Windows.hud_window_mouse_handling(window)
+        end
+    end
+ end
+end

@@ -113,20 +113,7 @@ require "../src/fonts.cr"
         MENU_BOX = MenuBoxes.new("Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0, 1)
 
         MAIN_HUD_BOX = MenuBoxes.new("Main Hud Box", "HUD1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 200, 1000, 500)), 1000.0, 100.0, 4)
-        #MAIN_HUD_BOX.sprite.texture.not_nil!.repeated = true
-        #LEVEL_BOX = MenuBoxes.new("Level Box", "Stats1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0, 1)
 
-        CURRENT_LEVEL_ELEMENT_BOX = MenuBoxes.new("Current Level Element Box", "LevEdMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 0, 160, 40)), 160.0, 40.0, 1)
-        CURRENT_LEVEL_LEFT_ARROW = MenuBoxes.new("Current Level Left Arrow", "LevEdMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 50, 50, 40)), 50.0, 40.0, 2)
-        CURRENT_LEVEL_RIGHT_ARROW = MenuBoxes.new("Current Level Right Arrow", "LevEdMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), 50.0, 40.0, 2)
-
-        SELECTED_LEVEL_ELEMENT_BOX = MenuBoxes.new("Selected Level Element Box", "LevEdMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 0, 160, 40)), 160.0, 40.0, 1)
-        SELECTED_LEVEL_LEFT_ARROW = MenuBoxes.new("Selected Level Left Arrow", "LevEdMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 50, 50, 40)), 50.0, 40.0, 2)
-        SELECTED_LEVEL_RIGHT_ARROW = MenuBoxes.new("Selected Level Right Arrow", "LevEdMen6", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), 50.0, 40.0, 2)
-
-        LEVEL_ELEMENT_TYPE_MENU = MenuBoxes.new("Level Element Type Menu", "LevEdMen7", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 0, 160, 40)), 160.0, 40.0, 1)
-        LEVEL_ELEMENT_LEFT_ARROW = MenuBoxes.new("Level Element Left Arrow", "LevEdMen8", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(900, 50, 50, 40)), 50.0, 40.0, 2)
-        LEVEL_ELEMENT_RIGHT_ARROW = MenuBoxes.new("Level Element Right Arrow", "LevEdMen9", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), 50.0, 40.0, 2)
     end
     class MenuText < Ui_TextBase
 
@@ -134,21 +121,16 @@ require "../src/fonts.cr"
 
         NEXT_BUTTON_TEXT = MenuText.new("Next Button Text", "Main5", SF::Text.new("Next", QUICKSAND, 28))
 
-        #MENU_BOX_TEXT = MenuText.new("Menu Box Text", "HudMen1", SF::Text.new("Menu", QUICKSAND, 24))
         MAIN_HUD_BOX_TEXT = MenuText.new("Main Hud Box Text", "HUD1", SF::Text.new("Main Hud", QUICKSAND, 34))
-        #LEVEL_BOX_TEXT = MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 34))
 
-        CURRENT_LEVEL_ELEMENT_BOX_TEXT = MenuText.new("Current Level Element Box Text", "LevEdMen1", SF::Text.new("Current Level Element", QUICKSAND, 12))
-        CURRENT_LEVEL_TEXT = MenuText.new("Current Level Text", "LevEdMen2", SF::Text.new("", QUICKSAND, 12))
-        LEVEL_ELEMENT_TYPE_TEXT = MenuText.new("Level Element Type Text", "LevEdMen3", SF::Text.new("", QUICKSAND, 24))
     end
     class WindowBoxes < Ui_BoxBase
-        HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 800, 120, 176)), 120.0, 176.0, 3)
-        HUD_MENU_SAVE_BOX = WindowBoxes.new("Hud Menu Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
-        HUD_MENU_QUIT_BOX = WindowBoxes.new("Hud Menu Quit Box", "HudMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
-        HUD_MENU_STATS_BOX = WindowBoxes.new("Hud Menu Stats Box", "HudMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
-        HUD_MENU_SETTINGS_BOX = WindowBoxes.new("Hud Menu Settings Box", "HudMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
-        HUD_MENU_SAVE_BOX.sprite.position = HUD_MENU_BOX.sprite.position + SF.vector2(5, 0)
+        # HUD_MENU_BOX = WindowBoxes.new("Hud Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 800, 120, 176)), 120.0, 176.0, 3)
+        # HUD_MENU_SAVE_BOX = WindowBoxes.new("Hud Menu Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
+        # HUD_MENU_QUIT_BOX = WindowBoxes.new("Hud Menu Quit Box", "HudMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
+        # HUD_MENU_STATS_BOX = WindowBoxes.new("Hud Menu Stats Box", "HudMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
+        # HUD_MENU_SETTINGS_BOX = WindowBoxes.new("Hud Menu Settings Box", "HudMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
+        # HUD_MENU_SAVE_BOX.sprite.position = HUD_MENU_BOX.sprite.position + SF.vector2(5, 0)
 
         STATS_MENU_BOX = WindowBoxes.new("Stats Menu Box", "StatMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 200, 500, 410)), 500.0, 410.0, 4)
         STATS_MENU_NAME_BOX = WindowBoxes.new("Stats Menu Name Box", "StatMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 100, 250, 50)), 250.0, 50.0, 3)

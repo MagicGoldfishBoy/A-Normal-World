@@ -6,6 +6,7 @@ require "../../src/menus.cr"
 require "../menus/main_menu.cr"
 require "../gui/gameplay_gui.cr"
 require "../gui/level_editor_gui.cr"
+require "../window/hud_window.cr"
 
 #menus take up the whole screen, guis overlay gameplay, windows are smoll
 
@@ -57,5 +58,24 @@ module MenuHandling
         end
     end
     class Window
+        def initialize(is_hud_menu_open : Bool)
+            @is_hud_menu_open
+        end
+
+        class_property is_hud_menu_open : Bool = false
+
+        def self.draw_window(window)
+            if self.is_hud_menu_open == true
+                HudWindow::HudWindowDisplay.draw_hud_window(window)
+            end
+        # case self.current_window
+        #  when "hud_window"
+        #     HudWindow::HudWindowDisplay.draw_hud_window(window)
+        #  when "stats_window"
+        #  else
+        #     puts self.window
+        #     window.close
+        # end
+        end
     end
 end
