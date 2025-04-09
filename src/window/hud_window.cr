@@ -106,10 +106,51 @@ module HudWindow
         window.draw(HudWindowElements::HUD_WINDOW_SETTINGS_BOX.sprite)
         window.draw(HudWindowElements::HUD_WINDOW_SETTINGS_TEXT.text)
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
-            #Windows.hud_window_mouse_handling(window)
+            HudWindowMouseHandling.hud_window_mouse_handling(window)
         end
     end
  end
- class HudWindowMouseHndling
- end
+ class HudWindowMouseHandling
+    def self.hud_window_mouse_handling(window)
+            window_size = window.size
+            hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
+            hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
+            window.view = hud_view
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+        
+            original_width = 800
+            original_height = 600
+        
+            scale_x = window.view.size.x / original_width
+            scale_y = window.view.size.y / original_height
+        
+            scaled_mouse_x = (mouse_x + window_size.x * window.view.viewport.left) * scale_x
+            scaled_mouse_y = (mouse_y + window_size.y * window.view.viewport.top) * scale_y
+        
+        if MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+           Serialization::SaveFile.normal_save
+           puts "save"
+           sleep 0.15.seconds
+        end
+        #     elsif (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + menu_box_3_width) &&
+        #           (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + menu_box_3_height)
+        #         Serialization::SaveFile.normal_save
+        #         sleep 0.15.seconds 
+        #         window.close
+        
+        #     elsif (scaled_mouse_x >= menu_box_4_x && scaled_mouse_x <= menu_box_4_x + menu_box_4_width) &&
+        #           (scaled_mouse_y >= menu_box_4_y && scaled_mouse_y <= menu_box_4_y + menu_box_4_height)
+        #         Windows.is_stats_menu_open = !Windows.is_stats_menu_open
+        #         sleep 0.15.seconds
+
+        #     elsif (scaled_mouse_x >= menu_box_5_x && scaled_mouse_x <= menu_box_5_x + menu_box_5_width) &&
+        #           (scaled_mouse_y >= menu_box_5_y && scaled_mouse_y <= menu_box_5_y + menu_box_5_height)
+        #           puts "settings"
+        #         #Settings::SettingsMenu.is_settings_menu_open = !Settings::SettingsMenu.is_settings_menu_open
+        #         sleep 0.15.seconds
+        
+         end
+    end
 end
