@@ -37,6 +37,14 @@ module MenuHandling
                 window.close
             end
          end
+         def self.load_main_menu(window)
+            Sprites::Player.is_drawn=(false)
+            MenuHandling::Gui.current_gui = "none"
+            MenuHandling::Window.is_hud_menu_open = false
+            window.view = window.default_view
+            Levels::LevelSelectionLogic.level = "none"
+            MenuHandling::Menu.current_menu = "main_menu"
+         end
     end
     class Gui
         def initialize(current_gui : String)
@@ -51,6 +59,7 @@ module MenuHandling
                 GameplayGui::GameplayGuiDisplay.draw_hud(window)
             when "level_editor_hud"
                 LevelEditorGui::LevelEditorGuiDisplay.draw_level_editor_ui(window)
+            when "none"
          else
             puts self.current_gui
             window.close
