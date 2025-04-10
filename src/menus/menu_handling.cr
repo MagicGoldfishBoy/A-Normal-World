@@ -40,7 +40,7 @@ module MenuHandling
          def self.load_main_menu(window)
             Sprites::Player.is_drawn=(false)
             MenuHandling::Gui.current_gui = "none"
-            MenuHandling::Window.is_hud_menu_open = false
+            MenuHandling::Window.is_hud_window_open = false
             window.view = window.default_view
             Levels::LevelSelectionLogic.level = "none"
             MenuHandling::Menu.current_menu = "main_menu"
@@ -67,14 +67,16 @@ module MenuHandling
         end
     end
     class Window
-        def initialize(is_hud_menu_open : Bool)
-            @is_hud_menu_open
+        def initialize(is_hud_window_open : Bool, is_stats_window_open : Bool)
+            @is_hud_window_open = is_hud_window_open
+            @is_stats_window_open = is_stats_window_open
         end
 
-        class_property is_hud_menu_open : Bool = false
+        class_property is_hud_window_open : Bool = false
+        class_property is_stats_window_open : Bool = false
 
         def self.draw_window(window)
-            if self.is_hud_menu_open == true
+            if self.is_hud_window_open == true
                 HudWindow::HudWindowDisplay.draw_hud_window(window)
             end
         # case self.current_window

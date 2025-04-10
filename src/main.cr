@@ -57,10 +57,8 @@ while window.open?
     if MenuHandling::Gui.current_gui != "none"
       MenuHandling::Gui.draw_gui(window)
     end
-
-    if MenuHandling::Window.is_hud_menu_open == true
-      MenuHandling::Window.draw_window(window)
-    end
+    
+    MenuHandling::Window.draw_window(window)
 
     #Menus::Windows.update_open_views(window)
     Inventory::InventoryManager.draw_inventory(window)
