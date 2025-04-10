@@ -151,7 +151,7 @@ module GameplayGui
             
             if MouseHandling::ClickHandling.button_clicked?(GameplayGuiElements::MENU_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                HudWindow::HudWindowElements.position_hud_window_elements(window)
-               MenuHandling::Window.is_hud_menu_open = !MenuHandling::Window.is_hud_menu_open
+               MenuHandling::Window.is_hud_window_open = !MenuHandling::Window.is_hud_window_open
                 sleep 0.25.seconds
             end
         end
