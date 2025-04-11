@@ -101,61 +101,61 @@ module Menus
         #     end
         # end
 
-        def Windows.draw_stats_menu(window)
-            if SF::Event::Resized
-                current_size = window.size
-                original_width = 800 
-                original_height = 600
-                scale_x = current_size.x.to_f / original_width
-                scale_y = current_size.y.to_f / original_height
+        # def Windows.draw_stats_menu(window)
+        #     if SF::Event::Resized
+        #         current_size = window.size
+        #         original_width = 800 
+        #         original_height = 600
+        #         scale_x = current_size.x.to_f / original_width
+        #         scale_y = current_size.y.to_f / original_height
         
-                scale_ratio = [scale_x, scale_y].min
-            end
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite)
+        #         scale_ratio = [scale_x, scale_y].min
+        #     end
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_BOX.sprite)
 
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_NAME_BOX.sprite)
-            window.draw(Ui_Elements::WindowText::STATS_MENU_NAME_TEXT.text)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_NAME_BOX.sprite)
+        #     window.draw(Ui_Elements::WindowText::STATS_MENU_NAME_TEXT.text)
 
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_MONEY_BOX.sprite)
-            window.draw(Ui_Elements::WindowText::STATS_MENU_MONEY_TEXT.text)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_MONEY_BOX.sprite)
+        #     window.draw(Ui_Elements::WindowText::STATS_MENU_MONEY_TEXT.text)
 
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite)
-            window.draw(Ui_Elements::WindowText::STATS_MENU_HP_TEXT.text)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_HP_BOX.sprite)
+        #     window.draw(Ui_Elements::WindowText::STATS_MENU_HP_TEXT.text)
 
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite)
-            window.draw(Ui_Elements::WindowText::STATS_MENU_MP_TEXT.text)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_MP_BOX.sprite)
+        #     window.draw(Ui_Elements::WindowText::STATS_MENU_MP_TEXT.text)
 
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite)
-            window.draw(Ui_Elements::WindowText::STATS_MENU_LVL_TEXT.text)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LVL_BOX.sprite)
+        #     window.draw(Ui_Elements::WindowText::STATS_MENU_LVL_TEXT.text)
 
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_EXP_BOX.sprite)
-            window.draw(Ui_Elements::WindowText::STATS_MENU_EXP_TEXT.text)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_EXP_BOX.sprite)
+        #     window.draw(Ui_Elements::WindowText::STATS_MENU_EXP_TEXT.text)
 
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_STR_BOX.sprite)
-            window.draw(Ui_Elements::WindowText::STATS_MENU_STR_TEXT.text)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_STR_BOX.sprite)
+        #     window.draw(Ui_Elements::WindowText::STATS_MENU_STR_TEXT.text)
 
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_DEX_BOX.sprite)
-            window.draw(Ui_Elements::WindowText::STATS_MENU_DEX_TEXT.text)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_DEX_BOX.sprite)
+        #     window.draw(Ui_Elements::WindowText::STATS_MENU_DEX_TEXT.text)
 
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_INT_BOX.sprite)
-            window.draw(Ui_Elements::WindowText::STATS_MENU_INT_TEXT.text)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_INT_BOX.sprite)
+        #     window.draw(Ui_Elements::WindowText::STATS_MENU_INT_TEXT.text)
 
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite)
-            window.draw(Ui_Elements::WindowText::STATS_MENU_LUK_TEXT.text)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LUK_BOX.sprite)
+        #     window.draw(Ui_Elements::WindowText::STATS_MENU_LUK_TEXT.text)
 
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_HP_ARROW.sprite)
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_HP_ARROW.sprite)
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_MP_ARROW.sprite)
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_MP_ARROW.sprite)
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_STR_ARROW.sprite)
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_STR_ARROW.sprite)
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_DEX_ARROW.sprite)
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_DEX_ARROW.sprite)
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_INT_ARROW.sprite)
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_INT_ARROW.sprite)
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_LUK_ARROW.sprite)
-            window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_LUK_ARROW.sprite)
-        end
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_HP_ARROW.sprite)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_HP_ARROW.sprite)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_MP_ARROW.sprite)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_MP_ARROW.sprite)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_STR_ARROW.sprite)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_STR_ARROW.sprite)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_DEX_ARROW.sprite)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_DEX_ARROW.sprite)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_INT_ARROW.sprite)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_INT_ARROW.sprite)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_LEFT_LUK_ARROW.sprite)
+        #     window.draw(Ui_Elements::WindowBoxes::STATS_MENU_RIGHT_LUK_ARROW.sprite)
+        # end
 
         # def Windows.update_open_views(window)
         #     current_size = window.size
@@ -343,70 +343,6 @@ module Menus
             #     Windows.draw_stats_menu(window)
             # end
         end
-
-        # def Windows.hud_menu_mouse_handling(window)
-        #     window_size = window.size
-        #     hud_view = SF::View.new(SF::FloatRect.new(0_f32, window_size.y.to_f32 / 2_f32, window_size.x.to_f32, window_size.y.to_f32 / 2_f32))
-        #     hud_view.viewport = SF::FloatRect.new(0_f32, 0.5_f32, 1_f32, 0.5_f32)
-        #     window.view = hud_view
-
-        #     mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
-        #     mouse_x = mouse_position.x
-        #     mouse_y = mouse_position.y
-        
-        #     original_width = 800
-        #     original_height = 600
-        
-        #     scale_x = window.view.size.x / original_width
-        #     scale_y = window.view.size.y / original_height
-        
-        #     scaled_mouse_x = (mouse_x + window_size.x * window.view.viewport.left) * scale_x
-        #     scaled_mouse_y = (mouse_y + window_size.y * window.view.viewport.top) * scale_y
-        
-        #     menu_box_2_x = (Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position.x + window_size.x * window.view.viewport.left) * scale_x
-        #     menu_box_2_y = (Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.position.y + window_size.y * window.view.viewport.top) * scale_y
-        #     menu_box_2_width = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.global_bounds.width * scale_x
-        #     menu_box_2_height = Ui_Elements::WindowBoxes::HUD_MENU_SAVE_BOX.sprite.global_bounds.height * scale_y
-        
-        #     menu_box_3_x = (Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position.x + window_size.x * window.view.viewport.left) * scale_x
-        #     menu_box_3_y = (Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.position.y + window_size.y * window.view.viewport.top) * scale_y
-        #     menu_box_3_width = Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.global_bounds.width * scale_x
-        #     menu_box_3_height = Ui_Elements::WindowBoxes::HUD_MENU_QUIT_BOX.sprite.global_bounds.height * scale_y
-        
-        #     menu_box_4_x = (Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position.x + window_size.x * window.view.viewport.left) * scale_x
-        #     menu_box_4_y = (Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.position.y + window_size.y * window.view.viewport.top) * scale_y
-        #     menu_box_4_width = Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.global_bounds.width * scale_x
-        #     menu_box_4_height = Ui_Elements::WindowBoxes::HUD_MENU_STATS_BOX.sprite.global_bounds.height * scale_y
-        
-        #     menu_box_5_x = (Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position.x + window_size.x * window.view.viewport.left) * scale_x
-        #     menu_box_5_y = (Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.position.y + window_size.y * window.view.viewport.top) * scale_y
-        #     menu_box_5_width = Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.global_bounds.width * scale_x
-        #     menu_box_5_height = Ui_Elements::WindowBoxes::HUD_MENU_SETTINGS_BOX.sprite.global_bounds.height * scale_y
-
-        #     if (scaled_mouse_x >= menu_box_2_x && scaled_mouse_x <= menu_box_2_x + menu_box_2_width) &&
-        #        (scaled_mouse_y >= menu_box_2_y && scaled_mouse_y <= menu_box_2_y + menu_box_2_height)
-        #         Serialization::SaveFile.normal_save
-        #         puts "save"
-        #         sleep 0.15.seconds
-        
-        #     elsif (scaled_mouse_x >= menu_box_3_x && scaled_mouse_x <= menu_box_3_x + menu_box_3_width) &&
-        #           (scaled_mouse_y >= menu_box_3_y && scaled_mouse_y <= menu_box_3_y + menu_box_3_height)
-        #         Serialization::SaveFile.normal_save
-        #         sleep 0.15.seconds
-        #         window.close
-        
-        #     elsif (scaled_mouse_x >= menu_box_4_x && scaled_mouse_x <= menu_box_4_x + menu_box_4_width) &&
-        #           (scaled_mouse_y >= menu_box_4_y && scaled_mouse_y <= menu_box_4_y + menu_box_4_height)
-        #         Windows.is_stats_menu_open = !Windows.is_stats_menu_open
-        #         sleep 0.15.seconds
-
-        #     elsif (scaled_mouse_x >= menu_box_5_x && scaled_mouse_x <= menu_box_5_x + menu_box_5_width) &&
-        #           (scaled_mouse_y >= menu_box_5_y && scaled_mouse_y <= menu_box_5_y + menu_box_5_height)
-        #           puts "settings"
-        #         #Settings::SettingsMenu.is_settings_menu_open = !Settings::SettingsMenu.is_settings_menu_open
-        #         sleep 0.15.seconds
-        #     end
-        # end
 
         # def Windows.stats_menu_mouse_handling(window)
 

@@ -7,14 +7,14 @@ module Utility
     class StringUtilities
 
         def StringUtilities.center_text(this)
-          if this.character_size < 30 && this.character_size > 10
+          if this.character_size < 40 && this.character_size > 10
             base_size = this.character_size
           else
             base_size = 16
           end
 
           min_size = 11
-          max_size = 30
+          max_size = 40
 
           string_size = this.string.size
           if string_size > 1000

@@ -142,8 +142,7 @@ module HudWindow
             puts "Game Saved Successfully!"
             MenuHandling::Menu.load_main_menu(window)
         elsif MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_STATS_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
-            #Window.is_stats_menu_open = !windows.is_stats_menu_open
-            puts "stats menu"
+            MenuHandling::Window.is_stats_window_open = !MenuHandling::Window.is_stats_window_open
             sleep 0.15.seconds
         elsif MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_SETTINGS_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
             puts "settings"
