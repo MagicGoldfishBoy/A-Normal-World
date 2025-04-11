@@ -148,8 +148,8 @@ module GameplayGui
         
             scaled_mouse_x = mouse_x / scale_x
             scaled_mouse_y = mouse_y / scale_y
-            
-            if MouseHandling::ClickHandling.button_clicked?(GameplayGuiElements::MENU_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+
+            if MouseHandling::ClickHandling.button_clicked?(GameplayGuiElements::MENU_BOX.sprite, mouse_x, mouse_y)
                HudWindow::HudWindowElements.position_hud_window_elements(window)
                MenuHandling::Window.is_hud_window_open = !MenuHandling::Window.is_hud_window_open
                 sleep 0.25.seconds
@@ -157,3 +157,9 @@ module GameplayGui
         end
     end
 end
+
+            # puts "Mouse X: #{scaled_mouse_x}"
+            # puts "Mouse Y: #{scaled_mouse_y}"
+            # puts "Box X: #{GameplayGuiElements::MENU_BOX.sprite.position.x}"
+            # puts "Box Y: #{GameplayGuiElements::MENU_BOX.sprite.position.y}"
+            # puts "Global Bounds: #{GameplayGuiElements::MENU_BOX.sprite.global_bounds}"
