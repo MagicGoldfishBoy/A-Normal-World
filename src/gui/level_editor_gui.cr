@@ -164,24 +164,24 @@ module LevelEditorGui
             scaled_mouse_y = mouse_y / scale_y
 
 
-            if MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_TEMPLATE_LEFT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+            if MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_TEMPLATE_LEFT_ARROW.sprite, mouse_x, mouse_y)
                 LevelEditor::LevelEditorLogic.current_index = Utility::ArrayUtilities.navigate_array("backward", LevelEditor::LevelEditorLogic.current_element_array, 
                 LevelEditor::LevelEditorLogic.current_index)
     
                 sleep 0.15.seconds
 
-            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_TEMPLATE_RIGHT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_TEMPLATE_RIGHT_ARROW.sprite, mouse_x, mouse_y)
                 LevelEditor::LevelEditorLogic.current_index = Utility::ArrayUtilities.navigate_array("forward", LevelEditor::LevelEditorLogic.current_element_array, 
                 LevelEditor::LevelEditorLogic.current_index)
     
                 sleep 0.15.seconds
 
-            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_TEMPLATE_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_TEMPLATE_BOX.sprite, mouse_x, mouse_y)
                 LevelEditor::LevelEditorLogic.spawn_element(window)
                 LevelEditor::LevelEditorLogic.update_spawned_element_array
 
                 sleep 0.15.seconds
-            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_ELEMENT_LEFT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_ELEMENT_LEFT_ARROW.sprite, mouse_x, mouse_y)
                 LevelEditor::LevelEditorLogic.spawned_element_index = Utility::ArrayUtilities.navigate_array("backward", LevelEditor::LevelEditorLogic.spawned_element_array, 
                 LevelEditor::LevelEditorLogic.spawned_element_index)
     
@@ -190,7 +190,7 @@ module LevelEditorGui
                 end
 
               sleep 0.15.seconds
-            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_ELEMENT_RIGHT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_ELEMENT_RIGHT_ARROW.sprite, mouse_x, mouse_y)
                 LevelEditor::LevelEditorLogic.spawned_element_index = Utility::ArrayUtilities.navigate_array("forward", LevelEditor::LevelEditorLogic.spawned_element_array, 
                 LevelEditor::LevelEditorLogic.spawned_element_index)
     
@@ -199,14 +199,14 @@ module LevelEditorGui
                 end
 
               sleep 0.15.seconds
-            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_TEMPLATE_CATEGORY_LEFT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_TEMPLATE_CATEGORY_LEFT_ARROW.sprite, mouse_x, mouse_y)
                 LevelEditor::LevelEditorLogic.current_element_index = Utility::ArrayUtilities.navigate_array("backward", LevelEditor::LevelEditorLogic.element_array, LevelEditor::LevelEditorLogic.current_element_index)
                 LevelEditor::LevelEditorLogic.current_element_type = LevelEditor::LevelEditorLogic.element_array[LevelEditor::LevelEditorLogic.current_element_index]
                 LevelEditor::LevelEditorLogic.set_current_index
                 LevelEditor::LevelEditorLogic.set_current_array
 
                 sleep 0.15.seconds
-            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_TEMPLATE_CATEGORY_RIGHT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+            elsif MouseHandling::ClickHandling.button_clicked?(LevelEditorGuiElements::CURRENT_TEMPLATE_CATEGORY_RIGHT_ARROW.sprite, mouse_x, mouse_y)
                 LevelEditor::LevelEditorLogic.current_element_index = Utility::ArrayUtilities.navigate_array("forward", LevelEditor::LevelEditorLogic.element_array, LevelEditor::LevelEditorLogic.current_element_index)
                 LevelEditor::LevelEditorLogic.current_element_type = LevelEditor::LevelEditorLogic.element_array[LevelEditor::LevelEditorLogic.current_element_index]
                 LevelEditor::LevelEditorLogic.set_current_index

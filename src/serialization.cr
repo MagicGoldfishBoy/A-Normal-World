@@ -211,14 +211,14 @@ module Serialization
       end
   
       sanitized_file = file.gsub(/[^\w\-.]/, "_")
-      path = "levels/#{sanitized_file}"
+      path = "loctions/maps/#{sanitized_file}"
   
       Dir.mkdir_p(File.dirname(path))
       File.write(path, json_data)
     end
     
     def self.load_level(file : String)
-      path = "levels/#{file}"
+      path = "locations/maps/#{file}"
       puts "Checking path: #{path}"
       return nil unless File.exists?(path)
       
