@@ -303,6 +303,105 @@ module StatsWindow
           window.draw(StatsWindowElements::RIGHT_DEX_ARROW.sprite)
           window.draw(StatsWindowElements::RIGHT_INT_ARROW.sprite)
           window.draw(StatsWindowElements::RIGHT_LUK_ARROW.sprite)
+          if SF::Mouse.button_pressed?(SF::Mouse::Left)
+            StatsWindowMouseHandling.stats_menu_mouse_handling(window)
+          end
         end
+    end
+    class StatsWindowMouseHandling
+      def self.stats_menu_mouse_handling(window)
+
+        mouse_position = SF::Mouse.get_position(window)
+        mouse_x = mouse_position.x
+        mouse_y = mouse_position.y
+    
+        current_size = window.size
+        original_width = 800 
+        original_height = 600 
+    
+        scale_x = current_size.x.to_f / original_width
+        scale_y = current_size.y.to_f / original_height
+    
+        scaled_mouse_x = mouse_x / scale_x
+        scaled_mouse_y = mouse_y / scale_y
+
+        if MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::LEFT_HP_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.max_hp.not_nil! >= 5
+            Player::Stats.max_hp=(Player::Stats.max_hp.not_nil! - 1)
+            Player::Stats.current_hp=(Player::Stats.current_hp.not_nil! - 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
+         end
+         sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::RIGHT_HP_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.lvl_points.not_nil! > 0
+            Player::Stats.max_hp=(Player::Stats.max_hp.not_nil! + 1)
+            Player::Stats.current_hp=(Player::Stats.current_hp.not_nil! + 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
+         end
+         sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::LEFT_MP_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.max_mp.not_nil! >= 5
+            Player::Stats.max_mp=(Player::Stats.max_mp.not_nil! - 1)
+            Player::Stats.current_mp=(Player::Stats.current_mp.not_nil! - 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
+         end
+         sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::RIGHT_MP_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.lvl_points.not_nil! > 0
+            Player::Stats.max_mp=(Player::Stats.max_mp.not_nil! + 1)
+            Player::Stats.current_mp=(Player::Stats.current_mp.not_nil! + 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
+         end
+         sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::LEFT_STR_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.str.not_nil! >= 5
+            Player::Stats.str=(Player::Stats.str.not_nil! - 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
+         end
+         sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::RIGHT_STR_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.lvl_points.not_nil! > 0
+            Player::Stats.str=(Player::Stats.str.not_nil! + 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
+         end
+         sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::LEFT_DEX_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.dex.not_nil! >= 5
+            Player::Stats.dex=(Player::Stats.dex.not_nil! - 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
+         end
+         sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::RIGHT_DEX_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.lvl_points.not_nil! > 0
+            Player::Stats.dex=(Player::Stats.dex.not_nil! + 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
+         end
+         sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::LEFT_INT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.int.not_nil! >= 5
+            Player::Stats.int=(Player::Stats.int.not_nil! - 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
+         end
+         sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::RIGHT_INT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.lvl_points.not_nil! > 0
+            Player::Stats.int=(Player::Stats.int.not_nil! + 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
+         end
+         sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::LEFT_LUK_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.luk.not_nil! >= 5
+            Player::Stats.luk=(Player::Stats.luk.not_nil! - 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! + 1)
+         end
+         sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(StatsWindowElements::RIGHT_LUK_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+         if Player::Stats.lvl_points.not_nil! > 0
+            Player::Stats.luk=(Player::Stats.luk.not_nil! + 1)
+            Player::Stats.lvl_points=(Player::Stats.lvl_points.not_nil! - 1)
+         end
+         sleep 0.15.seconds
+        end
+      end
     end
 end
