@@ -85,14 +85,6 @@ module MenuHandling
             if self.is_stats_window_open == true
                 StatsWindow::StatsWindowDisplay.display_stats_window(window)
             end
-        # case self.current_window
-        #  when "hud_window"
-        #     HudWindow::HudWindowDisplay.draw_hud_window(window)
-        #  when "stats_window"
-        #  else
-        #     puts self.window
-        #     window.close
-        # end
         end
     end
 end
