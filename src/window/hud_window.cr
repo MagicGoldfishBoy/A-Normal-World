@@ -133,18 +133,18 @@ module HudWindow
             scaled_mouse_x = mouse_x / scale_x
             scaled_mouse_y = mouse_y / scale_y
         
-        if MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+        if MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_SAVE_BOX.sprite, mouse_x, mouse_y)
            Serialization::SaveFile.normal_save
            puts "Game Saved Successfully!"
            sleep 0.15.seconds
-        elsif MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_QUIT_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+        elsif MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_QUIT_BOX.sprite, mouse_x, mouse_y)
             Serialization::SaveFile.normal_save
             puts "Game Saved Successfully!"
             MenuHandling::Menu.load_main_menu(window)
-        elsif MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_STATS_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+        elsif MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_STATS_BOX.sprite, mouse_x, mouse_y)
             MenuHandling::Window.is_stats_window_open = !MenuHandling::Window.is_stats_window_open
             sleep 0.15.seconds
-        elsif MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_SETTINGS_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+        elsif MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_SETTINGS_BOX.sprite, mouse_x, mouse_y)
             puts "settings"
             #Settings::SettingsMenu.is_settings_menu_open = !Settings::SettingsMenu.is_settings_menu_open
             sleep 0.15.seconds
