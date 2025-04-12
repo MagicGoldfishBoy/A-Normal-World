@@ -49,6 +49,7 @@ module LocationSelection
   def self.select_map_chitòn_dump(window)
     case self.current_map
      when "chitòn_dump_map_1"
+        self.load_map("src/locations/regions/chitòn_region/chitòn_dump/maps/chitòn_dump_map_1")
     else
       puts "#{self.current_map} is not a valid map!"
       self.current_map = "chitòn_dump_map_1"

@@ -185,5 +185,11 @@ module Platforms include LevelElements
         PLATFORM_SPRITE_HASH["colossal_dirt_platform"] = SF::Sprite.new(PLATFORM_TEXTURE,
         SF::Rect.new(0, 20, 500, 20))
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@colossal_dirt_platform
+
+        @@dirt_ground = Natural_Platform.new("dirt_ground", "dirt_ground", 0, 0, 
+        SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 40, 500, 60)), false)
+        PLATFORM_SPRITE_HASH["dirt_ground"] = SF::Sprite.new(PLATFORM_TEXTURE,
+        SF::Rect.new(0, 40, 500, 60))
+        LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@dirt_ground
     end
 end

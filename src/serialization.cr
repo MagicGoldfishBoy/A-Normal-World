@@ -211,10 +211,44 @@ module Serialization
       end
   
       sanitized_file = file.gsub(/[^\w\-.]/, "_")
-      path = "loctions/maps/#{sanitized_file}"
+      path = "locations/maps/#{sanitized_file}"
   
       Dir.mkdir_p(File.dirname(path))
       File.write(path, json_data)
+    end
+
+    def self.load_map(path : String)
+      puts "Checking path: #{path}"
+      return nil unless File.exists?(path)
+      
+      json_data = File.read(path)
+      puts "File read successfully."
+  
+      begin
+          parsed = JSON.parse(json_data)
+      rescue e
+          puts "Error parsing JSON: #{e.message}"
+          return nil
+      end
+  
+      puts "Parsed JSON successfully."
+      
+      puts "Loading platforms..."
+      Maps::MapBase.level_platform_array = Platforms::PlatformMethods.load_platforms(path, json_data, parsed)
+      
+      puts "Loading decor..."
+      Decor::DecorMethods.load_decor(path, json_data, parsed)
+
+      puts "Loading walls..."
+      Walls::WallsMethods.load_wall(path, json_data, parsed)
+
+      puts "Loading climbeables..."
+      Climbeable::ClimbeableMethods.load_climbeable(path, json_data, parsed)
+
+      puts "Loading teleporters..."
+      Teleporters::TeleporterMethods.load_teleporters(path, json_data, parsed)
+
+      LevelEditor::LevelEditorLogic.update_spawned_element_array
     end
     
     def self.load_level(file : String)
