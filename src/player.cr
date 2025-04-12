@@ -1,6 +1,7 @@
 require "../src/textures.cr"
 require "../src/sprites.cr"
 require "../src/effects.cr"
+require "../src/locations/maps.cr"
 
 module Player
   class Stats
@@ -156,6 +157,12 @@ module Player
         end
         if direction == "right"
           Sprites::Player.move_player_sprite(window, Movement.movement_speed.not_nil!, 0)
+        end
+      end
+
+      def self.jump(window)
+        if Maps::MapBase.can_jump?(window)
+            Sprites::Player.move_player_sprite(window, 0, -50)# + @@gravity.not_nil!)
         end
       end
   end
