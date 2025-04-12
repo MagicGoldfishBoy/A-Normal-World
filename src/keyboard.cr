@@ -89,11 +89,11 @@ module Keyboard
         end
         def Gameplay.level_editor(window)
             if SF::Keyboard.key_pressed?(SF::Keyboard::K)
-                Serialization::LevelFile.save_level("test2")
+                Serialization::LevelFile.save_level("chitòn_dump_map_1")
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::L)
-                Serialization::LevelFile.load_level("test2")
+                Serialization::LevelFile.load_level("chitòn_dump_map_1")
                 LevelEditor::LevelEditorLogic.spawned_element_array = LevelEditor::LevelEditorLogic.spawned_platform_array + 
                 LevelEditor::LevelEditorLogic.spawned_decor_array + LevelEditor::LevelEditorLogic.spawned_wall_array +
                 LevelEditor::LevelEditorLogic.spawned_climbeable_array + LevelEditor::LevelEditorLogic.spawned_teleport_array
