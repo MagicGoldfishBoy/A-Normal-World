@@ -61,6 +61,7 @@ module Keyboard
                 Sprites::Player.refresh_player_sprite(window)
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::Space)
+                Player::Movement.jump(window)
                 Levels::Level_Physics.jump(window)
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::I)
@@ -94,7 +95,8 @@ module Keyboard
             if SF::Keyboard.key_pressed?(SF::Keyboard::L)
                 Serialization::LevelFile.load_level("test2")
                 LevelEditor::LevelEditorLogic.spawned_element_array = LevelEditor::LevelEditorLogic.spawned_platform_array + 
-                LevelEditor::LevelEditorLogic.spawned_decor_array + LevelEditor::LevelEditorLogic.spawned_wall_array
+                LevelEditor::LevelEditorLogic.spawned_decor_array + LevelEditor::LevelEditorLogic.spawned_wall_array +
+                LevelEditor::LevelEditorLogic.spawned_climbeable_array + LevelEditor::LevelEditorLogic.spawned_teleport_array
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::Left)
