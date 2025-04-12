@@ -254,6 +254,9 @@ module SaveMenu
             Keyboard::Gameplay.gameplay_mode=("normal")
             Levels::PhysicsTest.initialize_platform_test(window)
             Levels::LevelSelectionLogic.level=("physics_test")
+
+            LocationSelection::Region.current_region = "chitòn_region"
+
             GameplayGui::GameplayGuiDisplay.initialize_hud(window)
         end
     end

@@ -6,6 +6,7 @@ require "../src/levels.cr"
 require "../src/player.cr"
 require "../src/ui_elements.cr"
 require "../src/menus/menu_handling.cr"
+require "../src/locations/location_selection.cr"
 
 puts "A Normal World"
 
@@ -46,6 +47,11 @@ while window.open?
     end
     window.clear(SF::Color::Black)
     Levels::LevelSelectionLogic.current_area(window)
+    #TODO: make this display sprites, not elements
+    #Maps::MapBase.draw_elements(window)
+    
+    #LocationSelection::Region.select_region(window)
+
     Sprites::Player.draw_sprite(window)
     Keyboard::Gameplay.determine_gameplay_controls(window)
     Player::Stats.check_status_effects(window)
@@ -57,7 +63,7 @@ while window.open?
     if MenuHandling::Gui.current_gui != "none"
       MenuHandling::Gui.draw_gui(window)
     end
-    
+
     MenuHandling::Window.draw_window(window)
 
     #Menus::Windows.update_open_views(window)

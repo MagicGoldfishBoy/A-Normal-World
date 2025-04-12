@@ -59,7 +59,7 @@ module Maps
         end
 
         def self.draw_elements(window)
-            LevelView.normal_gameplay_view(window)
+            self.normal_gameplay_view(window)
 
             self.level_decor_array.each { |decor|
             if decor.layer == 0
