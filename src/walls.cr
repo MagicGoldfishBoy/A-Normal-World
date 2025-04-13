@@ -42,18 +42,22 @@ module Walls include LevelElements
         def WallsMethods.load_wall(path, json_data, parsed)
             LevelEditor::LevelEditorLogic.spawned_wall_array.clear
           
-            walls = parsed["level"]?.try &.["walls"]?.try &.as_a? || [] of JSON::Any
+            walls_json = parsed["level"]?.try &.["walls"]?.try &.as_a? || [] of JSON::Any
           
-            wall = walls.map do |wall_json|
+            walls = walls_json.compact_map do |wall_json|
               name  = wall_json["name"]?.try(&.as_s?) || "unknown"
               id    = wall_json["id"]?.try(&.as_s?) || "missing_id"
               x     = wall_json["x"]?.try(&.as_f32?) || 0.0_f32
               y     = wall_json["y"]?.try(&.as_f32?) || 0.0_f32
           
-              sprite = LevelElements::WallBase::WALL_SPRITE_HASH[id]?.try(&.dup) || next
-          
-              LevelEditor::LevelEditorLogic.spawned_wall_array << LevelElements::WallBase.new(name, id, x, y, sprite)
-              puts "Loaded wall: #{name}, ID: #{id}, X: #{x}, Y: #{y}"
+              sprite = LevelElements::WallBase::WALL_SPRITE_HASH[id]?.try(&.dup)
+              unless sprite
+                puts "⚠️  Sprite not found for wall ID: #{id}, skipping."
+                next
+              end
+              wall = LevelElements::WallBase.new(name, id, x, y, sprite)
+              LevelEditor::LevelEditorLogic.spawned_wall_array << wall
+              puts "✅ Loaded wall: #{name}, ID: #{id}, X: #{x}, Y: #{y}"
             end
         end
     end
