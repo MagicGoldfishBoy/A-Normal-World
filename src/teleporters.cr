@@ -69,10 +69,9 @@ module Teleporters include LevelElements
         def TeleporterMethods.load_teleporters(path, json_data, parsed)
             LevelEditor::LevelEditorLogic.spawned_teleport_array.clear
 
-            teleporters = parsed["level"]?.try &.["teleports"]?.try &.as_a? || [] of JSON::Any
-            puts "Teleporters: #{teleporters}"
+            teleporters_json = parsed["level"]?.try &.["teleports"]?.try &.as_a? || [] of JSON::Any
 
-            teleporters.map do |teleporter_json|
+            teleporters = teleporters_json.compact_map do |teleporter_json|
                 name  = teleporter_json["name"]?.try(&.as_s?) || "unknown"
                 id    = teleporter_json["id"]?.try(&.as_s?) || "missing_id"
                 x     = teleporter_json["x"]?.try(&.as_f32?) || 0.0_f32
@@ -80,10 +79,15 @@ module Teleporters include LevelElements
                 destination = teleporter_json["destination"]?.try(&.as_s?) || "missing_destination"
                 requirement = teleporter_json["requirement"]?.try(&.as_s?) || "missing_requirement"
                 sound = teleporter_json["sound"]?.try(&.as_s?) || "missing_sound"
-                sprite = LevelElements::TeleportBase::TELEPORT_SPRITE_HASH[id]?.try(&.dup) || next
-                LevelEditor::LevelEditorLogic.spawned_teleport_array << LevelElements::TeleportBase.new(name, id, x, y, sprite, destination, 
-                requirement, sound)
-                puts "Loaded teleporter: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Destination: #{destination}, Requirement: #{requirement}, Sound: #{sound}"
+
+                sprite = LevelElements::TeleportBase::TELEPORT_SPRITE_HASH[id]?.try(&.dup)
+                unless sprite
+                  puts "⚠️  Sprite not found for platform ID: #{id}, skipping."
+                  next
+                end
+                teleporter = LevelElements::TeleportBase.new(name, id, x, y, sprite, destination, requirement, sound)
+                LevelEditor::LevelEditorLogic.spawned_teleport_array << teleporter
+                puts "✅ Loaded teleporter: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Destination: #{destination}, Requirement: #{requirement}, Sound: #{sound}"
             end
         end
     end 
