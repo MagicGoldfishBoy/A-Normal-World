@@ -10,6 +10,7 @@ module LocationSelection
   class_property current_region : String = "none"
 
   def self.select_region(window)
+    puts "Current Region: #{self.current_region}"
     case self.current_region
      when "none"
      when "chitòn_region"
@@ -50,7 +51,8 @@ module LocationSelection
   def self.select_map_chitòn_dump(window)
     case self.current_map
      when "chitòn_dump_map_1"
-        Serialization::LevelFile.load_map("src/locations/regions/chitòn_region/chitòn_dump/maps/chitòn_dump_map_1")
+        Serialization::LevelFile.load_map("../src/locations/regions/chitòn_region/chitòn_dump/maps/chitòn_dump_map_1")
+        #Serialization::LevelFile.load_map("src/locations/regions/chitòn_region/chitòn_dump/maps/chitòn_dump_map_1")
     else
       puts "#{self.current_map} is not a valid map!"
       self.current_map = "chitòn_dump_map_1"
