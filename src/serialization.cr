@@ -235,16 +235,25 @@ module Serialization
       
       puts "Loading Platforms..."
       platform_data = Platforms::PlatformMethods.load_platforms(path, json_data, parsed) || [] of LevelElements::PlatformBase
+      if platform_data.empty? == false
       Maps::MapBase.level_platform_array = platform_data.as(Array(LevelElements::PlatformBase))
       
-      puts "Placing Platforms..."
+      puts "🛠 Placing Platforms..."
       Maps::MapBase.level_platform_array.each { |platform| 
       platform.sprite.position = SF.vector2(platform.x, platform.y)}
-      
+      else
+        puts "⛔ There were no platforms to load!"
+      end
+
       # puts "Loading decor..."
       # decor_data = Decor::DecorMethods.load_decor(path, json_data, parsed) || [] of LevelElements::DecorBase
       # Maps::MapBase.level_decor_array = decor_data.as(Array(LevelElements::DecorBase))
       
+      # puts "Placing Decor..."
+      # Maps::MapBase.level_decor_array.each { |decor|
+      # decor.sprite.position = SF.vector2(decor.x, decor.y)}
+
+
       # puts "Loading walls..."
       # wall_data = Walls::WallsMethods.load_wall(path, json_data, parsed) || [] of LevelElements::WallBase
       # Maps::MapBase.level_wall_array = wall_data.as(Array(LevelElements::WallBase))
@@ -253,11 +262,17 @@ module Serialization
       # climbeable_data = Climbeable::ClimbeableMethods.load_climbeable(path, json_data, parsed) || [] of LevelElements::ClimbeableBase
       # Maps::MapBase.level_climbeable_array = climbeable_data.as(Array(LevelElements::ClimbeableBase))
       
-      # puts "Loading teleporters..."
-      # teleporter_data = Teleporters::TeleporterMethods.load_teleporters(path, json_data, parsed) || [] of LevelElements::TeleportBase
-      # Maps::MapBase.level_teleport_array = teleporter_data.as(Array(LevelElements::TeleportBase))
-      
-      #LevelEditor::LevelEditorLogic.update_spawned_element_array
+      puts "Loading teleporters..."
+      teleporter_data = Teleporters::TeleporterMethods.load_teleporters(path, json_data, parsed) || [] of LevelElements::TeleportBase
+      if teleporter_data.empty? == false
+      Maps::MapBase.level_teleport_array = teleporter_data.as(Array(LevelElements::TeleportBase))
+
+      puts "🛠 Placing Teleporters..."
+      Maps::MapBase.level_teleport_array.each { |teleporter|
+      teleporter.sprite.position = SF.vector2(teleporter.x, teleporter.y)}
+      else 
+        puts "⛔ There were no teleporters to load!"
+      end
     end
     
     def self.load_level(file : String)
