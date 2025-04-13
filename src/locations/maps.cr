@@ -58,6 +58,12 @@ module Maps
          end
         end
 
+        def self.platform_collision(window)
+            if self.level_platform_array.all?{ |platform| Sprites::Player.check_feet_collision(window, platform.sprite) == false }
+               #Level_Physics.gravitational_pull(Sprites::Player.retrieve_sprite)
+               self.gravitational_pull(Sprites::Player.retrieve_sprite, 1)
+            end
+        end
         def self.draw_elements(window)
             self.normal_gameplay_view(window)
 
@@ -87,9 +93,9 @@ module Maps
 
             self.level_teleport_array.each { |teleport|
             window.draw(teleport.sprite)}
+            
+            self.platform_collision(window)
             #window.view = window.default_view
-        end
-        def self.load_map(window)
         end
 #end
     # class ChitònCityDump < MapBase

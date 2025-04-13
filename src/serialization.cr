@@ -233,9 +233,13 @@ module Serialization
   
       puts "Parsed JSON successfully."
       
-      puts "Loading platforms..."
+      puts "Loading Platforms..."
       platform_data = Platforms::PlatformMethods.load_platforms(path, json_data, parsed) || [] of LevelElements::PlatformBase
       Maps::MapBase.level_platform_array = platform_data.as(Array(LevelElements::PlatformBase))
+      
+      puts "Placing Platforms..."
+      Maps::MapBase.level_platform_array.each { |platform| 
+      platform.sprite.position = SF.vector2(platform.x, platform.y)}
       
       # puts "Loading decor..."
       # decor_data = Decor::DecorMethods.load_decor(path, json_data, parsed) || [] of LevelElements::DecorBase
