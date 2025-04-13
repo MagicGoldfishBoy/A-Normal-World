@@ -140,6 +140,7 @@ module HudWindow
         elsif MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_QUIT_BOX.sprite, mouse_x, mouse_y)
             Serialization::SaveFile.normal_save
             puts "Game Saved Successfully!"
+            LocationSelection::Region.current_region = "none"
             MenuHandling::Menu.load_main_menu(window)
         elsif MouseHandling::ClickHandling.button_clicked?(HudWindowElements::HUD_WINDOW_STATS_BOX.sprite, mouse_x, mouse_y)
             MenuHandling::Window.is_stats_window_open = !MenuHandling::Window.is_stats_window_open

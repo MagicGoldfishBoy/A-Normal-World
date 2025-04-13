@@ -237,23 +237,23 @@ module Serialization
       platform_data = Platforms::PlatformMethods.load_platforms(path, json_data, parsed) || [] of LevelElements::PlatformBase
       Maps::MapBase.level_platform_array = platform_data.as(Array(LevelElements::PlatformBase))
       
-      puts "Loading decor..."
-      decor_data = Decor::DecorMethods.load_decor(path, json_data, parsed) || [] of LevelElements::DecorBase
-      Maps::MapBase.level_decor_array = decor_data.as(Array(LevelElements::DecorBase))
+      # puts "Loading decor..."
+      # decor_data = Decor::DecorMethods.load_decor(path, json_data, parsed) || [] of LevelElements::DecorBase
+      # Maps::MapBase.level_decor_array = decor_data.as(Array(LevelElements::DecorBase))
       
-      puts "Loading walls..."
-      wall_data = Walls::WallsMethods.load_wall(path, json_data, parsed) || [] of LevelElements::WallBase
-      Maps::MapBase.level_wall_array = wall_data.as(Array(LevelElements::WallBase))
+      # puts "Loading walls..."
+      # wall_data = Walls::WallsMethods.load_wall(path, json_data, parsed) || [] of LevelElements::WallBase
+      # Maps::MapBase.level_wall_array = wall_data.as(Array(LevelElements::WallBase))
       
-      puts "Loading climbeables..."
-      climbeable_data = Climbeable::ClimbeableMethods.load_climbeable(path, json_data, parsed) || [] of LevelElements::ClimbeableBase
-      Maps::MapBase.level_climbeable_array = climbeable_data.as(Array(LevelElements::ClimbeableBase))
+      # puts "Loading climbeables..."
+      # climbeable_data = Climbeable::ClimbeableMethods.load_climbeable(path, json_data, parsed) || [] of LevelElements::ClimbeableBase
+      # Maps::MapBase.level_climbeable_array = climbeable_data.as(Array(LevelElements::ClimbeableBase))
       
-      puts "Loading teleporters..."
-      teleporter_data = Teleporters::TeleporterMethods.load_teleporters(path, json_data, parsed) || [] of LevelElements::TeleportBase
-      Maps::MapBase.level_teleport_array = teleporter_data.as(Array(LevelElements::TeleportBase))
+      # puts "Loading teleporters..."
+      # teleporter_data = Teleporters::TeleporterMethods.load_teleporters(path, json_data, parsed) || [] of LevelElements::TeleportBase
+      # Maps::MapBase.level_teleport_array = teleporter_data.as(Array(LevelElements::TeleportBase))
       
-      LevelEditor::LevelEditorLogic.update_spawned_element_array
+      #LevelEditor::LevelEditorLogic.update_spawned_element_array
     end
     
     def self.load_level(file : String)
@@ -293,4 +293,14 @@ module Serialization
 end
   
 end
+
+# private def self.safe_load_array(T, &block : -> Array(T)?) : Array(T)
+#   data = block.call
+#   return data if data.is_a?(Array(T))
+#   [] of T
+# end
+
+# Maps::MapBase.level_platform_array = safe_load_array(LevelElements::PlatformBase) do
+#   Platforms::PlatformMethods.load_platforms(path, json_data, parsed)
+# end
 

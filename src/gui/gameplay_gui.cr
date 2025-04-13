@@ -34,7 +34,7 @@ module GameplayGui
         def self.initialize_hud(window)
             Sprites::Player.refresh_player_sprite(window)
             Sprites::Player.resize_player_sprite(window, 1, 1)
-            Sprites::Player.position_player_sprite(window, 250, 50)
+            #Sprites::Player.position_player_sprite(window, 250, 50)
     
             current_size = window.size
             original_width = 800 

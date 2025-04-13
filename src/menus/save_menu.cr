@@ -255,7 +255,9 @@ module SaveMenu
             Levels::PhysicsTest.initialize_platform_test(window)
             Levels::LevelSelectionLogic.level=("physics_test")
 
+            Sprites::Player.position_player_sprite(window, 0, -200)
             LocationSelection::Region.current_region = "chitòn_region"
+            LocationSelection::Region.select_region(window)
 
             GameplayGui::GameplayGuiDisplay.initialize_hud(window)
         end

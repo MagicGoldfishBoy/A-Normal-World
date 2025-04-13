@@ -63,30 +63,31 @@ module Maps
 
             self.level_decor_array.each { |decor|
             if decor.layer == 0
-             window.draw(decor)
+             window.draw(decor.sprite)
             end}
 
             self.level_platform_array.each { |platform|
-            window.draw(platform)}
+            window.draw(platform.sprite)}
 
             self.level_decor_array.each { |decor|
             if decor.layer == 1
-             window.draw(decor)
+             window.draw(decor.sprite)
             end}
 
             self.level_wall_array.each { |wall|
-            window.draw(wall)}
+            window.draw(wall.sprite)}
 
             self.level_climbeable_array.each { |climbeable|
-            window.draw(climbeable)}
+            window.draw(climbeable.sprite)}
 
             self.level_decor_array.each { |decor|
             if decor.layer == 2
-             window.draw(decor)
+             window.draw(decor.sprite)
             end}
 
             self.level_teleport_array.each { |teleport|
-            window.draw(teleport)}
+            window.draw(teleport.sprite)}
+            #window.view = window.default_view
         end
         def self.load_map(window)
         end
