@@ -46,26 +46,6 @@ module Teleporters include LevelElements
                 end
             end
         end
-        # LevelEditor::LevelEditorLogic.spawned_platform_array.clear
-        
-        # platforms_json = parsed["level"]?.try &.["platforms"]?.try &.as_a? || [] of JSON::Any
-        # platforms = platforms_json.compact_map do |platform_json|
-        #     name          = platform_json["name"]?.try(&.as_s?) || "unknown"
-        #     id            = platform_json["id"]?.try(&.as_s?) || "missing_id"
-        #     x             = platform_json["x"]?.try(&.as_f32?) || 0.0_f32
-        #     y             = platform_json["y"]?.try(&.as_f32?) || 0.0_f32
-        #     can_jump_down = platform_json["can_jump_down"]?.try(&.as_bool?) || false
-          
-        #     sprite = LevelElements::PlatformBase::PLATFORM_SPRITE_HASH[id]?.try(&.dup)
-        #     unless sprite
-        #       puts "⚠️  Sprite not found for platform ID: #{id}, skipping."
-        #       next
-        #     end
-          
-        #     platform = LevelElements::PlatformBase.new(name, id, x, y, sprite, can_jump_down)
-        #     LevelEditor::LevelEditorLogic.spawned_platform_array << platform
-        #     puts "✅ Loaded platform: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Can Jump Down: #{can_jump_down}"
-        #     platform
         def TeleporterMethods.load_teleporters(path, json_data, parsed)
             LevelEditor::LevelEditorLogic.spawned_teleport_array.clear
 
