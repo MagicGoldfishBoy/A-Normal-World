@@ -245,6 +245,7 @@ module Serialization
         puts "⛔ There were no platforms to load!"
       end
 
+
       puts "💾 Loading decor..."
       decor_data = Decor::DecorMethods.load_decor(path, json_data, parsed) || [] of LevelElements::DecorBase
       if decor_data.empty? == false
@@ -257,14 +258,23 @@ module Serialization
         puts "⛔ There was no decor to load!"
       end
 
-      # puts "Loading walls..."
-      # wall_data = Walls::WallsMethods.load_wall(path, json_data, parsed) || [] of LevelElements::WallBase
-      # Maps::MapBase.level_wall_array = wall_data.as(Array(LevelElements::WallBase))
+      puts "💾 Loading walls..."
+      wall_data = Walls::WallsMethods.load_wall(path, json_data, parsed) || [] of LevelElements::WallBase
+      if wall_data.empty? == false
+      Maps::MapBase.level_wall_array = wall_data.as(Array(LevelElements::WallBase))
+
+      puts "🛠 Placing Walls..."
+      Maps::MapBase.level_wall_array.each { |wall|
+      wall.sprite.position = SF.vector2(wall.x, wall.y)}
+      else
+        puts "⛔ There were no walls to load!"
+      end
       
       # puts "Loading climbeables..."
       # climbeable_data = Climbeable::ClimbeableMethods.load_climbeable(path, json_data, parsed) || [] of LevelElements::ClimbeableBase
       # Maps::MapBase.level_climbeable_array = climbeable_data.as(Array(LevelElements::ClimbeableBase))
       
+
       puts "💾 Loading teleporters..."
       teleporter_data = Teleporters::TeleporterMethods.load_teleporters(path, json_data, parsed) || [] of LevelElements::TeleportBase
       if teleporter_data.empty? == false
