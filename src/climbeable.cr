@@ -42,18 +42,23 @@ module Climbeable include LevelElements
         def ClimbeableMethods.load_climbeable(path, json_data, parsed)
             LevelEditor::LevelEditorLogic.spawned_climbeable_array.clear
 
-            climbeables = parsed["level"]?.try &.["climbeables"]?.try &.as_a? || [] of JSON::Any
+            climbeables_json = parsed["level"]?.try &.["climbeables"]?.try &.as_a? || [] of JSON::Any
 
-            climbeable = climbeables.map do |climbeable_json|
+            climbeables = climbeables_json.compact_map do |climbeable_json|
                 name  = climbeable_json["name"]?.try(&.as_s?) || "unknown"
                 id    = climbeable_json["id"]?.try(&.as_s?) || "missing_id"
                 x     = climbeable_json["x"]?.try(&.as_f32?) || 0.0_f32
                 y     = climbeable_json["y"]?.try(&.as_f32?) || 0.0_f32
 
-                sprite = LevelElements::ClimbeableBase::CLIMBEABLE_SPRITE_HASH[id]?.try(&.dup) || next
-
-                LevelEditor::LevelEditorLogic.spawned_climbeable_array << LevelElements::ClimbeableBase.new(name, id, x, y, sprite)
-                puts "Loaded climbeable: #{name}, ID: #{id}, X: #{x}, Y: #{y}"
+                sprite = LevelElements::ClimbeableBase::CLIMBEABLE_SPRITE_HASH[id]?.try(&.dup)
+                unless sprite
+                    puts "⚠️  Sprite not found for climbeable ID: #{id}, skipping."
+                    next
+                end
+                climbeable = LevelElements::ClimbeableBase.new(name, id, x, y, sprite)
+                LevelEditor::LevelEditorLogic.spawned_climbeable_array << climbeable
+                puts "✅ Loaded climbeable: #{name}, ID: #{id}, X: #{x}, Y: #{y}"
+                climbeable
             end
         end
     end

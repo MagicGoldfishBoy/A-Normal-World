@@ -58,6 +58,7 @@ module Walls include LevelElements
               wall = LevelElements::WallBase.new(name, id, x, y, sprite)
               LevelEditor::LevelEditorLogic.spawned_wall_array << wall
               puts "✅ Loaded wall: #{name}, ID: #{id}, X: #{x}, Y: #{y}"
+              wall
             end
         end
     end

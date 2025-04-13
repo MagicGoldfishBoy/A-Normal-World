@@ -68,6 +68,7 @@ module Teleporters include LevelElements
                 teleporter = LevelElements::TeleportBase.new(name, id, x, y, sprite, destination, requirement, sound)
                 LevelEditor::LevelEditorLogic.spawned_teleport_array << teleporter
                 puts "✅ Loaded teleporter: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Destination: #{destination}, Requirement: #{requirement}, Sound: #{sound}"
+                teleporter
             end
         end
     end 

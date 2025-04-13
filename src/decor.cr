@@ -61,6 +61,7 @@ module Decor include LevelElements
               decor = LevelElements::DecorBase.new(name, id, x, y, sprite, layer)
               LevelEditor::LevelEditorLogic.spawned_decor_array << decor
               puts "✅ Loaded decor: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Layer: #{layer}"
+              decor
             end
           end
           
