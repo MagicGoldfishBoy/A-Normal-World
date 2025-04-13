@@ -270,10 +270,17 @@ module Serialization
         puts "⛔ There were no walls to load!"
       end
       
-      # puts "Loading climbeables..."
-      # climbeable_data = Climbeable::ClimbeableMethods.load_climbeable(path, json_data, parsed) || [] of LevelElements::ClimbeableBase
-      # Maps::MapBase.level_climbeable_array = climbeable_data.as(Array(LevelElements::ClimbeableBase))
-      
+      puts "💾 Loading climbeables..."
+      climbeable_data = Climbeable::ClimbeableMethods.load_climbeable(path, json_data, parsed) || [] of LevelElements::ClimbeableBase
+      if climbeable_data.empty? == false
+      Maps::MapBase.level_climbeable_array = climbeable_data.as(Array(LevelElements::ClimbeableBase))
+
+      puts "🛠 Placing Climbeables..."
+      Maps::MapBase.level_climbeable_array.each { |climbeable|
+      climbeable.sprite.position = SF.vector2(climbeable.x, climbeable.y)}
+      else
+        puts "⛔ There were no climbeables to load!"
+      end
 
       puts "💾 Loading teleporters..."
       teleporter_data = Teleporters::TeleporterMethods.load_teleporters(path, json_data, parsed) || [] of LevelElements::TeleportBase
