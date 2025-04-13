@@ -231,9 +231,9 @@ module Serialization
           return nil
       end
   
-      puts "Parsed JSON successfully."
+      puts "✅ Parsed JSON successfully."
       
-      puts "Loading Platforms..."
+      puts "💾 Loading Platforms..."
       platform_data = Platforms::PlatformMethods.load_platforms(path, json_data, parsed) || [] of LevelElements::PlatformBase
       if platform_data.empty? == false
       Maps::MapBase.level_platform_array = platform_data.as(Array(LevelElements::PlatformBase))
@@ -245,14 +245,17 @@ module Serialization
         puts "⛔ There were no platforms to load!"
       end
 
-      # puts "Loading decor..."
-      # decor_data = Decor::DecorMethods.load_decor(path, json_data, parsed) || [] of LevelElements::DecorBase
-      # Maps::MapBase.level_decor_array = decor_data.as(Array(LevelElements::DecorBase))
+      puts "💾 Loading decor..."
+      decor_data = Decor::DecorMethods.load_decor(path, json_data, parsed) || [] of LevelElements::DecorBase
+      if decor_data.empty? == false
+      Maps::MapBase.level_decor_array = decor_data.as(Array(LevelElements::DecorBase))
       
-      # puts "Placing Decor..."
-      # Maps::MapBase.level_decor_array.each { |decor|
-      # decor.sprite.position = SF.vector2(decor.x, decor.y)}
-
+      puts "🛠 Placing Decor..."
+      Maps::MapBase.level_decor_array.each { |decor|
+      decor.sprite.position = SF.vector2(decor.x, decor.y)}
+      else
+        puts "⛔ There was no decor to load!"
+      end
 
       # puts "Loading walls..."
       # wall_data = Walls::WallsMethods.load_wall(path, json_data, parsed) || [] of LevelElements::WallBase
@@ -262,7 +265,7 @@ module Serialization
       # climbeable_data = Climbeable::ClimbeableMethods.load_climbeable(path, json_data, parsed) || [] of LevelElements::ClimbeableBase
       # Maps::MapBase.level_climbeable_array = climbeable_data.as(Array(LevelElements::ClimbeableBase))
       
-      puts "Loading teleporters..."
+      puts "💾 Loading teleporters..."
       teleporter_data = Teleporters::TeleporterMethods.load_teleporters(path, json_data, parsed) || [] of LevelElements::TeleportBase
       if teleporter_data.empty? == false
       Maps::MapBase.level_teleport_array = teleporter_data.as(Array(LevelElements::TeleportBase))

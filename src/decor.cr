@@ -42,26 +42,26 @@ module Decor include LevelElements
                 end
         end
         def DecorMethods.load_decor(path, json_data, parsed)
-            LevelEditor::LevelEditorLogic.spawned_decor_array.clear
+            LevelEditor::LevelEditorLogic.spawned_decor_array.clear        
+            decors_json = parsed["level"]?.try &.["decors"]?.try &.as_a? || [] of JSON::Any
           
-            decors = parsed["level"]?.try &.["decors"]?.try &.as_a? || [] of JSON::Any
-          
-            decor = decors.map do |decor_json|
+            decors = decors_json.compact_map do |decor_json|
               name  = decor_json["name"]?.try(&.as_s?) || "unknown"
               id    = decor_json["id"]?.try(&.as_s?) || "missing_id"
               x     = decor_json["x"]?.try(&.as_f32?) || 0.0_f32
               y     = decor_json["y"]?.try(&.as_f32?) || 0.0_f32
               layer = decor_json["layer"]?.try(&.as_i?) || 0
           
-              sprite = LevelElements::DecorBase::DECOR_SPRITE_HASH[id]?.try(&.dup) || next
+              sprite = LevelElements::DecorBase::DECOR_SPRITE_HASH[id]?.try(&.dup)
+              unless sprite
+                puts "⚠️  Sprite not found for decor ID: #{id}, skipping."
+                next
+              end
           
-              LevelEditor::LevelEditorLogic.spawned_decor_array << LevelElements::DecorBase.new(name, id, x, y, sprite, layer)
-              puts "Loaded decor: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Layer: #{layer}"
+              decor = LevelElements::DecorBase.new(name, id, x, y, sprite, layer)
+              LevelEditor::LevelEditorLogic.spawned_decor_array << decor
+              puts "✅ Loaded decor: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Layer: #{layer}"
             end
-          
-            Decor::DecorMethods.decor_number = LevelEditor::LevelEditorLogic.spawned_decor_array.size
-          
-            decor
           end
           
     end
