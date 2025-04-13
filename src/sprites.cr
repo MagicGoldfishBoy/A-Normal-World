@@ -295,8 +295,13 @@ module Sprites
 
    def Player.check_feet_collision(window, object)
     bounding_box = @@player_feet_hitbox.global_bounds
+    feet_bottom = @@player_feet_hitbox.position.y - bounding_box.height / 100
     if bounding_box.intersects? object.global_bounds
+    if feet_bottom >= object.position.y
         return true
+    else 
+        return false
+    end
     else 
         return false
     end

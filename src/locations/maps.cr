@@ -60,7 +60,6 @@ module Maps
 
         def self.platform_collision(window)
             if self.level_platform_array.all?{ |platform| Sprites::Player.check_feet_collision(window, platform.sprite) == false }
-               #Level_Physics.gravitational_pull(Sprites::Player.retrieve_sprite)
                self.gravitational_pull(Sprites::Player.retrieve_sprite, 1)
             end
         end
@@ -95,18 +94,6 @@ module Maps
             window.draw(teleport.sprite)}
             
             self.platform_collision(window)
-            #window.view = window.default_view
         end
-#end
-    # class ChitònCityDump < MapBase
-    #     def initialize
-    #         super("Chitòn City Dump", "chitòn_city_dump", "Chitòn City Dump", "Chitòn City", 1)
-    #     end
-    # end
-
-    # class ChitònCity < MapBase
-    #     def initialize
-    #         super("Chitòn City", "chitòn_city", "Chitòn City", "Chitòn City", 1)
-    #     end
      end
 end
