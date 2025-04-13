@@ -62,7 +62,7 @@ module Keyboard
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::Space)
                 Player::Movement.jump(window)
-                Levels::Level_Physics.jump(window)
+                #Levels::Level_Physics.jump(window)
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::I)
                 Inventory::InventoryManager.is_inventory_open=(!Inventory::InventoryManager.is_inventory_open)

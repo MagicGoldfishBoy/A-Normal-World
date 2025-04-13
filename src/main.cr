@@ -46,7 +46,7 @@ while window.open?
       end
     end
     window.clear(SF::Color::Black)
-    Levels::LevelSelectionLogic.current_area(window)
+    #Levels::LevelSelectionLogic.current_area(window)
     #TODO: make this display sprites, not elements
     if LocationSelection::Region.current_region != "none"
      Maps::MapBase.draw_elements(window)
