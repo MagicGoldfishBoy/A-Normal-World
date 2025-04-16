@@ -130,16 +130,16 @@ module Platforms include LevelElements
 
         @@very_small_dirt_platform = Natural_Platform.new("very_small_dirt_platform",
         "very_small_dirt_platform", 0, 0,
-        SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 20, 25, 20)), true)
-        PLATFORM_SPRITE_HASH["very_small_dirt_platform"] = SF::Sprite.new(PLATFORM_TEXTURE,
-        SF::Rect.new(0, 20, 25, 20))
+        SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(0, 0, 20, 60)), true)
+        PLATFORM_SPRITE_HASH["very_small_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
+        SF::Rect.new(0, 0, 20, 60))
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@very_small_dirt_platform
 
         @@small_dirt_platform = Natural_Platform.new("small_dirt_platform",
         "small_dirt_platform", 0, 0,
-        SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 20, 25, 20)), true)
-        PLATFORM_SPRITE_HASH["small_dirt_platform"] = SF::Sprite.new(PLATFORM_TEXTURE,
-        SF::Rect.new(0, 20, 25, 20))
+        SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(20, 0, 40, 60)), true)
+        PLATFORM_SPRITE_HASH["small_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
+        SF::Rect.new(20, 0, 40, 60))
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@small_dirt_platform
 
         @@medium_dirt_platform = Natural_Platform.new("medium_dirt_platform",
@@ -185,9 +185,9 @@ module Platforms include LevelElements
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@colossal_dirt_platform
 
         @@dirt_ground = Natural_Platform.new("dirt_ground", "dirt_ground", 0, 0, 
-        SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 40, 500, 60)), false)
-        PLATFORM_SPRITE_HASH["dirt_ground"] = SF::Sprite.new(PLATFORM_TEXTURE,
-        SF::Rect.new(0, 40, 500, 60))
+        SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(0, 340, 500, 160)), false)
+        PLATFORM_SPRITE_HASH["dirt_ground"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
+        SF::Rect.new(0, 340, 500, 160))
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@dirt_ground
     end
 end
