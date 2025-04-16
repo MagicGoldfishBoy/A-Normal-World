@@ -172,16 +172,16 @@ module Platforms include LevelElements
 
         @@giant_dirt_platform = Natural_Platform.new("giant_dirt_platform",
         "giant_dirt_platform", 0, 0,
-        SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 20, 400, 20)), true)
-        PLATFORM_SPRITE_HASH["giant_dirt_platform"] = SF::Sprite.new(PLATFORM_TEXTURE,
-        SF::Rect.new(0, 20, 400, 20))
+        SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(0, 60, 300, 60)), true)
+        PLATFORM_SPRITE_HASH["giant_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
+        SF::Rect.new(0, 60, 300, 60))
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@giant_dirt_platform
 
         @@colossal_dirt_platform = Natural_Platform.new("colossal_dirt_platform",
         "colossal_dirt_platform", 0, 0,
-        SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 20, 500, 20)), true)
-        PLATFORM_SPRITE_HASH["colossal_dirt_platform"] = SF::Sprite.new(PLATFORM_TEXTURE,
-        SF::Rect.new(0, 20, 500, 20))
+        SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(0, 120, 500, 60)), true)
+        PLATFORM_SPRITE_HASH["colossal_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
+        SF::Rect.new(0, 120, 500, 60))
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@colossal_dirt_platform
 
         @@dirt_ground = Natural_Platform.new("dirt_ground", "dirt_ground", 0, 0, 
