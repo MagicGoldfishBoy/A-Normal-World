@@ -575,6 +575,7 @@
     #L                                      Level Asset Textures                                        L
     #LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
         PLATFORM_TEXTURE = SF::Texture.from_file("../graphics/platforms.png")
+
         DIRT_PLATFORM_TEXTURE = SF::Texture.from_file("../graphics/level_assets/dirt_platforms.png")
 
         NATURAL_DECOR_TEXTURE = SF::Texture.from_file("../graphics/natural_decor.png")
@@ -582,5 +583,7 @@
         WALL_TEXTURE = SF::Texture.from_file("../graphics/walls.png")
 
         LADDER_TEXTURE = SF::Texture.from_file("../graphics/ladders.png")
+
+        INDUSTRIAL_CLIMBEABLE_TEXTURE = SF::Texture.from_file("../graphics/level_assets/industrial_climbeables.png")
 
         TELEPORTER_TEXTURE = SF::Texture.from_file("../graphics/teleporters.png")

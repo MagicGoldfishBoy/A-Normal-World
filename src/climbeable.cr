@@ -63,8 +63,13 @@ module Climbeable include LevelElements
         end
     end
     class Ladders < ClimbeableBase
-        @@short_rusty_ladder = Ladders.new("Short Rusty Ladder", "short_ladder_rusty", 0, 0, SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 0, 20, 20)))
-        CLIMBEABLE_SPRITE_HASH["short_ladder_rusty"] = SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 0, 20, 20))
+        @@short_steel_ladder = Ladders.new("Short Steel Ladder", "short_ladder_steel", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(0, 0, 40, 40)))
+        CLIMBEABLE_SPRITE_HASH["short_ladder_steel"] = SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(0, 0, 40, 40))
+        LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@short_steel_ladder
+
+
+        @@short_rusty_ladder = Ladders.new("Short Rusty Ladder", "short_ladder_rusty", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(40, 0, 40, 40)))
+        CLIMBEABLE_SPRITE_HASH["short_ladder_rusty"] = SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(40, 0, 40, 40))
         LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@short_rusty_ladder
 
         @@rusty_ladder = Ladders.new("Rusty Ladder", "ladder_rusty", 0, 0, SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 20, 20, 30)))
