@@ -71,6 +71,10 @@ module Climbeable include LevelElements
         CLIMBEABLE_SPRITE_HASH["ladder_steel"] = SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(0, 40, 40, 60))
         LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@steel_ladder
 
+        @@tall_steel_ladder = Ladders.new("Tall Steel Ladder", "tall_ladder_steel", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(0, 100, 40, 80)))
+        CLIMBEABLE_SPRITE_HASH["tall_ladder_steel"] = SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(0, 100, 40, 80))
+        LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@tall_steel_ladder
+
 
         @@short_rusty_ladder = Ladders.new("Short Rusty Ladder", "short_ladder_rusty", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(40, 0, 40, 40)))
         CLIMBEABLE_SPRITE_HASH["short_ladder_rusty"] = SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(40, 0, 40, 40))
@@ -80,8 +84,8 @@ module Climbeable include LevelElements
         CLIMBEABLE_SPRITE_HASH["ladder_rusty"] = SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(40, 40, 40, 60))
         LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@rusty_ladder
 
-        @@tall_rusty_ladder = Ladders.new("Tall Rusty Ladder", "tall_ladder_rusty", 0, 0, SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 50, 20, 50)))
-        CLIMBEABLE_SPRITE_HASH["tall_ladder_rusty"] = SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 50, 20, 50))
+        @@tall_rusty_ladder = Ladders.new("Tall Rusty Ladder", "tall_ladder_rusty", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(40, 100, 40, 80)))
+        CLIMBEABLE_SPRITE_HASH["tall_ladder_rusty"] = SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(40, 100, 40, 80))
         LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@tall_rusty_ladder
 
         @@very_tall_rusty_ladder = Ladders.new("Very Tall Rusty Ladder", "very_tall_ladder_rusty", 0, 0, SF::Sprite.new(LADDER_TEXTURE, SF::Rect.new(0, 100, 20, 70)))
