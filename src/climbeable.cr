@@ -131,6 +131,14 @@ module Climbeable include LevelElements
         CLIMBEABLE_SPRITE_HASH["tall_chain_steel"] = @@tall_steel_chain.sprite
         LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@tall_steel_chain
 
+        @@very_tall_steel_chain = Chain.new("Very Tall Steel Chain", "very_tall_chain_steel", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(80, 360, 20, 140)))
+        CLIMBEABLE_SPRITE_HASH["very_tall_chain_steel"] = @@very_tall_steel_chain.sprite
+        LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@very_tall_steel_chain
+
+        @@extremely_tall_steel_chain = Chain.new("Extremely Tall Steel Chain", "extremely_tall_chain_steel", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(120, 0, 20, 160)))
+        CLIMBEABLE_SPRITE_HASH["extremely_tall_chain_steel"] = @@extremely_tall_steel_chain.sprite
+        LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@extremely_tall_steel_chain
+
 
         @@very_short_rusty_chain = Chain.new("Very Short Rusty Chain", "very_short_chain_rusty", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(100, 0, 20, 60)))
         CLIMBEABLE_SPRITE_HASH["very_short_chain_rusty"] = SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(100, 0, 20, 60))
@@ -147,5 +155,13 @@ module Climbeable include LevelElements
         @@tall_rusty_chain = Chain.new("Tall Rusty Chain", "tall_chain_rusty", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(100, 240, 20, 120)))
         CLIMBEABLE_SPRITE_HASH["tall_chain_rusty"] = @@tall_rusty_chain.sprite
         LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@tall_rusty_chain
+
+        @@very_tall_rusty_chain = Chain.new("Very Tall Rusty Chain", "very_tall_chain_rusty", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(100, 360, 20, 140)))
+        CLIMBEABLE_SPRITE_HASH["very_tall_chain_rusty"] = @@very_tall_rusty_chain.sprite
+        LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@very_tall_rusty_chain
+
+        @@extremely_tall_rusty_chain = Chain.new("Extremely Tall Rusty Chain", "extremely_tall_chain_rusty", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(140, 0, 20, 160)))
+        CLIMBEABLE_SPRITE_HASH["extremely_tall_chain_rusty"] = @@extremely_tall_rusty_chain.sprite
+        LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@extremely_tall_rusty_chain
     end
 end
