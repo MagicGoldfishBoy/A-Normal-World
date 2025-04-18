@@ -113,4 +113,10 @@ module Climbeable include LevelElements
         CLIMBEABLE_SPRITE_HASH["extremely_tall_ladder_rusty"] = SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(40, 400, 40, 140))
         LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@extremely_tall_rusty_ladder
     end
+    class Chain < ClimbeableBase
+
+        @@very_short_steel_chain = Chain.new("Very Short Steel Chain", "very_short_chain_steel", 0, 0, SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(80, 0, 20, 60)))
+        CLIMBEABLE_SPRITE_HASH["very_short_chain_steel"] = SF::Sprite.new(INDUSTRIAL_CLIMBEABLE_TEXTURE, SF::Rect.new(80, 0, 20, 60))
+        LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY << @@very_short_steel_chain
+    end
 end
