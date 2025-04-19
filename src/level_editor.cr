@@ -165,6 +165,14 @@ module LevelEditor
             current_element.y += y
             current_element.sprite.position = SF::Vector2f.new(current_element.x, current_element.y)
         end
+        def LevelEditorLogic.delete_current_element
+            self.spawned_element_array.delete(LevelDisplay.current_element)
+            self.spawned_platform_array.delete(LevelDisplay.current_element)
+            self.spawned_decor_array.delete(LevelDisplay.current_element)
+            self.spawned_wall_array.delete(LevelDisplay.current_element)
+            self.spawned_climbeable_array.delete(LevelDisplay.current_element)
+            self.spawned_teleport_array.delete(LevelDisplay.current_element)
+        end
     end
     class LevelDisplay 
      class_property current_element : (LevelElements::LevelElementBase) = 
