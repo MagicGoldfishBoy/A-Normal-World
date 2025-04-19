@@ -231,6 +231,30 @@ module LevelElements
                 puts "⛔ This element is not a decor element"
             end
         end
+
+        def shift_layer_higher
+            if self.is_a?(DecorBase)
+                if self.layer < 2
+                    self.layer += 1
+                else
+                    self.layer = 0
+                end
+            else
+                puts "⛔ This element is not a decor element"
+            end
+        end
+
+        def shift_layer_lower
+            if self.is_a?(DecorBase)
+                if self.layer > 0
+                    self.layer -= 1
+                else
+                    self.layer = 2
+                end
+            else
+                puts "⛔ This element is not a decor element"
+            end
+        end
     end
     class SpikeBase
     end    

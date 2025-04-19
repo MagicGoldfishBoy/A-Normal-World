@@ -120,6 +120,7 @@ module LevelEditor
         end
         def LevelEditorLogic.middle_mouse_button_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
+            LevelEditorLogic.close_all_windows
             LevelDisplay.current_element.x = mouse_position.x
             LevelDisplay.current_element.y = mouse_position.y
             LevelDisplay.current_element.sprite.position = mouse_position
@@ -127,12 +128,13 @@ module LevelEditor
         def LevelEditorLogic.right_mouse_button_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
             bounding_box_size = 50.0
-            LevelEditor::LevelEditorLogic.spawned_platform_array.each do |platform|
-                if platform.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
-                    LevelDisplay.current_element = platform
-                    platform.open_menu(window)
-                end
-            end
+            LevelEditorLogic.close_all_windows
+            # LevelEditor::LevelEditorLogic.spawned_platform_array.each do |platform|
+            #     if platform.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
+            #         LevelDisplay.current_element = platform
+            #         platform.open_menu(window)
+            #     end
+            # end
             LevelEditor::LevelEditorLogic.spawned_decor_array.each do |decor|
                 if decor.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
                     LevelDisplay.current_element = decor
@@ -165,18 +167,21 @@ module LevelEditor
                 if platform.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
                     LevelDisplay.current_element = platform
                     window.draw(platform.sprite)
+                   # LevelEditorLogic.close_all_windows
                 end
             end
             LevelEditor::LevelEditorLogic.spawned_decor_array.each do |decor|
                 if decor.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
                     LevelDisplay.current_element = decor
                     window.draw(decor.sprite)
+                    LevelEditorLogic.close_all_windows
                 end
             end
             LevelEditor::LevelEditorLogic.spawned_wall_array.each do |wall|
                 if wall.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
                     LevelDisplay.current_element = wall
                     window.draw(wall.sprite)
+                    LevelEditorLogic.close_all_windows
                 end
             end
             LevelEditor::LevelEditorLogic.spawned_climbeable_array.each do |climbeable|
@@ -189,8 +194,13 @@ module LevelEditor
                 if teleporter.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
                     LevelDisplay.current_element = teleporter
                     window.draw(teleporter.sprite)
+                    LevelEditorLogic.close_all_windows
                 end
             end
+        end
+
+        def self.close_all_windows
+            MenuHandling::Window.is_decor_window_open = false
         end
 
         def LevelEditorLogic.move_current_element(window, x : Float32, y : Float32)
@@ -250,13 +260,15 @@ module LevelEditor
         self.selector_rectangle.position = current_element.sprite.position
         self.selector_rectangle.fill_color = SF::Color.new(0, 0, 255, 80)
 
+        LevelEditor::LevelEditorLogic.spawned_decor_array.each do |decor|
+            if decor.layer == 0
+            decor.sprite.position = SF::Vector2f.new(decor.x, decor.y)
+            window.draw(decor.sprite)
+            end
+        end
         LevelEditor::LevelEditorLogic.spawned_platform_array.each do |platform|
             platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
             window.draw(platform.sprite)
-        end
-        LevelEditor::LevelEditorLogic.spawned_wall_array.each do |wall|
-            wall.sprite.position = SF::Vector2f.new(wall.x, wall.y)
-            window.draw(wall.sprite)
         end
         LevelEditor::LevelEditorLogic.spawned_decor_array.each do |decor|
             if decor.layer == 1
@@ -264,9 +276,19 @@ module LevelEditor
             window.draw(decor.sprite)
             end
         end
+        LevelEditor::LevelEditorLogic.spawned_wall_array.each do |wall|
+            wall.sprite.position = SF::Vector2f.new(wall.x, wall.y)
+            window.draw(wall.sprite)
+        end
         LevelEditor::LevelEditorLogic.spawned_climbeable_array.each do |climbeable|
             climbeable.sprite.position = SF::Vector2f.new(climbeable.x, climbeable.y)
             window.draw(climbeable.sprite)
+        end
+        LevelEditor::LevelEditorLogic.spawned_decor_array.each do |decor|
+            if decor.layer == 2
+            decor.sprite.position = SF::Vector2f.new(decor.x, decor.y)
+            window.draw(decor.sprite)
+            end
         end
         LevelEditor::LevelEditorLogic.spawned_teleport_array.each do |teleporter|
             teleporter.sprite.position = SF::Vector2f.new(teleporter.x, teleporter.y)

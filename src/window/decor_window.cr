@@ -3,6 +3,7 @@ require "../../src/textures.cr"
 require "../../src/fonts.cr"
 require "../../src/ui_elements.cr"
 require "../menus/menu_handling.cr"
+require "../../src/level_elements.cr"
 
 module DecorWindow
     class DecorWindowElements
@@ -16,9 +17,15 @@ module DecorWindow
         DECOR_LAYER_BOX = Ui_Elements::WindowBoxes.new("Decor Layer Box", "DecElement3", SF::Sprite.new(BLANK_TEXTURE,
         SF::Rect.new(900, 100, 95, 50)), 0.0, 0.0, 2)
 
-        CURRENT_DECOR_TEXT = Ui_Elements::WindowText.new("Current Decor Text", "DecElement4", SF::Text.new("Decor", QUICKSAND, 24))
+        DECOR_LAYER_LEFT_ARROW = Ui_Elements::WindowBoxes.new("Decor Layer Left Arrow", "DecElement4", SF::Sprite.new(BLANK_TEXTURE,
+        SF::Rect.new(900, 158, 39, 34)), 0.0, 0.0, 1)
 
-        CURRENT_LAYER_TEXT = Ui_Elements::WindowText.new("Current Layer Text", "DecElement5", SF::Text.new("Layer", QUICKSAND, 24))
+        DECOR_LAYER_RIGHT_ARROW = Ui_Elements::WindowBoxes.new("Decor Layer Right Arrow", "DecElement5", SF::Sprite.new(BLANK_TEXTURE,
+        SF::Rect.new(961, 158, 39, 34)), 0.0, 0.0, 1)
+
+        CURRENT_DECOR_TEXT = Ui_Elements::WindowText.new("Current Decor Text", "DecElement6", SF::Text.new("Decor", QUICKSAND, 24))
+
+        CURRENT_LAYER_TEXT = Ui_Elements::WindowText.new("Current Layer Text", "DecElement7", SF::Text.new("Layer", QUICKSAND, 24))
         CURRENT_LAYER_TEXT.text.style = SF::Text::Bold
 
     end
@@ -52,6 +59,15 @@ module DecorWindow
                 2 * clamped_scale, 40 * clamped_scale)
 
 
+                DecorWindowElements::DECOR_LAYER_LEFT_ARROW.sprite.scale = DecorWindowElements::DECOR_WINDOW_BOX.sprite.scale
+                DecorWindowElements::DECOR_LAYER_LEFT_ARROW.sprite.position = DecorWindowElements::DECOR_LAYER_BOX.sprite.position + SF.vector2(
+                5.0, 50 * clamped_scale.to_f)
+
+                DecorWindowElements::DECOR_LAYER_RIGHT_ARROW.sprite.scale = DecorWindowElements::DECOR_WINDOW_BOX.sprite.scale
+                DecorWindowElements::DECOR_LAYER_RIGHT_ARROW.sprite.position = DecorWindowElements::DECOR_LAYER_LEFT_ARROW.sprite.position + SF.vector2(
+                48.0 * clamped_scale.to_f, 0.0)
+
+
                 DecorWindowElements::CURRENT_DECOR_TEXT.text.position = DecorWindowElements::DECOR_WINDOW_BOX.sprite.position + SF.vector2(
                 DecorWindowElements::DECOR_WINDOW_BOX.sprite.global_bounds.width * 0.4, 18 * clamped_scale)
                 Utility::StringUtilities.center_text(DecorWindowElements::CURRENT_DECOR_TEXT.text)
@@ -63,6 +79,8 @@ module DecorWindow
             window.draw(DecorWindowElements::DECOR_WINDOW_BOX.sprite)
             window.draw(DecorWindowElements::DECOR_EXIT_BUTTON.sprite)
             window.draw(DecorWindowElements::DECOR_LAYER_BOX.sprite)
+            window.draw(DecorWindowElements::DECOR_LAYER_LEFT_ARROW.sprite)
+            window.draw(DecorWindowElements::DECOR_LAYER_RIGHT_ARROW.sprite)
 
             window.draw(DecorWindowElements::CURRENT_DECOR_TEXT.text)
             window.draw(DecorWindowElements::CURRENT_LAYER_TEXT.text)
@@ -97,6 +115,24 @@ module DecorWindow
         if MouseHandling::ClickHandling.button_clicked?(DecorWindowElements::DECOR_EXIT_BUTTON.sprite, mouse_x, mouse_y)
             MenuHandling::Window.is_decor_window_open = false
            sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(DecorWindowElements::DECOR_LAYER_LEFT_ARROW.sprite, mouse_x, mouse_y)
+            if LevelEditor::LevelDisplay.current_element.is_a?(LevelElements::DecorBase)
+                decor_element = LevelEditor::LevelDisplay.current_element.as(LevelElements::DecorBase)
+                decor_element.shift_layer_lower
+                DecorWindow::DecorWindowElements::CURRENT_LAYER_TEXT.text.string = "Layer: #{decor_element.layer.to_s}"
+            else
+                puts "⛔ This element is not a decor element"
+            end
+            sleep 0.15.seconds
+        elsif MouseHandling::ClickHandling.button_clicked?(DecorWindowElements::DECOR_LAYER_RIGHT_ARROW.sprite, mouse_x, mouse_y)
+            if LevelEditor::LevelDisplay.current_element.is_a?(LevelElements::DecorBase)
+                decor_element = LevelEditor::LevelDisplay.current_element.as(LevelElements::DecorBase)
+                decor_element.shift_layer_higher
+                DecorWindow::DecorWindowElements::CURRENT_LAYER_TEXT.text.string = "Layer: #{decor_element.layer.to_s}"
+            else
+                puts "⛔ This element is not a decor element"
+            end
+            sleep 0.15.seconds
         end
     end
     end
