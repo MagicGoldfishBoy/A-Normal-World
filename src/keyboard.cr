@@ -88,6 +88,9 @@ module Keyboard
             end
         end
         def Gameplay.level_editor(window)
+            if SF::Keyboard.key_pressed?(SF::Keyboard::Delete)
+                LevelEditor::LevelEditorLogic.delete_current_element
+            end
             if SF::Keyboard.key_pressed?(SF::Keyboard::K)
                 Serialization::LevelFile.save_level("chitòn_dump_map_1")
                 sleep 0.25.seconds
