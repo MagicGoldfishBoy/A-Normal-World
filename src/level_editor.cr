@@ -118,7 +118,13 @@ module LevelEditor
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
         end
-        def LevelEditorLogic.mouse_handling(window)
+        def LevelEditorLogic.middle_mouse_button_handling(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
+            LevelDisplay.current_element.x = mouse_position.x
+            LevelDisplay.current_element.y = mouse_position.y
+            LevelDisplay.current_element.sprite.position = mouse_position
+        end
+        def LevelEditorLogic.left_mouse_button_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
             bounding_box_size = 50.0
             LevelEditor::LevelEditorLogic.spawned_platform_array.select do |platform|
@@ -261,7 +267,10 @@ module LevelEditor
         current_element.sprite.global_bounds.height * scale_ratio))
         selector_rectangle.position = current_element.sprite.position
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
-            LevelEditorLogic.mouse_handling(window)
+            LevelEditorLogic.left_mouse_button_handling(window)
+        end
+        if SF::Mouse.button_pressed?(SF::Mouse::Middle)
+            LevelEditorLogic.middle_mouse_button_handling(window)
         end
      end
     end
