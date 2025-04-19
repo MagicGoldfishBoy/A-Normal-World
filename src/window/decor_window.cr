@@ -13,6 +13,14 @@ module DecorWindow
         DECOR_EXIT_BUTTON = Ui_Elements::WindowBoxes.new("Decor Exit Button", "DecElement2", SF::Sprite.new(BLANK_TEXTURE,
         SF::Rect.new(1200, 0, 9, 9)), 0.0, 0.0, 4)
 
+        DECOR_LAYER_BOX = Ui_Elements::WindowBoxes.new("Decor Layer Box", "DecElement3", SF::Sprite.new(BLANK_TEXTURE,
+        SF::Rect.new(900, 100, 95, 50)), 0.0, 0.0, 2)
+
+        CURRENT_DECOR_TEXT = Ui_Elements::WindowText.new("Current Decor Text", "DecElement4", SF::Text.new("Decor", QUICKSAND, 24))
+
+        CURRENT_LAYER_TEXT = Ui_Elements::WindowText.new("Current Layer Text", "DecElement5", SF::Text.new("Layer", QUICKSAND, 24))
+        CURRENT_LAYER_TEXT.text.style = SF::Text::Bold
+
     end
     class DecorWindowDisplay
         def self.draw_decor_window(window)
@@ -32,14 +40,32 @@ module DecorWindow
                 new_position_y = (current_size.y - (DecorWindowElements::DECOR_WINDOW_BOX.height * clamped_scale)) / 2
                 DecorWindowElements::DECOR_WINDOW_BOX.sprite.position = SF.vector2(new_position_x, new_position_y)
 
+
                 DecorWindowElements::DECOR_EXIT_BUTTON.sprite.scale = DecorWindowElements::DECOR_WINDOW_BOX.sprite.scale
 
                 DecorWindowElements::DECOR_EXIT_BUTTON.sprite.position = DecorWindowElements::DECOR_WINDOW_BOX.sprite.position + SF.vector2(
                 DecorWindowElements::DECOR_WINDOW_BOX.sprite.global_bounds.width - 12 * clamped_scale, 2 * clamped_scale)
+
+
+                DecorWindowElements::DECOR_LAYER_BOX.sprite.scale = DecorWindowElements::DECOR_WINDOW_BOX.sprite.scale
+                DecorWindowElements::DECOR_LAYER_BOX.sprite.position = DecorWindowElements::DECOR_WINDOW_BOX.sprite.position + SF.vector2(
+                2 * clamped_scale, 40 * clamped_scale)
+
+
+                DecorWindowElements::CURRENT_DECOR_TEXT.text.position = DecorWindowElements::DECOR_WINDOW_BOX.sprite.position + SF.vector2(
+                DecorWindowElements::DECOR_WINDOW_BOX.sprite.global_bounds.width * 0.4, 18 * clamped_scale)
+                Utility::StringUtilities.center_text(DecorWindowElements::CURRENT_DECOR_TEXT.text)
+                DecorWindowElements::CURRENT_DECOR_TEXT.text.character_size = (18 * clamped_scale).to_i
+
+                Utility::StringUtilities.adjust_text(DecorWindowElements::CURRENT_LAYER_TEXT.text, 20, DecorWindowElements::DECOR_LAYER_BOX.sprite, clamped_scale)
             end
 
             window.draw(DecorWindowElements::DECOR_WINDOW_BOX.sprite)
             window.draw(DecorWindowElements::DECOR_EXIT_BUTTON.sprite)
+            window.draw(DecorWindowElements::DECOR_LAYER_BOX.sprite)
+
+            window.draw(DecorWindowElements::CURRENT_DECOR_TEXT.text)
+            window.draw(DecorWindowElements::CURRENT_LAYER_TEXT.text)
 
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
                 DecorWindowMouseHandling.decor_window_mouse_handling(window)

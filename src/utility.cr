@@ -5,6 +5,13 @@ require "../src/equipment.cr"
 
 module Utility
     class StringUtilities
+        def self.adjust_text(text, text_size, box, box_scale)
+          text.character_size = (text_size * box_scale).to_i
+          text_width = text.string.size * text.character_size / 2
+          x = box.position.x + (box.global_bounds.width / 2) - (text_width / 2)
+          y = box.position.y + (box.global_bounds.height / 2) - (text.character_size / 2)
+          text.position = SF.vector2(x, y)
+        end
 
         def StringUtilities.center_text(this)
           if this.character_size < 40 && this.character_size > 10
@@ -30,7 +37,6 @@ module Utility
 
           this.position = SF.vector2(x, y)
         end
-
     end
 
     class ArrayUtilities
