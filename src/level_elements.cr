@@ -61,21 +61,6 @@ module LevelElements
         def self.get_platform(name : String)
             PLATFORM_ARRAY.find { |platform| platform.name == name }
         end
-
-        def self.draw_platforms(window)
-            PLATFORM_ARRAY.each do |platform|
-                window.draw(platform.sprite)
-            end
-        end
-
-        def self.platform_collision(window)
-         if PLATFORM_ARRAY.all? { |platform| Sprites::Player.check_feet_collision(window, platform) == false }
-            return true
-         else
-            return false
-         end
-        end
-
         def to_json(io : IO)
             io << "{\"name\": \"#{@name}\", \"id\": \"#{@id}\", \"x\": #{@x}, \"y\": #{@y}, \"can_jump_down\": #{@can_jump_down}}"
         end

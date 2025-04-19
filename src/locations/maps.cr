@@ -91,6 +91,7 @@ module Maps
             end}
 
             self.level_teleport_array.each { |teleport|
+            teleport.sprite.texture_rect = Animations::Portal.portal_animation
             window.draw(teleport.sprite)}
             
             self.platform_collision(window)
