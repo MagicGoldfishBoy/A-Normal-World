@@ -66,38 +66,38 @@ module Decor include LevelElements
           end
           
     end
-    class DecorPlants < DecorBase
-        @@fallen_leaves01 = DecorPlants.new("Red Fallen Leaves", "fallen_leaves01", 0, 0, 
+    class DecorPlant < DecorBase
+        @@fallen_leaves01 = DecorPlant.new("Red Fallen Leaves", "fallen_leaves01", 0, 0, 
         SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(0, 0, 20, 10)), 1)
         DECOR_SPRITE_HASH["fallen_leaves01"] = SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(0, 0, 20, 10))
         LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@fallen_leaves01
 
-        @@fallen_leaves02 = DecorPlants.new("Orange Fallen Leaves", "fallen_leaves02", 0, 0,
+        @@fallen_leaves02 = DecorPlant.new("Orange Fallen Leaves", "fallen_leaves02", 0, 0,
         SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(20, 0, 20, 10)), 1)
         DECOR_SPRITE_HASH["fallen_leaves02"] = SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(20, 0, 20, 10))
         LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@fallen_leaves02
 
-        @@fallen_leaves03 = DecorPlants.new("Yellow Fallen Leaves", "fallen_leaves03", 0, 0,
+        @@fallen_leaves03 = DecorPlant.new("Yellow Fallen Leaves", "fallen_leaves03", 0, 0,
         SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(40, 0, 20, 10)), 1)
         DECOR_SPRITE_HASH["fallen_leaves03"] = SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(40, 0, 20, 10))
         LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@fallen_leaves03
 
-        @@fallen_leaves04 = DecorPlants.new("Mixed Fallen Leaves", "fallen_leaves04", 0, 0,
+        @@fallen_leaves04 = DecorPlant.new("Mixed Fallen Leaves", "fallen_leaves04", 0, 0,
         SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(60, 0, 30, 10)), 1)
         DECOR_SPRITE_HASH["fallen_leaves04"] = SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(60, 0, 30, 10))
         LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@fallen_leaves04
 
-        @@single_daisy = DecorPlants.new("Single Daisy", "single_daisy", 0, 0,
+        @@single_daisy = DecorPlant.new("Single Daisy", "single_daisy", 0, 0,
         SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(0, 10, 10, 10)), 1)
         DECOR_SPRITE_HASH["single_daisy"] = SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(0, 10, 10, 10))
         LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@single_daisy
 
-        @@double_daisy = DecorPlants.new("Double Daisy", "double_daisy", 0, 0,
+        @@double_daisy = DecorPlant.new("Double Daisy", "double_daisy", 0, 0,
         SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(10, 10, 10, 10)), 1)
         DECOR_SPRITE_HASH["double_daisy"] = SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(10, 10, 10, 10))
         LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@double_daisy
 
-        @@dandelion = DecorPlants.new("Dandelion", "dandelion", 0, 0,
+        @@dandelion = DecorPlant.new("Dandelion", "dandelion", 0, 0,
         SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(20, 10, 10, 10)), 1)
         DECOR_SPRITE_HASH["dandelion"] = SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(20, 10, 10, 10))
         LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@dandelion
