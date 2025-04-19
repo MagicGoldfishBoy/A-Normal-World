@@ -127,46 +127,31 @@ module LevelEditor
         def LevelEditorLogic.left_mouse_button_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
             bounding_box_size = 50.0
-            LevelEditor::LevelEditorLogic.spawned_platform_array.select do |platform|
-                (platform.x - mouse_position.x).abs <= bounding_box_size &&
-                (platform.y - mouse_position.y).abs <= bounding_box_size
-            end.each do |platform|
+            LevelEditor::LevelEditorLogic.spawned_platform_array.each do |platform|
                 if platform.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
                     LevelDisplay.current_element = platform
                     window.draw(platform.sprite)
                 end
             end
-            LevelEditor::LevelEditorLogic.spawned_decor_array.select do |decor|
-                (decor.x - mouse_position.x).abs <= bounding_box_size &&
-                (decor.y - mouse_position.y).abs <= bounding_box_size
-            end.each do |decor|
+            LevelEditor::LevelEditorLogic.spawned_decor_array.each do |decor|
                 if decor.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
                     LevelDisplay.current_element = decor
                     window.draw(decor.sprite)
                 end
             end
-            LevelEditor::LevelEditorLogic.spawned_wall_array.select do |wall|
-                (wall.x - mouse_position.x).abs <= bounding_box_size &&
-                (wall.y - mouse_position.y).abs <= bounding_box_size
-            end.each do |wall|
+            LevelEditor::LevelEditorLogic.spawned_wall_array.each do |wall|
                 if wall.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
                     LevelDisplay.current_element = wall
                     window.draw(wall.sprite)
                 end
             end
-            LevelEditor::LevelEditorLogic.spawned_climbeable_array.select do |climbeable|
-                (climbeable.x - mouse_position.x).abs <= bounding_box_size &&
-                (climbeable.y - mouse_position.y).abs <= bounding_box_size
-            end.each do |climbeable|
+            LevelEditor::LevelEditorLogic.spawned_climbeable_array.each do |climbeable|
                 if climbeable.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
                     LevelDisplay.current_element = climbeable
                     window.draw(climbeable.sprite)
                 end
             end
-            LevelEditor::LevelEditorLogic.spawned_teleport_array.select do |teleporter|
-                (teleporter.x - mouse_position.x).abs <= bounding_box_size &&
-                (teleporter.y - mouse_position.y).abs <= bounding_box_size
-            end.each do |teleporter|
+            LevelEditor::LevelEditorLogic.spawned_teleport_array.each do |teleporter|
                 if teleporter.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
                     LevelDisplay.current_element = teleporter
                     window.draw(teleporter.sprite)
