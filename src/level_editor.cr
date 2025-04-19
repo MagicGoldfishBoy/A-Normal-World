@@ -132,9 +132,6 @@ module LevelEditor
                 (platform.y - mouse_position.y).abs <= bounding_box_size
             end.each do |platform|
                 if platform.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
-                    platform.x = mouse_position.x.to_f32 - platform.sprite.global_bounds.width / 2
-                    platform.y = mouse_position.y.to_f32 - platform.sprite.global_bounds.height / 2
-                    platform.sprite.position = SF::Vector2f.new(platform.x, platform.y)
                     LevelDisplay.current_element = platform
                     window.draw(platform.sprite)
                 end
@@ -144,9 +141,6 @@ module LevelEditor
                 (decor.y - mouse_position.y).abs <= bounding_box_size
             end.each do |decor|
                 if decor.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
-                    decor.x = mouse_position.x.to_f32 - decor.sprite.global_bounds.width / 2
-                    decor.y = mouse_position.y.to_f32 - decor.sprite.global_bounds.height / 2
-                    decor.sprite.position = SF::Vector2f.new(decor.x, decor.y)
                     LevelDisplay.current_element = decor
                     window.draw(decor.sprite)
                 end
@@ -156,9 +150,6 @@ module LevelEditor
                 (wall.y - mouse_position.y).abs <= bounding_box_size
             end.each do |wall|
                 if wall.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
-                    wall.x = mouse_position.x.to_f32 - wall.sprite.global_bounds.width / 2
-                    wall.y = mouse_position.y.to_f32 - wall.sprite.global_bounds.height / 2
-                    wall.sprite.position = SF::Vector2f.new(wall.x, wall.y)
                     LevelDisplay.current_element = wall
                     window.draw(wall.sprite)
                 end
@@ -168,9 +159,6 @@ module LevelEditor
                 (climbeable.y - mouse_position.y).abs <= bounding_box_size
             end.each do |climbeable|
                 if climbeable.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
-                    climbeable.x = mouse_position.x.to_f32 - climbeable.sprite.global_bounds.width / 2
-                    climbeable.y = mouse_position.y.to_f32 - climbeable.sprite.global_bounds.height / 2
-                    climbeable.sprite.position = SF::Vector2f.new(climbeable.x, climbeable.y)
                     LevelDisplay.current_element = climbeable
                     window.draw(climbeable.sprite)
                 end
@@ -180,9 +168,6 @@ module LevelEditor
                 (teleporter.y - mouse_position.y).abs <= bounding_box_size
             end.each do |teleporter|
                 if teleporter.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
-                    teleporter.x = mouse_position.x.to_f32 - teleporter.sprite.global_bounds.width / 2
-                    teleporter.y = mouse_position.y.to_f32 - teleporter.sprite.global_bounds.height / 2
-                    teleporter.sprite.position = SF::Vector2f.new(teleporter.x, teleporter.y)
                     LevelDisplay.current_element = teleporter
                     window.draw(teleporter.sprite)
                 end
