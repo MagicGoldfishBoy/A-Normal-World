@@ -30,6 +30,7 @@ module Platforms include LevelElements
             LevelEditor::LevelDisplay.current_element = platform
             self.platform_number += 1
         end
+
         def PlatformMethods.save_platforms(json)
             platforms = LevelEditor::LevelEditorLogic.spawned_platform_array
             platforms.each do |platform|
@@ -42,6 +43,7 @@ module Platforms include LevelElements
                 end
                 end
         end
+
         def PlatformMethods.load_platforms(path, json_data, parsed)
             LevelEditor::LevelEditorLogic.spawned_platform_array.clear
             platforms_json = parsed["level"]?.try &.["platforms"]?.try &.as_a? || [] of JSON::Any
@@ -63,7 +65,7 @@ module Platforms include LevelElements
                 puts "✅ Loaded platform: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Can Jump Down: #{can_jump_down}"
                 platform
               end
-          end
+        end
           
     end
     class Natural_Platform < PlatformBase

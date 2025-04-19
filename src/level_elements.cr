@@ -46,6 +46,10 @@ module LevelElements
         SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), true)
         PLATFORM_TEMPLATE_ARRAY << @@test_platform
 
+        def open_menu(window)
+            puts "⛔ Platforms don't have a menu"
+        end
+
         def self.add_platform(platform : PlatformBase)
             PLATFORM_ARRAY << platform
         end
@@ -64,7 +68,7 @@ module LevelElements
         def to_json(io : IO)
             io << "{\"name\": \"#{@name}\", \"id\": \"#{@id}\", \"x\": #{@x}, \"y\": #{@y}, \"can_jump_down\": #{@can_jump_down}}"
         end
-    end 
+        end 
     class WallBase < LevelElementBase
         WALL_TEMPLATE_ARRAY = [] of WallBase
         WALL_SPRITE_HASH = Hash(String, SF::Sprite).new
@@ -92,6 +96,11 @@ module LevelElements
                 end
             end
         end
+
+        def open_menu(window)
+            puts "⛔ Walls don't have a menu"
+        end
+
         def self.wall_collision(window)
             if WALL_TEMPLATE_ARRAY.all? { |wall| Sprites::Player.check_sprite_collision(window, wall) == false }
                 return true
@@ -127,6 +136,11 @@ module LevelElements
                 end
             end
         end
+
+        def open_menu(window)
+            puts "🛠 Climbeable menu not yet implemented"
+        end
+
         def self.climbeable_collision(window)
             if CLIMBEABLE_TEMPLATE_ARRAY.all? { |climbeable| Sprites::Player.check_sprite_collision(window, climbeable) == false }
                 return true
@@ -169,6 +183,9 @@ module LevelElements
                 end
             end
         end
+        def open_menu(window)
+            puts "🛠 Teleport menu not yet implemented"
+        end
     end
     # class FluidBase
     class DecorBase < LevelElementBase
@@ -201,6 +218,9 @@ module LevelElements
                     json.field("layer", @layer)
                 end
             end
+        end
+        def open_menu(window)
+            puts "🛠 Decor menu not yet implemented"
         end
     end
     class SpikeBase
