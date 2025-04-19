@@ -293,20 +293,49 @@ module Sprites
     end
     end
 
-   def Player.check_feet_collision(window, object)
+# def Player.check_feet_collision(window, object)
+#  bounding_box = @@player_feet_hitbox.global_bounds
+#  object_top_half = object.global_bounds.top + object.global_bounds.height / 2
+#  feet_bottom = @@player_feet_hitbox.position.y + bounding_box.height
+#  if bounding_box.intersects? object.global_bounds
+#     if feet_bottom <= object_top_half 
+#       return true
+#     else
+#       return false
+#     end
+#  else
+#     return false
+#  end
+# end
+def Player.check_feet_collision(window, object)
     bounding_box = @@player_feet_hitbox.global_bounds
-    feet_bottom = @@player_feet_hitbox.position.y - bounding_box.height / 100
-    if bounding_box.intersects? object.global_bounds
-    if feet_bottom >= object.position.y
+    object_bounds = object.global_bounds
+  
+    middle_band_top = object_bounds.top + object_bounds.height * 0.255 #< the lower this value is, the higher the player stands on platforms
+    middle_band_height = object_bounds.height * 0.25
+  
+    platform_collision_bounds = SF::Rect.new(
+      object_bounds.left,
+      middle_band_top,
+      object_bounds.width,
+      middle_band_height
+    )
+  
+    feet_bottom_y = @@player_feet_hitbox.position.y + bounding_box.height
+  
+    if bounding_box.intersects?(platform_collision_bounds)
+      if feet_bottom_y <= middle_band_top + middle_band_height / 2
+        @@player_feet_hitbox.position.y = middle_band_top - bounding_box.height
         return true
-    else 
-        return false
+      end
     end
-    else 
-        return false
-    end
-   end
-
+  
+    return false
+  end
+  
+  
+  
+  
    def Player.move_player_sprite(window, x, y)
     @@player_character_rendered_model.move(SF.vector2(x.not_nil!, y.not_nil!))
    end
