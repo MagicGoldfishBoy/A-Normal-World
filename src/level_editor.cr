@@ -124,6 +124,40 @@ module LevelEditor
             LevelDisplay.current_element.y = mouse_position.y
             LevelDisplay.current_element.sprite.position = mouse_position
         end
+        def LevelEditorLogic.right_mouse_button_handling(window)
+            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
+            bounding_box_size = 50.0
+            LevelEditor::LevelEditorLogic.spawned_platform_array.each do |platform|
+                if platform.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
+                    LevelDisplay.current_element = platform
+                    platform.open_menu(window)
+                end
+            end
+            LevelEditor::LevelEditorLogic.spawned_decor_array.each do |decor|
+                if decor.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
+                    LevelDisplay.current_element = decor
+                    decor.open_menu(window)
+                end
+            end
+            LevelEditor::LevelEditorLogic.spawned_wall_array.each do |wall|
+                if wall.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
+                    LevelDisplay.current_element = wall
+                    wall.open_menu(window)
+                end
+            end
+            LevelEditor::LevelEditorLogic.spawned_climbeable_array.each do |climbeable|
+                if climbeable.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
+                    LevelDisplay.current_element = climbeable
+                    climbeable.open_menu(window)
+                end
+            end
+            LevelEditor::LevelEditorLogic.spawned_teleport_array.each do |teleporter|
+                if teleporter.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
+                    LevelDisplay.current_element = teleporter
+                    teleporter.open_menu(window)
+                end
+            end
+        end
         def LevelEditorLogic.left_mouse_button_handling(window)
             mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window), window.view)
             bounding_box_size = 50.0
@@ -246,6 +280,10 @@ module LevelEditor
         selector_rectangle.position = current_element.sprite.position
         if SF::Mouse.button_pressed?(SF::Mouse::Left)
             LevelEditorLogic.left_mouse_button_handling(window)
+        end
+        if SF::Mouse.button_pressed?(SF::Mouse::Right)
+            LevelEditorLogic.right_mouse_button_handling(window)
+            sleep 0.15.seconds
         end
         if SF::Mouse.button_pressed?(SF::Mouse::Middle)
             LevelEditorLogic.middle_mouse_button_handling(window)
