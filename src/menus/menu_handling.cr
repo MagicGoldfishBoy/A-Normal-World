@@ -8,6 +8,7 @@ require "../gui/gameplay_gui.cr"
 require "../gui/level_editor_gui.cr"
 require "../window/hud_window.cr"
 require "../window/stats_window.cr"
+require "../window/decor_window.cr"
 
 #menus take up the whole screen, guis overlay gameplay, windows are smoll
 
@@ -70,13 +71,15 @@ module MenuHandling
         end
     end
     class Window
-        def initialize(is_hud_window_open : Bool, is_stats_window_open : Bool)
+        def initialize(is_hud_window_open : Bool, is_stats_window_open : Bool, is_decor_window_open : Bool)
             @is_hud_window_open = is_hud_window_open
             @is_stats_window_open = is_stats_window_open
+            @is_decor_window_open = is_decor_window_open
         end
 
         class_property is_hud_window_open : Bool = false
         class_property is_stats_window_open : Bool = false
+        class_property is_decor_window_open : Bool = false
 
         def self.draw_window(window)
             if self.is_hud_window_open == true
@@ -84,6 +87,9 @@ module MenuHandling
             end
             if self.is_stats_window_open == true
                 StatsWindow::StatsWindowDisplay.display_stats_window(window)
+            end
+            if self.is_decor_window_open == true
+                DecorWindow::DecorWindowDisplay.draw_decor_window(window)
             end
         end
     end

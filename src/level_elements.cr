@@ -220,7 +220,9 @@ module LevelElements
             end
         end
         def open_menu(window)
-            puts "🛠 Decor menu not yet implemented"
+            DecorWindow::DecorWindowElements::DECOR_WINDOW_BOX.sprite.position = window.map_pixel_to_coords(
+            SF::Mouse.get_position(window), window.view)
+            MenuHandling::Window.is_decor_window_open = !MenuHandling::Window.is_decor_window_open
         end
     end
     class SpikeBase
