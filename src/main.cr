@@ -1,6 +1,5 @@
 require "crsfml"
 require "../src/textures.cr"
-require "../src/menus.cr"
 require "../src/keyboard.cr"
 require "../src/levels.cr"
 require "../src/player.cr"
@@ -33,7 +32,6 @@ lib GL
 window = SF::RenderWindow.new(SF::VideoMode.new(800, 600), "A Normal World", SF::Style::Default)
 window.vertical_sync_enabled = true
 this = "main_menu"
-Menus::SystemMenus.system_menu=(this)
 Sprites::Player.is_drawn=(false)
 Keyboard::Gameplay.gameplay_mode=("none")
 Levels::LevelSelectionLogic.level=("none")
