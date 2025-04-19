@@ -219,10 +219,17 @@ module LevelElements
                 end
             end
         end
+
         def open_menu(window)
-            DecorWindow::DecorWindowElements::DECOR_WINDOW_BOX.sprite.position = window.map_pixel_to_coords(
-            SF::Mouse.get_position(window), window.view)
-            MenuHandling::Window.is_decor_window_open = !MenuHandling::Window.is_decor_window_open
+            if self.is_a?(DecorBase)
+                DecorWindow::DecorWindowElements::DECOR_WINDOW_BOX.sprite.position = window.map_pixel_to_coords(
+                SF::Mouse.get_position(window), window.view)
+                DecorWindow::DecorWindowElements::CURRENT_DECOR_TEXT.text.string = LevelEditor::LevelDisplay.current_element.name
+                DecorWindow::DecorWindowElements::CURRENT_LAYER_TEXT.text.string = "Layer: #{self.layer.to_s}"
+                MenuHandling::Window.is_decor_window_open = !MenuHandling::Window.is_decor_window_open
+            else
+                puts "⛔ This element is not a decor element"
+            end
         end
     end
     class SpikeBase
