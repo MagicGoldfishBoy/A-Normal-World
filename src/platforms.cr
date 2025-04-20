@@ -77,120 +77,103 @@ module Platforms include LevelElements
         @@very_small_grassy_platform = Natural_Platform.new("very_small_grassy_platform", 
         "very_small_grassy_platform", 0, 0, 
         SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 0, 10, 20)), true)
-        PLATFORM_SPRITE_HASH["very_small_grassy_platform"] = SF::Sprite.new(PLATFORM_TEXTURE, 
-        SF::Rect.new(0, 0, 10, 20))
+        PLATFORM_SPRITE_HASH[@@very_small_grassy_platform.id] = @@very_small_grassy_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@very_small_grassy_platform
 
         @@small_grassy_platform = Natural_Platform.new("small_grassy_platform", 
         "small_grassy_platform", 0, 0,
         SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 0, 25, 20)), true)
-        PLATFORM_SPRITE_HASH["small_grassy_platform"] = SF::Sprite.new(PLATFORM_TEXTURE, 
-        SF::Rect.new(0, 0, 25, 20))
+        PLATFORM_SPRITE_HASH[@@small_grassy_platform.id] = @@small_grassy_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@small_grassy_platform
 
         @@medium_grassy_platform = Natural_Platform.new("medium_grassy_platform",
         "medium_grassy_platform", 0, 0,
         SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 0, 50, 20)), true)
-        PLATFORM_SPRITE_HASH["medium_grassy_platform"] = SF::Sprite.new(PLATFORM_TEXTURE,
-        SF::Rect.new(0, 0, 50, 20))
+        PLATFORM_SPRITE_HASH[@@medium_grassy_platform.id] = @@medium_grassy_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@medium_grassy_platform
 
         @@large_grassy_platform = Natural_Platform.new("large_grassy_platform",
         "large_grassy_platform", 0, 0,
         SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 0, 100, 20)), true)
-        PLATFORM_SPRITE_HASH["large_grassy_platform"] = SF::Sprite.new(PLATFORM_TEXTURE,
-        SF::Rect.new(0, 0, 100, 20))
+        PLATFORM_SPRITE_HASH[@@large_grassy_platform.id] = @@large_grassy_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@large_grassy_platform
 
         @@very_large_grassy_platform = Natural_Platform.new("very_large_grassy_platform",
         "very_large_grassy_platform", 0, 0,
         SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 0, 200, 20)), true)
-        PLATFORM_SPRITE_HASH["very_large_grassy_platform"] = SF::Sprite.new(PLATFORM_TEXTURE,
-        SF::Rect.new(0, 0, 200, 20))
+        PLATFORM_SPRITE_HASH[@@very_large_grassy_platform.id] = @@very_large_grassy_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@very_large_grassy_platform
 
         @@huge_grassy_platform = Natural_Platform.new("huge_grassy_platform",
         "huge_grassy_platform", 0, 0,
         SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 0, 300, 20)), true)
-        PLATFORM_SPRITE_HASH["huge_grassy_platform"] = SF::Sprite.new(PLATFORM_TEXTURE,
-        SF::Rect.new(0, 0, 300, 20))
+        PLATFORM_SPRITE_HASH[@@huge_grassy_platform.id] = @@huge_grassy_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@huge_grassy_platform
 
         @@giant_grassy_platform = Natural_Platform.new("giant_grassy_platform",
         "giant_grassy_platform", 0, 0,
         SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 0, 400, 20)), true)
-        PLATFORM_SPRITE_HASH["giant_grassy_platform"] = SF::Sprite.new(PLATFORM_TEXTURE,
-        SF::Rect.new(0, 0, 400, 20))
+        PLATFORM_SPRITE_HASH[@@giant_grassy_platform.id] = @@giant_grassy_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@giant_grassy_platform
 
         @@colossal_grassy_platform = Natural_Platform.new("colossal_grassy_platform",
         "colossal_grassy_platform", 0, 0,
         SF::Sprite.new(PLATFORM_TEXTURE, SF::Rect.new(0, 0, 500, 20)), true)
-        PLATFORM_SPRITE_HASH["colossal_grassy_platform"] = SF::Sprite.new(PLATFORM_TEXTURE,
-        SF::Rect.new(0, 0, 500, 20))
+        PLATFORM_SPRITE_HASH[@@colossal_grassy_platform.id] = @@colossal_grassy_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@colossal_grassy_platform
 
 
         @@very_small_dirt_platform = Natural_Platform.new("very_small_dirt_platform",
         "very_small_dirt_platform", 0, 0,
         SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(0, 0, 20, 60)), true)
-        PLATFORM_SPRITE_HASH["very_small_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
-        SF::Rect.new(0, 0, 20, 60))
+        PLATFORM_SPRITE_HASH[@@very_small_dirt_platform.id] = @@very_small_dirt_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@very_small_dirt_platform
 
         @@small_dirt_platform = Natural_Platform.new("small_dirt_platform",
         "small_dirt_platform", 0, 0,
         SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(20, 0, 40, 60)), true)
-        PLATFORM_SPRITE_HASH["small_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
-        SF::Rect.new(20, 0, 40, 60))
+        PLATFORM_SPRITE_HASH[@@small_dirt_platform.id] = @@small_dirt_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@small_dirt_platform
 
         @@medium_dirt_platform = Natural_Platform.new("medium_dirt_platform",
         "medium_dirt_platform", 0, 0,
         SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(60, 0, 60, 60)), true)
-        PLATFORM_SPRITE_HASH["medium_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
-        SF::Rect.new(60, 0, 60, 60))
+        PLATFORM_SPRITE_HASH[@@medium_dirt_platform.id] = @@medium_dirt_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@medium_dirt_platform
 
         @@large_dirt_platform = Natural_Platform.new("large_dirt_platform",
         "large_dirt_platform", 0, 0,
         SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(120, 0, 80, 60)), true)
-        PLATFORM_SPRITE_HASH["large_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
-        SF::Rect.new(120, 0, 80, 60))
+        PLATFORM_SPRITE_HASH[@@large_dirt_platform.id] = @@large_dirt_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@large_dirt_platform
 
         @@very_large_dirt_platform = Natural_Platform.new("very_large_dirt_platform",
         "very_large_dirt_platform", 0, 0,
         SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(200, 0, 100, 60)), true)
-        PLATFORM_SPRITE_HASH["very_large_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
-        SF::Rect.new(200, 0, 100, 60))
+        PLATFORM_SPRITE_HASH[@@very_large_dirt_platform.id] = @@very_large_dirt_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@very_large_dirt_platform
 
         @@huge_dirt_platform = Natural_Platform.new("huge_dirt_platform",
         "huge_dirt_platform", 0, 0,
         SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(300, 0, 200, 60)), true)
-        PLATFORM_SPRITE_HASH["huge_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
-        SF::Rect.new(300, 0, 200, 60))
+        PLATFORM_SPRITE_HASH[@@huge_dirt_platform.id] = @@huge_dirt_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@huge_dirt_platform
 
         @@giant_dirt_platform = Natural_Platform.new("giant_dirt_platform",
         "giant_dirt_platform", 0, 0,
         SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(0, 60, 300, 60)), true)
-        PLATFORM_SPRITE_HASH["giant_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
-        SF::Rect.new(0, 60, 300, 60))
+        PLATFORM_SPRITE_HASH[@@giant_dirt_platform.id] = @@giant_dirt_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@giant_dirt_platform
 
         @@colossal_dirt_platform = Natural_Platform.new("colossal_dirt_platform",
         "colossal_dirt_platform", 0, 0,
         SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(0, 120, 500, 60)), true)
-        PLATFORM_SPRITE_HASH["colossal_dirt_platform"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
-        SF::Rect.new(0, 120, 500, 60))
+        PLATFORM_SPRITE_HASH[@@colossal_dirt_platform.id] = @@colossal_dirt_platform.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@colossal_dirt_platform
 
         @@dirt_ground = Natural_Platform.new("dirt_ground", "dirt_ground", 0, 0, 
         SF::Sprite.new(DIRT_PLATFORM_TEXTURE, SF::Rect.new(0, 340, 500, 160)), false)
-        PLATFORM_SPRITE_HASH["dirt_ground"] = SF::Sprite.new(DIRT_PLATFORM_TEXTURE,
-        SF::Rect.new(0, 340, 500, 160))
+        PLATFORM_SPRITE_HASH[@@dirt_ground.id] = @@dirt_ground.sprite
         LevelElements::PlatformBase::PLATFORM_TEMPLATE_ARRAY << @@dirt_ground
     end
 end
