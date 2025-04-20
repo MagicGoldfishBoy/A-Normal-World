@@ -33,6 +33,7 @@ module LocationSelection
     case self.current_area
      when "chitòn_city"
      when "chitòn_dump"
+        MusicHandling::MapMusic.play_map_music("chitòn_dump")
         Map.select_map_chitòn_dump(window)
     else
       puts "#{self.current_area} is not a valid area!"
@@ -52,7 +53,6 @@ module LocationSelection
     case self.current_map
      when "chitòn_dump_map_1"
         Serialization::LevelFile.load_map("../src/locations/regions/chitòn_region/chitòn_dump/maps/chitòn_dump_map_1")
-        #Serialization::LevelFile.load_map("src/locations/regions/chitòn_region/chitòn_dump/maps/chitòn_dump_map_1")
     else
       puts "#{self.current_map} is not a valid map!"
       self.current_map = "chitòn_dump_map_1"
