@@ -17,6 +17,7 @@ module LevelElements
         property y : Float32
         property sprite : SF::Sprite
     end
+
     class PlatformBase < LevelElementBase
         PLATFORM_ARRAY = [] of PlatformBase
         PLATFORM_TEMPLATE_ARRAY = [] of PlatformBase
@@ -42,10 +43,6 @@ module LevelElements
         property can_jump_down : Bool
         class_property current_platform_array : Array(PlatformBase) = Array(PlatformBase).new
 
-        @@test_platform = PlatformBase.new("test", "test", 0.0, 0.0, 
-        SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(950, 50, 50, 40)), true)
-        PLATFORM_TEMPLATE_ARRAY << @@test_platform
-
         def open_menu(window)
             puts "⛔ Platforms don't have a menu"
         end
@@ -65,10 +62,21 @@ module LevelElements
         def self.get_platform(name : String)
             PLATFORM_ARRAY.find { |platform| platform.name == name }
         end
+        # def to_json(io : IO)
+        #     io << "{\"name\": \"#{@name}\", \"id\": \"#{@id}\", \"x\": #{@x}, \"y\": #{@y}, \"can_jump_down\": #{@can_jump_down}}"
+        # end
         def to_json(io : IO)
-            io << "{\"name\": \"#{@name}\", \"id\": \"#{@id}\", \"x\": #{@x}, \"y\": #{@y}, \"can_jump_down\": #{@can_jump_down}}"
+            JSON.build(io) do |json|
+                json.object do
+                    json.field("name", @name)
+                    json.field("id", @id)
+                    json.field("x", @x)
+                    json.field("y", @y)
+                    json.field("can_jump_down", @can_jump_down)
+                end
+            end
         end
-        end 
+    end
     class WallBase < LevelElementBase
         WALL_TEMPLATE_ARRAY = [] of WallBase
         WALL_SPRITE_HASH = Hash(String, SF::Sprite).new
@@ -183,11 +191,12 @@ module LevelElements
                 end
             end
         end
+
         def open_menu(window)
             puts "🛠 Teleport menu not yet implemented"
         end
     end
-    # class FluidBase
+
     class DecorBase < LevelElementBase
         DECOR_TEMPLATE_ARRAY = [] of DecorBase
         DECOR_SPRITE_HASH = Hash(String, SF::Sprite).new
