@@ -183,6 +183,7 @@ module SaveMenu
                     Serialization::SaveFile.initial_save("save01")
                     CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
+                    MusicHandling::MenuMusic.play_menu_music("character_creation_menu")
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_02.sprite, scaled_mouse_x, scaled_mouse_y)
                 if File.exists?("saves/save02")
@@ -192,6 +193,7 @@ module SaveMenu
                     Serialization::SaveFile.initial_save("save02")
                     CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
+                    MusicHandling::MenuMusic.play_menu_music("character_creation_menu")
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_03.sprite, scaled_mouse_x, scaled_mouse_y)
                 if File.exists?("saves/save03")
@@ -201,6 +203,7 @@ module SaveMenu
                     Serialization::SaveFile.initial_save("save03")
                     CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
+                    MusicHandling::MenuMusic.play_menu_music("character_creation_menu")
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_04.sprite, scaled_mouse_x, scaled_mouse_y)
                 if File.exists?("saves/save04")
@@ -210,6 +213,7 @@ module SaveMenu
                     Serialization::SaveFile.initial_save("save04")
                     CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
+                    MusicHandling::MenuMusic.play_menu_music("character_creation_menu")
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_05.sprite, scaled_mouse_x, scaled_mouse_y)
                 if File.exists?("saves/save05")
@@ -219,6 +223,7 @@ module SaveMenu
                     Serialization::SaveFile.initial_save("save05")
                     CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
+                    MusicHandling::MenuMusic.play_menu_music("character_creation_menu")
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_06.sprite, scaled_mouse_x, scaled_mouse_y)
                 if File.exists?("saves/save06")
@@ -228,6 +233,7 @@ module SaveMenu
                     Serialization::SaveFile.initial_save("save06")
                     CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
+                    MusicHandling::MenuMusic.play_menu_music("character_creation_menu")
                 end
             elsif MouseHandling::ClickHandling.button_clicked?(SaveMenuElements::SAVE_BOX_07.sprite, scaled_mouse_x, scaled_mouse_y)
                 if File.exists?("saves/save07")
@@ -237,6 +243,7 @@ module SaveMenu
                     Serialization::SaveFile.initial_save("save07")
                     CharacterCreationMenu::CharacterCreationMenuDisplay.initialize_character_creation_menu(window)
                     MenuHandling::Menu.current_menu = "character_creation_menu"
+                    MusicHandling::MenuMusic.play_menu_music("character_creation_menu")
                 end
             end
          end

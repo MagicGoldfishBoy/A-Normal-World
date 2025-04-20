@@ -36,7 +36,7 @@ this = "main_menu"
 Sprites::Player.is_drawn = false
 Keyboard::Gameplay.gameplay_mode=("none")
 Ui_Elements::MenuThemes.apply_theme
-MusicHandling::MenuMusic.play_main_menu_music
+MusicHandling::MenuMusic.play_menu_music("main_menu")
 
 while window.open?
     while event = window.poll_event

@@ -31,8 +31,7 @@ module MenuHandling
                 SettingsMenu::SettingsMenuDisplay.draw_settings_menu(window)
             when "debug"
                 DebugMenu::DebugMenuDisplay.draw_debug_menu(window)
-                when "level_editor"
-                    #Menus::SystemMenus.draw_level_editor_ui(window)
+            when "none"
             else
                 puts self.current_menu
                 window.close

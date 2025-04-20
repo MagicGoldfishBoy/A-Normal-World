@@ -155,6 +155,8 @@ module CharacterCreationMenu
             window.draw(CharacterCreationMenuElements::SHOES_BOX_LEFT_TEXT.text)
             window.draw(CharacterCreationMenuElements::SHOES_BOX_RIGHT_TEXT.text)
             window.draw(CharacterCreationMenuElements::NEXT_BUTTON_TEXT.text)
+
+            Sprites::Player.animate_sprite("idle", "right")
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
                 CharacterCreationMenuMouseHandling.character_creation_menu_mouse_handling(window)
             end
@@ -182,6 +184,7 @@ module CharacterCreationMenu
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(CharacterCreationMenuElements::NEXT_BUTTON.sprite, scaled_mouse_x, scaled_mouse_y)
                 Sprites::Player.is_drawn=(true)
+                MenuHandling::Menu.current_menu = "none"
                 MenuHandling::Gui.current_gui = "gameplay_hud"
                 Keyboard::Gameplay.gameplay_mode=("normal")
                 Sprites::Player.resize_player_sprite(window, 1, 1)
