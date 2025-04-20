@@ -83,6 +83,11 @@ module Maps
                 elsif parallax_sprite.position.x >= Sprites::Player.retrieve_sprite.position.x + 500 || parallax_sprite.position.x <= Sprites::Player.retrieve_sprite.position.x - 1500
                     parallax.x += 5
                 end
+                if parallax_sprite.position.y <= Sprites::Player.retrieve_sprite.position.y + 500 && parallax_sprite.position.y >= Sprites::Player.retrieve_sprite.position.y - 250
+                    parallax.x -= 5
+                elsif parallax_sprite.position.y >= Sprites::Player.retrieve_sprite.position.y + 500 || parallax_sprite.position.y <= Sprites::Player.retrieve_sprite.position.y - 1500
+                    parallax.x += 5
+                end
                 #might be useful if I need a parallax to scroll constantly
                 # if parallax_sprite.position.x <= Sprites::Player.retrieve_sprite.position.x - 50
                 #     parallax.x -= 10
