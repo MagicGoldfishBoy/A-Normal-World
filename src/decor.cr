@@ -132,5 +132,34 @@ module Decor include LevelElements
         @@small_can_01 = DecorGarbage.new("Small Can", "small_can_01", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(20, 0, 10, 10)), 1)
         DECOR_SPRITE_HASH[@@small_can_01.id] = @@small_can_01.sprite
         LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@small_can_01
+
+        @@beverage_can_01 = DecorGarbage.new("Beverage Can", "beverage_can_01", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(40, 20, 20, 20)), 1)
+        DECOR_SPRITE_HASH[@@beverage_can_01.id] = @@beverage_can_01.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@beverage_can_01
+
+
+        @@broken_glass_clear_01 = DecorGarbage.new("Broken Glass", "broken_glass_clear_01", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(40, 40, 20, 20)), 1)
+        DECOR_SPRITE_HASH[@@broken_glass_clear_01.id] = @@broken_glass_clear_01.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@broken_glass_clear_01
+
+        @@broken_glass_clear_02 = DecorGarbage.new("Broken Glass", "broken_glass_clear_02", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(60, 40, 20, 20)), 1)
+        DECOR_SPRITE_HASH[@@broken_glass_clear_02.id] = @@broken_glass_clear_02.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@broken_glass_clear_02
+
+        @@broken_glass_brown_01 = DecorGarbage.new("Brown Broken Glass", "broken_glass_brown_01", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(80, 40, 20, 20)), 1)
+        DECOR_SPRITE_HASH[@@broken_glass_brown_01.id] = @@broken_glass_brown_01.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@broken_glass_brown_01
+
+        @@broken_glass_brown_02 = DecorGarbage.new("Brown Broken Glass", "broken_glass_brown_02", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(100, 40, 20, 20)), 1)
+        DECOR_SPRITE_HASH[@@broken_glass_brown_02.id] = @@broken_glass_brown_02.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@broken_glass_brown_02
+
+        @@broken_glass_green_01 = DecorGarbage.new("Green Broken Glass", "broken_glass_green_01", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(120, 40, 20, 20)), 1)
+        DECOR_SPRITE_HASH[@@broken_glass_green_01.id] = @@broken_glass_green_01.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@broken_glass_green_01
+
+        @@broken_glass_green_02 = DecorGarbage.new("Green Broken Glass", "broken_glass_green_02", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(140, 40, 20, 20)), 1)
+        DECOR_SPRITE_HASH[@@broken_glass_green_02.id] = @@broken_glass_green_02.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@broken_glass_green_02
     end
 end
