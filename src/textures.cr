@@ -587,3 +587,5 @@
         INDUSTRIAL_CLIMBEABLE_TEXTURE = SF::Texture.from_file("../graphics/level_assets/industrial_climbeables.png")
 
         TELEPORTER_TEXTURE = SF::Texture.from_file("../graphics/teleporters.png")
+    #------------------------------------------------Decor---------------------------------------------
+        GARBAGE_TEXTURE = SF::Texture.from_file("../graphics/level_assets/garbage.png")
