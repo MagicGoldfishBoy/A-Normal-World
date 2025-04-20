@@ -589,3 +589,5 @@
         TELEPORTER_TEXTURE = SF::Texture.from_file("../graphics/teleporters.png")
     #------------------------------------------------Decor---------------------------------------------
         GARBAGE_TEXTURE = SF::Texture.from_file("../graphics/level_assets/garbage.png")
+    #----------------------------------------------Parallax--------------------------------------------
+        SUNSET_PARALLAX_TEXTURE_01 = SF::Texture.from_file("../graphics/level_assets/sunset_parallax_01.png")

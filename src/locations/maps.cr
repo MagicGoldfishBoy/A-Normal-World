@@ -32,6 +32,11 @@ module Maps
         class_property level_element_array : Array(LevelElements::LevelElementBase) = (level_platform_array + level_decor_array + level_wall_array + 
         level_climbeable_array + level_teleport_array)
 
+        class_property current_parallax : LevelElements::ParallaxBase | Nil = nil
+
+        class_property current_parallax_index : Int32 = 0
+        #Parallax::ParallaxMethods.change_parallax("right")
+
         class_property gravity_clock : SF::Clock = SF::Clock.new
 
         def self.normal_gameplay_view(window)
@@ -65,6 +70,15 @@ module Maps
         end
         def self.draw_elements(window)
             self.normal_gameplay_view(window)
+
+            if self.current_parallax == nil
+                self.current_parallax = Parallax::ParallaxMethods.change_parallax(self.current_parallax_index, "right")
+            else
+                parallax_sprite = self.current_parallax.as(LevelElements::ParallaxBase).sprite
+                parallax = self.current_parallax.as(LevelElements::ParallaxBase)
+                parallax_sprite.position = SF.vector2(parallax.x, parallax.y)
+                window.draw(self.current_parallax.as(LevelElements::ParallaxBase).sprite)
+            end
 
             self.level_decor_array.each { |decor|
             if decor.layer == 0

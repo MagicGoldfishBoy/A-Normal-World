@@ -7,6 +7,7 @@ require "../src/decor.cr"
 require "../src/walls.cr"
 require "../src/climbeable.cr"
 require "../src/teleporters.cr"
+require "../src/level_editor/parallax.cr"
 
 module LevelEditor 
     class LevelEditorLogic
@@ -44,6 +45,8 @@ module LevelEditor
         class_property spawned_element_array : Array(LevelElements::LevelElementBase) = (spawned_platform_array + spawned_decor_array + spawned_wall_array + 
         spawned_climbeable_array + spawned_teleport_array)
         class_property spawned_element_index : Int32 = 0
+
+        class_property current_parallax_index : Int32 = 0
 
         def self.update_spawned_element_array
             self.spawned_element_array.clear
@@ -219,8 +222,13 @@ module LevelEditor
         end
     end
     class LevelDisplay 
-     class_property current_element : (LevelElements::LevelElementBase) = 
-     Platforms::Natural_Platform.very_small_grassy_platform
+    class_property current_element : (LevelElements::LevelElementBase) = 
+    Platforms::Natural_Platform.very_small_grassy_platform
+
+    #this stupid little motherfucker couldn't find a class variable if its dumbass life depended on it, so the little bastard will just have to be nill for now 
+    class_property current_parallax : LevelElements::ParallaxBase | Nil = nil #Parallax::ParallaxSky.sunset_01
+    current_parallax = Parallax::ParallaxMethods.change_parallax(LevelEditor::LevelEditorLogic.current_parallax_index, "right")
+
      class_property view_center : SF::Vector2f = SF::Vector2f.new(350, 300)
      class_property move_speed : Float32 = 1.0
      class_property zoom_level : Float32 = 1.0
@@ -259,6 +267,15 @@ module LevelEditor
         current_element.sprite.global_bounds.height * scale_ratio))
         self.selector_rectangle.position = current_element.sprite.position
         self.selector_rectangle.fill_color = SF::Color.new(0, 0, 255, 80)
+
+        if self.current_parallax == nil
+            self.current_parallax = Parallax::ParallaxMethods.change_parallax(LevelEditor::LevelEditorLogic.current_parallax_index, "right")
+        else
+            parallax_sprite = self.current_parallax.as(LevelElements::ParallaxBase).sprite
+            parallax = self.current_parallax.as(LevelElements::ParallaxBase)
+            parallax_sprite.position = SF.vector2(parallax.x, parallax.y)
+            window.draw(self.current_parallax.as(LevelElements::ParallaxBase).sprite)
+        end
 
         LevelEditor::LevelEditorLogic.spawned_decor_array.each do |decor|
             if decor.layer == 0
