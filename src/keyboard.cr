@@ -9,6 +9,56 @@ require "../src/level_elements.cr"
 require "../src/serialization.cr"
 
 module Keyboard
+    class Text
+        def initialize(is_text_input_mode : Bool, string : String)
+            @is_text_input_mode = is_text_input_mode
+            @string = string
+        end
+
+        class_property is_text_input_mode : Bool = false
+        class_property string : String = ""
+
+        # LETTER_CHAR_ARRAY = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+        # 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+        LETTER_KEYS = {
+            'A' => SF::Keyboard::Key::A,
+            'B' => SF::Keyboard::Key::B,
+            'C' => SF::Keyboard::Key::C,
+            'D' => SF::Keyboard::Key::D,
+            'E' => SF::Keyboard::Key::E,
+            'F' => SF::Keyboard::Key::F,
+            'G' => SF::Keyboard::Key::G,
+            'H' => SF::Keyboard::Key::H,
+            'I' => SF::Keyboard::Key::I,
+            'J' => SF::Keyboard::Key::J,
+            'K' => SF::Keyboard::Key::K,
+            'L' => SF::Keyboard::Key::L,
+            'M' => SF::Keyboard::Key::M,
+            'N' => SF::Keyboard::Key::N,
+            'O' => SF::Keyboard::Key::O,
+            'P' => SF::Keyboard::Key::P,
+            'Q' => SF::Keyboard::Key::Q,
+            'R' => SF::Keyboard::Key::R,
+            'S' => SF::Keyboard::Key::S,
+            'T' => SF::Keyboard::Key::T,
+            'U' => SF::Keyboard::Key::U,
+            'V' => SF::Keyboard::Key::V,
+            'W' => SF::Keyboard::Key::W,
+            'X' => SF::Keyboard::Key::X,
+            'Y' => SF::Keyboard::Key::Y,
+            'Z' => SF::Keyboard::Key::Z,
+          }
+        
+          def self.text_input(string : String) : String
+            LETTER_KEYS.each do |char, key|
+              if SF::Keyboard.key_pressed?(key)
+                return string + char
+              end
+            end
+            string
+          end
+    end
     class Gameplay
         def initialize(@@gameplay_mode : String)
         end
@@ -22,6 +72,7 @@ module Keyboard
         end
 
         def Gameplay.determine_gameplay_controls(window)
+          if Text.is_text_input_mode == false
             case Gameplay.gameplay_mode
             when "none"
                 "does nothing lol"
@@ -30,6 +81,9 @@ module Keyboard
             when "level_editor"
                 Gameplay.level_editor(window)
             end
+          else
+            Text.text_input(Text.string)
+          end
         end
 
         def Gameplay.normal_gameplay(window)
