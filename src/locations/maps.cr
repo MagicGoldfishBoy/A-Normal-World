@@ -78,9 +78,9 @@ module Maps
                 parallax = self.current_parallax.as(LevelElements::ParallaxBase)
                 parallax_sprite.position = SF.vector2(parallax.x, parallax.y)
                 window.draw(parallax_sprite)
-                if parallax_sprite.position.x <= Sprites::Player.retrieve_sprite.position.x + 500 && parallax_sprite.position.x >= Sprites::Player.retrieve_sprite.position.x - 400
+                if parallax_sprite.position.x <= Sprites::Player.retrieve_sprite.position.x + 500 && parallax_sprite.position.x >= Sprites::Player.retrieve_sprite.position.x - 250
                     parallax.x -= 5
-                elsif parallax_sprite.position.x >= Sprites::Player.retrieve_sprite.position.x + 500 || parallax_sprite.position.x <= Sprites::Player.retrieve_sprite.position.x - 500
+                elsif parallax_sprite.position.x >= Sprites::Player.retrieve_sprite.position.x + 500 || parallax_sprite.position.x <= Sprites::Player.retrieve_sprite.position.x - 1500
                     parallax.x += 5
                 end
                 #might be useful if I need a parallax to scroll constantly
