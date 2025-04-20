@@ -122,7 +122,6 @@ module CharacterCreationMenu
             CharacterCreationMenuElements::NEXT_BUTTON_TEXT.text.position = CharacterCreationMenuElements::NEXT_BUTTON.sprite.position + SF.vector2(15, 1)
     
             sleep 0.15.seconds
-            #SystemMenus.system_menu=("character_creation_menu")
             MenuHandling::Menu.current_menu = "character_creation_menu"
             Sprites::Player.is_drawn=(true)
          end

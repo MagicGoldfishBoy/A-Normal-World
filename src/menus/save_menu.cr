@@ -152,7 +152,6 @@ module SaveMenu
             window.draw(SaveMenuElements::SAVE_BOX_06_TEXT.text)
             window.draw(SaveMenuElements::SAVE_BOX_07_TEXT.text)
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                #Menus::Menus::SystemMenus.save_menu_mouse_handling(window)
                 SaveMenuMouseHandling.save_menu_mouse_handling(window)
             end
          end
@@ -246,7 +245,7 @@ module SaveMenu
         def self.open_save(save, window)
             Serialization::SaveFile.save_file=(save)
             Serialization::SaveFile.load_game("saves/#{save}")
-            Sprites::Player.is_drawn=(true)
+            Sprites::Player.is_drawn = true
             MenuHandling::Gui.current_gui = "gameplay_hud"
             MenuHandling::Menu.current_menu = "none"
             GameplayGui::GameplayGuiDisplay.initialize_hud(window)
