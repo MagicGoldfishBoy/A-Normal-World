@@ -117,34 +117,14 @@ module Player
 
   class Movement
     def initialize(movement_state : String, movement_speed : Float64, movement_direction : String)
-        @@movement_state = movement_state
-        @@movement_speed = movement_speed
-        @@movement_direction = movement_direction
+        @movement_state = movement_state
+        @movement_speed = movement_speed
+        @movement_direction = movement_direction
     end
 
-    def Movement.movement_state
-        @@movement_state
-    end
-
-    def Movement.movement_speed
-        @@movement_speed
-    end
-
-    def Movement.movement_direction
-        @@movement_direction
-    end
-
-    def Movement.movement_state=(this)
-        @@movement_state = this
-    end
-
-    def Movement.movement_speed=(this)
-        @@movement_speed = this
-    end
-
-    def Movement.movement_direction=(this)
-        @@movement_direction = this
-    end
+    class_property movement_state : String = ""
+    class_property movement_speed : Float64 = 0.0
+    class_property movement_direction : String = ""
 
     def Movement.move_horizontal(window, direction)
         Movement.movement_direction = direction
@@ -162,7 +142,7 @@ module Player
 
       def self.jump(window)
         if Maps::MapBase.can_jump?(window)
-            Sprites::Player.move_player_sprite(window, 0, -50)# + @@gravity.not_nil!)
+            Sprites::Player.move_player_sprite(window, 0, -50)
         end
       end
   end
