@@ -265,6 +265,39 @@ module LevelElements
             end
         end
     end
+    class ParallaxBase < LevelElementBase
+        PARALLAX_ARRAY = [] of ParallaxBase
+        PARALLAX_SPRITE_HASH = Hash(String, SF::Sprite).new
+        def initialize(name : String, id : String, x : Float32, y : Float32, sprite : SF::Sprite)
+            @name = name
+            @id = id
+            @x = x
+            @y = y
+            @sprite = sprite
+            PARALLAX_ARRAY << self
+        end
+
+        property name : String
+        property id : String
+        property x : Float32
+        property y : Float32
+        property sprite : SF::Sprite
+
+        def to_json(io : IO)
+         JSON.build(io) do |json|
+          json.object do
+            json.field("name", @name)
+            json.field("id", @id)
+            json.field("x", @x)
+            json.field("y", @y)
+          end
+         end
+        end
+
+        def open_menu(window)
+            puts "⛔ Parallaxes don't have a menu"
+        end
+    end
     class SpikeBase
     end    
     class EnemyBase
