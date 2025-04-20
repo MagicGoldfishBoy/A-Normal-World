@@ -5,6 +5,8 @@ require "../src/player.cr"
 require "../src/ui_elements.cr"
 require "../src/menus/menu_handling.cr"
 require "../src/locations/location_selection.cr"
+#require "../src/sound/music.cr"
+require "../src/sound/music_handling.cr"
 
 puts "A Normal World"
 
@@ -33,8 +35,8 @@ window.vertical_sync_enabled = true
 this = "main_menu"
 Sprites::Player.is_drawn = false
 Keyboard::Gameplay.gameplay_mode=("none")
-#Levels::LevelSelectionLogic.level=("none")
 Ui_Elements::MenuThemes.apply_theme
+MusicHandling::MenuMusic.play_main_menu_music
 
 while window.open?
     while event = window.poll_event
@@ -43,8 +45,6 @@ while window.open?
       end
     end
     window.clear(SF::Color::Black)
-    #Levels::LevelSelectionLogic.current_area(window)
-    #TODO: make this display sprites, not elements
     if LocationSelection::Region.current_region != "none"
      Maps::MapBase.draw_elements(window)
     end
@@ -65,7 +65,6 @@ while window.open?
 
     MenuHandling::Window.draw_window(window)
 
-    #Menus::Windows.update_open_views(window)
     Inventory::InventoryManager.draw_inventory(window)
     window.display
   end
