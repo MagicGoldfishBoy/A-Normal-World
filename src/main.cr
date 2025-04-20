@@ -1,7 +1,6 @@
 require "crsfml"
 require "../src/textures.cr"
 require "../src/keyboard.cr"
-require "../src/levels.cr"
 require "../src/player.cr"
 require "../src/ui_elements.cr"
 require "../src/menus/menu_handling.cr"
@@ -34,7 +33,7 @@ window.vertical_sync_enabled = true
 this = "main_menu"
 Sprites::Player.is_drawn = false
 Keyboard::Gameplay.gameplay_mode=("none")
-Levels::LevelSelectionLogic.level=("none")
+#Levels::LevelSelectionLogic.level=("none")
 Ui_Elements::MenuThemes.apply_theme
 
 while window.open?

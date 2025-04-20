@@ -247,7 +247,6 @@ module SaveMenu
             Serialization::SaveFile.save_file=(save)
             Serialization::SaveFile.load_game("saves/#{save}")
             Sprites::Player.is_drawn=(true)
-            #Menus::SystemMenus.system_menu=("hud")
             MenuHandling::Gui.current_gui = "gameplay_hud"
             MenuHandling::Menu.current_menu = "none"
             GameplayGui::GameplayGuiDisplay.initialize_hud(window)

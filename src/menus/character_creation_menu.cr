@@ -185,9 +185,9 @@ module CharacterCreationMenu
                 Sprites::Player.is_drawn=(true)
                 MenuHandling::Gui.current_gui = "gameplay_hud"
                 Keyboard::Gameplay.gameplay_mode=("normal")
-                Levels::PhysicsTest.initialize_platform_test(window)
                 Sprites::Player.resize_player_sprite(window, 1, 1)
-                Levels::LevelSelectionLogic.level=("physics_test")
+                LocationSelection::Region.current_region = "chitòn_region"
+                LocationSelection::Region.select_region(window)
             elsif MouseHandling::ClickHandling.button_clicked?(CharacterCreationMenuElements::SKIN_BOX_LEFT.sprite, scaled_mouse_x, scaled_mouse_y)
                 Player::Appearance.change_skin(Sprites::Player.change_skin("character_creation", "left"))
                 Sprites::Player.refresh_player_sprite(window)

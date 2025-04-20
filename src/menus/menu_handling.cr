@@ -43,7 +43,7 @@ module MenuHandling
             MenuHandling::Gui.current_gui = "none"
             MenuHandling::Window.is_hud_window_open = false
             window.view = window.default_view
-            Levels::LevelSelectionLogic.level = "none"
+            #Levels::LevelSelectionLogic.level = "none"
             Window.is_hud_window_open = false
             Window.is_stats_window_open = false
             MenuHandling::Menu.current_menu = "main_menu"
