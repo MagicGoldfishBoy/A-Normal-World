@@ -26,34 +26,16 @@ module Sprites
   class Player 
 
   def initialize(is_drawn : Bool, movement_state : String, direction : String)
-    @@is_drawn = is_drawn
-    @@movement_state = movement_state
-    @@direction = direction
+    @is_drawn = is_drawn
+    @movement_state = movement_state
+    @direction = direction
   end
 
-  def Player.is_drawn
-    @@is_drawn
-  end
+  class_property is_drawn : Bool = false
 
-  def Player.is_drawn=(this)
-    @@is_drawn = this
-  end
+  class_property movement_state : String = ""
 
-  def Player.movement_state
-    @@movement_state
-  end
-
-  def Player.movement_state=(this)
-    @@movement_state = this
-  end
-
-  def Player.direction
-    @@direction
-  end
-
-  def Player.direction=(this)
-    @@direction = this
-  end
+  class_property direction : String = "left"
 
   STARTING_SKIN_ARRAY = ["pale_skin", "tan_skin", "dark_skin", "ghostly_skin", "jaundiced_skin", "blue_skin", "pink_skin", "green_skin", "purple_skin", "red_skin"]
 
@@ -90,7 +72,6 @@ module Sprites
     if @@is_drawn == true
         @@player_feet_hitbox.position = @@player_character_rendered_model.position + SF.vector2(35, 110)
         window.draw(@@player_character_rendered_model)
-        #window.draw(@@player_feet_hitbox)
         if @@movement_state == nil
             @@movement_state = "idle"
         end
@@ -293,20 +274,6 @@ module Sprites
     end
     end
 
-# def Player.check_feet_collision(window, object)
-#  bounding_box = @@player_feet_hitbox.global_bounds
-#  object_top_half = object.global_bounds.top + object.global_bounds.height / 2
-#  feet_bottom = @@player_feet_hitbox.position.y + bounding_box.height
-#  if bounding_box.intersects? object.global_bounds
-#     if feet_bottom <= object_top_half 
-#       return true
-#     else
-#       return false
-#     end
-#  else
-#     return false
-#  end
-# end
 def Player.check_feet_collision(window, object)
     bounding_box = @@player_feet_hitbox.global_bounds
     object_bounds = object.global_bounds
@@ -494,4 +461,3 @@ def Player.check_feet_collision(window, object)
 
  end
 end
-#Appearance.get_clothing(weapon)
