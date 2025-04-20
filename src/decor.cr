@@ -102,4 +102,35 @@ module Decor include LevelElements
         DECOR_SPRITE_HASH["dandelion"] = SF::Sprite.new(NATURAL_DECOR_TEXTURE, SF::Rect.new(20, 10, 10, 10))
         LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@dandelion
     end
+    class DecorGarbage < DecorBase
+        @@small_garbage_bag_01 = DecorGarbage.new("Small Garbage Bag", "small_garbage_bag_01", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(0, 0, 20, 20)), 1)
+        DECOR_SPRITE_HASH[@@small_garbage_bag_01.id] = @@small_garbage_bag_01.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@small_garbage_bag_01
+
+        @@garbage_bag_01 = DecorGarbage.new("Garbage Bag", "garbage_bag_01", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(0, 20, 40, 40)), 1)
+        DECOR_SPRITE_HASH[@@garbage_bag_01.id] = @@garbage_bag_01.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@garbage_bag_01
+
+        @@toxic_waste_bag_01 = DecorGarbage.new("Toxic Waste Bag", "toxic_waste_bag_01", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(0, 60, 40, 40)), 1)
+        DECOR_SPRITE_HASH[@@toxic_waste_bag_01.id] = @@toxic_waste_bag_01.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@toxic_waste_bag_01
+
+
+        @@eight_inch_floppy_disk = DecorGarbage.new("8-Inch Floppy Disk", "eight_inch_floppy_disk", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(40, 0, 20, 20)), 1)
+        DECOR_SPRITE_HASH[@@eight_inch_floppy_disk.id] = @@eight_inch_floppy_disk.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@eight_inch_floppy_disk
+
+        @@five_point_twenty_five_floppy_disk = DecorGarbage.new("5.25-Inch Floppy Disk", "five_point_twenty_five_floppy_disk", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(60, 0, 20, 20)), 1)
+        DECOR_SPRITE_HASH[@@five_point_twenty_five_floppy_disk.id] = @@five_point_twenty_five_floppy_disk.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@five_point_twenty_five_floppy_disk
+
+        @@three_point_five_inch_floppy_disk = DecorGarbage.new("3.5-Inch Floppy Disk", "three_point_five_inch_floppy_disk", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(80, 0, 20, 20)), 1)
+        DECOR_SPRITE_HASH[@@three_point_five_inch_floppy_disk.id] = @@three_point_five_inch_floppy_disk.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@three_point_five_inch_floppy_disk
+
+
+        @@small_can_01 = DecorGarbage.new("Small Can", "small_can_01", 0, 0, SF::Sprite.new(GARBAGE_TEXTURE, SF::Rect.new(20, 0, 10, 10)), 1)
+        DECOR_SPRITE_HASH[@@small_can_01.id] = @@small_can_01.sprite
+        LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY << @@small_can_01
+    end
 end
