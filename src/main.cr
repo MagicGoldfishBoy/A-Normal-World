@@ -32,7 +32,7 @@ lib GL
 window = SF::RenderWindow.new(SF::VideoMode.new(800, 600), "A Normal World", SF::Style::Default)
 window.vertical_sync_enabled = true
 this = "main_menu"
-Sprites::Player.is_drawn=(false)
+Sprites::Player.is_drawn = false
 Keyboard::Gameplay.gameplay_mode=("none")
 Levels::LevelSelectionLogic.level=("none")
 Ui_Elements::MenuThemes.apply_theme
