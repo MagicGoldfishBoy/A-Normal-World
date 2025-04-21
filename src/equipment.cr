@@ -42,6 +42,15 @@ module Equipment
             nil
         end
 
+        def attack(window)
+            attack_rect = SF::RectangleShape.new
+            attack_rect.size = SF.vector2f(self.range, 10)
+            #attack_rect.size = SF.vector2f(10, 10)
+            attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x + 75, Sprites::Player.retrieve_sprite.position.y + 55)
+            window.draw(attack_rect)
+            #SF::Rect.new(Sprites::Player.retrieve_sprite.x + 10)
+        end
+
         @@nil_weapon = Weapon.new("No Weapon", 0, "fist", "punch", 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, NIL_TEXTURE)
     end
     class Sword < Weapon
@@ -50,7 +59,7 @@ module Equipment
             super
         end
 
-        @@wooden_training_sword = Sword.new("Wood Sword", 1, "sword", "swing", 3.5, 2.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, WOODEN_TRAINING_SWORD_TEXTURE)
+        @@wooden_training_sword = Sword.new("Wood Sword", 1, "sword", "swing", 3.5, 40.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, WOODEN_TRAINING_SWORD_TEXTURE)
     end
 
     class Knife < Weapon
@@ -59,8 +68,8 @@ module Equipment
             super
         end
 
-        @@kitchen_knife = Knife.new("Kitchen Knife", 1, "knife", "stab", 3.0, 1.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, KITCHEN_KNIFE_TEXTURE)
-        @@broken_bottle = Knife.new("Broken Bottle", 2, "knife", "stab", 2.5, 1.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, BROKEN_BOTTLE_TEXTURE)
+        @@kitchen_knife = Knife.new("Kitchen Knife", 1, "knife", "stab", 3.0, 32.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, KITCHEN_KNIFE_TEXTURE)
+        @@broken_bottle = Knife.new("Broken Bottle", 2, "knife", "stab", 2.5, 30.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, BROKEN_BOTTLE_TEXTURE)
     end
 
     class Blunt < Weapon
@@ -69,7 +78,7 @@ module Equipment
             super
         end
 
-        @@stick = Blunt.new("Stick", 1, "blunt", "swing", 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, WOODEN_STICK_TEXTURE)
+        @@stick = Blunt.new("Stick", 1, "blunt", "swing", 2.0, 35.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, WOODEN_STICK_TEXTURE)
     end
 
     class Rifle < Weapon
@@ -77,7 +86,7 @@ module Equipment
             minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture)
             super
         end
-        
-        @@bb_gun = Weapon.new("BB Gun", 200, "gun", "shoot", 3.0, 15.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, BB_GUN_TEXTURE)
+
+        @@bb_gun = Weapon.new("BB Gun", 200, "gun", "shoot", 3.0, 60.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, BB_GUN_TEXTURE)
     end
 end
