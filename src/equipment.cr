@@ -87,6 +87,6 @@ module Equipment
             super
         end
 
-        @@bb_gun = Weapon.new("BB Gun", 200, "gun", "shoot", 3.0, 60.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, BB_GUN_TEXTURE)
+        @@bb_gun = Weapon.new("BB Gun", 1, "gun", "shoot", 3.0, 60.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, BB_GUN_TEXTURE)
     end
 end
