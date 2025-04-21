@@ -13598,11 +13598,11 @@ module Inventory
 
        #---------------------------------debug-------------------------------------------
             @@owned_weapon_array.push(Equipment::Weapon.get_weapon("No Weapon").not_nil!)
-            @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Stick").not_nil!)
-            @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Wood Sword").not_nil!)
-            @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Kitchen Knife").not_nil!)
-            @@owned_weapon_array.push(Equipment::Weapon.get_weapon("Broken Bottle").not_nil!)
-            @@owned_weapon_array.push(Equipment::Weapon.get_weapon("BB Gun").not_nil!)
+            @@owned_weapon_array.push(Equipment::Blunt.get_weapon("Stick").not_nil!)
+            @@owned_weapon_array.push(Equipment::Sword.get_weapon("Wood Sword").not_nil!)
+            @@owned_weapon_array.push(Equipment::Knife.get_weapon("Kitchen Knife").not_nil!)
+            @@owned_weapon_array.push(Equipment::Knife.get_weapon("Broken Bottle").not_nil!)
+            @@owned_weapon_array.push(Equipment::Rifle.get_weapon("BB Gun").not_nil!)
        #---------------------------------------------------------------------------------
        #--------------------------------objects------------------------------------------
               INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
