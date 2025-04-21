@@ -266,7 +266,7 @@ module Sprites
    end
 
    def Player.check_sprite_collision(window, object)
-    bounding_box = @@player_character_rendered_model.global_bounds
+    bounding_box = self.get_adjusted_bounds(@@player_character_rendered_model) 
     if bounding_box.intersects? object.global_bounds
         return true
     else 
@@ -301,6 +301,10 @@ def Player.check_feet_collision(window, object)
   end
   
   
+  def self.get_adjusted_bounds(sprite)
+    bounds = sprite.global_bounds
+    return SF::FloatRect.new(bounds.left + 25, bounds.top, bounds.width - 25, bounds.height)
+  end
   
   
    def Player.move_player_sprite(window, x, y)

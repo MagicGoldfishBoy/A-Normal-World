@@ -76,7 +76,7 @@ module Maps
         end
         def self.check_wall_position_relative_to_player_position(window, wall)
             player = Sprites::Player.retrieve_sprite
-            player_bounds = player.global_bounds
+            player_bounds = Sprites::Player.get_adjusted_bounds(player)
             wall_bounds = wall.sprite.global_bounds
           
             dx_left = player_bounds.left + player_bounds.width - wall_bounds.left
