@@ -69,12 +69,12 @@ module Walls include LevelElements
         LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@short_stone_wall
 
         @@stone_wall = StoneWalls.new("Stone Wall", "stone_wall", 0, 0,
-        SF::Sprite.new(WALL_TEXTURE, SF::Rect.new(0, 20, 10, 30)))
+        SF::Sprite.new(STONE_WALL_TEXTURE_01, SF::Rect.new(10, 110, 20, 160)))
         WALL_SPRITE_HASH["stone_wall"] = @@stone_wall.sprite
         LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@stone_wall
 
         @@tall_stone_wall = StoneWalls.new("Tall Stone Wall", "tall_stone_wall", 0, 0,
-        SF::Sprite.new(WALL_TEXTURE, SF::Rect.new(0, 50, 10, 40)))
+        SF::Sprite.new(STONE_WALL_TEXTURE_01, SF::Rect.new(10, 270, 20, 230)))
         WALL_SPRITE_HASH["tall_stone_wall"] = @@tall_stone_wall.sprite
         LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@tall_stone_wall
     end
