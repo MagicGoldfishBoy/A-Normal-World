@@ -587,7 +587,9 @@
         INDUSTRIAL_CLIMBEABLE_TEXTURE = SF::Texture.from_file("../graphics/level_assets/industrial_climbeables.png")
 
         TELEPORTER_TEXTURE = SF::Texture.from_file("../graphics/teleporters.png")
-    #------------------------------------------------Decor---------------------------------------------
+    #-----------------------------------------------Decor----------------------------------------------
         GARBAGE_TEXTURE = SF::Texture.from_file("../graphics/level_assets/garbage.png")
     #----------------------------------------------Parallax--------------------------------------------
         SUNSET_PARALLAX_TEXTURE_01 = SF::Texture.from_file("../graphics/level_assets/sunset_parallax_01.png")
+    #-----------------------------------------------walls----------------------------------------------
+        STONE_WALL_TEXTURE_01 = SF::Texture.from_file("../graphics/level_assets/stone_walls.png")

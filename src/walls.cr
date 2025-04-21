@@ -64,7 +64,7 @@ module Walls include LevelElements
     end
     class StoneWalls < WallBase
         @@short_stone_wall = StoneWalls.new("Short Stone Wall", "short_stone_wall", 0, 0, 
-        SF::Sprite.new(WALL_TEXTURE, SF::Rect.new(0, 0, 10, 20)))
+        SF::Sprite.new(STONE_WALL_TEXTURE_01, SF::Rect.new(10, 0, 20, 110)))
         WALL_SPRITE_HASH["short_stone_wall"] = @@short_stone_wall.sprite
         LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@short_stone_wall
 
