@@ -137,7 +137,8 @@ module Keyboard
                 Sprites::Player.movement_state=("attacking")
                 Player::Movement.movement_state=("attacking")
                 player_strength = Player::Stats.str
-                Combat::Player.normal_attack(window, player_strength)
+                #Equipment::Weapon.attack(window)
+                Combat::PlayerMethods.normal_attack(window)
                 Sprites::Player.refresh_player_sprite(window)
             end
         end

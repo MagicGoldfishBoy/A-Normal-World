@@ -3,11 +3,17 @@ require "../src/textures.cr"
 require "../src/player.cr"
 
 module Combat
-    class Player
+    class PlayerMethods
         TARGET_ARRAY = [] of String #Placeholder, will later contain actual enemies and stuff
-        def Player.normal_attack(window, player_strength)    
+        def PlayerMethods.normal_attack(window)    
             attack_strength : Float64      
-            attack_strength = (player_strength || 1.0) * 1.25
+            attack_strength = (Player::Stats.str || 1.0) * 1.25
+            weapon = Equipment::Weapon.get_weapon(Player::Appearance.get_clothing("weapon"))
+            if weapon.nil?
+                puts "No Weapon is Equipped!"
+            else
+                weapon.as(Equipment::Weapon).attack(window)
+            end
         end
     end
 end
