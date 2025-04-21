@@ -68,6 +68,27 @@ module Maps
                self.gravitational_pull(Sprites::Player.retrieve_sprite, 1)
             end
         end
+        def self.wall_collision(window)
+            self.level_wall_array.each{|wall|
+            if Sprites::Player.check_sprite_collision(window, wall.sprite)
+                self.check_wall_position_relative_to_player_position(window, wall)
+            end}
+        end
+        def self.check_wall_position_relative_to_player_position(window, wall)
+            player = Sprites::Player.retrieve_sprite
+            player_bounds = player.global_bounds
+            wall_bounds = wall.sprite.global_bounds
+          
+            dx_left = player_bounds.left + player_bounds.width - wall_bounds.left
+            dx_right = wall_bounds.left + wall_bounds.width - player_bounds.left
+          
+            if dx_left > 0 && dx_left < dx_right
+              Sprites::Player.move_player_sprite(window, -dx_left, 0)
+            elsif dx_right > 0
+              Sprites::Player.move_player_sprite(window, dx_right, 0)
+            end
+          end
+          
         def self.draw_elements(window)
             self.normal_gameplay_view(window)
 
@@ -127,6 +148,7 @@ module Maps
             window.draw(teleport.sprite)}
             
             self.platform_collision(window)
+            self.wall_collision(window)
         end
      end
 end
