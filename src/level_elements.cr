@@ -252,16 +252,5 @@ module LevelElements
     end    
     class EnemyBase
     end
-    class WhackeableObjectBase
-        WHACKEABLE_ARRAY = [] of WhackeableObjectBase
-        WHACKEABLE_SPRITE_HASH = Hash(String, SF::Sprite)
-        def initialize(name : String, id : String, x : Float32, y : Float32, sprite : SF::Sprite, max_hp : Float64, current_hp : Float64,
-            sfx : SF::Sound)
-            @name = name
-            @id = id
-            @x = x
-            @y = y
-            @sprite = sprite
-        end
-    end
+
 end
