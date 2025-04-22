@@ -114,6 +114,9 @@ module Keyboard
                 Player::Movement.move_horizontal(window, direction)
                 Sprites::Player.refresh_player_sprite(window)
             end
+            if SF::Keyboard.key_pressed?(SF::Keyboard::Up)
+                Maps::MapBase.climb_climbeable(window)
+            end
             if SF::Keyboard.key_pressed?(SF::Keyboard::Space)
                 Player::Movement.jump(window)
                 #Levels::Level_Physics.jump(window)
