@@ -26,7 +26,7 @@ module Maps
 
         class_property level_decor_array : Array(LevelElements::DecorBase) = [] of LevelElements::DecorBase
 
-        class_property level_wall_array : Array(LevelElements::WallBase) = [] of LevelElements::WallBase
+        class_property level_wall_array : Array(Walls::WallBase) = [] of Walls::WallBase
 
         class_property level_climbeable_array : Array(LevelElements::ClimbeableBase) = [] of LevelElements::ClimbeableBase
 
@@ -64,7 +64,6 @@ module Maps
 
         def self.can_jump?(window)
          if self.level_platform_array.all? { |platform| Sprites::Player.check_feet_collision(window, platform.sprite) == false }
-            #self.gravitational_pull(Sprites::Player.retrieve_sprite, 1, window)
             return false
          else
             return true
@@ -72,7 +71,6 @@ module Maps
         end
         def self.platform_collision(window)
             if self.level_platform_array.all?{ |platform| Sprites::Player.check_feet_collision(window, platform.sprite) == false }
-               #self.gravitational_pull(Sprites::Player.retrieve_sprite, 1)
                return true
             else 
                return false

@@ -11,7 +11,7 @@ require "../src/level_editor/parallax.cr"
 
 module LevelEditor 
     class LevelEditorLogic
-        class_property current_element_array : (Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) | Array(LevelElements::WallBase) |
+        class_property current_element_array : (Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) | Array(Walls::WallBase) |
         Array(LevelElements::ClimbeableBase) | Array(LevelElements::TeleportBase)) = 
         self.spawned_platform_array
         class_property current_index : Int32 = self.current_platform_index
@@ -32,7 +32,7 @@ module LevelEditor
 
         class_property current_wall_index : Int32 = 0
         class_property spawned_wall_index : Int32 = 0
-        class_property spawned_wall_array : Array(LevelElements::WallBase) = [] of LevelElements::WallBase
+        class_property spawned_wall_array : Array(Walls::WallBase) = [] of Walls::WallBase
 
         class_property current_climbeable_index : Int32 = 0
         class_property spawned_climbeable_index : Int32 = 0
@@ -63,7 +63,7 @@ module LevelEditor
             when "Decor"
                 self.current_element_array = LevelElements::DecorBase::DECOR_TEMPLATE_ARRAY
             when "Wall"
-                self.current_element_array = LevelElements::WallBase::WALL_TEMPLATE_ARRAY
+                self.current_element_array = Walls::WallBase::WALL_TEMPLATE_ARRAY
             when "Climbeable"
                 self.current_element_array = LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY
             when "Teleporter"
