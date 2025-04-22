@@ -8,12 +8,16 @@ require "../src/level_editor/walls.cr"
 require "../src/climbeable.cr"
 require "../src/teleporters.cr"
 require "../src/level_editor/parallax.cr"
+require "../src/level_editor/whackeable_objects.cr"
 
 module LevelEditor 
     class LevelEditorLogic
         class_property current_element_array : (Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) | Array(Walls::WallBase) |
-        Array(LevelElements::ClimbeableBase) | Array(LevelElements::TeleportBase)) = 
-        self.spawned_platform_array
+        Array(LevelElements::ClimbeableBase) | Array(LevelElements::TeleportBase) | Array(WhackeableObject::WhackeableObjectBase)) = [] of LevelElements::PlatformBase
+        # class_property current_element_array : (Array(LevelElements::PlatformBase) | Array(LevelElements::DecorBase) | Array(Walls::WallBase) |
+        # Array(LevelElements::ClimbeableBase) | Array(LevelElements::TeleportBase) | 
+        # Array(WhackeableObject::WhackeableObjectBase).as_a(LevelElements::LevelElementBase)) = 
+        # self.spawned_platform_array
         class_property current_index : Int32 = self.current_platform_index
 
         class_property current_element_index : Int32 = 0
@@ -51,9 +55,9 @@ module LevelEditor
         def self.update_spawned_element_array
             self.spawned_element_array.clear
             self.spawned_element_array = self.spawned_platform_array + self.spawned_decor_array + self.spawned_wall_array
-            self.spawned_element_array = self.spawned_element_array + self.spawned_wall_array
-            self.spawned_element_array = self.spawned_element_array + self.spawned_climbeable_array
-            self.spawned_element_array = self.spawned_element_array + self.spawned_teleport_array
+            self.spawned_element_array += self.spawned_climbeable_array
+            self.spawned_element_array += self.spawned_teleport_array
+            self.spawned_element_array += WhackeableObject::WhackeableObjectsMethods.spawned_whackeable_object_array.map(&.as(LevelElements::LevelElementBase))
         end
 
         def LevelEditorLogic.set_current_array
@@ -68,6 +72,8 @@ module LevelEditor
                 self.current_element_array = LevelElements::ClimbeableBase::CLIMBEABLE_TEMPLATE_ARRAY
             when "Teleporter"
                 self.current_element_array = LevelElements::TeleportBase::TELEPORT_TEMPLATE_ARRAY
+            when "Whackeable"
+                self.current_element_array = WhackeableObject::WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -85,6 +91,8 @@ module LevelEditor
                 self.current_index = self.current_climbeable_index
             when "Teleporter"
                 self.current_index = self.current_teleport_index
+            when "Whackeable"
+                self.current_index = WhackeableObject::WhackeableObjectsMethods.current_whackeable_object_index
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -101,6 +109,8 @@ module LevelEditor
             self.current_teleport_index = 0
             self.spawned_teleport_index = 0
             self.spawned_element_index = 0
+            WhackeableObject::WhackeableObjectsMethods.current_whackeable_object_index = 0
+            WhackeableObject::WhackeableObjectsMethods.spawned_whackeable_object_index = 0
             #Do NOT put this line back
             #self.current_element_index = 0
         end
@@ -117,6 +127,8 @@ module LevelEditor
                 Climbeable::ClimbeableMethods.spawn_climbeable(window)
             when "Teleporter"
                 Teleporters::TeleporterMethods.spawn_teleporter(window)
+            when "Whackeable"
+                WhackeableObject::WhackeableObjectsMethods.spawn_whackeable(window)
             else
                 puts "Error: Unknown element type '#{current_element_type}'"
             end
@@ -200,6 +212,13 @@ module LevelEditor
                     LevelEditorLogic.close_all_windows
                 end
             end
+            WhackeableObject::WhackeableObjectsMethods.spawned_whackeable_object_array.each do |whackeable|
+                if whackeable.sprite.global_bounds.contains?(mouse_position.x, mouse_position.y)
+                    LevelDisplay.current_element = whackeable
+                    window.draw(whackeable.sprite)
+                    LevelEditorLogic.close_all_windows
+                end
+            end
         end
 
         def self.close_all_windows
@@ -219,6 +238,7 @@ module LevelEditor
             self.spawned_wall_array.delete(LevelDisplay.current_element)
             self.spawned_climbeable_array.delete(LevelDisplay.current_element)
             self.spawned_teleport_array.delete(LevelDisplay.current_element)
+            WhackeableObject::WhackeableObjectsMethods.spawned_whackeable_object_array.delete(LevelDisplay.current_element)
         end
     end
     class LevelDisplay 
