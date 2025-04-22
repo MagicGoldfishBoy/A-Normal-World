@@ -1,6 +1,6 @@
 require "crsfml"
-require "../src/textures.cr"
-require "../src/level_elements.cr"
+require "../../src/textures.cr"
+require "../../src/level_elements.cr"
 
 module Walls include LevelElements
     class WallBase < LevelElementBase

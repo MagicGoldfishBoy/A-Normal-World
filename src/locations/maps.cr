@@ -77,7 +77,7 @@ module Maps
             end
         end
         def self.climbeable_collision(window)
-            if self.level_climbeable_array.all?{ |climbeable| Sprites::Player.check_sprite_collision(window, climbeable.sprite) == false}
+            if self.level_climbeable_array.all?{ |climbeable| Sprites::Player.check_torso_collision(window, climbeable.sprite) == false}
             return true
         else
             return false
@@ -86,7 +86,7 @@ module Maps
 
         def self.climb_climbeable(window)
             self.level_climbeable_array.each{ |climbeable| 
-        if Sprites::Player.check_sprite_collision(window, climbeable.sprite)
+        if Sprites::Player.check_torso_collision(window, climbeable.sprite)
             Sprites::Player.move_player_sprite(window, 0, -1)
         end}
         end
