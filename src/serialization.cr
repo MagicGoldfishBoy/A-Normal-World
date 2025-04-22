@@ -259,9 +259,9 @@ module Serialization
       end
 
       puts "💾 Loading walls..."
-      wall_data = Walls::WallsMethods.load_wall(path, json_data, parsed) || [] of LevelElements::WallBase
+      wall_data = Walls::WallsMethods.load_wall(path, json_data, parsed) || [] of Walls::WallBase
       if wall_data.empty? == false
-      Maps::MapBase.level_wall_array = wall_data.as(Array(LevelElements::WallBase))
+      Maps::MapBase.level_wall_array = wall_data.as(Array(Walls::WallBase))
 
       puts "🛠 Placing Walls..."
       Maps::MapBase.level_wall_array.each { |wall|
