@@ -77,5 +77,21 @@ module Walls include LevelElements
         SF::Sprite.new(STONE_WALL_TEXTURE_01, SF::Rect.new(10, 270, 20, 230)))
         WALL_SPRITE_HASH["tall_stone_wall"] = @@tall_stone_wall.sprite
         LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@tall_stone_wall
+
+
+        @@short_concrete_wall = StoneWalls.new("Short Concrete Wall", "short_concrete_wall", 0, 0,
+        SF::Sprite.new(STONE_WALL_TEXTURE_01, SF::Rect.new(30, 0, 20, 110)))
+        WALL_SPRITE_HASH[@@short_concrete_wall.id] = @@short_concrete_wall.sprite
+        LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@short_concrete_wall
+
+        @@concrete_wall = StoneWalls.new("Concrete Wall", "concrete_wall", 0, 0,
+        SF::Sprite.new(STONE_WALL_TEXTURE_01, SF::Rect.new(30, 110, 20, 160)))
+        WALL_SPRITE_HASH[@@concrete_wall.id] = @@short_concrete_wall.sprite
+        LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@concrete_wall
+
+        @@tall_concrete_wall = StoneWalls.new("Tall Concrete Wall", "tall_concrete_wall", 0, 0,
+        SF::Sprite.new(STONE_WALL_TEXTURE_01, SF::Rect.new(30, 270, 20, 230)))
+        WALL_SPRITE_HASH[@@tall_concrete_wall.id] = @@tall_concrete_wall.sprite
+        LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@tall_concrete_wall
     end
 end
