@@ -47,7 +47,7 @@ module Equipment
             attack_rect.size = SF.vector2f(self.range, 10)
             #attack_rect.size = SF.vector2f(10, 10)
             attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x + 75, Sprites::Player.retrieve_sprite.position.y + 55)
-            window.draw(attack_rect)
+            #window.draw(attack_rect)
             #SF::Rect.new(Sprites::Player.retrieve_sprite.x + 10)
         end
 
@@ -61,7 +61,7 @@ module Equipment
 
         @@wooden_training_sword = Sword.new("Wood Sword", 1, "sword", "swing", 3.5, 40.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, WOODEN_TRAINING_SWORD_TEXTURE)
     end
-
+"TODO: add rusty knife and make it super effective against unvaccinated children lol"
     class Knife < Weapon
         def initialize(name : String, id : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, minimum_strength : Float64, minimum_dexterity : Float64, 
             minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture)

@@ -303,7 +303,7 @@ def Player.check_feet_collision(window, object)
   
   def self.get_adjusted_bounds(sprite)
     bounds = sprite.global_bounds
-    return SF::FloatRect.new(bounds.left + 25, bounds.top, bounds.width - 25, bounds.height)
+    return SF::FloatRect.new(bounds.left + 25, bounds.top, bounds.width - 50, bounds.height)
   end
   
   
