@@ -299,12 +299,29 @@ def Player.check_feet_collision(window, object)
   
     return false
   end
+
+  def Player.check_torso_collision(window, object)
+    bounding_box = self.get_torso_bounds(@@player_character_rendered_model) 
+    if bounding_box.intersects? object.global_bounds
+        return true
+    else 
+        return false
+    end
+  end
   
   
   def self.get_adjusted_bounds(sprite)
     bounds = sprite.global_bounds
     return SF::FloatRect.new(bounds.left + 25, bounds.top, bounds.width - 50, bounds.height)
   end
+  
+  def self.get_torso_bounds(sprite)
+    bounds = sprite.global_bounds
+    new_top = bounds.top + bounds.height / 3
+    new_height = bounds.height * 2 / 3
+    return SF::FloatRect.new(bounds.left + 25, new_top, bounds.width - 50, new_height)
+  end
+  
   
   
    def Player.move_player_sprite(window, x, y)
