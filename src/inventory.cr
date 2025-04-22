@@ -15315,54 +15315,7 @@ module Inventory
       
               @@consumables_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
               @@consumables_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
-
-
-            #   @@weapon_info_box = SF::RectangleShape.new(SF.vector2(200, 200))
-            #   @@weapon_info_box.fill_color = SF.color(200, 212, 219)
-            #   @@weapon_info_box.outline_thickness = 10
-            #   @@weapon_info_box.outline_color = SF.color(151, 179, 194)
-
-            #   @@weapon_info_box_name_text = SF::Text.new
-            #   @@weapon_info_box_name_text.font = QUICKSAND
-            #   @@weapon_info_box_name_text.character_size = 14
-            #   @@weapon_info_box_name_text.color = SF::Color::Blue
-
-            #   @@weapon_info_box_attack_type_text = SF::Text.new
-            #   @@weapon_info_box_attack_type_text.font = QUICKSAND
-            #   @@weapon_info_box_attack_type_text.character_size = 14
-            #   @@weapon_info_box_attack_type_text.color = SF::Color::Blue
-
-            #   @@weapon_info_box_attack_strength_text = SF::Text.new
-            #   @@weapon_info_box_attack_strength_text.font = QUICKSAND
-            #   @@weapon_info_box_attack_strength_text.character_size = 14
-            #   @@weapon_info_box_attack_strength_text.color = SF::Color::Blue
-
-            #   @@weapon_info_box_minimum_strength_text = SF::Text.new
-            #   @@weapon_info_box_minimum_strength_text.font = QUICKSAND
-            #   @@weapon_info_box_minimum_strength_text.character_size = 14
-            #   @@weapon_info_box_minimum_strength_text.color = SF::Color::Blue
-
-            #   @@weapon_info_box_minimum_dexterity_text = SF::Text.new
-            #   @@weapon_info_box_minimum_dexterity_text.font = QUICKSAND
-            #   @@weapon_info_box_minimum_dexterity_text.character_size = 14
-            #   @@weapon_info_box_minimum_dexterity_text.color = SF::Color::Blue
-
-            #   @@weapon_info_box_minimum_intelligence_text = SF::Text.new
-            #   @@weapon_info_box_minimum_intelligence_text.font = QUICKSAND
-            #   @@weapon_info_box_minimum_intelligence_text.character_size = 14
-            #   @@weapon_info_box_minimum_intelligence_text.color = SF::Color::Blue
-
-            #   @@weapon_info_box_minimum_luck_text = SF::Text.new
-            #   @@weapon_info_box_minimum_luck_text.font = QUICKSAND
-            #   @@weapon_info_box_minimum_luck_text.character_size = 14
-            #   @@weapon_info_box_minimum_luck_text.color = SF::Color::Blue
-
-            #   @@weapon_info_box_minimum_status_effects_text = SF::Text.new
-            #   @@weapon_info_box_minimum_status_effects_text.font = QUICKSAND
-            #   @@weapon_info_box_minimum_status_effects_text.character_size = 14
-            #   @@weapon_info_box_minimum_status_effects_text.color = SF::Color::Blue
-      
-
+              
               @@consumable_tab = SF::RectangleShape.new(SF.vector2(100, 50))
               @@consumable_tab.fill_color = SF.color(141, 163, 188)
       

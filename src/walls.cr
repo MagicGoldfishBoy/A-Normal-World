@@ -79,6 +79,22 @@ module Walls include LevelElements
         LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@tall_stone_wall
 
 
+        @@short_dirty_stone_wall = StoneWalls.new("Short Dirty Stone Wall", "short_dirty_stone_wall", 0, 0,
+        SF::Sprite.new(STONE_WALL_TEXTURE_01, SF::Rect.new(50, 0, 20, 110)))
+        WALL_SPRITE_HASH[@@short_dirty_stone_wall.id] = @@short_dirty_stone_wall.sprite
+        LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@short_dirty_stone_wall
+
+        @@dirty_stone_wall = StoneWalls.new("Dirty Stone Wall", "dirty_stone_wall", 0, 0,
+        SF::Sprite.new(STONE_WALL_TEXTURE_01, SF::Rect.new(50, 110, 20, 160)))
+        WALL_SPRITE_HASH[@@dirty_stone_wall.id] = @@dirty_stone_wall.sprite
+        LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@dirty_stone_wall
+
+        @@tall_dirty_stone_wall = StoneWalls.new("Tall Dirty Stone Wall", "tall_dirty_stone_wall", 0, 0,
+        SF::Sprite.new(STONE_WALL_TEXTURE_01, SF::Rect.new(50, 270, 20, 230)))
+        WALL_SPRITE_HASH[@@tall_dirty_stone_wall.id] = @@tall_dirty_stone_wall.sprite
+        LevelElements::WallBase::WALL_TEMPLATE_ARRAY << @@tall_dirty_stone_wall
+
+
         @@short_concrete_wall = StoneWalls.new("Short Concrete Wall", "short_concrete_wall", 0, 0,
         SF::Sprite.new(STONE_WALL_TEXTURE_01, SF::Rect.new(30, 0, 20, 110)))
         WALL_SPRITE_HASH[@@short_concrete_wall.id] = @@short_concrete_wall.sprite
