@@ -45,7 +45,13 @@ module Equipment
         def attack(window, attack_strength)
             attack_rect = SF::RectangleShape.new
             attack_rect.size = SF.vector2f(self.range, 10)
-            attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x + 75, Sprites::Player.retrieve_sprite.position.y + 55)
+            direction = Player::Movement.movement_direction
+            if direction == "left"
+            attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x, Sprites::Player.retrieve_sprite.position.y + 55)
+            elsif direction == "right"
+                attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x + 55, Sprites::Player.retrieve_sprite.position.y + 55)
+            end
+            window.draw(attack_rect)
             Combat::PlayerMethods::TARGET_ARRAY.each { |whackeable|
             if attack_rect.global_bounds.intersects? whackeable.sprite.global_bounds
                 whackeable.react_to_impact(window, attack_strength)
