@@ -192,7 +192,7 @@ module WhackeableObject
     class TrainingDummy < WhackeableObjectBase
 
         @@training_dummy_01 = TrainingDummy.new("Cloth Training Dummy", "training_dummy_01", 0, 0, 
-        SF::Sprite.new(TRAINIING_DUMMY_TEXTURE_01, SF::Rect.new(0, 0, 40, 80)), 10.0, 10.0, SFX::CombatSFX::SWORD_SWING_SFX_01, false, 3, 3)
+        SF::Sprite.new(TRAINIING_DUMMY_TEXTURE_01, SF::Rect.new(0, 0, 40, 80)), 10.0, 10.0, SFX::CombatSFX::SWORD_SWING_SFX_01, false, 4, 4)
         WHACKEABLE_SPRITE_HASH[@@training_dummy_01.id] = @@training_dummy_01.sprite
         WHACKEABLE_SFX_HASH[@@training_dummy_01.id] = @@training_dummy_01.sfx
         WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@training_dummy_01
