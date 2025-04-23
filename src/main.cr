@@ -44,12 +44,12 @@ while window.open?
         window.close
       end
     end
+    
     window.clear(SF::Color::Black)
+   # WhackeableObject::WhackeableObjectsMethods.animate_whackeables(window)
     if LocationSelection::Region.current_region != "none"
      Maps::MapBase.draw_elements(window)
     end
-
-    #LocationSelection::Region.select_region(window)
 
     Sprites::Player.draw_sprite(window)
     Keyboard::Gameplay.determine_gameplay_controls(window)
