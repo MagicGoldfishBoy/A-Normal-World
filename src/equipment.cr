@@ -42,13 +42,14 @@ module Equipment
             nil
         end
 
-        def attack(window)
+        def attack(window, attack_strength)
             attack_rect = SF::RectangleShape.new
             attack_rect.size = SF.vector2f(self.range, 10)
-            #attack_rect.size = SF.vector2f(10, 10)
             attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x + 75, Sprites::Player.retrieve_sprite.position.y + 55)
-            #window.draw(attack_rect)
-            #SF::Rect.new(Sprites::Player.retrieve_sprite.x + 10)
+            Combat::PlayerMethods::TARGET_ARRAY.each { |whackeable|
+            if attack_rect.global_bounds.intersects? whackeable.sprite.global_bounds
+                whackeable.react_to_impact(window, attack_strength)
+            end}
         end
 
         @@nil_weapon = Weapon.new("No Weapon", 0, "fist", "punch", 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, NIL_TEXTURE)

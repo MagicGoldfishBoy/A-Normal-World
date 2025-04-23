@@ -33,6 +33,11 @@ module WhackeableObject
      def open_menu(window)
         puts "⛔ Whackeables don't have a menu"
      end
+
+     def react_to_impact(window, attack_strength)
+        self.current_hp -= attack_strength
+        self.sprite.texture_rect = Animations::Whackeable.forty_by_80_whackeable_animation
+     end
     end
     class WhackeableObjectsMethods
 
@@ -111,6 +116,7 @@ module WhackeableObject
             end
             whackeable_object = WhackeableObject::WhackeableObjectBase.new(name, id, x, y, sprite, max_hp, current_hp, sfx)
             WhackeableObject::WhackeableObjectsMethods.spawned_whackeable_object_array << whackeable_object
+            Combat::PlayerMethods::TARGET_ARRAY << whackeable_object
             puts "✅ Loaded whackeable: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Max_Hp: #{max_hp}, Current_Hp: #{current_hp}"
             whackeable_object
         end
