@@ -193,7 +193,7 @@ module Animations
         SF.int_rect(200, 0, 40, 80)]
 
         def self.forty_by_80_whackeable_animation_left
-            if @@forty_by_80_whackeable_animation_timer.elapsed_time >= SF.seconds(0.05) 
+            if @@forty_by_80_whackeable_animation_timer.elapsed_time >= SF.seconds(0.15) 
                 if @@forty_by_80_whackeable_animation_frame < @@forty_by_80_whackeable_full_health_hit_left_animation_array.size - 1
                 @@forty_by_80_whackeable_animation_frame += 1
                 else @@forty_by_80_whackeable_animation_frame = 0
@@ -205,7 +205,7 @@ module Animations
         end
 
         def self.forty_by_80_whackeable_animation_right
-            if @@forty_by_80_whackeable_animation_timer.elapsed_time >= SF.seconds(0.05) 
+            if @@forty_by_80_whackeable_animation_timer.elapsed_time >= SF.seconds(0.15) 
                 if @@forty_by_80_whackeable_animation_frame < @@forty_by_80_whackeable_full_health_hit_right_animation_array.size - 1
                 @@forty_by_80_whackeable_animation_frame += 1
                 else @@forty_by_80_whackeable_animation_frame = 0

@@ -162,6 +162,8 @@ module Maps
             self.level_wall_array.each { |wall|
             window.draw(wall.sprite)}
 
+            WhackeableObject::WhackeableObjectsMethods.animate_whackeables(window)
+
             self.level_whackeable_array.each {|whackeable|
                 window.draw(whackeable.sprite)}
 
@@ -177,7 +179,6 @@ module Maps
             teleport.sprite.texture_rect = Animations::Portal.portal_animation
             window.draw(teleport.sprite)}
             self.gravitational_pull(Sprites::Player.retrieve_sprite, gravity, window)
-            #self.platform_collision(window)
             self.wall_collision(window)
         end
      end
