@@ -2,6 +2,7 @@ require "crsfml"
 require "crsfml/audio"
 require "../../src/textures.cr"
 require "../../src/level_elements.cr"
+require "../../src/sound/sfx.cr"
 
 module WhackeableObject
     class WhackeableObjectBase < LevelElements::LevelElementBase
@@ -70,11 +71,23 @@ module WhackeableObject
         LevelEditor::LevelDisplay.current_element = whackeable_object
         self.whackeable_object_number += 1
      end
-
+     def WhackeableObjectsMethods.save(json)
+        whackeable = self.spawned_whackeable_object_array
+        whackeable.each do |whackeable|
+            json.object do
+            json.field "name", whackeable.name
+            json.field "id", whackeable.id
+            json.field "x", whackeable.x
+            json.field "y", whackeable.y
+            json.field "max_hp", whackeable.max_hp
+            json.field "current_hp", whackeable.current_hp
+            end
+        end
+     end
      def self.load_whackeable_object(path, json_data, parsed)
-        LevelEditor::LevelEditorLogic.spawned_whackeable_object_array
+        WhackeableObject::WhackeableObjectsMethods.spawned_whackeable_object_array.clear
 
-        whackeable_object_json = parsed["level"]?.try &.as_a? || [] of JSON::Any
+        whackeable_object_json = parsed["level"]?.try &.["whackeables"]?.try &.as_a? || [] of JSON::Any
 
         whackeable_object_data = whackeable_object_json.compact_map do |whackeable_object_json|
             name  = whackeable_object_json["name"]?.try(&.as_s?) || "unknown"
@@ -82,25 +95,33 @@ module WhackeableObject
             x     = whackeable_object_json["x"]?.try(&.as_f32?) || 0.0_f32
             y     = whackeable_object_json["y"]?.try(&.as_f32?) || 0.0_f32
 
-            sprite = WhackableObject::WhackeableObjectBase::WHACKEABLE_SPRITE_HASH[id]?.try(&.dup)
+            sprite = WhackeableObject::WhackeableObjectBase::WHACKEABLE_SPRITE_HASH[id]?.try(&.dup)
             unless sprite
                 puts "⚠️  Sprite not found for whackeable object ID: #{id}, skipping."
                 next
             end
 
-            max_hp     = whackeable_object_json["max_hp"]?.try(&.as_f64?) || 10.0_f64
-            current_hp = whackeable_object_json["current_hp"]?.try(&.as_f64?) || 10.0f64
+            max_hp     = whackeable_object_json["max_hp"]?.try(&.as_f?) || 10.0_f64
+            current_hp = whackeable_object_json["current_hp"]?.try(&.as_f?) || 10.0f64
 
-            sfx = WhackeableObject::WhackeableObjectBase::WHACKEABLE_SFX_HASH[id]?.try
+            sfx = WhackeableObject::WhackeableObjectBase::WHACKEABLE_SFX_HASH[id]?.try(&.dup)
             unless sfx
                 puts "⚠️  Sprite not found for whackeable object ID: #{id}, skipping."
                 next
             end
-            whackeable_object = WhackableObject::WhackeableObjectBase.new(name, id, x, y, sprite, max_hp, current_hp, sfx)
-            LevelEditor::LevelEditorLogic.spawned_whackeable_object_array << whackeable_object
+            whackeable_object = WhackeableObject::WhackeableObjectBase.new(name, id, x, y, sprite, max_hp, current_hp, sfx)
+            WhackeableObject::WhackeableObjectsMethods.spawned_whackeable_object_array << whackeable_object
             puts "✅ Loaded whackeable: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Max_Hp: #{max_hp}, Current_Hp: #{current_hp}"
             whackeable_object
         end
      end
+    end
+    class TrainingDummy < WhackeableObjectBase
+
+        @@training_dummy_01 = TrainingDummy.new("Cloth Training Dummy", "training_dummy_01", 0, 0, 
+        SF::Sprite.new(TRAINIING_DUMMY_TEXTURE_01, SF::Rect.new(0, 0, 40, 80)), 10.0, 10.0, SFX::CombatSFX::SWORD_SWING_SFX_01)
+        WHACKEABLE_SPRITE_HASH[@@training_dummy_01.id] = @@training_dummy_01.sprite
+        WHACKEABLE_SFX_HASH[@@training_dummy_01.id] = @@training_dummy_01.sfx
+        WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@training_dummy_01
     end
 end

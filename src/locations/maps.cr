@@ -32,8 +32,10 @@ module Maps
 
         class_property level_teleport_array : Array(LevelElements::TeleportBase) = [] of LevelElements::TeleportBase
 
+        class_property level_whackeable_array : Array(WhackeableObject::WhackeableObjectBase) = [] of WhackeableObject::WhackeableObjectBase
+
         class_property level_element_array : Array(LevelElements::LevelElementBase) = (level_platform_array + level_decor_array + level_wall_array + 
-        level_climbeable_array + level_teleport_array)
+        level_climbeable_array + level_teleport_array + level_whackeable_array)
 
         class_property current_parallax : LevelElements::ParallaxBase | Nil = nil
 
@@ -159,6 +161,9 @@ module Maps
 
             self.level_wall_array.each { |wall|
             window.draw(wall.sprite)}
+
+            self.level_whackeable_array.each {|whackeable|
+                window.draw(whackeable.sprite)}
 
             self.level_climbeable_array.each { |climbeable|
             window.draw(climbeable.sprite)}

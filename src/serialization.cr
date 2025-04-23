@@ -205,6 +205,11 @@ module Serialization
         json.array do
         Teleporters::TeleporterMethods.save_teleporters(json)
         end; end
+        puts "Saving whackeables..."
+        json.field "whackeables" do
+        json.array do
+        WhackeableObject::WhackeableObjectsMethods.save(json)
+        end; end
         end
         end
         end
@@ -293,6 +298,18 @@ module Serialization
       else 
         puts "⛔ There were no teleporters to load!"
       end
+
+      puts "💾 Loading Whackeables..."
+      whackeables_data = WhackeableObject::WhackeableObjectsMethods.load_whackeable_object(path, json_data, parsed) || [] of WhackeableObject::WhackeableObjectBase
+      if whackeables_data.empty? == false
+      Maps::MapBase.level_whackeable_array = whackeables_data.as(Array(WhackeableObject::WhackeableObjectBase))
+
+      puts "🛠 Placing Whackeables..."
+      Maps::MapBase.level_whackeable_array.each { |whackeable|
+        whackeable.sprite.position = SF.vector2(whackeable.x, whackeable.y)}
+      else 
+        puts "⛔ There were no whackeables to load!"
+      end
     end
     
     def self.load_level(file : String)
@@ -326,6 +343,9 @@ module Serialization
 
       puts "Loading teleporters..."
       Teleporters::TeleporterMethods.load_teleporters(path, json_data, parsed)
+
+      puts "Loading whackeables..."
+      WhackeableObject::WhackeableObjectsMethods.load_whackeable_object(path, json_data, parsed)
 
       LevelEditor::LevelEditorLogic.update_spawned_element_array
   end
