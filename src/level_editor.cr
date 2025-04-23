@@ -22,7 +22,7 @@ module LevelEditor
 
         class_property current_element_index : Int32 = 0
         class_property current_element_type : String = "Platform"
-        class_property element_array : Array(String) = ["Platform", "Decor", "Wall", "Climbeable", "Teleporter"]
+        class_property element_array : Array(String) = ["Platform", "Decor", "Wall", "Climbeable", "Teleporter", "Whackeable"]
         class_property current_template : (LevelElements::LevelElementBase) = 
         Platforms::Natural_Platform.very_small_grassy_platform
 
@@ -316,6 +316,10 @@ module LevelEditor
         LevelEditor::LevelEditorLogic.spawned_wall_array.each do |wall|
             wall.sprite.position = SF::Vector2f.new(wall.x, wall.y)
             window.draw(wall.sprite)
+        end
+        WhackeableObject::WhackeableObjectsMethods.spawned_whackeable_object_array.each do |whackeable|
+            whackeable.sprite.position = SF::Vector2f.new(whackeable.x, whackeable.y)
+            window.draw(whackeable.sprite)
         end
         LevelEditor::LevelEditorLogic.spawned_climbeable_array.each do |climbeable|
             climbeable.sprite.position = SF::Vector2f.new(climbeable.x, climbeable.y)

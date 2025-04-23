@@ -593,3 +593,5 @@
         SUNSET_PARALLAX_TEXTURE_01 = SF::Texture.from_file("../graphics/level_assets/sunset_parallax_01.png")
     #-----------------------------------------------walls----------------------------------------------
         STONE_WALL_TEXTURE_01 = SF::Texture.from_file("../graphics/level_assets/stone_walls.png")
+    #---------------------------------------------whackeables------------------------------------------
+        TRAINIING_DUMMY_TEXTURE_01 = SF::Texture.from_file("../graphics/level_assets/training_dummy.png")
