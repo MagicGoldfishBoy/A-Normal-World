@@ -36,7 +36,12 @@ module WhackeableObject
 
      def react_to_impact(window, attack_strength)
         self.current_hp -= attack_strength
-        self.sprite.texture_rect = Animations::Whackeable.forty_by_80_whackeable_animation
+        self.sfx.play
+        if Sprites::Player.retrieve_sprite.position.x <= self.sprite.position.x
+         self.sprite.texture_rect = Animations::Whackeable.forty_by_80_whackeable_animation_left
+        else
+         self.sprite.texture_rect = Animations::Whackeable.forty_by_80_whackeable_animation_right
+        end
      end
     end
     class WhackeableObjectsMethods

@@ -189,7 +189,10 @@ module Animations
         @@forty_by_80_whackeable_full_health_hit_left_animation_array = [SF.int_rect(0, 0, 40, 80), SF.int_rect(40, 0, 40, 80),
         SF.int_rect(80, 0, 40, 80)]
 
-        def self.forty_by_80_whackeable_animation
+        @@forty_by_80_whackeable_full_health_hit_right_animation_array = [SF.int_rect(120, 0, 40, 80), SF.int_rect(160, 0, 40, 80),
+        SF.int_rect(200, 0, 40, 80)]
+
+        def self.forty_by_80_whackeable_animation_left
             if @@forty_by_80_whackeable_animation_timer.elapsed_time >= SF.seconds(0.05) 
                 if @@forty_by_80_whackeable_animation_frame < @@forty_by_80_whackeable_full_health_hit_left_animation_array.size - 1
                 @@forty_by_80_whackeable_animation_frame += 1
@@ -199,6 +202,18 @@ module Animations
                 return @@forty_by_80_whackeable_full_health_hit_left_animation_array[@@forty_by_80_whackeable_animation_frame]
             end
                 return @@forty_by_80_whackeable_full_health_hit_left_animation_array[@@forty_by_80_whackeable_animation_frame]
+        end
+
+        def self.forty_by_80_whackeable_animation_right
+            if @@forty_by_80_whackeable_animation_timer.elapsed_time >= SF.seconds(0.05) 
+                if @@forty_by_80_whackeable_animation_frame < @@forty_by_80_whackeable_full_health_hit_right_animation_array.size - 1
+                @@forty_by_80_whackeable_animation_frame += 1
+                else @@forty_by_80_whackeable_animation_frame = 0
+                end
+                @@forty_by_80_whackeable_animation_timer.restart
+                return @@forty_by_80_whackeable_full_health_hit_right_animation_array[@@forty_by_80_whackeable_animation_frame]
+            end
+                return @@forty_by_80_whackeable_full_health_hit_right_animation_array[@@forty_by_80_whackeable_animation_frame]
         end
     end
 end
