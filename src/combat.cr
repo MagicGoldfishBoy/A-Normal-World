@@ -1,10 +1,11 @@
 require "crsfml"
 require "../src/textures.cr"
 require "../src/player.cr"
+require "../src/level_editor/whackeable_objects.cr"
 
 module Combat
     class PlayerMethods
-        TARGET_ARRAY = [] of String #Placeholder, will later contain actual enemies and stuff
+        TARGET_ARRAY = [] of (WhackeableObject::WhackeableObjectBase)
         def PlayerMethods.normal_attack(window)    
             attack_strength : Float64      
             attack_strength = (Player::Stats.str || 1.0) * 1.25
@@ -12,7 +13,7 @@ module Combat
             if weapon.nil?
                 puts "No Weapon is Equipped!"
             else
-                weapon.as(Equipment::Weapon).attack(window)
+                weapon.as(Equipment::Weapon).attack(window, attack_strength)
             end
         end
     end
