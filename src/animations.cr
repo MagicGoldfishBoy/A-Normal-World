@@ -284,7 +284,7 @@ module Animations
         end
 
         def self.forty_by_80_whackeable_animation_dying
-            if @@forty_by_80_whackeable_animation_timer.elapsed_time >= SF.seconds(0.15) 
+            if @@forty_by_80_whackeable_animation_timer.elapsed_time >= SF.seconds(0.45) 
                 if @@forty_by_80_whackeable_animation_frame < @@forty_by_80_whackeable_lethal_hit_left_animation_array.size - 1
                 @@forty_by_80_whackeable_animation_frame += 1
                 else @@forty_by_80_whackeable_animation_frame = 0

@@ -75,11 +75,29 @@ module WhackeableObject
           else
             whackeable.is_wiggling = false
             whackeable.current_wiggle_iterator = whackeable.max_wiggle_iterator
+            self.determine_default_frame(whackeable)
           end
         end
       
         WhackeableObjectBase.animation_clock.restart
       end
+
+     def self.determine_default_frame(whackeable)
+
+        if whackeable.current_hp <= (whackeable.max_hp / 3) && whackeable.current_hp > 0
+        whackeable.sprite.texture_rect = SF.int_rect(0, 160, 40, 80)
+
+        elsif whackeable.current_hp <= (whackeable.max_hp / 3) * 2 && whackeable.current_hp > 0
+            whackeable.sprite.texture_rect = SF.int_rect(0, 80, 40, 80) 
+
+        elsif whackeable.current_hp > 0 && whackeable.is_dead == false 
+            whackeable.sprite.texture_rect = SF.int_rect(0, 0, 40, 80)
+
+        else
+            SF.int_rect(120, 240, 40, 80)
+            
+        end
+     end
 
      def self.determine_animation_method(whackeable)
 
