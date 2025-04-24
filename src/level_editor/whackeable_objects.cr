@@ -10,7 +10,7 @@ module WhackeableObject
         WHACKEABLE_SPRITE_HASH = {} of String => SF::Sprite
         WHACKEABLE_SFX_HASH = {} of String => SF::Sound
      def initialize(name : String, id : String, x : Float32, y : Float32, sprite : SF::Sprite, max_hp : Float64, current_hp : Float64,
-        sfx : SF::Sound, is_wiggling : Bool, max_wiggle_iterator : Int32, current_wiggle_iterator : Int32)
+        sfx : SF::Sound, is_wiggling : Bool, max_wiggle_iterator : Int32, current_wiggle_iterator : Int32, is_dead : Bool)
         @name = name
         @id = id
         @x = x
@@ -22,6 +22,7 @@ module WhackeableObject
         @is_wiggling = is_wiggling
         @max_wiggle_iterator = max_wiggle_iterator
         @current_wiggle_iterator = current_wiggle_iterator
+        @is_dead = is_dead
      end
 
      property name : String
@@ -35,6 +36,7 @@ module WhackeableObject
      property is_wiggling : Bool
      property max_wiggle_iterator : Int32
      property current_wiggle_iterator : Int32
+     property is_dead : Bool
 
      class_property animation_clock = SF::Clock.new
 
@@ -66,11 +68,8 @@ module WhackeableObject
           if whackeable.current_wiggle_iterator > 0
             player_x = Sprites::Player.retrieve_sprite.position.x
             whack_x = whackeable.sprite.position.x
-      
-            whackeable.sprite.texture_rect =
-              player_x <= whack_x ?
-                Animations::Whackeable.forty_by_80_whackeable_animation_left :
-                Animations::Whackeable.forty_by_80_whackeable_animation_right
+
+            self.determine_animation_method(whackeable)
       
             whackeable.current_wiggle_iterator -= 1
           else
@@ -81,27 +80,31 @@ module WhackeableObject
       
         WhackeableObjectBase.animation_clock.restart
       end
-        
-      
-      
-    #  def self.animate_whackeables(window)
-    #   if WhackeableObjectBase.animation_clock.elapsed_time >= SF.seconds(0.15)
-    #    self.spawned_whackeable_object_array.each {|whackeable|
-    #    if whackeable.is_wiggling
-    #         if Sprites::Player.retrieve_sprite.position.x <= whackeable.sprite.position.x
-    #             whackeable.sprite.texture_rect = Animations::Whackeable.forty_by_80_whackeable_animation_left
-    #         else
-    #             whackeable.sprite.texture_rect = Animations::Whackeable.forty_by_80_whackeable_animation_right
-    #         end
-    #         whackeable.current_wiggle_iterator -= 1
-    #         if whackeable.current_wiggle_iterator <= 0
-    #             whackeable.is_wiggling = false
-    #             whackeable.current_wiggle_iterator = whackeable.max_wiggle_iterator
-    #         end
-    #    end}
-    #  end
-    # end
-     
+
+     def self.determine_animation_method(whackeable)
+
+        whack_x = whackeable.sprite.position.x
+
+        if whackeable.current_hp <= (whackeable.max_hp / 3)
+        whackeable.sprite.texture_rect =
+        Sprites::Player.retrieve_sprite.position.x <= whack_x ?
+          Animations::Whackeable.forty_by_80_whackeable_animation_left_low :
+          Animations::Whackeable.forty_by_80_whackeable_animation_right_low
+
+        elsif whackeable.current_hp <= (whackeable.max_hp / 3) * 2
+        whackeable.sprite.texture_rect =
+        Sprites::Player.retrieve_sprite.position.x <= whack_x ?
+          Animations::Whackeable.forty_by_80_whackeable_animation_left_medium :
+          Animations::Whackeable.forty_by_80_whackeable_animation_right_medium
+
+        else 
+        whackeable.sprite.texture_rect =
+        Sprites::Player.retrieve_sprite.position.x <= whack_x ?
+          Animations::Whackeable.forty_by_80_whackeable_animation_left :
+          Animations::Whackeable.forty_by_80_whackeable_animation_right
+        end
+     end
+
      def self.spawn_whackeable(window)
         if LevelEditor::LevelEditorLogic.current_index >= WhackeableObject::WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY.size
             puts "Error: No WhackableObject available to spawn. Index was '#{LevelEditor::LevelEditorLogic.current_index}'"
@@ -126,7 +129,8 @@ module WhackeableObject
             sfx,
             current_whackeable_object.is_wiggling,
             current_whackeable_object.max_wiggle_iterator,
-            current_whackeable_object.current_wiggle_iterator
+            current_whackeable_object.current_wiggle_iterator,
+            false
         )
         
         whackeable_object.sprite.position = SF::Vector2f.new(whackeable_object.x, whackeable_object.y)
@@ -168,7 +172,7 @@ module WhackeableObject
             end
 
             max_hp     = whackeable_object_json["max_hp"]?.try(&.as_f?) || 10.0_f64
-            current_hp = whackeable_object_json["current_hp"]?.try(&.as_f?) || 10.0f64
+            current_hp = whackeable_object_json["max_hp"]?.try(&.as_f?) || 10.0_f64#= whackeable_object_json["current_hp"]?.try(&.as_f?) || 10.0f64
 
             sfx = WhackeableObject::WhackeableObjectBase::WHACKEABLE_SFX_HASH[id]?.try(&.dup)
             unless sfx
@@ -177,11 +181,12 @@ module WhackeableObject
             end
 
             is_wiggling             = whackeable_object_json["is_wiggling"]?.try(&.as_bool?) || false
-            max_wiggle_iterator     = whackeable_object_json["max_wiggle_iterator"]?.try(&.as_i?) || 3
-            current_wiggle_iterator = whackeable_object_json["current_wiggle_iterator"]?.try(&.as_i?) || 3
+            max_wiggle_iterator     = whackeable_object_json["max_wiggle_iterator"]?.try(&.as_i?) || 1
+            current_wiggle_iterator = whackeable_object_json["max_wiggle_iterator"]?.try(&.as_i?) || 1#= whackeable_object_json["current_wiggle_iterator"]?.try(&.as_i?) || 1
+            is_dead                 = false
 
             whackeable_object = WhackeableObject::WhackeableObjectBase.new(name, id, x, y, sprite, max_hp, current_hp, sfx, is_wiggling, 
-            max_wiggle_iterator, current_wiggle_iterator)
+            max_wiggle_iterator, current_wiggle_iterator, is_dead)
             WhackeableObject::WhackeableObjectsMethods.spawned_whackeable_object_array << whackeable_object
             Combat::PlayerMethods::TARGET_ARRAY << whackeable_object
             puts "✅ Loaded whackeable: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Max_Hp: #{max_hp}, Current_Hp: #{current_hp}"
@@ -192,7 +197,7 @@ module WhackeableObject
     class TrainingDummy < WhackeableObjectBase
 
         @@training_dummy_01 = TrainingDummy.new("Cloth Training Dummy", "training_dummy_01", 0, 0, 
-        SF::Sprite.new(TRAINIING_DUMMY_TEXTURE_01, SF::Rect.new(0, 0, 40, 80)), 10.0, 10.0, SFX::CombatSFX::SWORD_SWING_SFX_01, false, 4, 4)
+        SF::Sprite.new(TRAINIING_DUMMY_TEXTURE_01, SF::Rect.new(0, 0, 40, 80)), 500.0, 500.0, SFX::CombatSFX::SWORD_SWING_SFX_01, false, 5, 5, false)
         WHACKEABLE_SPRITE_HASH[@@training_dummy_01.id] = @@training_dummy_01.sprite
         WHACKEABLE_SFX_HASH[@@training_dummy_01.id] = @@training_dummy_01.sfx
         WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@training_dummy_01
