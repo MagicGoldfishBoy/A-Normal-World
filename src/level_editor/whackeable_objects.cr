@@ -229,4 +229,13 @@ module WhackeableObject
         WHACKEABLE_SFX_HASH[@@training_dummy_01.id] = @@training_dummy_01.sfx
         WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@training_dummy_01
     end
+
+    class Ore < WhackeableObjectBase
+
+        @@fire_agate_ore_01 = Ore.new("Fire Agate Ore", "fire_agate_ore_01", 0, 0,
+        SF::Sprite.new(FIRE_AGATE_ORE_01, SF::Rect.new(0, 0, 40, 80)), 500.0, 500.0, SFX::CombatSFX::SWORD_SWING_SFX_01, false, 5, 5, false)
+        WHACKEABLE_SPRITE_HASH[@@fire_agate_ore_01.id] = @@fire_agate_ore_01.sprite
+        WHACKEABLE_SFX_HASH[@@fire_agate_ore_01.id] = @@fire_agate_ore_01.sfx
+        WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@fire_agate_ore_01
+    end
 end
