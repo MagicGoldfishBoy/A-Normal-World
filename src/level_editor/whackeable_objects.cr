@@ -85,23 +85,32 @@ module WhackeableObject
 
         whack_x = whackeable.sprite.position.x
 
-        if whackeable.current_hp <= (whackeable.max_hp / 3)
+        if whackeable.current_hp <= (whackeable.max_hp / 3) && whackeable.current_hp > 0
         whackeable.sprite.texture_rect =
         Sprites::Player.retrieve_sprite.position.x <= whack_x ?
           Animations::Whackeable.forty_by_80_whackeable_animation_left_low :
           Animations::Whackeable.forty_by_80_whackeable_animation_right_low
 
-        elsif whackeable.current_hp <= (whackeable.max_hp / 3) * 2
+        elsif whackeable.current_hp <= (whackeable.max_hp / 3) * 2 && whackeable.current_hp > 0
         whackeable.sprite.texture_rect =
         Sprites::Player.retrieve_sprite.position.x <= whack_x ?
           Animations::Whackeable.forty_by_80_whackeable_animation_left_medium :
           Animations::Whackeable.forty_by_80_whackeable_animation_right_medium
 
-        else 
+        elsif whackeable.current_hp > 0
         whackeable.sprite.texture_rect =
         Sprites::Player.retrieve_sprite.position.x <= whack_x ?
           Animations::Whackeable.forty_by_80_whackeable_animation_left :
           Animations::Whackeable.forty_by_80_whackeable_animation_right
+
+        elsif whackeable.is_dead == false
+        whackeable.sprite.texture_rect =
+          Animations::Whackeable.forty_by_80_whackeable_animation_dying
+          if whackeable.current_wiggle_iterator >= whackeable.max_wiggle_iterator
+           whackeable.is_dead = true
+          end
+        else
+            whackeable.sprite.texture_rect = SF.int_rect(120, 240, 40, 80)
         end
      end
 
