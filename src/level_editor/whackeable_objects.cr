@@ -237,5 +237,17 @@ module WhackeableObject
         WHACKEABLE_SPRITE_HASH[@@fire_agate_ore_01.id] = @@fire_agate_ore_01.sprite
         WHACKEABLE_SFX_HASH[@@fire_agate_ore_01.id] = @@fire_agate_ore_01.sfx
         WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@fire_agate_ore_01
+
+        @@turquoise_ore_01 = Ore.new("Turquoise Ore", "turquoise_ore_01", 0, 0, SF::Sprite.new(TURQUOISE_ORE_01, SF::Rect.new(0, 0, 40, 80)),
+        500.0, 500.0, SFX::CombatSFX::SWORD_SWING_SFX_01, false, 5, 5, false)
+        WHACKEABLE_SPRITE_HASH[@@turquoise_ore_01.id] = @@turquoise_ore_01.sprite
+        WHACKEABLE_SFX_HASH[@@turquoise_ore_01.id] = @@turquoise_ore_01.sfx
+        WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@turquoise_ore_01
+
+        @@topaz_ore_01 = Ore.new("Topaz Ore", "topaz_ore_01", 0, 0, SF::Sprite.new(Topaz_ORE_01, SF::Rect.new(0, 0, 40, 80)),
+        500.0, 500.0, SFX::CombatSFX::SWORD_SWING_SFX_01, false, 5, 5, false)
+        WHACKEABLE_SPRITE_HASH[@@topaz_ore_01.id] = @@topaz_ore_01.sprite
+        WHACKEABLE_SFX_HASH[@@topaz_ore_01.id] = @@topaz_ore_01.sfx
+        WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@topaz_ore_01
     end
 end
