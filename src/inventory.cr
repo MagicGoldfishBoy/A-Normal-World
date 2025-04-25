@@ -16,6 +16,15 @@ INVENTORY_RIGHT_ARROW_SPRITE = SF::RectangleShape.new(SF.vector2(50, 25))
 INVENTORY_RIGHT_ARROW_SPRITE.fill_color = SF.color(161, 183, 208)
 
 module Inventory
+    class InventoryBase
+        def initialize(name : String, max_page_count : Int32, page : Int32, tab : String, sort_type : String)
+            @name = name
+            @max_page_count = max_page_count
+            @page = page
+            @tab = tab
+            @sort_type = sort_type
+        end
+    end
     class InventoryManager
 
         def initialize(is_inventory_open : Bool, category : String, tab : String)
