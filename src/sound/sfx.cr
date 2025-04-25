@@ -7,6 +7,10 @@ module SFX
         BB_GUN_SFX_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/bb_gun_01.ogg"))
 
         SWORD_SWING_SFX_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/sword_01.ogg"))
+
+        KNIFE_STAB_SFX_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/stab_01.ogg"))
+
+        BLUNT_SWING_SFX_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/swing_01.ogg"))
     end
 
     class WhackeableSFX

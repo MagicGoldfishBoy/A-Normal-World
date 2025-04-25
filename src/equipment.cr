@@ -1,12 +1,14 @@
 require "crsfml"
+require "crsfml/audio"
 require "../src/textures.cr"
+require "../src/sound/sfx.cr"
 
 module Equipment
     class Weapon
         WEAPON_ARRAY = [] of Weapon
 
         def initialize(name : String, id : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, minimum_strength : Float64, minimum_dexterity : Float64, 
-            minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture, clock : SF::Clock)
+            minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture, clock : SF::Clock, sfx : SF::Sound)
             @name = name
             @id = id
             @weapon_type = weapon_type
@@ -20,6 +22,7 @@ module Equipment
             @status_effects = status_effects
             @texture = texture
             @clock = clock
+            @sfx = sfx
             WEAPON_ARRAY.push(self)
         end
 
@@ -36,6 +39,7 @@ module Equipment
         property status_effects : Array(String)
         property texture : SF::Texture
         property clock : SF::Clock
+        property sfx : SF::Sound
 
         def self.get_weapon(this)
             WEAPON_ARRAY.each do |weapon|
@@ -63,42 +67,42 @@ module Equipment
         end
         end
 
-        @@nil_weapon = Weapon.new("No Weapon", 0, "fist", "punch", 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, NIL_TEXTURE, SF::Clock.new)
+        @@nil_weapon = Weapon.new("No Weapon", 0, "fist", "punch", 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, NIL_TEXTURE, SF::Clock.new, SFX::CombatSFX::KNIFE_STAB_SFX_01)
     end
     class Sword < Weapon
         def initialize(name : String, id : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, minimum_strength : Float64, minimum_dexterity : Float64, 
-            minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture, clock : SF::Clock)
+            minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture, clock : SF::Clock, sfx : SF::Sound)
             super
         end
 
-        @@wooden_training_sword = Sword.new("Wood Sword", 1, "sword", "swing", 3.5, 40.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, WOODEN_TRAINING_SWORD_TEXTURE, SF::Clock.new)
+        @@wooden_training_sword = Sword.new("Wood Sword", 1, "sword", "swing", 3.5, 40.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, WOODEN_TRAINING_SWORD_TEXTURE, SF::Clock.new, SFX::CombatSFX::SWORD_SWING_SFX_01)
     end
 "TODO: add rusty knife and make it super effective against unvaccinated children lol"
     class Knife < Weapon
         def initialize(name : String, id : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, minimum_strength : Float64, minimum_dexterity : Float64, 
-            minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture, clock : SF::Clock)
+            minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture, clock : SF::Clock, sfx : SF::Sound)
             super
         end
 
-        @@kitchen_knife = Knife.new("Kitchen Knife", 1, "knife", "stab", 3.0, 32.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, KITCHEN_KNIFE_TEXTURE, SF::Clock.new)
-        @@broken_bottle = Knife.new("Broken Bottle", 2, "knife", "stab", 2.5, 30.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, BROKEN_BOTTLE_TEXTURE, SF::Clock.new)
+        @@kitchen_knife = Knife.new("Kitchen Knife", 1, "knife", "stab", 3.0, 32.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, KITCHEN_KNIFE_TEXTURE, SF::Clock.new, SFX::CombatSFX::KNIFE_STAB_SFX_01)
+        @@broken_bottle = Knife.new("Broken Bottle", 2, "knife", "stab", 2.5, 30.5, 0.0, 0.0, 0.0, 0.0, Array(String).new, BROKEN_BOTTLE_TEXTURE, SF::Clock.new, SFX::CombatSFX::KNIFE_STAB_SFX_01)
     end
 
     class Blunt < Weapon
         def initialize(name : String, id : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, minimum_strength : Float64, minimum_dexterity : Float64, 
-            minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture, clock : SF::Clock)
+            minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture, clock : SF::Clock, sfx : SF::Sound)
             super
         end
 
-        @@stick = Blunt.new("Stick", 1, "blunt", "swing", 2.0, 35.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, WOODEN_STICK_TEXTURE, SF::Clock.new)
+        @@stick = Blunt.new("Stick", 1, "blunt", "swing", 2.0, 35.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, WOODEN_STICK_TEXTURE, SF::Clock.new, SFX::CombatSFX::BLUNT_SWING_SFX_01)
     end
 
     class Rifle < Weapon
         def initialize(name : String, id : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, minimum_strength : Float64, minimum_dexterity : Float64, 
-            minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture, clock : SF::Clock)
+            minimum_intelligence : Float64, minimum_luck : Float64, status_effects : Array(String), texture : SF::Texture, clock : SF::Clock, sfx : SF::Sound)
             super
         end
 
-        @@bb_gun = Weapon.new("BB Gun", 1, "gun", "shoot", 3.0, 60.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, BB_GUN_TEXTURE, SF::Clock.new)
+        @@bb_gun = Weapon.new("BB Gun", 1, "gun", "shoot", 3.0, 60.0, 0.0, 0.0, 0.0, 0.0, Array(String).new, BB_GUN_TEXTURE, SF::Clock.new, SFX::CombatSFX::BB_GUN_SFX_01)
     end
 end
