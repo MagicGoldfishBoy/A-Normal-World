@@ -10,7 +10,7 @@ module InventoryWindow
 
 
         INVENTORY_BOX = Ui_Elements::Ui_BoxBase.new("Inventory Box", "InvBox01", SF::Sprite.new(
-        BLANK_TEXTURE, SF::Rect.new(400, 700, 650, 600)), 650.0, 600.0, 4)
+        BLANK_TEXTURE, SF::Rect.new(400, 700, 600, 600)), 600.0, 600.0, 4)
         INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_BOX
 
 
@@ -52,6 +52,52 @@ module InventoryWindow
         MISC_TAB_TEXT = Ui_Elements::Ui_TextBase.new("Misc Tab Text", "InvText04", SF::Text.new(MISC_TAB.name, QUICKSAND, 18))
         INVENTORY_TEXT_ARRAY << MISC_TAB_TEXT
 
+
+        INVENTORY_SLOT_01 = Ui_Elements::Ui_BoxBase.new("Slot 1", "InvSlot01", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_01
+
+        INVENTORY_SLOT_02 = Ui_Elements::Ui_BoxBase.new("Slot 2", "InvSlot02", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_02
+
+        INVENTORY_SLOT_03 = Ui_Elements::Ui_BoxBase.new("Slot 3", "InvSlot03", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_03
+
+        INVENTORY_SLOT_04 = Ui_Elements::Ui_BoxBase.new("Slot 4", "InvSlot04", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_04
+
+        INVENTORY_SLOT_05 = Ui_Elements::Ui_BoxBase.new("Slot 5", "InvSlot05", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_05
+
+        INVENTORY_SLOT_06 = Ui_Elements::Ui_BoxBase.new("Slot 6", "InvSlot06", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_06
+
+        INVENTORY_SLOT_07 = Ui_Elements::Ui_BoxBase.new("Slot 7", "InvSlot07", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_07
+
+        INVENTORY_SLOT_08 = Ui_Elements::Ui_BoxBase.new("Slot 8", "InvSlot08", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_08
+
+        INVENTORY_SLOT_09 = Ui_Elements::Ui_BoxBase.new("Slot 9", "InvSlot09", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_09
+
+        INVENTORY_SLOT_10 = Ui_Elements::Ui_BoxBase.new("Slot 10", "InvSlot10", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_10
+
+        INVENTORY_SLOT_11 = Ui_Elements::Ui_BoxBase.new("Slot 11", "InvSlot11", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_11
+
+        INVENTORY_SLOT_12 = Ui_Elements::Ui_BoxBase.new("Slot 12", "InvSlot012", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_12
+
+        INVENTORY_SLOT_13 = Ui_Elements::Ui_BoxBase.new("Slot 13", "InvSlot13", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_13
+
+        INVENTORY_SLOT_14 = Ui_Elements::Ui_BoxBase.new("Slot 14", "InvSlot14", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_14
+
+        INVENTORY_SLOT_15 = Ui_Elements::Ui_BoxBase.new("Slot 15", "InvSlot15", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_15
+
         def self.position_inventory_window_elements(window)
             current_size = window.size
             original_width = 800 
@@ -83,6 +129,22 @@ module InventoryWindow
             MISC_TAB.sprite.position = INVENTORY_BOX.sprite.position - SF.vector2(-206 * max_scale, 50)
             MISC_TAB_TEXT.text.position = MISC_TAB.sprite.position + SF.vector2(20 * max_scale, 7 * max_scale)
 
+            INVENTORY_SLOT_01.sprite.position = INVENTORY_BOX.sprite.position + SF.vector2(35, 75)
+            INVENTORY_SLOT_02.sprite.position = INVENTORY_SLOT_01.sprite.position + SF.vector2(115, 0)
+            INVENTORY_SLOT_03.sprite.position = INVENTORY_SLOT_02.sprite.position + SF.vector2(115, 0)
+            INVENTORY_SLOT_04.sprite.position = INVENTORY_SLOT_03.sprite.position + SF.vector2(115, 0)
+            INVENTORY_SLOT_05.sprite.position = INVENTORY_SLOT_04.sprite.position + SF.vector2(115, 0)
+            INVENTORY_SLOT_06.sprite.position = INVENTORY_SLOT_01.sprite.position + SF.vector2(0, 115)
+            INVENTORY_SLOT_07.sprite.position = INVENTORY_SLOT_06.sprite.position + SF.vector2(115, 0)
+            INVENTORY_SLOT_08.sprite.position = INVENTORY_SLOT_07.sprite.position + SF.vector2(115, 0)
+            INVENTORY_SLOT_09.sprite.position = INVENTORY_SLOT_08.sprite.position + SF.vector2(115, 0)
+            INVENTORY_SLOT_10.sprite.position = INVENTORY_SLOT_09.sprite.position + SF.vector2(115, 0)
+            INVENTORY_SLOT_11.sprite.position = INVENTORY_SLOT_01.sprite.position + SF.vector2(0, 230)
+            INVENTORY_SLOT_12.sprite.position = INVENTORY_SLOT_11.sprite.position + SF.vector2(115, 0)
+            INVENTORY_SLOT_13.sprite.position = INVENTORY_SLOT_12.sprite.position + SF.vector2(115, 0)
+            INVENTORY_SLOT_14.sprite.position = INVENTORY_SLOT_13.sprite.position + SF.vector2(115, 0)
+            INVENTORY_SLOT_15.sprite.position = INVENTORY_SLOT_14.sprite.position + SF.vector2(115, 0)
+
         end
 
     end
@@ -99,5 +161,14 @@ module InventoryWindow
          window.draw(text.text)}
 
         end
+    end
+    class InventoryWindowHandling
+        def initialize(current_tab : String, is_open : Bool)
+            @current_tab = current_tab
+            @is_open = is_open
+        end
+
+        class_property current_tab : String = "cosmetics"
+        class_property is_open : Bool = false
     end
 end

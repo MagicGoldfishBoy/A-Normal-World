@@ -355,90 +355,90 @@ module Inventory
         end
 
         def InventoryManager.draw_inventory(window)
-          if @@is_inventory_open == true && @@category == "Cosmetics"
-            case @@tab
-             when "Shirt"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabShirt.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("shirt", window)
-                end
-             when "Pants"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabPants.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("pants", window)
-                end
-             when "Shoes"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabShoes.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("shoes", window)
-                end
-             when "Gloves"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabGloves.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("gloves", window)
-                end
-             when "Earrings"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabEarrings.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("earrings", window)
-                end
-             when "Hat"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabHat.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("hat", window)
-                end
-             when "Glasses"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabGlasses.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("glasses", window)
-                end
-             when "Makeup"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabMakeup.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("makeup", window)
-                end
-             when "Jacket"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabJacket.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("jacket", window)
-                end
-             when "Socks"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabSocks.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("socks", window)
-                end
-             when "Necklace"
-                InventoryManager.draw_universal_elements(window)
-                ClothingTabNecklace.draw_clothing_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("necklace", window)
-                end
-            end
-          end
-          if @@is_inventory_open == true && @@category == "Equipment"
-                InventoryManager.draw_universal_elements(window)
-                WeaponTab.draw_equipment_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("weapon", window)
-                end
-          end
-          if @@is_inventory_open == true && @@category == "Consumables"
-                InventoryManager.draw_universal_elements(window)
-                ConsumableTab.draw_consumables_tab(window)
-                if SF::Mouse.button_pressed?(SF::Mouse::Left)
-                    InventoryManager.universal_mouse_handling("consumable", window)
-                end
-          end
+           if @@is_inventory_open == true #&& @@category == "Cosmetics"
+        #     case @@tab
+        #      when "Shirt"
+                 InventoryManager.draw_universal_elements(window)
+        #         ClothingTabShirt.draw_clothing_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("shirt", window)
+                 end
+        #      when "Pants"
+        #         InventoryManager.draw_universal_elements(window)
+        #         ClothingTabPants.draw_clothing_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("pants", window)
+        #         end
+        #      when "Shoes"
+        #         InventoryManager.draw_universal_elements(window)
+        #         ClothingTabShoes.draw_clothing_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("shoes", window)
+        #         end
+        #      when "Gloves"
+        #         InventoryManager.draw_universal_elements(window)
+        #         ClothingTabGloves.draw_clothing_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("gloves", window)
+        #         end
+        #      when "Earrings"
+        #         InventoryManager.draw_universal_elements(window)
+        #         ClothingTabEarrings.draw_clothing_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("earrings", window)
+        #         end
+        #      when "Hat"
+        #         InventoryManager.draw_universal_elements(window)
+        #         ClothingTabHat.draw_clothing_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("hat", window)
+        #         end
+        #      when "Glasses"
+        #         InventoryManager.draw_universal_elements(window)
+        #         ClothingTabGlasses.draw_clothing_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("glasses", window)
+        #         end
+        #      when "Makeup"
+        #         InventoryManager.draw_universal_elements(window)
+        #         ClothingTabMakeup.draw_clothing_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("makeup", window)
+        #         end
+        #      when "Jacket"
+        #         InventoryManager.draw_universal_elements(window)
+        #         ClothingTabJacket.draw_clothing_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("jacket", window)
+        #         end
+        #      when "Socks"
+        #         InventoryManager.draw_universal_elements(window)
+        #         ClothingTabSocks.draw_clothing_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("socks", window)
+        #         end
+        #      when "Necklace"
+        #         InventoryManager.draw_universal_elements(window)
+        #         ClothingTabNecklace.draw_clothing_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("necklace", window)
+        #         end
+        #     end
+        #   end
+        #   if @@is_inventory_open == true && @@category == "Equipment"
+        #         InventoryManager.draw_universal_elements(window)
+        #         WeaponTab.draw_equipment_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("weapon", window)
+        #         end
+        #   end
+        #   if @@is_inventory_open == true && @@category == "Consumables"
+        #         InventoryManager.draw_universal_elements(window)
+        #         ConsumableTab.draw_consumables_tab(window)
+        #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
+        #             InventoryManager.universal_mouse_handling("consumable", window)
+        #         end
+        #   end
         end
 
         def InventoryManager.draw_universal_elements(window)
