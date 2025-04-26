@@ -4,6 +4,7 @@ require "../src/clothing.cr"
 require "../src/equipment.cr"
 require "../src/utility.cr"
 require "../src/consumables.cr"
+require "../src/window/inventory_window.cr"
 
 #puts Consumables::Consumables_base::CONSUMABLE_ARRAY
 INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
@@ -453,165 +454,167 @@ module Inventory
 
             window.view = window.default_view
 
-            INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
-            INVENTORY_BOX.scale = SF.vector2(1, 1)
+            InventoryWindow::InventoryWindowDisplay.display(window)
+
+            # INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
+            # INVENTORY_BOX.scale = SF.vector2(1, 1)
         
 
-            INVENTORY_LEFT_ARROW_SPRITE.position = INVENTORY_BOX.position + SF.vector2(200 * max_scale, 15 * max_scale)
-            INVENTORY_LEFT_ARROW_SPRITE.scale = SF.vector2(1, 1)
+            # INVENTORY_LEFT_ARROW_SPRITE.position = INVENTORY_BOX.position + SF.vector2(200 * max_scale, 15 * max_scale)
+            # INVENTORY_LEFT_ARROW_SPRITE.scale = SF.vector2(1, 1)
 
-            INVENTORY_RIGHT_ARROW_SPRITE.position = INVENTORY_LEFT_ARROW_SPRITE.position + SF.vector2(50 * max_scale, 1 * max_scale)
-            INVENTORY_RIGHT_ARROW_SPRITE.scale = SF.vector2(1, 1)
+            # INVENTORY_RIGHT_ARROW_SPRITE.position = INVENTORY_LEFT_ARROW_SPRITE.position + SF.vector2(50 * max_scale, 1 * max_scale)
+            # INVENTORY_RIGHT_ARROW_SPRITE.scale = SF.vector2(1, 1)
 
-            @@cosmetics_category_tab.position = INVENTORY_BOX.position - SF.vector2(-2 * max_scale, 50)
-            @@cosmetics_category_tab_text.position = @@cosmetics_category_tab.position + SF.vector2(2 * max_scale, 7 * max_scale)
+            # @@cosmetics_category_tab.position = INVENTORY_BOX.position - SF.vector2(-2 * max_scale, 50)
+            # @@cosmetics_category_tab_text.position = @@cosmetics_category_tab.position + SF.vector2(2 * max_scale, 7 * max_scale)
 
-            @@equipment_category_tab.position = INVENTORY_BOX.position - SF.vector2(-70 * max_scale, 50)
-            @@equipment_category_tab_text.position = @@equipment_category_tab.position + SF.vector2(0.5 * max_scale, 7 * max_scale)
+            # @@equipment_category_tab.position = INVENTORY_BOX.position - SF.vector2(-70 * max_scale, 50)
+            # @@equipment_category_tab_text.position = @@equipment_category_tab.position + SF.vector2(0.5 * max_scale, 7 * max_scale)
 
-            @@consumables_category_tab.position = INVENTORY_BOX.position - SF.vector2(-138 * max_scale, 50)
-            @@consumables_category_tab_text.position = @@consumables_category_tab.position + SF.vector2(0.5 * max_scale, 7 * max_scale)
-
-
-            @@shirt_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, 0)
-            @@shirt_tab_text.position = @@shirt_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
-
-            @@jacket_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(170.5 * max_scale))
-            @@jacket_tab_text.position = @@jacket_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
-
-            @@pants_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(21 * max_scale))
-            @@pants_tab_text.position = @@pants_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
-
-            @@shoes_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(42.5 * max_scale))
-            @@shoes_tab_text.position = @@shoes_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
-
-            @@socks_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(192 * max_scale))
-            @@socks_tab_text.position = @@socks_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
-
-            @@gloves_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(64 * max_scale))
-            @@gloves_tab_text.position = @@gloves_tab.position + SF.vector2(13 * max_scale, 2 * max_scale)
-
-            @@earrings_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(85 * max_scale))
-            @@earrings_tab_text.position = @@earrings_tab.position + SF.vector2(10 * max_scale, 2 * max_scale)
-
-            @@hat_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(106.5 * max_scale))
-            @@hat_tab_text.position = @@hat_tab.position + SF.vector2(20 * max_scale, 2 * max_scale)
-
-            @@glasses_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(128 * max_scale))
-            @@glasses_tab_text.position = @@glasses_tab.position + SF.vector2(10 * max_scale, 2 * max_scale)
-
-            @@makeup_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(149 * max_scale))
-            @@makeup_tab_text.position = @@makeup_tab.position + SF.vector2(10 * max_scale, 2 * max_scale)
-
-            @@necklace_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(213.5 * max_scale))
-            @@necklace_tab_text.position = @@necklace_tab.position + SF.vector2(4 * max_scale, 2 * max_scale)
+            # @@consumables_category_tab.position = INVENTORY_BOX.position - SF.vector2(-138 * max_scale, 50)
+            # @@consumables_category_tab_text.position = @@consumables_category_tab.position + SF.vector2(0.5 * max_scale, 7 * max_scale)
 
 
-            @@weapon_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, 0)
-            @@weapon_tab_text.position = @@weapon_tab.position + SF.vector2(5 * max_scale, 7 * max_scale)
+            # @@shirt_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, 0)
+            # @@shirt_tab_text.position = @@shirt_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
+
+            # @@jacket_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(170.5 * max_scale))
+            # @@jacket_tab_text.position = @@jacket_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
+
+            # @@pants_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(21 * max_scale))
+            # @@pants_tab_text.position = @@pants_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
+
+            # @@shoes_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(42.5 * max_scale))
+            # @@shoes_tab_text.position = @@shoes_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
+
+            # @@socks_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(192 * max_scale))
+            # @@socks_tab_text.position = @@socks_tab.position + SF.vector2(15 * max_scale, 2 * max_scale)
+
+            # @@gloves_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(64 * max_scale))
+            # @@gloves_tab_text.position = @@gloves_tab.position + SF.vector2(13 * max_scale, 2 * max_scale)
+
+            # @@earrings_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(85 * max_scale))
+            # @@earrings_tab_text.position = @@earrings_tab.position + SF.vector2(10 * max_scale, 2 * max_scale)
+
+            # @@hat_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(106.5 * max_scale))
+            # @@hat_tab_text.position = @@hat_tab.position + SF.vector2(20 * max_scale, 2 * max_scale)
+
+            # @@glasses_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(128 * max_scale))
+            # @@glasses_tab_text.position = @@glasses_tab.position + SF.vector2(10 * max_scale, 2 * max_scale)
+
+            # @@makeup_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(149 * max_scale))
+            # @@makeup_tab_text.position = @@makeup_tab.position + SF.vector2(10 * max_scale, 2 * max_scale)
+
+            # @@necklace_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, -(213.5 * max_scale))
+            # @@necklace_tab_text.position = @@necklace_tab.position + SF.vector2(4 * max_scale, 2 * max_scale)
 
 
-            @@clothing_sort_button_sprite.position = INVENTORY_BOX.position + SF.vector2(50 * max_scale, 15 * max_scale)
-            @@clothing_shirt_category_box.position = @@clothing_sort_button_sprite.position + SF.vector2(60 * max_scale, 0)
+            # @@weapon_tab.position = INVENTORY_BOX.position - SF.vector2(65 * max_scale, 0)
+            # @@weapon_tab_text.position = @@weapon_tab.position + SF.vector2(5 * max_scale, 7 * max_scale)
+
+
+            # @@clothing_sort_button_sprite.position = INVENTORY_BOX.position + SF.vector2(50 * max_scale, 15 * max_scale)
+            # @@clothing_shirt_category_box.position = @@clothing_sort_button_sprite.position + SF.vector2(60 * max_scale, 0)
     
-            @@clothing_sort_button_text.position = @@clothing_sort_button_sprite.position + SF.vector2(10 * max_scale, 1 * max_scale)
-            @@clothing_shirt_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@clothing_sort_button_text.position = @@clothing_sort_button_sprite.position + SF.vector2(10 * max_scale, 1 * max_scale)
+            # @@clothing_shirt_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@clothing_jacket_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@clothing_jacket_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@clothing_pants_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@clothing_pants_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@clothing_shoes_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@clothing_shoes_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@clothing_socks_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@clothing_socks_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@clothing_gloves_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@clothing_gloves_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@clothing_earrings_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@clothing_earrings_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@clothing_hat_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@clothing_hat_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@clothing_glasses_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@clothing_glasses_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@clothing_makeup_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@clothing_makeup_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@clothing_necklace_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@clothing_necklace_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@equipment_weapon_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@equipment_weapon_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            @@consumables_consumable_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
+            # @@consumables_consumable_category_text.position = @@clothing_shirt_category_box.position + SF.vector2(15 * max_scale, 1 * max_scale)
 
-            window.draw(INVENTORY_BOX)
+            # window.draw(INVENTORY_BOX)
 
-            window.draw(INVENTORY_LEFT_ARROW_SPRITE)
-            window.draw(INVENTORY_RIGHT_ARROW_SPRITE)
-            window.draw(@@cosmetics_category_tab)
-            window.draw(@@cosmetics_category_tab_text)
-            window.draw(@@equipment_category_tab)
-            window.draw(@@equipment_category_tab_text)
-            window.draw(@@consumables_category_tab)
-            window.draw(@@consumables_category_tab_text)
-            if @@category == "Cosmetics"
-            window.draw(@@shirt_tab)
-            window.draw(@@shirt_tab_text)
-            window.draw(@@jacket_tab)
-            window.draw(@@jacket_tab_text)
-            window.draw(@@pants_tab)
-            window.draw(@@pants_tab_text)
-            window.draw(@@shoes_tab)
-            window.draw(@@shoes_tab_text)
-            window.draw(@@socks_tab)
-            window.draw(@@socks_tab_text)
-            window.draw(@@gloves_tab)
-            window.draw(@@gloves_tab_text)
-            window.draw(@@earrings_tab)
-            window.draw(@@earrings_tab_text)
-            window.draw(@@hat_tab)
-            window.draw(@@hat_tab_text)
-            window.draw(@@glasses_tab)
-            window.draw(@@glasses_tab_text)
-            window.draw(@@makeup_tab)
-            window.draw(@@makeup_tab_text)
-            window.draw(@@necklace_tab)
-            window.draw(@@necklace_tab_text)
-            end
-            if @@category == "Equipment"
-            window.draw(@@weapon_tab)
-            window.draw(@@weapon_tab_text)
-            end
+            # window.draw(INVENTORY_LEFT_ARROW_SPRITE)
+            # window.draw(INVENTORY_RIGHT_ARROW_SPRITE)
+            # window.draw(@@cosmetics_category_tab)
+            # window.draw(@@cosmetics_category_tab_text)
+            # window.draw(@@equipment_category_tab)
+            # window.draw(@@equipment_category_tab_text)
+            # window.draw(@@consumables_category_tab)
+            # window.draw(@@consumables_category_tab_text)
+            # if @@category == "Cosmetics"
+            # window.draw(@@shirt_tab)
+            # window.draw(@@shirt_tab_text)
+            # window.draw(@@jacket_tab)
+            # window.draw(@@jacket_tab_text)
+            # window.draw(@@pants_tab)
+            # window.draw(@@pants_tab_text)
+            # window.draw(@@shoes_tab)
+            # window.draw(@@shoes_tab_text)
+            # window.draw(@@socks_tab)
+            # window.draw(@@socks_tab_text)
+            # window.draw(@@gloves_tab)
+            # window.draw(@@gloves_tab_text)
+            # window.draw(@@earrings_tab)
+            # window.draw(@@earrings_tab_text)
+            # window.draw(@@hat_tab)
+            # window.draw(@@hat_tab_text)
+            # window.draw(@@glasses_tab)
+            # window.draw(@@glasses_tab_text)
+            # window.draw(@@makeup_tab)
+            # window.draw(@@makeup_tab_text)
+            # window.draw(@@necklace_tab)
+            # window.draw(@@necklace_tab_text)
+            # end
+            # if @@category == "Equipment"
+            # window.draw(@@weapon_tab)
+            # window.draw(@@weapon_tab_text)
+            # end
 
-            window.draw(@@clothing_sort_button_sprite)
-            window.draw(@@clothing_shirt_category_box)
-            window.draw(@@clothing_sort_button_text)
+            # window.draw(@@clothing_sort_button_sprite)
+            # window.draw(@@clothing_shirt_category_box)
+            # window.draw(@@clothing_sort_button_text)
             
-                case @@tab
-                when  "Shirt"
-                 window.draw(@@clothing_shirt_category_text)
-                when  "Jacket"
-                 window.draw(@@clothing_jacket_category_text)
-                when  "Pants"
-                 window.draw(@@clothing_pants_category_text)
-                when  "Shoes"
-                 window.draw(@@clothing_shoes_category_text)
-                when  "Socks"
-                 window.draw(@@clothing_socks_category_text)
-                when  "Gloves"
-                 window.draw(@@clothing_gloves_category_text)
-                when  "Earrings"
-                 window.draw(@@clothing_earrings_category_text)
-                when  "Hat"
-                 window.draw(@@clothing_hat_category_text)
-                when  "Glasses"
-                 window.draw(@@clothing_glasses_category_text)
-                when  "Makeup"
-                 window.draw(@@clothing_makeup_category_text)
-                when  "Necklace"
-                 window.draw(@@clothing_necklace_category_text)
-                when  "Weapon"
-                 window.draw(@@equipment_weapon_category_text)
-                when  "Consumable"
-                 window.draw(@@consumables_consumable_category_text)
-                end
+            #     case @@tab
+            #     when  "Shirt"
+            #      window.draw(@@clothing_shirt_category_text)
+            #     when  "Jacket"
+            #      window.draw(@@clothing_jacket_category_text)
+            #     when  "Pants"
+            #      window.draw(@@clothing_pants_category_text)
+            #     when  "Shoes"
+            #      window.draw(@@clothing_shoes_category_text)
+            #     when  "Socks"
+            #      window.draw(@@clothing_socks_category_text)
+            #     when  "Gloves"
+            #      window.draw(@@clothing_gloves_category_text)
+            #     when  "Earrings"
+            #      window.draw(@@clothing_earrings_category_text)
+            #     when  "Hat"
+            #      window.draw(@@clothing_hat_category_text)
+            #     when  "Glasses"
+            #      window.draw(@@clothing_glasses_category_text)
+            #     when  "Makeup"
+            #      window.draw(@@clothing_makeup_category_text)
+            #     when  "Necklace"
+            #      window.draw(@@clothing_necklace_category_text)
+            #     when  "Weapon"
+            #      window.draw(@@equipment_weapon_category_text)
+            #     when  "Consumable"
+            #      window.draw(@@consumables_consumable_category_text)
+            #     end
         end
 
         def InventoryManager.reset_clothing_pages(window)
