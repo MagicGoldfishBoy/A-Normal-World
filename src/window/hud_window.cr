@@ -8,25 +8,25 @@ require "../gui/gameplay_gui.cr"
 module HudWindow
  class HudWindowElements
 
-    HUD_WINDOW_BOX = Ui_Elements::WindowBoxes.new("Hud Window Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, 
+    HUD_WINDOW_BOX = Ui_Elements::Ui_BoxBase.new("Hud Window Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, 
     SF::Rect.new(200, 800, 120, 176)), 120.0, 176.0, 3)
 
-    HUD_WINDOW_SAVE_BOX = Ui_Elements::WindowBoxes.new("Hud Window Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, 
+    HUD_WINDOW_SAVE_BOX = Ui_Elements::Ui_BoxBase.new("Hud Window Save Box", "HudMen2", SF::Sprite.new(BLANK_TEXTURE, 
     SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
 
-    HUD_WINDOW_QUIT_BOX = Ui_Elements::WindowBoxes.new("Hud Window Quit Box", "HudMen3", SF::Sprite.new(BLANK_TEXTURE, 
+    HUD_WINDOW_QUIT_BOX = Ui_Elements::Ui_BoxBase.new("Hud Window Quit Box", "HudMen3", SF::Sprite.new(BLANK_TEXTURE, 
     SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
 
-    HUD_WINDOW_STATS_BOX = Ui_Elements::WindowBoxes.new("Hud Window Stats Box", "HudMen4", SF::Sprite.new(BLANK_TEXTURE, 
+    HUD_WINDOW_STATS_BOX = Ui_Elements::Ui_BoxBase.new("Hud Window Stats Box", "HudMen4", SF::Sprite.new(BLANK_TEXTURE, 
     SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
 
-    HUD_WINDOW_SETTINGS_BOX = Ui_Elements::WindowBoxes.new("Hud Window Settings Box", "HudMen5", SF::Sprite.new(
+    HUD_WINDOW_SETTINGS_BOX = Ui_Elements::Ui_BoxBase.new("Hud Window Settings Box", "HudMen5", SF::Sprite.new(
     BLANK_TEXTURE, SF::Rect.new(200, 100, 116, 40)), 116.0, 40.0, 1)
 
-    HUD_WINDOW_SAVE_TEXT = Ui_Elements::WindowText.new("Hud Window Save Text", "HudMen1", SF::Text.new("Save", QUICKSAND, 24))
-    HUD_WINDOW_QUIT_TEXT = Ui_Elements::WindowText.new("Hud Window Quit Text", "HudMen2", SF::Text.new("Save & Quit", QUICKSAND, 20))
-    HUD_WINDOW_STATS_TEXT = Ui_Elements::WindowText.new("Hud Window Stats Text", "HudMen3", SF::Text.new("Stats", QUICKSAND, 24))
-    HUD_WINDOW_SETTINGS_TEXT = Ui_Elements::WindowText.new("Hud Window Settings Text", "HudMen4", SF::Text.new("Settings", QUICKSAND, 24))
+    HUD_WINDOW_SAVE_TEXT = Ui_Elements::Ui_TextBase.new("Hud Window Save Text", "HudMen1", SF::Text.new("Save", QUICKSAND, 24))
+    HUD_WINDOW_QUIT_TEXT = Ui_Elements::Ui_TextBase.new("Hud Window Quit Text", "HudMen2", SF::Text.new("Save & Quit", QUICKSAND, 20))
+    HUD_WINDOW_STATS_TEXT = Ui_Elements::Ui_TextBase.new("Hud Window Stats Text", "HudMen3", SF::Text.new("Stats", QUICKSAND, 24))
+    HUD_WINDOW_SETTINGS_TEXT = Ui_Elements::Ui_TextBase.new("Hud Window Settings Text", "HudMen4", SF::Text.new("Settings", QUICKSAND, 24))
 
     def self.position_hud_window_elements(window)
         current_size = window.size

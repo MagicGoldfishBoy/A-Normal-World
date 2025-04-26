@@ -8,24 +8,24 @@ require "../../src/level_elements.cr"
 module DecorWindow
     class DecorWindowElements
 
-        DECOR_WINDOW_BOX = Ui_Elements::WindowBoxes.new("Decor Window Box", "DecElement1", SF::Sprite.new(BLANK_TEXTURE,
+        DECOR_WINDOW_BOX = Ui_Elements::Ui_BoxBase.new("Decor Window Box", "DecElement1", SF::Sprite.new(BLANK_TEXTURE,
         SF::Rect.new(1100, 0, 100, 200)), 0.0, 0.0, 3)
 
-        DECOR_EXIT_BUTTON = Ui_Elements::WindowBoxes.new("Decor Exit Button", "DecElement2", SF::Sprite.new(BLANK_TEXTURE,
+        DECOR_EXIT_BUTTON = Ui_Elements::Ui_BoxBase.new("Decor Exit Button", "DecElement2", SF::Sprite.new(BLANK_TEXTURE,
         SF::Rect.new(1200, 0, 9, 9)), 0.0, 0.0, 4)
 
-        DECOR_LAYER_BOX = Ui_Elements::WindowBoxes.new("Decor Layer Box", "DecElement3", SF::Sprite.new(BLANK_TEXTURE,
+        DECOR_LAYER_BOX = Ui_Elements::Ui_BoxBase.new("Decor Layer Box", "DecElement3", SF::Sprite.new(BLANK_TEXTURE,
         SF::Rect.new(900, 100, 95, 50)), 0.0, 0.0, 2)
 
-        DECOR_LAYER_LEFT_ARROW = Ui_Elements::WindowBoxes.new("Decor Layer Left Arrow", "DecElement4", SF::Sprite.new(BLANK_TEXTURE,
+        DECOR_LAYER_LEFT_ARROW = Ui_Elements::Ui_BoxBase.new("Decor Layer Left Arrow", "DecElement4", SF::Sprite.new(BLANK_TEXTURE,
         SF::Rect.new(900, 158, 39, 34)), 0.0, 0.0, 1)
 
-        DECOR_LAYER_RIGHT_ARROW = Ui_Elements::WindowBoxes.new("Decor Layer Right Arrow", "DecElement5", SF::Sprite.new(BLANK_TEXTURE,
+        DECOR_LAYER_RIGHT_ARROW = Ui_Elements::Ui_BoxBase.new("Decor Layer Right Arrow", "DecElement5", SF::Sprite.new(BLANK_TEXTURE,
         SF::Rect.new(961, 158, 39, 34)), 0.0, 0.0, 1)
 
-        CURRENT_DECOR_TEXT = Ui_Elements::WindowText.new("Current Decor Text", "DecElement6", SF::Text.new("Decor", QUICKSAND, 24))
+        CURRENT_DECOR_TEXT = Ui_Elements::Ui_TextBase.new("Current Decor Text", "DecElement6", SF::Text.new("Decor", QUICKSAND, 24))
 
-        CURRENT_LAYER_TEXT = Ui_Elements::WindowText.new("Current Layer Text", "DecElement7", SF::Text.new("Layer", QUICKSAND, 24))
+        CURRENT_LAYER_TEXT = Ui_Elements::Ui_TextBase.new("Current Layer Text", "DecElement7", SF::Text.new("Layer", QUICKSAND, 24))
         CURRENT_LAYER_TEXT.text.style = SF::Text::Bold
 
     end

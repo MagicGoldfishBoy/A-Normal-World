@@ -124,45 +124,4 @@ require "../src/fonts.cr"
         MAIN_HUD_BOX_TEXT = MenuText.new("Main Hud Box Text", "HUD1", SF::Text.new("Main Hud", QUICKSAND, 34))
 
     end
-    class WindowBoxes < Ui_BoxBase
-
-        # STATS_MENU_BOX = WindowBoxes.new("Stats Menu Box", "StatMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 200, 500, 410)), 500.0, 410.0, 4)
-        # STATS_MENU_NAME_BOX = WindowBoxes.new("Stats Menu Name Box", "StatMen2", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 100, 250, 50)), 250.0, 50.0, 3)
-        # STATS_MENU_MONEY_BOX = WindowBoxes.new("Stats Menu Money Box", "StatMen3", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(700, 100, 190, 50)), 190.0, 50.0, 3)
-        # STATS_MENU_LVL_BOX = WindowBoxes.new("Stats Menu Level Box", "StatMen4", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 3)
-        # STATS_MENU_EXP_BOX = WindowBoxes.new("Stats Menu Exp Box", "StatMen5", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 3)
-        # STATS_MENU_HP_BOX = WindowBoxes.new("Stats Menu HP Box", "StatMen6", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
-        # STATS_MENU_MP_BOX = WindowBoxes.new("Stats Menu MP Box", "StatMen7", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
-        # STATS_MENU_STR_BOX = WindowBoxes.new("Stats Menu STR Box", "StatMen8", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
-        # STATS_MENU_DEX_BOX = WindowBoxes.new("Stats Menu DEX Box", "StatMen9", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
-        # STATS_MENU_INT_BOX = WindowBoxes.new("Stats Menu INT Box", "StatMen10", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
-        # STATS_MENU_LUK_BOX = WindowBoxes.new("Stats Menu LUK Box", "StatMen11", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
-
-        # STATS_MENU_LEFT_HP_ARROW = WindowBoxes.new("Stats Menu Left HP Arrow", "StatMen12", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
-        # STATS_MENU_RIGHT_HP_ARROW = WindowBoxes.new("Stats Menu Right HP Arrow", "StatMen13", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
-        # STATS_MENU_LEFT_MP_ARROW = WindowBoxes.new("Stats Menu Left MP Arrow", "StatMen14", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
-        # STATS_MENU_RIGHT_MP_ARROW = WindowBoxes.new("Stats Menu Right MP Arrow", "StatMen15", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
-        # STATS_MENU_LEFT_STR_ARROW = WindowBoxes.new("Stats Menu Left STR Arrow", "StatMen16", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
-        # STATS_MENU_RIGHT_STR_ARROW = WindowBoxes.new("Stats Menu Right STR Arrow", "StatMen17", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
-        # STATS_MENU_LEFT_DEX_ARROW = WindowBoxes.new("Stats Menu Left DEX Arrow", "StatMen18", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
-        # STATS_MENU_RIGHT_DEX_ARROW = WindowBoxes.new("Stats Menu Right DEX Arrow", "StatMen19", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
-        # STATS_MENU_LEFT_INT_ARROW = WindowBoxes.new("Stats Menu Left INT Arrow", "StatMen20", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
-        # STATS_MENU_RIGHT_INT_ARROW = WindowBoxes.new("Stats Menu Right INT Arrow", "StatMen21", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
-        # STATS_MENU_LEFT_LUK_ARROW = WindowBoxes.new("Stats Menu Left LUK Arrow", "StatMen22", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
-        # STATS_MENU_RIGHT_LUK_ARROW = WindowBoxes.new("Stats Menu Right LUK Arrow", "StatMen23", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
-        
-    end
-    class WindowText < Ui_TextBase
-
-        # STATS_MENU_NAME_TEXT = WindowText.new("Stats Menu Name Text", "StatMen1", SF::Text.new("Name", QUICKSAND, 24))
-        # STATS_MENU_MONEY_TEXT = WindowText.new("Stats Menu Money Text", "StatMen2", SF::Text.new("Money", QUICKSAND, 24))
-        # STATS_MENU_LVL_TEXT = WindowText.new("Stats Menu Level Text", "StatMen3", SF::Text.new("Level", QUICKSAND, 24))
-        # STATS_MENU_EXP_TEXT = WindowText.new("Stats Menu Exp Text", "StatMen4", SF::Text.new("Exp", QUICKSAND, 24))
-        # STATS_MENU_HP_TEXT = WindowText.new("Stats Menu HP Text", "StatMen5", SF::Text.new("HP", QUICKSAND, 24))
-        # STATS_MENU_MP_TEXT = WindowText.new("Stats Menu MP Text", "StatMen6", SF::Text.new("MP", QUICKSAND, 24))
-        # STATS_MENU_STR_TEXT = WindowText.new("Stats Menu STR Text", "StatMen7", SF::Text.new("STR", QUICKSAND, 24))
-        # STATS_MENU_DEX_TEXT = WindowText.new("Stats Menu DEX Text", "StatMen8", SF::Text.new("DEX", QUICKSAND, 24))
-        # STATS_MENU_INT_TEXT = WindowText.new("Stats Menu INT Text", "StatMen9", SF::Text.new("INT", QUICKSAND, 24))
-        # STATS_MENU_LUK_TEXT = WindowText.new("Stats Menu LUK Text", "StatMen10", SF::Text.new("LUK", QUICKSAND, 24))
-    end
   end
