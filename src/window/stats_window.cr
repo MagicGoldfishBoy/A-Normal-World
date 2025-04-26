@@ -14,117 +14,117 @@ module StatsWindow
         TEXT_OFFSET_MARGIN = SF.vector2(10 * MAX_SCALE, 10 * MAX_SCALE)
         TEXT_FONT_SIZE = 16
 
-        STATS_WINDOW_BOX = Ui_Elements::WindowBoxes.new("Stats Window Box", "StatMen1", SF::Sprite.new(
+        STATS_WINDOW_BOX = Ui_Elements::Ui_BoxBase.new("Stats Window Box", "StatMen1", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(1000, 200, 500, 410)), 500.0, 410.0, 4)
 
 
-        NAME_BOX = Ui_Elements::WindowBoxes.new("Name Box", "StatMen2", SF::Sprite.new(
+        NAME_BOX = Ui_Elements::Ui_BoxBase.new("Name Box", "StatMen2", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(400, 100, 250, 50)), 250.0, 50.0, 3)
 
-        NAME_TEXT = Ui_Elements::WindowText.new("Name Text", "StatMen3", SF::Text.new(
+        NAME_TEXT = Ui_Elements::Ui_TextBase.new("Name Text", "StatMen3", SF::Text.new(
         "Name", QUICKSAND, TEXT_FONT_SIZE))
         Utility::StringUtilities.center_text(NAME_TEXT.text)
 
 
-        MONEY_BOX = Ui_Elements::WindowBoxes.new("Money Box", "StatMen4", SF::Sprite.new(
+        MONEY_BOX = Ui_Elements::Ui_BoxBase.new("Money Box", "StatMen4", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(700, 100, 190, 50)), 190.0, 50.0, 3)
 
-        MONEY_TEXT = Ui_Elements::WindowText.new("Money Text", "StatMen5", SF::Text.new(
+        MONEY_TEXT = Ui_Elements::Ui_TextBase.new("Money Text", "StatMen5", SF::Text.new(
         "Money", QUICKSAND, TEXT_FONT_SIZE))
         Utility::StringUtilities.center_text(MONEY_TEXT.text)
 
 
-        LVL_BOX = Ui_Elements::WindowBoxes.new("Level Box", "StatMen6", SF::Sprite.new(
+        LVL_BOX = Ui_Elements::Ui_BoxBase.new("Level Box", "StatMen6", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 3)
 
-        LVL_TEXT = Ui_Elements::WindowText.new("Level Text", "StatMen7", SF::Text.new(
+        LVL_TEXT = Ui_Elements::Ui_TextBase.new("Level Text", "StatMen7", SF::Text.new(
         "Level", QUICKSAND, TEXT_FONT_SIZE))
         Utility::StringUtilities.center_text(LVL_TEXT.text)
 
 
-        EXP_BOX = Ui_Elements::WindowBoxes.new("Exp Box", "StatMen8", SF::Sprite.new(
+        EXP_BOX = Ui_Elements::Ui_BoxBase.new("Exp Box", "StatMen8", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 3)
 
-        EXP_TEXT = Ui_Elements::WindowText.new("Exp Text", "StatMen9", SF::Text.new(
+        EXP_TEXT = Ui_Elements::Ui_TextBase.new("Exp Text", "StatMen9", SF::Text.new(
         "Exp", QUICKSAND, TEXT_FONT_SIZE))
         Utility::StringUtilities.center_text(EXP_TEXT.text)
 
 
-        HP_BOX = Ui_Elements::WindowBoxes.new("HP Box", "StatMen10", SF::Sprite.new(
+        HP_BOX = Ui_Elements::Ui_BoxBase.new("HP Box", "StatMen10", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
 
-        HP_TEXT = Ui_Elements::WindowText.new("HP Text", "StatMen11", SF::Text.new("HP", QUICKSAND, TEXT_FONT_SIZE))
+        HP_TEXT = Ui_Elements::Ui_TextBase.new("HP Text", "StatMen11", SF::Text.new("HP", QUICKSAND, TEXT_FONT_SIZE))
         Utility::StringUtilities.center_text(HP_TEXT.text)
 
-        LEFT_HP_ARROW = Ui_Elements::WindowBoxes.new("Left HP Arrow", "StatMen12", SF::Sprite.new(
+        LEFT_HP_ARROW = Ui_Elements::Ui_BoxBase.new("Left HP Arrow", "StatMen12", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
 
-        RIGHT_HP_ARROW = Ui_Elements::WindowBoxes.new("Right HP Arrow", "StatMen13", SF::Sprite.new(
+        RIGHT_HP_ARROW = Ui_Elements::Ui_BoxBase.new("Right HP Arrow", "StatMen13", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
 
 
-        MP_BOX = Ui_Elements::WindowBoxes.new("MP Box", "StatMen14", SF::Sprite.new(
+        MP_BOX = Ui_Elements::Ui_BoxBase.new("MP Box", "StatMen14", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
 
-        MP_TEXT = Ui_Elements::WindowText.new("MP Text", "StatMen15", SF::Text.new("MP", QUICKSAND, TEXT_FONT_SIZE))
+        MP_TEXT = Ui_Elements::Ui_TextBase.new("MP Text", "StatMen15", SF::Text.new("MP", QUICKSAND, TEXT_FONT_SIZE))
         Utility::StringUtilities.center_text(MP_TEXT.text)
 
-        LEFT_MP_ARROW = Ui_Elements::WindowBoxes.new("Left MP Arrow", "StatMen16", SF::Sprite.new(
+        LEFT_MP_ARROW = Ui_Elements::Ui_BoxBase.new("Left MP Arrow", "StatMen16", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
 
-        RIGHT_MP_ARROW = Ui_Elements::WindowBoxes.new("Right MP Arrow", "StatMen17", SF::Sprite.new(
+        RIGHT_MP_ARROW = Ui_Elements::Ui_BoxBase.new("Right MP Arrow", "StatMen17", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
 
 
-        STR_BOX = Ui_Elements::WindowBoxes.new("STR Box", "StatMen18", SF::Sprite.new(
+        STR_BOX = Ui_Elements::Ui_BoxBase.new("STR Box", "StatMen18", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
 
-        STR_TEXT = Ui_Elements::WindowText.new("STR Text", "StatMen19", SF::Text.new("STR", QUICKSAND, TEXT_FONT_SIZE))
+        STR_TEXT = Ui_Elements::Ui_TextBase.new("STR Text", "StatMen19", SF::Text.new("STR", QUICKSAND, TEXT_FONT_SIZE))
         Utility::StringUtilities.center_text(STR_TEXT.text)
 
-        LEFT_STR_ARROW = Ui_Elements::WindowBoxes.new("Left STR Arrow", "StatMen20", SF::Sprite.new(
+        LEFT_STR_ARROW = Ui_Elements::Ui_BoxBase.new("Left STR Arrow", "StatMen20", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
 
-        RIGHT_STR_ARROW = Ui_Elements::WindowBoxes.new("Right STR Arrow", "StatMen21", SF::Sprite.new(
+        RIGHT_STR_ARROW = Ui_Elements::Ui_BoxBase.new("Right STR Arrow", "StatMen21", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
 
 
-        DEX_BOX = Ui_Elements::WindowBoxes.new("DEX Box", "StatMen22", SF::Sprite.new(
+        DEX_BOX = Ui_Elements::Ui_BoxBase.new("DEX Box", "StatMen22", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
 
-        DEX_TEXT = Ui_Elements::WindowText.new("DEX Text", "StatMen23", SF::Text.new("DEX", QUICKSAND, TEXT_FONT_SIZE))
+        DEX_TEXT = Ui_Elements::Ui_TextBase.new("DEX Text", "StatMen23", SF::Text.new("DEX", QUICKSAND, TEXT_FONT_SIZE))
         Utility::StringUtilities.center_text(DEX_TEXT.text)
 
-        LEFT_DEX_ARROW = Ui_Elements::WindowBoxes.new("Left DEX Arrow", "StatMen24", SF::Sprite.new(
+        LEFT_DEX_ARROW = Ui_Elements::Ui_BoxBase.new("Left DEX Arrow", "StatMen24", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
 
-        RIGHT_DEX_ARROW = Ui_Elements::WindowBoxes.new("Right DEX Arrow", "StatMen25", SF::Sprite.new(
+        RIGHT_DEX_ARROW = Ui_Elements::Ui_BoxBase.new("Right DEX Arrow", "StatMen25", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
 
 
-        INT_BOX = Ui_Elements::WindowBoxes.new("INT Box", "StatMen26", SF::Sprite.new(
+        INT_BOX = Ui_Elements::Ui_BoxBase.new("INT Box", "StatMen26", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
 
-        INT_TEXT = Ui_Elements::WindowText.new("INT Text", "StatMen27", SF::Text.new("INT", QUICKSAND, TEXT_FONT_SIZE))
+        INT_TEXT = Ui_Elements::Ui_TextBase.new("INT Text", "StatMen27", SF::Text.new("INT", QUICKSAND, TEXT_FONT_SIZE))
         Utility::StringUtilities.center_text(INT_TEXT.text)
 
-        LEFT_INT_ARROW = Ui_Elements::WindowBoxes.new("Left INT Arrow", "StatMen28", SF::Sprite.new(
+        LEFT_INT_ARROW = Ui_Elements::Ui_BoxBase.new("Left INT Arrow", "StatMen28", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
 
-        RIGHT_INT_ARROW = Ui_Elements::WindowBoxes.new("Right INT Arrow", "StatMen29", SF::Sprite.new(
+        RIGHT_INT_ARROW = Ui_Elements::Ui_BoxBase.new("Right INT Arrow", "StatMen29", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
 
 
-        LUK_BOX = Ui_Elements::WindowBoxes.new("LUK Box", "StatMen30", SF::Sprite.new(
+        LUK_BOX = Ui_Elements::Ui_BoxBase.new("LUK Box", "StatMen30", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(400, 150, 220, 50)), 220.0, 50.0, 2)
 
-        LUK_TEXT = Ui_Elements::WindowText.new("LUK Text", "StatMen31", SF::Text.new("LUK", QUICKSAND, TEXT_FONT_SIZE))
+        LUK_TEXT = Ui_Elements::Ui_TextBase.new("LUK Text", "StatMen31", SF::Text.new("LUK", QUICKSAND, TEXT_FONT_SIZE))
         Utility::StringUtilities.center_text(LUK_TEXT.text)
 
-        LEFT_LUK_ARROW = Ui_Elements::WindowBoxes.new("Left LUK Arrow", "StatMen32", SF::Sprite.new(
+        LEFT_LUK_ARROW = Ui_Elements::Ui_BoxBase.new("Left LUK Arrow", "StatMen32", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 140, 50, 15)), 50.0, 15.0, 1)
 
-        RIGHT_LUK_ARROW = Ui_Elements::WindowBoxes.new("Right LUK Arrow", "StatMen33", SF::Sprite.new(
+        RIGHT_LUK_ARROW = Ui_Elements::Ui_BoxBase.new("Right LUK Arrow", "StatMen33", SF::Sprite.new(
         BLANK_TEXTURE, SF::Rect.new(200, 155, 50, 15)), 50.0, 15.0, 1)
 
         def self.position_stat_window_elements(window)
