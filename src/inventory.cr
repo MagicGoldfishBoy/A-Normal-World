@@ -6,7 +6,7 @@ require "../src/utility.cr"
 require "../src/consumables.cr"
 require "../src/window/inventory_window.cr"
 
-#puts Consumables::Consumables_base::CONSUMABLE_ARRAY
+
 INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
 INVENTORY_BOX.fill_color = SF.color( 137, 170, 208 )
 
