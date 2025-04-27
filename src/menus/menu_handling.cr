@@ -8,6 +8,7 @@ require "../gui/level_editor_gui.cr"
 require "../window/hud_window.cr"
 require "../window/stats_window.cr"
 require "../window/decor_window.cr"
+require "../window/inventory_window.cr"
 
 #menus take up the whole screen, guis overlay gameplay, windows are smoll
 

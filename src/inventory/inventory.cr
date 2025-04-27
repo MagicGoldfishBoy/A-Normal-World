@@ -2,6 +2,7 @@ require "crsfml"
 require "crsfml/audio"
 require "../../src/textures.cr"
 require "../../src/utility.cr"
+require "../inventory/cosmetics_inventory.cr"
 
 module Inventory
     class InventoryBase
@@ -42,7 +43,6 @@ module Inventory
         class_property current_category : String = "cosmetics"
 
         def self.draw_inventory(window)
-         if is_open
             current_size = window.size
             original_width = 800 
             original_height = 600
@@ -55,11 +55,10 @@ module Inventory
 
             window.view = window.default_view
 
-            InventoryWindow::InventoryWindowDisplay.display(window)
           case current_category
            when "cosmetics"
+            CosmeticsInventory::CosmeticsInventoryElements.draw_cosmetics_tabs(window)
           end
-         end
         end
     end
     class ItemBase
@@ -68,7 +67,7 @@ module Inventory
             @id = id
             @is_stackable = is_stackable
             @is_owned = is_owned
-            @desciption = description
+            @description = description
         end
 
         property name : String

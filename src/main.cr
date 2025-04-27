@@ -46,7 +46,6 @@ while window.open?
     end
     
     window.clear(SF::Color::Black)
-   # WhackeableObject::WhackeableObjectsMethods.animate_whackeables(window)
     if LocationSelection::Region.current_region != "none"
      Maps::MapBase.draw_elements(window)
     end
