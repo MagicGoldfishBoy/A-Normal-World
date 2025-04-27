@@ -122,11 +122,12 @@ module Keyboard
                 #Levels::Level_Physics.jump(window)
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::I)
-                Inventory::InventoryManager.is_inventory_open=(!Inventory::InventoryManager.is_inventory_open)
-                Inventory::ClothingTabShirt.is_open=(!Inventory::ClothingTabShirt.is_open)
-                Inventory::ClothingTabShirt.initialize_clothing_tab(window)
-                Inventory::WeaponTab.initialize_equipment_tab(window)
-                Inventory::ClothingTabShirt.assign_slot_textures(window)
+                MenuHandling::Window.is_inventory_open = !MenuHandling::Window.is_inventory_open
+                # Inventory::InventoryManager.is_inventory_open=(!Inventory::InventoryManager.is_inventory_open)
+                # Inventory::ClothingTabShirt.is_open=(!Inventory::ClothingTabShirt.is_open)
+                # Inventory::ClothingTabShirt.initialize_clothing_tab(window)
+                # Inventory::WeaponTab.initialize_equipment_tab(window)
+                # Inventory::ClothingTabShirt.assign_slot_textures(window)
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::E)

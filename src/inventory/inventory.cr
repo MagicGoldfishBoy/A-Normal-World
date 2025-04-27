@@ -32,6 +32,36 @@ module Inventory
         end
 
     end
+    class InventoryManager
+        def initialize(is_open : Bool, current_category : String)
+            @is_open = is_open
+            @current_category = current_category
+        end
+
+        class_property is_open : Bool = false
+        class_property current_category : String = "cosmetics"
+
+        def self.draw_inventory(window)
+         if is_open
+            current_size = window.size
+            original_width = 800 
+            original_height = 600
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+    
+            scale_ratio = [scale_x, scale_y].min
+            max_scale = 1.5
+            clamped_scale = [scale_ratio, max_scale].min
+
+            window.view = window.default_view
+
+            InventoryWindow::InventoryWindowDisplay.display(window)
+          case current_category
+           when "cosmetics"
+          end
+         end
+        end
+    end
     class ItemBase
         def initialize(name : String, id : String, is_stackable : Bool, is_owned : Bool, description : String)
             @name = name
