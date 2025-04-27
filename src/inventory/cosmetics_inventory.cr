@@ -178,11 +178,20 @@ module CosmeticsInventory
             elsif MouseHandling::ClickHandling.button_clicked?(GLASSES_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "glasses"
                 sleep 0.15.seconds
+            elsif MouseHandling::ClickHandling.button_clicked?(InventoryWindow::InventoryWindowElements::LEFT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+                CosmeticsInventoryBase::COSMETIC_INVENTORY_ARRAY.each{ |inventory| 
+                if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page - 1 >= 0
+                    inventory.page -= 1
+                elsif inventory.tab == CosmeticsInventoryManager.current_tab 
+                    inventory.page = inventory.max_page_count - 1
+                end}
+                sleep 0.15.seconds
             end
         end
     end
     class CosmeticsInventoryBase < Inventory::InventoryBase
         OWNED_SHIRT_ARRAY = [] of Clothing::ClothingBase
+        COSMETIC_INVENTORY_ARRAY = [] of CosmeticsInventoryBase
         def initialize(name : String, id : String, max_page_count : Int32, page : Int32, tab : String, sort_type : String, array : Array(Clothing::ClothingBase))
             @name = name
             @id = id
@@ -191,6 +200,7 @@ module CosmeticsInventory
             @tab = tab
             @sort_type = sort_type
             @array = array
+            COSMETIC_INVENTORY_ARRAY << self
         end
 
         property name : String
@@ -207,76 +217,99 @@ module CosmeticsInventory
             original_height = 600
             scale_x = current_size.x.to_f / original_width
             scale_y = current_size.y.to_f / original_height
-          
+        
             scale_ratio = [scale_x, scale_y].min
             max_scale = 1.5
             clamped_scale = [scale_ratio, max_scale].min
-          
+        
             window.view = window.default_view
-          
+        
             items_per_page = 15
             start_index = @page * items_per_page
             end_index = start_index + items_per_page - 1
-          
+        
+            # Gotta clamp this sucker so it doesn't wander out of bounds
+            start_index = [start_index, 0].max
+            end_index = [end_index, self.array.size - 1].min
+        
+            # If the start_index exceeds the array size, run for the hills! :O
+            return if start_index >= self.array.size
+        
             items_per_row = 5
             spacing_x = 13 * max_scale
             spacing_y = 17 * max_scale
-          
+        
             base_position = InventoryWindow::InventoryWindowElements::INVENTORY_SLOT_01.sprite.position + SF.vector2(spacing_x, spacing_y)
-          
+        
             current_pos = SF.vector2(base_position.x, base_position.y)
-          
+        
             self.array[start_index..end_index].each_with_index do |item, index|
-              item.sprite.scale = SF.vector2(2, 2)
-              item.sprite.position = current_pos
-          
-              if self.id == "inv_hat"
-                item.sprite.texture_rect = SF::Rect.new(34, 14, 36, 33)
-              end
-          
-              window.draw(item.sprite)
-          
-              # Move to the next column
-              current_pos.x += spacing_x * 5.85
-          
-              # If we reached the end of a row, reset x and move down
-              if (index + 1) % items_per_row == 0
-                current_pos.x = base_position.x
-                current_pos.y += spacing_y * 4.5
-              end
+                item.sprite.scale = SF.vector2(2, 2)
+                item.sprite.position = current_pos
+        
+                if self.id == "inv_hat"
+                    item.sprite.texture_rect = SF::Rect.new(34, 14, 36, 33)
+                end
+        
+                window.draw(item.sprite)
+        
+                # Next column
+                current_pos.x += spacing_x * 5.85
+        
+                # Next Row
+                if (index + 1) % items_per_row == 0
+                    current_pos.x = base_position.x
+                    current_pos.y += spacing_y * 4.5
+                end
             end
-          end
-          
-          
+        end
+        
+        
         # def draw(window)
         #     current_size = window.size
         #     original_width = 800 
         #     original_height = 600
         #     scale_x = current_size.x.to_f / original_width
         #     scale_y = current_size.y.to_f / original_height
-    
+          
         #     scale_ratio = [scale_x, scale_y].min
         #     max_scale = 1.5
         #     clamped_scale = [scale_ratio, max_scale].min
-
+          
         #     window.view = window.default_view
-
+          
         #     items_per_page = 15
         #     start_index = @page * items_per_page
         #     end_index = start_index + items_per_page - 1
-
-        #     margins = SF.vector2(32 * max_scale, 75 * max_scale)
-
-        #     self.array[start_index..end_index].each do |item|
-        #     item.sprite.scale = SF.vector2(2, 2)
-        #     item.sprite.position = InventoryWindow::InventoryWindowElements::INVENTORY_BOX.sprite.position + SF.vector2(margins.x, 0)
-        #      if self.id == "inv_hat"
-        #       item.sprite.texture_rect = SF::Rect.new(34, 14, 36, 33)
-        #      end
+          
+        #     items_per_row = 5
+        #     spacing_x = 13 * max_scale
+        #     spacing_y = 17 * max_scale
+          
+        #     base_position = InventoryWindow::InventoryWindowElements::INVENTORY_SLOT_01.sprite.position + SF.vector2(spacing_x, spacing_y)
+          
+        #     current_pos = SF.vector2(base_position.x, base_position.y)
+          
+        #     self.array[start_index..end_index].each_with_index do |item, index|
+        #       item.sprite.scale = SF.vector2(2, 2)
+        #       item.sprite.position = current_pos
+          
+        #       if self.id == "inv_hat"
+        #         item.sprite.texture_rect = SF::Rect.new(34, 14, 36, 33)
+        #       end
+          
         #       window.draw(item.sprite)
-        #       margins = margins + SF.vector2(32 * max_scale, 75 * max_scale)
+          
+        #       # Next column
+        #       current_pos.x += spacing_x * 5.85
+          
+        #       # Next Row
+        #       if (index + 1) % items_per_row == 0
+        #         current_pos.x = base_position.x
+        #         current_pos.y += spacing_y * 4.5
+        #       end
         #     end
-        # end
+        #   end
           
         def self.draw_clothing_items(window, tab)
             case tab
