@@ -1,6 +1,7 @@
 require "crsfml"
 require "crsfml/audio"
 require "../../src/textures.cr"
+require "../inventory/inventory.cr"
 
 module InventoryWindow
     class InventoryWindowElements
@@ -97,6 +98,7 @@ module InventoryWindow
 
         INVENTORY_SLOT_15 = Ui_Elements::Ui_BoxBase.new("Slot 15", "InvSlot15", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
         INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_15
+        
 
         def self.position_inventory_window_elements(window)
             current_size = window.size
@@ -160,15 +162,14 @@ module InventoryWindow
          InventoryWindowElements::INVENTORY_TEXT_ARRAY.each { |text|
          window.draw(text.text)}
 
+         Inventory::InventoryManager.draw_inventory(window)
         end
     end
     class InventoryWindowHandling
-        def initialize(current_tab : String, is_open : Bool)
+        def initialize(current_tab : String)
             @current_tab = current_tab
-            @is_open = is_open
         end
 
         class_property current_tab : String = "cosmetics"
-        class_property is_open : Bool = false
     end
 end

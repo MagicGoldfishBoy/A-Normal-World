@@ -1,7 +1,7 @@
 require "crsfml"
 require "crsfml/audio"
-require "../../src/textures.cr"
-require "../../src/utility.cr"
+require "../../../src/textures.cr"
+require "../../../src/utility.cr"
 
 module Clothing
     class ClothingBase

@@ -4,7 +4,6 @@ require "../src/clothing.cr"
 require "../src/equipment.cr"
 require "../src/utility.cr"
 require "../src/consumables.cr"
-require "../src/window/inventory_window.cr"
 
 
 INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
@@ -76,11 +75,11 @@ module Inventory
     end
     class InventoryManager
 
-        def initialize(is_inventory_open : Bool, category : String, tab : String)
-            @@is_inventory_open = is_inventory_open
-            @@category = category
-            @@tab = tab
-        end
+        # def initialize(is_inventory_open : Bool, category : String, tab : String)
+        #     @@is_inventory_open = is_inventory_open
+        #     @@category = category
+        #     @@tab = tab
+        # end
 
         @@tab = "Shirt"
         @@category = "Cosmetics"
@@ -354,15 +353,15 @@ module Inventory
             @@tab = tab
         end
 
-        def InventoryManager.draw_inventory(window)
-           if @@is_inventory_open == true #&& @@category == "Cosmetics"
+        def InventoryManager.draw_inventory_old(window)
+         #  if @@is_inventory_open == true #&& @@category == "Cosmetics"
         #     case @@tab
         #      when "Shirt"
-                 InventoryManager.draw_universal_elements(window)
+                # InventoryManager.draw_universal_elements(window)
         #         ClothingTabShirt.draw_clothing_tab(window)
         #         if SF::Mouse.button_pressed?(SF::Mouse::Left)
         #             InventoryManager.universal_mouse_handling("shirt", window)
-                 end
+               #  end
         #      when "Pants"
         #         InventoryManager.draw_universal_elements(window)
         #         ClothingTabPants.draw_clothing_tab(window)
