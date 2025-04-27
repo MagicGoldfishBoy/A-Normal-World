@@ -186,6 +186,14 @@ module CosmeticsInventory
                     inventory.page = inventory.max_page_count - 1
                 end}
                 sleep 0.15.seconds
+            elsif MouseHandling::ClickHandling.button_clicked?(InventoryWindow::InventoryWindowElements::RIGHT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
+                CosmeticsInventoryBase::COSMETIC_INVENTORY_ARRAY.each{ |inventory| 
+                if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page + 1 < inventory.array.size
+                    inventory.page += 1
+                elsif inventory.tab == CosmeticsInventoryManager.current_tab 
+                    inventory.page = 0
+                end}
+                sleep 0.15.seconds
             end
         end
     end
