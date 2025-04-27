@@ -69,15 +69,17 @@ module MenuHandling
         end
     end
     class Window
-        def initialize(is_hud_window_open : Bool, is_stats_window_open : Bool, is_decor_window_open : Bool)
+        def initialize(is_hud_window_open : Bool, is_stats_window_open : Bool, is_decor_window_open : Bool, is_inventory_open : Bool)
             @is_hud_window_open = is_hud_window_open
             @is_stats_window_open = is_stats_window_open
             @is_decor_window_open = is_decor_window_open
+            @is_inventory_open = is_inventory_open
         end
 
         class_property is_hud_window_open : Bool = false
         class_property is_stats_window_open : Bool = false
         class_property is_decor_window_open : Bool = false
+        class_property is_inventory_open : Bool = false
 
         def self.draw_window(window)
             if self.is_hud_window_open == true
@@ -88,6 +90,9 @@ module MenuHandling
             end
             if self.is_decor_window_open == true
                 DecorWindow::DecorWindowDisplay.draw_decor_window(window)
+            end
+            if self.is_inventory_open == true
+                InventoryWindow::InventoryWindowDisplay.display(window)
             end
         end
     end
