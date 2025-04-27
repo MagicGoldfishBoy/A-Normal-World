@@ -64,7 +64,7 @@ while window.open?
 
     MenuHandling::Window.draw_window(window)
 
-    Inventory::InventoryManager.draw_inventory(window)
+    #Inventory::InventoryManager.draw_inventory(window)
     window.display
   end
 end
