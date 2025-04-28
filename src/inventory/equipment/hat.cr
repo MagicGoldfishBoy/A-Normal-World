@@ -31,6 +31,14 @@ module Hat
          OWNED_HAT_ARRAY << self
         end
      end
+
+     def self.swap_hat(item)
+        if Hat::HatBase::OWNED_HAT_ARRAY.none? { |owned_hat| owned_hat.id == Player::Appearance.hat.as(Hat::HatBase).id }
+         Hat::HatBase::OWNED_HAT_ARRAY << Player::Appearance.hat.as(Hat::HatBase)
+        end
+         Player::Appearance.hat = item.as(Hat::HatBase)
+         Hat::HatBase::OWNED_HAT_ARRAY.reject! { |owned_hat| owned_hat.id == Player::Appearance.hat.as(Hat::HatBase).id }
+     end
      
     end
     class BaseballCap < HatBase
