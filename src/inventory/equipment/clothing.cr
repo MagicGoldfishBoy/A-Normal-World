@@ -18,7 +18,8 @@ module Clothing
         property name : String
         property id : String
         property is_owned : Bool
-        property sprite : SF::Sprite
+        @[JSON::Field(ignore: true)]
+        property sprite : SF::Sprite?
         property color : String
     end
 end
