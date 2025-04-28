@@ -91,19 +91,19 @@ module Sprites
 
     current_hair = if hair = Body::Hair.get_hair(Appearance.get_clothing("hair"))
 
-    hat = Appearance.get_clothing("hat")
+    hat = Appearance.hat
 
-        if hat.nil?
-           return SF::Sprite.new
-        elsif hat == "No Hat" || Clothing::Hat.get_hat(Appearance.get_clothing("hat")).try(&.length) != "full"
-            SF::Sprite.new(hair.texture)
-        else 
-            i = "#{hair.name} Hat"
-            texture = Body::Hair.get_hair(i).try(&.texture) || SF::Texture.new(NIL_TEXTURE)
-            SF::Sprite.new(texture)
-        end
-        else
-            SF::Sprite.new
+        # if hat.nil?
+           SF::Sprite.new(hair.texture)
+    #     elsif hat == "No Hat" || Clothing::Hat.get_hat(Appearance.get_clothing("hat")).try(&.length) != "full"
+    #         SF::Sprite.new(hair.texture)
+    #     else 
+    #         i = "#{hair.name} Hat"
+    #         texture = Body::Hair.get_hair(i).try(&.texture) || SF::Texture.new(NIL_TEXTURE)
+    #         SF::Sprite.new(texture)
+        # end
+         else
+             SF::Sprite.new
         end
 
     current_face = if face = Body::Face.get_face(Appearance.get_clothing("face"))
@@ -148,8 +148,8 @@ module Sprites
         SF::Sprite.new
     end
 
-    current_hat = if hat = Clothing::Hat.get_hat(Appearance.get_clothing("hat"))
-        SF::Sprite.new(hat.texture)
+    current_hat = if hat = Appearance.hat
+        SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
     else
         SF::Sprite.new
     end
@@ -221,7 +221,9 @@ module Sprites
         @@player_character_model.draw(current_earrings)
         @@player_character_model.draw(current_glasses)
         @@player_character_model.draw(current_hair)
-        @@player_character_model.draw(current_hat)
+        if current_hat.is_a? Hat::HatBase
+        @@player_character_model.draw(current_hat.as(SF::Sprite))
+        end
         @@player_character_model.draw(current_socks)
         @@player_character_model.draw(current_pants)
         @@player_character_model.draw(current_shirt)
@@ -238,7 +240,9 @@ module Sprites
         @@player_character_model.draw(current_earrings)
         @@player_character_model.draw(current_glasses)
         @@player_character_model.draw(current_hair)
-        @@player_character_model.draw(current_hat)
+        if current_hat.is_a? Hat::HatBase
+        @@player_character_model.draw(current_hat.as(SF::Sprite))
+        end
         @@player_character_model.draw(current_socks)
         @@player_character_model.draw(current_pants)
         @@player_character_model.draw(current_shirt)

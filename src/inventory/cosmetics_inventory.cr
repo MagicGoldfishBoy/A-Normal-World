@@ -247,19 +247,19 @@ module CosmeticsInventory
             spacing_x = 13 * max_scale
             spacing_y = 17 * max_scale
         
-            base_position = InventoryWindow::InventoryWindowElements::INVENTORY_SLOT_01.sprite.position + SF.vector2(spacing_x, spacing_y)
+            base_position = InventoryWindow::InventoryWindowElements::INVENTORY_SLOT_01.sprite.as(SF::Sprite).position + SF.vector2(spacing_x, spacing_y)
         
             current_pos = SF.vector2(base_position.x, base_position.y)
         
             self.array[start_index..end_index].each_with_index do |item, index|
-                item.sprite.scale = SF.vector2(2, 2)
-                item.sprite.position = current_pos
+                item.sprite.as(SF::Sprite).scale = SF.vector2(2, 2)
+                item.sprite.as(SF::Sprite).position = current_pos
         
                 if self.id == "inv_hat"
-                    item.sprite.texture_rect = SF::Rect.new(34, 14, 36, 33)
+                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(34, 14, 36, 33)
                 end
         
-                window.draw(item.sprite)
+                window.draw(item.sprite.as(SF::Sprite))
         
                 # Next column
                 current_pos.x += spacing_x * 5.85
