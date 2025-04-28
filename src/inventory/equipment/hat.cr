@@ -6,12 +6,17 @@ require "../../../src/inventory/equipment/clothing.cr"
 
 module Hat
     class HatBase < Clothing::ClothingBase
+        include JSON::Serializable
 
         HAT_ARRAY = [] of HatBase 
         OWNED_HAT_ARRAY = [] of HatBase | Clothing::ClothingBase
 
      def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, color : String)
-        super
+        @name = name
+        @id = id
+        @is_owned = is_owned
+        @sprite = sprite
+        @color = color
         HAT_ARRAY << self
         if self.is_owned
          OWNED_HAT_ARRAY << self
