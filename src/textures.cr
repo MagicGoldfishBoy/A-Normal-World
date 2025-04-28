@@ -425,6 +425,8 @@
         PURPLE_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Purple_Sweatband.png")
         PINK_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Pink_Sweatband.png")
 
+        BEANIE_TEXTURE = SF::Texture.from_file("../graphics/hats/Beanie.png")
+
     #GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
     #G                                         Glasses Textures                                         G
     #GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
