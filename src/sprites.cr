@@ -156,31 +156,6 @@ module Sprites
             SF::Sprite.new
         else
             Player.assign_color(hat)
-            # case hat.as(Hat::HatBase).color
-            # when "grey"
-            #     sprite = SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
-            #     sprite.color = SF.color(100, 100, 100, 255)
-            #     sprite
-            # when "black"
-            #     sprite = SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
-            #     sprite.color = SF.color(25, 25, 25, 255)
-            #     sprite
-            # when "tan"
-            #     sprite = SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
-            #     sprite.color = SF.color(210, 180, 140, 255)
-            #     sprite
-            # when "brown"
-            #     sprite = SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
-            #     sprite.color = SF.color(210, 180, 140, 255)
-            #     sprite
-            # when "red"
-            #     sprite = SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
-            #     sprite.color = SF.color(136, 8, 8, 255)
-            #     sprite
-            # else
-            #   SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))  
-            # end
-            
         end
     end
 
