@@ -60,48 +60,50 @@ module Serialization
 
     def SaveFile.retrieve_data(file, data)
         json = File.read(file)
+        save = SaveData.from_json(json)
         player_stats = Hash(String, JSON::Any).from_json(json)
         case data
         when "name"
-        return "#{player_stats["name"].as_s}"
+        return save.stats["name"].to_s #"doll" #"#{player_stats["name"].as_s}"
         when "max_hp"
-        return "#{player_stats["max_hp"].as_s}"
+        return "10.0" #"#{player_stats["max_hp"].as_s}"
         end
     end
 
-    def SaveFile.load_game(file)
-        json = File.read(file)
-        player_stats = Hash(String, JSON::Any).from_json(json)
-        Player::Stats.name = player_stats["name"].to_s
-        Player::Stats.money = player_stats["money"].to_s.to_i
-        Player::Stats.lvl_points = player_stats["lvl_points"].to_s.to_i
-        Player::Stats.max_hp = player_stats["max_hp"].to_s.to_f64
-        Player::Stats.current_hp = player_stats["current_hp"].to_s.to_f64
-        Player::Stats.max_mp = player_stats["max_mp"].to_s.to_f64
-        Player::Stats.current_mp = player_stats["current_mp"].to_s.to_f64
-        Player::Stats.exp = player_stats["exp"].to_s.to_f64
-        Player::Stats.exp_cap = player_stats["exp_cap"].to_s.to_f64
-        Player::Stats.defense = player_stats["defense"].to_s.to_f64
-        Player::Stats.str = player_stats["str"].to_s.to_f64
-        Player::Stats.dex = player_stats["dex"].to_s.to_f64
-        Player::Stats.luk = player_stats["luk"].to_s.to_f64
-        Player::Stats.int = player_stats["int"].to_s.to_f64
-        Player::Appearance.change_skin(player_stats["skin"].to_s)
-        Player::Appearance.change_hair(player_stats["hair"].to_s)
-        Player::Appearance.change_face(player_stats["face"].to_s) 
-        Player::Appearance.change_shirt(player_stats["shirt"].to_s) 
-        Player::Appearance.change_hat(player_stats["hat"].to_s) 
-        Player::Appearance.change_earrings(player_stats["earrings"].to_s) 
-        Player::Appearance.change_pants(player_stats["pants"].to_s) 
-        Player::Appearance.change_gloves(player_stats["gloves"].to_s) 
-        Player::Appearance.change_shoes(player_stats["shoes"].to_s) 
-        Player::Appearance.change_makeup(player_stats["makeup"].to_s) 
-        Player::Appearance.change_necklace(player_stats["necklace"].to_s) 
-        Player::Appearance.change_glasses(player_stats["glasses"].to_s) 
-        Player::Appearance.change_jacket(player_stats["jacket"].to_s) 
-        Player::Appearance.change_socks(player_stats["socks"].to_s) 
-        Player::Appearance.change_weapon(player_stats["weapon"].to_s) 
-    end
+    # def SaveFile.load_game(file)
+    #   puts "loading"
+    #     json = File.read(file)
+    #     player_stats = Hash(String, JSON::Any).from_json(json)
+    #     Player::Stats.name = player_stats["name"].to_s
+    #     Player::Stats.money = player_stats["money"].to_s.to_i
+    #     Player::Stats.lvl_points = player_stats["lvl_points"].to_s.to_i
+    #     Player::Stats.max_hp = player_stats["max_hp"].to_s.to_f64
+    #     Player::Stats.current_hp = player_stats["current_hp"].to_s.to_f64
+    #     Player::Stats.max_mp = player_stats["max_mp"].to_s.to_f64
+    #     Player::Stats.current_mp = player_stats["current_mp"].to_s.to_f64
+    #     Player::Stats.exp = player_stats["exp"].to_s.to_f64
+    #     Player::Stats.exp_cap = player_stats["exp_cap"].to_s.to_f64
+    #     Player::Stats.defense = player_stats["defense"].to_s.to_f64
+    #     Player::Stats.str = player_stats["str"].to_s.to_f64
+    #     Player::Stats.dex = player_stats["dex"].to_s.to_f64
+    #     Player::Stats.luk = player_stats["luk"].to_s.to_f64
+    #     Player::Stats.int = player_stats["int"].to_s.to_f64
+    #     Player::Appearance.change_skin(player_stats["skin"].to_s)
+    #     Player::Appearance.change_hair(player_stats["hair"].to_s)
+    #     Player::Appearance.change_face(player_stats["face"].to_s) 
+    #     Player::Appearance.change_shirt(player_stats["shirt"].to_s) 
+    #     Player::Appearance.change_hat(player_stats["hat"].to_s) 
+    #     Player::Appearance.change_earrings(player_stats["earrings"].to_s) 
+    #     Player::Appearance.change_pants(player_stats["pants"].to_s) 
+    #     Player::Appearance.change_gloves(player_stats["gloves"].to_s) 
+    #     Player::Appearance.change_shoes(player_stats["shoes"].to_s) 
+    #     Player::Appearance.change_makeup(player_stats["makeup"].to_s) 
+    #     Player::Appearance.change_necklace(player_stats["necklace"].to_s) 
+    #     Player::Appearance.change_glasses(player_stats["glasses"].to_s) 
+    #     Player::Appearance.change_jacket(player_stats["jacket"].to_s) 
+    #     Player::Appearance.change_socks(player_stats["socks"].to_s) 
+    #     Player::Appearance.change_weapon(player_stats["weapon"].to_s) 
+    # end
 
     def SaveFile.initial_save(file)
       SaveFile.save_file=(file)
@@ -145,14 +147,91 @@ module Serialization
         @@stat_save_hash["weapon"] = Player::Appearance.get_clothing("weapon")
     end
 
+    # def SaveFile.normal_save
+    #     SaveFile.update_stats_hash
+    #     path = "saves/" + @@save_file.not_nil! # SaveFile.save_file.not_nil!
+    #     File.delete?(path)
+    #     Dir.mkdir_p(File.dirname(path))
+    #     stats = @@stat_save_hash.to_json
+    #     File.write(path, stats, mode: "w")
+    # end
+    struct SaveData
+      include JSON::Serializable
+    
+      property version : Int32 = 1
+      property stats : Hash(String, Float64 | Nil | String | Int32) = Hash(String, Float64 | Nil | String | Int32).new
+    
+      def initialize
+        @version = 1
+        @stats = Hash(String, Float64 | Nil | String | Int32).new
+      end
+    
+      @[JSON::Field(ignore_unknown: true)]
+    end
+    
     def SaveFile.normal_save
         SaveFile.update_stats_hash
-        path = "saves/" + @@save_file.not_nil! # SaveFile.save_file.not_nil!
-        File.delete?(path)
+      
+        save = SaveData.new
+        save.version = 2
+        save.stats = @@stat_save_hash
+      
+        path = "saves/" + @@save_file.not_nil!
         Dir.mkdir_p(File.dirname(path))
-        stats = @@stat_save_hash.to_json
-        File.write(path, stats, mode: "w")
+        File.write(path, save.to_json, mode: "w")
     end
+    def SaveFile.load_game(file)
+      path = "saves/" + @@save_file.not_nil!
+      json_data = File.read(path)
+    
+      save = SaveData.from_json(json_data)
+    
+      Player::Stats.name = save.stats["name"].to_s
+      Player::Stats.money = save.stats["money"].to_s.to_i
+      Player::Stats.lvl_points = save.stats["lvl_points"].to_s.to_i
+      Player::Stats.max_hp = save.stats["max_hp"].to_s.to_f64
+      Player::Stats.current_hp = save.stats["current_hp"].to_s.to_f64
+      Player::Stats.max_mp = save.stats["max_mp"].to_s.to_f64
+      Player::Stats.current_mp = save.stats["current_mp"].to_s.to_f64
+      Player::Stats.exp = save.stats["exp"].to_s.to_f64
+      Player::Stats.exp_cap = save.stats["exp_cap"].to_s.to_f64
+      Player::Stats.defense = save.stats["defense"].to_s.to_f64
+      Player::Stats.str = save.stats["str"].to_s.to_f64
+      Player::Stats.dex = save.stats["dex"].to_s.to_f64
+      Player::Stats.luk = save.stats["luk"].to_s.to_f64
+    
+      # if save.hat
+      #   Player::Appearance.hat = Hat::SaveHat.new(
+      #     name: save.hat.name,
+      #     id: save.hat.id,
+      #     is_owned: save.hat.is_owned,
+      #     color: save.hat.color
+      #   )
+      # else
+      #   Player::Appearance.hat = nil
+      # end
+    end
+      
+    # def SaveFile.normal_save
+    #   SaveFile.update_stats_hash
+    #     save = SaveData.new(
+    #     stats: @@stat_save_hash,
+    #     # hat: Player::Appearance.hat.try do |current_hat|
+    #     #   Hat::HatBase.new(
+    #     #     name: current_hat.name,
+    #     #     id: current_hat.id,
+    #     #     is_owned: current_hat.is_owned,
+    #     #     color: current_hat.color
+    #     #   )
+    #     # end
+    #   )
+    #     File.write(path, save.to_json)
+    
+    #   path = "saves/" + @@save_file.not_nil!
+    #   Dir.mkdir_p(File.dirname(path))
+    #   File.write(path, save.to_json, mode: "w")
+    # end
+    
 
     def SaveFile.save_check(path1, key)
         json = File.read(path1)
@@ -161,6 +240,91 @@ module Serialization
         puts "name: #{player_stats["name"].as_s}"
     end
   end
+
+    # def SaveFile.normal_save
+    #   SaveFile.update_stats_hash
+    
+    #   path = "saves/" + @@save_file.not_nil!
+    #   File.delete?(path)
+    #   Dir.mkdir_p(File.dirname(path))
+    
+    #   save = SaveData.new(
+    #     stats: Player::Stats,
+    #     hat: Player::Appearance.hat
+    #   )
+    
+    #   File.write(path, save.to_json)
+    # end
+    # def SaveFile.normal_save
+    #   SaveFile.update_stats_hash
+    
+    #   # save = SaveData.new(
+    #   #   stats: @@stat_save_hash,
+    #     # hat: Player::Appearance.hat.try do |current_hat|
+    #     #   Hat::SaveHat.new(
+    #     #     name: current_hat.name,
+    #     #     id: current_hat.id,
+    #     #     is_owned: current_hat.is_owned,
+    #     #     color: current_hat.color
+    #     #   )
+    #     # end
+    #   #)
+    
+    #   path = "saves/" + @@save_file.not_nil!
+    #   Dir.mkdir_p(File.dirname(path))
+    #  # File.write(path, save.to_json, mode: "w")
+    # end
+    
+    # def SaveFile.load_game(file)
+    #   path = "saves/" + @@save_file.not_nil!
+    #   json_data = File.read(path)
+    
+    #   save = SaveData.from_json(json_data)
+    
+    #   case save.version
+    #   when 1
+    #     Player::Stats = save.stats
+    #     Player::Appearance.hat = save.hat
+    #   else
+    #     raise "Unsupported save file version: #{save.version}"
+    #   end
+    # end
+    # def SaveFile.load_game(file)
+    #   path = "saves/" + @@save_file.not_nil!
+    #   json_data = File.read(path)
+    
+    #   save = SaveData.from_json(json_data)
+    
+    #   Player::Stats.name = save.stats["name"].to_s
+    
+    #   if save.hat
+    #     Player::Appearance.hat = Hat::SaveHat.new(
+    #       name: save.hat.name,
+    #       id: save.hat.id,
+    #       is_owned: save.hat.is_owned,
+    #       color: save.hat.color
+    #     )
+    #   else
+    #     Player::Appearance.hat = nil
+    #   end
+    # end
+  #   def SaveFile.load_game(file)
+  #     path = "saves/" + @@save_file.not_nil!
+  #     save = SaveData.from_json(File.read(path))
+    
+  #  #   Player::Stats.name = save.stats["name"].to_s
+    
+  #     # if hat = save.hat
+  #     #   Player::Appearance.hat = Hat::SaveHat.new(
+  #     #     name: hat.name,
+  #     #     id: hat.id,
+  #     #     is_owned: hat.is_owned,
+  #     #     color: hat.color
+  #     #   )
+  #     # else
+  #     #   Player::Appearance.hat = nil
+  #     # end
+  #   end
 
   class LevelFile
     #TODO: get this working so I can delete the fucking abomination that is the current serialization
