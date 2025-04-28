@@ -98,6 +98,13 @@ module InventoryWindow
 
         INVENTORY_SLOT_15 = Ui_Elements::Ui_BoxBase.new("Slot 15", "InvSlot15", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
         INVENTORY_WINDOW_BOX_ARRAY << INVENTORY_SLOT_15
+
+        PAGE_COUNT_BOX = Ui_Elements::Ui_BoxBase.new("Page Count Box", "InvBox1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(400, 0, 115, 40)), 115.0, 40.0, 2)
+        INVENTORY_WINDOW_BOX_ARRAY << PAGE_COUNT_BOX
+
+        PAGE_COUNT_TEXT = Ui_Elements::Ui_TextBase.new("Page Count Text", "InvText05", SF::Text.new("#{CosmeticsInventory::CosmeticsInventoryBase.return_current_page}/#{CosmeticsInventory::CosmeticsInventoryBase.return_max_page_count}", 
+        QUICKSAND, 18))
+        INVENTORY_TEXT_ARRAY << PAGE_COUNT_TEXT
         
 
         def self.position_inventory_window_elements(window)
@@ -146,6 +153,10 @@ module InventoryWindow
             INVENTORY_SLOT_13.sprite.position = INVENTORY_SLOT_12.sprite.position + SF.vector2(115, 0)
             INVENTORY_SLOT_14.sprite.position = INVENTORY_SLOT_13.sprite.position + SF.vector2(115, 0)
             INVENTORY_SLOT_15.sprite.position = INVENTORY_SLOT_14.sprite.position + SF.vector2(115, 0)
+
+            PAGE_COUNT_BOX.sprite.position = INVENTORY_BOX.sprite.position + SF.vector2(INVENTORY_BOX.sprite.global_bounds.width * 0.75, 15)
+            PAGE_COUNT_TEXT.text.position = PAGE_COUNT_BOX.sprite.position + SF.vector2(40, 8)
+            PAGE_COUNT_TEXT.text.string = "#{CosmeticsInventory::CosmeticsInventoryBase.return_current_page}/#{CosmeticsInventory::CosmeticsInventoryBase.return_max_page_count}"
 
         end
 
