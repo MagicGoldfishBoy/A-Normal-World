@@ -179,6 +179,12 @@ module Serialization
         )
         if save.hat.is_a?(Hat::HatBase)
           save.hat.as(Hat::HatBase).sprite = Hat::HatBase::HAT_SPRITE_HASH[save.hat.as(Hat::HatBase).id]
+          # case save.hat.as(Hat::HatBase).color#.sprite.as(SF::Sprite).color
+          # when "grey"
+          #   puts "grey"
+          #   Hat::HatBase::HAT_SPRITE_HASH[save.hat.as(Hat::HatBase).id].color = SF.color(100, 100, 100) 
+          #   save.hat.as(Hat::HatBase).sprite = Hat::HatBase::HAT_SPRITE_HASH[save.hat.as(Hat::HatBase).id]
+          # end
         end
       else
         Player::Appearance.hat = nil

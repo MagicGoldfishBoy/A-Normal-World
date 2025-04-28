@@ -92,7 +92,6 @@ module Sprites
     current_hair = if hair = Body::Hair.get_hair(Appearance.get_clothing("hair"))
 
     hat = Appearance.hat
-
          if hat.nil?
            SF::Sprite.new(hair.texture)
         elsif hat == nil || hat.covers_hair != true
@@ -156,7 +155,32 @@ module Sprites
         elsif !hat.sprite.as(SF::Sprite).texture
             SF::Sprite.new
         else
-            SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
+            Player.assign_color(hat)
+            # case hat.as(Hat::HatBase).color
+            # when "grey"
+            #     sprite = SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
+            #     sprite.color = SF.color(100, 100, 100, 255)
+            #     sprite
+            # when "black"
+            #     sprite = SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
+            #     sprite.color = SF.color(25, 25, 25, 255)
+            #     sprite
+            # when "tan"
+            #     sprite = SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
+            #     sprite.color = SF.color(210, 180, 140, 255)
+            #     sprite
+            # when "brown"
+            #     sprite = SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
+            #     sprite.color = SF.color(210, 180, 140, 255)
+            #     sprite
+            # when "red"
+            #     sprite = SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
+            #     sprite.color = SF.color(136, 8, 8, 255)
+            #     sprite
+            # else
+            #   SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))  
+            # end
+            
         end
     end
 
@@ -283,7 +307,80 @@ module Sprites
         return false
     end
     end
-
+def Player.assign_color(item)
+    case item.as(Clothing::ClothingBase).color
+    when "grey"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(100, 100, 100, 255)
+        sprite
+    when "black"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(25, 25, 25, 255)
+        sprite
+    when "tan"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(210, 180, 140, 255)
+        sprite
+    when "brown"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(139, 69, 19, 255)
+        sprite
+    when "red"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(136, 8, 8, 255)
+        sprite
+    when "orange"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(255, 117, 24, 255)
+        sprite
+    when "yellow"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(228, 208, 10, 255)
+        sprite
+    when "yellow-green"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(170, 255, 0, 255)
+        sprite
+    when "green"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(34, 139, 34, 255)
+        sprite
+    when "turquoise"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(64, 224, 208, 255)
+        sprite
+    when "light-blue"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(137, 207, 240, 255)
+        sprite
+    when "blue"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(20, 52, 164, 255)
+        sprite
+    when "indigo"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(63, 0, 255, 255)
+        sprite
+    when "light-purple"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(191, 64, 191, 255)
+        sprite
+    when "purple"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(112, 41, 99, 255)
+        sprite
+    when "pink"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(255, 192, 203, 255)
+        sprite
+    when "hot-pink"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+        sprite.color = SF.color(255, 105, 180, 255)
+        sprite
+    else
+      SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))  
+    end
+end
 def Player.check_feet_collision(window, object)
     bounding_box = @@player_feet_hitbox.global_bounds
     object_bounds = object.global_bounds
