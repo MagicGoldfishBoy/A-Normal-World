@@ -183,12 +183,12 @@ module CosmeticsInventory
                 if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page - 1 >= 0
                     inventory.page -= 1
                 elsif inventory.tab == CosmeticsInventoryManager.current_tab 
-                    inventory.page = inventory.max_page_count - 1
+                    inventory.page = inventory.max_page_count
                 end}
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(InventoryWindow::InventoryWindowElements::RIGHT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryBase::COSMETIC_INVENTORY_ARRAY.each{ |inventory| 
-                if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page + 1 < inventory.array.size
+                if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page + 1 < inventory.array.size && inventory.page + 1 <= inventory.max_page_count
                     inventory.page += 1
                 elsif inventory.tab == CosmeticsInventoryManager.current_tab 
                     inventory.page = 0
@@ -304,6 +304,18 @@ module CosmeticsInventory
             case tab
             when "hat"
                 @@hat_inventory.draw(window)
+            end
+        end
+        def self.return_current_page
+            case CosmeticsInventoryManager.current_tab
+            when "hat"
+               return @@hat_inventory.page
+            end
+        end
+        def self.return_max_page_count
+            case CosmeticsInventoryManager.current_tab
+            when "hat"
+               return @@hat_inventory.max_page_count
             end
         end
           
