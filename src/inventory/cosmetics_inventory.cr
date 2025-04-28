@@ -240,7 +240,7 @@ module CosmeticsInventory
             start_index = [start_index, 0].max
             end_index = [end_index, self.array.size - 1].min
         
-            # If the start_index exceeds the array size, run for the hills! :O
+            # If the start_index exceeds the array size, run for the hills :O
             return if start_index >= self.array.size
         
             items_per_row = 5
@@ -270,54 +270,34 @@ module CosmeticsInventory
                     current_pos.y += spacing_y * 4.5
                 end
             end
+          if SF::Mouse.button_pressed?(SF::Mouse::Left)
+            self.mouse_handling(window)
+          end
         end
+        def mouse_handling(window)
+            mouse_position = SF::Mouse.get_position(window)
+            mouse_x = mouse_position.x
+            mouse_y = mouse_position.y
+            current_size = window.size
+            original_width = 800
+            original_height = 600
         
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
         
-        # def draw(window)
-        #     current_size = window.size
-        #     original_width = 800 
-        #     original_height = 600
-        #     scale_x = current_size.x.to_f / original_width
-        #     scale_y = current_size.y.to_f / original_height
-          
-        #     scale_ratio = [scale_x, scale_y].min
-        #     max_scale = 1.5
-        #     clamped_scale = [scale_ratio, max_scale].min
-          
-        #     window.view = window.default_view
-          
-        #     items_per_page = 15
-        #     start_index = @page * items_per_page
-        #     end_index = start_index + items_per_page - 1
-          
-        #     items_per_row = 5
-        #     spacing_x = 13 * max_scale
-        #     spacing_y = 17 * max_scale
-          
-        #     base_position = InventoryWindow::InventoryWindowElements::INVENTORY_SLOT_01.sprite.position + SF.vector2(spacing_x, spacing_y)
-          
-        #     current_pos = SF.vector2(base_position.x, base_position.y)
-          
-        #     self.array[start_index..end_index].each_with_index do |item, index|
-        #       item.sprite.scale = SF.vector2(2, 2)
-        #       item.sprite.position = current_pos
-          
-        #       if self.id == "inv_hat"
-        #         item.sprite.texture_rect = SF::Rect.new(34, 14, 36, 33)
-        #       end
-          
-        #       window.draw(item.sprite)
-          
-        #       # Next column
-        #       current_pos.x += spacing_x * 5.85
-          
-        #       # Next Row
-        #       if (index + 1) % items_per_row == 0
-        #         current_pos.x = base_position.x
-        #         current_pos.y += spacing_y * 4.5
-        #       end
-        #     end
-        #   end
+            scaled_mouse_x = mouse_x / scale_x
+            scaled_mouse_y = mouse_y / scale_y
+
+          if MouseHandling::ClickHandling.button_clicked?(self.array[0].sprite.as(SF::Sprite), scaled_mouse_x, scaled_mouse_y)
+            if self.array[0].is_a?(Hat::HatBase)
+            Player::Appearance.hat = self.array[0].as(Hat::HatBase)
+            puts self.array[0].as(Hat::HatBase)
+            if Player::Appearance.hat
+            puts Player::Appearance.hat.as(Hat::HatBase).name
+            end
+            end
+          end
+        end
           
         def self.draw_clothing_items(window, tab)
             case tab
@@ -327,9 +307,5 @@ module CosmeticsInventory
         end
           
         @@hat_inventory = CosmeticsInventoryBase.new("Hat Inventory", "inv_hat", 5, 0, "hat", "color", Hat::HatBase::OWNED_HAT_ARRAY)
-        # def draw(window)
-        #     self.array.each{ |item|
-        #     window.draw(item)}
-        # end
     end
 end
