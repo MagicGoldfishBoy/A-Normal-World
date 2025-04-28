@@ -142,7 +142,7 @@ module Serialization
         save = SaveData.new
         save.version = 2
         save.stats = @@stat_save_hash
-        #save.hat = Player::Appearance.get_clothing("hat")
+        save.hat = Player::Appearance.hat
       
         path = "saves/" + @@save_file.not_nil!
         Dir.mkdir_p(File.dirname(path))
@@ -168,17 +168,28 @@ module Serialization
       Player::Stats.dex = save.stats["dex"].to_s.to_f64
       Player::Stats.luk = save.stats["luk"].to_s.to_f64
     
+      texture = Hat::HatBase::HAT_SPRITE_HASH[save.hat.as(Hat::HatBase).id].texture
+if texture.nil?
+  puts "Texture is nil for ID: #{save.hat.as(Hat::HatBase).id}"
+else
+  puts "Texture loaded successfully for ID: #{save.hat.as(Hat::HatBase).id}"
+end
+
       if save.hat
         Player::Appearance.hat = Hat::HatBase.new(
           name: save.hat.as(Hat::HatBase).name,
           id: save.hat.as(Hat::HatBase).id,
-          sprite: SF::Sprite.new,
+          sprite: Hat::HatBase::HAT_SPRITE_HASH[save.hat.as(Hat::HatBase).id],
           is_owned: save.hat.as(Hat::HatBase).is_owned,
           color: save.hat.as(Hat::HatBase).color
         )
+        if save.hat.is_a?(Hat::HatBase)
+          save.hat.as(Hat::HatBase).sprite = Hat::HatBase::HAT_SPRITE_HASH[save.hat.as(Hat::HatBase).id]
+        end
       else
         Player::Appearance.hat = nil
       end
+
     end
       
     # def SaveFile.normal_save
