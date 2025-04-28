@@ -219,17 +219,6 @@ module CosmeticsInventory
         property sort_type : String
         property array : Array(Clothing::ClothingBase)
 
-
-        def self.delete_by_id(id : Int32)
-            OWNED_HAT_ARRAY.reject! { |hat| hat.id == id }
-        end
-        
-
-        def self.owned?(id : Int32) : Bool
-            OWNED_HAT_ARRAY.any? { |hat| hat.id == id }
-        end
-          
-
         def draw(window)
             current_size = window.size
             original_width = 800 
@@ -302,11 +291,7 @@ module CosmeticsInventory
             self.array.each do |item|
               if MouseHandling::ClickHandling.button_clicked?(item.sprite.as(SF::Sprite), scaled_mouse_x, scaled_mouse_y)
                 if item.is_a?(Hat::HatBase)
-                    if Hat::HatBase::OWNED_HAT_ARRAY.none? { |owned_hat| owned_hat.id == Player::Appearance.hat.as(Hat::HatBase).id }
-                    Hat::HatBase::OWNED_HAT_ARRAY << Player::Appearance.hat.as(Hat::HatBase)
-                  end
-                  Player::Appearance.hat = item.as(Hat::HatBase)
-                  Hat::HatBase::OWNED_HAT_ARRAY.reject! { |owned_hat| owned_hat.id == Player::Appearance.hat.as(Hat::HatBase).id }
+                    Hat::HatBase.swap_hat(item)
                 end
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
