@@ -167,13 +167,6 @@ module Serialization
       Player::Stats.str = save.stats["str"].to_s.to_f64
       Player::Stats.dex = save.stats["dex"].to_s.to_f64
       Player::Stats.luk = save.stats["luk"].to_s.to_f64
-    
-      texture = Hat::HatBase::HAT_SPRITE_HASH[save.hat.as(Hat::HatBase).id].texture
-if texture.nil?
-  puts "Texture is nil for ID: #{save.hat.as(Hat::HatBase).id}"
-else
-  puts "Texture loaded successfully for ID: #{save.hat.as(Hat::HatBase).id}"
-end
 
       if save.hat
         Player::Appearance.hat = Hat::HatBase.new(
@@ -181,7 +174,8 @@ end
           id: save.hat.as(Hat::HatBase).id,
           sprite: Hat::HatBase::HAT_SPRITE_HASH[save.hat.as(Hat::HatBase).id],
           is_owned: save.hat.as(Hat::HatBase).is_owned,
-          color: save.hat.as(Hat::HatBase).color
+          color: save.hat.as(Hat::HatBase).color,
+          covers_hair: save.hat.as(Hat::HatBase).covers_hair
         )
         if save.hat.is_a?(Hat::HatBase)
           save.hat.as(Hat::HatBase).sprite = Hat::HatBase::HAT_SPRITE_HASH[save.hat.as(Hat::HatBase).id]

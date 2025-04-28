@@ -93,15 +93,15 @@ module Sprites
 
     hat = Appearance.hat
 
-        # if hat.nil?
+         if hat.nil?
            SF::Sprite.new(hair.texture)
-    #     elsif hat == "No Hat" || Clothing::Hat.get_hat(Appearance.get_clothing("hat")).try(&.length) != "full"
-    #         SF::Sprite.new(hair.texture)
-    #     else 
-    #         i = "#{hair.name} Hat"
-    #         texture = Body::Hair.get_hair(i).try(&.texture) || SF::Texture.new(NIL_TEXTURE)
-    #         SF::Sprite.new(texture)
-        # end
+        elsif hat == nil || hat.covers_hair != true
+            SF::Sprite.new(hair.texture)
+        else 
+            i = "#{hair.name} Hat"
+            texture = Body::Hair.get_hair(i).try(&.texture) || SF::Texture.new(NIL_TEXTURE)
+            SF::Sprite.new(texture)
+        end
          else
              SF::Sprite.new
         end
@@ -149,33 +149,16 @@ module Sprites
     end
 
     current_hat = if hat = Appearance.hat
-        if hat.is_a?(Hat::HatBase)
-          if hat.sprite.is_a?(SF::Sprite)
-         #   puts hat.sprite.as(SF::Sprite).texture
-            if hat.sprite.as(SF::Sprite).texture
-              SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
-            else
-              SF::Sprite.new
-            end
-          else
+        if !hat.is_a?(Hat::HatBase)
             SF::Sprite.new
-          end
+        elsif !hat.sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        elsif !hat.sprite.as(SF::Sprite).texture
+            SF::Sprite.new
         else
-          SF::Sprite.new
+            SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
         end
-      else
-        SF::Sprite.new
-      end
-
-    # current_hat = if hat = Appearance.hat 
-    #     if Appearance.hat.is_a?(Hat::HatBase)
-    #      if Appearance.hat.as(Hat::HatBase).sprite.is_a?(SF::Sprite)
-    #       SF::Sprite.new(hat.sprite.as(SF::Sprite).texture.as(SF::Texture))
-    #      end
-    #     end
-    # else
-    #     SF::Sprite.new
-    # end
+    end
 
     current_glasses = if glasses = Clothing::Glasses.get_glasses(Appearance.get_clothing("glasses"))
         SF::Sprite.new(glasses.texture)

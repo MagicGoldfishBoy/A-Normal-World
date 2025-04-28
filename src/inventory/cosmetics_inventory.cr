@@ -291,11 +291,12 @@ module CosmeticsInventory
           if MouseHandling::ClickHandling.button_clicked?(self.array[0].sprite.as(SF::Sprite), scaled_mouse_x, scaled_mouse_y)
             if self.array[0].is_a?(Hat::HatBase)
             Player::Appearance.hat = self.array[0].as(Hat::HatBase)
-            puts self.array[0].as(Hat::HatBase)
+            #puts self.array[0].as(Hat::HatBase)
             if Player::Appearance.hat
-            puts Player::Appearance.hat.as(Hat::HatBase).name
+            #puts Player::Appearance.hat.as(Hat::HatBase).name
             end
             end
+            Sprites::Player.refresh_player_sprite(window)
           end
         end
           
