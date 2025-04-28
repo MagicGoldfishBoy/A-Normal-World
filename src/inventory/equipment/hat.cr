@@ -113,4 +113,32 @@ module Hat
         @@hot_pink_baseball_cap.sprite.as(SF::Sprite).color = SF.color(255, 105, 180)
         HAT_SPRITE_HASH[@@hot_pink_baseball_cap.id] = @@hot_pink_baseball_cap.sprite.as(SF::Sprite)
     end
+    class Beanie < HatBase
+        @@white_beanie = Beanie.new("White Beanie", "W/Beanie", true, SF::Sprite.new(BEANIE_TEXTURE), "white", true)
+        HAT_SPRITE_HASH[@@white_beanie.id] = @@white_beanie.sprite.as(SF::Sprite)
+
+        @@grey_beanie = Beanie.new("Grey Beanie", "Gy/Beanie", true, SF::Sprite.new(BEANIE_TEXTURE), "grey", true)
+        @@grey_beanie.sprite.as(SF::Sprite).color = SF.color(100, 100, 100) 
+        HAT_SPRITE_HASH[@@grey_beanie.id] = @@grey_beanie.sprite.as(SF::Sprite)
+
+        @@black_beanie = Beanie.new("Black Beanie", "Bk/Beanie", true, SF::Sprite.new(BEANIE_TEXTURE), "black", true)
+        @@black_beanie.sprite.as(SF::Sprite).color = SF.color(25, 25, 25) 
+        HAT_SPRITE_HASH[@@black_beanie.id] = @@black_beanie.sprite.as(SF::Sprite)
+
+        @@tan_beanie = Beanie.new("Tan Beanie", "T/Beanie", true, SF::Sprite.new(BEANIE_TEXTURE), "tan", true)
+        @@tan_beanie.sprite.as(SF::Sprite).color = SF.color(210, 180, 140)
+        HAT_SPRITE_HASH[@@tan_beanie.id] = @@tan_beanie.sprite.as(SF::Sprite)
+
+        @@brown_beanie = Beanie.new("Brown Beanie", "Br/Beanie", true, SF::Sprite.new(BEANIE_TEXTURE), "brown", true)
+        @@brown_beanie.sprite.as(SF::Sprite).color = SF.color(139, 69, 19)
+        HAT_SPRITE_HASH[@@brown_beanie.id] = @@brown_beanie.sprite.as(SF::Sprite)
+
+        @@red_beanie = Beanie.new("Red Beanie", "R/Beanie", true, SF::Sprite.new(BEANIE_TEXTURE), "red", true)
+        @@red_beanie.sprite.as(SF::Sprite).color = SF.color(136, 8, 8)
+        HAT_SPRITE_HASH[@@red_beanie.id] = @@red_beanie.sprite.as(SF::Sprite)
+
+        @@orange_beanie = Beanie.new("Orange Beanie", "O/Beanie", true, SF::Sprite.new(BEANIE_TEXTURE), "orange", true)
+        @@orange_beanie.sprite.as(SF::Sprite).color = SF.color(255, 117, 24)
+        HAT_SPRITE_HASH[@@orange_beanie.id] = @@orange_beanie.sprite.as(SF::Sprite)
+    end
 end
