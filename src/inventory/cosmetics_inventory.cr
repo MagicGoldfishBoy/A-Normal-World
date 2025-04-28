@@ -250,7 +250,7 @@ module CosmeticsInventory
             base_position = InventoryWindow::InventoryWindowElements::INVENTORY_SLOT_01.sprite.as(SF::Sprite).position + SF.vector2(spacing_x, spacing_y)
         
             current_pos = SF.vector2(base_position.x, base_position.y)
-        
+            self.array.each{ |item| item.sprite.as(SF::Sprite).position = SF.vector2(-1000, -1000)}
             self.array[start_index..end_index].each_with_index do |item, index|
                 item.sprite.as(SF::Sprite).scale = SF.vector2(2, 2)
                 item.sprite.as(SF::Sprite).position = current_pos
@@ -281,24 +281,24 @@ module CosmeticsInventory
             current_size = window.size
             original_width = 800
             original_height = 600
-        
+          
             scale_x = current_size.x.to_f / original_width
             scale_y = current_size.y.to_f / original_height
-        
+          
             scaled_mouse_x = mouse_x / scale_x
             scaled_mouse_y = mouse_y / scale_y
-
-          if MouseHandling::ClickHandling.button_clicked?(self.array[0].sprite.as(SF::Sprite), scaled_mouse_x, scaled_mouse_y)
-            if self.array[0].is_a?(Hat::HatBase)
-            Player::Appearance.hat = self.array[0].as(Hat::HatBase)
-            #puts self.array[0].as(Hat::HatBase)
-            if Player::Appearance.hat
-            #puts Player::Appearance.hat.as(Hat::HatBase).name
+          
+            self.array.each do |item|
+              if MouseHandling::ClickHandling.button_clicked?(item.sprite.as(SF::Sprite), scaled_mouse_x, scaled_mouse_y)
+                if item.is_a?(Hat::HatBase)
+                  Player::Appearance.hat = item.as(Hat::HatBase)
+                end
+                Sprites::Player.refresh_player_sprite(window)
+                #sleep 0.05.seconds
+                break 
+              end
             end
-            end
-            Sprites::Player.refresh_player_sprite(window)
-          end
-        end
+          end          
           
         def self.draw_clothing_items(window, tab)
             case tab
