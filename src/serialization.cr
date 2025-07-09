@@ -175,7 +175,8 @@ module Serialization
           sprite: Hat::HatBase::HAT_SPRITE_HASH[save.hat.as(Hat::HatBase).id],
           is_owned: save.hat.as(Hat::HatBase).is_owned,
           color: save.hat.as(Hat::HatBase).color,
-          covers_hair: save.hat.as(Hat::HatBase).covers_hair
+          covers_hair: save.hat.as(Hat::HatBase).covers_hair,
+          sfx: Hat::HatBase::HAT_SFX_HASH[save.hat.as(Hat::HatBase).id]
         )
         if save.hat.is_a?(Hat::HatBase)
           save.hat.as(Hat::HatBase).sprite = Hat::HatBase::HAT_SPRITE_HASH[save.hat.as(Hat::HatBase).id]

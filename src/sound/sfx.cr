@@ -19,4 +19,9 @@ module SFX
 
         ROCK_HIT_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/rock_hit_01.ogg"))
     end
+
+    class EquipSFX
+
+        TEST_EQUIP_SFX = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/fabric_hit_01.ogg"))
+    end
 end
