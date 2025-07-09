@@ -240,7 +240,7 @@ module CosmeticsInventory
             start_index = [start_index, 0].max
             end_index = [end_index, self.array.size - 1].min
         
-            # If the start_index exceeds the array size, run for the hills :O
+            # If the start_index exceeds the array size, kick that shit out
             return if start_index >= self.array.size
         
             items_per_row = 5
