@@ -259,6 +259,9 @@ module CosmeticsInventory
                 if self.id == "inv_hat"
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(34, 14, 36, 33)
                 end
+                if self.id =="inv_glasses"
+                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(34, 14, 36, 33)
+                end
         
                 window.draw(item.sprite.as(SF::Sprite))
         
@@ -305,21 +308,28 @@ module CosmeticsInventory
             case tab
             when "hat"
                 @@hat_inventory.draw(window)
+            when "glasses"
+                @@glasses_inventory.draw(window)
             end
         end
         def self.return_current_page
             case CosmeticsInventoryManager.current_tab
             when "hat"
                return @@hat_inventory.page
+            when "glasses"
+               return @@glasses_inventory.page
             end
         end
         def self.return_max_page_count
             case CosmeticsInventoryManager.current_tab
             when "hat"
                return @@hat_inventory.max_page_count
+            when "glasses"
+               return @@glasses_inventory.max_page_count
             end
         end
           
         @@hat_inventory = CosmeticsInventoryBase.new("Hat Inventory", "inv_hat", 5, 0, "hat", "color", Hat::HatBase::OWNED_HAT_ARRAY)
+        @@glasses_inventory = CosmeticsInventoryBase.new("Glasses Inventory", "inv_glasses", 5, 0, "glasses", "color", Glasses::GlassesBase::OWNED_GLASSES_ARRAY)
     end
 end
