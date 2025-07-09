@@ -6,6 +6,7 @@ require "../../src/inventory/equipment/clothing.cr"
 require "../../src/window/inventory_window.cr"
 require "../inventory/inventory.cr"
 require "../inventory/equipment/hat.cr"
+require "../inventory/equipment/glasses.cr"
 
 module CosmeticsInventory
     class CosmeticsInventoryManager
