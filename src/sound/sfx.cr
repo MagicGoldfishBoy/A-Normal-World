@@ -22,6 +22,8 @@ module SFX
 
     class EquipSFX
 
-        TEST_EQUIP_SFX = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/fabric_hit_01.ogg"))
+        FABRIC_EQUIP_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/fabric_equip_01.ogg"))
+
+        GLASSES_EQUIP_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/glasses_equip_01.ogg"))
     end
 end
