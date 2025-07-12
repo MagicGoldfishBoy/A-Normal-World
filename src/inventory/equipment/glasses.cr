@@ -63,40 +63,25 @@ module Glasses
 
     class Sunglasses < GlassesBase
         @@sunglasses = Sunglasses.new("White Sunglasses", "sunglasses", true, SF::Sprite.new(SUNGLASSES_TEXTURE), "white", DEFAULT_GLASSES_EQUIP_SFX)
-        GLASSES_SPRITE_HASH[@@sunglasses.id] = @@sunglasses.sprite.as(SF::Sprite)
-        GLASSES_SFX_HASH[@@sunglasses.id] = @@sunglasses.sfx.as(SF::Sound)
 
         @@grey_sunglasses = Sunglasses.new("Grey Sunglasses", "grey_sunglasses", true, SF::Sprite.new(SUNGLASSES_TEXTURE), "grey", DEFAULT_GLASSES_EQUIP_SFX)
         @@grey_sunglasses.sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
-        GLASSES_SPRITE_HASH[@@grey_sunglasses.id] = @@grey_sunglasses.sprite.as(SF::Sprite)
-        GLASSES_SFX_HASH[@@grey_sunglasses.id] = @@grey_sunglasses.sfx.as(SF::Sound)
 
         @@black_sunglasses = Sunglasses.new("Black Sunglasses", "black_sunglasses", true, SF::Sprite.new(SUNGLASSES_TEXTURE), "black", DEFAULT_GLASSES_EQUIP_SFX)
         @@black_sunglasses.sprite.as(SF::Sprite).color = Color::ClothingColor::BLACK
-        GLASSES_SPRITE_HASH[@@black_sunglasses.id] = @@black_sunglasses.sprite.as(SF::Sprite)
-        GLASSES_SFX_HASH[@@black_sunglasses.id] = @@black_sunglasses.sfx.as(SF::Sound)
 
         @@red_sunglasses = Sunglasses.new("Red Sunglasses", "red_sunglasses", true, SF::Sprite.new(SUNGLASSES_TEXTURE), "red", DEFAULT_GLASSES_EQUIP_SFX)
         @@red_sunglasses.sprite.as(SF::Sprite).color = Color::ClothingColor::RED
-        GLASSES_SPRITE_HASH[@@red_sunglasses.id] = @@red_sunglasses.sprite.as(SF::Sprite)
-        GLASSES_SFX_HASH[@@red_sunglasses.id] = @@red_sunglasses.sfx.as(SF::Sound)
     end
     class Eyeglasses < GlassesBase
         @@white_round_eyeglasses = Eyeglasses.new("White Round Glasses", "white_round_eyeglasses", true, SF::Sprite.new(WHITE_ROUND_GLASSES_TEXTURE), "white", DEFAULT_GLASSES_EQUIP_SFX)
-        GLASSES_SPRITE_HASH[@@white_round_eyeglasses.id] = @@white_round_eyeglasses.sprite.as(SF::Sprite)
-        GLASSES_SFX_HASH[@@white_round_eyeglasses.id] = @@white_round_eyeglasses.sfx.as(SF::Sound)
 
         @@grey_round_eyeglasses = Eyeglasses.new("Grey Round Glasses", "round_eyeglasses", true, SF::Sprite.new(GREY_ROUND_GLASSES_TEXTURE), "grey_custom", DEFAULT_GLASSES_EQUIP_SFX)
-        GLASSES_SPRITE_HASH[@@grey_round_eyeglasses.id] = @@grey_round_eyeglasses.sprite.as(SF::Sprite)
-        GLASSES_SFX_HASH[@@grey_round_eyeglasses.id] = @@grey_round_eyeglasses.sfx.as(SF::Sound)
 
         @@rainbow_round_eyeglasses = Eyeglasses.new("Rainbow Round Glasses", "rainbow_round_eyeglasses", true, SF::Sprite.new(RAINBOW_ROUND_GLASSES_TEXTURE), "rainbow", DEFAULT_GLASSES_EQUIP_SFX)
-        GLASSES_SPRITE_HASH[@@rainbow_round_eyeglasses.id] = @@rainbow_round_eyeglasses.sprite.as(SF::Sprite)
-        GLASSES_SFX_HASH[@@rainbow_round_eyeglasses.id] = @@rainbow_round_eyeglasses.sfx.as(SF::Sound)
+
     end
     class Eyepatch < GlassesBase
         @@eye_bandage = Eyepatch.new("Eye Bandage", "eye_bandage", true, SF::Sprite.new(EYE_BANDAGE_TEXTURE), "white", EYEPATCH_GLASSES_EQUIP_SFX)
-        GLASSES_SPRITE_HASH[@@eye_bandage.id] = @@eye_bandage.sprite.as(SF::Sprite)
-        GLASSES_SFX_HASH[@@eye_bandage.id] = @@eye_bandage.sfx.as(SF::Sound)
     end
 end
