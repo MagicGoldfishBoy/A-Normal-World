@@ -399,6 +399,8 @@
 
         TOPAZ_EARRINGS_TEXTURE = SF::Texture.from_file("../graphics/Topaz_Earrings.png")
 
+        FIRE_AGATE_EARRINGS_TEXTURE = SF::Texture.from_file("../graphics/earrings/Fire_Agate_Earrings.png")
+
     #HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
     #H                                          Hat Textures                                            H
     #HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH

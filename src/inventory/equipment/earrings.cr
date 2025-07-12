@@ -60,6 +60,9 @@ module Earrings
         end
     end
     class JeweledEarrings < EarringsBase
-        @@ruby_earrings = JeweledEarrings.new("Ruby Earrings", "ruby_earrings", true, SF::Sprite.new(RUBY_EARRINGS_TEXTURE), "red", DEFAULT_EARRINGS_EQUIP_SFX)
+        @@ruby_earrings = JeweledEarrings.new("Ruby Earrings", "ruby_earrings", true, SF::Sprite.new(RUBY_EARRINGS_TEXTURE), "red_custom", DEFAULT_EARRINGS_EQUIP_SFX)
+        @@amber_earrings = JeweledEarrings.new("Amber Earrings", "amber_earrings", true, SF::Sprite.new(AMBER_EARRINGS_TEXTURE), "orange_custom", DEFAULT_EARRINGS_EQUIP_SFX)
+        @@topaz_earrings = JeweledEarrings.new("Topaz Earrings", "topaz_earrings", true, SF::Sprite.new(TOPAZ_EARRINGS_TEXTURE), "yellow_custom", DEFAULT_EARRINGS_EQUIP_SFX)
+        @@fire_agate_earrings = JeweledEarrings.new("Fire Agate Earrings", "fire_agate_earrings", true, SF::Sprite.new(FIRE_AGATE_EARRINGS_TEXTURE), "brown_custom", DEFAULT_EARRINGS_EQUIP_SFX)
     end
 end
