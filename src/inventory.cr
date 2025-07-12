@@ -250,21 +250,21 @@ module Inventory
         @@clothing_earrings_category_text.string = ClothingTabEarrings.get_earrings_category
         Utility::StringUtilities.center_text(@@clothing_earrings_category_text)
 
-        @@glasses_tab = SF::RectangleShape.new(SF.vector2(100, 30))
-        @@glasses_tab.fill_color = SF.color(161, 183, 208)
+        # @@glasses_tab = SF::RectangleShape.new(SF.vector2(100, 30))
+        # @@glasses_tab.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_tab_text = SF::Text.new
-        @@glasses_tab_text.font = QUICKSAND
-        @@glasses_tab_text.character_size = 20
-        @@glasses_tab_text.color = SF::Color::Blue
-        @@glasses_tab_text.string = "Glasses"
+        # @@glasses_tab_text = SF::Text.new
+        # @@glasses_tab_text.font = QUICKSAND
+        # @@glasses_tab_text.character_size = 20
+        # @@glasses_tab_text.color = SF::Color::Blue
+        # @@glasses_tab_text.string = "Glasses"
 
-        @@clothing_glasses_category_text = SF::Text.new
-        @@clothing_glasses_category_text.font = QUICKSAND
-        @@clothing_glasses_category_text.character_size = 20
-        @@clothing_glasses_category_text.color = SF::Color::Blue
-        @@clothing_glasses_category_text.string = ClothingTabGlasses.get_glasses_category
-        Utility::StringUtilities.center_text(@@clothing_glasses_category_text)
+        # @@clothing_glasses_category_text = SF::Text.new
+        # @@clothing_glasses_category_text.font = QUICKSAND
+        # @@clothing_glasses_category_text.character_size = 20
+        # @@clothing_glasses_category_text.color = SF::Color::Blue
+        # @@clothing_glasses_category_text.string = ClothingTabGlasses.get_glasses_category
+        # Utility::StringUtilities.center_text(@@clothing_glasses_category_text)
 
         @@makeup_tab = SF::RectangleShape.new(SF.vector2(100, 30))
         @@makeup_tab.fill_color = SF.color(161, 183, 208)
@@ -660,11 +660,11 @@ module Inventory
         #     ClothingTabHat.assign_slot_textures(window)
         # end
 
-        def InventoryManager.open_glasses_tab(window)
-            InventoryManager.reset_clothing_pages(window)
-            @@tab = "Glasses"
-            ClothingTabGlasses.assign_slot_textures(window)
-        end
+        # def InventoryManager.open_glasses_tab(window)
+        #     InventoryManager.reset_clothing_pages(window)
+        #     @@tab = "Glasses"
+        #     ClothingTabGlasses.assign_slot_textures(window)
+        # end
 
         def InventoryManager.open_makeup_tab(window)
             InventoryManager.reset_clothing_pages(window)
@@ -9446,1035 +9446,1035 @@ module Inventory
 
     end
 
-    class ClothingTabGlasses
-        @@owned_glasses_array = [] of Clothing::Glasses
+    # class ClothingTabGlasses
+    #     @@owned_glasses_array = [] of Clothing::Glasses
 
-        @@glasses_sorting_category = "Type"
+    #     @@glasses_sorting_category = "Type"
 
-        @@glasses_slot_01 : Clothing::Glasses? = nil
-        @@glasses_slot_02 : Clothing::Glasses? = nil
-        @@glasses_slot_03 : Clothing::Glasses? = nil
-        @@glasses_slot_04 : Clothing::Glasses? = nil
-        @@glasses_slot_05 : Clothing::Glasses? = nil
-        @@glasses_slot_06 : Clothing::Glasses? = nil
-        @@glasses_slot_07 : Clothing::Glasses? = nil
-        @@glasses_slot_08 : Clothing::Glasses? = nil
-        @@glasses_slot_09 : Clothing::Glasses? = nil
-        @@glasses_slot_10 : Clothing::Glasses? = nil
-        @@glasses_slot_11 : Clothing::Glasses? = nil
-        @@glasses_slot_12 : Clothing::Glasses? = nil
-        @@glasses_slot_13 : Clothing::Glasses? = nil
-        @@glasses_slot_14 : Clothing::Glasses? = nil
-        @@glasses_slot_15 : Clothing::Glasses? = nil
+    #     @@glasses_slot_01 : Clothing::Glasses? = nil
+    #     @@glasses_slot_02 : Clothing::Glasses? = nil
+    #     @@glasses_slot_03 : Clothing::Glasses? = nil
+    #     @@glasses_slot_04 : Clothing::Glasses? = nil
+    #     @@glasses_slot_05 : Clothing::Glasses? = nil
+    #     @@glasses_slot_06 : Clothing::Glasses? = nil
+    #     @@glasses_slot_07 : Clothing::Glasses? = nil
+    #     @@glasses_slot_08 : Clothing::Glasses? = nil
+    #     @@glasses_slot_09 : Clothing::Glasses? = nil
+    #     @@glasses_slot_10 : Clothing::Glasses? = nil
+    #     @@glasses_slot_11 : Clothing::Glasses? = nil
+    #     @@glasses_slot_12 : Clothing::Glasses? = nil
+    #     @@glasses_slot_13 : Clothing::Glasses? = nil
+    #     @@glasses_slot_14 : Clothing::Glasses? = nil
+    #     @@glasses_slot_15 : Clothing::Glasses? = nil
 
-       #---------------------------------debug-------------------------------------------
-        @@owned_glasses_array.push(Clothing::Glasses.get_glasses("No Glasses").not_nil!)
+    #    #---------------------------------debug-------------------------------------------
+    #     @@owned_glasses_array.push(Clothing::Glasses.get_glasses("No Glasses").not_nil!)
 
-        @@owned_glasses_array.push(Clothing::Glasses.get_glasses("Sunglasses").not_nil!)
+    #     @@owned_glasses_array.push(Clothing::Glasses.get_glasses("Sunglasses").not_nil!)
 
-        @@owned_glasses_array.push(Clothing::Glasses.get_glasses("Round Glasses").not_nil!)
+    #     @@owned_glasses_array.push(Clothing::Glasses.get_glasses("Round Glasses").not_nil!)
 
-        @@owned_glasses_array.push(Clothing::Glasses.get_glasses("Eye Bandage").not_nil!)
+    #     @@owned_glasses_array.push(Clothing::Glasses.get_glasses("Eye Bandage").not_nil!)
         
-        @@owned_glasses_array.uniq!
-       #---------------------------------------------------------------------------------
+    #     @@owned_glasses_array.uniq!
+    #    #---------------------------------------------------------------------------------
 
-       #--------------------------------objects------------------------------------------
-        INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
-        INVENTORY_BOX.fill_color = SF.color( 137, 170, 208 )
+    #    #--------------------------------objects------------------------------------------
+    #     INVENTORY_BOX = SF::RectangleShape.new(SF.vector2(610, 420))
+    #     INVENTORY_BOX.fill_color = SF.color( 137, 170, 208 )
 
         
-        @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-        @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+    #     @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
-
-
-        @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
-        @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@clothing_glasses_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
-        @@clothing_glasses_category_box.fill_color = SF.color(161, 183, 208)
-
-        @@clothing_sort_button_text = SF::Text.new
-        @@clothing_sort_button_text.font = QUICKSAND
-        @@clothing_sort_button_text.character_size = 20
-        @@clothing_sort_button_text.color = SF::Color::Blue
-        @@clothing_sort_button_text.string = "Sort"
+    #     @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+    #     @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
 
-        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
+    #     @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_tab = SF::RectangleShape.new(SF.vector2(100, 50))
-        @@glasses_tab.fill_color = SF.color(141, 163, 188)
+    #     @@clothing_glasses_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
+    #     @@clothing_glasses_category_box.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_tab_text = SF::Text.new
-        @@glasses_tab_text.font = QUICKSAND
-        @@glasses_tab_text.character_size = 20
-        @@glasses_tab_text.color = SF::Color::Blue
-        @@glasses_tab_text.string = "Glassess"
-
-        @@glasses_tab = SF::RectangleShape.new(SF.vector2(100, 50))
-        @@glasses_tab.fill_color = SF.color(161, 183, 208)
-
-        @@glasses_tab_text = SF::Text.new
-        @@glasses_tab_text.font = QUICKSAND
-        @@glasses_tab_text.character_size = 20
-        @@glasses_tab_text.color = SF::Color::Blue
-        @@glasses_tab_text.string = "Glasses"
+    #     @@clothing_sort_button_text = SF::Text.new
+    #     @@clothing_sort_button_text.font = QUICKSAND
+    #     @@clothing_sort_button_text.character_size = 20
+    #     @@clothing_sort_button_text.color = SF::Color::Blue
+    #     @@clothing_sort_button_text.string = "Sort"
 
 
-        @@glasses_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_01_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+    #     @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_slot_01_text = SF::Text.new
-        @@glasses_slot_01_text.font = QUICKSAND
-        @@glasses_slot_01_text.character_size = 12
-        @@glasses_slot_01_text.color = SF::Color::Blue
+    #     @@glasses_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+    #     @@glasses_tab.fill_color = SF.color(141, 163, 188)
 
-        @@glasses_slot_01_image_sprite = SF::Sprite.new
+    #     @@glasses_tab_text = SF::Text.new
+    #     @@glasses_tab_text.font = QUICKSAND
+    #     @@glasses_tab_text.character_size = 20
+    #     @@glasses_tab_text.color = SF::Color::Blue
+    #     @@glasses_tab_text.string = "Glassess"
 
+    #     @@glasses_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+    #     @@glasses_tab.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_02_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@glasses_slot_02_text = SF::Text.new
-        @@glasses_slot_02_text.font = QUICKSAND
-        @@glasses_slot_02_text.character_size = 12
-        @@glasses_slot_02_text.color = SF::Color::Blue
-
-        @@glasses_slot_02_image_sprite = SF::Sprite.new
-
-
-        @@glasses_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_03_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@glasses_slot_03_text = SF::Text.new
-        @@glasses_slot_03_text.font = QUICKSAND
-        @@glasses_slot_03_text.character_size = 12
-        @@glasses_slot_03_text.color = SF::Color::Blue
-
-        @@glasses_slot_03_image_sprite = SF::Sprite.new
+    #     @@glasses_tab_text = SF::Text.new
+    #     @@glasses_tab_text.font = QUICKSAND
+    #     @@glasses_tab_text.character_size = 20
+    #     @@glasses_tab_text.color = SF::Color::Blue
+    #     @@glasses_tab_text.string = "Glasses"
 
 
-        @@glasses_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_04_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@glasses_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_01_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_slot_04_text = SF::Text.new
-        @@glasses_slot_04_text.font = QUICKSAND
-        @@glasses_slot_04_text.character_size = 12
-        @@glasses_slot_04_text.color = SF::Color::Blue
+    #     @@glasses_slot_01_text = SF::Text.new
+    #     @@glasses_slot_01_text.font = QUICKSAND
+    #     @@glasses_slot_01_text.character_size = 12
+    #     @@glasses_slot_01_text.color = SF::Color::Blue
 
-        @@glasses_slot_04_image_sprite = SF::Sprite.new
-
-
-        @@glasses_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_05_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@glasses_slot_05_text = SF::Text.new
-        @@glasses_slot_05_text.font = QUICKSAND
-        @@glasses_slot_05_text.character_size = 12
-        @@glasses_slot_05_text.color = SF::Color::Blue
-
-        @@glasses_slot_05_image_sprite = SF::Sprite.new
+    #     @@glasses_slot_01_image_sprite = SF::Sprite.new
 
 
-        @@glasses_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_06_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@glasses_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_02_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_slot_06_text = SF::Text.new
-        @@glasses_slot_06_text.font = QUICKSAND
-        @@glasses_slot_06_text.character_size = 12
-        @@glasses_slot_06_text.color = SF::Color::Blue
+    #     @@glasses_slot_02_text = SF::Text.new
+    #     @@glasses_slot_02_text.font = QUICKSAND
+    #     @@glasses_slot_02_text.character_size = 12
+    #     @@glasses_slot_02_text.color = SF::Color::Blue
+
+    #     @@glasses_slot_02_image_sprite = SF::Sprite.new
+
+
+    #     @@glasses_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_03_sprite.fill_color = SF.color(161, 183, 208)
+
+    #     @@glasses_slot_03_text = SF::Text.new
+    #     @@glasses_slot_03_text.font = QUICKSAND
+    #     @@glasses_slot_03_text.character_size = 12
+    #     @@glasses_slot_03_text.color = SF::Color::Blue
+
+    #     @@glasses_slot_03_image_sprite = SF::Sprite.new
+
+
+    #     @@glasses_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_04_sprite.fill_color = SF.color(161, 183, 208)
+
+    #     @@glasses_slot_04_text = SF::Text.new
+    #     @@glasses_slot_04_text.font = QUICKSAND
+    #     @@glasses_slot_04_text.character_size = 12
+    #     @@glasses_slot_04_text.color = SF::Color::Blue
+
+    #     @@glasses_slot_04_image_sprite = SF::Sprite.new
+
+
+    #     @@glasses_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_05_sprite.fill_color = SF.color(161, 183, 208)
+
+    #     @@glasses_slot_05_text = SF::Text.new
+    #     @@glasses_slot_05_text.font = QUICKSAND
+    #     @@glasses_slot_05_text.character_size = 12
+    #     @@glasses_slot_05_text.color = SF::Color::Blue
+
+    #     @@glasses_slot_05_image_sprite = SF::Sprite.new
+
+
+    #     @@glasses_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_06_sprite.fill_color = SF.color(161, 183, 208)
+
+    #     @@glasses_slot_06_text = SF::Text.new
+    #     @@glasses_slot_06_text.font = QUICKSAND
+    #     @@glasses_slot_06_text.character_size = 12
+    #     @@glasses_slot_06_text.color = SF::Color::Blue
         
-        @@glasses_slot_06_image_sprite = SF::Sprite.new
+    #     @@glasses_slot_06_image_sprite = SF::Sprite.new
 
 
-        @@glasses_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_07_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@glasses_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_07_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_slot_07_text = SF::Text.new
-        @@glasses_slot_07_text.font = QUICKSAND
-        @@glasses_slot_07_text.character_size = 12
-        @@glasses_slot_07_text.color = SF::Color::Blue
+    #     @@glasses_slot_07_text = SF::Text.new
+    #     @@glasses_slot_07_text.font = QUICKSAND
+    #     @@glasses_slot_07_text.character_size = 12
+    #     @@glasses_slot_07_text.color = SF::Color::Blue
 
-        @@glasses_slot_07_image_sprite = SF::Sprite.new
-
-
-        @@glasses_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_08_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@glasses_slot_08_text = SF::Text.new
-        @@glasses_slot_08_text.font = QUICKSAND
-        @@glasses_slot_08_text.character_size = 12
-        @@glasses_slot_08_text.color = SF::Color::Blue
-
-        @@glasses_slot_08_image_sprite = SF::Sprite.new
+    #     @@glasses_slot_07_image_sprite = SF::Sprite.new
 
 
-        @@glasses_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_09_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@glasses_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_08_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_slot_09_text = SF::Text.new
-        @@glasses_slot_09_text.font = QUICKSAND
-        @@glasses_slot_09_text.character_size = 12
-        @@glasses_slot_09_text.color = SF::Color::Blue
+    #     @@glasses_slot_08_text = SF::Text.new
+    #     @@glasses_slot_08_text.font = QUICKSAND
+    #     @@glasses_slot_08_text.character_size = 12
+    #     @@glasses_slot_08_text.color = SF::Color::Blue
 
-        @@glasses_slot_09_image_sprite = SF::Sprite.new
-
-
-        @@glasses_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_10_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@glasses_slot_10_text = SF::Text.new
-        @@glasses_slot_10_text.font = QUICKSAND
-        @@glasses_slot_10_text.character_size = 12
-        @@glasses_slot_10_text.color = SF::Color::Blue
-
-        @@glasses_slot_10_image_sprite = SF::Sprite.new
+    #     @@glasses_slot_08_image_sprite = SF::Sprite.new
 
 
-        @@glasses_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_11_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@glasses_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_09_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_slot_11_text = SF::Text.new
-        @@glasses_slot_11_text.font = QUICKSAND
-        @@glasses_slot_11_text.character_size = 12
-        @@glasses_slot_11_text.color = SF::Color::Blue
+    #     @@glasses_slot_09_text = SF::Text.new
+    #     @@glasses_slot_09_text.font = QUICKSAND
+    #     @@glasses_slot_09_text.character_size = 12
+    #     @@glasses_slot_09_text.color = SF::Color::Blue
 
-        @@glasses_slot_11_image_sprite = SF::Sprite.new
-
-
-        @@glasses_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_12_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@glasses_slot_12_text = SF::Text.new
-        @@glasses_slot_12_text.font = QUICKSAND
-        @@glasses_slot_12_text.character_size = 12
-        @@glasses_slot_12_text.color = SF::Color::Blue
-
-        @@glasses_slot_12_image_sprite = SF::Sprite.new
+    #     @@glasses_slot_09_image_sprite = SF::Sprite.new
 
 
-        @@glasses_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_13_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@glasses_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_10_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_slot_13_text = SF::Text.new
-        @@glasses_slot_13_text.font = QUICKSAND
-        @@glasses_slot_13_text.character_size = 12
-        @@glasses_slot_13_text.color = SF::Color::Blue
+    #     @@glasses_slot_10_text = SF::Text.new
+    #     @@glasses_slot_10_text.font = QUICKSAND
+    #     @@glasses_slot_10_text.character_size = 12
+    #     @@glasses_slot_10_text.color = SF::Color::Blue
 
-        @@glasses_slot_13_image_sprite = SF::Sprite.new
-
-
-        @@glasses_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_14_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@glasses_slot_14_text = SF::Text.new
-        @@glasses_slot_14_text.font = QUICKSAND
-        @@glasses_slot_14_text.character_size = 12
-        @@glasses_slot_14_text.color = SF::Color::Blue
-
-        @@glasses_slot_14_image_sprite = SF::Sprite.new
+    #     @@glasses_slot_10_image_sprite = SF::Sprite.new
 
 
-        @@glasses_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@glasses_slot_15_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@glasses_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_11_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@glasses_slot_15_text = SF::Text.new
-        @@glasses_slot_15_text.font = QUICKSAND
-        @@glasses_slot_15_text.character_size = 12
-        @@glasses_slot_15_text.color = SF::Color::Blue
+    #     @@glasses_slot_11_text = SF::Text.new
+    #     @@glasses_slot_11_text.font = QUICKSAND
+    #     @@glasses_slot_11_text.character_size = 12
+    #     @@glasses_slot_11_text.color = SF::Color::Blue
 
-        @@glasses_slot_15_image_sprite = SF::Sprite.new
+    #     @@glasses_slot_11_image_sprite = SF::Sprite.new
 
-       #---------------------------------------------------------------------------------
 
-       def initialize(is_open : Bool, page : Int32)
-        @@is_open = is_open
-        @@page = page
-       end
+    #     @@glasses_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_12_sprite.fill_color = SF.color(161, 183, 208)
 
-       def ClothingTabGlasses.is_open
-        @@is_open
-       end
+    #     @@glasses_slot_12_text = SF::Text.new
+    #     @@glasses_slot_12_text.font = QUICKSAND
+    #     @@glasses_slot_12_text.character_size = 12
+    #     @@glasses_slot_12_text.color = SF::Color::Blue
 
-       def ClothingTabGlasses.page
-        @@page
-       end
+    #     @@glasses_slot_12_image_sprite = SF::Sprite.new
 
-       def ClothingTabGlasses.is_open=(this)
-        @@is_open = this
-       end
 
-       def ClothingTabGlasses.page=(this)
-        @@page = this
-       end
+    #     @@glasses_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_13_sprite.fill_color = SF.color(161, 183, 208)
 
-       def ClothingTabGlasses.owned_glasses_array
-        @@owned_glasses_array
-       end
+    #     @@glasses_slot_13_text = SF::Text.new
+    #     @@glasses_slot_13_text.font = QUICKSAND
+    #     @@glasses_slot_13_text.character_size = 12
+    #     @@glasses_slot_13_text.color = SF::Color::Blue
 
-       def ClothingTabGlasses.owned_glasses_array=(this)
-        @@owned_glasses_array = this
-       end
+    #     @@glasses_slot_13_image_sprite = SF::Sprite.new
 
-       def ClothingTabGlasses.push_to_owned_glasses_array(this)
-        @@owned_glasses_array.push(this)
-       end
 
-       def ClothingTabGlasses.change_glasses_sort_category
-        case @@glasses_sorting_category
-        when "Type"
-            @@glasses_sorting_category = "Color"
-        when "Color"
-            @@glasses_sorting_category = "Type"
-        end
-       end
+    #     @@glasses_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_14_sprite.fill_color = SF.color(161, 183, 208)
 
-       def ClothingTabGlasses.get_glasses_category
-        return @@glasses_sorting_category
-       end
+    #     @@glasses_slot_14_text = SF::Text.new
+    #     @@glasses_slot_14_text.font = QUICKSAND
+    #     @@glasses_slot_14_text.character_size = 12
+    #     @@glasses_slot_14_text.color = SF::Color::Blue
 
-       def ClothingTabGlasses.organise_owned_glasses_array_by_type(window)
-        temp_clothing_array_01 = [] of Clothing::Glasses
-        @@owned_glasses_array.each { |glasses| if glasses.glasses_type.includes?("transparent") == true
-        temp_clothing_array_01.push(glasses)
-        end}
+    #     @@glasses_slot_14_image_sprite = SF::Sprite.new
 
-        @@owned_glasses_array.each { |glasses| if glasses.glasses_type.includes?("translucent") == true
-        temp_clothing_array_01.push(glasses)
-        end}
 
-        @@owned_glasses_array.each { |glasses| if glasses.glasses_type.includes?("opaque") == true
-        temp_clothing_array_01.push(glasses)
-        end}
+    #     @@glasses_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@glasses_slot_15_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@owned_glasses_array.clear
-        @@owned_glasses_array = temp_clothing_array_01
-        @@owned_glasses_array.uniq!
-        ClothingTabGlasses.assign_slot_textures(window)
-       end
+    #     @@glasses_slot_15_text = SF::Text.new
+    #     @@glasses_slot_15_text.font = QUICKSAND
+    #     @@glasses_slot_15_text.character_size = 12
+    #     @@glasses_slot_15_text.color = SF::Color::Blue
 
-       def ClothingTabGlasses.initialize_clothing_tab(window)
-        @@page = 1
-        INVENTORY_BOX.position = SF.vector2(20, 40)  
-       end
+    #     @@glasses_slot_15_image_sprite = SF::Sprite.new
 
-       def ClothingTabGlasses.assign_slot_textures(window)
-        if @@page == nil
-            @@page = 1
-        end
-        @@owned_glasses_array.uniq!
-            t = (@@page.not_nil! - 1) * 15
-            if t < @@owned_glasses_array.size 
-             @@glasses_slot_01_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_01_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_01 = @@owned_glasses_array[t]
-            else 
-                @@glasses_slot_01_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_01_text.string = ""
-                @@glasses_slot_01 = nil
-            end
-            t = (@@page.not_nil! - 1) * 15 + 1
-            if t < @@owned_glasses_array.size 
-             @@glasses_slot_02_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_02_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_02 = @@owned_glasses_array[t]
-            else
-                @@glasses_slot_02_image_sprite.texture = NIL_TEXTURE
-                @@glasses_slot_02_text.string = ""
-                @@glasses_slot_02 = nil
-            end
-            t = 2 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size 
-             @@glasses_slot_03_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_03_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_03 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_03_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_03_text.string = ""
-             @@glasses_slot_03 = nil
-            end
-            t = 3 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_04_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_04_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_04 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_04_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_04_text.string = ""
-             @@glasses_slot_04 = nil
-            end
-            t = 4 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_05_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_05_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_05 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_05_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_05_text.string = ""
-             @@glasses_slot_05 = nil
-            end
-            t = 5 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_06_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_06_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_06 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_06_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_06_text.string = ""
-             @@glasses_slot_06 = nil
-            end
-            t = 6 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_07_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_07_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_07 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_07_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_07_text.string = ""
-             @@glasses_slot_07 = nil
-            end
-            t = 7 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_08_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_08_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_08 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_08_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_08_text.string = ""
-             @@glasses_slot_08 = nil
-            end
-            t = 8 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_09_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_09_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_09 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_09_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_09_text.string = ""
-             @@glasses_slot_09 = nil
-            end
-            t = 9 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_10_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_10_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_10 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_10_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_10_text.string = ""
-             @@glasses_slot_10 = nil
-            end
-            t = 10 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_11_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_11_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_11 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_11_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_11_text.string = ""
-             @@glasses_slot_11 = nil
-            end
-            t = 11 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_12_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_12_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_12 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_12_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_12_text.string = ""
-             @@glasses_slot_12 = nil
-            end
-            t = 12 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_13_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_13_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_13 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_13_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_13_text.string = ""
-             @@glasses_slot_13 = nil
-            end
-            t = 13 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_14_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_14_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_14 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_14_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_14_text.string = ""
-             @@glasses_slot_14 = nil
-            end
-            t = 14 + (@@page.not_nil! * 15) - 15
-            if t < @@owned_glasses_array.size
-             @@glasses_slot_15_image_sprite.texture = @@owned_glasses_array[t].texture
-             @@glasses_slot_15_text.string = @@owned_glasses_array[t].name
-             @@glasses_slot_15 = @@owned_glasses_array[t]
-            else
-             @@glasses_slot_15_image_sprite.texture = NIL_TEXTURE
-             @@glasses_slot_15_text.string = ""
-             @@glasses_slot_15 = nil
-            end
-        @@owned_glasses_array.uniq!
-       end
+    #    #---------------------------------------------------------------------------------
+
+    #    def initialize(is_open : Bool, page : Int32)
+    #     @@is_open = is_open
+    #     @@page = page
+    #    end
+
+    #    def ClothingTabGlasses.is_open
+    #     @@is_open
+    #    end
+
+    #    def ClothingTabGlasses.page
+    #     @@page
+    #    end
+
+    #    def ClothingTabGlasses.is_open=(this)
+    #     @@is_open = this
+    #    end
+
+    #    def ClothingTabGlasses.page=(this)
+    #     @@page = this
+    #    end
+
+    #    def ClothingTabGlasses.owned_glasses_array
+    #     @@owned_glasses_array
+    #    end
+
+    #    def ClothingTabGlasses.owned_glasses_array=(this)
+    #     @@owned_glasses_array = this
+    #    end
+
+    #    def ClothingTabGlasses.push_to_owned_glasses_array(this)
+    #     @@owned_glasses_array.push(this)
+    #    end
+
+    #    def ClothingTabGlasses.change_glasses_sort_category
+    #     case @@glasses_sorting_category
+    #     when "Type"
+    #         @@glasses_sorting_category = "Color"
+    #     when "Color"
+    #         @@glasses_sorting_category = "Type"
+    #     end
+    #    end
+
+    #    def ClothingTabGlasses.get_glasses_category
+    #     return @@glasses_sorting_category
+    #    end
+
+    #    def ClothingTabGlasses.organise_owned_glasses_array_by_type(window)
+    #     temp_clothing_array_01 = [] of Clothing::Glasses
+    #     @@owned_glasses_array.each { |glasses| if glasses.glasses_type.includes?("transparent") == true
+    #     temp_clothing_array_01.push(glasses)
+    #     end}
+
+    #     @@owned_glasses_array.each { |glasses| if glasses.glasses_type.includes?("translucent") == true
+    #     temp_clothing_array_01.push(glasses)
+    #     end}
+
+    #     @@owned_glasses_array.each { |glasses| if glasses.glasses_type.includes?("opaque") == true
+    #     temp_clothing_array_01.push(glasses)
+    #     end}
+
+    #     @@owned_glasses_array.clear
+    #     @@owned_glasses_array = temp_clothing_array_01
+    #     @@owned_glasses_array.uniq!
+    #     ClothingTabGlasses.assign_slot_textures(window)
+    #    end
+
+    #    def ClothingTabGlasses.initialize_clothing_tab(window)
+    #     @@page = 1
+    #     INVENTORY_BOX.position = SF.vector2(20, 40)  
+    #    end
+
+    #    def ClothingTabGlasses.assign_slot_textures(window)
+    #     if @@page == nil
+    #         @@page = 1
+    #     end
+    #     @@owned_glasses_array.uniq!
+    #         t = (@@page.not_nil! - 1) * 15
+    #         if t < @@owned_glasses_array.size 
+    #          @@glasses_slot_01_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_01_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_01 = @@owned_glasses_array[t]
+    #         else 
+    #             @@glasses_slot_01_image_sprite.texture = NIL_TEXTURE
+    #             @@glasses_slot_01_text.string = ""
+    #             @@glasses_slot_01 = nil
+    #         end
+    #         t = (@@page.not_nil! - 1) * 15 + 1
+    #         if t < @@owned_glasses_array.size 
+    #          @@glasses_slot_02_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_02_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_02 = @@owned_glasses_array[t]
+    #         else
+    #             @@glasses_slot_02_image_sprite.texture = NIL_TEXTURE
+    #             @@glasses_slot_02_text.string = ""
+    #             @@glasses_slot_02 = nil
+    #         end
+    #         t = 2 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size 
+    #          @@glasses_slot_03_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_03_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_03 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_03_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_03_text.string = ""
+    #          @@glasses_slot_03 = nil
+    #         end
+    #         t = 3 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_04_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_04_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_04 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_04_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_04_text.string = ""
+    #          @@glasses_slot_04 = nil
+    #         end
+    #         t = 4 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_05_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_05_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_05 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_05_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_05_text.string = ""
+    #          @@glasses_slot_05 = nil
+    #         end
+    #         t = 5 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_06_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_06_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_06 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_06_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_06_text.string = ""
+    #          @@glasses_slot_06 = nil
+    #         end
+    #         t = 6 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_07_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_07_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_07 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_07_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_07_text.string = ""
+    #          @@glasses_slot_07 = nil
+    #         end
+    #         t = 7 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_08_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_08_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_08 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_08_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_08_text.string = ""
+    #          @@glasses_slot_08 = nil
+    #         end
+    #         t = 8 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_09_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_09_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_09 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_09_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_09_text.string = ""
+    #          @@glasses_slot_09 = nil
+    #         end
+    #         t = 9 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_10_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_10_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_10 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_10_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_10_text.string = ""
+    #          @@glasses_slot_10 = nil
+    #         end
+    #         t = 10 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_11_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_11_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_11 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_11_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_11_text.string = ""
+    #          @@glasses_slot_11 = nil
+    #         end
+    #         t = 11 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_12_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_12_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_12 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_12_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_12_text.string = ""
+    #          @@glasses_slot_12 = nil
+    #         end
+    #         t = 12 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_13_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_13_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_13 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_13_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_13_text.string = ""
+    #          @@glasses_slot_13 = nil
+    #         end
+    #         t = 13 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_14_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_14_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_14 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_14_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_14_text.string = ""
+    #          @@glasses_slot_14 = nil
+    #         end
+    #         t = 14 + (@@page.not_nil! * 15) - 15
+    #         if t < @@owned_glasses_array.size
+    #          @@glasses_slot_15_image_sprite.texture = @@owned_glasses_array[t].texture
+    #          @@glasses_slot_15_text.string = @@owned_glasses_array[t].name
+    #          @@glasses_slot_15 = @@owned_glasses_array[t]
+    #         else
+    #          @@glasses_slot_15_image_sprite.texture = NIL_TEXTURE
+    #          @@glasses_slot_15_text.string = ""
+    #          @@glasses_slot_15 = nil
+    #         end
+    #     @@owned_glasses_array.uniq!
+    #    end
        
-       def ClothingTabGlasses.draw_clothing_tab(window)
-            current_size = window.size
-            original_width = 800 
-            original_height = 600
-            scale_x = current_size.x.to_f / original_width
-            scale_y = current_size.y.to_f / original_height
+    #    def ClothingTabGlasses.draw_clothing_tab(window)
+    #         current_size = window.size
+    #         original_width = 800 
+    #         original_height = 600
+    #         scale_x = current_size.x.to_f / original_width
+    #         scale_y = current_size.y.to_f / original_height
     
-            scale_ratio = [scale_x, scale_y].min
-            max_scale = 1.5
-            clamped_scale = [scale_ratio, max_scale].min
+    #         scale_ratio = [scale_x, scale_y].min
+    #         max_scale = 1.5
+    #         clamped_scale = [scale_ratio, max_scale].min
 
-        window.view = window.default_view
+    #     window.view = window.default_view
 
-        INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
-        INVENTORY_BOX.scale = SF.vector2(1, 1)
+    #     INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
+    #     INVENTORY_BOX.scale = SF.vector2(1, 1)
 
 
-        @@glasses_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
-        @@glasses_slot_01_sprite.scale = SF.vector2(1, 1)
+    #     @@glasses_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
+    #     @@glasses_slot_01_sprite.scale = SF.vector2(1, 1)
         
-        @@glasses_slot_01_image_sprite.position = @@glasses_slot_01_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_01_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_01_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+    #     @@glasses_slot_01_image_sprite.position = @@glasses_slot_01_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_01_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_01_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
-        @@glasses_slot_01_text.position = @@glasses_slot_01_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_01_text)
-        
-
-        @@glasses_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
-        @@glasses_slot_02_sprite.scale = SF.vector2(1, 1)
-        
-        @@glasses_slot_02_image_sprite.position = @@glasses_slot_02_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_02_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_02_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-        @@glasses_slot_02_text.position = @@glasses_slot_02_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_02_text)
+    #     @@glasses_slot_01_text.position = @@glasses_slot_01_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_01_text)
         
 
-        @@glasses_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
-        @@glasses_slot_03_sprite.scale = SF.vector2(1, 1)
+    #     @@glasses_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
+    #     @@glasses_slot_02_sprite.scale = SF.vector2(1, 1)
         
-        @@glasses_slot_03_image_sprite.position = @@glasses_slot_03_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_03_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_03_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+    #     @@glasses_slot_02_image_sprite.position = @@glasses_slot_02_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_02_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_02_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
-        @@glasses_slot_03_text.position = @@glasses_slot_03_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_03_text)
-        
-
-        @@glasses_slot_04_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 40 * max_scale)
-        @@glasses_slot_04_sprite.scale = SF.vector2(1, 1)
-
-        @@glasses_slot_04_text.position = @@glasses_slot_04_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_04_text)
-        
-        @@glasses_slot_04_image_sprite.position = @@glasses_slot_04_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_04_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_04_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-
-
-        @@glasses_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
-        @@glasses_slot_05_sprite.scale = SF.vector2(1, 1)
-
-        @@glasses_slot_05_text.position = @@glasses_slot_05_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_05_text)
-        
-        @@glasses_slot_05_image_sprite.position = @@glasses_slot_05_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_05_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_05_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+    #     @@glasses_slot_02_text.position = @@glasses_slot_02_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_02_text)
         
 
-        @@glasses_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
-        @@glasses_slot_06_sprite.scale = SF.vector2(1, 1)
+    #     @@glasses_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
+    #     @@glasses_slot_03_sprite.scale = SF.vector2(1, 1)
+        
+    #     @@glasses_slot_03_image_sprite.position = @@glasses_slot_03_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_03_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_03_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
-        @@glasses_slot_06_text.position = @@glasses_slot_06_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_06_text)
-        
-        @@glasses_slot_06_image_sprite.position = @@glasses_slot_06_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_06_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_06_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-        
-
-        @@glasses_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
-        @@glasses_slot_07_sprite.scale = SF.vector2(1, 1)
-        
-        @@glasses_slot_07_text.position = @@glasses_slot_07_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_07_text)
-        
-        @@glasses_slot_07_image_sprite.position = @@glasses_slot_07_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_07_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_07_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+    #     @@glasses_slot_03_text.position = @@glasses_slot_03_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_03_text)
         
 
-        @@glasses_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
-        @@glasses_slot_08_sprite.scale = SF.vector2(1, 1)
+    #     @@glasses_slot_04_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 40 * max_scale)
+    #     @@glasses_slot_04_sprite.scale = SF.vector2(1, 1)
+
+    #     @@glasses_slot_04_text.position = @@glasses_slot_04_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_04_text)
+        
+    #     @@glasses_slot_04_image_sprite.position = @@glasses_slot_04_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_04_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_04_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+
+
+    #     @@glasses_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
+    #     @@glasses_slot_05_sprite.scale = SF.vector2(1, 1)
+
+    #     @@glasses_slot_05_text.position = @@glasses_slot_05_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_05_text)
+        
+    #     @@glasses_slot_05_image_sprite.position = @@glasses_slot_05_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_05_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_05_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+    #     @@glasses_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
+    #     @@glasses_slot_06_sprite.scale = SF.vector2(1, 1)
+
+    #     @@glasses_slot_06_text.position = @@glasses_slot_06_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_06_text)
+        
+    #     @@glasses_slot_06_image_sprite.position = @@glasses_slot_06_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_06_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_06_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+    #     @@glasses_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
+    #     @@glasses_slot_07_sprite.scale = SF.vector2(1, 1)
+        
+    #     @@glasses_slot_07_text.position = @@glasses_slot_07_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_07_text)
+        
+    #     @@glasses_slot_07_image_sprite.position = @@glasses_slot_07_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_07_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_07_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+    #     @@glasses_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
+    #     @@glasses_slot_08_sprite.scale = SF.vector2(1, 1)
                 
-        @@glasses_slot_08_text.position = @@glasses_slot_08_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_08_text)
+    #     @@glasses_slot_08_text.position = @@glasses_slot_08_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_08_text)
         
-        @@glasses_slot_08_image_sprite.position = @@glasses_slot_08_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_08_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_08_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+    #     @@glasses_slot_08_image_sprite.position = @@glasses_slot_08_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_08_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_08_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
-        @@glasses_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
-        @@glasses_slot_09_sprite.scale = SF.vector2(1, 1)
+    #     @@glasses_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
+    #     @@glasses_slot_09_sprite.scale = SF.vector2(1, 1)
                 
-        @@glasses_slot_09_text.position = @@glasses_slot_09_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_09_text)
+    #     @@glasses_slot_09_text.position = @@glasses_slot_09_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_09_text)
         
-        @@glasses_slot_09_image_sprite.position = @@glasses_slot_09_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_09_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_09_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+    #     @@glasses_slot_09_image_sprite.position = @@glasses_slot_09_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_09_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_09_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
-        @@glasses_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
-        @@glasses_slot_10_sprite.scale = SF.vector2(1, 1)
+    #     @@glasses_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
+    #     @@glasses_slot_10_sprite.scale = SF.vector2(1, 1)
                         
-        @@glasses_slot_10_text.position = @@glasses_slot_10_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_10_text)
+    #     @@glasses_slot_10_text.position = @@glasses_slot_10_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_10_text)
         
-        @@glasses_slot_10_image_sprite.position = @@glasses_slot_10_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_10_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_10_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+    #     @@glasses_slot_10_image_sprite.position = @@glasses_slot_10_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_10_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_10_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
-        @@glasses_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
-        @@glasses_slot_11_sprite.scale = SF.vector2(1, 1)
+    #     @@glasses_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
+    #     @@glasses_slot_11_sprite.scale = SF.vector2(1, 1)
                         
-        @@glasses_slot_11_text.position = @@glasses_slot_11_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_11_text)
+    #     @@glasses_slot_11_text.position = @@glasses_slot_11_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_11_text)
         
-        @@glasses_slot_11_image_sprite.position = @@glasses_slot_11_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_11_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_11_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+    #     @@glasses_slot_11_image_sprite.position = @@glasses_slot_11_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_11_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_11_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
-        @@glasses_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
-        @@glasses_slot_12_sprite.scale = SF.vector2(1, 1)
+    #     @@glasses_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
+    #     @@glasses_slot_12_sprite.scale = SF.vector2(1, 1)
                         
-        @@glasses_slot_12_text.position = @@glasses_slot_12_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_12_text)
+    #     @@glasses_slot_12_text.position = @@glasses_slot_12_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_12_text)
         
-        @@glasses_slot_12_image_sprite.position = @@glasses_slot_12_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_12_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_12_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
-        
-
-        @@glasses_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
-        @@glasses_slot_13_sprite.scale = SF.vector2(1, 1)
-        
-        @@glasses_slot_13_text.position = @@glasses_slot_13_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_13_text)
-        
-        @@glasses_slot_13_image_sprite.position = @@glasses_slot_13_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_13_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_13_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+    #     @@glasses_slot_12_image_sprite.position = @@glasses_slot_12_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_12_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_12_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
-        @@glasses_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
-        @@glasses_slot_14_sprite.scale = SF.vector2(1, 1)
+    #     @@glasses_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
+    #     @@glasses_slot_13_sprite.scale = SF.vector2(1, 1)
+        
+    #     @@glasses_slot_13_text.position = @@glasses_slot_13_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_13_text)
+        
+    #     @@glasses_slot_13_image_sprite.position = @@glasses_slot_13_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_13_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_13_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+        
+
+    #     @@glasses_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
+    #     @@glasses_slot_14_sprite.scale = SF.vector2(1, 1)
                         
-        @@glasses_slot_14_text.position = @@glasses_slot_14_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_14_text)
+    #     @@glasses_slot_14_text.position = @@glasses_slot_14_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_14_text)
         
-        @@glasses_slot_14_image_sprite.position = @@glasses_slot_14_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_14_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_14_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+    #     @@glasses_slot_14_image_sprite.position = @@glasses_slot_14_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_14_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_14_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
         
 
-        @@glasses_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
-        @@glasses_slot_15_sprite.scale = SF.vector2(1, 1)
+    #     @@glasses_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
+    #     @@glasses_slot_15_sprite.scale = SF.vector2(1, 1)
                         
-        @@glasses_slot_15_text.position = @@glasses_slot_15_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@glasses_slot_15_text)
+    #     @@glasses_slot_15_text.position = @@glasses_slot_15_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@glasses_slot_15_text)
         
-        @@glasses_slot_15_image_sprite.position = @@glasses_slot_15_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
-        @@glasses_slot_15_image_sprite.scale = SF.vector2(2, 2)
-        @@glasses_slot_15_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
+    #     @@glasses_slot_15_image_sprite.position = @@glasses_slot_15_sprite.position - SF.vector2(35 * max_scale, 5 * max_scale)
+    #     @@glasses_slot_15_image_sprite.scale = SF.vector2(2, 2)
+    #     @@glasses_slot_15_image_sprite.texture_rect = SF.int_rect(192, 256, 96, 128)
 
 
-        window.draw(@@glasses_slot_01_sprite)
-        window.draw(@@glasses_slot_01_image_sprite)
-        window.draw(@@glasses_slot_01_text)
+    #     window.draw(@@glasses_slot_01_sprite)
+    #     window.draw(@@glasses_slot_01_image_sprite)
+    #     window.draw(@@glasses_slot_01_text)
 
-        window.draw(@@glasses_slot_02_sprite)
-        window.draw(@@glasses_slot_02_image_sprite)
-        window.draw(@@glasses_slot_02_text)
+    #     window.draw(@@glasses_slot_02_sprite)
+    #     window.draw(@@glasses_slot_02_image_sprite)
+    #     window.draw(@@glasses_slot_02_text)
 
-        window.draw(@@glasses_slot_03_sprite)
-        window.draw(@@glasses_slot_03_image_sprite)
-        window.draw(@@glasses_slot_03_text)
+    #     window.draw(@@glasses_slot_03_sprite)
+    #     window.draw(@@glasses_slot_03_image_sprite)
+    #     window.draw(@@glasses_slot_03_text)
         
-        window.draw(@@glasses_slot_04_sprite)
-        window.draw(@@glasses_slot_04_image_sprite)
-        window.draw(@@glasses_slot_04_text)
+    #     window.draw(@@glasses_slot_04_sprite)
+    #     window.draw(@@glasses_slot_04_image_sprite)
+    #     window.draw(@@glasses_slot_04_text)
 
-        window.draw(@@glasses_slot_05_sprite)
-        window.draw(@@glasses_slot_05_image_sprite)
-        window.draw(@@glasses_slot_05_text)
+    #     window.draw(@@glasses_slot_05_sprite)
+    #     window.draw(@@glasses_slot_05_image_sprite)
+    #     window.draw(@@glasses_slot_05_text)
 
-        window.draw(@@glasses_slot_06_sprite)
-        window.draw(@@glasses_slot_06_image_sprite)
-        window.draw(@@glasses_slot_06_text)
+    #     window.draw(@@glasses_slot_06_sprite)
+    #     window.draw(@@glasses_slot_06_image_sprite)
+    #     window.draw(@@glasses_slot_06_text)
 
-        window.draw(@@glasses_slot_07_sprite)
-        window.draw(@@glasses_slot_07_image_sprite)
-        window.draw(@@glasses_slot_07_text)
+    #     window.draw(@@glasses_slot_07_sprite)
+    #     window.draw(@@glasses_slot_07_image_sprite)
+    #     window.draw(@@glasses_slot_07_text)
 
-        window.draw(@@glasses_slot_08_sprite)
-        window.draw(@@glasses_slot_08_image_sprite)
-        window.draw(@@glasses_slot_08_text)
+    #     window.draw(@@glasses_slot_08_sprite)
+    #     window.draw(@@glasses_slot_08_image_sprite)
+    #     window.draw(@@glasses_slot_08_text)
 
-        window.draw(@@glasses_slot_09_sprite)
-        window.draw(@@glasses_slot_09_image_sprite)
-        window.draw(@@glasses_slot_09_text)
+    #     window.draw(@@glasses_slot_09_sprite)
+    #     window.draw(@@glasses_slot_09_image_sprite)
+    #     window.draw(@@glasses_slot_09_text)
 
-        window.draw(@@glasses_slot_10_sprite)
-        window.draw(@@glasses_slot_10_image_sprite)
-        window.draw(@@glasses_slot_10_text)
+    #     window.draw(@@glasses_slot_10_sprite)
+    #     window.draw(@@glasses_slot_10_image_sprite)
+    #     window.draw(@@glasses_slot_10_text)
 
-        window.draw(@@glasses_slot_11_sprite)
-        window.draw(@@glasses_slot_11_image_sprite)
-        window.draw(@@glasses_slot_11_text)
+    #     window.draw(@@glasses_slot_11_sprite)
+    #     window.draw(@@glasses_slot_11_image_sprite)
+    #     window.draw(@@glasses_slot_11_text)
 
-        window.draw(@@glasses_slot_12_sprite)
-        window.draw(@@glasses_slot_12_image_sprite)
-        window.draw(@@glasses_slot_12_text)
+    #     window.draw(@@glasses_slot_12_sprite)
+    #     window.draw(@@glasses_slot_12_image_sprite)
+    #     window.draw(@@glasses_slot_12_text)
 
-        window.draw(@@glasses_slot_13_sprite)
-        window.draw(@@glasses_slot_13_image_sprite)
-        window.draw(@@glasses_slot_13_text)
+    #     window.draw(@@glasses_slot_13_sprite)
+    #     window.draw(@@glasses_slot_13_image_sprite)
+    #     window.draw(@@glasses_slot_13_text)
 
-        window.draw(@@glasses_slot_14_sprite)
-        window.draw(@@glasses_slot_14_image_sprite)
-        window.draw(@@glasses_slot_14_text)
+    #     window.draw(@@glasses_slot_14_sprite)
+    #     window.draw(@@glasses_slot_14_image_sprite)
+    #     window.draw(@@glasses_slot_14_text)
 
-        window.draw(@@glasses_slot_15_sprite)
-        window.draw(@@glasses_slot_15_image_sprite)
-        window.draw(@@glasses_slot_15_text)
+    #     window.draw(@@glasses_slot_15_sprite)
+    #     window.draw(@@glasses_slot_15_image_sprite)
+    #     window.draw(@@glasses_slot_15_text)
 
-        if SF::Mouse.button_pressed?(SF::Mouse::Left)
-            ClothingTabGlasses.clothes_mouse_handling(window)
-        end
-       end
+    #     if SF::Mouse.button_pressed?(SF::Mouse::Left)
+    #         ClothingTabGlasses.clothes_mouse_handling(window)
+    #     end
+    #    end
 
-       def ClothingTabGlasses.clothes_mouse_handling(window)
-        mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
-        mouse_x = mouse_position.x
-        mouse_y = mouse_position.y
+    #    def ClothingTabGlasses.clothes_mouse_handling(window)
+    #     mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+    #     mouse_x = mouse_position.x
+    #     mouse_y = mouse_position.y
         
     
-        current_size = window.size
-        original_width = 800 
-        original_height = 600 
+    #     current_size = window.size
+    #     original_width = 800 
+    #     original_height = 600 
 
-        scale_x = (current_size.x.to_f / original_width)
-        scale_y = current_size.y.to_f / original_height
+    #     scale_x = (current_size.x.to_f / original_width)
+    #     scale_y = current_size.y.to_f / original_height
         
 
-        #------------------------------------objects-------------------------------------------------
+    #     #------------------------------------objects-------------------------------------------------
 
-            slot_01_x = @@glasses_slot_01_sprite.position.x
-            slot_01_y = @@glasses_slot_01_sprite.position.y
-            slot_01_width = @@glasses_slot_01_sprite.size.x
-            slot_01_height = @@glasses_slot_01_sprite.size.y
+    #         slot_01_x = @@glasses_slot_01_sprite.position.x
+    #         slot_01_y = @@glasses_slot_01_sprite.position.y
+    #         slot_01_width = @@glasses_slot_01_sprite.size.x
+    #         slot_01_height = @@glasses_slot_01_sprite.size.y
 
-            slot_02_x = @@glasses_slot_02_sprite.position.x
-            slot_02_y = @@glasses_slot_02_sprite.position.y
-            slot_02_width = @@glasses_slot_02_sprite.size.x
-            slot_02_height = @@glasses_slot_02_sprite.size.y
+    #         slot_02_x = @@glasses_slot_02_sprite.position.x
+    #         slot_02_y = @@glasses_slot_02_sprite.position.y
+    #         slot_02_width = @@glasses_slot_02_sprite.size.x
+    #         slot_02_height = @@glasses_slot_02_sprite.size.y
 
-            slot_03_x = @@glasses_slot_03_sprite.position.x
-            slot_03_y = @@glasses_slot_03_sprite.position.y
-            slot_03_width = @@glasses_slot_03_sprite.size.x
-            slot_03_height = @@glasses_slot_03_sprite.size.y
+    #         slot_03_x = @@glasses_slot_03_sprite.position.x
+    #         slot_03_y = @@glasses_slot_03_sprite.position.y
+    #         slot_03_width = @@glasses_slot_03_sprite.size.x
+    #         slot_03_height = @@glasses_slot_03_sprite.size.y
 
-            slot_04_x = @@glasses_slot_04_sprite.position.x
-            slot_04_y = @@glasses_slot_04_sprite.position.y
-            slot_04_width = @@glasses_slot_04_sprite.size.x
-            slot_04_height = @@glasses_slot_04_sprite.size.y
+    #         slot_04_x = @@glasses_slot_04_sprite.position.x
+    #         slot_04_y = @@glasses_slot_04_sprite.position.y
+    #         slot_04_width = @@glasses_slot_04_sprite.size.x
+    #         slot_04_height = @@glasses_slot_04_sprite.size.y
 
-            slot_05_x = @@glasses_slot_05_sprite.position.x
-            slot_05_y = @@glasses_slot_05_sprite.position.y
-            slot_05_width = @@glasses_slot_05_sprite.size.x
-            slot_05_height = @@glasses_slot_05_sprite.size.y
+    #         slot_05_x = @@glasses_slot_05_sprite.position.x
+    #         slot_05_y = @@glasses_slot_05_sprite.position.y
+    #         slot_05_width = @@glasses_slot_05_sprite.size.x
+    #         slot_05_height = @@glasses_slot_05_sprite.size.y
 
-            slot_06_x = @@glasses_slot_06_sprite.position.x
-            slot_06_y = @@glasses_slot_06_sprite.position.y
-            slot_06_width = @@glasses_slot_06_sprite.size.x
-            slot_06_height = @@glasses_slot_06_sprite.size.y
+    #         slot_06_x = @@glasses_slot_06_sprite.position.x
+    #         slot_06_y = @@glasses_slot_06_sprite.position.y
+    #         slot_06_width = @@glasses_slot_06_sprite.size.x
+    #         slot_06_height = @@glasses_slot_06_sprite.size.y
 
-            slot_07_x = @@glasses_slot_07_sprite.position.x
-            slot_07_y = @@glasses_slot_07_sprite.position.y
-            slot_07_width = @@glasses_slot_07_sprite.size.x
-            slot_07_height = @@glasses_slot_07_sprite.size.y
+    #         slot_07_x = @@glasses_slot_07_sprite.position.x
+    #         slot_07_y = @@glasses_slot_07_sprite.position.y
+    #         slot_07_width = @@glasses_slot_07_sprite.size.x
+    #         slot_07_height = @@glasses_slot_07_sprite.size.y
 
-            slot_08_x = @@glasses_slot_08_sprite.position.x
-            slot_08_y = @@glasses_slot_08_sprite.position.y
-            slot_08_width = @@glasses_slot_08_sprite.size.x
-            slot_08_height = @@glasses_slot_08_sprite.size.y
+    #         slot_08_x = @@glasses_slot_08_sprite.position.x
+    #         slot_08_y = @@glasses_slot_08_sprite.position.y
+    #         slot_08_width = @@glasses_slot_08_sprite.size.x
+    #         slot_08_height = @@glasses_slot_08_sprite.size.y
 
-            slot_09_x = @@glasses_slot_09_sprite.position.x
-            slot_09_y = @@glasses_slot_09_sprite.position.y
-            slot_09_width = @@glasses_slot_09_sprite.size.x
-            slot_09_height = @@glasses_slot_09_sprite.size.y
+    #         slot_09_x = @@glasses_slot_09_sprite.position.x
+    #         slot_09_y = @@glasses_slot_09_sprite.position.y
+    #         slot_09_width = @@glasses_slot_09_sprite.size.x
+    #         slot_09_height = @@glasses_slot_09_sprite.size.y
 
-            slot_10_x = @@glasses_slot_10_sprite.position.x
-            slot_10_y = @@glasses_slot_10_sprite.position.y
-            slot_10_width = @@glasses_slot_10_sprite.size.x
-            slot_10_height = @@glasses_slot_10_sprite.size.y
+    #         slot_10_x = @@glasses_slot_10_sprite.position.x
+    #         slot_10_y = @@glasses_slot_10_sprite.position.y
+    #         slot_10_width = @@glasses_slot_10_sprite.size.x
+    #         slot_10_height = @@glasses_slot_10_sprite.size.y
 
-            slot_11_x = @@glasses_slot_11_sprite.position.x
-            slot_11_y = @@glasses_slot_11_sprite.position.y
-            slot_11_width = @@glasses_slot_11_sprite.size.x
-            slot_11_height = @@glasses_slot_11_sprite.size.y
+    #         slot_11_x = @@glasses_slot_11_sprite.position.x
+    #         slot_11_y = @@glasses_slot_11_sprite.position.y
+    #         slot_11_width = @@glasses_slot_11_sprite.size.x
+    #         slot_11_height = @@glasses_slot_11_sprite.size.y
 
-            slot_12_x = @@glasses_slot_12_sprite.position.x
-            slot_12_y = @@glasses_slot_12_sprite.position.y
-            slot_12_width = @@glasses_slot_12_sprite.size.x
-            slot_12_height = @@glasses_slot_12_sprite.size.y
+    #         slot_12_x = @@glasses_slot_12_sprite.position.x
+    #         slot_12_y = @@glasses_slot_12_sprite.position.y
+    #         slot_12_width = @@glasses_slot_12_sprite.size.x
+    #         slot_12_height = @@glasses_slot_12_sprite.size.y
 
-            slot_13_x = @@glasses_slot_13_sprite.position.x
-            slot_13_y = @@glasses_slot_13_sprite.position.y
-            slot_13_width = @@glasses_slot_13_sprite.size.x
-            slot_13_height = @@glasses_slot_13_sprite.size.y
+    #         slot_13_x = @@glasses_slot_13_sprite.position.x
+    #         slot_13_y = @@glasses_slot_13_sprite.position.y
+    #         slot_13_width = @@glasses_slot_13_sprite.size.x
+    #         slot_13_height = @@glasses_slot_13_sprite.size.y
 
-            slot_14_x = @@glasses_slot_14_sprite.position.x
-            slot_14_y = @@glasses_slot_14_sprite.position.y
-            slot_14_width = @@glasses_slot_14_sprite.size.x
-            slot_14_height = @@glasses_slot_14_sprite.size.y
+    #         slot_14_x = @@glasses_slot_14_sprite.position.x
+    #         slot_14_y = @@glasses_slot_14_sprite.position.y
+    #         slot_14_width = @@glasses_slot_14_sprite.size.x
+    #         slot_14_height = @@glasses_slot_14_sprite.size.y
 
-            slot_15_x = @@glasses_slot_15_sprite.position.x
-            slot_15_y = @@glasses_slot_15_sprite.position.y
-            slot_15_width = @@glasses_slot_15_sprite.size.x
-            slot_15_height = @@glasses_slot_15_sprite.size.y
-        #---------------------------------------------------------------------------------------------
-        if @@page == nil
-            @@page = 1
-        end
-        if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
-           (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
-            if @@glasses_slot_01 != nil   
-                t = 0 + (@@page.not_nil! * 15) - 15
+    #         slot_15_x = @@glasses_slot_15_sprite.position.x
+    #         slot_15_y = @@glasses_slot_15_sprite.position.y
+    #         slot_15_width = @@glasses_slot_15_sprite.size.x
+    #         slot_15_height = @@glasses_slot_15_sprite.size.y
+    #     #---------------------------------------------------------------------------------------------
+    #     if @@page == nil
+    #         @@page = 1
+    #     end
+    #     if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
+    #        (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
+    #         if @@glasses_slot_01 != nil   
+    #             t = 0 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_01.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_01.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
                 
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
-           (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
+    #     if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
+    #        (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
            
-            if @@glasses_slot_02 != nil
-                t = 1 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_02 != nil
+    #             t = 1 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_02.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_02.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
-           (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
+    #     if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
+    #        (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
            
-            if @@glasses_slot_03 != nil
-                t = 2 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_03 != nil
+    #             t = 2 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_03.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_03.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
-           (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
+    #     if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
+    #        (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
            
-            if @@glasses_slot_04 != nil
-                t = 3 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_04 != nil
+    #             t = 3 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_04.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_04.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
-           (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
+    #     if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
+    #        (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
            
-            if @@glasses_slot_05 != nil
-                t = 4 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_05 != nil
+    #             t = 4 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_05.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_05.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
-           (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
+    #     if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
+    #        (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
            
-            if @@glasses_slot_06 != nil
-                t = 5 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_06 != nil
+    #             t = 5 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_06.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_06.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
-           (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
+    #     if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
+    #        (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
            
-            if @@glasses_slot_07 != nil
-                t = 6 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_07 != nil
+    #             t = 6 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_07.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_07.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
-           (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
+    #     if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
+    #        (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
            
-            if @@glasses_slot_08 != nil
-                t = 7 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_08 != nil
+    #             t = 7 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_08.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_08.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
-           (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
+    #     if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
+    #        (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
            
-            if @@glasses_slot_09 != nil
-                t = 8 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_09 != nil
+    #             t = 8 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_09.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_09.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
-           (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
+    #     if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
+    #        (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
            
-            if @@glasses_slot_10 != nil
-                t = 9 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_10 != nil
+    #             t = 9 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_10.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_10.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
-           (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
+    #     if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
+    #        (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
            
-            if @@glasses_slot_11 != nil
-                t = 10 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_11 != nil
+    #             t = 10 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_11.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_11.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
-           (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
+    #     if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
+    #        (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
            
-            if @@glasses_slot_12 != nil
-                t = 11 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_12 != nil
+    #             t = 11 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_12.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_12.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
-           (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
+    #     if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
+    #        (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
            
-            if @@glasses_slot_13 != nil
-                t = 12 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_13 != nil
+    #             t = 12 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_13.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_13.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
-           (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
+    #     if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
+    #        (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
            
-            if @@glasses_slot_14 != nil
-                t = 13 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_14 != nil
+    #             t = 13 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_14.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_14.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
-           (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
+    #     if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
+    #        (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
            
-            if @@glasses_slot_15 != nil
-                t = 14 + (@@page.not_nil! * 15) - 15
+    #         if @@glasses_slot_15 != nil
+    #             t = 14 + (@@page.not_nil! * 15) - 15
                 
-                @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
-                Player::Appearance.change_glasses(@@glasses_slot_15.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-            end
-            ClothingTabGlasses.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_glasses_array[t] = (Clothing::Glasses.get_glasses(Player::Appearance.get_clothing("glasses").not_nil!).not_nil!)
+    #             Player::Appearance.change_glasses(@@glasses_slot_15.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #         end
+    #         ClothingTabGlasses.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
 
-       end
+    #    end
 
-    end
+    # end
 
     class ClothingTabMakeup
         @@owned_makeup_array = [] of Clothing::Makeup
