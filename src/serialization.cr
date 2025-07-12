@@ -127,6 +127,7 @@ module Serialization
       property stats : Hash(String, Float64 | Nil | String | Int32) = Hash(String, Float64 | Nil | String | Int32).new
       property hat : (Hat::HatBase | Nil) = nil
       property glasses : (Glasses::GlassesBase | Nil) = nil
+      property makeup : (Makeup::MakeupBase | Nil) = nil
       property earrings : (Earrings::EarringsBase | Nil) = nil
     
       def initialize
@@ -134,6 +135,7 @@ module Serialization
         @stats = Hash(String, Float64 | Nil | String | Int32).new
         @hat = nil
         @glasses = nil
+        @makeup = nil
         @earrings = nil
       end
     
@@ -148,6 +150,7 @@ module Serialization
         save.stats = @@stat_save_hash
         save.hat = Player::Appearance.hat
         save.glasses = Player::Appearance.glasses
+        save.makeup = Player::Appearance.makeup
         save.earrings = Player::Appearance.earrings
       
         path = "saves/" + @@save_file.not_nil!
@@ -201,6 +204,18 @@ module Serialization
         )
       else
         Player::Appearance.glasses = nil
+      end
+      if save.makeup
+        Player::Appearance.makeup = Makeup::MakeupBase.new(
+          name: save.makeup.as(Makeup::MakeupBase).name,
+          id: save.makeup.as(Makeup::MakeupBase).id,
+          is_owned: save.makeup.as(Makeup::MakeupBase).is_owned,
+          sprite: Makeup::MakeupBase::MAKEUP_SPRITE_HASH[save.makeup.as(Makeup::MakeupBase).id],
+          color: save.makeup.as(Makeup::MakeupBase).color,
+          sfx: Makeup::MakeupBase::MAKEUP_SFX_HASH[save.makeup.as(Makeup::MakeupBase).id]
+        )
+      else
+        Player::Appearance.makeup = nil
       end
       if save.earrings
         Player::Appearance.earrings = Earrings::EarringsBase.new(

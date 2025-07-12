@@ -8,6 +8,7 @@ require "../inventory/inventory.cr"
 require "../inventory/equipment/hat.cr"
 require "../inventory/equipment/glasses.cr"
 require "../inventory/equipment/earrings.cr"
+require "../inventory/equipment/makeup.cr"
 
 module CosmeticsInventory
     class CosmeticsInventoryManager
@@ -183,6 +184,9 @@ module CosmeticsInventory
             elsif MouseHandling::ClickHandling.button_clicked?(EARRING_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "earrings"
                 sleep 0.15.seconds
+            elsif MouseHandling::ClickHandling.button_clicked?(MAKEUP_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+                CosmeticsInventoryManager.current_tab = "makeup"
+                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(InventoryWindow::InventoryWindowElements::LEFT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryBase::COSMETIC_INVENTORY_ARRAY.each{ |inventory| 
                 if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page - 1 >= 0
@@ -308,6 +312,9 @@ module CosmeticsInventory
                 if item.is_a?(Earrings::EarringsBase)
                     Earrings::EarringsBase.swap_earrings(item)
                 end
+                if item.is_a?(Makeup::MakeupBase)
+                    Makeup::MakeupBase.swap_makeup(item)
+                end
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
                 break 
@@ -323,6 +330,8 @@ module CosmeticsInventory
                 @@glasses_inventory.draw(window)
             when "earrings"
                 @@earring_inventory.draw(window)
+            when "makeup"
+                @@makeup_inventory.draw(window)
             end
         end
         def self.return_current_page
@@ -333,6 +342,8 @@ module CosmeticsInventory
                return @@glasses_inventory.page
             when "earrings"
                return @@earring_inventory.page
+            when "makeup"
+               return @@makeup_inventory.page
             end
         end
         def self.return_max_page_count
@@ -343,11 +354,14 @@ module CosmeticsInventory
                return @@glasses_inventory.max_page_count
             when "earrings"
                return @@earring_inventory.max_page_count
+            when "makeup"
+               return @@makeup_inventory.max_page_count
             end
         end
           
         @@hat_inventory = CosmeticsInventoryBase.new("Hat Inventory", "inv_hat", 5, 0, "hat", "color", Hat::HatBase::OWNED_HAT_ARRAY)
         @@glasses_inventory = CosmeticsInventoryBase.new("Glasses Inventory", "inv_glasses", 5, 0, "glasses", "color", Glasses::GlassesBase::OWNED_GLASSES_ARRAY)
+        @@makeup_inventory = CosmeticsInventoryBase.new("Makeup Inventory", "inv_makeup", 5, 0, "makeup", "color", Makeup::MakeupBase::OWNED_MAKEUP_ARRAY)
         @@earring_inventory = CosmeticsInventoryBase.new("Earrings Inventory", "inv_earrings", 5, 0, "earrings", "color", Earrings::EarringsBase::OWNED_EARRINGS_ARRAY)
     end
 end
