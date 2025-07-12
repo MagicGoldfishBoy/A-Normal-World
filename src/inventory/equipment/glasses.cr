@@ -37,8 +37,9 @@ module Glasses
         GLASSES_SPRITE_HASH[id] = sprite
         GLASSES_SFX_HASH[id] = sfx
 
-        if self.is_owned
+        if self.is_owned && !OWNED_GLASSES_ARRAY.any? { |owned_glasses| owned_glasses.id == self.id }
             OWNED_GLASSES_ARRAY << self
+            OWNED_GLASSES_ARRAY.uniq!
         end
     end
 
@@ -60,9 +61,14 @@ module Glasses
     end
 
     class Sunglasses < GlassesBase
-        @@sunglasses = Sunglasses.new("Sunglasses", "sunglasses", true, SF::Sprite.new(SUNGLASSES_TEXTURE), "white", DEFAULT_GLASSES_EQUIP_SFX)
+        @@sunglasses = Sunglasses.new("White Sunglasses", "sunglasses", true, SF::Sprite.new(SUNGLASSES_TEXTURE), "white", DEFAULT_GLASSES_EQUIP_SFX)
         GLASSES_SPRITE_HASH[@@sunglasses.id] = @@sunglasses.sprite.as(SF::Sprite)
         GLASSES_SFX_HASH[@@sunglasses.id] = @@sunglasses.sfx.as(SF::Sound)
+
+        @@grey_sunglasses = Sunglasses.new("Grey Sunglasses", "grey_sunglasses", true, SF::Sprite.new(SUNGLASSES_TEXTURE), "grey", DEFAULT_GLASSES_EQUIP_SFX)
+        @@grey_sunglasses.sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
+        GLASSES_SPRITE_HASH[@@grey_sunglasses.id] = @@grey_sunglasses.sprite.as(SF::Sprite)
+        GLASSES_SFX_HASH[@@grey_sunglasses.id] = @@grey_sunglasses.sfx.as(SF::Sound)
 
         @@red_sunglasses = Sunglasses.new("Red Sunglasses", "red_sunglasses", true, SF::Sprite.new(SUNGLASSES_TEXTURE), "red", DEFAULT_GLASSES_EQUIP_SFX)
         @@red_sunglasses.sprite.as(SF::Sprite).color = Color::ClothingColor::RED

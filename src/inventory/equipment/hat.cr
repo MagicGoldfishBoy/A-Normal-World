@@ -35,8 +35,9 @@ module Hat
         @covers_hair = covers_hair
         @sfx = sfx
         HAT_ARRAY << self
-        if self.is_owned
-         OWNED_HAT_ARRAY << self
+        if self.is_owned && !OWNED_HAT_ARRAY.any? { |owned_hat| owned_hat.id == self.id }
+            OWNED_HAT_ARRAY << self
+            OWNED_HAT_ARRAY.uniq!
         end
      end
 
