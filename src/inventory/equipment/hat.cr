@@ -16,7 +16,7 @@ module Hat
         HAT_SPRITE_HASH = Hash(String, SF::Sprite).new
         HAT_SFX_HASH = Hash(String, SF::Sound).new
 
-        DEFAULT_HAT_EQUIP_SFX = SFX::EquipSFX::TEST_EQUIP_SFX
+        DEFAULT_HAT_EQUIP_SFX = SFX::EquipSFX::FABRIC_EQUIP_01
 
         property name : String
         property id : String
