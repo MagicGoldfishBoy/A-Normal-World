@@ -81,8 +81,8 @@ module Glasses
         GLASSES_SFX_HASH[@@red_sunglasses.id] = @@red_sunglasses.sfx.as(SF::Sound)
     end
     class Eyeglasses < GlassesBase
-        @@round_eyeglasses = Eyeglasses.new("Round Glasses", "round_eyeglasses", true, SF::Sprite.new(ROUND_GLASSES_TEXTURE), "white", DEFAULT_GLASSES_EQUIP_SFX)
-        GLASSES_SPRITE_HASH[@@round_eyeglasses.id] = @@round_eyeglasses.sprite.as(SF::Sprite)
-        GLASSES_SFX_HASH[@@round_eyeglasses.id] = @@round_eyeglasses.sfx.as(SF::Sound)
+        @@grey_round_eyeglasses = Eyeglasses.new("Grey Round Glasses", "round_eyeglasses", true, SF::Sprite.new(GREY_ROUND_GLASSES_TEXTURE), "grey_custom", DEFAULT_GLASSES_EQUIP_SFX)
+        GLASSES_SPRITE_HASH[@@grey_round_eyeglasses.id] = @@grey_round_eyeglasses.sprite.as(SF::Sprite)
+        GLASSES_SFX_HASH[@@grey_round_eyeglasses.id] = @@grey_round_eyeglasses.sfx.as(SF::Sound)
     end
 end
