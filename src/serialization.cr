@@ -126,11 +126,13 @@ module Serialization
       property version : Int32 = 1
       property stats : Hash(String, Float64 | Nil | String | Int32) = Hash(String, Float64 | Nil | String | Int32).new
       property hat : (Hat::HatBase | Nil) = nil
+      property glasses : (Glasses::GlassesBase | Nil) = nil
     
       def initialize
         @version = 1
         @stats = Hash(String, Float64 | Nil | String | Int32).new
         @hat = nil
+        @glasses = nil
       end
     
       @[JSON::Field(ignore_unknown: true)]
@@ -143,6 +145,7 @@ module Serialization
         save.version = 2
         save.stats = @@stat_save_hash
         save.hat = Player::Appearance.hat
+        save.glasses = Player::Appearance.glasses
       
         path = "saves/" + @@save_file.not_nil!
         Dir.mkdir_p(File.dirname(path))
@@ -183,6 +186,18 @@ module Serialization
         end
       else
         Player::Appearance.hat = nil
+      end
+      if save.glasses
+        Player::Appearance.glasses = Glasses::GlassesBase.new(
+          name: save.glasses.as(Glasses::GlassesBase).name,
+          id: save.glasses.as(Glasses::GlassesBase).id,
+          sprite: Glasses::GlassesBase::GLASSES_SPRITE_HASH[save.glasses.as(Glasses::GlassesBase).id],
+          is_owned: save.glasses.as(Glasses::GlassesBase).is_owned,
+          color: save.glasses.as(Glasses::GlassesBase).color,
+          sfx: Glasses::GlassesBase::GLASSES_SFX_HASH[save.glasses.as(Glasses::GlassesBase).id]
+        )
+      else
+        Player::Appearance.glasses = nil
       end
 
     end
