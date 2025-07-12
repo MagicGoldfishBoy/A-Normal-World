@@ -3,6 +3,7 @@ require "crsfml/audio"
 require "../../../src/textures.cr"
 require "../../../src/utility.cr"
 require "../../../src/inventory/equipment/clothing.cr"
+require "../../../graphics/color.cr"
 
 module Glasses 
 
@@ -62,5 +63,10 @@ module Glasses
         @@sunglasses = Sunglasses.new("Sunglasses", "sunglasses", true, SF::Sprite.new(SUNGLASSES_TEXTURE), "white", DEFAULT_GLASSES_EQUIP_SFX)
         GLASSES_SPRITE_HASH[@@sunglasses.id] = @@sunglasses.sprite.as(SF::Sprite)
         GLASSES_SFX_HASH[@@sunglasses.id] = @@sunglasses.sfx.as(SF::Sound)
+
+        @@red_sunglasses = Sunglasses.new("Red Sunglasses", "red_sunglasses", true, SF::Sprite.new(SUNGLASSES_TEXTURE), "red", DEFAULT_GLASSES_EQUIP_SFX)
+        @@red_sunglasses.sprite.as(SF::Sprite).color = Color::ClothingColor::RED
+        GLASSES_SPRITE_HASH[@@red_sunglasses.id] = @@red_sunglasses.sprite.as(SF::Sprite)
+        GLASSES_SFX_HASH[@@red_sunglasses.id] = @@red_sunglasses.sfx.as(SF::Sound)
     end
 end

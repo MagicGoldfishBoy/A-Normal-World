@@ -403,16 +403,7 @@
     #H                                          Hat Textures                                            H
     #HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 
-        WHITE_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/White_Baseball_Cap.png")
-        BLACK_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Black_Baseball_Cap.png")
-        BROWN_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Brown_Baseball_Cap.png")
-        RED_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Red_Baseball_Cap.png")
-        ORANGE_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Orange_Baseball_Cap.png")
-        YELLOW_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Baseball_Cap.png")
-        GREEN_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Green_Baseball_Cap.png")
-        BLUE_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Blue_Baseball_Cap.png")
-        PURPLE_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Purple_Baseball_Cap.png")
-        PINK_BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/Pink_Baseball_Cap.png")
+        BASEBALL_CAP_TEXTURE = SF::Texture.from_file("../graphics/White_Baseball_Cap.png")
 
         WHITE_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/White_Sweatband.png")
         BLACK_SWEATBAND_TEXTURE = SF::Texture.from_file("../graphics/Black_Sweatband.png")
@@ -431,7 +422,7 @@
     #G                                         Glasses Textures                                         G
     #GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 
-        SUNGLASSES_TEXTURE = SF::Texture.from_file("../graphics/Sunglasses.png")
+        SUNGLASSES_TEXTURE = SF::Texture.from_file("../graphics/glasses/Sunglasses.png")
         ROUND_GLASSES_TEXTURE = SF::Texture.from_file("../graphics/Round_Glasses.png")
         EYE_BANDAGE_TEXTURE = SF::Texture.from_file("../graphics/Eye_Bandage.png")
 
