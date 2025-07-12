@@ -142,8 +142,16 @@ module Sprites
         SF::Sprite.new
     end
 
-    current_earrings = if earrings = Clothing::Earrings.get_earrings(Appearance.get_clothing("earrings"))
-        SF::Sprite.new(earrings.texture)
+    current_earrings = if earrings = Appearance.earrings
+        if !earrings.is_a?(Earrings::EarringsBase)
+            SF::Sprite.new
+        elsif !earrings.sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        elsif !earrings.sprite.as(SF::Sprite).texture
+            SF::Sprite.new
+        else
+            Player.assign_color(earrings)
+        end
     else
         SF::Sprite.new
     end
