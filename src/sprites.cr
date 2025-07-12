@@ -5,6 +5,7 @@ require "../src/animations.cr"
 require "../src/clothing.cr"
 require "../src/body.cr"
 require "../src/equipment.cr"
+require "../graphics/color.cr"
 
 module Sprites
     include Player
@@ -294,71 +295,71 @@ def Player.assign_color(item)
     case item.as(Clothing::ClothingBase).color
     when "grey"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(100, 100, 100, 255)
+        sprite.color = Color::ClothingColor::GREY
         sprite
     when "black"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(25, 25, 25, 255)
+        sprite.color = Color::ClothingColor::BLACK
         sprite
     when "tan"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(210, 180, 140, 255)
+        sprite.color = Color::ClothingColor::TAN
         sprite
     when "brown"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(139, 69, 19, 255)
+        sprite.color = Color::ClothingColor::BROWN
         sprite
     when "red"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(136, 8, 8, 255)
+        sprite.color = Color::ClothingColor::RED
         sprite
     when "orange"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(255, 117, 24, 255)
+        sprite.color = Color::ClothingColor::ORANGE
         sprite
     when "yellow"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(228, 208, 10, 255)
+        sprite.color = Color::ClothingColor::YELLOW
         sprite
     when "yellow-green"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(170, 255, 0, 255)
+        sprite.color = Color::ClothingColor::YELLOW_GREEN
         sprite
     when "green"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(34, 139, 34, 255)
+        sprite.color = Color::ClothingColor::GREEN
         sprite
     when "turquoise"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(64, 224, 208, 255)
+        sprite.color = Color::ClothingColor::TURQUOISE
         sprite
     when "light-blue"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(137, 207, 240, 255)
+        sprite.color = Color::ClothingColor::LIGHT_BLUE
         sprite
     when "blue"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(20, 52, 164, 255)
+        sprite.color = Color::ClothingColor::BLUE
         sprite
     when "indigo"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(63, 0, 255, 255)
+        sprite.color = Color::ClothingColor::INDIGO
         sprite
     when "light-purple"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(191, 64, 191, 255)
+        sprite.color = Color::ClothingColor::LIGHT_PURPLE
         sprite
     when "purple"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(112, 41, 99, 255)
+        sprite.color = Color::ClothingColor::PURPLE
         sprite
     when "pink"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(255, 192, 203, 255)
+        sprite.color = Color::ClothingColor::PINK
         sprite
     when "hot-pink"
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
-        sprite.color = SF.color(255, 105, 180, 255)
+        sprite.color = Color::ClothingColor::HOT_PINK
         sprite
     else
       SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))  
