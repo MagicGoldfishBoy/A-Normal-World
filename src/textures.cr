@@ -423,7 +423,11 @@
     #GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 
         SUNGLASSES_TEXTURE = SF::Texture.from_file("../graphics/glasses/Sunglasses.png")
+
+        WHITE_ROUND_GLASSES_TEXTURE = SF::Texture.from_file("../graphics/glasses/White_Round_Glasses.png")
         GREY_ROUND_GLASSES_TEXTURE = SF::Texture.from_file("../graphics/glasses/Round_Glasses.png")
+        RAINBOW_ROUND_GLASSES_TEXTURE = SF::Texture.from_file("../graphics/glasses/Rainbow_Round_Glasses.png")
+
         EYE_BANDAGE_TEXTURE = SF::Texture.from_file("../graphics/Eye_Bandage.png")
 
     #MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
