@@ -7,6 +7,7 @@ require "../../src/window/inventory_window.cr"
 require "../inventory/inventory.cr"
 require "../inventory/equipment/hat.cr"
 require "../inventory/equipment/glasses.cr"
+require "../inventory/equipment/earrings.cr"
 
 module CosmeticsInventory
     class CosmeticsInventoryManager
@@ -179,6 +180,9 @@ module CosmeticsInventory
             elsif MouseHandling::ClickHandling.button_clicked?(GLASSES_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "glasses"
                 sleep 0.15.seconds
+            elsif MouseHandling::ClickHandling.button_clicked?(EARRING_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+                CosmeticsInventoryManager.current_tab = "earrings"
+                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(InventoryWindow::InventoryWindowElements::LEFT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryBase::COSMETIC_INVENTORY_ARRAY.each{ |inventory| 
                 if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page - 1 >= 0
@@ -255,13 +259,14 @@ module CosmeticsInventory
             self.array[start_index..end_index].each_with_index do |item, index|
                 item.sprite.as(SF::Sprite).scale = SF.vector2(2, 2)
                 item.sprite.as(SF::Sprite).position = current_pos
-        
-                if self.id == "inv_hat"
-                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(34, 14, 36, 33)
+
+                item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(34, 14, 36, 33)
+                if self.id == "inv_earrings"
+                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 36, 33)
                 end
-                if self.id =="inv_glasses"
-                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(34, 14, 36, 33)
-                end
+                # if self.id =="inv_glasses"
+                #     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(34, 14, 36, 33)
+                # end
         
                 window.draw(item.sprite.as(SF::Sprite))
         
@@ -300,6 +305,9 @@ module CosmeticsInventory
                 if item.is_a?(Glasses::GlassesBase)
                     Glasses::GlassesBase.swap_glasses(item)
                 end
+                if item.is_a?(Earrings::EarringsBase)
+                    Earrings::EarringsBase.swap_earrings(item)
+                end
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
                 break 
@@ -313,6 +321,8 @@ module CosmeticsInventory
                 @@hat_inventory.draw(window)
             when "glasses"
                 @@glasses_inventory.draw(window)
+            when "earrings"
+                @@earring_inventory.draw(window)
             end
         end
         def self.return_current_page
@@ -321,6 +331,8 @@ module CosmeticsInventory
                return @@hat_inventory.page
             when "glasses"
                return @@glasses_inventory.page
+            when "earrings"
+               return @@earring_inventory.page
             end
         end
         def self.return_max_page_count
@@ -329,10 +341,13 @@ module CosmeticsInventory
                return @@hat_inventory.max_page_count
             when "glasses"
                return @@glasses_inventory.max_page_count
+            when "earrings"
+               return @@earring_inventory.max_page_count
             end
         end
           
         @@hat_inventory = CosmeticsInventoryBase.new("Hat Inventory", "inv_hat", 5, 0, "hat", "color", Hat::HatBase::OWNED_HAT_ARRAY)
         @@glasses_inventory = CosmeticsInventoryBase.new("Glasses Inventory", "inv_glasses", 5, 0, "glasses", "color", Glasses::GlassesBase::OWNED_GLASSES_ARRAY)
+        @@earring_inventory = CosmeticsInventoryBase.new("Earrings Inventory", "inv_earrings", 5, 0, "earrings", "color", Earrings::EarringsBase::OWNED_EARRINGS_ARRAY)
     end
 end
