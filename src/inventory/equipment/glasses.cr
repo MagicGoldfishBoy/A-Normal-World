@@ -93,4 +93,9 @@ module Glasses
         GLASSES_SPRITE_HASH[@@rainbow_round_eyeglasses.id] = @@rainbow_round_eyeglasses.sprite.as(SF::Sprite)
         GLASSES_SFX_HASH[@@rainbow_round_eyeglasses.id] = @@rainbow_round_eyeglasses.sfx.as(SF::Sound)
     end
+    class Eyepatch < GlassesBase
+        @@eye_bandage = Eyepatch.new("Eye Bandage", "eye_bandage", true, SF::Sprite.new(EYE_BANDAGE_TEXTURE), "white", DEFAULT_GLASSES_EQUIP_SFX)
+        GLASSES_SPRITE_HASH[@@eye_bandage.id] = @@eye_bandage.sprite.as(SF::Sprite)
+        GLASSES_SFX_HASH[@@eye_bandage.id] = @@eye_bandage.sfx.as(SF::Sound)
+    end
 end
