@@ -148,7 +148,7 @@ module Player
   end
 
   class Appearance
-    def initialize(skin : String, hair : String, face : String, hat : Hat::HatBase | Nil, glasses : String, earrings : String, shirt : String, gloves : String, pants : String, 
+    def initialize(skin : String, hair : String, face : String, hat : Hat::HatBase | Nil, glasses : Glasses::GlassesBase | Nil, earrings : String, shirt : String, gloves : String, pants : String, 
         shoes : String, socks : String, makeup : String, necklace : String, jacket : String, weapon : String)
         @skin = skin
         @@skin = skin
@@ -189,7 +189,7 @@ module Player
 
     class_property hat : Hat::HatBase | Nil = nil
 
-    class_property glasses : String = "No Glasses"
+    class_property glasses : Glasses::GlassesBase | Nil = nil
 
     class_property earrings : String = "No Earrings"
 
@@ -224,7 +224,7 @@ module Player
         @@socks = "W/Socks"
         @@makeup = "No Makeup"
         @@necklace = "No Necklace"
-        @@glasses = "No Glasses"
+        @@glasses = nil
         @@jacket = "No Jacket"
         @@weapon = "Stick"
     end
@@ -252,7 +252,7 @@ module Player
         when "socks"
             return @@socks
         when "glasses"
-            return @@glasses
+            return nil#@@glasses
         when "makeup"
             return @@makeup
         when "necklace"

@@ -297,6 +297,9 @@ module CosmeticsInventory
                 if item.is_a?(Hat::HatBase)
                     Hat::HatBase.swap_hat(item)
                 end
+                if item.is_a?(Glasses::GlassesBase)
+                    Glasses::GlassesBase.swap_glasses(item)
+                end
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
                 break 

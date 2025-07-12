@@ -42,14 +42,17 @@ module Glasses
     end
 
     def self.swap_glasses(item : GlassesBase)
-        if item.as(Glasses::GlassesBase).sfx
-            item.as(Glasses::GlassesBase).sfx.play
+        
+        if item.as(Glasses::GlassesBase).sfx != nil
+            item.as(Glasses::GlassesBase).sfx.not_nil!.play
         else
             DEFAULT_GLASSES_EQUIP_SFX.play
         end
+        if Player::Appearance.glasses != nil
         if Glasses::GlassesBase::OWNED_GLASSES_ARRAY.none? { |owned_glasses| owned_glasses.id == Player::Appearance.glasses.as(Glasses::GlassesBase).id }
             Glasses::GlassesBase::OWNED_GLASSES_ARRAY << Player::Appearance.glasses.as(Glasses::GlassesBase)
         end
+    end
         Player::Appearance.glasses = item.as(Glasses::GlassesBase)
         Glasses::GlassesBase::OWNED_GLASSES_ARRAY.reject! { |owned_glasses| owned_glasses.id == item.as(Glasses::GlassesBase).id }
     end

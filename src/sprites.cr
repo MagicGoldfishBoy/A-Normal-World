@@ -159,8 +159,16 @@ module Sprites
         end
     end
 
-    current_glasses = if glasses = Clothing::Glasses.get_glasses(Appearance.get_clothing("glasses"))
-        SF::Sprite.new(glasses.texture)
+    current_glasses = if glasses = Appearance.glasses
+        if !glasses.is_a?(Glasses::GlassesBase)
+            SF::Sprite.new
+        elsif !glasses.sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        elsif !glasses.sprite.as(SF::Sprite).texture
+            SF::Sprite.new
+        else
+            Player.assign_color(glasses)
+        end
     else
         SF::Sprite.new
     end
