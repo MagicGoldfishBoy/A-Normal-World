@@ -59,6 +59,7 @@ module Shirt
             
             Player::Appearance.shirt = item.as(Shirt::ShirtBase)
             Shirt::ShirtBase::OWNED_SHIRTS_ARRAY.reject! { |owned_shirt| owned_shirt.id == item.as(Shirt::ShirtBase).id }
+            #puts Player::Appearance.shirt.as(Shirt::ShirtBase).name
         end
 
         def self.swap_shirt_character_creation(direction : String, iterator : Int32)
@@ -88,7 +89,56 @@ module Shirt
 
         @@white_tank_top = TankTop.new("White Tank Top", "white_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "white", SFX::EquipSFX::FABRIC_EQUIP_01)
 
+        @@grey_tank_top = TankTop.new("Grey Tank Top", "grey_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "grey", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@grey_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
+
         @@black_tank_top = TankTop.new("Black Tank Top", "black_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "black", SFX::EquipSFX::FABRIC_EQUIP_01)
         @@black_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::BLACK
+
+        @@tan_tank_top = TankTop.new("Tan Tank Top", "tan_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "tan", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@tan_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::TAN
+
+        @@brown_tank_top = TankTop.new("Brown Tank Top", "brown_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "brown", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@brown_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::BROWN
+
+        @@red_tank_top = TankTop.new("Red Tank Top", "red_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "red", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@red_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::RED
+
+        @@orange_tank_top = TankTop.new("Orange Tank Top", "orange_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "orange", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@orange_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::ORANGE
+
+        @@yellow_tank_top = TankTop.new("Yellow Tank Top", "yellow_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "yellow", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@yellow_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW
+
+        @@yellow_green_tank_top = TankTop.new("Yellow Green Tank Top", "yellow_green_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "yellow-green", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@yellow_green_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW_GREEN
+
+        @@green_tank_top = TankTop.new("Green Tank Top", "green_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "green", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@green_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::GREEN
+
+        @@turquoise_tank_top = TankTop.new("Turquoise Tank Top", "turquoise_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "turquoise", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@turquoise_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::TURQUOISE
+
+        @@light_blue_tank_top = TankTop.new("Light Blue Tank Top", "light_blue_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "light-blue", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@light_blue_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_BLUE
+
+        @@blue_tank_top = TankTop.new("Blue Tank Top", "blue_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "blue", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@blue_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::BLUE
+
+        @@indigo_tank_top = TankTop.new("Indigo Tank Top", "indigo_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "indigo", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@indigo_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::INDIGO
+
+        @@light_purple_tank_top = TankTop.new("Light Purple Tank Top", "light_purple_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "light-purple", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@light_purple_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_PURPLE
+
+        @@purple_tank_top = TankTop.new("Purple Tank Top", "purple_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "purple", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@purple_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::PURPLE
+
+        @@pink_tank_top = TankTop.new("Pink Tank Top", "pink_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "pink", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@pink_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::PINK
+
+        @@hot_pink_tank_top = TankTop.new("Hot Pink Tank Top", "hot_pink_tank_top", true, SF::Sprite.new(TANK_TOP_WHITE_TEXTURE), "hot-pink", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@hot_pink_tank_top.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
+
     end
 end
