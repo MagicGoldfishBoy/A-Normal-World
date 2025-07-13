@@ -206,6 +206,8 @@ module Sprites
     face_type = ""
     if face && face.includes?("Button")
         face_type = "button"
+    elsif face && face.includes?("Shounen")
+        face_type = "shounen"
     end
 
     current_makeup = if makeup && makeup.is_a?(Makeup::MakeupBase)
@@ -213,47 +215,11 @@ module Sprites
         texture_key = face_type.empty? ? texture_id : "#{texture_id}_#{face_type}"
         texture = Makeup::MakeupTexture.get_texture(texture_key) || SF::Texture.new(NIL_TEXTURE)
         sprite = SF::Sprite.new(texture)
-        #sprite.color = makeup.try(&.color) || SF::Color::White
         Appearance.makeup.not_nil!.sprite = sprite
         sprite
     else
         SF::Sprite.new
     end
-    # makeup = Appearance.makeup
-
-    #     current_makeup = if makeup = Appearance.makeup
-    #       face = Appearance.get_clothing("face")
-    #       if face.nil?
-    #         return SF::Sprite.new
-    #       elsif makeup.is_a?(Makeup::MakeupBase)
-    #       if face.includes?("Button")
-    #         face = "button"
-    #       end
-    #         makeup.sprite.as(SF::Sprite).texture ? Makeup::MakeupTexture.get_texture(makeup.id + "_" + face) : SF::Texture.new(RED_MAKEUP_SHOUNEN_TEXTURE)
-    #       end
-    #     end
-
-    #     current_makeup = RED_MAKEUP_SHOUNEN_TEXTURE
-        
-        
-        #   face_name = Body::Face.get_face(face).try(&.name) || ""
-        
-        #   if face_name.includes?("Button") && !face_name.includes?("Shounen")
-        #     i = "#{makeup.name} Button"
-        #     texture = Clothing::Makeup.get_makeup_texture(i) || SF::Texture.new(NIL_TEXTURE)
-        #     SF::Sprite.new(texture)
-        #   elsif face_name.includes?("Shounen")
-        #     i = "#{makeup.name} Shounen"
-        #     texture = Clothing::Makeup.get_makeup_texture(i) || SF::Texture.new(NIL_TEXTURE)
-        #     SF::Sprite.new(texture)
-        #   else
-        #     i = makeup.name
-        #     texture = Clothing::Makeup.get_makeup_texture(i) || SF::Texture.new(NIL_TEXTURE)
-        #     SF::Sprite.new(texture)
-        #   end    
-        # else
-        #   SF::Sprite.new
-        # end
 
     current_weapon = if weapon = Equipment::Weapon.get_weapon(Appearance.get_clothing("weapon"))
         SF::Sprite.new(weapon.texture)
