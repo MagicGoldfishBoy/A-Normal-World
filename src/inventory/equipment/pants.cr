@@ -146,4 +146,62 @@ module Pants
         @@hot_pink_jeans = Jeans.new("Hot Pink Jeans", "hot_pink_jeans", false, SF::Sprite.new(JEANS_WHITE_TEXTURE), "hot-pink", DEFAULT_PANTS_EQUIP_SFX)
         @@hot_pink_jeans.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
     end
+    class Shorts < PantsBase
+        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, color : String, sfx : SF::Sound)
+            super(name, id, is_owned, sprite, color, sfx, "short")
+        end
+
+        @@white_booty_shorts = Shorts.new("White Booty Shorts", "white_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "white", DEFAULT_PANTS_EQUIP_SFX)
+
+        @@grey_booty_shorts = Shorts.new("Grey Booty Shorts", "grey_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "grey", DEFAULT_PANTS_EQUIP_SFX)
+        @@grey_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
+
+        @@black_booty_shorts = Shorts.new("Black Booty Shorts", "black_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "black", DEFAULT_PANTS_EQUIP_SFX)
+        @@black_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::BLACK
+
+        @@tan_booty_shorts = Shorts.new("Tan Booty Shorts", "tan_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "tan", DEFAULT_PANTS_EQUIP_SFX)
+        @@tan_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::TAN
+
+        @@brown_booty_shorts = Shorts.new("Brown Booty Shorts", "brown_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "brown", DEFAULT_PANTS_EQUIP_SFX)
+        @@brown_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::BROWN
+
+        @@red_booty_shorts = Shorts.new("Red Booty Shorts", "red_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "red", DEFAULT_PANTS_EQUIP_SFX)
+        @@red_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::RED
+
+        @@orange_booty_shorts = Shorts.new("Orange Booty Shorts", "orange_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "orange", DEFAULT_PANTS_EQUIP_SFX)
+        @@orange_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::ORANGE
+
+        @@yellow_booty_shorts = Shorts.new("Yellow Booty Shorts", "yellow_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "yellow", DEFAULT_PANTS_EQUIP_SFX)
+        @@yellow_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW
+
+        @@yellow_green_booty_shorts = Shorts.new("Yellow Green Booty Shorts", "yellow_green_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "yellow-green", DEFAULT_PANTS_EQUIP_SFX)
+        @@yellow_green_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW_GREEN
+
+        @@green_booty_shorts = Shorts.new("Green Booty Shorts", "green_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "green", DEFAULT_PANTS_EQUIP_SFX)
+        @@green_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::GREEN
+
+        @@turquoise_booty_shorts = Shorts.new("Turquoise Booty Shorts", "turquoise_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "turquoise", DEFAULT_PANTS_EQUIP_SFX)
+        @@turquoise_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::TURQUOISE
+
+        @@light_blue_booty_shorts = Shorts.new("Light Blue Booty Shorts", "light_blue_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "light-blue", DEFAULT_PANTS_EQUIP_SFX)
+        @@light_blue_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_BLUE
+
+        @@blue_booty_shorts = Shorts.new("Blue Booty Shorts", "blue_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "blue", DEFAULT_PANTS_EQUIP_SFX)
+        @@blue_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::BLUE
+
+        @@indigo_booty_shorts = Shorts.new("Indigo Booty Shorts", "indigo_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "indigo", DEFAULT_PANTS_EQUIP_SFX)
+        @@indigo_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::INDIGO
+
+        @@light_purple_booty_shorts = Shorts.new("Light Purple Booty Shorts", "light_purple_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "light-purple", DEFAULT_PANTS_EQUIP_SFX)
+        @@light_purple_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_PURPLE
+
+        @@purple_booty_shorts = Shorts.new("Purple Booty Shorts", "purple_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "purple", DEFAULT_PANTS_EQUIP_SFX)
+        @@purple_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::PURPLE
+
+        @@pink_booty_shorts = Shorts.new("Pink Booty Shorts", "pink_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "pink", DEFAULT_PANTS_EQUIP_SFX)
+        @@pink_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::PINK
+
+        @@hot_pink_booty_shorts = Shorts.new("Hot Pink Booty Shorts", "hot_pink_booty_shorts", false, SF::Sprite.new(BOOTY_SHORTS_WHITE_TEXTURE), "hot-pink", DEFAULT_PANTS_EQUIP_SFX)
+        @@hot_pink_booty_shorts.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
+    end
 end
