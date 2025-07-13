@@ -268,9 +268,10 @@ module CosmeticsInventory
                 if self.id == "inv_earrings"
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 36, 33)
                 end
-                # if self.id =="inv_glasses"
-                #     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(34, 14, 36, 33)
-                # end
+                if self.id == "inv_makeup"
+                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 46, 55)
+                    item.sprite.as(SF::Sprite).scale = SF.vector2(0.99, 0.99)
+                end
         
                 window.draw(item.sprite.as(SF::Sprite))
         

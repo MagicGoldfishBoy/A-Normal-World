@@ -436,17 +436,17 @@
     #M                                         Makeup Textures                                          M
     #MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 
-        EYE_SCAR_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/Eye_Scar_Shounen.png")
-        EYE_SCAR_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/Eye_Scar_Button.png")
+        EYE_SCAR_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/makeup/Eye_Scar_Shounen.png")
+        EYE_SCAR_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/makeup/Eye_Scar_Button.png")
 
-        RED_MAKEUP_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/Red_Makeup_Shounen.png")
-        RED_MAKEUP_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/Red_Makeup_Button.png")
+        RED_MAKEUP_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/makeup/Red_Makeup_Shounen.png")
+        RED_MAKEUP_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/makeup/Red_Makeup_Button.png")
 
-        BLUE_MAKEUP_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/Blue_Makeup_Shounen.png")
-        BLUE_MAKEUP_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/Blue_Makeup_Button.png")
+        BLUE_MAKEUP_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/makeup/Blue_Makeup_Shounen.png")
+        BLUE_MAKEUP_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/makeup/Blue_Makeup_Button.png")
 
-        PINK_MAKEUP_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/Pink_Makeup_Shounen.png")
-        PINK_MAKEUP_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/Pink_Makeup_Button.png")
+        PINK_MAKEUP_SHOUNEN_TEXTURE = SF::Texture.from_file("../graphics/makeup/Pink_Makeup_Shounen.png")
+        PINK_MAKEUP_BUTTON_TEXTURE = SF::Texture.from_file("../graphics/makeup/Pink_Makeup_Button.png")
 
     #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
     #W                                         Weapon Textures                                          W

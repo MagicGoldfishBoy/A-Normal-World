@@ -16,7 +16,7 @@ module Makeup
         MAKEUP_SPRITE_HASH = {} of String => SF::Sprite
         MAKEUP_SFX_HASH = {} of String => SF::Sound
 
-        DEFAULT_MAKEUP_EQUIP_SFX = SFX::EquipSFX::FABRIC_EQUIP_01
+        DEFAULT_MAKEUP_EQUIP_SFX = SFX::EquipSFX::MAKEUP_EQUIP_01
 
         property name : String
         property id : String
@@ -86,8 +86,18 @@ module Makeup
         @@red_makeup_texture_shounen = MakeupTexture.new("red_makeup_shounen", RED_MAKEUP_SHOUNEN_TEXTURE)
         @@red_makeup_texture_button = MakeupTexture.new("red_makeup_button", RED_MAKEUP_BUTTON_TEXTURE)
 
+        @@blue_makeup_texture_shounen = MakeupTexture.new("blue_makeup_shounen", BLUE_MAKEUP_SHOUNEN_TEXTURE)
+        @@blue_makeup_texture_button = MakeupTexture.new("blue_makeup_button", BLUE_MAKEUP_BUTTON_TEXTURE)
+
+        @@pink_makeup_texture_shounen = MakeupTexture.new("pink_makeup_shounen", PINK_MAKEUP_SHOUNEN_TEXTURE)
+        @@pink_makeup_texture_button = MakeupTexture.new("pink_makeup_button", PINK_MAKEUP_BUTTON_TEXTURE)
+
     end
     class FullMakeup < MakeupBase
         @@red_makeup = MakeupBase.new("Red Makeup", "red_makeup", true, SF::Sprite.new(RED_MAKEUP_SHOUNEN_TEXTURE), "red_custom", DEFAULT_MAKEUP_EQUIP_SFX)
+
+        @@blue_makeup = MakeupBase.new("Blue Makeup", "blue_makeup", true, SF::Sprite.new(BLUE_MAKEUP_SHOUNEN_TEXTURE), "blue_custom", DEFAULT_MAKEUP_EQUIP_SFX)
+
+        @@pink_makeup = MakeupBase.new("Pink Makeup", "pink_makeup", true, SF::Sprite.new(PINK_MAKEUP_SHOUNEN_TEXTURE), "pink_custom", DEFAULT_MAKEUP_EQUIP_SFX)
     end
 end
