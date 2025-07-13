@@ -220,7 +220,7 @@ module CosmeticsInventory
         def initialize(name : String, id : String, max_page_count : Int32, page : Int32, tab : String, sort_type : String, array : Array(Clothing::ClothingBase))
             @name = name
             @id = id
-            @max_page_count = max_page_count
+            @max_page_count = ((array.size / 15) + (array.size % 15 > 0 ? 0 : 1)).to_i
             @page = page
             @tab = tab
             @sort_type = sort_type

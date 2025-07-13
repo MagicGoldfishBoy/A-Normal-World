@@ -156,7 +156,7 @@ module InventoryWindow
 
             PAGE_COUNT_BOX.sprite.position = INVENTORY_BOX.sprite.position + SF.vector2(INVENTORY_BOX.sprite.global_bounds.width * 0.75, 15)
             PAGE_COUNT_TEXT.text.position = PAGE_COUNT_BOX.sprite.position + SF.vector2(40, 8)
-            PAGE_COUNT_TEXT.text.string = "#{CosmeticsInventory::CosmeticsInventoryBase.return_current_page}/#{CosmeticsInventory::CosmeticsInventoryBase.return_max_page_count}"
+            PAGE_COUNT_TEXT.text.string = "#{CosmeticsInventory::CosmeticsInventoryBase.return_current_page.as(Int32) + 1}/#{CosmeticsInventory::CosmeticsInventoryBase.return_max_page_count.as(Int32) + 1}"
 
         end
 
