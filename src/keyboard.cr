@@ -122,6 +122,7 @@ module Keyboard
                 #Levels::Level_Physics.jump(window)
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::I)
+                Hat::HatBase.remove_current_hat_from_inventory
                 MenuHandling::Window.is_inventory_open = !MenuHandling::Window.is_inventory_open
                 # Inventory::InventoryManager.is_inventory_open=(!Inventory::InventoryManager.is_inventory_open)
                 # Inventory::ClothingTabShirt.is_open=(!Inventory::ClothingTabShirt.is_open)

@@ -58,6 +58,12 @@ module Necklace
             Player::Appearance.necklace = item.as(Necklace::NecklaceBase)
             Necklace::NecklaceBase::OWNED_NECKLACES_ARRAY.reject! { |owned_necklace| owned_necklace.id == item.as(Necklace::NecklaceBase).id }
         end
+
+        def self.remove_current_necklace_from_inventory
+            if Player::Appearance.necklace && Player::Appearance.necklace.as(Necklace::NecklaceBase).id
+                OWNED_NECKLACES_ARRAY.reject! { |owned_necklace| owned_necklace.id == Player::Appearance.necklace.as(Necklace::NecklaceBase).id }
+            end
+        end
     end
     class JeweledNecklace < NecklaceBase
         @@ruby_necklace = NecklaceBase.new("Ruby Necklace", "ruby_necklace", true, SF::Sprite.new(RUBY_NECKLACE_TEXTURE), "red_custom", DEFAULT_NECKLACE_EQUIP_SFX)
