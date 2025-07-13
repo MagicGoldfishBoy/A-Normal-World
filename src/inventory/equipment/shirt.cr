@@ -263,4 +263,62 @@ module Shirt
         @@hot_pink_tubetop = TubeTop.new("Hot Pink Tube Top", "hot_pink_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "hot-pink", SFX::EquipSFX::FABRIC_EQUIP_01)
         @@hot_pink_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
     end
+    class LayeredShirt < ShirtBase
+        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, color : String, sfx : SF::Sound)
+            super(name, id, is_owned, sprite, color, sfx, "long")
+        end
+
+        @@white_layered_shirt = LayeredShirt.new("White Layered Shirt", "white_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "white", SFX::EquipSFX::FABRIC_EQUIP_01)
+
+        @@grey_layered_shirt = LayeredShirt.new("Grey Layered Shirt", "grey_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "grey", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@grey_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
+
+        @@black_layered_shirt = LayeredShirt.new("Black Layered Shirt", "black_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "black", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@black_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::BLACK
+
+        @@tan_layered_shirt = LayeredShirt.new("Tan Layered Shirt", "tan_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "tan", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@tan_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::TAN
+
+        @@brown_layered_shirt = LayeredShirt.new("Brown Layered Shirt", "brown_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "brown", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@brown_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::BROWN
+
+        @@red_layered_shirt = LayeredShirt.new("Red Layered Shirt", "red_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "red", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@red_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::RED
+
+        @@orange_layered_shirt = LayeredShirt.new("Orange Layered Shirt", "orange_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "orange", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@orange_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::ORANGE
+
+        @@yellow_layered_shirt = LayeredShirt.new("Yellow Layered Shirt", "yellow_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "yellow", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@yellow_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW
+
+        @@yellow_green_layered_shirt = LayeredShirt.new("Yellow Green Layered Shirt", "yellow_green_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "yellow-green", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@yellow_green_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW_GREEN
+
+        @@green_layered_shirt = LayeredShirt.new("Green Layered Shirt", "green_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "green", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@green_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::GREEN
+
+        @@turquoise_layered_shirt = LayeredShirt.new("Turquoise Layered Shirt", "turquoise_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "turquoise", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@turquoise_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::TURQUOISE
+
+        @@light_blue_layered_shirt = LayeredShirt.new("Light Blue Layered Shirt", "light_blue_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "light-blue", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@light_blue_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_BLUE
+
+        @@blue_layered_shirt = LayeredShirt.new("Blue Layered Shirt", "blue_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "blue", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@blue_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::BLUE
+
+        @@indigo_layered_shirt = LayeredShirt.new("Indigo Layered Shirt", "indigo_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "indigo", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@indigo_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::INDIGO
+
+        @@light_purple_layered_shirt = LayeredShirt.new("Light Purple Layered Shirt", "light_purple_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "light-purple", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@light_purple_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_PURPLE
+
+        @@purple_layered_shirt = LayeredShirt.new("Purple Layered Shirt", "purple_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "purple", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@purple_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::PURPLE
+
+        @@pink_layered_shirt = LayeredShirt.new("Pink Layered Shirt", "pink_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "pink", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@pink_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::PINK
+
+        @@hot_pink_layered_shirt = LayeredShirt.new("Hot Pink Layered Shirt", "hot_pink_layered_shirt", true, SF::Sprite.new(WHITE_LAYERED_SHIRT_TEXTURE), "hot-pink", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@hot_pink_layered_shirt.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
+    end
 end
