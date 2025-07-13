@@ -92,6 +92,10 @@ module Makeup
         @@pink_makeup_texture_shounen = MakeupTexture.new("pink_makeup_shounen", PINK_MAKEUP_SHOUNEN_TEXTURE)
         @@pink_makeup_texture_button = MakeupTexture.new("pink_makeup_button", PINK_MAKEUP_BUTTON_TEXTURE)
 
+
+        @@eye_scar_texture_shounen = MakeupTexture.new("eye_scar_shounen", EYE_SCAR_SHOUNEN_TEXTURE)
+        @@eye_scar_texture_button = MakeupTexture.new("eye_scar_button", EYE_SCAR_BUTTON_TEXTURE)
+
     end
     class FullMakeup < MakeupBase
         @@red_makeup = MakeupBase.new("Red Makeup", "red_makeup", true, SF::Sprite.new(RED_MAKEUP_SHOUNEN_TEXTURE), "red_custom", DEFAULT_MAKEUP_EQUIP_SFX)
@@ -99,5 +103,8 @@ module Makeup
         @@blue_makeup = MakeupBase.new("Blue Makeup", "blue_makeup", true, SF::Sprite.new(BLUE_MAKEUP_SHOUNEN_TEXTURE), "blue_custom", DEFAULT_MAKEUP_EQUIP_SFX)
 
         @@pink_makeup = MakeupBase.new("Pink Makeup", "pink_makeup", true, SF::Sprite.new(PINK_MAKEUP_SHOUNEN_TEXTURE), "pink_custom", DEFAULT_MAKEUP_EQUIP_SFX)
+    end
+    class Scar < MakeupBase
+        @@eye_scar = MakeupBase.new("Eye Scar", "eye_scar", true, SF::Sprite.new(EYE_SCAR_SHOUNEN_TEXTURE), "pink_custom", DEFAULT_MAKEUP_EQUIP_SFX)
     end
 end
