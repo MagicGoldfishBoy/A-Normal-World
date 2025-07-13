@@ -217,78 +217,11 @@
 
         TANK_TOP_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Tank_Top.png")
 
-        TANK_TOP_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Tank_Top.png")
-
-        TANK_TOP_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Tank_Top.png")
-
-        TANK_TOP_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Tank_Top.png")
-
-        TANK_TOP_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Tank_Top.png")
-
-        TANK_TOP_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Tank_Top.png")
-
-        TANK_TOP_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Tank_Top.png")
-
-        TANK_TOP_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Tank_Top.png")
-
-        TANK_TOP_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Tank_Top.png")
-
-
         T_SHIRT_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_T-Shirt.png")
-
-        T_SHIRT_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_T-Shirt.png")
-
-        T_SHIRT_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_T-Shirt.png")
-
-        T_SHIRT_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_T-Shirt.png")
-
-        T_SHIRT_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_T-Shirt.png")
-
-        T_SHIRT_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_T-Shirt.png")
-
-        T_SHIRT_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_T-Shirt.png")
-
-        T_SHIRT_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_T-Shirt.png")
-
-        T_SHIRT_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_T-Shirt.png")
-
 
         WHITE_TUBE_TOP_TEXTURE = SF::Texture.from_file("../graphics/White_Tube_Top.png")
 
-        BLACK_TUBE_TOP_TEXTURE = SF::Texture.from_file("../graphics/Black_Tube_Top.png")
-
-        RED_TUBE_TOP_TEXTURE = SF::Texture.from_file("../graphics/Red_Tube_Top.png")
-
-        ORANGE_TUBE_TOP_TEXTURE = SF::Texture.from_file("../graphics/Orange_Tube_Top.png")
-
-        YELLOW_TUBE_TOP_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Tube_Top.png")
-
-        GREEN_TUBE_TOP_TEXTURE = SF::Texture.from_file("../graphics/Green_Tube_Top.png")
-
-        BLUE_TUBE_TOP_TEXTURE = SF::Texture.from_file("../graphics/Blue_Tube_Top.png")
-
-        PURPLE_TUBE_TOP_TEXTURE = SF::Texture.from_file("../graphics/Purple_Tube_Top.png")
-
-        PINK_TUBE_TOP_TEXTURE = SF::Texture.from_file("../graphics/Pink_Tube_Top.png")
-
-
         WHITE_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/White_Layered_Shirt.png")
-
-        BLACK_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Black_Layered_Shirt.png")
-
-        RED_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Red_Layered_Shirt.png")
-
-        ORANGE_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Orange_Layered_Shirt.png")
-
-        YELLOW_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Layered_Shirt.png")
-
-        GREEN_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Green_Layered_Shirt.png")
-
-        BLUE_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Blue_Layered_Shirt.png")
-
-        PURPLE_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Purple_Layered_Shirt.png")
-
-        PINK_LAYERED_SHIRT_TEXTURE = SF::Texture.from_file("../graphics/Pink_Layered_Shirt.png")
 
     #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
     #S                                          Shoe Textures                                           S
