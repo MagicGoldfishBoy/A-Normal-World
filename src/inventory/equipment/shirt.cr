@@ -205,4 +205,62 @@ module Shirt
         @@hot_pink_tshirt = T_Shirt.new("Hot Pink T-Shirt", "hot_pink_tshirt", true, SF::Sprite.new(T_SHIRT_WHITE_TEXTURE), "hot-pink", SFX::EquipSFX::FABRIC_EQUIP_01)
         @@hot_pink_tshirt.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
     end
+    class TubeTop < ShirtBase
+        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, color : String, sfx : SF::Sound)
+            super(name, id, is_owned, sprite, color, sfx, "none")
+        end
+
+        @@white_tubetop = TubeTop.new("White Tube Top", "white_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "white", SFX::EquipSFX::FABRIC_EQUIP_01)
+
+        @@grey_tubetop = TubeTop.new("Grey Tube Top", "grey_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "grey", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@grey_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
+
+        @@black_tubetop = TubeTop.new("Black Tube Top", "black_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "black", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@black_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::BLACK
+
+        @@tan_tubetop = TubeTop.new("Tan Tube Top", "tan_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "tan", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@tan_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::TAN
+
+        @@brown_tubetop = TubeTop.new("Brown Tube Top", "brown_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "brown", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@brown_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::BROWN
+
+        @@red_tubetop = TubeTop.new("Red Tube Top", "red_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "red", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@red_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::RED
+
+        @@orange_tubetop = TubeTop.new("Orange Tube Top", "orange_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "orange", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@orange_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::ORANGE
+
+        @@yellow_tubetop = TubeTop.new("Yellow Tube Top", "yellow_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "yellow", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@yellow_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW
+
+        @@yellow_green_tubetop = TubeTop.new("Yellow Green Tube Top", "yellow_green_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "yellow-green", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@yellow_green_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW_GREEN
+
+        @@green_tubetop = TubeTop.new("Green Tube Top", "green_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "green", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@green_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::GREEN
+
+        @@turquoise_tubetop = TubeTop.new("Turquoise Tube Top", "turquoise_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "turquoise", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@turquoise_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::TURQUOISE
+
+        @@light_blue_tubetop = TubeTop.new("Light Blue Tube Top", "light_blue_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "light-blue", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@light_blue_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_BLUE
+
+        @@blue_tubetop = TubeTop.new("Blue Tube Top", "blue_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "blue", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@blue_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::BLUE
+
+        @@indigo_tubetop = TubeTop.new("Indigo Tube Top", "indigo_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "indigo", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@indigo_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::INDIGO
+
+        @@light_purple_tubetop = TubeTop.new("Light Purple Tube Top", "light_purple_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "light-purple", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@light_purple_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_PURPLE
+
+        @@purple_tubetop = TubeTop.new("Purple Tube Top", "purple_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "purple", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@purple_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::PURPLE
+
+        @@pink_tubetop = TubeTop.new("Pink Tube Top", "pink_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "pink", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@pink_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::PINK
+
+        @@hot_pink_tubetop = TubeTop.new("Hot Pink Tube Top", "hot_pink_tubetop", true, SF::Sprite.new(WHITE_TUBE_TOP_TEXTURE), "hot-pink", SFX::EquipSFX::FABRIC_EQUIP_01)
+        @@hot_pink_tubetop.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
+    end
 end
