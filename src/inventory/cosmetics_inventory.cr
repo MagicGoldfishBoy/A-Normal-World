@@ -285,7 +285,7 @@ module CosmeticsInventory
                 end
                 if self.id == "inv_shirt"
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
-                    item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(10, 5) 
+                    item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
                 end
         
                 window.draw(item.sprite.as(SF::Sprite))
