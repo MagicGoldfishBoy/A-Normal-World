@@ -194,7 +194,7 @@ module Player
 
     class_property earrings : Earrings::EarringsBase | Nil = nil
 
-    class_property shirt : String = "Yellow T-Shirt"
+    class_property shirt : Shirt::ShirtBase | Nil = nil
 
     class_property gloves : String = "No Gloves"
 
@@ -218,7 +218,7 @@ module Player
         @@face = "Pink Shounen Eyes"
         @@hat = nil
         @@earrings = nil
-        @@shirt = "White Tank Top"
+        @@shirt = nil
         @@gloves = "No Gloves"
         @@pants = "White Jeans"
         @@shoes = "white Sneakers"
@@ -243,7 +243,7 @@ module Player
         when "earrings"
             return nil#@@earrings
         when "shirt"
-            return @@shirt
+            return nil#@@shirt
         when "gloves"
             return @@gloves
         when "pants"

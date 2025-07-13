@@ -112,8 +112,16 @@ module Sprites
         SF::Sprite.new
     end
 
-    current_shirt = if shirt = Clothing::Shirt.get_shirt(Appearance.get_clothing("shirt"))
-        SF::Sprite.new(shirt.texture)
+    current_shirt = if shirt = Appearance.shirt
+        if !shirt.is_a?(Shirt::ShirtBase)
+            SF::Sprite.new
+        elsif !shirt.sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        elsif !shirt.sprite.as(SF::Sprite).texture
+            SF::Sprite.new
+        else
+            Player.assign_color(shirt)
+        end
     else
         SF::Sprite.new
     end

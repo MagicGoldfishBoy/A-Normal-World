@@ -2,6 +2,7 @@
 require "json"
 require "../src/level_elements.cr"
 
+
 module Serialization
   class SaveFile
     include JSON::Serializable
@@ -130,6 +131,7 @@ module Serialization
       property makeup : (Makeup::MakeupBase | Nil) = nil
       property earrings : (Earrings::EarringsBase | Nil) = nil
       property necklace : (Necklace::NecklaceBase | Nil) = nil
+      property shirt : (Shirt::ShirtBase | Nil) = nil
     
       def initialize
         @version = 1
@@ -139,6 +141,7 @@ module Serialization
         @makeup = nil
         @earrings = nil
         @necklace = nil
+        @shirt = nil
       end
     
       @[JSON::Field(ignore_unknown: true)]
@@ -155,6 +158,7 @@ module Serialization
         save.makeup = Player::Appearance.makeup
         save.earrings = Player::Appearance.earrings
         save.necklace = Player::Appearance.necklace
+        save.shirt = Player::Appearance.shirt
       
         path = "saves/" + @@save_file.not_nil!
         Dir.mkdir_p(File.dirname(path))
@@ -243,6 +247,19 @@ module Serialization
         )
       else
         Player::Appearance.necklace = nil
+      end
+      if save.shirt
+        Player::Appearance.shirt = Shirt::ShirtBase.new(
+          name: save.shirt.as(Shirt::ShirtBase).name,
+          id: save.shirt.as(Shirt::ShirtBase).id,
+          sprite: Shirt::ShirtBase::SHIRT_SPRITE_HASH[save.shirt.as(Shirt::ShirtBase).id],
+          is_owned: save.shirt.as(Shirt::ShirtBase).is_owned,
+          color: save.shirt.as(Shirt::ShirtBase).color,
+          sfx: Shirt::ShirtBase::SHIRT_SFX_HASH[save.shirt.as(Shirt::ShirtBase).id],
+          sleeve_length: save.shirt.as(Shirt::ShirtBase).sleeve_length
+        )
+      else
+        Player::Appearance.shirt = nil
       end
 
     end

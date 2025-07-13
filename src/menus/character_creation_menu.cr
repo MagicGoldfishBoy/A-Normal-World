@@ -163,6 +163,9 @@ module CharacterCreationMenu
          end
     end
     class CharacterCreationMenuMouseHandling
+
+        class_property shirt_iterator : Int32 = 0
+
         def self.character_creation_menu_mouse_handling(window)
             mouse_position = SF::Mouse.get_position(window)
             mouse_x = mouse_position.x
@@ -215,11 +218,13 @@ module CharacterCreationMenu
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(CharacterCreationMenuElements::SHIRT_BOX_LEFT.sprite, scaled_mouse_x, scaled_mouse_y)
-                Player::Appearance.change_shirt(Sprites::Player.change_shirt("character_creation", "left"))
+                #Player::Appearance.change_shirt(Sprites::Player.change_shirt("character_creation", "left"))
+                CharacterCreationMenuMouseHandling.shirt_iterator = Shirt::ShirtBase.swap_shirt_character_creation("previous", CharacterCreationMenuMouseHandling.shirt_iterator)
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(CharacterCreationMenuElements::SHIRT_BOX_RIGHT.sprite, scaled_mouse_x, scaled_mouse_y)
-                Player::Appearance.change_shirt(Sprites::Player.change_shirt("character_creation", "right"))
+                #Player::Appearance.change_shirt(Sprites::Player.change_shirt("character_creation", "right"))
+                CharacterCreationMenuMouseHandling.shirt_iterator = Shirt::ShirtBase.swap_shirt_character_creation("next", CharacterCreationMenuMouseHandling.shirt_iterator)
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(CharacterCreationMenuElements::PANTS_BOX_LEFT.sprite, scaled_mouse_x, scaled_mouse_y)
