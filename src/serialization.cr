@@ -129,6 +129,7 @@ module Serialization
       property glasses : (Glasses::GlassesBase | Nil) = nil
       property makeup : (Makeup::MakeupBase | Nil) = nil
       property earrings : (Earrings::EarringsBase | Nil) = nil
+      property necklace : (Necklace::NecklaceBase | Nil) = nil
     
       def initialize
         @version = 1
@@ -137,6 +138,7 @@ module Serialization
         @glasses = nil
         @makeup = nil
         @earrings = nil
+        @necklace = nil
       end
     
       @[JSON::Field(ignore_unknown: true)]
@@ -152,6 +154,7 @@ module Serialization
         save.glasses = Player::Appearance.glasses
         save.makeup = Player::Appearance.makeup
         save.earrings = Player::Appearance.earrings
+        save.necklace = Player::Appearance.necklace
       
         path = "saves/" + @@save_file.not_nil!
         Dir.mkdir_p(File.dirname(path))
@@ -228,6 +231,18 @@ module Serialization
         )
       else
         Player::Appearance.earrings = nil
+      end
+      if save.necklace
+        Player::Appearance.necklace = Necklace::NecklaceBase.new(
+          name: save.necklace.as(Necklace::NecklaceBase).name,
+          id: save.necklace.as(Necklace::NecklaceBase).id,
+          sprite: Necklace::NecklaceBase::NECKLACE_SPRITE_HASH[save.necklace.as(Necklace::NecklaceBase).id],
+          is_owned: save.necklace.as(Necklace::NecklaceBase).is_owned,
+          color: save.necklace.as(Necklace::NecklaceBase).color,
+          sfx: Necklace::NecklaceBase::NECKLACE_SFX_HASH[save.necklace.as(Necklace::NecklaceBase).id]
+        )
+      else
+        Player::Appearance.necklace = nil
       end
 
     end
