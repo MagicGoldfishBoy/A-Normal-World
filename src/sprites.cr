@@ -47,8 +47,7 @@ module Sprites
   STARTING_FACE_ARRAY = ["Blue Button Eyes", "Black Button Eyes", "Brown Button Eyes", "Green Button Eyes", "Yellow Button Eyes", "Red Button Eyes", "Pink Button Eyes", "Purple Button Eyes", 
   "White Button Eyes", "Grey Button Eyes", "Pink Shounen Face", "Purple Shounen Face"]
 
-  STARTING_SHIRT_ARRAY = ["White Tank Top", "Black Tank Top", "Red Tank Top", "Orange Tank Top", "Yellow Tank Top", "Green Tank Top", "Blue Tank Top", "Purple Tank Top", "Pink Tank Top",
-   "White T-Shirt", "Black T-Shirt", "Red T-Shirt", "Orange T-Shirt", "Yellow T-Shirt", "Green T-Shirt", "Blue T-Shirt"]
+  STARTING_SHIRT_ARRAY = [""]
 
   STARTING_PANTS_ARRAY = ["White Jeans", "Black Jeans"]
 
