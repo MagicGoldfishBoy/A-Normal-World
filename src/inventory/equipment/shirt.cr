@@ -1,6 +1,5 @@
 require "crsfml"
 require "crsfml/audio"
-#require "../../src/game_settings.cr"
 require "../../../src/textures.cr"
 require "../../../src/utility.cr"
 require "../../../src/inventory/equipment/clothing.cr"

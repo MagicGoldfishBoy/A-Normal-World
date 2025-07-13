@@ -11,6 +11,7 @@ require "../inventory/equipment/earrings.cr"
 require "../inventory/equipment/makeup.cr"
 require "../inventory/equipment/necklace.cr"
 require "../inventory/equipment/shirt.cr"
+require "../inventory/equipment/pants.cr"
 
 module CosmeticsInventory
     class CosmeticsInventoryManager
@@ -201,6 +202,10 @@ module CosmeticsInventory
                 CosmeticsInventoryManager.current_tab = "shirt"
                 Shirt::ShirtBase.remove_current_shirt_from_inventory
                 sleep 0.15.seconds
+            elsif MouseHandling::ClickHandling.button_clicked?(PANTS_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+                CosmeticsInventoryManager.current_tab = "pants"
+                Pants::PantsBase.remove_current_pants_from_inventory
+                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(InventoryWindow::InventoryWindowElements::LEFT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryBase::COSMETIC_INVENTORY_ARRAY.each{ |inventory| 
                 if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page - 1 >= 0
@@ -294,6 +299,10 @@ module CosmeticsInventory
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
                     item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
                 end
+                if self.id == "inv_pants"
+                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
+                    item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
+                end
         
                 window.draw(item.sprite.as(SF::Sprite))
         
@@ -344,6 +353,9 @@ module CosmeticsInventory
                 if item.is_a?(Shirt::ShirtBase)
                     Shirt::ShirtBase.swap_shirt(item)
                 end
+                if item.is_a?(Pants::PantsBase)
+                    Pants::PantsBase.swap_pants(item)
+                end
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
                 break 
@@ -365,6 +377,8 @@ module CosmeticsInventory
                 @@necklace_inventory.draw(window)
             when "shirt"
                 @@shirt_inventory.draw(window)
+            when "pants"
+                @@pants_inventory.draw(window)
             end
         end
         def self.return_current_page
@@ -381,6 +395,8 @@ module CosmeticsInventory
                return @@necklace_inventory.page
             when "shirt"
                return @@shirt_inventory.page
+            when "pants"
+               return @@pants_inventory.page
             end
         end
         def self.return_max_page_count
@@ -397,6 +413,8 @@ module CosmeticsInventory
                return @@necklace_inventory.max_page_count
             when "shirt"
                return @@shirt_inventory.max_page_count
+            when "pants"
+               return @@pants_inventory.max_page_count
             end
         end
           
@@ -411,5 +429,7 @@ module CosmeticsInventory
         @@necklace_inventory = CosmeticsInventoryBase.new("Necklace Inventory", "inv_necklace", 5, 0, "necklace", "color", Necklace::NecklaceBase::OWNED_NECKLACES_ARRAY)
 
         @@shirt_inventory = CosmeticsInventoryBase.new("Shirt Inventory", "inv_shirt", 5, 0, "shirt", "color", Shirt::ShirtBase::OWNED_SHIRTS_ARRAY)
+
+        @@pants_inventory = CosmeticsInventoryBase.new("Pants Inventory", "inv_pants", 5, 0, "pants", "color", Pants::PantsBase::OWNED_PANTS_ARRAY)
     end
 end
