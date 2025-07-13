@@ -132,6 +132,7 @@ module Serialization
       property earrings : (Earrings::EarringsBase | Nil) = nil
       property necklace : (Necklace::NecklaceBase | Nil) = nil
       property shirt : (Shirt::ShirtBase | Nil) = nil
+      property pants : (Pants::PantsBase | Nil) = nil
     
       def initialize
         @version = 1
@@ -142,6 +143,7 @@ module Serialization
         @earrings = nil
         @necklace = nil
         @shirt = nil
+        @pants = nil
       end
     
       @[JSON::Field(ignore_unknown: true)]
@@ -159,6 +161,7 @@ module Serialization
         save.earrings = Player::Appearance.earrings
         save.necklace = Player::Appearance.necklace
         save.shirt = Player::Appearance.shirt
+        save.pants = Player::Appearance.pants
       
         path = "saves/" + @@save_file.not_nil!
         Dir.mkdir_p(File.dirname(path))
@@ -260,6 +263,19 @@ module Serialization
         )
       else
         Player::Appearance.shirt = nil
+      end
+      if save.pants
+        Player::Appearance.pants = Pants::PantsBase.new(
+          name: save.pants.as(Pants::PantsBase).name,
+          id: save.pants.as(Pants::PantsBase).id,
+          sprite: Pants::PantsBase::PANTS_SPRITE_HASH[save.pants.as(Pants::PantsBase).id],
+          is_owned: save.pants.as(Pants::PantsBase).is_owned,
+          color: save.pants.as(Pants::PantsBase).color,
+          sfx: Pants::PantsBase::PANTS_SFX_HASH[save.pants.as(Pants::PantsBase).id],
+          length: save.pants.as(Pants::PantsBase).length
+        )
+      else
+        Player::Appearance.pants = nil
       end
 
     end

@@ -49,7 +49,7 @@ module Sprites
 
   STARTING_SHIRT_ARRAY = [""]
 
-  STARTING_PANTS_ARRAY = ["White Jeans", "Black Jeans"]
+  STARTING_PANTS_ARRAY = [""]
 
   STARTING_SHOES_ARRAY = ["White Rain Boots", "Black Rain Boots"]
 
@@ -125,8 +125,16 @@ module Sprites
         SF::Sprite.new
     end
 
-    current_pants = if pants = Clothing::Pants.get_pants(Appearance.get_clothing("pants"))
-        SF::Sprite.new(pants.texture)
+    current_pants = if pants = Appearance.pants
+        if !pants.is_a?(Pants::PantsBase)
+            SF::Sprite.new
+        elsif !pants.sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        elsif !pants.sprite.as(SF::Sprite).texture
+            SF::Sprite.new
+        else
+            Player.assign_color(pants)
+        end
     else
         SF::Sprite.new
     end
