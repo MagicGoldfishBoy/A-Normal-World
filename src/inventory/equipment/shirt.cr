@@ -1,5 +1,6 @@
 require "crsfml"
 require "crsfml/audio"
+#require "../../src/game_settings.cr"
 require "../../../src/textures.cr"
 require "../../../src/utility.cr"
 require "../../../src/inventory/equipment/clothing.cr"
@@ -79,6 +80,12 @@ module Shirt
 
             Player::Appearance.shirt = ShirtBase::OWNED_SHIRTS_ARRAY[iterator].as(ShirtBase)
             return iterator
+        end
+
+        def self.remove_current_shirt_from_inventory
+            if Player::Appearance.shirt && Player::Appearance.shirt.as(Shirt::ShirtBase).id
+                OWNED_SHIRTS_ARRAY.reject! { |owned_shirt| owned_shirt.id == Player::Appearance.shirt.as(Shirt::ShirtBase).id }
+            end
         end
     end
     class TankTop < ShirtBase

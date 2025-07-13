@@ -59,6 +59,12 @@ module Glasses
         Player::Appearance.glasses = item.as(Glasses::GlassesBase)
         Glasses::GlassesBase::OWNED_GLASSES_ARRAY.reject! { |owned_glasses| owned_glasses.id == item.as(Glasses::GlassesBase).id }
      end
+
+     def self.remove_current_glasses_from_inventory
+        if Player::Appearance.glasses && Player::Appearance.glasses.as(Glasses::GlassesBase).id
+            OWNED_GLASSES_ARRAY.reject! { |owned_glasses| owned_glasses.id == Player::Appearance.glasses.as(Glasses::GlassesBase).id }
+        end
+     end
     end
 
     class Sunglasses < GlassesBase

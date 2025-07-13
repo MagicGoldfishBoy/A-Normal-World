@@ -1,8 +1,14 @@
 require "crsfml"
 require "../sound/music.cr"
+require "../../src/game_settings.cr"
 
 module SFX
-    class CombatSFX
+    class SFX_Base
+        def initialize
+            self.volume = Settings::GameSettings.sound_volume
+        end
+    end
+    class CombatSFX < SFX_Base
 
         BB_GUN_SFX_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/bb_gun_01.ogg"))
 
@@ -13,14 +19,14 @@ module SFX
         BLUNT_SWING_SFX_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/swing_01.ogg"))
     end
 
-    class WhackeableSFX
+    class WhackeableSFX < SFX_Base
 
         FABRIC_HIT_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/fabric_hit_01.ogg"))
 
         ROCK_HIT_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/rock_hit_01.ogg"))
     end
 
-    class EquipSFX
+    class EquipSFX < SFX_Base
 
         FABRIC_EQUIP_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/fabric_equip_01.ogg"))
 

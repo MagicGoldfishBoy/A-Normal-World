@@ -11,8 +11,8 @@ module MusicHandling
         class_property volume : Int32 = 100
 
         def self.stop_all_menu_music
-            MAIN_THEME.stop
-            CHAR_CREATE_THEME.stop
+            Music::MenuThemes::MAIN_THEME.stop
+            Music::MenuThemes::CHAR_CREATE_THEME.stop
         end
 
         def self.play_menu_music(music)
@@ -20,11 +20,11 @@ module MusicHandling
          MapMusic.stop_all_map_music
           case music
            when "main_menu"
-            MAIN_THEME.volume = MenuMusic.volume
-            MAIN_THEME.play
+            #Music::MenuThemes::MAIN_THEME.volume = MenuMusic.volume
+            Music::MenuThemes::MAIN_THEME.play
            when "character_creation_menu"
-            CHAR_CREATE_THEME.volume = MenuMusic.volume
-            CHAR_CREATE_THEME.play
+            #Music::MenuThemes::CHAR_CREATE_THEME.volume = MenuMusic.volume
+            Music::MenuThemes::CHAR_CREATE_THEME.play
           end
         end
     end
@@ -36,7 +36,7 @@ module MusicHandling
         class_property volume : Int32 = 100
 
         def self.stop_all_map_music
-            CHITON_CITY_DUMP_THEME.stop
+            Music::ChitonCityThemes::CHITON_CITY_DUMP_THEME.stop
         end
 
         def self.play_map_music(music)
@@ -44,8 +44,8 @@ module MusicHandling
             self.stop_all_map_music
             case music
             when "chitòn_dump"
-                CHITON_CITY_DUMP_THEME.volume = MapMusic.volume
-                CHITON_CITY_DUMP_THEME.play
+                #Music::ChitonCityThemes::CHITON_CITY_DUMP_THEME.volume = MapMusic.volume
+                Music::ChitonCityThemes::CHITON_CITY_DUMP_THEME.play
             end
         end
     end

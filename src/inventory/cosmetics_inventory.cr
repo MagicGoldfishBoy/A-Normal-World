@@ -179,21 +179,27 @@ module CosmeticsInventory
             window.view = window.default_view
             if MouseHandling::ClickHandling.button_clicked?(HAT_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "hat"
+                Hat::HatBase.remove_current_hat_from_inventory
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(GLASSES_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "glasses"
+                Glasses::GlassesBase.remove_current_glasses_from_inventory
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(EARRING_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "earrings"
+                Earrings::EarringsBase.remove_current_earrings_from_inventory
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(MAKEUP_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "makeup"
+                Makeup::MakeupBase.remove_current_makeup_from_inventory
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(NECKLACE_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "necklace"
+                Necklace::NecklaceBase.remove_current_necklace_from_inventory
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(SHIRT_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "shirt"
+                Shirt::ShirtBase.remove_current_shirt_from_inventory
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(InventoryWindow::InventoryWindowElements::LEFT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryBase::COSMETIC_INVENTORY_ARRAY.each{ |inventory| 
@@ -237,6 +243,7 @@ module CosmeticsInventory
         property array : Array(Clothing::ClothingBase)
 
         def draw(window)
+
             current_size = window.size
             original_width = 800 
             original_height = 600

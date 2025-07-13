@@ -59,6 +59,12 @@ module Hat
       Hat::HatBase::OWNED_HAT_ARRAY.reject! { |owned_hat| owned_hat.id == Player::Appearance.hat.as(Hat::HatBase).id }
      end
      
+     def self.remove_current_hat_from_inventory
+        if Player::Appearance.hat && Player::Appearance.hat.as(Hat::HatBase).id
+            OWNED_HAT_ARRAY.reject! { |owned_hat| owned_hat.id == Player::Appearance.hat.as(Hat::HatBase).id }
+        end
+     end
+     
     end
     class BaseballCap < HatBase
         @@white_baseball_cap = BaseballCap.new("White Baseball Cap", "W/Baseball Cap", true, SF::Sprite.new(BASEBALL_CAP_TEXTURE), 

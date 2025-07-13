@@ -59,6 +59,12 @@ module Makeup
             Player::Appearance.makeup = item.as(Makeup::MakeupBase)
             Makeup::MakeupBase::OWNED_MAKEUP_ARRAY.reject! { |owned_makeup| owned_makeup.id == item.as(Makeup::MakeupBase).id }
         end
+
+        def self.remove_current_makeup_from_inventory
+            if Player::Appearance.makeup && Player::Appearance.makeup.as(Makeup::MakeupBase).id
+                OWNED_MAKEUP_ARRAY.reject! { |owned_makeup| owned_makeup.id == Player::Appearance.makeup.as(Makeup::MakeupBase).id }
+            end
+        end
     end
     class MakeupTexture
         MAKEUP_TEXTURE_ARRAY = [] of MakeupTexture
