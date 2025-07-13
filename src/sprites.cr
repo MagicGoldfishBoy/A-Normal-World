@@ -194,8 +194,16 @@ module Sprites
         SF::Sprite.new
     end
 
-    current_necklace = if necklace = Clothing::Necklace.get_necklace(Appearance.get_clothing("necklace"))
-        SF::Sprite.new(necklace.texture)
+    current_necklace = if necklace = Appearance.necklace
+        if !necklace.is_a?(Necklace::NecklaceBase)
+            SF::Sprite.new
+        elsif !necklace.sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        elsif !necklace.sprite.as(SF::Sprite).texture
+            SF::Sprite.new
+        else
+            Player.assign_color(necklace)
+        end
     else
         SF::Sprite.new
     end

@@ -9,6 +9,7 @@ require "../inventory/equipment/hat.cr"
 require "../inventory/equipment/glasses.cr"
 require "../inventory/equipment/earrings.cr"
 require "../inventory/equipment/makeup.cr"
+require "../inventory/equipment/necklace.cr"
 
 module CosmeticsInventory
     class CosmeticsInventoryManager
@@ -187,6 +188,9 @@ module CosmeticsInventory
             elsif MouseHandling::ClickHandling.button_clicked?(MAKEUP_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "makeup"
                 sleep 0.15.seconds
+            elsif MouseHandling::ClickHandling.button_clicked?(NECKLACE_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+                CosmeticsInventoryManager.current_tab = "necklace"
+                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(InventoryWindow::InventoryWindowElements::LEFT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryBase::COSMETIC_INVENTORY_ARRAY.each{ |inventory| 
                 if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page - 1 >= 0
@@ -272,6 +276,9 @@ module CosmeticsInventory
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 46, 55)
                     item.sprite.as(SF::Sprite).scale = SF.vector2(0.99, 0.99)
                 end
+                if self.id == "inv_necklace"
+                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(330, 660, 46, 55)
+                end
         
                 window.draw(item.sprite.as(SF::Sprite))
         
@@ -316,6 +323,9 @@ module CosmeticsInventory
                 if item.is_a?(Makeup::MakeupBase)
                     Makeup::MakeupBase.swap_makeup(item)
                 end
+                if item.is_a?(Necklace::NecklaceBase)
+                    Necklace::NecklaceBase.swap_necklace(item)
+                end
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
                 break 
@@ -333,6 +343,8 @@ module CosmeticsInventory
                 @@earring_inventory.draw(window)
             when "makeup"
                 @@makeup_inventory.draw(window)
+            when "necklace"
+                @@necklace_inventory.draw(window)
             end
         end
         def self.return_current_page
@@ -345,6 +357,8 @@ module CosmeticsInventory
                return @@earring_inventory.page
             when "makeup"
                return @@makeup_inventory.page
+            when "necklace"
+               return @@necklace_inventory.page
             end
         end
         def self.return_max_page_count
@@ -357,12 +371,19 @@ module CosmeticsInventory
                return @@earring_inventory.max_page_count
             when "makeup"
                return @@makeup_inventory.max_page_count
+            when "necklace"
+               return @@necklace_inventory.max_page_count
             end
         end
           
         @@hat_inventory = CosmeticsInventoryBase.new("Hat Inventory", "inv_hat", 5, 0, "hat", "color", Hat::HatBase::OWNED_HAT_ARRAY)
+
         @@glasses_inventory = CosmeticsInventoryBase.new("Glasses Inventory", "inv_glasses", 5, 0, "glasses", "color", Glasses::GlassesBase::OWNED_GLASSES_ARRAY)
+
         @@makeup_inventory = CosmeticsInventoryBase.new("Makeup Inventory", "inv_makeup", 5, 0, "makeup", "color", Makeup::MakeupBase::OWNED_MAKEUP_ARRAY)
+
         @@earring_inventory = CosmeticsInventoryBase.new("Earrings Inventory", "inv_earrings", 5, 0, "earrings", "color", Earrings::EarringsBase::OWNED_EARRINGS_ARRAY)
+
+        @@necklace_inventory = CosmeticsInventoryBase.new("Necklace Inventory", "inv_necklace", 5, 0, "necklace", "color", Necklace::NecklaceBase::OWNED_NECKLACES_ARRAY)
     end
 end
