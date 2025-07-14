@@ -119,7 +119,7 @@ module Sprites
         elsif !shirt.sprite.as(SF::Sprite).texture
             SF::Sprite.new
         else
-            Player.assign_color(shirt)
+            Player.assign_color(shirt, "none")
         end
     else
         SF::Sprite.new
@@ -133,7 +133,7 @@ module Sprites
         elsif !pants.sprite.as(SF::Sprite).texture
             SF::Sprite.new
         else
-            Player.assign_color(pants)
+            Player.assign_color(pants, "none")
         end
     else
         SF::Sprite.new
@@ -165,7 +165,7 @@ module Sprites
         elsif !earrings.sprite.as(SF::Sprite).texture
             SF::Sprite.new
         else
-            Player.assign_color(earrings)
+            Player.assign_color(earrings, "none")
         end
     else
         SF::Sprite.new
@@ -179,7 +179,7 @@ module Sprites
         elsif !hat.sprite.as(SF::Sprite).texture
             SF::Sprite.new
         else
-            Player.assign_color(hat)
+            Player.assign_color(hat, "none")
         end
     end
 
@@ -191,20 +191,36 @@ module Sprites
         elsif !glasses.sprite.as(SF::Sprite).texture
             SF::Sprite.new
         else
-            Player.assign_color(glasses)
+            Player.assign_color(glasses, "none")
         end
     else
         SF::Sprite.new
     end
 
-    current_jacket_front = if jacket = Clothing::Jacket.get_jacket(Appearance.get_clothing("jacket"))
-        SF::Sprite.new(jacket.front_texture)
+    current_jacket_front = if jacket = Appearance.jacket
+        if !jacket.is_a?(Jacket::JacketBase)
+            SF::Sprite.new
+        elsif !jacket.sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        elsif !jacket.sprite.as(SF::Sprite).texture
+            SF::Sprite.new
+        else
+            Player.assign_color(jacket, "front")
+        end
     else
         SF::Sprite.new
     end
 
-    current_jacket_back = if jacket = Clothing::Jacket.get_jacket(Appearance.get_clothing("jacket"))
-        SF::Sprite.new(jacket.back_texture)
+    current_jacket_back = if jacket = Appearance.jacket
+        if !jacket.is_a?(Jacket::JacketBase)
+            SF::Sprite.new
+        elsif !jacket.back_sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        elsif !jacket.back_sprite.as(SF::Sprite).texture
+            SF::Sprite.new
+        else
+            Player.assign_color(jacket, "back")
+        end
     else
         SF::Sprite.new
     end
@@ -217,7 +233,7 @@ module Sprites
         elsif !necklace.sprite.as(SF::Sprite).texture
             SF::Sprite.new
         else
-            Player.assign_color(necklace)
+            Player.assign_color(necklace, "none")
         end
     else
         SF::Sprite.new
@@ -320,74 +336,64 @@ module Sprites
         return false
     end
     end
-def Player.assign_color(item)
+def Player.assign_color(item, side)
+    if item.is_a? Jacket::JacketBase && side == "front"
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite))
+    elsif item.is_a? Jacket::JacketBase && side == "back"
+        sprite = SF::Sprite.new(item.back_sprite.as(SF::Sprite))
+    else
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
+    end
     case item.as(Clothing::ClothingBase).color
     when "grey"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::GREY
         sprite
     when "black"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::BLACK
         sprite
     when "tan"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::TAN
         sprite
     when "brown"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::BROWN
         sprite
     when "red"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::RED
         sprite
     when "orange"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::ORANGE
         sprite
     when "yellow"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::YELLOW
         sprite
     when "yellow-green"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::YELLOW_GREEN
         sprite
     when "green"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::GREEN
         sprite
     when "turquoise"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::TURQUOISE
         sprite
     when "light-blue"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::LIGHT_BLUE
         sprite
     when "blue"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::BLUE
         sprite
     when "indigo"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::INDIGO
         sprite
     when "light-purple"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::LIGHT_PURPLE
         sprite
     when "purple"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::PURPLE
         sprite
     when "pink"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::PINK
         sprite
     when "hot-pink"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
         sprite.color = Color::ClothingColor::HOT_PINK
         sprite
     else
