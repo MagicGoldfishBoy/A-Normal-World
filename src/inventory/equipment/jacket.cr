@@ -71,6 +71,10 @@ module Jacket
         end
     end
     class LightJacket < JacketBase
-        @@white_light_jacket = JacketBase.new("White Light Jacket", "white_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "white", DEFAULT_JACKET_EQUIP_SFX)
+        @@white_light_jacket = LightJacket.new("White Light Jacket", "white_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "white", DEFAULT_JACKET_EQUIP_SFX)
+
+        @@grey_light_jacket = LightJacket.new("Grey Light Jacket", "grey_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "grey", DEFAULT_JACKET_EQUIP_SFX)
+        @@grey_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
+        @@grey_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
     end
 end

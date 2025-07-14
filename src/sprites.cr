@@ -338,9 +338,9 @@ module Sprites
     end
 def Player.assign_color(item, side)
     if item.is_a? Jacket::JacketBase && side == "front"
-        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite))
+        sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
     elsif item.is_a? Jacket::JacketBase && side == "back"
-        sprite = SF::Sprite.new(item.back_sprite.as(SF::Sprite))
+        sprite = SF::Sprite.new(item.back_sprite.as(SF::Sprite).texture.as(SF::Texture))
     else
         sprite = SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))
     end
