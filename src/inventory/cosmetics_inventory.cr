@@ -11,6 +11,7 @@ require "../inventory/equipment/earrings.cr"
 require "../inventory/equipment/makeup.cr"
 require "../inventory/equipment/necklace.cr"
 require "../inventory/equipment/shirt.cr"
+require "../inventory/equipment/jacket.cr"
 require "../inventory/equipment/pants.cr"
 
 module CosmeticsInventory
@@ -202,6 +203,10 @@ module CosmeticsInventory
                 CosmeticsInventoryManager.current_tab = "shirt"
                 Shirt::ShirtBase.remove_current_shirt_from_inventory
                 sleep 0.15.seconds
+            elsif MouseHandling::ClickHandling.button_clicked?(JACKET_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+                CosmeticsInventoryManager.current_tab = "jacket"
+                Jacket::JacketBase.remove_current_jacket_from_inventory
+                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(PANTS_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "pants"
                 Pants::PantsBase.remove_current_pants_from_inventory
@@ -353,6 +358,9 @@ module CosmeticsInventory
                 if item.is_a?(Shirt::ShirtBase)
                     Shirt::ShirtBase.swap_shirt(item)
                 end
+                if item.is_a?(Jacket::JacketBase)
+                    Jacket::JacketBase.swap_jacket(item)
+                end
                 if item.is_a?(Pants::PantsBase)
                     Pants::PantsBase.swap_pants(item)
                 end
@@ -377,6 +385,8 @@ module CosmeticsInventory
                 @@necklace_inventory.draw(window)
             when "shirt"
                 @@shirt_inventory.draw(window)
+            when "jacket"
+                @@jacket_inventory.draw(window)
             when "pants"
                 @@pants_inventory.draw(window)
             end
@@ -395,6 +405,8 @@ module CosmeticsInventory
                return @@necklace_inventory.page
             when "shirt"
                return @@shirt_inventory.page
+            when "jacket"
+               return @@jacket_inventory.page
             when "pants"
                return @@pants_inventory.page
             end
@@ -413,6 +425,8 @@ module CosmeticsInventory
                return @@necklace_inventory.max_page_count
             when "shirt"
                return @@shirt_inventory.max_page_count
+            when "jacket"
+               return @@jacket_inventory.max_page_count
             when "pants"
                return @@pants_inventory.max_page_count
             end
@@ -429,6 +443,8 @@ module CosmeticsInventory
         @@necklace_inventory = CosmeticsInventoryBase.new("Necklace Inventory", "inv_necklace", 5, 0, "necklace", "color", Necklace::NecklaceBase::OWNED_NECKLACES_ARRAY)
 
         @@shirt_inventory = CosmeticsInventoryBase.new("Shirt Inventory", "inv_shirt", 5, 0, "shirt", "color", Shirt::ShirtBase::OWNED_SHIRTS_ARRAY)
+
+        @@jacket_inventory = CosmeticsInventoryBase.new("Jacket Inventory", "inv_jacket", 5, 0, "jacket", "color", Jacket::JacketBase::OWNED_JACKETS_ARRAY)
 
         @@pants_inventory = CosmeticsInventoryBase.new("Pants Inventory", "inv_pants", 5, 0, "pants", "color", Pants::PantsBase::OWNED_PANTS_ARRAY)
     end
