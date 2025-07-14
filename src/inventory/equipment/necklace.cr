@@ -72,4 +72,7 @@ module Necklace
 
         @@amber_necklace = NecklaceBase.new("Amber Necklace", "amber_necklace", true, SF::Sprite.new(AMBER_NECKLACE_TEXTURE), "orange_custom", DEFAULT_NECKLACE_EQUIP_SFX)
     end
+    class Choker < NecklaceBase
+        @@chain = NecklaceBase.new("Chain", "chain", true, SF::Sprite.new(WEARABLE_CHAIN_TEXTURE), "grey_custom", DEFAULT_NECKLACE_EQUIP_SFX)
+    end
 end

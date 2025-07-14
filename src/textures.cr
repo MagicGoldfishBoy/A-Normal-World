@@ -420,9 +420,11 @@
     #NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
     #N                                        Necklace Textures                                         N
     #NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-         RUBY_NECKLACE_TEXTURE = SF::Texture.from_file("../graphics/ruby_necklace.png")
-         TOPAZ_NECKLACE_TEXTURE = SF::Texture.from_file("../graphics/topaz_necklace.png")
-         AMBER_NECKLACE_TEXTURE = SF::Texture.from_file("../graphics/amber_necklace.png")
+         RUBY_NECKLACE_TEXTURE = SF::Texture.from_file("../graphics/necklaces/ruby_necklace.png")
+         TOPAZ_NECKLACE_TEXTURE = SF::Texture.from_file("../graphics/necklaces/topaz_necklace.png")
+         AMBER_NECKLACE_TEXTURE = SF::Texture.from_file("../graphics/necklaces/amber_necklace.png")
+
+         WEARABLE_CHAIN_TEXTURE = SF::Texture.from_file("../graphics/necklaces/chain.png")
     #JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
     #J                                         Jacket Textures                                          J
     #JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
