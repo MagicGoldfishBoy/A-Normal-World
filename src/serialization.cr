@@ -132,6 +132,7 @@ module Serialization
       property earrings : (Earrings::EarringsBase | Nil) = nil
       property necklace : (Necklace::NecklaceBase | Nil) = nil
       property shirt : (Shirt::ShirtBase | Nil) = nil
+      property jacket : (Jacket::JacketBase | Nil) = nil
       property pants : (Pants::PantsBase | Nil) = nil
     
       def initialize
@@ -143,6 +144,7 @@ module Serialization
         @earrings = nil
         @necklace = nil
         @shirt = nil
+        @jacket = nil
         @pants = nil
       end
     
@@ -161,6 +163,7 @@ module Serialization
         save.earrings = Player::Appearance.earrings
         save.necklace = Player::Appearance.necklace
         save.shirt = Player::Appearance.shirt
+        save.jacket = Player::Appearance.jacket
         save.pants = Player::Appearance.pants
       
         path = "saves/" + @@save_file.not_nil!
@@ -263,6 +266,19 @@ module Serialization
         )
       else
         Player::Appearance.shirt = nil
+      end
+      if save.jacket
+        Player::Appearance.jacket = Jacket::JacketBase.new(
+          name: save.jacket.as(Jacket::JacketBase).name,
+          id: save.jacket.as(Jacket::JacketBase).id,
+          sprite: Jacket::JacketBase::JACKET_SPRITE_HASH[save.jacket.as(Jacket::JacketBase).id][0],
+          back_sprite: Jacket::JacketBase::JACKET_SPRITE_HASH[save.jacket.as(Jacket::JacketBase).id][1],
+          is_owned: save.jacket.as(Jacket::JacketBase).is_owned,
+          color: save.jacket.as(Jacket::JacketBase).color,
+          sfx: Jacket::JacketBase::JACKET_SFX_HASH[save.jacket.as(Jacket::JacketBase).id]
+        )
+      else
+        Player::Appearance.jacket = nil
       end
       if save.pants
         Player::Appearance.pants = Pants::PantsBase.new(

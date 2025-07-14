@@ -24,20 +24,20 @@ module Jacket
         property sprite : SF::Sprite?
         property color : String
         property sfx : SF::Sound?
-        property front_sprite : SF::Sprite?
+        @[JSON::Field(ignore: true)]
         property back_sprite : SF::Sprite? 
 
-        def initialize(name : String, id : String, is_owned : Bool, front_sprite : SF::Sprite, back_sprite : SF::Sprite, color : String, sfx : SF::Sound)
+        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, back_sprite : SF::Sprite, color : String, sfx : SF::Sound)
             @name = name
             @id = id
             @is_owned = is_owned
-            @front_sprite = front_sprite
+            @sprite = sprite
             @back_sprite = back_sprite
             @color = color
             @sfx = sfx
 
             JACKET_ARRAY << self
-            JACKET_SPRITE_HASH[id] = [front_sprite, back_sprite]
+            JACKET_SPRITE_HASH[id] = [sprite, back_sprite]
             JACKET_SFX_HASH[id] = sfx
 
             if self.is_owned && !OWNED_JACKETS_ARRAY.any? { |owned_jacket| owned_jacket.id == self.id }
