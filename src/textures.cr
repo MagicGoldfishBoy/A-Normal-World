@@ -435,8 +435,8 @@
          GRAY_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_gray_front.png")
          GRAY_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_gray_back.png")
 
-         WHITE_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_white_front.png")
-         WHITE_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_white_back.png")
+         WHITE_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/jackets/backpack_white_front.png")
+         WHITE_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/jackets/backpack_white_back.png")
 
          BLACK_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_black_front.png")
          BLACK_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_black_back.png")
