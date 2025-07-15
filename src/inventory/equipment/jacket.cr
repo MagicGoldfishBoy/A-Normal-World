@@ -25,7 +25,7 @@ module Jacket
         property color : String
         property sfx : SF::Sound?
         @[JSON::Field(ignore: true)]
-        property back_sprite : SF::Sprite? 
+        property back_sprite : SF::Sprite? #< the amount of issues adding a second sprite caused was insane, but it works now :P
 
         def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, back_sprite : SF::Sprite, color : String, sfx : SF::Sound)
             @name = name
@@ -71,10 +71,75 @@ module Jacket
         end
     end
     class LightJacket < JacketBase
+
         @@white_light_jacket = LightJacket.new("White Light Jacket", "white_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "white", DEFAULT_JACKET_EQUIP_SFX)
 
         @@grey_light_jacket = LightJacket.new("Grey Light Jacket", "grey_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "grey", DEFAULT_JACKET_EQUIP_SFX)
         @@grey_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
         @@grey_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
+
+        @@black_light_jacket = LightJacket.new("Black Light Jacket", "black_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "black", DEFAULT_JACKET_EQUIP_SFX)
+        @@black_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::BLACK
+        @@black_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::BLACK
+
+        @@tan_light_jacket = LightJacket.new("Tan Light Jacket", "tan_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "tan", DEFAULT_JACKET_EQUIP_SFX)
+        @@tan_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::TAN
+        @@tan_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::TAN
+
+        @@brown_light_jacket = LightJacket.new("Brown Light Jacket", "brown_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "brown", DEFAULT_JACKET_EQUIP_SFX)
+        @@brown_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::BROWN
+        @@brown_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::BROWN
+
+        @@red_light_jacket = LightJacket.new("Red Light Jacket", "red_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "red", DEFAULT_JACKET_EQUIP_SFX)
+        @@red_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::RED
+        @@red_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::RED
+
+        @@orange_light_jacket = LightJacket.new("Orange Light Jacket", "orange_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "orange", DEFAULT_JACKET_EQUIP_SFX)
+        @@orange_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::ORANGE
+        @@orange_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::ORANGE
+
+        @@yellow_light_jacket = LightJacket.new("Yellow Light Jacket", "yellow_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "yellow", DEFAULT_JACKET_EQUIP_SFX)
+        @@yellow_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW
+        @@yellow_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW
+
+        @@yellow_green_light_jacket = LightJacket.new("Yellow Green Light Jacket", "yellow_green_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "yellow-green", DEFAULT_JACKET_EQUIP_SFX)
+        @@yellow_green_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW_GREEN
+        @@yellow_green_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW_GREEN
+
+        @@green_light_jacket = LightJacket.new("Green Light Jacket", "green_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "green", DEFAULT_JACKET_EQUIP_SFX)
+        @@green_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::GREEN
+        @@green_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::GREEN
+
+        @@turquoise_light_jacket = LightJacket.new("Turquoise Light Jacket", "turquoise_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "turquoise", DEFAULT_JACKET_EQUIP_SFX)
+        @@turquoise_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::TURQUOISE
+        @@turquoise_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::TURQUOISE
+
+        @@light_blue_light_jacket = LightJacket.new("Light Blue Light Jacket", "light_blue_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "light-blue", DEFAULT_JACKET_EQUIP_SFX)
+        @@light_blue_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_BLUE
+        @@light_blue_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_BLUE
+
+        @@blue_light_jacket = LightJacket.new("Blue Light Jacket", "blue_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "blue", DEFAULT_JACKET_EQUIP_SFX)
+        @@blue_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::BLUE
+        @@blue_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::BLUE
+
+        @@indigo_light_jacket = LightJacket.new("Indigo Light Jacket", "indigo_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "indigo", DEFAULT_JACKET_EQUIP_SFX)
+        @@indigo_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::INDIGO
+        @@indigo_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::INDIGO
+
+        @@light_purple_light_jacket = LightJacket.new("Light Purple Light Jacket", "light_purple_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "light-purple", DEFAULT_JACKET_EQUIP_SFX)
+        @@light_purple_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_PURPLE
+        @@light_purple_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_PURPLE
+
+        @@purple_light_jacket = LightJacket.new("Purple Light Jacket", "purple_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "purple", DEFAULT_JACKET_EQUIP_SFX)
+        @@purple_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::PURPLE
+        @@purple_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::PURPLE
+
+        @@pink_light_jacket = LightJacket.new("Pink Light Jacket", "pink_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "pink", DEFAULT_JACKET_EQUIP_SFX)
+        @@pink_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::PINK
+        @@pink_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::PINK
+
+        @@hot_pink_light_jacket = LightJacket.new("Hot Pink Light Jacket", "hot_pink_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "hot-pink", DEFAULT_JACKET_EQUIP_SFX)
+        @@hot_pink_light_jacket.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
+        @@hot_pink_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
     end
 end
