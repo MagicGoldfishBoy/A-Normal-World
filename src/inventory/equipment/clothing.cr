@@ -5,7 +5,7 @@ require "../../../src/utility.cr"
 require "../../../src/sound/sfx.cr"
 
 module Clothing
-    class ClothingBase
+    abstract class ClothingBase
         CLOTHING_ARRAY = [] of ClothingBase
         def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, color : String, sfx : SF::Sound)
             @name = name
