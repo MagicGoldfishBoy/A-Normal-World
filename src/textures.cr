@@ -431,36 +431,6 @@
          WHITE_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/jackets/white_light_jacket_front.png")
          WHITE_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/jackets/white_light_jacket_back.png")
 
-         GRAY_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/gray_light_jacket_front.png")
-         GRAY_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/gray_light_jacket_back.png")
-
-         BLACK_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/black_light_jacket_front.png")
-         BLACK_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/black_light_jacket_back.png")
-
-         BROWN_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/brown_light_jacket_front.png")
-         BROWN_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/brown_light_jacket_back.png")
-
-         RED_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/red_light_jacket_front.png")
-         RED_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/red_light_jacket_back.png")
-         
-         ORANGE_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/orange_light_jacket_front.png")
-         ORANGE_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/orange_light_jacket_back.png")
-
-         YELLOW_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/yellow_light_jacket_front.png")
-         YELLOW_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/yellow_light_jacket_back.png")
-
-         GREEN_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/green_light_jacket_front.png")
-         GREEN_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/green_light_jacket_back.png")
-
-         BLUE_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/blue_light_jacket_front.png")
-         BLUE_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/blue_light_jacket_back.png")
-
-         PURPLE_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/purple_light_jacket_front.png")
-         PURPLE_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/purple_light_jacket_back.png")
-
-         PINK_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/pink_light_jacket_front.png")
-         PINK_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/pink_light_jacket_back.png")
-
 
          GRAY_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/backpack_gray_front.png")
          GRAY_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/backpack_gray_back.png")
