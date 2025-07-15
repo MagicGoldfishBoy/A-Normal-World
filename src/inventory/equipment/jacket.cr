@@ -16,7 +16,8 @@ module Jacket
         JACKET_SPRITE_HASH = {} of String => Array(SF::Sprite)
         JACKET_SFX_HASH = {} of String => SF::Sound
 
-        DEFAULT_JACKET_EQUIP_SFX = SFX::EquipSFX::FABRIC_EQUIP_01
+        DEFAULT_JACKET_EQUIP_SFX = SFX::EquipSFX::FABRIC_EQUIP_02
+        DEFAULT_BACKPACK_EQUIP_SFX = SFX::EquipSFX::BACKPACK_EQUIP_01
 
         property name : String
         property id : String
@@ -144,73 +145,73 @@ module Jacket
     end
     class Backpack < JacketBase
         #TODO: figure out why backsprite on the white backpack is invisible
-        @@white_backpack = Backpack.new("White Backpack", "white_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "white", DEFAULT_JACKET_EQUIP_SFX) #whyyyyyyy?!?
+        @@white_backpack = Backpack.new("White Backpack", "white_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "white", DEFAULT_BACKPACK_EQUIP_SFX) #whyyyyyyy?!?
 
-        @@grey_backpack = Backpack.new("Grey Backpack", "grey_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "grey", DEFAULT_JACKET_EQUIP_SFX)
+        @@grey_backpack = Backpack.new("Grey Backpack", "grey_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "grey", DEFAULT_BACKPACK_EQUIP_SFX)
         @@grey_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
         @@grey_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
 
-        @@black_backpack = Backpack.new("Black Backpack", "black_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "black", DEFAULT_JACKET_EQUIP_SFX)
+        @@black_backpack = Backpack.new("Black Backpack", "black_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "black", DEFAULT_BACKPACK_EQUIP_SFX)
         @@black_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::BLACK
         @@black_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::BLACK
 
-        @@tan_backpack = Backpack.new("Tan Backpack", "tan_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "tan", DEFAULT_JACKET_EQUIP_SFX)
+        @@tan_backpack = Backpack.new("Tan Backpack", "tan_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "tan", DEFAULT_BACKPACK_EQUIP_SFX)
         @@tan_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::TAN
         @@tan_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::TAN
 
-        @@brown_backpack = Backpack.new("Brown Backpack", "brown_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "brown", DEFAULT_JACKET_EQUIP_SFX)
+        @@brown_backpack = Backpack.new("Brown Backpack", "brown_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "brown", DEFAULT_BACKPACK_EQUIP_SFX)
         @@brown_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::BROWN
         @@brown_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::BROWN
 
-        @@red_backpack = Backpack.new("Red Backpack", "red_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "red", DEFAULT_JACKET_EQUIP_SFX)
+        @@red_backpack = Backpack.new("Red Backpack", "red_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "red", DEFAULT_BACKPACK_EQUIP_SFX)
         @@red_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::RED
         @@red_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::RED
 
-        @@orange_backpack = Backpack.new("Orange Backpack", "orange_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "orange", DEFAULT_JACKET_EQUIP_SFX)
+        @@orange_backpack = Backpack.new("Orange Backpack", "orange_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "orange", DEFAULT_BACKPACK_EQUIP_SFX)
         @@orange_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::ORANGE
         @@orange_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::ORANGE
 
-        @@yellow_backpack = Backpack.new("Yellow Backpack", "yellow_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "yellow", DEFAULT_JACKET_EQUIP_SFX)
+        @@yellow_backpack = Backpack.new("Yellow Backpack", "yellow_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "yellow", DEFAULT_BACKPACK_EQUIP_SFX)
         @@yellow_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW
         @@yellow_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW
 
-        @@yellow_green_backpack = Backpack.new("Yellow Green Backpack", "yellow_green_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "yellow-green", DEFAULT_JACKET_EQUIP_SFX)
+        @@yellow_green_backpack = Backpack.new("Yellow Green Backpack", "yellow_green_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "yellow-green", DEFAULT_BACKPACK_EQUIP_SFX)
         @@yellow_green_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW_GREEN
         @@yellow_green_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW_GREEN
 
-        @@green_backpack = Backpack.new("Green Backpack", "green_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "green", DEFAULT_JACKET_EQUIP_SFX)
+        @@green_backpack = Backpack.new("Green Backpack", "green_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "green", DEFAULT_BACKPACK_EQUIP_SFX)
         @@green_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::GREEN
         @@green_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::GREEN
 
-        @@turquoise_backpack = Backpack.new("Turquoise Backpack", "turquoise_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "turquoise", DEFAULT_JACKET_EQUIP_SFX)
+        @@turquoise_backpack = Backpack.new("Turquoise Backpack", "turquoise_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "turquoise", DEFAULT_BACKPACK_EQUIP_SFX)
         @@turquoise_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::TURQUOISE
         @@turquoise_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::TURQUOISE
 
-        @@light_blue_backpack = Backpack.new("Light Blue Backpack", "light_blue_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "light-blue", DEFAULT_JACKET_EQUIP_SFX)
+        @@light_blue_backpack = Backpack.new("Light Blue Backpack", "light_blue_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "light-blue", DEFAULT_BACKPACK_EQUIP_SFX)
         @@light_blue_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_BLUE
         @@light_blue_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_BLUE
 
-        @@blue_backpack = Backpack.new("Blue Backpack", "blue_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "blue", DEFAULT_JACKET_EQUIP_SFX)
+        @@blue_backpack = Backpack.new("Blue Backpack", "blue_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "blue", DEFAULT_BACKPACK_EQUIP_SFX)
         @@blue_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::BLUE
         @@blue_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::BLUE
 
-        @@indigo_backpack = Backpack.new("Indigo Backpack", "indigo_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "indigo", DEFAULT_JACKET_EQUIP_SFX)
+        @@indigo_backpack = Backpack.new("Indigo Backpack", "indigo_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "indigo", DEFAULT_BACKPACK_EQUIP_SFX)
         @@indigo_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::INDIGO
         @@indigo_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::INDIGO
 
-        @@light_purple_backpack = Backpack.new("Light Purple Backpack", "light_purple_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "light-purple", DEFAULT_JACKET_EQUIP_SFX)
+        @@light_purple_backpack = Backpack.new("Light Purple Backpack", "light_purple_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "light-purple", DEFAULT_BACKPACK_EQUIP_SFX)
         @@light_purple_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_PURPLE
         @@light_purple_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_PURPLE
 
-        @@purple_backpack = Backpack.new("Purple Backpack", "purple_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "purple", DEFAULT_JACKET_EQUIP_SFX)
+        @@purple_backpack = Backpack.new("Purple Backpack", "purple_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "purple", DEFAULT_BACKPACK_EQUIP_SFX)
         @@purple_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::PURPLE
         @@purple_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::PURPLE
 
-        @@pink_backpack = Backpack.new("Pink Backpack", "pink_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "pink", DEFAULT_JACKET_EQUIP_SFX)
+        @@pink_backpack = Backpack.new("Pink Backpack", "pink_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "pink", DEFAULT_BACKPACK_EQUIP_SFX)
         @@pink_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::PINK
         @@pink_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::PINK
 
-        @@hot_pink_backpack = Backpack.new("Hot Pink Backpack", "hot_pink_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "hot-pink", DEFAULT_JACKET_EQUIP_SFX)
+        @@hot_pink_backpack = Backpack.new("Hot Pink Backpack", "hot_pink_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "hot-pink", DEFAULT_BACKPACK_EQUIP_SFX)
         @@hot_pink_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
         @@hot_pink_backpack.back_sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
     end

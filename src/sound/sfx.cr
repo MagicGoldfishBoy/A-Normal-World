@@ -30,6 +30,10 @@ module SFX
 
         FABRIC_EQUIP_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/fabric_equip_01.ogg"))
 
+        FABRIC_EQUIP_02 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/fabric_equip_02.ogg"))
+
+        BACKPACK_EQUIP_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/backpack_01.ogg"))
+
         GLASSES_EQUIP_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/glasses_equip_01.ogg"))
 
         MAKEUP_EQUIP_01 = SF::Sound.new(SF::SoundBuffer.from_file("../sound/sfx/apply_makeup_01.ogg"))

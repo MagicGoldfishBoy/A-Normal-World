@@ -1,6 +1,7 @@
 require "crsfml"
 module Color
     class ClothingColor
+        WHITE = SF::Color.new(255, 255, 255)
         GREY = SF::Color.new(100, 100, 100)
         BLACK = SF::Color.new(25, 25, 25)
         TAN = SF::Color.new(210, 180, 140)
