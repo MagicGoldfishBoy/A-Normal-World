@@ -10,7 +10,7 @@ module Clothing
         def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, color : String, sfx : SF::Sound)
             @name = name
             @id = id
-            @is_owned = Settings::GameSettings.is_debug ? true : is_owned
+            @is_owned = Settings::GameSettings.is_debug_mode ? true : is_owned
             @sprite = sprite
             @color = color
             @sfx = sfx

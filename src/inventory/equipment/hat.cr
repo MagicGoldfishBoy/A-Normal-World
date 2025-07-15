@@ -5,6 +5,7 @@ require "../../../src/utility.cr"
 require "../../../src/inventory/equipment/clothing.cr"
 require "../../../src/sound/sfx.cr"
 require "../../../graphics/color.cr"
+require "../../../src/game_settings.cr"
 
 module Hat
     class HatBase < Clothing::ClothingBase
@@ -29,7 +30,7 @@ module Hat
      def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, color : String, covers_hair : Bool, sfx : SF::Sound)
         @name = name
         @id = id
-        @is_owned = is_owned
+        @is_owned = Settings::GameSettings.is_debug_mode ? true : is_owned
         @sprite = sprite
         @color = color
         @covers_hair = covers_hair
@@ -143,5 +144,38 @@ module Hat
 
         @@orange_beanie = Beanie.new("Orange Beanie", "O/Beanie", true, SF::Sprite.new(BEANIE_TEXTURE), "orange", true, DEFAULT_HAT_EQUIP_SFX)
         @@orange_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::ORANGE
+
+        @@yellow_beanie = Beanie.new("Yellow Beanie", "Y/Beanie", false, SF::Sprite.new(BEANIE_TEXTURE), "yellow", true, DEFAULT_HAT_EQUIP_SFX)
+        @@yellow_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW
+
+        @@yellow_green_beanie = Beanie.new("Yellow-Green Beanie", "Y-Gn/Beanie", false, SF::Sprite.new(BEANIE_TEXTURE), "yellow-green", true, DEFAULT_HAT_EQUIP_SFX)
+        @@yellow_green_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW_GREEN
+
+        @@green_beanie = Beanie.new("Green Beanie", "Gn/Beanie", false, SF::Sprite.new(BEANIE_TEXTURE), "green", true, DEFAULT_HAT_EQUIP_SFX)
+        @@green_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::GREEN
+
+        @@turquoise_beanie = Beanie.new("Turquoise Beanie", "Tq/Beanie", false, SF::Sprite.new(BEANIE_TEXTURE), "turquoise", true, DEFAULT_HAT_EQUIP_SFX)
+        @@turquoise_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::TURQUOISE
+
+        @@light_blue_beanie = Beanie.new("Light Blue Beanie", "L-Bl/Beanie", false, SF::Sprite.new(BEANIE_TEXTURE), "light-blue", true, DEFAULT_HAT_EQUIP_SFX)
+        @@light_blue_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_BLUE
+
+        @@blue_beanie = Beanie.new("Blue Beanie", "Bl/Beanie", false, SF::Sprite.new(BEANIE_TEXTURE), "blue", true, DEFAULT_HAT_EQUIP_SFX)
+        @@blue_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::BLUE
+
+        @@indigo_beanie = Beanie.new("Indigo Beanie", "In/Beanie", false, SF::Sprite.new(BEANIE_TEXTURE), "indigo", true, DEFAULT_HAT_EQUIP_SFX)
+        @@indigo_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::INDIGO
+
+        @@light_purple_beanie = Beanie.new("Light Purple Beanie", "L-Pr/Beanie", false, SF::Sprite.new(BEANIE_TEXTURE), "light-purple", true, DEFAULT_HAT_EQUIP_SFX)
+        @@light_purple_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_PURPLE
+
+        @@purple_beanie = Beanie.new("Purple Beanie", "Pr/Beanie", false, SF::Sprite.new(BEANIE_TEXTURE), "purple", true, DEFAULT_HAT_EQUIP_SFX)
+        @@purple_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::PURPLE
+
+        @@pink_beanie = Beanie.new("Pink Beanie", "Pk/Beanie", false, SF::Sprite.new(BEANIE_TEXTURE), "pink", true, DEFAULT_HAT_EQUIP_SFX)
+        @@pink_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::PINK
+
+        @@hot_pink_beanie = Beanie.new("Hot-Pink Beanie", "H-Pk/Beanie", false, SF::Sprite.new(BEANIE_TEXTURE), "hot-pink", true, DEFAULT_HAT_EQUIP_SFX)
+        @@hot_pink_beanie.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
     end
 end
