@@ -428,8 +428,8 @@
     #JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
     #J                                         Jacket Textures                                          J
     #JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
-         WHITE_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/white_light_jacket_front.png")
-         WHITE_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/white_light_jacket_back.png")
+         WHITE_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/jackets/white_light_jacket_front.png")
+         WHITE_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/jackets/white_light_jacket_back.png")
 
          GRAY_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/gray_light_jacket_front.png")
          GRAY_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/gray_light_jacket_back.png")
