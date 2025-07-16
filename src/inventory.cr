@@ -130,22 +130,6 @@ module Inventory
         @@clothing_sort_button_text.string = "Sort"
 
 
-        @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 30))
-        @@pants_tab.fill_color = SF.color(161, 183, 208)
-
-        @@pants_tab_text = SF::Text.new
-        @@pants_tab_text.font = QUICKSAND
-        @@pants_tab_text.character_size = 20
-        @@pants_tab_text.color = SF::Color::Blue
-        @@pants_tab_text.string = "Pants"
-
-        @@clothing_pants_category_text = SF::Text.new
-        @@clothing_pants_category_text.font = QUICKSAND
-        @@clothing_pants_category_text.character_size = 20
-        @@clothing_pants_category_text.color = SF::Color::Blue
-        @@clothing_pants_category_text.string = ClothingTabPants.get_pants_category
-        Utility::StringUtilities.center_text(@@clothing_pants_category_text)
-
         @@shoes_tab = SF::RectangleShape.new(SF.vector2(100, 30))
         @@shoes_tab.fill_color = SF.color(161, 183, 208)
 
@@ -757,80 +741,6 @@ module Inventory
                  Utility::StringUtilities.center_text(@@clothing_jacket_category_text)
                  sleep 0.15.seconds
             end
-        end
-
-        def InventoryManager.pants_tab_mouse_handling(window)
-            mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
-            mouse_x = mouse_position.x
-            mouse_y = mouse_position.y
-            
-        
-            current_size = window.size
-            original_width = 800 
-            original_height = 600 
-    
-            scale_x = (current_size.x.to_f / original_width)
-            scale_y = current_size.y.to_f / original_height
-    
-            #------------------------------------objects-------------------------------------------------
-                arrow_left_x = INVENTORY_LEFT_ARROW_SPRITE.position.x
-                arrow_left_y = INVENTORY_LEFT_ARROW_SPRITE.position.y
-                arrow_left_width = INVENTORY_LEFT_ARROW_SPRITE.size.x
-                arrow_left_height = INVENTORY_LEFT_ARROW_SPRITE.size.y
-
-                arrow_right_x = INVENTORY_RIGHT_ARROW_SPRITE.position.x
-                arrow_right_y = INVENTORY_RIGHT_ARROW_SPRITE.position.y
-                arrow_right_width = INVENTORY_RIGHT_ARROW_SPRITE.size.x
-                arrow_right_height = INVENTORY_RIGHT_ARROW_SPRITE.size.y
-
-
-                sort_button_x = @@clothing_sort_button_sprite.position.x
-                sort_button_y = @@clothing_sort_button_sprite.position.y
-                sort_button_width = @@clothing_sort_button_sprite.size.x
-                sort_button_height = @@clothing_sort_button_sprite.size.y
-    
-                category_button_x = @@clothing_shirt_category_box.position.x
-                category_button_y = @@clothing_shirt_category_box.position.y
-                category_button_width = @@clothing_shirt_category_box.size.x
-                category_button_height = @@clothing_shirt_category_box.size.y
-            #---------------------------------------------------------------------------------------------
-            if (mouse_x >= arrow_left_x && mouse_x <= arrow_left_x + arrow_left_width) &&
-                (mouse_y >= arrow_left_y && mouse_y <= arrow_left_y + arrow_left_height)
-                
-                 if ClothingTabPants.page.not_nil! > 1
-                    ClothingTabPants.page=(ClothingTabPants.page.not_nil! - 1)
-                 end
-                 ClothingTabPants.assign_slot_textures(window)
-                 sleep 0.15.seconds
-            end
-             
-            if (mouse_x >= arrow_right_x && mouse_x <= arrow_right_x + arrow_right_width) &&
-                (mouse_y >= arrow_right_y && mouse_y <= arrow_right_y + arrow_right_height)
-                
-                 if ClothingTabPants.page.not_nil! <= 5
-                    ClothingTabPants.page=(ClothingTabPants.page.not_nil! + 1)
-                 end
-                 ClothingTabPants.assign_slot_textures(window)
-                 sleep 0.15.seconds
-            end  
-            
-            if (mouse_x >= sort_button_x && mouse_x <= sort_button_x + sort_button_width) &&
-                (mouse_y >= sort_button_y && mouse_y <= sort_button_y + sort_button_height)
-                if ClothingTabPants.get_pants_category == "Color"
-                 Utility::ArrayUtilities.organise_array_by_color(window, ClothingTabPants.owned_pants_array, ClothingTabPants)
-                elsif "Length"
-                 Utility::ArrayUtilities.organise_array_by_length_short_to_long(window, ClothingTabPants.owned_pants_array, ClothingTabPants)
-                end
-                 sleep 0.15.seconds
-            end        
-     
-            if (mouse_x >= category_button_x && mouse_x <= category_button_x + category_button_width) &&
-                (mouse_y >= category_button_y && mouse_y <= category_button_y + category_button_height)
-                 ClothingTabPants.change_pants_sort_category
-                 @@clothing_pants_category_text.string = ClothingTabPants.get_pants_category
-                 Utility::StringUtilities.center_text(@@clothing_pants_category_text)
-                 sleep 0.15.seconds
-            end   
         end
 
         def InventoryManager.shoes_tab_mouse_handling(window)
@@ -1594,1088 +1504,1088 @@ module Inventory
      class ClothingTabShirt 
      end
 
-    class ClothingTabPants
-        @@owned_pants_array = [] of Clothing::Pants
+    # class ClothingTabPants
+    #     @@owned_pants_array = [] of Clothing::Pants
 
-        @@pants_sorting_category = "Length"
+    #     @@pants_sorting_category = "Length"
 
-        @@pants_slot_01 : Clothing::Pants? = nil
-        @@pants_slot_02 : Clothing::Pants? = nil
-        @@pants_slot_03 : Clothing::Pants? = nil
-        @@pants_slot_04 : Clothing::Pants? = nil
-        @@pants_slot_05 : Clothing::Pants? = nil
-        @@pants_slot_06 : Clothing::Pants? = nil
-        @@pants_slot_07 : Clothing::Pants? = nil
-        @@pants_slot_08 : Clothing::Pants? = nil
-        @@pants_slot_09 : Clothing::Pants? = nil
-        @@pants_slot_10 : Clothing::Pants? = nil
-        @@pants_slot_11 : Clothing::Pants? = nil
-        @@pants_slot_12 : Clothing::Pants? = nil
-        @@pants_slot_13 : Clothing::Pants? = nil
-        @@pants_slot_14 : Clothing::Pants? = nil
-        @@pants_slot_15 : Clothing::Pants? = nil
+    #     @@pants_slot_01 : Clothing::Pants? = nil
+    #     @@pants_slot_02 : Clothing::Pants? = nil
+    #     @@pants_slot_03 : Clothing::Pants? = nil
+    #     @@pants_slot_04 : Clothing::Pants? = nil
+    #     @@pants_slot_05 : Clothing::Pants? = nil
+    #     @@pants_slot_06 : Clothing::Pants? = nil
+    #     @@pants_slot_07 : Clothing::Pants? = nil
+    #     @@pants_slot_08 : Clothing::Pants? = nil
+    #     @@pants_slot_09 : Clothing::Pants? = nil
+    #     @@pants_slot_10 : Clothing::Pants? = nil
+    #     @@pants_slot_11 : Clothing::Pants? = nil
+    #     @@pants_slot_12 : Clothing::Pants? = nil
+    #     @@pants_slot_13 : Clothing::Pants? = nil
+    #     @@pants_slot_14 : Clothing::Pants? = nil
+    #     @@pants_slot_15 : Clothing::Pants? = nil
 
-       #---------------------------------debug-------------------------------------------
-        @@owned_pants_array.push(Clothing::Pants.get_pants("White Jeans").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Black Jeans").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Red Jeans").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Orange Jeans").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Yellow Jeans").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Green Jeans").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Blue Jeans").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Purple Jeans").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Pink Jeans").not_nil!)
+    #    #---------------------------------debug-------------------------------------------
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("White Jeans").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Black Jeans").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Red Jeans").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Orange Jeans").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Yellow Jeans").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Green Jeans").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Blue Jeans").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Purple Jeans").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Pink Jeans").not_nil!)
 
-        @@owned_pants_array.push(Clothing::Pants.get_pants("White Booty Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Black Booty Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Red Booty Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Orange Booty Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Yellow Booty Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Green Booty Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Blue Booty Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Purple Booty Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Pink Booty Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("White Booty Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Black Booty Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Red Booty Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Orange Booty Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Yellow Booty Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Green Booty Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Blue Booty Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Purple Booty Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Pink Booty Shorts").not_nil!)
 
-        @@owned_pants_array.push(Clothing::Pants.get_pants("White Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Black Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Red Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Orange Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Yellow Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Green Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Blue Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Purple Shorts").not_nil!)
-        @@owned_pants_array.push(Clothing::Pants.get_pants("Pink Shorts").not_nil!)
-       #---------------------------------------------------------------------------------
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("White Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Black Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Red Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Orange Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Yellow Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Green Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Blue Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Purple Shorts").not_nil!)
+    #     @@owned_pants_array.push(Clothing::Pants.get_pants("Pink Shorts").not_nil!)
+    #    #---------------------------------------------------------------------------------
 
-       #--------------------------------objects------------------------------------------
+    #    #--------------------------------objects------------------------------------------
         
-        @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-        @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@clothing_left_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+    #     @@clothing_left_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
-
-
-        @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
-        @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@clothing_pants_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
-        @@clothing_pants_category_box.fill_color = SF.color(161, 183, 208)
-
-        @@clothing_sort_button_text = SF::Text.new
-        @@clothing_sort_button_text.font = QUICKSAND
-        @@clothing_sort_button_text.character_size = 20
-        @@clothing_sort_button_text.color = SF::Color::Blue
-        @@clothing_sort_button_text.string = "Sort"
+    #     @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+    #     @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
 
-        @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
-        @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@clothing_sort_button_sprite = SF::RectangleShape.new(SF.vector2(75, 25))
+    #     @@clothing_sort_button_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
-        @@pants_tab.fill_color = SF.color(141, 163, 188)
+    #     @@clothing_pants_category_box = SF::RectangleShape.new(SF.vector2(100, 25))
+    #     @@clothing_pants_category_box.fill_color = SF.color(161, 183, 208)
 
-        @@pants_tab_text = SF::Text.new
-        @@pants_tab_text.font = QUICKSAND
-        @@pants_tab_text.character_size = 20
-        @@pants_tab_text.color = SF::Color::Blue
-        @@pants_tab_text.string = "Pantss"
-
-        @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
-        @@pants_tab.fill_color = SF.color(161, 183, 208)
-
-        @@pants_tab_text = SF::Text.new
-        @@pants_tab_text.font = QUICKSAND
-        @@pants_tab_text.character_size = 20
-        @@pants_tab_text.color = SF::Color::Blue
-        @@pants_tab_text.string = "Pants"
+    #     @@clothing_sort_button_text = SF::Text.new
+    #     @@clothing_sort_button_text.font = QUICKSAND
+    #     @@clothing_sort_button_text.character_size = 20
+    #     @@clothing_sort_button_text.color = SF::Color::Blue
+    #     @@clothing_sort_button_text.string = "Sort"
 
 
-        @@pants_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_01_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@clothing_right_arrow_sprite = SF::RectangleShape.new(SF.vector2(50, 25))
+    #     @@clothing_right_arrow_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@pants_slot_01_text = SF::Text.new
-        @@pants_slot_01_text.font = QUICKSAND
-        @@pants_slot_01_text.character_size = 12
-        @@pants_slot_01_text.color = SF::Color::Blue
+    #     @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+    #     @@pants_tab.fill_color = SF.color(141, 163, 188)
 
-        @@pants_slot_01_image_sprite = SF::Sprite.new
+    #     @@pants_tab_text = SF::Text.new
+    #     @@pants_tab_text.font = QUICKSAND
+    #     @@pants_tab_text.character_size = 20
+    #     @@pants_tab_text.color = SF::Color::Blue
+    #     @@pants_tab_text.string = "Pantss"
 
+    #     @@pants_tab = SF::RectangleShape.new(SF.vector2(100, 50))
+    #     @@pants_tab.fill_color = SF.color(161, 183, 208)
 
-        @@pants_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_02_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@pants_slot_02_text = SF::Text.new
-        @@pants_slot_02_text.font = QUICKSAND
-        @@pants_slot_02_text.character_size = 12
-        @@pants_slot_02_text.color = SF::Color::Blue
-
-        @@pants_slot_02_image_sprite = SF::Sprite.new
-
-
-        @@pants_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_03_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@pants_slot_03_text = SF::Text.new
-        @@pants_slot_03_text.font = QUICKSAND
-        @@pants_slot_03_text.character_size = 12
-        @@pants_slot_03_text.color = SF::Color::Blue
-
-        @@pants_slot_03_image_sprite = SF::Sprite.new
+    #     @@pants_tab_text = SF::Text.new
+    #     @@pants_tab_text.font = QUICKSAND
+    #     @@pants_tab_text.character_size = 20
+    #     @@pants_tab_text.color = SF::Color::Blue
+    #     @@pants_tab_text.string = "Pants"
 
 
-        @@pants_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_04_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@pants_slot_01_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_01_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@pants_slot_04_text = SF::Text.new
-        @@pants_slot_04_text.font = QUICKSAND
-        @@pants_slot_04_text.character_size = 12
-        @@pants_slot_04_text.color = SF::Color::Blue
+    #     @@pants_slot_01_text = SF::Text.new
+    #     @@pants_slot_01_text.font = QUICKSAND
+    #     @@pants_slot_01_text.character_size = 12
+    #     @@pants_slot_01_text.color = SF::Color::Blue
 
-        @@pants_slot_04_image_sprite = SF::Sprite.new
-
-
-        @@pants_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_05_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@pants_slot_05_text = SF::Text.new
-        @@pants_slot_05_text.font = QUICKSAND
-        @@pants_slot_05_text.character_size = 12
-        @@pants_slot_05_text.color = SF::Color::Blue
-
-        @@pants_slot_05_image_sprite = SF::Sprite.new
+    #     @@pants_slot_01_image_sprite = SF::Sprite.new
 
 
-        @@pants_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_06_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@pants_slot_02_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_02_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@pants_slot_06_text = SF::Text.new
-        @@pants_slot_06_text.font = QUICKSAND
-        @@pants_slot_06_text.character_size = 12
-        @@pants_slot_06_text.color = SF::Color::Blue
+    #     @@pants_slot_02_text = SF::Text.new
+    #     @@pants_slot_02_text.font = QUICKSAND
+    #     @@pants_slot_02_text.character_size = 12
+    #     @@pants_slot_02_text.color = SF::Color::Blue
+
+    #     @@pants_slot_02_image_sprite = SF::Sprite.new
+
+
+    #     @@pants_slot_03_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_03_sprite.fill_color = SF.color(161, 183, 208)
+
+    #     @@pants_slot_03_text = SF::Text.new
+    #     @@pants_slot_03_text.font = QUICKSAND
+    #     @@pants_slot_03_text.character_size = 12
+    #     @@pants_slot_03_text.color = SF::Color::Blue
+
+    #     @@pants_slot_03_image_sprite = SF::Sprite.new
+
+
+    #     @@pants_slot_04_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_04_sprite.fill_color = SF.color(161, 183, 208)
+
+    #     @@pants_slot_04_text = SF::Text.new
+    #     @@pants_slot_04_text.font = QUICKSAND
+    #     @@pants_slot_04_text.character_size = 12
+    #     @@pants_slot_04_text.color = SF::Color::Blue
+
+    #     @@pants_slot_04_image_sprite = SF::Sprite.new
+
+
+    #     @@pants_slot_05_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_05_sprite.fill_color = SF.color(161, 183, 208)
+
+    #     @@pants_slot_05_text = SF::Text.new
+    #     @@pants_slot_05_text.font = QUICKSAND
+    #     @@pants_slot_05_text.character_size = 12
+    #     @@pants_slot_05_text.color = SF::Color::Blue
+
+    #     @@pants_slot_05_image_sprite = SF::Sprite.new
+
+
+    #     @@pants_slot_06_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_06_sprite.fill_color = SF.color(161, 183, 208)
+
+    #     @@pants_slot_06_text = SF::Text.new
+    #     @@pants_slot_06_text.font = QUICKSAND
+    #     @@pants_slot_06_text.character_size = 12
+    #     @@pants_slot_06_text.color = SF::Color::Blue
         
-        @@pants_slot_06_image_sprite = SF::Sprite.new
+    #     @@pants_slot_06_image_sprite = SF::Sprite.new
 
 
-        @@pants_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_07_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@pants_slot_07_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_07_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@pants_slot_07_text = SF::Text.new
-        @@pants_slot_07_text.font = QUICKSAND
-        @@pants_slot_07_text.character_size = 12
-        @@pants_slot_07_text.color = SF::Color::Blue
+    #     @@pants_slot_07_text = SF::Text.new
+    #     @@pants_slot_07_text.font = QUICKSAND
+    #     @@pants_slot_07_text.character_size = 12
+    #     @@pants_slot_07_text.color = SF::Color::Blue
 
-        @@pants_slot_07_image_sprite = SF::Sprite.new
-
-
-        @@pants_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_08_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@pants_slot_08_text = SF::Text.new
-        @@pants_slot_08_text.font = QUICKSAND
-        @@pants_slot_08_text.character_size = 12
-        @@pants_slot_08_text.color = SF::Color::Blue
-
-        @@pants_slot_08_image_sprite = SF::Sprite.new
+    #     @@pants_slot_07_image_sprite = SF::Sprite.new
 
 
-        @@pants_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_09_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@pants_slot_08_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_08_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@pants_slot_09_text = SF::Text.new
-        @@pants_slot_09_text.font = QUICKSAND
-        @@pants_slot_09_text.character_size = 12
-        @@pants_slot_09_text.color = SF::Color::Blue
+    #     @@pants_slot_08_text = SF::Text.new
+    #     @@pants_slot_08_text.font = QUICKSAND
+    #     @@pants_slot_08_text.character_size = 12
+    #     @@pants_slot_08_text.color = SF::Color::Blue
 
-        @@pants_slot_09_image_sprite = SF::Sprite.new
-
-
-        @@pants_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_10_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@pants_slot_10_text = SF::Text.new
-        @@pants_slot_10_text.font = QUICKSAND
-        @@pants_slot_10_text.character_size = 12
-        @@pants_slot_10_text.color = SF::Color::Blue
-
-        @@pants_slot_10_image_sprite = SF::Sprite.new
+    #     @@pants_slot_08_image_sprite = SF::Sprite.new
 
 
-        @@pants_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_11_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@pants_slot_09_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_09_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@pants_slot_11_text = SF::Text.new
-        @@pants_slot_11_text.font = QUICKSAND
-        @@pants_slot_11_text.character_size = 12
-        @@pants_slot_11_text.color = SF::Color::Blue
+    #     @@pants_slot_09_text = SF::Text.new
+    #     @@pants_slot_09_text.font = QUICKSAND
+    #     @@pants_slot_09_text.character_size = 12
+    #     @@pants_slot_09_text.color = SF::Color::Blue
 
-        @@pants_slot_11_image_sprite = SF::Sprite.new
-
-
-        @@pants_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_12_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@pants_slot_12_text = SF::Text.new
-        @@pants_slot_12_text.font = QUICKSAND
-        @@pants_slot_12_text.character_size = 12
-        @@pants_slot_12_text.color = SF::Color::Blue
-
-        @@pants_slot_12_image_sprite = SF::Sprite.new
+    #     @@pants_slot_09_image_sprite = SF::Sprite.new
 
 
-        @@pants_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_13_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@pants_slot_10_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_10_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@pants_slot_13_text = SF::Text.new
-        @@pants_slot_13_text.font = QUICKSAND
-        @@pants_slot_13_text.character_size = 12
-        @@pants_slot_13_text.color = SF::Color::Blue
+    #     @@pants_slot_10_text = SF::Text.new
+    #     @@pants_slot_10_text.font = QUICKSAND
+    #     @@pants_slot_10_text.character_size = 12
+    #     @@pants_slot_10_text.color = SF::Color::Blue
 
-        @@pants_slot_13_image_sprite = SF::Sprite.new
-
-
-        @@pants_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_14_sprite.fill_color = SF.color(161, 183, 208)
-
-        @@pants_slot_14_text = SF::Text.new
-        @@pants_slot_14_text.font = QUICKSAND
-        @@pants_slot_14_text.character_size = 12
-        @@pants_slot_14_text.color = SF::Color::Blue
-
-        @@pants_slot_14_image_sprite = SF::Sprite.new
+    #     @@pants_slot_10_image_sprite = SF::Sprite.new
 
 
-        @@pants_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
-        @@pants_slot_15_sprite.fill_color = SF.color(161, 183, 208)
+    #     @@pants_slot_11_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_11_sprite.fill_color = SF.color(161, 183, 208)
 
-        @@pants_slot_15_text = SF::Text.new
-        @@pants_slot_15_text.font = QUICKSAND
-        @@pants_slot_15_text.character_size = 12
-        @@pants_slot_15_text.color = SF::Color::Blue
+    #     @@pants_slot_11_text = SF::Text.new
+    #     @@pants_slot_11_text.font = QUICKSAND
+    #     @@pants_slot_11_text.character_size = 12
+    #     @@pants_slot_11_text.color = SF::Color::Blue
 
-        @@pants_slot_15_image_sprite = SF::Sprite.new
+    #     @@pants_slot_11_image_sprite = SF::Sprite.new
 
-       #---------------------------------------------------------------------------------
 
-       def initialize(is_open : Bool, page : Int32)
-        @@is_open = is_open
-        @@page = page
-       end
+    #     @@pants_slot_12_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_12_sprite.fill_color = SF.color(161, 183, 208)
 
-       def ClothingTabPants.is_open
-        @@is_open
-       end
+    #     @@pants_slot_12_text = SF::Text.new
+    #     @@pants_slot_12_text.font = QUICKSAND
+    #     @@pants_slot_12_text.character_size = 12
+    #     @@pants_slot_12_text.color = SF::Color::Blue
 
-       def ClothingTabPants.page
-        @@page
-       end
+    #     @@pants_slot_12_image_sprite = SF::Sprite.new
 
-       def ClothingTabPants.is_open=(this)
-        @@is_open = this
-       end
 
-       def ClothingTabPants.page=(this)
-        @@page = this
-       end
+    #     @@pants_slot_13_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_13_sprite.fill_color = SF.color(161, 183, 208)
 
-       def ClothingTabPants.owned_pants_array
-        @@owned_pants_array
-       end
+    #     @@pants_slot_13_text = SF::Text.new
+    #     @@pants_slot_13_text.font = QUICKSAND
+    #     @@pants_slot_13_text.character_size = 12
+    #     @@pants_slot_13_text.color = SF::Color::Blue
 
-       def ClothingTabPants.owned_pants_array=(this)
-        @@owned_pants_array = this
-       end
+    #     @@pants_slot_13_image_sprite = SF::Sprite.new
 
-       def ClothingTabPants.push_to_owned_pants_array(this)
-        @@owned_pants_array.push(this)
-       end
 
-       def ClothingTabPants.change_pants_sort_category
-        case @@pants_sorting_category
-        when "Length"
-            @@pants_sorting_category = "Color"
-        when "Color"
-            @@pants_sorting_category = "Length"
-        end
-       end
+    #     @@pants_slot_14_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_14_sprite.fill_color = SF.color(161, 183, 208)
 
-       def ClothingTabPants.get_pants_category
-        return @@pants_sorting_category
-       end
+    #     @@pants_slot_14_text = SF::Text.new
+    #     @@pants_slot_14_text.font = QUICKSAND
+    #     @@pants_slot_14_text.character_size = 12
+    #     @@pants_slot_14_text.color = SF::Color::Blue
 
-       def ClothingTabPants.initialize_clothing_tab(window)
-        @@page = 1
-        INVENTORY_BOX.position = SF.vector2(20, 40)  
-       end
+    #     @@pants_slot_14_image_sprite = SF::Sprite.new
 
-       def ClothingTabPants.assign_slot_textures(window)
-        if @@page == nil
-            @@page = 1
-        end
-        if @@owned_pants_array.size > 0
-            t = 0 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_01_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_01_text.string = @@owned_pants_array[t].name
-             @@pants_slot_01 = @@owned_pants_array[t]
-            else
-                @@pants_slot_01_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_01_text.string = ""
-                @@pants_slot_01 = nil
-            end
-        end
-        if @@owned_pants_array.size > 1
-            t = 1 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_02_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_02_text.string = @@owned_pants_array[t].name
-             @@pants_slot_02 = @@owned_pants_array[t]
-            else
-                @@pants_slot_02_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_02_text.string = ""
-                @@pants_slot_02 = nil
-            end
-        end
-        if @@owned_pants_array.size > 2
-            t = 2 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_03_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_03_text.string = @@owned_pants_array[t].name
-             @@pants_slot_03 = @@owned_pants_array[t]
-            else
-                @@pants_slot_03_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_03_text.string = ""
-                @@pants_slot_03 = nil
-            end
-        end
-        if @@owned_pants_array.size > 3
-            t = 3 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_04_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_04_text.string = @@owned_pants_array[t].name
-             @@pants_slot_04 = @@owned_pants_array[t]
-            else
-                @@pants_slot_04_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_04_text.string = ""
-                @@pants_slot_04 = nil
-            end
-        end
-        if @@owned_pants_array.size > 4
-            t = 4 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_05_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_05_text.string = @@owned_pants_array[t].name
-             @@pants_slot_05 = @@owned_pants_array[t]
-            else
-                @@pants_slot_05_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_05_text.string = ""
-                @@pants_slot_05 = nil
-            end
-        end
-        if @@owned_pants_array.size > 5
-            t = 5 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_06_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_06_text.string = @@owned_pants_array[t].name
-             @@pants_slot_06 = @@owned_pants_array[t]
-            else
-                @@pants_slot_06_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_06_text.string = ""
-                @@pants_slot_06 = nil
-            end
-        end
-        if @@owned_pants_array.size > 6
-            t = 6 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_07_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_07_text.string = @@owned_pants_array[t].name
-             @@pants_slot_07 = @@owned_pants_array[t]
-            else
-                @@pants_slot_07_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_07_text.string = ""
-                @@pants_slot_07 = nil
-            end
-        end
-        if @@owned_pants_array.size > 7
-            t = 7 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_08_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_08_text.string = @@owned_pants_array[t].name
-             @@pants_slot_08 = @@owned_pants_array[t]
-            else
-                @@pants_slot_08_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_08_text.string = ""
-                @@pants_slot_08 = nil
-            end
-        end
-        if @@owned_pants_array.size > 8
-            t = 8 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_09_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_09_text.string = @@owned_pants_array[t].name
-             @@pants_slot_09 = @@owned_pants_array[t]
-            else
-                @@pants_slot_09_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_09_text.string = ""
-                @@pants_slot_09 = nil
-            end
-        end
-        if @@owned_pants_array.size > 9
-            t = 9 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_10_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_10_text.string = @@owned_pants_array[t].name
-             @@pants_slot_10 = @@owned_pants_array[t]
-            else
-                @@pants_slot_10_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_10_text.string = ""
-                @@pants_slot_10 = nil
-            end
-        end
-        if @@owned_pants_array.size > 10
-            t = 10 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_11_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_11_text.string = @@owned_pants_array[t].name
-             @@pants_slot_11 = @@owned_pants_array[t]
-            else
-                @@pants_slot_11_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_11_text.string = ""
-                @@pants_slot_11 = nil
-            end
-        end
-        if @@owned_pants_array.size > 11
-            t = 11 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_12_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_12_text.string = @@owned_pants_array[t].name
-             @@pants_slot_12 = @@owned_pants_array[t]
-            else
-                @@pants_slot_12_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_12_text.string = ""
-                @@pants_slot_12 = nil
-            end
-        end
-        if @@owned_pants_array.size > 12
-            t = 12 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_13_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_13_text.string = @@owned_pants_array[t].name
-             @@pants_slot_13 = @@owned_pants_array[t]
-            else
-                @@pants_slot_13_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_13_text.string = ""
-                @@pants_slot_13 = nil
-            end
-        end
-        if @@owned_pants_array.size > 13
-            t = 13 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_14_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_14_text.string = @@owned_pants_array[t].name
-             @@pants_slot_14 = @@owned_pants_array[t]
-            else
-                @@pants_slot_14_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_14_text.string = ""
-                @@pants_slot_14 = nil
-            end
-        end
-        if @@owned_pants_array.size > 14
-            t = 14 + (@@page.not_nil! * 15) - 15
-            if t <= @@owned_pants_array.size - 1
-             @@pants_slot_15_image_sprite.texture = @@owned_pants_array[t].texture
-             @@pants_slot_15_text.string = @@owned_pants_array[t].name
-             @@pants_slot_15 = @@owned_pants_array[t]
-            else
-                @@pants_slot_15_image_sprite.texture = NIL_TEXTURE
-                @@pants_slot_15_text.string = ""
-                @@pants_slot_15 = nil
-            end
-        end
-       end
+
+    #     @@pants_slot_15_sprite = SF::RectangleShape.new(SF.vector2(100, 100))
+    #     @@pants_slot_15_sprite.fill_color = SF.color(161, 183, 208)
+
+    #     @@pants_slot_15_text = SF::Text.new
+    #     @@pants_slot_15_text.font = QUICKSAND
+    #     @@pants_slot_15_text.character_size = 12
+    #     @@pants_slot_15_text.color = SF::Color::Blue
+
+    #     @@pants_slot_15_image_sprite = SF::Sprite.new
+
+    #    #---------------------------------------------------------------------------------
+
+    #    def initialize(is_open : Bool, page : Int32)
+    #     @@is_open = is_open
+    #     @@page = page
+    #    end
+
+    #    def ClothingTabPants.is_open
+    #     @@is_open
+    #    end
+
+    #    def ClothingTabPants.page
+    #     @@page
+    #    end
+
+    #    def ClothingTabPants.is_open=(this)
+    #     @@is_open = this
+    #    end
+
+    #    def ClothingTabPants.page=(this)
+    #     @@page = this
+    #    end
+
+    #    def ClothingTabPants.owned_pants_array
+    #     @@owned_pants_array
+    #    end
+
+    #    def ClothingTabPants.owned_pants_array=(this)
+    #     @@owned_pants_array = this
+    #    end
+
+    #    def ClothingTabPants.push_to_owned_pants_array(this)
+    #     @@owned_pants_array.push(this)
+    #    end
+
+    #    def ClothingTabPants.change_pants_sort_category
+    #     case @@pants_sorting_category
+    #     when "Length"
+    #         @@pants_sorting_category = "Color"
+    #     when "Color"
+    #         @@pants_sorting_category = "Length"
+    #     end
+    #    end
+
+    #    def ClothingTabPants.get_pants_category
+    #     return @@pants_sorting_category
+    #    end
+
+    #    def ClothingTabPants.initialize_clothing_tab(window)
+    #     @@page = 1
+    #     INVENTORY_BOX.position = SF.vector2(20, 40)  
+    #    end
+
+    #    def ClothingTabPants.assign_slot_textures(window)
+    #     if @@page == nil
+    #         @@page = 1
+    #     end
+    #     if @@owned_pants_array.size > 0
+    #         t = 0 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_01_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_01_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_01 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_01_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_01_text.string = ""
+    #             @@pants_slot_01 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 1
+    #         t = 1 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_02_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_02_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_02 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_02_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_02_text.string = ""
+    #             @@pants_slot_02 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 2
+    #         t = 2 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_03_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_03_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_03 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_03_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_03_text.string = ""
+    #             @@pants_slot_03 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 3
+    #         t = 3 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_04_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_04_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_04 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_04_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_04_text.string = ""
+    #             @@pants_slot_04 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 4
+    #         t = 4 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_05_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_05_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_05 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_05_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_05_text.string = ""
+    #             @@pants_slot_05 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 5
+    #         t = 5 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_06_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_06_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_06 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_06_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_06_text.string = ""
+    #             @@pants_slot_06 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 6
+    #         t = 6 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_07_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_07_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_07 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_07_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_07_text.string = ""
+    #             @@pants_slot_07 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 7
+    #         t = 7 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_08_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_08_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_08 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_08_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_08_text.string = ""
+    #             @@pants_slot_08 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 8
+    #         t = 8 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_09_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_09_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_09 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_09_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_09_text.string = ""
+    #             @@pants_slot_09 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 9
+    #         t = 9 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_10_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_10_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_10 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_10_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_10_text.string = ""
+    #             @@pants_slot_10 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 10
+    #         t = 10 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_11_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_11_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_11 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_11_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_11_text.string = ""
+    #             @@pants_slot_11 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 11
+    #         t = 11 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_12_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_12_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_12 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_12_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_12_text.string = ""
+    #             @@pants_slot_12 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 12
+    #         t = 12 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_13_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_13_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_13 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_13_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_13_text.string = ""
+    #             @@pants_slot_13 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 13
+    #         t = 13 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_14_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_14_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_14 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_14_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_14_text.string = ""
+    #             @@pants_slot_14 = nil
+    #         end
+    #     end
+    #     if @@owned_pants_array.size > 14
+    #         t = 14 + (@@page.not_nil! * 15) - 15
+    #         if t <= @@owned_pants_array.size - 1
+    #          @@pants_slot_15_image_sprite.texture = @@owned_pants_array[t].texture
+    #          @@pants_slot_15_text.string = @@owned_pants_array[t].name
+    #          @@pants_slot_15 = @@owned_pants_array[t]
+    #         else
+    #             @@pants_slot_15_image_sprite.texture = NIL_TEXTURE
+    #             @@pants_slot_15_text.string = ""
+    #             @@pants_slot_15 = nil
+    #         end
+    #     end
+    #    end
        
 
-       def ClothingTabPants.draw_clothing_tab(window)
-            current_size = window.size
-            original_width = 800 
-            original_height = 600
-            scale_x = current_size.x.to_f / original_width
-            scale_y = current_size.y.to_f / original_height
+    #    def ClothingTabPants.draw_clothing_tab(window)
+    #         current_size = window.size
+    #         original_width = 800 
+    #         original_height = 600
+    #         scale_x = current_size.x.to_f / original_width
+    #         scale_y = current_size.y.to_f / original_height
     
-            scale_ratio = [scale_x, scale_y].min
-            max_scale = 1.5
-            clamped_scale = [scale_ratio, max_scale].min
+    #         scale_ratio = [scale_x, scale_y].min
+    #         max_scale = 1.5
+    #         clamped_scale = [scale_ratio, max_scale].min
 
-        window.view = window.default_view #the second frame of the walk cycle should be used for display
+    #     window.view = window.default_view #the second frame of the walk cycle should be used for display
 
-        INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
-        INVENTORY_BOX.scale = SF.vector2(1, 1)
+    #     INVENTORY_BOX.position = SF.vector2(80 * max_scale, 40 * max_scale)
+    #     INVENTORY_BOX.scale = SF.vector2(1, 1)
 
 
-        @@pants_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
-        @@pants_slot_01_sprite.scale = SF.vector2(1, 1)
+    #     @@pants_slot_01_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 40 * max_scale)
+    #     @@pants_slot_01_sprite.scale = SF.vector2(1, 1)
         
-        @@pants_slot_01_image_sprite.position = @@pants_slot_01_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_01_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_01_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+    #     @@pants_slot_01_image_sprite.position = @@pants_slot_01_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_01_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_01_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
 
-        @@pants_slot_01_text.position = @@pants_slot_01_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_01_text)
-        
-
-        @@pants_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
-        @@pants_slot_02_sprite.scale = SF.vector2(1, 1)
-        
-        @@pants_slot_02_image_sprite.position = @@pants_slot_02_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_02_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_02_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
-
-        @@pants_slot_02_text.position = @@pants_slot_02_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_02_text)
+    #     @@pants_slot_01_text.position = @@pants_slot_01_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_01_text)
         
 
-        @@pants_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
-        @@pants_slot_03_sprite.scale = SF.vector2(1, 1)
+    #     @@pants_slot_02_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 40 * max_scale)
+    #     @@pants_slot_02_sprite.scale = SF.vector2(1, 1)
         
-        @@pants_slot_03_image_sprite.position = @@pants_slot_03_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_03_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_03_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+    #     @@pants_slot_02_image_sprite.position = @@pants_slot_02_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_02_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_02_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
 
-        @@pants_slot_03_text.position = @@pants_slot_03_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_03_text)
-        
-
-        @@pants_slot_04_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 40 * max_scale)
-        @@pants_slot_04_sprite.scale = SF.vector2(1, 1)
-
-        @@pants_slot_04_text.position = @@pants_slot_04_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_04_text)
-        
-        @@pants_slot_04_image_sprite.position = @@pants_slot_04_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_04_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_04_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
-
-
-        @@pants_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
-        @@pants_slot_05_sprite.scale = SF.vector2(1, 1)
-
-        @@pants_slot_05_text.position = @@pants_slot_05_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_05_text)
-        
-        @@pants_slot_05_image_sprite.position = @@pants_slot_05_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_05_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_05_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+    #     @@pants_slot_02_text.position = @@pants_slot_02_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_02_text)
         
 
-        @@pants_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
-        @@pants_slot_06_sprite.scale = SF.vector2(1, 1)
+    #     @@pants_slot_03_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 40 * max_scale)
+    #     @@pants_slot_03_sprite.scale = SF.vector2(1, 1)
+        
+    #     @@pants_slot_03_image_sprite.position = @@pants_slot_03_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_03_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_03_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
 
-        @@pants_slot_06_text.position = @@pants_slot_06_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_06_text)
-        
-        @@pants_slot_06_image_sprite.position = @@pants_slot_06_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_06_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_06_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
-        
-
-        @@pants_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
-        @@pants_slot_07_sprite.scale = SF.vector2(1, 1)
-        
-        @@pants_slot_07_text.position = @@pants_slot_07_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_07_text)
-        
-        @@pants_slot_07_image_sprite.position = @@pants_slot_07_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_07_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_07_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+    #     @@pants_slot_03_text.position = @@pants_slot_03_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_03_text)
         
 
-        @@pants_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
-        @@pants_slot_08_sprite.scale = SF.vector2(1, 1)
+    #     @@pants_slot_04_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 40 * max_scale)
+    #     @@pants_slot_04_sprite.scale = SF.vector2(1, 1)
+
+    #     @@pants_slot_04_text.position = @@pants_slot_04_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_04_text)
+        
+    #     @@pants_slot_04_image_sprite.position = @@pants_slot_04_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_04_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_04_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+
+
+    #     @@pants_slot_05_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 40 * max_scale)
+    #     @@pants_slot_05_sprite.scale = SF.vector2(1, 1)
+
+    #     @@pants_slot_05_text.position = @@pants_slot_05_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_05_text)
+        
+    #     @@pants_slot_05_image_sprite.position = @@pants_slot_05_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_05_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_05_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        
+
+    #     @@pants_slot_06_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 120 * max_scale)
+    #     @@pants_slot_06_sprite.scale = SF.vector2(1, 1)
+
+    #     @@pants_slot_06_text.position = @@pants_slot_06_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_06_text)
+        
+    #     @@pants_slot_06_image_sprite.position = @@pants_slot_06_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_06_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_06_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        
+
+    #     @@pants_slot_07_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 120 * max_scale)
+    #     @@pants_slot_07_sprite.scale = SF.vector2(1, 1)
+        
+    #     @@pants_slot_07_text.position = @@pants_slot_07_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_07_text)
+        
+    #     @@pants_slot_07_image_sprite.position = @@pants_slot_07_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_07_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_07_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        
+
+    #     @@pants_slot_08_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 120 * max_scale)
+    #     @@pants_slot_08_sprite.scale = SF.vector2(1, 1)
                 
-        @@pants_slot_08_text.position = @@pants_slot_08_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_08_text)
+    #     @@pants_slot_08_text.position = @@pants_slot_08_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_08_text)
         
-        @@pants_slot_08_image_sprite.position = @@pants_slot_08_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_08_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_08_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+    #     @@pants_slot_08_image_sprite.position = @@pants_slot_08_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_08_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_08_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
-        @@pants_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
-        @@pants_slot_09_sprite.scale = SF.vector2(1, 1)
+    #     @@pants_slot_09_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 120 * max_scale)
+    #     @@pants_slot_09_sprite.scale = SF.vector2(1, 1)
                 
-        @@pants_slot_09_text.position = @@pants_slot_09_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_09_text)
+    #     @@pants_slot_09_text.position = @@pants_slot_09_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_09_text)
         
-        @@pants_slot_09_image_sprite.position = @@pants_slot_09_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_09_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_09_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+    #     @@pants_slot_09_image_sprite.position = @@pants_slot_09_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_09_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_09_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
-        @@pants_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
-        @@pants_slot_10_sprite.scale = SF.vector2(1, 1)
+    #     @@pants_slot_10_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 120 * max_scale)
+    #     @@pants_slot_10_sprite.scale = SF.vector2(1, 1)
                         
-        @@pants_slot_10_text.position = @@pants_slot_10_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_10_text)
+    #     @@pants_slot_10_text.position = @@pants_slot_10_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_10_text)
         
-        @@pants_slot_10_image_sprite.position = @@pants_slot_10_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_10_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_10_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+    #     @@pants_slot_10_image_sprite.position = @@pants_slot_10_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_10_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_10_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
-        @@pants_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
-        @@pants_slot_11_sprite.scale = SF.vector2(1, 1)
+    #     @@pants_slot_11_sprite.position = INVENTORY_BOX.position + SF.vector2(10 * max_scale, 200 * max_scale)
+    #     @@pants_slot_11_sprite.scale = SF.vector2(1, 1)
                         
-        @@pants_slot_11_text.position = @@pants_slot_11_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_11_text)
+    #     @@pants_slot_11_text.position = @@pants_slot_11_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_11_text)
         
-        @@pants_slot_11_image_sprite.position = @@pants_slot_11_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_11_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_11_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+    #     @@pants_slot_11_image_sprite.position = @@pants_slot_11_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_11_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_11_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
-        @@pants_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
-        @@pants_slot_12_sprite.scale = SF.vector2(1, 1)
+    #     @@pants_slot_12_sprite.position = INVENTORY_BOX.position + SF.vector2(90 * max_scale, 200 * max_scale)
+    #     @@pants_slot_12_sprite.scale = SF.vector2(1, 1)
                         
-        @@pants_slot_12_text.position = @@pants_slot_12_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_12_text)
+    #     @@pants_slot_12_text.position = @@pants_slot_12_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_12_text)
         
-        @@pants_slot_12_image_sprite.position = @@pants_slot_12_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_12_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_12_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
-        
-
-        @@pants_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
-        @@pants_slot_13_sprite.scale = SF.vector2(1, 1)
-        
-        @@pants_slot_13_text.position = @@pants_slot_13_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_13_text)
-        
-        @@pants_slot_13_image_sprite.position = @@pants_slot_13_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_13_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_13_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+    #     @@pants_slot_12_image_sprite.position = @@pants_slot_12_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_12_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_12_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
-        @@pants_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
-        @@pants_slot_14_sprite.scale = SF.vector2(1, 1)
+    #     @@pants_slot_13_sprite.position = INVENTORY_BOX.position + SF.vector2(170 * max_scale, 200 * max_scale)
+    #     @@pants_slot_13_sprite.scale = SF.vector2(1, 1)
+        
+    #     @@pants_slot_13_text.position = @@pants_slot_13_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_13_text)
+        
+    #     @@pants_slot_13_image_sprite.position = @@pants_slot_13_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_13_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_13_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+        
+
+    #     @@pants_slot_14_sprite.position = INVENTORY_BOX.position + SF.vector2(250 * max_scale, 200 * max_scale)
+    #     @@pants_slot_14_sprite.scale = SF.vector2(1, 1)
                         
-        @@pants_slot_14_text.position = @@pants_slot_14_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_14_text)
+    #     @@pants_slot_14_text.position = @@pants_slot_14_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_14_text)
         
-        @@pants_slot_14_image_sprite.position = @@pants_slot_14_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_14_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_14_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+    #     @@pants_slot_14_image_sprite.position = @@pants_slot_14_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_14_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_14_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
         
 
-        @@pants_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
-        @@pants_slot_15_sprite.scale = SF.vector2(1, 1)
+    #     @@pants_slot_15_sprite.position = INVENTORY_BOX.position + SF.vector2(330 * max_scale, 200 * max_scale)
+    #     @@pants_slot_15_sprite.scale = SF.vector2(1, 1)
                         
-        @@pants_slot_15_text.position = @@pants_slot_15_sprite.position + SF.vector2(45, 55 * max_scale)
-        Utility::StringUtilities.center_text(@@pants_slot_15_text)
+    #     @@pants_slot_15_text.position = @@pants_slot_15_sprite.position + SF.vector2(45, 55 * max_scale)
+    #     Utility::StringUtilities.center_text(@@pants_slot_15_text)
         
-        @@pants_slot_15_image_sprite.position = @@pants_slot_15_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
-        @@pants_slot_15_image_sprite.scale = SF.vector2(2, 2)
-        @@pants_slot_15_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
+    #     @@pants_slot_15_image_sprite.position = @@pants_slot_15_sprite.position - SF.vector2(25 * max_scale, 95 * max_scale)
+    #     @@pants_slot_15_image_sprite.scale = SF.vector2(2, 2)
+    #     @@pants_slot_15_image_sprite.texture_rect = SF.int_rect(192, 640, 96, 128)
 
 
-        window.draw(@@pants_slot_01_sprite)
-        window.draw(@@pants_slot_01_image_sprite)
-        window.draw(@@pants_slot_01_text)
+    #     window.draw(@@pants_slot_01_sprite)
+    #     window.draw(@@pants_slot_01_image_sprite)
+    #     window.draw(@@pants_slot_01_text)
 
-        window.draw(@@pants_slot_02_sprite)
-        window.draw(@@pants_slot_02_image_sprite)
-        window.draw(@@pants_slot_02_text)
+    #     window.draw(@@pants_slot_02_sprite)
+    #     window.draw(@@pants_slot_02_image_sprite)
+    #     window.draw(@@pants_slot_02_text)
 
-        window.draw(@@pants_slot_03_sprite)
-        window.draw(@@pants_slot_03_image_sprite)
-        window.draw(@@pants_slot_03_text)
+    #     window.draw(@@pants_slot_03_sprite)
+    #     window.draw(@@pants_slot_03_image_sprite)
+    #     window.draw(@@pants_slot_03_text)
         
-        window.draw(@@pants_slot_04_sprite)
-        window.draw(@@pants_slot_04_image_sprite)
-        window.draw(@@pants_slot_04_text)
+    #     window.draw(@@pants_slot_04_sprite)
+    #     window.draw(@@pants_slot_04_image_sprite)
+    #     window.draw(@@pants_slot_04_text)
 
-        window.draw(@@pants_slot_05_sprite)
-        window.draw(@@pants_slot_05_image_sprite)
-        window.draw(@@pants_slot_05_text)
+    #     window.draw(@@pants_slot_05_sprite)
+    #     window.draw(@@pants_slot_05_image_sprite)
+    #     window.draw(@@pants_slot_05_text)
 
-        window.draw(@@pants_slot_06_sprite)
-        window.draw(@@pants_slot_06_image_sprite)
-        window.draw(@@pants_slot_06_text)
+    #     window.draw(@@pants_slot_06_sprite)
+    #     window.draw(@@pants_slot_06_image_sprite)
+    #     window.draw(@@pants_slot_06_text)
 
-        window.draw(@@pants_slot_07_sprite)
-        window.draw(@@pants_slot_07_image_sprite)
-        window.draw(@@pants_slot_07_text)
+    #     window.draw(@@pants_slot_07_sprite)
+    #     window.draw(@@pants_slot_07_image_sprite)
+    #     window.draw(@@pants_slot_07_text)
 
-        window.draw(@@pants_slot_08_sprite)
-        window.draw(@@pants_slot_08_image_sprite)
-        window.draw(@@pants_slot_08_text)
+    #     window.draw(@@pants_slot_08_sprite)
+    #     window.draw(@@pants_slot_08_image_sprite)
+    #     window.draw(@@pants_slot_08_text)
 
-        window.draw(@@pants_slot_09_sprite)
-        window.draw(@@pants_slot_09_image_sprite)
-        window.draw(@@pants_slot_09_text)
+    #     window.draw(@@pants_slot_09_sprite)
+    #     window.draw(@@pants_slot_09_image_sprite)
+    #     window.draw(@@pants_slot_09_text)
 
-        window.draw(@@pants_slot_10_sprite)
-        window.draw(@@pants_slot_10_image_sprite)
-        window.draw(@@pants_slot_10_text)
+    #     window.draw(@@pants_slot_10_sprite)
+    #     window.draw(@@pants_slot_10_image_sprite)
+    #     window.draw(@@pants_slot_10_text)
 
-        window.draw(@@pants_slot_11_sprite)
-        window.draw(@@pants_slot_11_image_sprite)
-        window.draw(@@pants_slot_11_text)
+    #     window.draw(@@pants_slot_11_sprite)
+    #     window.draw(@@pants_slot_11_image_sprite)
+    #     window.draw(@@pants_slot_11_text)
 
-        window.draw(@@pants_slot_12_sprite)
-        window.draw(@@pants_slot_12_image_sprite)
-        window.draw(@@pants_slot_12_text)
+    #     window.draw(@@pants_slot_12_sprite)
+    #     window.draw(@@pants_slot_12_image_sprite)
+    #     window.draw(@@pants_slot_12_text)
 
-        window.draw(@@pants_slot_13_sprite)
-        window.draw(@@pants_slot_13_image_sprite)
-        window.draw(@@pants_slot_13_text)
+    #     window.draw(@@pants_slot_13_sprite)
+    #     window.draw(@@pants_slot_13_image_sprite)
+    #     window.draw(@@pants_slot_13_text)
 
-        window.draw(@@pants_slot_14_sprite)
-        window.draw(@@pants_slot_14_image_sprite)
-        window.draw(@@pants_slot_14_text)
+    #     window.draw(@@pants_slot_14_sprite)
+    #     window.draw(@@pants_slot_14_image_sprite)
+    #     window.draw(@@pants_slot_14_text)
 
-        window.draw(@@pants_slot_15_sprite)
-        window.draw(@@pants_slot_15_image_sprite)
-        window.draw(@@pants_slot_15_text)
+    #     window.draw(@@pants_slot_15_sprite)
+    #     window.draw(@@pants_slot_15_image_sprite)
+    #     window.draw(@@pants_slot_15_text)
 
-        if SF::Mouse.button_pressed?(SF::Mouse::Left)
-            ClothingTabPants.clothes_mouse_handling(window)
-        end
-       end
+    #     if SF::Mouse.button_pressed?(SF::Mouse::Left)
+    #         ClothingTabPants.clothes_mouse_handling(window)
+    #     end
+    #    end
 
-       def ClothingTabPants.clothes_mouse_handling(window)
-        mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
-        mouse_x = mouse_position.x
-        mouse_y = mouse_position.y
+    #    def ClothingTabPants.clothes_mouse_handling(window)
+    #     mouse_position = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+    #     mouse_x = mouse_position.x
+    #     mouse_y = mouse_position.y
         
     
-        current_size = window.size
-        original_width = 800 
-        original_height = 600 
+    #     current_size = window.size
+    #     original_width = 800 
+    #     original_height = 600 
 
-        scale_x = (current_size.x.to_f / original_width)
-        scale_y = current_size.y.to_f / original_height
+    #     scale_x = (current_size.x.to_f / original_width)
+    #     scale_y = current_size.y.to_f / original_height
         
 
-        #------------------------------------objects-------------------------------------------------
+    #     #------------------------------------objects-------------------------------------------------
 
-            slot_01_x = @@pants_slot_01_sprite.position.x
-            slot_01_y = @@pants_slot_01_sprite.position.y
-            slot_01_width = @@pants_slot_01_sprite.size.x
-            slot_01_height = @@pants_slot_01_sprite.size.y
+    #         slot_01_x = @@pants_slot_01_sprite.position.x
+    #         slot_01_y = @@pants_slot_01_sprite.position.y
+    #         slot_01_width = @@pants_slot_01_sprite.size.x
+    #         slot_01_height = @@pants_slot_01_sprite.size.y
 
-            slot_02_x = @@pants_slot_02_sprite.position.x
-            slot_02_y = @@pants_slot_02_sprite.position.y
-            slot_02_width = @@pants_slot_02_sprite.size.x
-            slot_02_height = @@pants_slot_02_sprite.size.y
+    #         slot_02_x = @@pants_slot_02_sprite.position.x
+    #         slot_02_y = @@pants_slot_02_sprite.position.y
+    #         slot_02_width = @@pants_slot_02_sprite.size.x
+    #         slot_02_height = @@pants_slot_02_sprite.size.y
 
-            slot_03_x = @@pants_slot_03_sprite.position.x
-            slot_03_y = @@pants_slot_03_sprite.position.y
-            slot_03_width = @@pants_slot_03_sprite.size.x
-            slot_03_height = @@pants_slot_03_sprite.size.y
+    #         slot_03_x = @@pants_slot_03_sprite.position.x
+    #         slot_03_y = @@pants_slot_03_sprite.position.y
+    #         slot_03_width = @@pants_slot_03_sprite.size.x
+    #         slot_03_height = @@pants_slot_03_sprite.size.y
 
-            slot_04_x = @@pants_slot_04_sprite.position.x
-            slot_04_y = @@pants_slot_04_sprite.position.y
-            slot_04_width = @@pants_slot_04_sprite.size.x
-            slot_04_height = @@pants_slot_04_sprite.size.y
+    #         slot_04_x = @@pants_slot_04_sprite.position.x
+    #         slot_04_y = @@pants_slot_04_sprite.position.y
+    #         slot_04_width = @@pants_slot_04_sprite.size.x
+    #         slot_04_height = @@pants_slot_04_sprite.size.y
 
-            slot_05_x = @@pants_slot_05_sprite.position.x
-            slot_05_y = @@pants_slot_05_sprite.position.y
-            slot_05_width = @@pants_slot_05_sprite.size.x
-            slot_05_height = @@pants_slot_05_sprite.size.y
+    #         slot_05_x = @@pants_slot_05_sprite.position.x
+    #         slot_05_y = @@pants_slot_05_sprite.position.y
+    #         slot_05_width = @@pants_slot_05_sprite.size.x
+    #         slot_05_height = @@pants_slot_05_sprite.size.y
 
-            slot_06_x = @@pants_slot_06_sprite.position.x
-            slot_06_y = @@pants_slot_06_sprite.position.y
-            slot_06_width = @@pants_slot_06_sprite.size.x
-            slot_06_height = @@pants_slot_06_sprite.size.y
+    #         slot_06_x = @@pants_slot_06_sprite.position.x
+    #         slot_06_y = @@pants_slot_06_sprite.position.y
+    #         slot_06_width = @@pants_slot_06_sprite.size.x
+    #         slot_06_height = @@pants_slot_06_sprite.size.y
 
-            slot_07_x = @@pants_slot_07_sprite.position.x
-            slot_07_y = @@pants_slot_07_sprite.position.y
-            slot_07_width = @@pants_slot_07_sprite.size.x
-            slot_07_height = @@pants_slot_07_sprite.size.y
+    #         slot_07_x = @@pants_slot_07_sprite.position.x
+    #         slot_07_y = @@pants_slot_07_sprite.position.y
+    #         slot_07_width = @@pants_slot_07_sprite.size.x
+    #         slot_07_height = @@pants_slot_07_sprite.size.y
 
-            slot_08_x = @@pants_slot_08_sprite.position.x
-            slot_08_y = @@pants_slot_08_sprite.position.y
-            slot_08_width = @@pants_slot_08_sprite.size.x
-            slot_08_height = @@pants_slot_08_sprite.size.y
+    #         slot_08_x = @@pants_slot_08_sprite.position.x
+    #         slot_08_y = @@pants_slot_08_sprite.position.y
+    #         slot_08_width = @@pants_slot_08_sprite.size.x
+    #         slot_08_height = @@pants_slot_08_sprite.size.y
 
-            slot_09_x = @@pants_slot_09_sprite.position.x
-            slot_09_y = @@pants_slot_09_sprite.position.y
-            slot_09_width = @@pants_slot_09_sprite.size.x
-            slot_09_height = @@pants_slot_09_sprite.size.y
+    #         slot_09_x = @@pants_slot_09_sprite.position.x
+    #         slot_09_y = @@pants_slot_09_sprite.position.y
+    #         slot_09_width = @@pants_slot_09_sprite.size.x
+    #         slot_09_height = @@pants_slot_09_sprite.size.y
 
-            slot_10_x = @@pants_slot_10_sprite.position.x
-            slot_10_y = @@pants_slot_10_sprite.position.y
-            slot_10_width = @@pants_slot_10_sprite.size.x
-            slot_10_height = @@pants_slot_10_sprite.size.y
+    #         slot_10_x = @@pants_slot_10_sprite.position.x
+    #         slot_10_y = @@pants_slot_10_sprite.position.y
+    #         slot_10_width = @@pants_slot_10_sprite.size.x
+    #         slot_10_height = @@pants_slot_10_sprite.size.y
 
-            slot_11_x = @@pants_slot_11_sprite.position.x
-            slot_11_y = @@pants_slot_11_sprite.position.y
-            slot_11_width = @@pants_slot_11_sprite.size.x
-            slot_11_height = @@pants_slot_11_sprite.size.y
+    #         slot_11_x = @@pants_slot_11_sprite.position.x
+    #         slot_11_y = @@pants_slot_11_sprite.position.y
+    #         slot_11_width = @@pants_slot_11_sprite.size.x
+    #         slot_11_height = @@pants_slot_11_sprite.size.y
 
-            slot_12_x = @@pants_slot_12_sprite.position.x
-            slot_12_y = @@pants_slot_12_sprite.position.y
-            slot_12_width = @@pants_slot_12_sprite.size.x
-            slot_12_height = @@pants_slot_12_sprite.size.y
+    #         slot_12_x = @@pants_slot_12_sprite.position.x
+    #         slot_12_y = @@pants_slot_12_sprite.position.y
+    #         slot_12_width = @@pants_slot_12_sprite.size.x
+    #         slot_12_height = @@pants_slot_12_sprite.size.y
 
-            slot_13_x = @@pants_slot_13_sprite.position.x
-            slot_13_y = @@pants_slot_13_sprite.position.y
-            slot_13_width = @@pants_slot_13_sprite.size.x
-            slot_13_height = @@pants_slot_13_sprite.size.y
+    #         slot_13_x = @@pants_slot_13_sprite.position.x
+    #         slot_13_y = @@pants_slot_13_sprite.position.y
+    #         slot_13_width = @@pants_slot_13_sprite.size.x
+    #         slot_13_height = @@pants_slot_13_sprite.size.y
 
-            slot_14_x = @@pants_slot_14_sprite.position.x
-            slot_14_y = @@pants_slot_14_sprite.position.y
-            slot_14_width = @@pants_slot_14_sprite.size.x
-            slot_14_height = @@pants_slot_14_sprite.size.y
+    #         slot_14_x = @@pants_slot_14_sprite.position.x
+    #         slot_14_y = @@pants_slot_14_sprite.position.y
+    #         slot_14_width = @@pants_slot_14_sprite.size.x
+    #         slot_14_height = @@pants_slot_14_sprite.size.y
 
-            slot_15_x = @@pants_slot_15_sprite.position.x
-            slot_15_y = @@pants_slot_15_sprite.position.y
-            slot_15_width = @@pants_slot_15_sprite.size.x
-            slot_15_height = @@pants_slot_15_sprite.size.y
-        #---------------------------------------------------------------------------------------------
+    #         slot_15_x = @@pants_slot_15_sprite.position.x
+    #         slot_15_y = @@pants_slot_15_sprite.position.y
+    #         slot_15_width = @@pants_slot_15_sprite.size.x
+    #         slot_15_height = @@pants_slot_15_sprite.size.y
+    #     #---------------------------------------------------------------------------------------------
         
-        if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
-           (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
-            if @@pants_slot_01 != nil   
-                t = 0 + ((@@page || 1) * 15) - 15
+    #     if (mouse_x >= slot_01_x && mouse_x <= slot_01_x + slot_01_width) &&
+    #        (mouse_y >= slot_01_y && mouse_y <= slot_01_y + slot_01_height)
+    #         if @@pants_slot_01 != nil   
+    #             t = 0 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_01.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_01.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
-           (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
+    #     if (mouse_x >= slot_02_x && mouse_x <= slot_02_x + slot_02_width) &&
+    #        (mouse_y >= slot_02_y && mouse_y <= slot_02_y + slot_02_height)
            
-            if @@pants_slot_02 != nil
-                t = 1 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_02 != nil
+    #             t = 1 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_02.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_02.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
-           (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
+    #     if (mouse_x >= slot_03_x && mouse_x <= slot_03_x + slot_03_width) &&
+    #        (mouse_y >= slot_03_y && mouse_y <= slot_03_y + slot_03_height)
            
-            if @@pants_slot_03 != nil
-                t = 2 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_03 != nil
+    #             t = 2 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_03.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_03.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
-           (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
+    #     if (mouse_x >= slot_04_x && mouse_x <= slot_04_x + slot_04_width) &&
+    #        (mouse_y >= slot_04_y && mouse_y <= slot_04_y + slot_04_height)
            
-            if @@pants_slot_04 != nil
-                t = 3 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_04 != nil
+    #             t = 3 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_04.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_04.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
-           (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
+    #     if (mouse_x >= slot_05_x && mouse_x <= slot_05_x + slot_05_width) &&
+    #        (mouse_y >= slot_05_y && mouse_y <= slot_05_y + slot_05_height)
            
-            if @@pants_slot_05 != nil
-                t = 4 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_05 != nil
+    #             t = 4 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_05.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_05.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
-           (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
+    #     if (mouse_x >= slot_06_x && mouse_x <= slot_06_x + slot_06_width) &&
+    #        (mouse_y >= slot_06_y && mouse_y <= slot_06_y + slot_06_height)
            
-            if @@pants_slot_06 != nil
-                t = 5 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_06 != nil
+    #             t = 5 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_06.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_06.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
-           (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
+    #     if (mouse_x >= slot_07_x && mouse_x <= slot_07_x + slot_07_width) &&
+    #        (mouse_y >= slot_07_y && mouse_y <= slot_07_y + slot_07_height)
            
-            if @@pants_slot_07 != nil
-                t = 6 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_07 != nil
+    #             t = 6 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_07.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_07.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
-           (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
+    #     if (mouse_x >= slot_08_x && mouse_x <= slot_08_x + slot_08_width) &&
+    #        (mouse_y >= slot_08_y && mouse_y <= slot_08_y + slot_08_height)
            
-            if @@pants_slot_08 != nil
-                t = 7 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_08 != nil
+    #             t = 7 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_08.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_08.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
-           (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
+    #     if (mouse_x >= slot_09_x && mouse_x <= slot_09_x + slot_09_width) &&
+    #        (mouse_y >= slot_09_y && mouse_y <= slot_09_y + slot_09_height)
            
-            if @@pants_slot_09 != nil
-                t = 8 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_09 != nil
+    #             t = 8 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_09.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_09.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
-           (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
+    #     if (mouse_x >= slot_10_x && mouse_x <= slot_10_x + slot_10_width) &&
+    #        (mouse_y >= slot_10_y && mouse_y <= slot_10_y + slot_10_height)
            
-            if @@pants_slot_10 != nil
-                t = 9 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_10 != nil
+    #             t = 9 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_10.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_10.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
-           (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
+    #     if (mouse_x >= slot_11_x && mouse_x <= slot_11_x + slot_11_width) &&
+    #        (mouse_y >= slot_11_y && mouse_y <= slot_11_y + slot_11_height)
            
-            if @@pants_slot_11 != nil
-                t = 10 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_11 != nil
+    #             t = 10 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_11.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_11.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
-           (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
+    #     if (mouse_x >= slot_12_x && mouse_x <= slot_12_x + slot_12_width) &&
+    #        (mouse_y >= slot_12_y && mouse_y <= slot_12_y + slot_12_height)
            
-            if @@pants_slot_12 != nil
-                t = 11 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_12 != nil
+    #             t = 11 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_12.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_12.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
-           (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
+    #     if (mouse_x >= slot_13_x && mouse_x <= slot_13_x + slot_13_width) &&
+    #        (mouse_y >= slot_13_y && mouse_y <= slot_13_y + slot_13_height)
            
-            if @@pants_slot_13 != nil
-                t = 12 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_13 != nil
+    #             t = 12 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_13.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_13.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
-           (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
+    #     if (mouse_x >= slot_14_x && mouse_x <= slot_14_x + slot_14_width) &&
+    #        (mouse_y >= slot_14_y && mouse_y <= slot_14_y + slot_14_height)
            
-            if @@pants_slot_14 != nil
-                t = 13 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_14 != nil
+    #             t = 13 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_14.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_14.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
         
-        if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
-           (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
+    #     if (mouse_x >= slot_15_x && mouse_x <= slot_15_x + slot_15_width) &&
+    #        (mouse_y >= slot_15_y && mouse_y <= slot_15_y + slot_15_height)
            
-            if @@pants_slot_15 != nil
-                t = 14 + ((@@page || 1) * 15) - 15
+    #         if @@pants_slot_15 != nil
+    #             t = 14 + ((@@page || 1) * 15) - 15
                 
-                @@owned_pants_array[t] = (Clothing::Pants.get_pants(
-                Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
-                Player::Appearance.change_pants(@@pants_slot_15.not_nil!.name)
-                Sprites::Player.refresh_player_sprite(window)
-                @@owned_pants_array.uniq!
-            end
-            ClothingTabPants.assign_slot_textures(window)
-            sleep 0.15.seconds
-        end
+    #             @@owned_pants_array[t] = (Clothing::Pants.get_pants(
+    #             Player::Appearance.get_clothing("pants").try(&.to_s) || Clothing::Pants.get_pants("No Pants").not_nil!)).not_nil!
+    #             Player::Appearance.change_pants(@@pants_slot_15.not_nil!.name)
+    #             Sprites::Player.refresh_player_sprite(window)
+    #             @@owned_pants_array.uniq!
+    #         end
+    #         ClothingTabPants.assign_slot_textures(window)
+    #         sleep 0.15.seconds
+    #     end
 
-       end
+    #    end
 
-    end
+    # end
 
     class ClothingTabShoes
         @@owned_shoes_array = [] of Clothing::Shoes
