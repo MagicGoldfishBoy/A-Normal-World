@@ -155,61 +155,13 @@
     #PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
     #P                                        Pants Textures                                            P
     #PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
-        JEANS_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Jeans.png")
-
-        JEANS_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Jeans.png")
-
-        JEANS_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Jeans.png")
-
-        JEANS_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Jeans.png")
-
-        JEANS_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Jeans.png")
-
-        JEANS_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Jeans.png")
-
-        JEANS_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Jeans.png")
-
-        JEANS_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Jeans.png")
-
-        JEANS_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Jeans.png")
+        JEANS_WHITE_TEXTURE = SF::Texture.from_file("../graphics/pants/White_Jeans.png")
 
 
-        BOOTY_SHORTS_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Booty_Shorts.png")
-
-        BOOTY_SHORTS_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Booty_Shorts.png")
-
-        BOOTY_SHORTS_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Booty_Shorts.png")
-
-        BOOTY_SHORTS_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Booty_Shorts.png")
-
-        BOOTY_SHORTS_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Booty_Shorts.png")
-
-        BOOTY_SHORTS_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Booty_Shorts.png")
-
-        BOOTY_SHORTS_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Booty_Shorts.png")
-
-        BOOTY_SHORTS_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Booty_Shorts.png")
-
-        BOOTY_SHORTS_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Booty_Shorts.png")
+        BOOTY_SHORTS_WHITE_TEXTURE = SF::Texture.from_file("../graphics/pants/White_Booty_Shorts.png")
 
 
-        SHORTS_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Shorts.png")
-
-        SHORTS_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Shorts.png")
-
-        SHORTS_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Shorts.png")
-
-        SHORTS_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Shorts.png")
-
-        SHORTS_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Shorts.png")
-
-        SHORTS_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Shorts.png")
-
-        SHORTS_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Shorts.png")
-
-        SHORTS_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Shorts.png")
-
-        SHORTS_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Shorts.png")
+        SHORTS_WHITE_TEXTURE = SF::Texture.from_file("../graphics/pants/White_Shorts.png")
 
     #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
     #S                                         Shirt Textures                                           S

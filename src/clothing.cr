@@ -3,107 +3,107 @@ require "../src/textures.cr"
 
 module Clothing
 
-    class Pants
-        PANTS_ARRAY = [] of Pants
-        def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String, is_skirt : Bool)
-         @name = name
-         @@name = name
-         @id = id
-         @is_owned = is_owned
-         @length = length
-         @style = style
-         @texture = texture
-         @color = color
-         @is_skirt = is_skirt
-         PANTS_ARRAY.push(self)
-        end
+    # class Pants
+    #     PANTS_ARRAY = [] of Pants
+    #     def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String, is_skirt : Bool)
+    #      @name = name
+    #      @@name = name
+    #      @id = id
+    #      @is_owned = is_owned
+    #      @length = length
+    #      @style = style
+    #      @texture = texture
+    #      @color = color
+    #      @is_skirt = is_skirt
+    #      PANTS_ARRAY.push(self)
+    #     end
  
-        getter name : String
-        getter id : Int32
-        getter length : String
-        getter style : String
-        getter texture : SF::Texture
-        getter color : String
-        getter is_skirt : Bool
-        property is_owned : Bool
+    #     getter name : String
+    #     getter id : Int32
+    #     getter length : String
+    #     getter style : String
+    #     getter texture : SF::Texture
+    #     getter color : String
+    #     getter is_skirt : Bool
+    #     property is_owned : Bool
  
-        def Pants.name
-         @@name
-        end
+    #     def Pants.name
+    #      @@name
+    #     end
  
-        def Pants.id
-         @@id
-        end
+    #     def Pants.id
+    #      @@id
+    #     end
  
-        def Pants.is_owned
-         @@is_owned
-        end
+    #     def Pants.is_owned
+    #      @@is_owned
+    #     end
  
-        def Pants.length
-         @@length
-        end
+    #     def Pants.length
+    #      @@length
+    #     end
  
-        def Pants.style
-         @@style
-        end
+    #     def Pants.style
+    #      @@style
+    #     end
  
-        def Pants.texture
-         @@texture
-        end
+    #     def Pants.texture
+    #      @@texture
+    #     end
  
-        def Pants.color
-         @@texture
-        end
+    #     def Pants.color
+    #      @@texture
+    #     end
  
-        def Pants.is_owned=(this)
-         @@is_owned = this
-        end
+    #     def Pants.is_owned=(this)
+    #      @@is_owned = this
+    #     end
  
-        def Pants.get_pants(this)
-         PANTS_ARRAY.each { |pants| if pants.name == this
-         return pants
-         end }
-        end
+    #     def Pants.get_pants(this)
+    #      PANTS_ARRAY.each { |pants| if pants.name == this
+    #      return pants
+    #      end }
+    #     end
  
-        def Pants.get_pants_texture(this)
-         PANTS_ARRAY.each { |pants| if pants.name == this
-         return pants.texture
-         end }
-        end
+    #     def Pants.get_pants_texture(this)
+    #      PANTS_ARRAY.each { |pants| if pants.name == this
+    #      return pants.texture
+    #      end }
+    #     end
 
-        @@nil_pants = Pants.new("No Pants", 0, false, "long", "plain", NIL_TEXTURE, "white", false)
+    #     @@nil_pants = Pants.new("No Pants", 0, false, "long", "plain", NIL_TEXTURE, "white", false)
 
-        @@white_jeans = Pants.new("White Jeans", 1, false, "long", "plain", JEANS_WHITE_TEXTURE, "white", false)
-        @@black_jeans = Pants.new("Black Jeans", 2, false, "long", "plain", JEANS_BLACK_TEXTURE, "black", false)
-        @@red_jeans = Pants.new("Red Jeans", 3, false, "long", "plain", JEANS_RED_TEXTURE, "red", false)
-        @@orange_jeans = Pants.new("Orange Jeans", 4, false, "long", "plain", JEANS_ORANGE_TEXTURE, "orange", false)
-        @@yellow_jeans = Pants.new("Yellow Jeans", 5, false, "long", "plain", JEANS_YELLOW_TEXTURE, "yellow", false)
-        @@green_jeans = Pants.new("Green Jeans", 6, false, "long", "plain", JEANS_GREEN_TEXTURE, "green", false)
-        @@blue_jeans = Pants.new("Blue Jeans", 7, false, "long", "plain", JEANS_BLUE_TEXTURE, "blue", false)
-        @@purple_jeans = Pants.new("Purple Jeans", 8, false, "long", "plain", JEANS_PURPLE_TEXTURE, "purple", false)
-        @@pink_jeans = Pants.new("Pink Jeans", 9, false, "long", "plain", JEANS_PINK_TEXTURE, "pink", false)
+    #     @@white_jeans = Pants.new("White Jeans", 1, false, "long", "plain", JEANS_WHITE_TEXTURE, "white", false)
+    #     @@black_jeans = Pants.new("Black Jeans", 2, false, "long", "plain", JEANS_BLACK_TEXTURE, "black", false)
+    #     @@red_jeans = Pants.new("Red Jeans", 3, false, "long", "plain", JEANS_RED_TEXTURE, "red", false)
+    #     @@orange_jeans = Pants.new("Orange Jeans", 4, false, "long", "plain", JEANS_ORANGE_TEXTURE, "orange", false)
+    #     @@yellow_jeans = Pants.new("Yellow Jeans", 5, false, "long", "plain", JEANS_YELLOW_TEXTURE, "yellow", false)
+    #     @@green_jeans = Pants.new("Green Jeans", 6, false, "long", "plain", JEANS_GREEN_TEXTURE, "green", false)
+    #     @@blue_jeans = Pants.new("Blue Jeans", 7, false, "long", "plain", JEANS_BLUE_TEXTURE, "blue", false)
+    #     @@purple_jeans = Pants.new("Purple Jeans", 8, false, "long", "plain", JEANS_PURPLE_TEXTURE, "purple", false)
+    #     @@pink_jeans = Pants.new("Pink Jeans", 9, false, "long", "plain", JEANS_PINK_TEXTURE, "pink", false)
 
-        @@white_booty_shorts = Pants.new("White Booty Shorts", 100, false, "very_short", "sexy", BOOTY_SHORTS_WHITE_TEXTURE, "white", false)
-        @@black_booty_shorts = Pants.new("Black Booty Shorts", 101, false, "very_short", "sexy", BOOTY_SHORTS_BLACK_TEXTURE, "black", false)
-        @@red_booty_shorts = Pants.new("Red Booty Shorts", 102, false, "very_short", "sexy", BOOTY_SHORTS_RED_TEXTURE, "red", false)
-        @@orange_booty_shorts = Pants.new("Orange Booty Shorts", 103, false, "very_short", "sexy", BOOTY_SHORTS_ORANGE_TEXTURE, "orange", false)
-        @@yellow_booty_shorts = Pants.new("Yellow Booty Shorts", 104, false, "very_short", "sexy", BOOTY_SHORTS_YELLOW_TEXTURE, "yellow", false)
-        @@green_booty_shorts = Pants.new("Green Booty Shorts", 105, false, "very_short", "sexy", BOOTY_SHORTS_GREEN_TEXTURE, "green", false)
-        @@blue_booty_shorts = Pants.new("Blue Booty Shorts", 106, false, "very_short", "sexy", BOOTY_SHORTS_BLUE_TEXTURE, "blue", false)
-        @@purple_booty_shorts = Pants.new("Purple Booty Shorts", 107, false, "very_short", "sexy", BOOTY_SHORTS_PURPLE_TEXTURE, "purple", false)
-        @@pink_booty_shorts = Pants.new("Pink Booty Shorts", 108, false, "very_short", "sexy", BOOTY_SHORTS_PINK_TEXTURE, "pink", false)
+    #     @@white_booty_shorts = Pants.new("White Booty Shorts", 100, false, "very_short", "sexy", BOOTY_SHORTS_WHITE_TEXTURE, "white", false)
+    #     @@black_booty_shorts = Pants.new("Black Booty Shorts", 101, false, "very_short", "sexy", BOOTY_SHORTS_BLACK_TEXTURE, "black", false)
+    #     @@red_booty_shorts = Pants.new("Red Booty Shorts", 102, false, "very_short", "sexy", BOOTY_SHORTS_RED_TEXTURE, "red", false)
+    #     @@orange_booty_shorts = Pants.new("Orange Booty Shorts", 103, false, "very_short", "sexy", BOOTY_SHORTS_ORANGE_TEXTURE, "orange", false)
+    #     @@yellow_booty_shorts = Pants.new("Yellow Booty Shorts", 104, false, "very_short", "sexy", BOOTY_SHORTS_YELLOW_TEXTURE, "yellow", false)
+    #     @@green_booty_shorts = Pants.new("Green Booty Shorts", 105, false, "very_short", "sexy", BOOTY_SHORTS_GREEN_TEXTURE, "green", false)
+    #     @@blue_booty_shorts = Pants.new("Blue Booty Shorts", 106, false, "very_short", "sexy", BOOTY_SHORTS_BLUE_TEXTURE, "blue", false)
+    #     @@purple_booty_shorts = Pants.new("Purple Booty Shorts", 107, false, "very_short", "sexy", BOOTY_SHORTS_PURPLE_TEXTURE, "purple", false)
+    #     @@pink_booty_shorts = Pants.new("Pink Booty Shorts", 108, false, "very_short", "sexy", BOOTY_SHORTS_PINK_TEXTURE, "pink", false)
 
-        @@white_shorts = Pants.new("White Shorts", 200, false, "short", "plain", SHORTS_WHITE_TEXTURE, "white", false)
-        @@black_shorts = Pants.new("Black Shorts", 201, false, "short", "plain", SHORTS_BLACK_TEXTURE, "black", false)
-        @@red_shorts = Pants.new("Red Shorts", 202, false, "short", "plain", SHORTS_RED_TEXTURE, "red", false)
-        @@orange_shorts = Pants.new("Orange Shorts", 203, false, "short", "plain", SHORTS_ORANGE_TEXTURE, "orange", false)
-        @@yellow_shorts = Pants.new("Yellow Shorts", 204, false, "short", "plain", SHORTS_YELLOW_TEXTURE, "yellow", false)
-        @@green_shorts = Pants.new("Green Shorts", 205, false, "short", "plain", SHORTS_GREEN_TEXTURE, "green", false)
-        @@blue_shorts = Pants.new("Blue Shorts", 206, false, "short", "plain", SHORTS_BLUE_TEXTURE, "blue", false)
-        @@purple_shorts = Pants.new("Purple Shorts", 207, false, "short", "plain", SHORTS_PURPLE_TEXTURE, "purple", false)
-        @@pink_shorts = Pants.new("Pink Shorts", 208, false, "short", "plain", SHORTS_PINK_TEXTURE, "pink", false)
+    #     @@white_shorts = Pants.new("White Shorts", 200, false, "short", "plain", SHORTS_WHITE_TEXTURE, "white", false)
+    #     @@black_shorts = Pants.new("Black Shorts", 201, false, "short", "plain", SHORTS_BLACK_TEXTURE, "black", false)
+    #     @@red_shorts = Pants.new("Red Shorts", 202, false, "short", "plain", SHORTS_RED_TEXTURE, "red", false)
+    #     @@orange_shorts = Pants.new("Orange Shorts", 203, false, "short", "plain", SHORTS_ORANGE_TEXTURE, "orange", false)
+    #     @@yellow_shorts = Pants.new("Yellow Shorts", 204, false, "short", "plain", SHORTS_YELLOW_TEXTURE, "yellow", false)
+    #     @@green_shorts = Pants.new("Green Shorts", 205, false, "short", "plain", SHORTS_GREEN_TEXTURE, "green", false)
+    #     @@blue_shorts = Pants.new("Blue Shorts", 206, false, "short", "plain", SHORTS_BLUE_TEXTURE, "blue", false)
+    #     @@purple_shorts = Pants.new("Purple Shorts", 207, false, "short", "plain", SHORTS_PURPLE_TEXTURE, "purple", false)
+    #     @@pink_shorts = Pants.new("Pink Shorts", 208, false, "short", "plain", SHORTS_PINK_TEXTURE, "pink", false)
 
-    end
+    # end
 
     class Shoes
         SHOES_ARRAY = [] of Shoes
