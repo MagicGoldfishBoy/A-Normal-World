@@ -397,7 +397,7 @@ def Player.assign_color(item, side)
         sprite.color = Color::ClothingColor::HOT_PINK
         sprite
     else
-      SF::Sprite.new(item.sprite.as(SF::Sprite).texture.as(SF::Texture))  
+        sprite
     end
 end
 def Player.check_feet_collision(window, object)
