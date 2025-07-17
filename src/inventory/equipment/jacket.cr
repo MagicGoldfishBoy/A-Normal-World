@@ -73,6 +73,8 @@ module Jacket
     end
     class LightJacket < JacketBase
 
+        @@tokay_jacket = LightJacket.new("Tokay Jacket", "tokay_jacket", true, SF::Sprite.new(TOKAY_JACKET_FRONT_TEXTURE), SF::Sprite.new(TOKAY_JACKET_BACK_TEXTURE), "blue_custom", DEFAULT_JACKET_EQUIP_SFX)
+
         @@white_light_jacket = LightJacket.new("White Light Jacket", "white_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "white", DEFAULT_JACKET_EQUIP_SFX)
 
         @@grey_light_jacket = LightJacket.new("Grey Light Jacket", "grey_light_jacket", true, SF::Sprite.new(WHITE_LIGHT_JACKET_FRONT_TEXTURE), SF::Sprite.new(WHITE_LIGHT_JACKET_BACK_TEXTURE), "grey", DEFAULT_JACKET_EQUIP_SFX)
@@ -144,7 +146,6 @@ module Jacket
         @@hot_pink_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
     end
     class Backpack < JacketBase
-        #TODO: figure out why backsprite on the white backpack is invisible
         @@white_backpack = Backpack.new("White Backpack", "white_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "white", DEFAULT_BACKPACK_EQUIP_SFX) #whyyyyyyy?!?
 
         @@grey_backpack = Backpack.new("Grey Backpack", "grey_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "grey", DEFAULT_BACKPACK_EQUIP_SFX)

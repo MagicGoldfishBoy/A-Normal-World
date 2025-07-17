@@ -383,6 +383,9 @@
          WHITE_LIGHT_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/jackets/white_light_jacket_front.png")
          WHITE_LIGHT_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/jackets/white_light_jacket_back.png")
 
+         TOKAY_JACKET_FRONT_TEXTURE = SF::Texture.from_file("../graphics/jackets/tokay_jacket_front.png")
+         TOKAY_JACKET_BACK_TEXTURE = SF::Texture.from_file("../graphics/jackets/tokay_jacket_back.png")
+
          WHITE_BACKPACK_FRONT_TEXTURE = SF::Texture.from_file("../graphics/jackets/backpack_white_front.png")
          WHITE_BACKPACK_BACK_TEXTURE = SF::Texture.from_file("../graphics/jackets/backpack_white_back.png")
     #CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
