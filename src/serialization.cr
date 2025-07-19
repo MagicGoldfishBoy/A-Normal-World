@@ -133,6 +133,7 @@ module Serialization
       property necklace : (Necklace::NecklaceBase | Nil) = nil
       property shirt : (Shirt::ShirtBase | Nil) = nil
       property jacket : (Jacket::JacketBase | Nil) = nil
+      property gloves : (Gloves::GlovesBase | Nil) = nil
       property pants : (Pants::PantsBase | Nil) = nil
     
       def initialize
@@ -145,6 +146,7 @@ module Serialization
         @necklace = nil
         @shirt = nil
         @jacket = nil
+        @gloves = nil
         @pants = nil
       end
     
@@ -164,6 +166,7 @@ module Serialization
         save.necklace = Player::Appearance.necklace
         save.shirt = Player::Appearance.shirt
         save.jacket = Player::Appearance.jacket
+        save.gloves = Player::Appearance.gloves
         save.pants = Player::Appearance.pants
       
         path = "saves/" + @@save_file.not_nil!
@@ -279,6 +282,18 @@ module Serialization
         )
       else
         Player::Appearance.jacket = nil
+      end
+      if save.gloves
+        Player::Appearance.gloves = Gloves::GlovesBase.new(
+          name: save.gloves.as(Gloves::GlovesBase).name,
+          id: save.gloves.as(Gloves::GlovesBase).id,
+          sprite: Gloves::GlovesBase::GLOVES_SPRITE_HASH[save.gloves.as(Gloves::GlovesBase).id],
+          is_owned: save.gloves.as(Gloves::GlovesBase).is_owned,
+          color: save.gloves.as(Gloves::GlovesBase).color,
+          sfx: Gloves::GlovesBase::GLOVES_SFX_HASH[save.gloves.as(Gloves::GlovesBase).id]
+        )
+      else
+        Player::Appearance.gloves = nil
       end
       if save.pants
         Player::Appearance.pants = Pants::PantsBase.new(

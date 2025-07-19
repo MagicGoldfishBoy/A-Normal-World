@@ -12,6 +12,7 @@ require "../inventory/equipment/makeup.cr"
 require "../inventory/equipment/necklace.cr"
 require "../inventory/equipment/shirt.cr"
 require "../inventory/equipment/jacket.cr"
+require "../inventory/equipment/gloves.cr"
 require "../inventory/equipment/pants.cr"
 
 module CosmeticsInventory
@@ -207,6 +208,10 @@ module CosmeticsInventory
                 CosmeticsInventoryManager.current_tab = "jacket"
                 Jacket::JacketBase.remove_current_jacket_from_inventory
                 sleep 0.15.seconds
+            elsif MouseHandling::ClickHandling.button_clicked?(GLOVE_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+                CosmeticsInventoryManager.current_tab = "gloves"
+                Gloves::GlovesBase.remove_current_gloves_from_inventory
+                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(PANTS_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "pants"
                 Pants::PantsBase.remove_current_pants_from_inventory
@@ -300,7 +305,7 @@ module CosmeticsInventory
                 if self.id == "inv_necklace" 
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(330, 660, 46, 55)
                 end
-                if self.id == "inv_shirt" 
+                if self.id == "inv_shirt" || self.id == "inv_gloves"
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
                     item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
                 end
@@ -308,7 +313,7 @@ module CosmeticsInventory
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
                     item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
                 end
-                if self.id == "inv_jacket"
+                if self.id == "inv_jacket" 
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(400, 655, 60, 36)
                     item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(4, 7) 
                 end
@@ -365,6 +370,9 @@ module CosmeticsInventory
                 if item.is_a?(Jacket::JacketBase)
                     Jacket::JacketBase.swap_jacket(item)
                 end
+                if item.is_a?(Gloves::GlovesBase)
+                    Gloves::GlovesBase.swap_gloves(item)
+                end
                 if item.is_a?(Pants::PantsBase)
                     Pants::PantsBase.swap_pants(item)
                 end
@@ -391,6 +399,8 @@ module CosmeticsInventory
                 @@shirt_inventory.draw(window)
             when "jacket"
                 @@jacket_inventory.draw(window)
+            when "gloves"
+                @@gloves_inventory.draw(window)
             when "pants"
                 @@pants_inventory.draw(window)
             end
@@ -411,6 +421,8 @@ module CosmeticsInventory
                return @@shirt_inventory.page
             when "jacket"
                return @@jacket_inventory.page
+            when "gloves"
+               return @@gloves_inventory.page
             when "pants"
                return @@pants_inventory.page
             end
@@ -431,6 +443,8 @@ module CosmeticsInventory
                return @@shirt_inventory.max_page_count
             when "jacket"
                return @@jacket_inventory.max_page_count
+            when "gloves"
+               return @@gloves_inventory.max_page_count
             when "pants"
                return @@pants_inventory.max_page_count
             end
@@ -449,6 +463,8 @@ module CosmeticsInventory
         @@shirt_inventory = CosmeticsInventoryBase.new("Shirt Inventory", "inv_shirt", 5, 0, "shirt", "color", Shirt::ShirtBase::OWNED_SHIRTS_ARRAY)
 
         @@jacket_inventory = CosmeticsInventoryBase.new("Jacket Inventory", "inv_jacket", 5, 0, "jacket", "color", Jacket::JacketBase::OWNED_JACKETS_ARRAY)
+
+        @@gloves_inventory = CosmeticsInventoryBase.new("Gloves Inventory", "inv_gloves", 5, 0, "gloves", "color", Gloves::GlovesBase::OWNED_GLOVES_ARRAY)
 
         @@pants_inventory = CosmeticsInventoryBase.new("Pants Inventory", "inv_pants", 5, 0, "pants", "color", Pants::PantsBase::OWNED_PANTS_ARRAY)
     end
