@@ -176,5 +176,60 @@ module Gloves
             @@hot_pink_fingerless_gloves = FingerlessGloves.new("Hot Pink Fingerless Gloves", "fingerless_gloves_hot_pink", false, SF::Sprite.new(FINGERLESS_GLOVES_WHITE_TEXTURE), "hot-pink", DEFAULT_GLOVES_EQUIP_SFX)
             @@hot_pink_fingerless_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
         end
+
+        class OperaGloves < GlovesBase
+            @@white_opera_gloves = OperaGloves.new("White Opera Gloves", "opera_gloves_white", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "white", DEFAULT_GLOVES_EQUIP_SFX)
+
+            @@grey_opera_gloves = OperaGloves.new("Grey Opera Gloves", "opera_gloves_grey", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "grey", DEFAULT_GLOVES_EQUIP_SFX)
+            @@grey_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::GREY
+
+            @@black_opera_gloves = OperaGloves.new("Black Opera Gloves", "opera_gloves_black", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "black", DEFAULT_GLOVES_EQUIP_SFX)
+            @@black_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::BLACK
+
+            @@tan_opera_gloves = OperaGloves.new("Tan Opera Gloves", "opera_gloves_tan", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "tan", DEFAULT_GLOVES_EQUIP_SFX)
+            @@tan_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::TAN
+
+            @@brown_opera_gloves = OperaGloves.new("Brown Opera Gloves", "opera_gloves_brown", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "brown", DEFAULT_GLOVES_EQUIP_SFX)
+            @@brown_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::BROWN
+
+            @@red_opera_gloves = OperaGloves.new("Red Opera Gloves", "opera_gloves_red", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "red", DEFAULT_GLOVES_EQUIP_SFX)
+            @@red_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::RED
+
+            @@orange_opera_gloves = OperaGloves.new("Orange Opera Gloves", "opera_gloves_orange", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "orange", DEFAULT_GLOVES_EQUIP_SFX)
+            @@orange_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::ORANGE
+
+            @@yellow_opera_gloves = OperaGloves.new("Yellow Opera Gloves", "opera_gloves_yellow", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "yellow", DEFAULT_GLOVES_EQUIP_SFX)
+            @@yellow_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW
+
+            @@yellow_green_opera_gloves = OperaGloves.new("Yellow Green Opera Gloves", "opera_gloves_yellow_green", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "yellow-green", DEFAULT_GLOVES_EQUIP_SFX)
+            @@yellow_green_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::YELLOW_GREEN
+
+            @@green_opera_gloves = OperaGloves.new("Green Opera Gloves", "opera_gloves_green", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "green", DEFAULT_GLOVES_EQUIP_SFX)
+            @@green_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::GREEN
+
+            @@turquoise_opera_gloves = OperaGloves.new("Turquoise Opera Gloves", "opera_gloves_turquoise", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "turquoise", DEFAULT_GLOVES_EQUIP_SFX)
+            @@turquoise_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::TURQUOISE
+
+            @@light_blue_opera_gloves = OperaGloves.new("Light Blue Opera Gloves", "opera_gloves_light_blue", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "light-blue", DEFAULT_GLOVES_EQUIP_SFX)
+            @@light_blue_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_BLUE
+
+            @@blue_opera_gloves = OperaGloves.new("Blue Opera Gloves", "opera_gloves_blue", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "blue", DEFAULT_GLOVES_EQUIP_SFX)
+            @@blue_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::BLUE
+
+            @@indigo_opera_gloves = OperaGloves.new("Indigo Opera Gloves", "opera_gloves_indigo", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "indigo", DEFAULT_GLOVES_EQUIP_SFX)
+            @@indigo_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::INDIGO
+
+            @@light_purple_opera_gloves = OperaGloves.new("Light Purple Opera Gloves", "opera_gloves_light_purple", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "light-purple", DEFAULT_GLOVES_EQUIP_SFX)
+            @@light_purple_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::LIGHT_PURPLE
+
+            @@purple_opera_gloves = OperaGloves.new("Purple Opera Gloves", "opera_gloves_purple", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "purple", DEFAULT_GLOVES_EQUIP_SFX)
+            @@purple_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::PURPLE
+
+            @@pink_opera_gloves = OperaGloves.new("Pink Opera Gloves", "opera_gloves_pink", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "pink", DEFAULT_GLOVES_EQUIP_SFX)
+            @@pink_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::PINK
+
+            @@hot_pink_opera_gloves = OperaGloves.new("Hot Pink Opera Gloves", "opera_gloves_hot_pink", false, SF::Sprite.new(OPERA_GLOVES_WHITE_TEXTURE), "hot-pink", DEFAULT_GLOVES_EQUIP_SFX)
+            @@hot_pink_opera_gloves.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
+        end
     end
 end
