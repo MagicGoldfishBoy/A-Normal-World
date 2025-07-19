@@ -218,45 +218,14 @@
     #GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
     #G                                         Glove Textures                                           G
     #GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
-        FINGERLESS_GLOVES_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Fingerless_Gloves.png")
-
-        FINGERLESS_GLOVES_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Fingerless_Gloves.png")
-        
-        FINGERLESS_GLOVES_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Fingerless_Gloves.png")
-        
-        FINGERLESS_GLOVES_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Fingerless_Gloves.png")
-        
-        FINGERLESS_GLOVES_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Fingerless_Gloves.png")
-        
-        FINGERLESS_GLOVES_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Fingerless_Gloves.png")
-        
-        FINGERLESS_GLOVES_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Fingerless_Gloves.png")
-        
-        FINGERLESS_GLOVES_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Fingerless_Gloves.png")
-        
-        FINGERLESS_GLOVES_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Fingerless_Gloves.png")
+        FINGERLESS_GLOVES_WHITE_TEXTURE = SF::Texture.from_file("../graphics/gloves/White_Fingerless_Gloves.png")
 
 
         GLOVES_WHITE_TEXTURE = SF::Texture.from_file("../graphics/gloves/White_Gloves.png")
 
 
-        OPERA_GLOVES_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Opera_Gloves.png")
+        OPERA_GLOVES_WHITE_TEXTURE = SF::Texture.from_file("../graphics/gloves/White_Opera_Gloves.png")
 
-        OPERA_GLOVES_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Opera_Gloves.png")
-        
-        OPERA_GLOVES_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Opera_Gloves.png")
-        
-        OPERA_GLOVES_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Opera_Gloves.png")
-        
-        OPERA_GLOVES_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Opera_Gloves.png")
-        
-        OPERA_GLOVES_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Opera_Gloves.png")
-        
-        OPERA_GLOVES_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Opera_Gloves.png")
-        
-        OPERA_GLOVES_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Opera_Gloves.png")
-        
-        OPERA_GLOVES_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Opera_Gloves.png")
 
     #EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
     #E                                       Earrings Textures                                          E
