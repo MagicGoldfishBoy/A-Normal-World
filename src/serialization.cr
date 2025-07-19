@@ -135,7 +135,8 @@ module Serialization
       property jacket : (Jacket::JacketBase | Nil) = nil
       property gloves : (Gloves::GlovesBase | Nil) = nil
       property pants : (Pants::PantsBase | Nil) = nil
-    
+      property shoes : (Shoes::ShoesBase | Nil) = nil
+
       def initialize
         @version = 1
         @stats = Hash(String, Float64 | Nil | String | Int32).new
@@ -148,6 +149,7 @@ module Serialization
         @jacket = nil
         @gloves = nil
         @pants = nil
+        @shoes = nil
       end
     
       @[JSON::Field(ignore_unknown: true)]
@@ -168,7 +170,8 @@ module Serialization
         save.jacket = Player::Appearance.jacket
         save.gloves = Player::Appearance.gloves
         save.pants = Player::Appearance.pants
-      
+        save.shoes = Player::Appearance.shoes
+
         path = "saves/" + @@save_file.not_nil!
         Dir.mkdir_p(File.dirname(path))
         File.write(path, save.to_json, mode: "w")
@@ -307,6 +310,18 @@ module Serialization
         )
       else
         Player::Appearance.pants = nil
+      end
+      if save.shoes
+        Player::Appearance.shoes = Shoes::ShoesBase.new(
+          name: save.shoes.as(Shoes::ShoesBase).name,
+          id: save.shoes.as(Shoes::ShoesBase).id,
+          sprite: Shoes::ShoesBase::SHOES_SPRITE_HASH[save.shoes.as(Shoes::ShoesBase).id],
+          is_owned: save.shoes.as(Shoes::ShoesBase).is_owned,
+          color: save.shoes.as(Shoes::ShoesBase).color,
+          sfx: Shoes::ShoesBase::SHOES_SFX_HASH[save.shoes.as(Shoes::ShoesBase).id]
+        )
+      else
+        Player::Appearance.shoes = nil
       end
 
     end

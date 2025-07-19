@@ -139,8 +139,16 @@ module Sprites
         SF::Sprite.new
     end
 
-    current_shoes = if shoes = Clothing::Shoes.get_shoes(Appearance.get_clothing("shoes"))
-        SF::Sprite.new(shoes.texture)
+    current_shoes = if shoes = Appearance.shoes
+        if !shoes.is_a?(Shoes::ShoesBase)
+            SF::Sprite.new
+        elsif !shoes.sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        elsif !shoes.sprite.as(SF::Sprite).texture
+            SF::Sprite.new
+        else
+            Player.assign_color(shoes, "none")
+        end
     else
         SF::Sprite.new
     end

@@ -166,6 +166,7 @@ module CharacterCreationMenu
 
         class_property shirt_iterator : Int32 = 0
         class_property pants_iterator : Int32 = 0
+        class_property shoes_iterator : Int32 = 0
 
         def self.character_creation_menu_mouse_handling(window)
             mouse_position = SF::Mouse.get_position(window)
@@ -235,11 +236,11 @@ module CharacterCreationMenu
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(CharacterCreationMenuElements::SHOES_BOX_LEFT.sprite, scaled_mouse_x, scaled_mouse_y)
-                Player::Appearance.change_shoes(Sprites::Player.change_shoes("character_creation", "left"))
+                CharacterCreationMenuMouseHandling.shoes_iterator = Shoes::ShoesBase.swap_shoes_character_creation("previous", CharacterCreationMenuMouseHandling.shoes_iterator)
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(CharacterCreationMenuElements::SHOES_BOX_RIGHT.sprite, scaled_mouse_x, scaled_mouse_y)
-                Player::Appearance.change_shoes(Sprites::Player.change_shoes("character_creation", "right"))
+                CharacterCreationMenuMouseHandling.shoes_iterator = Shoes::ShoesBase.swap_shoes_character_creation("next", CharacterCreationMenuMouseHandling.shoes_iterator)
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
             end
