@@ -237,23 +237,7 @@
         FINGERLESS_GLOVES_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Fingerless_Gloves.png")
 
 
-        GLOVES_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Gloves.png")
-
-        GLOVES_BLACK_TEXTURE = SF::Texture.from_file("../graphics/Black_Gloves.png")
-        
-        GLOVES_RED_TEXTURE = SF::Texture.from_file("../graphics/Red_Gloves.png")
-        
-        GLOVES_ORANGE_TEXTURE = SF::Texture.from_file("../graphics/Orange_Gloves.png")
-        
-        GLOVES_YELLOW_TEXTURE = SF::Texture.from_file("../graphics/Yellow_Gloves.png")
-        
-        GLOVES_GREEN_TEXTURE = SF::Texture.from_file("../graphics/Green_Gloves.png")
-        
-        GLOVES_BLUE_TEXTURE = SF::Texture.from_file("../graphics/Blue_Gloves.png")
-        
-        GLOVES_PURPLE_TEXTURE = SF::Texture.from_file("../graphics/Purple_Gloves.png")
-        
-        GLOVES_PINK_TEXTURE = SF::Texture.from_file("../graphics/Pink_Gloves.png")
+        GLOVES_WHITE_TEXTURE = SF::Texture.from_file("../graphics/gloves/White_Gloves.png")
 
 
         OPERA_GLOVES_WHITE_TEXTURE = SF::Texture.from_file("../graphics/White_Opera_Gloves.png")

@@ -287,103 +287,103 @@ module Clothing
         @@pink_knee_socks = Socks.new("Pk/Knee Socks", 111, false, "long", "plain", PINK_KNEE_SOCKS_TEXTURE, "pink")
     end
 
-    class Gloves
-        GLOVES_ARRAY = [] of Gloves
-        def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String)
-         @name = name
-         @@name = name
-         @id = id
-         @is_owned = is_owned
-         @length = length
-         @style = style
-         @texture = texture
-         @color = color
-         GLOVES_ARRAY.push(self)
-        end
+    # class Gloves
+    #     GLOVES_ARRAY = [] of Gloves
+    #     def initialize(name : String, id : Int32, is_owned : Bool, length : String, style : String, texture : SF::Texture, color : String)
+    #      @name = name
+    #      @@name = name
+    #      @id = id
+    #      @is_owned = is_owned
+    #      @length = length
+    #      @style = style
+    #      @texture = texture
+    #      @color = color
+    #      GLOVES_ARRAY.push(self)
+    #     end
  
-        getter name : String
-        getter id : Int32
-        getter length : String
-        getter style : String
-        getter texture : SF::Texture
-        getter color : String
-        property is_owned : Bool
+    #     getter name : String
+    #     getter id : Int32
+    #     getter length : String
+    #     getter style : String
+    #     getter texture : SF::Texture
+    #     getter color : String
+    #     property is_owned : Bool
  
-        def Gloves.name
-         @@name
-        end
+    #     def Gloves.name
+    #      @@name
+    #     end
  
-        def Gloves.id
-         @@id
-        end
+    #     def Gloves.id
+    #      @@id
+    #     end
  
-        def Gloves.is_owned
-         @@is_owned
-        end
+    #     def Gloves.is_owned
+    #      @@is_owned
+    #     end
  
-        def Gloves.length
-         @@length
-        end
+    #     def Gloves.length
+    #      @@length
+    #     end
  
-        def Gloves.style
-         @@style
-        end
+    #     def Gloves.style
+    #      @@style
+    #     end
  
-        def Gloves.texture
-         @@texture
-        end
+    #     def Gloves.texture
+    #      @@texture
+    #     end
  
-        def Gloves.color
-         @@texture
-        end
+    #     def Gloves.color
+    #      @@texture
+    #     end
  
-        def Gloves.is_owned=(this)
-         @@is_owned = this
-        end
+    #     def Gloves.is_owned=(this)
+    #      @@is_owned = this
+    #     end
  
-        def Gloves.get_gloves(this)
-         GLOVES_ARRAY.each { |gloves| if gloves.name == this
-         return gloves
-         end }
-        end
+    #     def Gloves.get_gloves(this)
+    #      GLOVES_ARRAY.each { |gloves| if gloves.name == this
+    #      return gloves
+    #      end }
+    #     end
  
-        def Gloves.get_gloves_texture(this)
-         GLOVES_ARRAY.each { |gloves| if gloves.name == this
-         return gloves.texture
-         end }
-        end
+    #     def Gloves.get_gloves_texture(this)
+    #      GLOVES_ARRAY.each { |gloves| if gloves.name == this
+    #      return gloves.texture
+    #      end }
+    #     end
 
-        @@nil_gloves = Gloves.new("No Gloves", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
-        @@white_fingerless_gloves = Gloves.new("W/Fngrless Gloves", 1, false, "very_short", "punk", FINGERLESS_GLOVES_WHITE_TEXTURE, "white")
-        @@black_fingerless_gloves = Gloves.new("Bk/Fngrless Gloves", 2, false, "very_short", "punk", FINGERLESS_GLOVES_BLACK_TEXTURE, "black")
-        @@red_fingerless_gloves = Gloves.new("R/Fngrless Gloves", 3, false, "very_short", "punk", FINGERLESS_GLOVES_RED_TEXTURE, "red")
-        @@orange_fingerless_gloves = Gloves.new("O/Fngrless Gloves", 4, false, "very_short", "punk", FINGERLESS_GLOVES_ORANGE_TEXTURE, "orange")
-        @@yellow_fingerless_gloves = Gloves.new("Y/Fngrless Gloves", 5, false, "very_short", "punk", FINGERLESS_GLOVES_YELLOW_TEXTURE, "yellow")
-        @@green_fingerless_gloves = Gloves.new("G/Fngrless Gloves", 6, false, "very_short", "punk", FINGERLESS_GLOVES_GREEN_TEXTURE, "green")
-        @@blue_fingerless_gloves = Gloves.new("Bl/Fngrless Gloves", 7, false, "very_short", "punk", FINGERLESS_GLOVES_BLUE_TEXTURE, "blue")
-        @@purple_fingerless_gloves = Gloves.new("Pr/Fngrless Gloves", 8, false, "very_short", "punk", FINGERLESS_GLOVES_PURPLE_TEXTURE, "purple")
-        @@pink_fingerless_gloves = Gloves.new("Pk/Fngrless Gloves", 9, false, "very_short", "punk", FINGERLESS_GLOVES_PINK_TEXTURE, "pink")
+    #     @@nil_gloves = Gloves.new("No Gloves", 0, false, "very_short", "plain", NIL_TEXTURE, "white")
+    #     @@white_fingerless_gloves = Gloves.new("W/Fngrless Gloves", 1, false, "very_short", "punk", FINGERLESS_GLOVES_WHITE_TEXTURE, "white")
+    #     @@black_fingerless_gloves = Gloves.new("Bk/Fngrless Gloves", 2, false, "very_short", "punk", FINGERLESS_GLOVES_BLACK_TEXTURE, "black")
+    #     @@red_fingerless_gloves = Gloves.new("R/Fngrless Gloves", 3, false, "very_short", "punk", FINGERLESS_GLOVES_RED_TEXTURE, "red")
+    #     @@orange_fingerless_gloves = Gloves.new("O/Fngrless Gloves", 4, false, "very_short", "punk", FINGERLESS_GLOVES_ORANGE_TEXTURE, "orange")
+    #     @@yellow_fingerless_gloves = Gloves.new("Y/Fngrless Gloves", 5, false, "very_short", "punk", FINGERLESS_GLOVES_YELLOW_TEXTURE, "yellow")
+    #     @@green_fingerless_gloves = Gloves.new("G/Fngrless Gloves", 6, false, "very_short", "punk", FINGERLESS_GLOVES_GREEN_TEXTURE, "green")
+    #     @@blue_fingerless_gloves = Gloves.new("Bl/Fngrless Gloves", 7, false, "very_short", "punk", FINGERLESS_GLOVES_BLUE_TEXTURE, "blue")
+    #     @@purple_fingerless_gloves = Gloves.new("Pr/Fngrless Gloves", 8, false, "very_short", "punk", FINGERLESS_GLOVES_PURPLE_TEXTURE, "purple")
+    #     @@pink_fingerless_gloves = Gloves.new("Pk/Fngrless Gloves", 9, false, "very_short", "punk", FINGERLESS_GLOVES_PINK_TEXTURE, "pink")
 
-        @@white_gloves = Gloves.new("White Gloves", 100, false, "short", "plain", GLOVES_WHITE_TEXTURE, "white")
-        @@black_gloves = Gloves.new("Black Gloves", 101, false, "short", "plain", GLOVES_BLACK_TEXTURE, "black")
-        @@red_gloves = Gloves.new("Red Gloves", 102, false, "short", "plain", GLOVES_RED_TEXTURE, "red")
-        @@orange_gloves = Gloves.new("Orange Gloves", 103, false, "short", "plain", GLOVES_ORANGE_TEXTURE, "orange")
-        @@yellow_gloves = Gloves.new("Yellow Gloves", 104, false, "short", "plain", GLOVES_YELLOW_TEXTURE, "yellow")
-        @@green_gloves = Gloves.new("Green Gloves", 105, false, "short", "plain", GLOVES_GREEN_TEXTURE, "green")
-        @@blue_gloves = Gloves.new("Blue Gloves", 106, false, "short", "plain", GLOVES_BLUE_TEXTURE, "blue")
-        @@purple_gloves = Gloves.new("Purple Gloves", 107, false, "short", "plain", GLOVES_PURPLE_TEXTURE, "purple")
-        @@pink_gloves = Gloves.new("Pink Gloves", 108, false, "short", "plain", GLOVES_PINK_TEXTURE, "pink")
+    #     @@white_gloves = Gloves.new("White Gloves", 100, false, "short", "plain", GLOVES_WHITE_TEXTURE, "white")
+    #     @@black_gloves = Gloves.new("Black Gloves", 101, false, "short", "plain", GLOVES_BLACK_TEXTURE, "black")
+    #     @@red_gloves = Gloves.new("Red Gloves", 102, false, "short", "plain", GLOVES_RED_TEXTURE, "red")
+    #     @@orange_gloves = Gloves.new("Orange Gloves", 103, false, "short", "plain", GLOVES_ORANGE_TEXTURE, "orange")
+    #     @@yellow_gloves = Gloves.new("Yellow Gloves", 104, false, "short", "plain", GLOVES_YELLOW_TEXTURE, "yellow")
+    #     @@green_gloves = Gloves.new("Green Gloves", 105, false, "short", "plain", GLOVES_GREEN_TEXTURE, "green")
+    #     @@blue_gloves = Gloves.new("Blue Gloves", 106, false, "short", "plain", GLOVES_BLUE_TEXTURE, "blue")
+    #     @@purple_gloves = Gloves.new("Purple Gloves", 107, false, "short", "plain", GLOVES_PURPLE_TEXTURE, "purple")
+    #     @@pink_gloves = Gloves.new("Pink Gloves", 108, false, "short", "plain", GLOVES_PINK_TEXTURE, "pink")
 
-        @@white_opera_gloves = Gloves.new("White Opera Gloves", 200, false, "long", "plain", OPERA_GLOVES_WHITE_TEXTURE, "white")
-        @@black_opera_gloves = Gloves.new("Black Opera Gloves", 201, false, "long", "plain", OPERA_GLOVES_BLACK_TEXTURE, "black")
-        @@red_opera_gloves = Gloves.new("Red Opera Gloves", 202, false, "long", "plain", OPERA_GLOVES_RED_TEXTURE, "red")
-        @@orange_opera_gloves = Gloves.new("Orange Opera Gloves", 203, false, "long", "plain", OPERA_GLOVES_ORANGE_TEXTURE, "orange")
-        @@yellow_opera_gloves = Gloves.new("Yellow Opera Gloves", 204, false, "long", "plain", OPERA_GLOVES_YELLOW_TEXTURE, "yellow")
-        @@green_opera_gloves = Gloves.new("Green Opera Gloves", 205, false, "long", "plain", OPERA_GLOVES_GREEN_TEXTURE, "green")
-        @@blue_opera_gloves = Gloves.new("Blue Opera Gloves", 206, false, "long", "plain", OPERA_GLOVES_BLUE_TEXTURE, "blue")
-        @@purple_opera_gloves = Gloves.new("Purple Opera Gloves", 207, false, "long", "plain", OPERA_GLOVES_PURPLE_TEXTURE, "purple")
-        @@pink_opera_gloves = Gloves.new("Pink Opera Gloves", 208, false, "long", "plain", OPERA_GLOVES_PINK_TEXTURE, "pink")
-    end
+    #     @@white_opera_gloves = Gloves.new("White Opera Gloves", 200, false, "long", "plain", OPERA_GLOVES_WHITE_TEXTURE, "white")
+    #     @@black_opera_gloves = Gloves.new("Black Opera Gloves", 201, false, "long", "plain", OPERA_GLOVES_BLACK_TEXTURE, "black")
+    #     @@red_opera_gloves = Gloves.new("Red Opera Gloves", 202, false, "long", "plain", OPERA_GLOVES_RED_TEXTURE, "red")
+    #     @@orange_opera_gloves = Gloves.new("Orange Opera Gloves", 203, false, "long", "plain", OPERA_GLOVES_ORANGE_TEXTURE, "orange")
+    #     @@yellow_opera_gloves = Gloves.new("Yellow Opera Gloves", 204, false, "long", "plain", OPERA_GLOVES_YELLOW_TEXTURE, "yellow")
+    #     @@green_opera_gloves = Gloves.new("Green Opera Gloves", 205, false, "long", "plain", OPERA_GLOVES_GREEN_TEXTURE, "green")
+    #     @@blue_opera_gloves = Gloves.new("Blue Opera Gloves", 206, false, "long", "plain", OPERA_GLOVES_BLUE_TEXTURE, "blue")
+    #     @@purple_opera_gloves = Gloves.new("Purple Opera Gloves", 207, false, "long", "plain", OPERA_GLOVES_PURPLE_TEXTURE, "purple")
+    #     @@pink_opera_gloves = Gloves.new("Pink Opera Gloves", 208, false, "long", "plain", OPERA_GLOVES_PINK_TEXTURE, "pink")
+    # end
 
     class Earrings
         EARRINGS_ARRAY = [] of Earrings
