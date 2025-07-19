@@ -146,7 +146,7 @@ module Jacket
         @@hot_pink_light_jacket.back_sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
     end
     class Backpack < JacketBase
-        @@white_backpack = Backpack.new("White Backpack", "white_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "white", DEFAULT_BACKPACK_EQUIP_SFX) #whyyyyyyy?!?
+        @@white_backpack = Backpack.new("White Backpack", "white_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "white", DEFAULT_BACKPACK_EQUIP_SFX)
 
         @@grey_backpack = Backpack.new("Grey Backpack", "grey_backpack", true, SF::Sprite.new(WHITE_BACKPACK_FRONT_TEXTURE), SF::Sprite.new(WHITE_BACKPACK_BACK_TEXTURE), "grey", DEFAULT_BACKPACK_EQUIP_SFX)
         @@grey_backpack.sprite.as(SF::Sprite).color = Color::ClothingColor::GREY

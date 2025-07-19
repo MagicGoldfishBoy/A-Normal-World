@@ -151,8 +151,16 @@ module Sprites
         SF::Sprite.new
     end
 
-    current_gloves = if gloves = Clothing::Gloves.get_gloves(Appearance.get_clothing("gloves"))
-        SF::Sprite.new(gloves.texture)
+    current_gloves = if gloves = Appearance.gloves
+        if !gloves.is_a?(Gloves::GlovesBase)
+            SF::Sprite.new
+        elsif !gloves.sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        elsif !gloves.sprite.as(SF::Sprite).texture
+            SF::Sprite.new
+        else
+            Player.assign_color(gloves, "none")
+        end
     else
         SF::Sprite.new
     end
