@@ -14,6 +14,7 @@ require "../inventory/equipment/shirt.cr"
 require "../inventory/equipment/jacket.cr"
 require "../inventory/equipment/gloves.cr"
 require "../inventory/equipment/pants.cr"
+require "../inventory/equipment/shoes.cr"
 
 module CosmeticsInventory
     class CosmeticsInventoryManager
@@ -216,6 +217,10 @@ module CosmeticsInventory
                 CosmeticsInventoryManager.current_tab = "pants"
                 Pants::PantsBase.remove_current_pants_from_inventory
                 sleep 0.15.seconds
+            elsif MouseHandling::ClickHandling.button_clicked?(SHOES_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+                CosmeticsInventoryManager.current_tab = "shoes"
+                Shoes::ShoesBase.remove_current_shoes_from_inventory
+                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(InventoryWindow::InventoryWindowElements::LEFT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryBase::COSMETIC_INVENTORY_ARRAY.each{ |inventory| 
                 if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page - 1 >= 0
@@ -376,6 +381,9 @@ module CosmeticsInventory
                 if item.is_a?(Pants::PantsBase)
                     Pants::PantsBase.swap_pants(item)
                 end
+                if item.is_a?(Shoes::ShoesBase)
+                    Shoes::ShoesBase.swap_shoes(item)
+                end
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
                 break 
@@ -403,6 +411,8 @@ module CosmeticsInventory
                 @@gloves_inventory.draw(window)
             when "pants"
                 @@pants_inventory.draw(window)
+            when "shoes"
+                @@shoes_inventory.draw(window)
             end
         end
         def self.return_current_page
@@ -425,6 +435,8 @@ module CosmeticsInventory
                return @@gloves_inventory.page
             when "pants"
                return @@pants_inventory.page
+            when "shoes"
+               return @@shoes_inventory.page
             end
         end
         def self.return_max_page_count
@@ -447,6 +459,8 @@ module CosmeticsInventory
                return @@gloves_inventory.max_page_count
             when "pants"
                return @@pants_inventory.max_page_count
+            when "shoes"
+               return @@shoes_inventory.max_page_count
             end
         end
           
@@ -467,5 +481,7 @@ module CosmeticsInventory
         @@gloves_inventory = CosmeticsInventoryBase.new("Gloves Inventory", "inv_gloves", 5, 0, "gloves", "color", Gloves::GlovesBase::OWNED_GLOVES_ARRAY)
 
         @@pants_inventory = CosmeticsInventoryBase.new("Pants Inventory", "inv_pants", 5, 0, "pants", "color", Pants::PantsBase::OWNED_PANTS_ARRAY)
+
+        @@shoes_inventory = CosmeticsInventoryBase.new("Shoes Inventory", "inv_shoes", 5, 0, "shoes", "color", Shoes::ShoesBase::OWNED_SHOES_ARRAY)
     end
 end
