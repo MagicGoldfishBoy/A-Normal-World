@@ -142,4 +142,12 @@ module Shoes
         @@hot_pink_rain_boots = RainBoots.new("Hot-Pink Rain Boots", "hot-pink_rain_boots", false, SF::Sprite.new(RAIN_BOOTS_WHITE_TEXTURE), "hot-pink", DEFAULT_SHOES_EQUIP_SFX)
         @@hot_pink_rain_boots.sprite.as(SF::Sprite).color = Color::ClothingColor::HOT_PINK
     end
+
+    class Sneakers < ShoesBase
+        @@white_sneakers = Sneakers.new("White Sneakers", "white_sneakers", false, SF::Sprite.new(SNEAKERS_WHITE_TEXTURE), "white", DEFAULT_SHOES_EQUIP_SFX)
+
+        @@black_sneakers = Sneakers.new("Black Sneakers", "black_sneakers", false, SF::Sprite.new(SNEAKERS_BLACK_TEXTURE), "black_custom", DEFAULT_SHOES_EQUIP_SFX)
+
+        @@red_sneakers = Sneakers.new("Red Sneakers", "red_sneakers", false, SF::Sprite.new(SNEAKERS_RED_TEXTURE), "red_custom", DEFAULT_SHOES_EQUIP_SFX)
+    end
 end
