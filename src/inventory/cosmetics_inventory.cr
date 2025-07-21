@@ -296,33 +296,34 @@ module CosmeticsInventory
             current_pos = SF.vector2(base_position.x, base_position.y)
             self.array.each{ |item| item.sprite.as(SF::Sprite).position = SF.vector2(-1000, -1000)}
             self.array[start_index..end_index].each_with_index do |item, index|
-                item.sprite.as(SF::Sprite).scale = SF.vector2(2, 2)
-                item.sprite.as(SF::Sprite).position = current_pos
 
-                item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(34, 14, 36, 33)
-                if self.id == "inv_earrings"
-                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 36, 33)
-                end
+            item.sprite.as(SF::Sprite).position = current_pos
+
                 if self.id == "inv_makeup" 
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 46, 55)
-                    item.sprite.as(SF::Sprite).scale = SF.vector2(0.99, 0.99)
-                end
-                if self.id == "inv_necklace" 
-                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(330, 660, 46, 55)
-                end
-                if self.id == "inv_shirt" || self.id == "inv_gloves"
+                elsif self.id == "inv_shoes"
+                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
+                    item.sprite.as(SF::Sprite).scale = SF.vector2(2.25, 2.25)
+                    item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(12, 5) 
+                elsif self.id == "inv_earrings" 
+                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 36, 33)              
+                elsif self.id == "inv_pants" 
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
                     item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
-                end
-                if self.id == "inv_pants"
-                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
-                    item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
-                end
-                if self.id == "inv_jacket" 
+                elsif self.id == "inv_jacket" 
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(400, 655, 60, 36)
                     item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(4, 7) 
+                elsif self.id == "inv_necklace" 
+                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(330, 660, 46, 55)
+                    item.sprite.as(SF::Sprite).scale = SF.vector2(2, 2)
+                elsif self.id == "inv_shirt" || self.id == "inv_gloves" || self.id == "inv_shoes"
+                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
+                    item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
+                else
+                    item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(34, 14, 36, 33)
+                    item.sprite.as(SF::Sprite).scale = SF.vector2(2, 2)
                 end
-        
+              
                 window.draw(item.sprite.as(SF::Sprite))
         
                 # Next column
