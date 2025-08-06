@@ -174,6 +174,9 @@ module InventoryWindow
          window.draw(text.text)}
 
          Inventory::InventoryManager.draw_inventory(window)
+            if SF::Mouse.button_pressed?(SF::Mouse::Left)
+             InventoryWindowHandling.mouse_handling(window)
+            end
         end
     end
     class InventoryWindowHandling
@@ -184,6 +187,14 @@ module InventoryWindow
         class_property current_tab : String = "cosmetics"
 
         def self.mouse_handling(window)
+            if MouseHandling::ClickHandling.was_button_clicked?(InventoryWindowElements::COSMETICS_TAB.sprite, window)
+                InventoryWindowHandling.current_tab = "cosmetics"
+                Inventory::InventoryManager.current_category = "cosmetics"
+            end
+            if MouseHandling::ClickHandling.was_button_clicked?(InventoryWindowElements::EQUIPMENT_TAB.sprite, window)
+                InventoryWindowHandling.current_tab = "equipment"
+                Inventory::InventoryManager.current_category = "equipment"
+            end
         end
     end
 end
