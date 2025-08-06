@@ -8,11 +8,11 @@ require "../window/hud_window"
 module GameplayGui
     class GameplayGuiElements
         MAIN_HUD_BOX = Ui_Elements::MenuBoxes.new("Main Hud Box", "HUD1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(
-        0, 200, 1000, 500)), 1000.0, 100.0, 4)
+        0, 200, 1000, 500)), 1000.0, 500.0, 4)
 
         LEVEL_BOX = Ui_Elements::MenuBoxes.new("Level Box", "Stats1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(
         400, 0, 115, 40)), 115.0, 40.0, 1)
-        LEVEL_BOX_TEXT = Ui_Elements::MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 34))
+        LEVEL_BOX_TEXT = Ui_Elements::MenuText.new("Level Box Text", "Stats1", SF::Text.new("Level", QUICKSAND, 24))
 
         MENU_BOX = Ui_Elements::MenuBoxes.new("Menu Box", "HudMen1", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(
         400, 0, 115, 40)), 115.0, 40.0, 1)
@@ -47,8 +47,7 @@ module GameplayGui
             GameplayGuiElements::MAIN_HUD_BOX.sprite.position = SF.vector2(0_f32, current_size.y.to_f32 - GameplayGuiElements::MAIN_HUD_BOX.height)
             GameplayGuiElements::LEVEL_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
     
-            GameplayGuiElements::MENU_BOX.sprite.position = SF.vector2(GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x + 550, 
-            current_size.y.to_f32 - GameplayGuiElements::MENU_BOX.height - 10)
+            GameplayGuiElements::MENU_BOX.sprite.position = SF.vector2(GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x + 550, current_size.y.to_f32 - GameplayGuiElements::MENU_BOX.height - 10)
             GameplayGuiElements::MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
     
             GameplayGuiElements::LEVEL_BOX_TEXT.text.position = GameplayGuiElements::LEVEL_BOX.sprite.position + SF.vector2(50 - Player::Stats.lvl.to_s.size, 1)
@@ -70,41 +69,45 @@ module GameplayGui
             original_height = 600
             scale_x = current_size.x.to_f / original_width
             scale_y = current_size.y.to_f / original_height
+            scale_ratio = [scale_x, scale_y].min
+            max_scale = 1.5
+            clamped_scale = [scale_ratio, max_scale].min
+            
             GameplayGuiElements::MAIN_HUD_BOX.sprite.scale = SF.vector2(scale_x, scale_y / 5)
             GameplayGuiElements::MAIN_HUD_BOX.sprite.position = SF.vector2(0_f32, current_size.y.to_f32 - GameplayGuiElements::MAIN_HUD_BOX.sprite.global_bounds.height)
     
-            scale_ratio = [scale_x, scale_y].min
+            
             GameplayGuiElements::LEVEL_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
-            GameplayGuiElements::LEVEL_BOX.sprite.position = SF.vector2(30_f32 * scale_x, 
-            GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y - GameplayGuiElements::LEVEL_BOX.height + 70 * scale_y)
+            GameplayGuiElements::LEVEL_BOX.sprite.position = SF.vector2(30 * scale_x + GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y + 35 * scale_y)
     
             GameplayGuiElements::LEVEL_BOX_TEXT.text.scale = SF.vector2(scale_ratio, scale_ratio)
-            GameplayGuiElements::LEVEL_BOX_TEXT.text.position = GameplayGuiElements::LEVEL_BOX.sprite.position + SF.vector2((50 - Player::Stats.lvl.to_s.size) * scale_x, 1 * scale_y)
+            GameplayGuiElements::LEVEL_BOX_TEXT.text.position = GameplayGuiElements::LEVEL_BOX.sprite.position + SF.vector2((50 - Player::Stats.lvl.to_s.size) * scale_x, 5 * scale_y)
     
+
             GameplayGuiElements::MENU_BOX.sprite.scale = SF.vector2(scale_x, scale_y)
-            GameplayGuiElements::MENU_BOX.sprite.position = SF.vector2(650_f32 * scale_x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y - GameplayGuiElements::LEVEL_BOX.height + 70 * scale_y)
+            GameplayGuiElements::MENU_BOX.sprite.position = SF.vector2(650_f32 * scale_x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y + 35 * scale_y)
     
             GameplayGuiElements::MENU_BOX_TEXT.text.scale = SF.vector2(scale_ratio, scale_ratio)
-            GameplayGuiElements::MENU_BOX_TEXT.text.position = GameplayGuiElements::MENU_BOX.sprite.position + SF.vector2(28 + scale_x, scale_y)
+            GameplayGuiElements::MENU_BOX_TEXT.text.position = GameplayGuiElements::MENU_BOX.sprite.position + SF.vector2(28 * scale_x, 5 * scale_y)
     
-            #so much math lol
-    
-            GameplayGuiElements::HP_BAR.position = SF.vector2(GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y - GameplayGuiElements::LEVEL_BOX.height + 65 * scale_y)
+     
+            GameplayGuiElements::HP_BAR.position = SF.vector2(GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y + 25 * scale_y)
             GameplayGuiElements::HP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
     
-            GameplayGuiElements::HP_COLOR_BAR.position = SF.vector2(GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y - GameplayGuiElements::LEVEL_BOX.height + 65 * scale_y)
+            GameplayGuiElements::HP_COLOR_BAR.position = GameplayGuiElements::HP_BAR.position
             GameplayGuiElements::HP_COLOR_BAR.scale = SF.vector2((Player::Stats.current_hp.not_nil! / Player::Stats.max_hp.not_nil!) * scale_ratio, scale_ratio) 
     
-            GameplayGuiElements::MP_BAR.position = SF.vector2(GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y - GameplayGuiElements::LEVEL_BOX.height + 85 * scale_y)
+
+            GameplayGuiElements::MP_BAR.position = SF.vector2(GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y + 45 * scale_y)
             GameplayGuiElements::MP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
     
-            GameplayGuiElements::MP_COLOR_BAR.position = SF.vector2(GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y - GameplayGuiElements::LEVEL_BOX.height + 85 * scale_y)
+            GameplayGuiElements::MP_COLOR_BAR.position = GameplayGuiElements::MP_BAR.position
             GameplayGuiElements::MP_COLOR_BAR.scale = SF.vector2((Player::Stats.current_mp.not_nil! / Player::Stats.max_mp.not_nil!) * scale_ratio, scale_ratio) 
     
-            GameplayGuiElements::EXP_BAR.position = SF.vector2(GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y - GameplayGuiElements::LEVEL_BOX.height + 105 * scale_y)
+            GameplayGuiElements::EXP_BAR.position = SF.vector2(GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y + 65 * scale_y)
             GameplayGuiElements::EXP_BAR.scale = SF.vector2(scale_ratio, scale_ratio)
     
-            GameplayGuiElements::EXP_COLOR_BAR.position = SF.vector2(GameplayGuiElements::MAIN_HUD_BOX.sprite.position.x + 190 * scale_x, GameplayGuiElements::MAIN_HUD_BOX.sprite.position.y - GameplayGuiElements::LEVEL_BOX.height + 105 * scale_y)
+            GameplayGuiElements::EXP_COLOR_BAR.position = GameplayGuiElements::EXP_BAR.position
             GameplayGuiElements::EXP_COLOR_BAR.scale = SF.vector2((Player::Stats.exp.not_nil! / Player::Stats.exp_cap.not_nil!) * scale_ratio, scale_ratio) 
           end
             window_size = window.size
