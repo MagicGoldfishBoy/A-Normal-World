@@ -3,6 +3,7 @@ require "crsfml/audio"
 require "../../src/textures.cr"
 require "../../src/utility.cr"
 require "../inventory/cosmetics_inventory.cr"
+require "../inventory/equipment_inventory.cr"
 
 module Inventory
     class InventoryBase
@@ -58,6 +59,8 @@ module Inventory
           case current_category
            when "cosmetics"
             CosmeticsInventory::CosmeticsInventoryElements.draw_cosmetics_tabs(window)
+           when "equipment"
+            EquipmentInventory::EquipmentInventoryElements.draw_equipment_tabs(window)
           end
         end
     end
