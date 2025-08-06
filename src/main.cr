@@ -43,7 +43,19 @@ while window.open?
       if event.is_a? SF::Event::Closed
         window.close
       end
+      if event.is_a? SF::Event::Resized
+        MouseHandling::ClickHandling.update_mouse_position(window)
+        # puts "new width: #{event.width}"
+        # puts "new height: #{event.height}"
+      end
+      # if event.is_a? SF::Event::TextEntered
+      #   if event.unicode < 128
+      #     puts "ASCII character typed: #{event.unicode.chr}"
+      #   end
+      # end
     end
+
+
     
     window.clear(SF::Color::Black)
     if LocationSelection::Region.current_region != "none"

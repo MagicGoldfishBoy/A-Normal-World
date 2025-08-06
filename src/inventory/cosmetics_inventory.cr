@@ -182,7 +182,7 @@ module CosmeticsInventory
             clamped_scale = [scale_ratio, max_scale].min
 
             window.view = window.default_view
-            if MouseHandling::ClickHandling.button_clicked?(HAT_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+            if MouseHandling::ClickHandling.was_button_clicked?(HAT_TAB_BOX.sprite, window)#button_clicked?(HAT_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryManager.current_tab = "hat"
                 Hat::HatBase.remove_current_hat_from_inventory
                 sleep 0.15.seconds

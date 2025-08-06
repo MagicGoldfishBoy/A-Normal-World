@@ -182,5 +182,8 @@ module InventoryWindow
         end
 
         class_property current_tab : String = "cosmetics"
+
+        def self.mouse_handling(window)
+        end
     end
 end
