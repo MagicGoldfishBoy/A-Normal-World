@@ -15,6 +15,7 @@ require "../inventory/equipment/jacket.cr"
 require "../inventory/equipment/gloves.cr"
 require "../inventory/equipment/pants.cr"
 require "../inventory/equipment/shoes.cr"
+require "../inventory/equipment/socks.cr"
 
 module CosmeticsInventory
     class CosmeticsInventoryManager
@@ -221,6 +222,10 @@ module CosmeticsInventory
                 CosmeticsInventoryManager.current_tab = "shoes"
                 Shoes::ShoesBase.remove_current_shoes_from_inventory
                 sleep 0.15.seconds
+            elsif MouseHandling::ClickHandling.button_clicked?(SOCKS_TAB_BOX.sprite, scaled_mouse_x, scaled_mouse_y)
+                CosmeticsInventoryManager.current_tab = "socks"
+                Socks::SocksBase.remove_current_socks_from_inventory
+                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.button_clicked?(InventoryWindow::InventoryWindowElements::LEFT_ARROW.sprite, scaled_mouse_x, scaled_mouse_y)
                 CosmeticsInventoryBase::COSMETIC_INVENTORY_ARRAY.each{ |inventory| 
                 if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page - 1 >= 0
@@ -301,7 +306,7 @@ module CosmeticsInventory
 
                 if self.id == "inv_makeup" 
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 46, 55)
-                elsif self.id == "inv_shoes"
+                elsif self.id == "inv_shoes" || self.id == "inv_socks"
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
                     item.sprite.as(SF::Sprite).scale = SF.vector2(2.25, 2.25)
                     item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(12, 5) 
@@ -316,7 +321,7 @@ module CosmeticsInventory
                 elsif self.id == "inv_necklace" 
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(330, 660, 46, 55)
                     item.sprite.as(SF::Sprite).scale = SF.vector2(2, 2)
-                elsif self.id == "inv_shirt" || self.id == "inv_gloves" || self.id == "inv_shoes"
+                elsif self.id == "inv_shirt" || self.id == "inv_gloves" || self.id == "inv_shoes" 
                     item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
                     item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
                 else
@@ -385,6 +390,9 @@ module CosmeticsInventory
                 if item.is_a?(Shoes::ShoesBase)
                     Shoes::ShoesBase.swap_shoes(item)
                 end
+                if item.is_a?(Socks::SocksBase)
+                    Socks::SocksBase.swap_socks(item)
+                end
                 Sprites::Player.refresh_player_sprite(window)
                 sleep 0.15.seconds
                 break 
@@ -414,6 +422,8 @@ module CosmeticsInventory
                 @@pants_inventory.draw(window)
             when "shoes"
                 @@shoes_inventory.draw(window)
+            when "socks"
+                @@socks_inventory.draw(window)
             end
         end
         def self.return_current_page
@@ -438,6 +448,8 @@ module CosmeticsInventory
                return @@pants_inventory.page
             when "shoes"
                return @@shoes_inventory.page
+            when "socks"
+               return @@socks_inventory.page
             end
         end
         def self.return_max_page_count
@@ -462,6 +474,8 @@ module CosmeticsInventory
                return @@pants_inventory.max_page_count
             when "shoes"
                return @@shoes_inventory.max_page_count
+            when "socks"
+               return @@socks_inventory.max_page_count
             end
         end
           
@@ -484,5 +498,7 @@ module CosmeticsInventory
         @@pants_inventory = CosmeticsInventoryBase.new("Pants Inventory", "inv_pants", 5, 0, "pants", "color", Pants::PantsBase::OWNED_PANTS_ARRAY)
 
         @@shoes_inventory = CosmeticsInventoryBase.new("Shoes Inventory", "inv_shoes", 5, 0, "shoes", "color", Shoes::ShoesBase::OWNED_SHOES_ARRAY)
+
+        @@socks_inventory = CosmeticsInventoryBase.new("Socks Inventory", "inv_socks", 5, 0, "socks", "color", Socks::SocksBase::OWNED_SOCKS_ARRAY)
     end
 end
