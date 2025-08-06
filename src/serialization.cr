@@ -136,6 +136,7 @@ module Serialization
       property gloves : (Gloves::GlovesBase | Nil) = nil
       property pants : (Pants::PantsBase | Nil) = nil
       property shoes : (Shoes::ShoesBase | Nil) = nil
+      property socks : (Socks::SocksBase | Nil) = nil
 
       def initialize
         @version = 1
@@ -150,6 +151,7 @@ module Serialization
         @gloves = nil
         @pants = nil
         @shoes = nil
+        @socks = nil
       end
     
       @[JSON::Field(ignore_unknown: true)]
@@ -171,6 +173,7 @@ module Serialization
         save.gloves = Player::Appearance.gloves
         save.pants = Player::Appearance.pants
         save.shoes = Player::Appearance.shoes
+        save.socks = Player::Appearance.socks
 
         path = "saves/" + @@save_file.not_nil!
         Dir.mkdir_p(File.dirname(path))
@@ -322,6 +325,18 @@ module Serialization
         )
       else
         Player::Appearance.shoes = nil
+      end
+      if save.socks
+        Player::Appearance.socks = Socks::SocksBase.new(
+          name: save.socks.as(Socks::SocksBase).name,
+          id: save.socks.as(Socks::SocksBase).id,
+          sprite: Socks::SocksBase::SOCKS_SPRITE_HASH[save.socks.as(Socks::SocksBase).id],
+          is_owned: save.socks.as(Socks::SocksBase).is_owned,
+          color: save.socks.as(Socks::SocksBase).color,
+          sfx: Socks::SocksBase::SOCKS_SFX_HASH[save.socks.as(Socks::SocksBase).id]
+        )
+      else
+        Player::Appearance.socks = nil
       end
 
     end
