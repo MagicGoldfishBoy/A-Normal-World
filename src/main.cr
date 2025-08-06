@@ -45,9 +45,13 @@ while window.open?
       end
       if event.is_a? SF::Event::Resized
         MouseHandling::ClickHandling.update_mouse_position(window)
-        # puts "new width: #{event.width}"
-        # puts "new height: #{event.height}"
       end
+      MouseHandling::ClickHandling.update_if_can_click(event)
+      # if event.is_a? SF::Event::MouseButtonReleased
+      #   if event.button.left?
+      #     MouseHandling::ClickHandling.can_click = true
+      #   end
+      # end
       # if event.is_a? SF::Event::TextEntered
       #   if event.unicode < 128
       #     puts "ASCII character typed: #{event.unicode.chr}"
