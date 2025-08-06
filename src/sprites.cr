@@ -153,8 +153,16 @@ module Sprites
         SF::Sprite.new
     end
 
-    current_socks = if socks = Clothing::Socks.get_socks(Appearance.get_clothing("socks"))
-        SF::Sprite.new(socks.texture)
+    current_socks = if socks = Appearance.socks
+        if !socks.is_a?(Socks::SocksBase)
+            SF::Sprite.new
+        elsif !socks.sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        elsif !socks.sprite.as(SF::Sprite).texture
+            SF::Sprite.new
+        else
+            Player.assign_color(socks, "none")
+        end
     else
         SF::Sprite.new
     end
