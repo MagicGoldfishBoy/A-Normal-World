@@ -3,6 +3,8 @@ require "crsfml"
 module MouseHandling
     class ClickHandling
 
+            class_property can_click : Bool = true
+
             class_property mouse_position : SF::Vector2i = SF::Vector2i.new(0, 0)
             class_property mouse_x : Float64 = 0.0
             class_property mouse_y : Float64 = 0.0
@@ -19,6 +21,21 @@ module MouseHandling
 
             class_property scaled_mouse_x : Float64 = 0.0
             class_property scaled_mouse_y : Float64 = 0.0
+
+        def self.update_if_can_click(event)
+         if event.is_a? SF::Event::MouseButtonReleased
+            if event.button.left?
+             MouseHandling::ClickHandling.can_click = true
+             
+            end
+         end
+         if event.is_a? SF::Event::MouseButtonPressed
+            if event.button.left?
+             MouseHandling::ClickHandling.can_click = false
+            end
+         end
+         #puts MouseHandling::ClickHandling.can_click
+        end
 
         def self.update_mouse_position(window : SF::RenderWindow)
             ClickHandling.mouse_position = SF::Mouse.get_position(window)
@@ -41,13 +58,18 @@ module MouseHandling
         end
 
         def self.was_button_clicked?(button : SF::Sprite, window : SF::RenderWindow)
+            if ClickHandling.can_click == false
+                return false
+            end
             update_mouse_position(window)
             bounds = button.global_bounds
             # puts "mouse: #{mouse_position}"
             # puts "button: #{button.global_bounds}"
             bounds.contains?(scaled_mouse_x, scaled_mouse_y)
+            #ClickHandling.can_click = false
         end
 
+        #deprecating this
         def self.button_clicked?(button : SF::Sprite, mouse_x : Float64, mouse_y : Float64) : Bool
             bounds = button.global_bounds
             bounds.contains?(mouse_x, mouse_y)

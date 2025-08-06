@@ -185,47 +185,36 @@ module CosmeticsInventory
             if MouseHandling::ClickHandling.was_button_clicked?(HAT_TAB_BOX.sprite, window)
                 CosmeticsInventoryManager.current_tab = "hat"
                 Hat::HatBase.remove_current_hat_from_inventory
-                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.was_button_clicked?(GLASSES_TAB_BOX.sprite, window)
                 CosmeticsInventoryManager.current_tab = "glasses"
                 Glasses::GlassesBase.remove_current_glasses_from_inventory
-                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.was_button_clicked?(EARRING_TAB_BOX.sprite, window)
                 CosmeticsInventoryManager.current_tab = "earrings"
                 Earrings::EarringsBase.remove_current_earrings_from_inventory
-                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.was_button_clicked?(MAKEUP_TAB_BOX.sprite, window)
                 CosmeticsInventoryManager.current_tab = "makeup"
                 Makeup::MakeupBase.remove_current_makeup_from_inventory
-                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.was_button_clicked?(NECKLACE_TAB_BOX.sprite, window)
                 CosmeticsInventoryManager.current_tab = "necklace"
                 Necklace::NecklaceBase.remove_current_necklace_from_inventory
-                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.was_button_clicked?(SHIRT_TAB_BOX.sprite, window)
                 CosmeticsInventoryManager.current_tab = "shirt"
                 Shirt::ShirtBase.remove_current_shirt_from_inventory
-                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.was_button_clicked?(JACKET_TAB_BOX.sprite, window)
                 CosmeticsInventoryManager.current_tab = "jacket"
                 Jacket::JacketBase.remove_current_jacket_from_inventory
-                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.was_button_clicked?(GLOVE_TAB_BOX.sprite, window)
                 CosmeticsInventoryManager.current_tab = "gloves"
                 Gloves::GlovesBase.remove_current_gloves_from_inventory
-                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.was_button_clicked?(PANTS_TAB_BOX.sprite, window)
                 CosmeticsInventoryManager.current_tab = "pants"
                 Pants::PantsBase.remove_current_pants_from_inventory
-                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.was_button_clicked?(SHOES_TAB_BOX.sprite, window)
                 CosmeticsInventoryManager.current_tab = "shoes"
                 Shoes::ShoesBase.remove_current_shoes_from_inventory
-                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.was_button_clicked?(SOCKS_TAB_BOX.sprite, window)
                 CosmeticsInventoryManager.current_tab = "socks"
                 Socks::SocksBase.remove_current_socks_from_inventory
-                sleep 0.15.seconds
             elsif MouseHandling::ClickHandling.was_button_clicked?(InventoryWindow::InventoryWindowElements::LEFT_ARROW.sprite, window)
                 CosmeticsInventoryBase::COSMETIC_INVENTORY_ARRAY.each{ |inventory| 
                 if inventory.tab == CosmeticsInventoryManager.current_tab && inventory.page - 1 >= 0
