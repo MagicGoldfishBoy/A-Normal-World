@@ -1,6 +1,5 @@
 require "crsfml"
 require "../src/textures.cr"
-require "../src/clothing.cr"
 require "../src/equipment.cr"
 
 module Utility
