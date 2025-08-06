@@ -99,17 +99,6 @@ module Serialization
         @@stat_save_hash["skin"] = Player::Appearance.get_clothing("skin")
         @@stat_save_hash["hair"] = Player::Appearance.get_clothing("hair")
         @@stat_save_hash["face"] = Player::Appearance.get_clothing("face")
-        @@stat_save_hash["hat"] = Player::Appearance.get_clothing("hat")
-        @@stat_save_hash["earrings"] = Player::Appearance.get_clothing("earrings")
-        @@stat_save_hash["shirt"] = Player::Appearance.get_clothing("shirt")
-        @@stat_save_hash["gloves"] = Player::Appearance.get_clothing("gloves")
-        @@stat_save_hash["pants"] = Player::Appearance.get_clothing("pants")
-        @@stat_save_hash["shoes"] = Player::Appearance.get_clothing("shoes")
-        @@stat_save_hash["makeup"] = Player::Appearance.get_clothing("makeup")
-        @@stat_save_hash["necklace"] = Player::Appearance.get_clothing("necklace")
-        @@stat_save_hash["glasses"] = Player::Appearance.get_clothing("glasses")
-        @@stat_save_hash["jacket"] = Player::Appearance.get_clothing("jacket")
-        @@stat_save_hash["socks"] = Player::Appearance.get_clothing("socks")
         @@stat_save_hash["weapon"] = Player::Appearance.get_clothing("weapon")
     end
 
