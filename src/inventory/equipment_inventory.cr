@@ -53,7 +53,20 @@ module EquipmentInventory
             EquipmentInventoryElements.position_equipment_category_elements(window)
             EQUIPMENT_BOX_ARRAY.each{ |box| window.draw(box.sprite) }
             EQUIPMENT_TEXT_ARRAY.each{ |text| window.draw(text.text) }
+
             EquipmentInventoryBase.draw_equipment_items(window, EquipmentInventoryManager.current_tab)
+
+            if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                self.equipment_elements_mouse_handling(window)
+            end
+        end
+
+        def self.equipment_elements_mouse_handling(window)
+            if MouseHandling::ClickHandling.was_button_clicked?(WEAPON_TAB_BOX.sprite, window)
+                EquipmentInventoryManager.current_tab = "weapon"
+            elsif MouseHandling::ClickHandling.was_button_clicked?(SOUL_ORB_TAB_BOX.sprite, window)
+                EquipmentInventoryManager.current_tab = "soul_orb"
+            end
         end
     end
     class EquipmentInventoryBase < Inventory::InventoryBase

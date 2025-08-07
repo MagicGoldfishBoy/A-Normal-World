@@ -283,8 +283,14 @@ module Sprites
         SF::Sprite.new
     end
 
-    current_weapon = if weapon = Equipment::Weapon.get_weapon(Appearance.get_clothing("weapon"))
-        SF::Sprite.new(weapon.texture)
+    current_weapon = if weapon = Appearance.weapon
+        if !weapon.is_a?(Weapon::WeaponBase)
+            SF::Sprite.new
+        elsif !weapon.sprite.is_a?(SF::Sprite)
+            SF::Sprite.new
+        else
+            SF::Sprite.new
+        end
     else
         SF::Sprite.new
     end
