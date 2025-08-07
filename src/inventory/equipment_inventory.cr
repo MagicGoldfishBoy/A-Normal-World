@@ -7,6 +7,7 @@ require "../../src/window/inventory_window.cr"
 require "../inventory/inventory.cr"
 require "../../src/inventory/equipment/equipment.cr"
 require "../../src/inventory/equipment/weapon/weapon.cr"
+require "../../src/inventory/equipment/weapon/blunt_weapon.cr"
 
 module EquipmentInventory
     class EquipmentInventoryManager
@@ -52,6 +53,7 @@ module EquipmentInventory
             EquipmentInventoryElements.position_equipment_category_elements(window)
             EQUIPMENT_BOX_ARRAY.each{ |box| window.draw(box.sprite) }
             EQUIPMENT_TEXT_ARRAY.each{ |text| window.draw(text.text) }
+            EquipmentInventoryBase.draw_equipment_items(window, EquipmentInventoryManager.current_tab)
         end
     end
     class EquipmentInventoryBase < Inventory::InventoryBase
@@ -108,9 +110,9 @@ module EquipmentInventory
 
             item.sprite.as(SF::Sprite).position = current_pos
 
-            item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
-            item.sprite.as(SF::Sprite).scale = SF.vector2(2.25, 2.25)
-            item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
+            item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(300, 690, 70, 50)
+            # item.sprite.as(SF::Sprite).scale = SF.vector2(2.25, 2.25)
+            # item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
 
             window.draw(item.sprite.as(SF::Sprite))
         
