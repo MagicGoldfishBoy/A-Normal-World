@@ -23,6 +23,10 @@ module WhackeableObject
         @max_wiggle_iterator = max_wiggle_iterator
         @current_wiggle_iterator = current_wiggle_iterator
         @is_dead = is_dead
+
+        WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << self
+        WhackeableObjectBase::WHACKEABLE_SPRITE_HASH[@id] = @sprite
+        WhackeableObjectBase::WHACKEABLE_SFX_HASH[@id] = @sfx
      end
 
      property name : String
@@ -224,30 +228,21 @@ module WhackeableObject
     class TrainingDummy < WhackeableObjectBase
 
         @@training_dummy_01 = TrainingDummy.new("Cloth Training Dummy", "training_dummy_01", 0, 0, 
-        SF::Sprite.new(TRAINIING_DUMMY_TEXTURE_01, SF::Rect.new(0, 0, 40, 80)), 500.0, 500.0, SFX::WhackeableSFX::FABRIC_HIT_01, false, 5, 5, false)
-        WHACKEABLE_SPRITE_HASH[@@training_dummy_01.id] = @@training_dummy_01.sprite
-        WHACKEABLE_SFX_HASH[@@training_dummy_01.id] = @@training_dummy_01.sfx
-        WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@training_dummy_01
+        SF::Sprite.new(TRAINING_DUMMY_TEXTURE_01, SF::Rect.new(0, 0, 40, 80)), 500.0, 500.0, SFX::WhackeableSFX::FABRIC_HIT_01, false, 5, 5, false)
     end
 
     class Ore < WhackeableObjectBase
 
         @@fire_agate_ore_01 = Ore.new("Fire Agate Ore", "fire_agate_ore_01", 0, 0,
         SF::Sprite.new(FIRE_AGATE_ORE_01, SF::Rect.new(0, 0, 40, 80)), 500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
-        WHACKEABLE_SPRITE_HASH[@@fire_agate_ore_01.id] = @@fire_agate_ore_01.sprite
-        WHACKEABLE_SFX_HASH[@@fire_agate_ore_01.id] = @@fire_agate_ore_01.sfx
-        WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@fire_agate_ore_01
 
         @@turquoise_ore_01 = Ore.new("Turquoise Ore", "turquoise_ore_01", 0, 0, SF::Sprite.new(TURQUOISE_ORE_01, SF::Rect.new(0, 0, 40, 80)),
         500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
-        WHACKEABLE_SPRITE_HASH[@@turquoise_ore_01.id] = @@turquoise_ore_01.sprite
-        WHACKEABLE_SFX_HASH[@@turquoise_ore_01.id] = @@turquoise_ore_01.sfx
-        WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@turquoise_ore_01
 
-        @@topaz_ore_01 = Ore.new("Topaz Ore", "topaz_ore_01", 0, 0, SF::Sprite.new(Topaz_ORE_01, SF::Rect.new(0, 0, 40, 80)),
+        @@topaz_ore_01 = Ore.new("Topaz Ore", "topaz_ore_01", 0, 0, SF::Sprite.new(TOPAZ_ORE_01, SF::Rect.new(0, 0, 40, 80)),
         500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
-        WHACKEABLE_SPRITE_HASH[@@topaz_ore_01.id] = @@topaz_ore_01.sprite
-        WHACKEABLE_SFX_HASH[@@topaz_ore_01.id] = @@topaz_ore_01.sfx
-        WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY << @@topaz_ore_01
+
+        @@topaz_ore_02 = Ore.new("Topaz Ore 02", "topaz_ore_02", 0, 0, SF::Sprite.new(TOPAZ_ORE_02, SF::Rect.new(0, 0, 40, 80)),
+        500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
     end
 end

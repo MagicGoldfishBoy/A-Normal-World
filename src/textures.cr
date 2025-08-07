@@ -375,10 +375,12 @@
     #-----------------------------------------------walls----------------------------------------------
         STONE_WALL_TEXTURE_01 = SF::Texture.from_file("../graphics/level_assets/stone_walls.png")
     #-----------------------------------------------dummies--------------------------------------------
-        TRAINIING_DUMMY_TEXTURE_01 = SF::Texture.from_file("../graphics/level_assets/training_dummy.png")
+        TRAINING_DUMMY_TEXTURE_01 = SF::Texture.from_file("../graphics/level_assets/training_dummy.png")
     #------------------------------------------------ores----------------------------------------------
         FIRE_AGATE_ORE_01 = SF::Texture.from_file("../graphics/level_assets/fire_agate_ore_01.png")
 
         TURQUOISE_ORE_01 = SF::Texture.from_file("../graphics/level_assets/turquoise_ore_01.png")
 
-        Topaz_ORE_01 = SF::Texture.from_file("../graphics/level_assets/topaz_ore_01.png")
+        TOPAZ_ORE_01 = SF::Texture.from_file("../graphics/level_assets/topaz_ore_01.png")
+
+        TOPAZ_ORE_02 = SF::Texture.from_file("../graphics/level_assets/topaz_ore_02.png")
