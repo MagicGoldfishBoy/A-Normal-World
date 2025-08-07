@@ -5,6 +5,7 @@ require "../../src/utility.cr"
 require "../../src/inventory/equipment/clothing.cr"
 require "../../src/window/inventory_window.cr"
 require "../inventory/inventory.cr"
+require "../../src/equipment.cr"
 
 module EquipmentInventory
     class EquipmentInventoryManager
@@ -50,6 +51,34 @@ module EquipmentInventory
             EquipmentInventoryElements.position_equipment_category_elements(window)
             EQUIPMENT_BOX_ARRAY.each{ |box| window.draw(box.sprite) }
             EQUIPMENT_TEXT_ARRAY.each{ |text| window.draw(text.text) }
+        end
+    end
+    class EquipmentInventoryBase < Inventory::InventoryBase
+        EQUIPMENT_INVENTORY_ARRAY = [] of EquipmentInventoryBase
+        def initialize(name : String, id : String, max_page_count : Int32, page : Int32, tab : String, sort_type : String, array : Array(Equipment::Weapon))
+            super(name, id, max_page_count, page, tab, sort_type)
+            @max_page_count = ((array.size / 15) + (array.size % 15 == 0 ? 0 : 1)).to_i
+            @array = array
+            EQUIPMENT_INVENTORY_ARRAY << self
+        end
+
+        property name : String
+        property id : String
+        property max_page_count : Int32
+        property page : Int32
+        property tab : String
+        property sort_type : String
+        property array : Array(Equipment::Weapon)
+
+        #TODO: complete these when possible
+        def draw(window)
+        end
+
+        def self.return_current_page
+            return 1
+        end
+        def self.return_max_page_count
+            return 1
         end
     end
 end
