@@ -5,7 +5,8 @@ require "../../src/utility.cr"
 require "../../src/inventory/clothing/clothing.cr"
 require "../../src/window/inventory_window.cr"
 require "../inventory/inventory.cr"
-require "../../src/equipment.cr"
+require "../../src/inventory/equipment/equipment.cr"
+require "../../src/inventory/equipment/weapon/weapon.cr"
 
 module EquipmentInventory
     class EquipmentInventoryManager
@@ -55,7 +56,7 @@ module EquipmentInventory
     end
     class EquipmentInventoryBase < Inventory::InventoryBase
         EQUIPMENT_INVENTORY_ARRAY = [] of EquipmentInventoryBase
-        def initialize(name : String, id : String, max_page_count : Int32, page : Int32, tab : String, sort_type : String, array : Array(Equipment::Weapon))
+        def initialize(name : String, id : String, max_page_count : Int32, page : Int32, tab : String, sort_type : String, array : Array(Equipment::EquipmentBase))
             super(name, id, max_page_count, page, tab, sort_type)
             @max_page_count = ((array.size / 15) + (array.size % 15 == 0 ? 0 : 1)).to_i
             @array = array
@@ -68,17 +69,88 @@ module EquipmentInventory
         property page : Int32
         property tab : String
         property sort_type : String
-        property array : Array(Equipment::Weapon)
+        property array : Array(Equipment::EquipmentBase)
 
         #TODO: complete these when possible
         def draw(window)
+            current_size = window.size
+            original_width = 800 
+            original_height = 600
+            scale_x = current_size.x.to_f / original_width
+            scale_y = current_size.y.to_f / original_height
+        
+            scale_ratio = [scale_x, scale_y].min
+            max_scale = 1.5
+            clamped_scale = [scale_ratio, max_scale].min
+        
+            window.view = window.default_view
+        
+            items_per_page = 15
+            start_index = @page * items_per_page
+            end_index = start_index + items_per_page - 1
+        
+            # Gotta clamp this sucker so it doesn't wander out of bounds
+            start_index = [start_index, 0].max
+            end_index = [end_index, self.array.size - 1].min
+        
+            # If the start_index exceeds the array size, kick that shit out
+            return if start_index >= self.array.size
+        
+            items_per_row = 5
+            spacing_x = 13 * max_scale
+            spacing_y = 17 * max_scale
+        
+            base_position = InventoryWindow::InventoryWindowElements::INVENTORY_SLOT_01.sprite.as(SF::Sprite).position + SF.vector2(spacing_x, spacing_y)
+        
+            current_pos = SF.vector2(base_position.x, base_position.y)
+            self.array.each{ |item| item.sprite.as(SF::Sprite).position = SF.vector2(-1000, -1000)}
+            self.array[start_index..end_index].each_with_index do |item, index|
+
+            item.sprite.as(SF::Sprite).position = current_pos
+
+            item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(288, 640, 60, 33)
+            item.sprite.as(SF::Sprite).scale = SF.vector2(2.25, 2.25)
+            item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
+
+            window.draw(item.sprite.as(SF::Sprite))
+        
+                # Next column
+                current_pos.x += spacing_x * 5.85
+        
+                # Next Row
+                if (index + 1) % items_per_row == 0
+                    current_pos.x = base_position.x
+                    current_pos.y += spacing_y * 4.5
+                end
+        end
+        end
+
+        def self.draw_equipment_items(window, tab)
+            case tab
+            when "weapon"
+                @@weapon_inventory.draw(window)
+            end
         end
 
         def self.return_current_page
-            return 1
+            case EquipmentInventoryManager.current_tab
+            when "weapon"
+                return @@weapon_inventory.page
+            else
+                return 0
+            end
         end
         def self.return_max_page_count
-            return 1
+            case EquipmentInventoryManager.current_tab
+            when "weapon"
+                return @@weapon_inventory.max_page_count
+            else
+                return 0
+            end
         end
+
+        @@weapon_inventory = EquipmentInventoryBase.new("Weapon Inventory", "weapon_inventory", 1, 0, "weapon", "default", Weapon::WeaponBase::OWNED_WEAPON_ARRAY)  
     end
+
+    
 end
