@@ -126,6 +126,7 @@ module Serialization
       property pants : (Pants::PantsBase | Nil) = nil
       property shoes : (Shoes::ShoesBase | Nil) = nil
       property socks : (Socks::SocksBase | Nil) = nil
+      #property weapon : (Weapon::WeaponBase | Nil) = nil
 
       def initialize
         @version = 1
@@ -141,6 +142,7 @@ module Serialization
         @pants = nil
         @shoes = nil
         @socks = nil
+       # @weapon = nil
       end
     
       @[JSON::Field(ignore_unknown: true)]
@@ -163,6 +165,7 @@ module Serialization
         save.pants = Player::Appearance.pants
         save.shoes = Player::Appearance.shoes
         save.socks = Player::Appearance.socks
+        #save.weapon = Player::Appearance.weapon
 
         path = "saves/" + @@save_file.not_nil!
         Dir.mkdir_p(File.dirname(path))
@@ -327,6 +330,18 @@ module Serialization
       else
         Player::Appearance.socks = nil
       end
+      # if save.weapon
+      #   Player::Appearance.weapon = Weapon::WeaponBase.new(
+      #     name: save.weapon.as(Weapon::WeaponBase).name,
+      #     id: save.weapon.as(Weapon::WeaponBase).id,
+      #     sprite: Weapon::WeaponBase::WEAPON_SPRITE_HASH[save.weapon.as(Weapon::WeaponBase).id],
+      #     is_owned: save.weapon.as(Weapon::WeaponBase).is_owned,
+      #     color: save.weapon.as(Weapon::WeaponBase).color,
+      #     sfx: Weapon::WeaponBase::WEAPON_SFX_HASH[save.weapon.as(Weapon::WeaponBase).id]
+      #   )
+      # else
+      #   Player::Appearance.weapon = nil
+      # end
 
     end
       
