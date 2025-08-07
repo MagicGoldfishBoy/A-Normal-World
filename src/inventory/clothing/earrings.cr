@@ -3,7 +3,7 @@ require "crsfml/audio"
 require "../../../src/game_settings.cr"
 require "../../../src/textures.cr"
 require "../../../src/utility.cr"
-require "../../../src/inventory/equipment/clothing.cr"
+require "../../../src/inventory/clothing/clothing.cr"
 require "../../../graphics/color.cr"
 
 module Earrings
