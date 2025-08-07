@@ -9,13 +9,7 @@ require "../../../../graphics/color.cr"
 
 module BluntWeapon
     class BluntWeaponBase < Weapon::WeaponBase
-        include JSON::Serializable
-
-        BLUNT_WEAPON_ARRAY = [] of BluntWeaponBase
-        OWNED_BLUNT_WEAPON_ARRAY = [] of BluntWeaponBase | Weapon::WeaponBase | Equipment::EquipmentBase
-
-        BLUNT_WEAPON_SPRITE_HASH = {} of String => SF::Sprite
-        BLUNT_WEAPON_SFX_HASH = {} of String => SF::Sound
+        # include JSON::Serializable
 
         DEFAULT_BLUNT_WEAPON_EQUIP_SFX = SFX::EquipSFX::BACKPACK_EQUIP_01
 
@@ -34,26 +28,24 @@ module BluntWeapon
         property attack_strength : Float64
         property range : Float64
         property clock : SF::Clock
-        property attack_method : Proc((Float64 | Nil))
 
-        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, clock : SF::Clock, attack_method : Proc((Float64 | Nil)))
-            super(name, id, is_owned, sprite, description, sfx, tier, base_monetary_value, required_lvl, weapon_type, attack_type, attack_strength, range, clock, attack_method)
+        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, clock : SF::Clock)
+            super(name, id, is_owned, sprite, description, sfx, tier, base_monetary_value, required_lvl, weapon_type, attack_type, attack_strength, range, clock)
             @weapon_type = weapon_type
             @attack_type = attack_type
             @attack_strength = attack_strength
             @range = range
             @clock = clock
-            @attack_method = attack_method
 
-            BLUNT_WEAPON_ARRAY << self
-            BLUNT_WEAPON_SPRITE_HASH[id] = sprite
-            BLUNT_WEAPON_SFX_HASH[id] = sfx
+            Weapon::WeaponBase::WEAPON_SPRITE_HASH[id] = sprite
+            Weapon::WeaponBase::WEAPON_SFX_HASH[id] = sfx
 
-            if self.is_owned && !OWNED_BLUNT_WEAPON_ARRAY.any? { |owned_blunt_weapon| owned_blunt_weapon.id == self.id }
-                OWNED_BLUNT_WEAPON_ARRAY << self
+            if self.is_owned
+                Weapon::WeaponBase::OWNED_WEAPON_ARRAY << self
             end
-
-            OWNED_BLUNT_WEAPON_ARRAY.uniq!
+            #puts "added blunt weapon: #{self.name} with id: #{self.id} to the array."
         end
+
+        @@stick = BluntWeaponBase.new("Stick", "stick", true, SF::Sprite.new(WOODEN_STICK_TEXTURE), "A simple stick.", DEFAULT_BLUNT_WEAPON_EQUIP_SFX, 1_i8, 10_i64, 1, "blunt", "melee", 5.0, 1.0, SF::Clock.new)
     end
 end

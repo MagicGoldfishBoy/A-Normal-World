@@ -8,7 +8,7 @@ require "../../../../graphics/color.cr"
 
 module Weapon
     class WeaponBase < Equipment::EquipmentBase
-        include JSON::Serializable
+        #include JSON::Serializable
 
         WEAPON_ARRAY = [] of WeaponBase
         OWNED_WEAPON_ARRAY = [] of WeaponBase | Equipment::EquipmentBase
@@ -33,22 +33,14 @@ module Weapon
         property attack_strength : Float64
         property range : Float64
         property clock : SF::Clock
-        property attack_method : Proc((Float64 | Nil))
 
-        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, clock : SF::Clock, attack_method : Proc((Float64 | Nil)))
+        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, clock : SF::Clock)
             super(name, id, is_owned, sprite, description, sfx, tier, base_monetary_value, required_lvl)
             @weapon_type = weapon_type
             @attack_type = attack_type
             @attack_strength = attack_strength
             @range = range
             @clock = clock
-            @attack_method = attack_method
-
-            WEAPON_ARRAY << self
-            WEAPON_SPRITE_HASH[id] = sprite
-            WEAPON_SFX_HASH[id] = sfx
-
-            OWNED_WEAPON_ARRAY.uniq!
         end
 
         def self.swap_weapon(item : WeaponBase)
