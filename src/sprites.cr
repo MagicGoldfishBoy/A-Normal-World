@@ -289,7 +289,8 @@ module Sprites
         elsif !weapon.sprite.is_a?(SF::Sprite)
             SF::Sprite.new
         else
-            SF::Sprite.new
+            sprite = Appearance.weapon.as(Weapon::WeaponBase).sprite.as(SF::Sprite)
+            SF::Sprite.new(sprite.texture.as(SF::Texture))
         end
     else
         SF::Sprite.new
@@ -603,7 +604,7 @@ def Player.check_feet_collision(window, object)
    end
 
    def Player.animate_sprite(state, direction) #the stab animations are fucking stupid and I love it lol XD
-    weapon = Equipment::Weapon.get_weapon(Appearance.get_clothing("weapon"))
+    weapon = Appearance.weapon
     if state == "idle" && direction == "right"
         @@player_character_rendered_model.texture_rect = Animations::Player.idle_animation_right
     elsif state == "idle" && direction == "left"

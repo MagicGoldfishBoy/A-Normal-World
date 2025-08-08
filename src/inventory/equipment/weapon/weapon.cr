@@ -58,49 +58,50 @@ module Weapon
             Log.info &.emit("Weapon Initialized", weapon_name: self.name, weapon_id: self.id, is_owned: self.is_owned)
         end
 
-        # def self.swap_weapon(item : WeaponBase)
-        #     if item.as(Weapon::WeaponBase).sfx != nil
-        #         item.as(Weapon::WeaponBase).sfx.not_nil!.play
-        #     else
-        #         DEFAULT_WEAPON_EQUIP_SFX.play
-        #         log.warn &.emit("SFX not found!", weapon_id: item.as(Weapon::WeaponBase).id)
-        #     end
+        def self.swap_weapon(item : WeaponBase)
+            if item.as(Weapon::WeaponBase).sfx != nil
+                item.as(Weapon::WeaponBase).sfx.not_nil!.play
+            else
+                DEFAULT_WEAPON_EQUIP_SFX.play
+                Log.warn &.emit("SFX not found!", weapon_id: item.as(Weapon::WeaponBase).id)
+            end
             
-        #     if Player::Equipment.weapon != nil
-        #         if Weapon::WeaponBase::OWNED_WEAPON_ARRAY.none? { |owned_weapon| owned_weapon.id == Player::Equipment.weapon.as(Weapon::WeaponBase).id }
-        #             Weapon::WeaponBase::OWNED_WEAPON_ARRAY << Player::Equipment.weapon.as(Weapon::WeaponBase)
-        #         end
-        #     end
-            
-        #     Player::Equipment.weapon = item.as(Weapon::WeaponBase)
-        # end
+            if Player::Appearance.weapon != nil
+                if Weapon::WeaponBase::OWNED_WEAPON_ARRAY.none? { |owned_weapon| owned_weapon.id == Player::Appearance.weapon.as(Weapon::WeaponBase).id }
+                    Weapon::WeaponBase::OWNED_WEAPON_ARRAY << Player::Appearance.weapon.as(Weapon::WeaponBase)
+                end
+            end
 
-        # def self.remove_current_weapon_from_inventory
-        #     if Player::Equipment.weapon && Player::Equipment.weapon.as(Weapon::WeaponBase).id
-        #         OWNED_WEAPON_ARRAY.reject! { |owned_weapon| owned_weapon.id == Player::Equipment.weapon.as(Weapon::WeaponBase).id }
-        #     end
-        # end
+            Player::Appearance.weapon = item.as(Weapon::WeaponBase)
+            Log.info &.emit("Weapon swapped", new_weapon: item.as(Weapon::WeaponBase).id)
+        end
 
-        # def attack(window, attack_strength)
-        #     attack_rect = SF::RectangleShape.new
-        #     attack_rect.size = SF.vector2f(self.range, 10)
-        #     direction = Player::Movement.movement_direction
+        def self.remove_current_weapon_from_inventory
+            if Player::Appearance.weapon && Player::Appearance.weapon.as(Weapon::WeaponBase).id
+                OWNED_WEAPON_ARRAY.reject! { |owned_weapon| owned_weapon.id == Player::Appearance.weapon.as(Weapon::WeaponBase).id }
+            end
+        end
 
-        #     if self.clock.elapsed_time > SF.seconds(0.30) 
-        #         if direction == "left"
-        #         attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x, Sprites::Player.retrieve_sprite.position.y + 55)
-        #         elsif direction == "right"
-        #             attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x + 55, Sprites::Player.retrieve_sprite.position.y + 55)
-        #         end
-        #         #window.draw(attack_rect)
-        #         self.sfx.play
-        #         Combat::PlayerMethods::TARGET_ARRAY.each { |whackeable|
-        #         if attack_rect.global_bounds.intersects? whackeable.sprite.global_bounds
-        #             whackeable.react_to_impact(window, attack_strength)
-        #         end}
-        #         self.clock.restart
-        #     end
-        # end
+        def attack(window, attack_strength)
+            attack_rect = SF::RectangleShape.new
+            attack_rect.size = SF.vector2f(self.range, 10)
+            direction = Player::Movement.movement_direction
+
+            if self.clock.not_nil!.elapsed_time > SF.seconds(0.30) 
+                if direction == "left"
+                attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x, Sprites::Player.retrieve_sprite.position.y + 55)
+                elsif direction == "right"
+                    attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x + 55, Sprites::Player.retrieve_sprite.position.y + 55)
+                end
+                #window.draw(attack_rect)
+                self.sfx.not_nil!.play
+                Combat::PlayerMethods::TARGET_ARRAY.each { |whackeable|
+                if attack_rect.global_bounds.intersects? whackeable.sprite.global_bounds
+                    whackeable.react_to_impact(window, attack_strength)
+                end}
+                self.clock.not_nil!.restart
+            end
+        end
 
     end
 end
