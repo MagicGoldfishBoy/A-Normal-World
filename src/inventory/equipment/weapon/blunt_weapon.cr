@@ -46,6 +46,6 @@ module BluntWeapon
             #puts "added blunt weapon: #{self.name} with id: #{self.id} to the array."
         end
 
-        @@stick = BluntWeaponBase.new("Stick", "stick", true, SF::Sprite.new(WOODEN_STICK_TEXTURE), "A simple stick.", DEFAULT_BLUNT_WEAPON_EQUIP_SFX, 1_i8, 10_i64, 1, "blunt", "melee", 5.0, 1.0, SF::Clock.new)
+        @@stick = BluntWeaponBase.new("Stick", "stick", true, SF::Sprite.new(WOODEN_STICK_TEXTURE), "It's a stick.", DEFAULT_BLUNT_WEAPON_EQUIP_SFX, 1_i8, 10_i64, 1, "blunt", "swing", 5.0, 10.0, SF::Clock.new)
     end
 end

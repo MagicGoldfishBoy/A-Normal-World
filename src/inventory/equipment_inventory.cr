@@ -86,7 +86,6 @@ module EquipmentInventory
         property sort_type : String
         property array : Array(Equipment::EquipmentBase)
 
-        #TODO: complete these when possible
         def draw(window)
             current_size = window.size
             original_width = 800 
@@ -137,7 +136,22 @@ module EquipmentInventory
                     current_pos.x = base_position.x
                     current_pos.y += spacing_y * 4.5
                 end
+            end
+            if SF::Mouse.button_pressed?(SF::Mouse::Left)
+                self.mouse_handling(window)
+            end
         end
+
+        def mouse_handling(window)
+            self.array.each do |item|
+                if MouseHandling::ClickHandling.was_button_clicked?(item.sprite.as(SF::Sprite), window)
+                    if item.is_a?(Weapon::WeaponBase)
+                        Weapon::WeaponBase.swap_weapon(item.as(Weapon::WeaponBase))
+                    end
+                    Sprites::Player.refresh_player_sprite(window)
+                    break
+                end
+            end
         end
 
         def self.draw_equipment_items(window, tab)

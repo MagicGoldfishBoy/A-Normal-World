@@ -113,7 +113,7 @@ module Player
     end
     
     
- end
+  end
 
   class Movement
     def initialize(movement_state : String, movement_speed : Float64, movement_direction : String)
