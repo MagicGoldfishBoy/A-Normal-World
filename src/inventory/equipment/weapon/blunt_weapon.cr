@@ -9,7 +9,7 @@ require "../../../../graphics/color.cr"
 
 module BluntWeapon
     class BluntWeaponBase < Weapon::WeaponBase
-        # include JSON::Serializable
+        #include JSON::Serializable
 
         DEFAULT_BLUNT_WEAPON_EQUIP_SFX = SFX::EquipSFX::BACKPACK_EQUIP_01
 
@@ -27,7 +27,7 @@ module BluntWeapon
         property attack_type : String
         property attack_strength : Float64
         property range : Float64
-        property clock : SF::Clock
+        property clock : SF::Clock?
 
         def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, clock : SF::Clock)
             super(name, id, is_owned, sprite, description, sfx, tier, base_monetary_value, required_lvl, weapon_type, attack_type, attack_strength, range, clock)

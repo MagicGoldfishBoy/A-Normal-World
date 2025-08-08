@@ -1,11 +1,14 @@
 
 require "json"
+require "log"
 require "../src/level_elements.cr"
 
 
 module Serialization
   class SaveFile
     include JSON::Serializable
+
+    Log = ::Log.for("save_file")
 
     @@stat_save_hash = Hash(String, Float64 | Nil | String | Int32).new
     if Player::Stats.max_hp == nil
@@ -170,6 +173,7 @@ module Serialization
         path = "saves/" + @@save_file.not_nil!
         Dir.mkdir_p(File.dirname(path))
         File.write(path, save.to_json, mode: "w")
+        Log.info &.emit("Game saved", file: @@save_file.not_nil!)
     end
     def SaveFile.load_game(file)
       path = "saves/" + @@save_file.not_nil!
@@ -342,30 +346,10 @@ module Serialization
       # else
       #   Player::Appearance.weapon = nil
       # end
-
+      Log.info &.emit("Game loaded", file: @@save_file.not_nil!)
+ 
     end
-      
-    # def SaveFile.normal_save
-    #   SaveFile.update_stats_hash
-    #     save = SaveData.new(
-    #     stats: @@stat_save_hash,
-    #     # hat: Player::Appearance.hat.try do |current_hat|
-    #     #   Hat::HatBase.new(
-    #     #     name: current_hat.name,
-    #     #     id: current_hat.id,
-    #     #     is_owned: current_hat.is_owned,
-    #     #     color: current_hat.color
-    #     #   )
-    #     # end
-    #   )
-    #     File.write(path, save.to_json)
     
-    #   path = "saves/" + @@save_file.not_nil!
-    #   Dir.mkdir_p(File.dirname(path))
-    #   File.write(path, save.to_json, mode: "w")
-    # end
-    
-
     def SaveFile.save_check(path1, key)
         json = File.read(path1)
         player_stats = Hash(String, JSON::Any).from_json(json)
@@ -373,91 +357,6 @@ module Serialization
         puts "name: #{player_stats["name"].as_s}"
     end
   end
-
-    # def SaveFile.normal_save
-    #   SaveFile.update_stats_hash
-    
-    #   path = "saves/" + @@save_file.not_nil!
-    #   File.delete?(path)
-    #   Dir.mkdir_p(File.dirname(path))
-    
-    #   save = SaveData.new(
-    #     stats: Player::Stats,
-    #     hat: Player::Appearance.hat
-    #   )
-    
-    #   File.write(path, save.to_json)
-    # end
-    # def SaveFile.normal_save
-    #   SaveFile.update_stats_hash
-    
-    #   # save = SaveData.new(
-    #   #   stats: @@stat_save_hash,
-    #     # hat: Player::Appearance.hat.try do |current_hat|
-    #     #   Hat::SaveHat.new(
-    #     #     name: current_hat.name,
-    #     #     id: current_hat.id,
-    #     #     is_owned: current_hat.is_owned,
-    #     #     color: current_hat.color
-    #     #   )
-    #     # end
-    #   #)
-    
-    #   path = "saves/" + @@save_file.not_nil!
-    #   Dir.mkdir_p(File.dirname(path))
-    #  # File.write(path, save.to_json, mode: "w")
-    # end
-    
-    # def SaveFile.load_game(file)
-    #   path = "saves/" + @@save_file.not_nil!
-    #   json_data = File.read(path)
-    
-    #   save = SaveData.from_json(json_data)
-    
-    #   case save.version
-    #   when 1
-    #     Player::Stats = save.stats
-    #     Player::Appearance.hat = save.hat
-    #   else
-    #     raise "Unsupported save file version: #{save.version}"
-    #   end
-    # end
-    # def SaveFile.load_game(file)
-    #   path = "saves/" + @@save_file.not_nil!
-    #   json_data = File.read(path)
-    
-    #   save = SaveData.from_json(json_data)
-    
-    #   Player::Stats.name = save.stats["name"].to_s
-    
-    #   if save.hat
-    #     Player::Appearance.hat = Hat::SaveHat.new(
-    #       name: save.hat.name,
-    #       id: save.hat.id,
-    #       is_owned: save.hat.is_owned,
-    #       color: save.hat.color
-    #     )
-    #   else
-    #     Player::Appearance.hat = nil
-    #   end
-    # end
-  #   def SaveFile.load_game(file)
-  #     path = "saves/" + @@save_file.not_nil!
-  #     save = SaveData.from_json(File.read(path))
-    
-  #  #   Player::Stats.name = save.stats["name"].to_s
-    
-  #     # if hat = save.hat
-  #     #   Player::Appearance.hat = Hat::SaveHat.new(
-  #     #     name: hat.name,
-  #     #     id: hat.id,
-  #     #     is_owned: hat.is_owned,
-  #     #     color: hat.color
-  #     #   )
-  #     # else
-  #     #   Player::Appearance.hat = nil
-  #     # end
-  #   end
 
   class LevelFile
     #TODO: get this working so I can delete the fucking abomination that is the current serialization
