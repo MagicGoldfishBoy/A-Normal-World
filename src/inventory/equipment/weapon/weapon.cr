@@ -1,3 +1,4 @@
+require "log"
 require "crsfml"
 require "crsfml/audio"
 require "../../../../src/game_settings.cr"
@@ -8,7 +9,9 @@ require "../../../../graphics/color.cr"
 
 module Weapon
     class WeaponBase < Equipment::EquipmentBase
-        #include JSON::Serializable
+        include JSON::Serializable
+
+        Log = ::Log.for("weapon")
 
         WEAPON_ARRAY = [] of WeaponBase
         OWNED_WEAPON_ARRAY = [] of WeaponBase | Equipment::EquipmentBase
@@ -32,59 +35,72 @@ module Weapon
         property attack_type : String
         property attack_strength : Float64
         property range : Float64
-        property clock : SF::Clock
+        @[JSON::Field(ignore: true)]
+        property clock : SF::Clock?
+
+        #super can NEVER be used in this initialize method or the compiler will throw a fucking hissy fit about some pull parser shit. I don't know why this is, but the compiler has finally calmed it's fucking tits so whatever -_-
 
         def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, clock : SF::Clock)
-            super(name, id, is_owned, sprite, description, sfx, tier, base_monetary_value, required_lvl)
+            @name = name
+            @id = id
+            @is_owned = is_owned
+            @sprite = sprite
+            @description = description
+            @sfx = sfx
+            @tier = tier
+            @base_monetary_value = base_monetary_value
+            @required_lvl = required_lvl
             @weapon_type = weapon_type
             @attack_type = attack_type
             @attack_strength = attack_strength
             @range = range
             @clock = clock
+            Log.info &.emit("Weapon Initialized", weapon_name: self.name, weapon_id: self.id, is_owned: self.is_owned)
         end
 
-        def self.swap_weapon(item : WeaponBase)
-            if item.as(Weapon::WeaponBase).sfx != nil
-                item.as(Weapon::WeaponBase).sfx.not_nil!.play
-            else
-                DEFAULT_WEAPON_EQUIP_SFX.play
-            end
+        # def self.swap_weapon(item : WeaponBase)
+        #     if item.as(Weapon::WeaponBase).sfx != nil
+        #         item.as(Weapon::WeaponBase).sfx.not_nil!.play
+        #     else
+        #         DEFAULT_WEAPON_EQUIP_SFX.play
+        #         log.warn &.emit("SFX not found!", weapon_id: item.as(Weapon::WeaponBase).id)
+        #     end
             
-            if Player::Equipment.weapon != nil
-                if Weapon::WeaponBase::OWNED_WEAPON_ARRAY.none? { |owned_weapon| owned_weapon.id == Player::Equipment.weapon.as(Weapon::WeaponBase).id }
-                    Weapon::WeaponBase::OWNED_WEAPON_ARRAY << Player::Equipment.weapon.as(Weapon::WeaponBase)
-                end
-            end
+        #     if Player::Equipment.weapon != nil
+        #         if Weapon::WeaponBase::OWNED_WEAPON_ARRAY.none? { |owned_weapon| owned_weapon.id == Player::Equipment.weapon.as(Weapon::WeaponBase).id }
+        #             Weapon::WeaponBase::OWNED_WEAPON_ARRAY << Player::Equipment.weapon.as(Weapon::WeaponBase)
+        #         end
+        #     end
             
-            Player::Equipment.weapon = item.as(Weapon::WeaponBase)
-        end
+        #     Player::Equipment.weapon = item.as(Weapon::WeaponBase)
+        # end
 
-        def self.remove_current_weapon_from_inventory
-            if Player::Equipment.weapon && Player::Equipment.weapon.as(Weapon::WeaponBase).id
-                OWNED_WEAPON_ARRAY.reject! { |owned_weapon| owned_weapon.id == Player::Equipment.weapon.as(Weapon::WeaponBase).id }
-            end
-        end
+        # def self.remove_current_weapon_from_inventory
+        #     if Player::Equipment.weapon && Player::Equipment.weapon.as(Weapon::WeaponBase).id
+        #         OWNED_WEAPON_ARRAY.reject! { |owned_weapon| owned_weapon.id == Player::Equipment.weapon.as(Weapon::WeaponBase).id }
+        #     end
+        # end
 
-        def attack(window, attack_strength)
-            attack_rect = SF::RectangleShape.new
-            attack_rect.size = SF.vector2f(self.range, 10)
-            direction = Player::Movement.movement_direction
+        # def attack(window, attack_strength)
+        #     attack_rect = SF::RectangleShape.new
+        #     attack_rect.size = SF.vector2f(self.range, 10)
+        #     direction = Player::Movement.movement_direction
 
-            if self.clock.elapsed_time > SF.seconds(0.30) 
-                if direction == "left"
-                attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x, Sprites::Player.retrieve_sprite.position.y + 55)
-                elsif direction == "right"
-                    attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x + 55, Sprites::Player.retrieve_sprite.position.y + 55)
-                end
-                #window.draw(attack_rect)
-                self.sfx.play
-                Combat::PlayerMethods::TARGET_ARRAY.each { |whackeable|
-                if attack_rect.global_bounds.intersects? whackeable.sprite.global_bounds
-                    whackeable.react_to_impact(window, attack_strength)
-                end}
-                self.clock.restart
-            end
-        end
+        #     if self.clock.elapsed_time > SF.seconds(0.30) 
+        #         if direction == "left"
+        #         attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x, Sprites::Player.retrieve_sprite.position.y + 55)
+        #         elsif direction == "right"
+        #             attack_rect.position = SF.vector2(Sprites::Player.retrieve_sprite.position.x + 55, Sprites::Player.retrieve_sprite.position.y + 55)
+        #         end
+        #         #window.draw(attack_rect)
+        #         self.sfx.play
+        #         Combat::PlayerMethods::TARGET_ARRAY.each { |whackeable|
+        #         if attack_rect.global_bounds.intersects? whackeable.sprite.global_bounds
+        #             whackeable.react_to_impact(window, attack_strength)
+        #         end}
+        #         self.clock.restart
+        #     end
+        # end
 
     end
 end
