@@ -8,6 +8,7 @@ require "../inventory/inventory.cr"
 require "../../src/inventory/equipment/equipment.cr"
 require "../../src/inventory/equipment/weapon/weapon.cr"
 require "../../src/inventory/equipment/weapon/blunt_weapon.cr"
+require "../../src/inventory/equipment/soul_orb/soul_jewel.cr"
 
 module EquipmentInventory
     class EquipmentInventoryManager
@@ -29,6 +30,12 @@ module EquipmentInventory
         SOUL_ORB_TAB_TEXT = Ui_Elements::Ui_TextBase.new("Soul Orbs", "EquText02", SF::Text.new(SOUL_ORB_TAB_BOX.name, QUICKSAND, 18))
         EQUIPMENT_TEXT_ARRAY << SOUL_ORB_TAB_TEXT
 
+        SOUL_JEWEL_TAB_BOX = Ui_Elements::Ui_BoxBase.new("Soul Jewels", "EquBox03", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1001, 800, 100, 34)), 100.0, 34.0, 3)
+        EQUIPMENT_BOX_ARRAY << SOUL_JEWEL_TAB_BOX
+
+        SOUL_JEWEL_TAB_TEXT = Ui_Elements::Ui_TextBase.new("Soul Jewels", "EquText03", SF::Text.new(SOUL_JEWEL_TAB_BOX.name, QUICKSAND, 16))
+        EQUIPMENT_TEXT_ARRAY << SOUL_JEWEL_TAB_TEXT
+
         def self.position_equipment_category_elements(window)
             current_size = window.size
             original_width = 800 
@@ -47,6 +54,9 @@ module EquipmentInventory
 
          SOUL_ORB_TAB_BOX.sprite.position = WEAPON_TAB_BOX.sprite.position + SF.vector2(0, 26 * max_scale)
          SOUL_ORB_TAB_TEXT.text.position = SOUL_ORB_TAB_BOX.sprite.position + SF.vector2(6 * max_scale, 4 * max_scale)
+
+         SOUL_JEWEL_TAB_BOX.sprite.position = SOUL_ORB_TAB_BOX.sprite.position + SF.vector2(0, 26 * max_scale)
+         SOUL_JEWEL_TAB_TEXT.text.position = SOUL_JEWEL_TAB_BOX.sprite.position + SF.vector2(3 * max_scale, 4 * max_scale)
         end
 
         def self.draw_equipment_tabs(window)
@@ -66,6 +76,8 @@ module EquipmentInventory
                 EquipmentInventoryManager.current_tab = "weapon"
             elsif MouseHandling::ClickHandling.was_button_clicked?(SOUL_ORB_TAB_BOX.sprite, window)
                 EquipmentInventoryManager.current_tab = "soul_orb"
+            elsif MouseHandling::ClickHandling.was_button_clicked?(SOUL_JEWEL_TAB_BOX.sprite, window)
+                EquipmentInventoryManager.current_tab = "soul_jewel"
             end
         end
     end
@@ -159,6 +171,10 @@ module EquipmentInventory
             case tab
             when "weapon"
                 @@weapon_inventory.draw(window)
+            # when "soul_orb"
+            #     @@soul_orb_inventory.draw(window)
+            when "soul_jewel"
+                @@soul_jewel_inventory.draw(window)
             end
         end
 
@@ -166,6 +182,8 @@ module EquipmentInventory
             case EquipmentInventoryManager.current_tab
             when "weapon"
                 return @@weapon_inventory.page
+            when "soul_jewel"
+                return @@soul_jewel_inventory.page
             else
                 return 0
             end
@@ -174,12 +192,16 @@ module EquipmentInventory
             case EquipmentInventoryManager.current_tab
             when "weapon"
                 return @@weapon_inventory.max_page_count
+            when "soul_jewel"
+                return @@soul_jewel_inventory.max_page_count
             else
                 return 0
             end
         end
 
         @@weapon_inventory = EquipmentInventoryBase.new("Weapon Inventory", "weapon_inventory", 1, 0, "weapon", "default", Weapon::WeaponBase::OWNED_WEAPON_ARRAY)  
+
+        @@soul_jewel_inventory = EquipmentInventoryBase.new("Soul Jewel Inventory", "soul_jewel_inventory", 1, 0, "soul_jewel", "default", SoulJewel::SoulJewelBase::OWNED_SOUL_JEWEL_ARRAY)
     end
 
     

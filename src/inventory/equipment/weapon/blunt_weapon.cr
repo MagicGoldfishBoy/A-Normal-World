@@ -11,7 +11,7 @@ module BluntWeapon
     class BluntWeaponBase < Weapon::WeaponBase
         #include JSON::Serializable
 
-        DEFAULT_BLUNT_WEAPON_EQUIP_SFX = SFX::CombatSFX::BLUNT_SWING_SFX_01
+        DEFAULT_BLUNT_WEAPON_SFX = SFX::CombatSFX::BLUNT_SWING_SFX_01
 
         property name : String
         property id : String
@@ -46,8 +46,8 @@ module BluntWeapon
             #puts "added blunt weapon: #{self.name} with id: #{self.id} to the array."
         end
 
-        @@stick = BluntWeaponBase.new("Stick", "stick", false, SF::Sprite.new(WOODEN_STICK_TEXTURE), "It's a stick.", DEFAULT_BLUNT_WEAPON_EQUIP_SFX, 1_i8, 10_i64, 1, "blunt", "swing", 5.0, 50.0, SF::Clock.new)
+        @@stick = BluntWeaponBase.new("Stick", "stick", false, SF::Sprite.new(WOODEN_STICK_TEXTURE), "It's a stick.", DEFAULT_BLUNT_WEAPON_SFX, 1_i8, 10_i64, 1, "blunt", "swing", 5.0, 50.0, SF::Clock.new)
 
-        @@wooden_baseball_bat = BluntWeaponBase.new("Wooden Baseball Bat", "wooden_baseball_bat", false, SF::Sprite.new(WOODEN_BASEBALL_BAT_TEXTURE), "Thwack!", DEFAULT_BLUNT_WEAPON_EQUIP_SFX, 1_i8, 20_i64, 1, "blunt", "swing", 10.0, 60.0, SF::Clock.new)
+        @@wooden_baseball_bat = BluntWeaponBase.new("Wooden Baseball Bat", "wooden_baseball_bat", false, SF::Sprite.new(WOODEN_BASEBALL_BAT_TEXTURE), "Thwack!", SFX::CombatSFX::WOODEN_BASEBALL_BAT_SFX_01, 1_i8, 20_i64, 1, "blunt", "swing", 10.0, 60.0, SF::Clock.new)
     end
 end
