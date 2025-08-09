@@ -289,7 +289,12 @@
     #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
     #W                                         Weapon Textures                                          W
     #WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+     #-------------------------------------Blunt Weapon Textures----------------------------------------
+
         WOODEN_STICK_TEXTURE = SF::Texture.from_file("../graphics/Wooden_Stick.png") 
+
+        WOODEN_BASEBALL_BAT_TEXTURE = SF::Texture.from_file("../graphics/weapons/wooden_baseball_bat.png")
+
         WOODEN_TRAINING_SWORD_TEXTURE = SF::Texture.from_file("../graphics/Wooden_Training_Sword.png") 
         KITCHEN_KNIFE_TEXTURE = SF::Texture.from_file("../graphics/Kitchen_Knife.png") 
         BROKEN_BOTTLE_TEXTURE = SF::Texture.from_file("../graphics/Broken_Bottle.png") 

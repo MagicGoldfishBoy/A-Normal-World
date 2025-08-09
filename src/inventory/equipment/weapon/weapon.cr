@@ -43,7 +43,7 @@ module Weapon
         def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, weapon_type : String, attack_type : String, attack_strength : Float64, range : Float64, clock : SF::Clock)
             @name = name
             @id = id
-            @is_owned = is_owned
+            @is_owned = Settings::GameSettings.is_debug_mode ? true : is_owned
             @sprite = sprite
             @description = description
             @sfx = sfx

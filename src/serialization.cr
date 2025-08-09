@@ -129,7 +129,7 @@ module Serialization
       property pants : (Pants::PantsBase | Nil) = nil
       property shoes : (Shoes::ShoesBase | Nil) = nil
       property socks : (Socks::SocksBase | Nil) = nil
-      #property weapon : (Weapon::WeaponBase | Nil) = nil
+      property weapon : (Weapon::WeaponBase | Nil) = nil
 
       def initialize
         @version = 1
@@ -145,7 +145,7 @@ module Serialization
         @pants = nil
         @shoes = nil
         @socks = nil
-       # @weapon = nil
+        @weapon = nil
       end
     
       @[JSON::Field(ignore_unknown: true)]
@@ -168,7 +168,7 @@ module Serialization
         save.pants = Player::Appearance.pants
         save.shoes = Player::Appearance.shoes
         save.socks = Player::Appearance.socks
-        #save.weapon = Player::Appearance.weapon
+        save.weapon = Player::Appearance.weapon
 
         path = "saves/" + @@save_file.not_nil!
         Dir.mkdir_p(File.dirname(path))
@@ -334,18 +334,26 @@ module Serialization
       else
         Player::Appearance.socks = nil
       end
-      # if save.weapon
-      #   Player::Appearance.weapon = Weapon::WeaponBase.new(
-      #     name: save.weapon.as(Weapon::WeaponBase).name,
-      #     id: save.weapon.as(Weapon::WeaponBase).id,
-      #     sprite: Weapon::WeaponBase::WEAPON_SPRITE_HASH[save.weapon.as(Weapon::WeaponBase).id],
-      #     is_owned: save.weapon.as(Weapon::WeaponBase).is_owned,
-      #     color: save.weapon.as(Weapon::WeaponBase).color,
-      #     sfx: Weapon::WeaponBase::WEAPON_SFX_HASH[save.weapon.as(Weapon::WeaponBase).id]
-      #   )
-      # else
-      #   Player::Appearance.weapon = nil
-      # end
+      if save.weapon
+        Player::Appearance.weapon = Weapon::WeaponBase.new(
+          name: save.weapon.as(Weapon::WeaponBase).name,
+          id: save.weapon.as(Weapon::WeaponBase).id,
+          is_owned: save.weapon.as(Weapon::WeaponBase).is_owned,
+          sprite: Weapon::WeaponBase::WEAPON_SPRITE_HASH[save.weapon.as(Weapon::WeaponBase).id],
+          description: save.weapon.as(Weapon::WeaponBase).description,
+          sfx: Weapon::WeaponBase::WEAPON_SFX_HASH[save.weapon.as(Weapon::WeaponBase).id],
+          tier: save.weapon.as(Weapon::WeaponBase).tier,
+          base_monetary_value: save.weapon.as(Weapon::WeaponBase).base_monetary_value,
+          required_lvl: save.weapon.as(Weapon::WeaponBase).required_lvl,
+          weapon_type: save.weapon.as(Weapon::WeaponBase).weapon_type,
+          attack_type: save.weapon.as(Weapon::WeaponBase).attack_type,
+          attack_strength: save.weapon.as(Weapon::WeaponBase).attack_strength,
+          range: save.weapon.as(Weapon::WeaponBase).range,
+          clock: SF::Clock.new
+        )
+      else
+        Player::Appearance.weapon = nil
+      end
       Log.info &.emit("Game loaded", file: @@save_file.not_nil!)
  
     end
