@@ -147,6 +147,7 @@ module EquipmentInventory
                 if MouseHandling::ClickHandling.was_button_clicked?(item.sprite.as(SF::Sprite), window)
                     if item.is_a?(Weapon::WeaponBase)
                         Weapon::WeaponBase.swap_weapon(item.as(Weapon::WeaponBase))
+                        Weapon::WeaponBase::OWNED_WEAPON_ARRAY.reject! item
                     end
                     Sprites::Player.refresh_player_sprite(window)
                     break
