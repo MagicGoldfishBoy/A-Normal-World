@@ -299,6 +299,13 @@
         KITCHEN_KNIFE_TEXTURE = SF::Texture.from_file("../graphics/Kitchen_Knife.png") 
         BROKEN_BOTTLE_TEXTURE = SF::Texture.from_file("../graphics/Broken_Bottle.png") 
         BB_GUN_TEXTURE = SF::Texture.from_file("../graphics/bb_gun.png") 
+
+    #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+    #S                                         Soul Textures                                            S
+    #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+        SOUL_ORB_TEXTURE = SF::Texture.from_file("../graphics/soul_orb.png")
+        SOUL_JEWEL_TEXTURE = SF::Texture.from_file("../graphics/soul_jewel.png")
     
     #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
     #S                                         Socks Textures                                           S
