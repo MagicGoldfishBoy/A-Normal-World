@@ -123,18 +123,10 @@ module Keyboard
             if SF::Keyboard.key_pressed?(SF::Keyboard::I)
                 Hat::HatBase.remove_current_hat_from_inventory
                 MenuHandling::Window.is_inventory_open = !MenuHandling::Window.is_inventory_open
-                # Inventory::InventoryManager.is_inventory_open=(!Inventory::InventoryManager.is_inventory_open)
-                # Inventory::ClothingTabShirt.is_open=(!Inventory::ClothingTabShirt.is_open)
-                # Inventory::ClothingTabShirt.initialize_clothing_tab(window)
-                # Inventory::WeaponTab.initialize_equipment_tab(window)
-                # Inventory::ClothingTabShirt.assign_slot_textures(window)
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::E)
-                #Inventory::ConsumableTab.add_item(Consumables::Consumables_base.get_consumable("Small HP Potion").not_nil!, 51)
-                #Player::Stats.current_hp = Player::Stats.current_hp - 2
-                Serialization::LevelFile.save_level("test2")
-                #Serialization::LevelFile.load_level("serialization_fucking_sucks")
+                MenuHandling::Window.is_equipped_items_window_open = !MenuHandling::Window.is_equipped_items_window_open
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::A)
