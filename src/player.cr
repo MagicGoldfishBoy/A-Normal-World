@@ -160,27 +160,16 @@ module Player
         @@face = face
         @hat = hat
         @glasses = glasses
-        @@glasses = glasses
         @earrings = earrings
-        @@earrings = earrings
         @shirt = shirt
-        @@shirt = shirt
         @gloves = gloves
-        @@gloves = gloves
         @pants = pants
-        @@pants = pants
         @shoes = shoes
-        @@shoes = shoes
         @socks = socks
-        @@socks = socks
         @makeup = makeup
-        @@makeup = makeup
         @necklace = necklace
-        @@necklace = necklace
         @jacket = jacket
-        @@jacket = jacket
         @weapon = weapon
-        @@weapon = weapon
     end
 
     class_property skin : String = "pale_skin"
@@ -217,18 +206,6 @@ module Player
         @@skin = "pale_skin"
         @@hair = "Black Shounen Hair"
         @@face = "Pink Shounen Eyes"
-        @@hat = nil
-        @@earrings = nil
-        @@shirt = nil
-        @@gloves = nil
-        @@pants = nil
-        @@shoes = nil
-        @@socks = nil
-        @@makeup = nil
-        @@necklace = nil
-        @@glasses = nil
-        @@jacket = nil
-        @@weapon = nil
     end
 
     def Appearance.get_clothing(this)
@@ -239,30 +216,6 @@ module Player
             return @@hair
         when "face"
             return @@face
-        when "hat"
-            return nil#@@hat
-        when "earrings"
-            return nil#@@earrings
-        when "shirt"
-            return nil#@@shirt
-        when "gloves"
-            return nil#@@gloves
-        when "pants"
-            return nil#@@pants
-        when "shoes"
-            return nil#@@shoes
-        when "socks"
-            return nil#@@socks
-        when "glasses"
-            return nil#@@glasses
-        when "makeup"
-            return nil#@@makeup
-        when "necklace"
-            return nil#@@necklace
-        when "jacket"
-            return nil#@@jacket
-        when "weapon"
-            return nil#@@weapon
         end
     end
 
@@ -276,54 +229,6 @@ module Player
 
     def Appearance.change_face(face)
         @@face = face
-    end
-
-    def Appearance.change_hat(hat)
-        @@hat = hat
-    end
-
-    def Appearance.change_glasses(glasses)
-        @@glasses = glasses
-    end
-
-    def Appearance.change_makeup(makeup)
-        @@makeup = makeup
-    end
-
-    def Appearance.change_necklace(necklace)
-        @@necklace = necklace
-    end
-
-    def Appearance.change_jacket(jacket)
-        @@jacket = jacket
-    end
-
-    def Appearance.change_earrings(earrings)
-        @@earrings = earrings
-    end
-
-    def Appearance.change_shirt(shirt)
-        @@shirt = shirt
-    end
-
-    def Appearance.change_pants(pants)
-        @@pants = pants
-    end
-
-    def Appearance.change_shoes(shoes)
-        @@shoes = shoes
-    end
-
-    def Appearance.change_socks(socks)
-        @@socks = socks
-    end
-
-    def Appearance.change_weapon(weapon)
-        @@weapon = weapon
-    end
-
-    def Appearance.change_gloves(gloves)
-        @@gloves = gloves
     end
  end
 end
