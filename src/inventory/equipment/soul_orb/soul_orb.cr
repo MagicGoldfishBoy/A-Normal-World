@@ -1,4 +1,5 @@
 require "log"
+require "json"
 require "crsfml"
 require "crsfml/audio"
 require "../../../../src/game_settings.cr"
