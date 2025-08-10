@@ -9,6 +9,7 @@ require "../window/hud_window.cr"
 require "../window/stats_window.cr"
 require "../window/decor_window.cr"
 require "../window/inventory_window.cr"
+require "../window/equipped_items_window.cr"
 
 #menus take up the whole screen, guis overlay gameplay, windows are smoll
 
@@ -70,17 +71,19 @@ module MenuHandling
         end
     end
     class Window
-        def initialize(is_hud_window_open : Bool, is_stats_window_open : Bool, is_decor_window_open : Bool, is_inventory_open : Bool)
+        def initialize(is_hud_window_open : Bool, is_stats_window_open : Bool, is_decor_window_open : Bool, is_inventory_open : Bool, is_equipped_items_window_open : Bool)
             @is_hud_window_open = is_hud_window_open
             @is_stats_window_open = is_stats_window_open
             @is_decor_window_open = is_decor_window_open
             @is_inventory_open = is_inventory_open
+            @is_equipped_items_window_open = is_equipped_items_window_open
         end
 
         class_property is_hud_window_open : Bool = false
         class_property is_stats_window_open : Bool = false
         class_property is_decor_window_open : Bool = false
         class_property is_inventory_open : Bool = false
+        class_property is_equipped_items_window_open : Bool = false
 
         def self.draw_window(window)
             if self.is_hud_window_open == true
@@ -94,6 +97,9 @@ module MenuHandling
             end
             if self.is_inventory_open == true
                 InventoryWindow::InventoryWindowDisplay.display(window)
+            end
+            if self.is_equipped_items_window_open == true
+                EquippedItemsWindow::EquippedItemsWindowDisplay.display(window)
             end
         end
     end
