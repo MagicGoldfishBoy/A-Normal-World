@@ -2,6 +2,7 @@ require "../src/textures.cr"
 require "../src/sprites.cr"
 require "../src/effects.cr"
 require "../src/locations/maps.cr"
+require "../src/inventory/equipment/soul_orb/soul_orb.cr"
 
 module Player
   class Stats
@@ -151,7 +152,7 @@ module Player
     def initialize(skin : String, hair : String, face : String, hat : Hat::HatBase | Nil, glasses : Glasses::GlassesBase | Nil, 
         earrings : Earrings::EarringsBase | Nil, shirt : String, gloves : Gloves::GlovesBase | Nil, pants : Pants::PantsBase | Nil, 
         shoes : Shoes::ShoesBase | Nil, socks : Socks::SocksBase | Nil, makeup : Makeup::MakeupBase | Nil, 
-        necklace : Necklace::NecklaceBase | Nil, jacket : Jacket::JacketBase | Nil, weapon : Weapon::WeaponBase | Nil)
+        necklace : Necklace::NecklaceBase | Nil, jacket : Jacket::JacketBase | Nil, weapon : Weapon::WeaponBase | Nil, soul_orb : SoulOrb::SoulOrbBase | Nil)
         @skin = skin
         @@skin = skin
         @hair = hair
@@ -170,6 +171,7 @@ module Player
         @necklace = necklace
         @jacket = jacket
         @weapon = weapon
+        @soul_orb = soul_orb
     end
 
     class_property skin : String = "pale_skin"
@@ -201,6 +203,8 @@ module Player
     class_property jacket : Jacket::JacketBase | Nil = nil
 
     class_property weapon : Weapon::WeaponBase | Nil = nil
+
+    class_property soul_orb : SoulOrb::SoulOrbBase | Nil = nil
 
     def Appearance.initialize_player_model
         @@skin = "pale_skin"
