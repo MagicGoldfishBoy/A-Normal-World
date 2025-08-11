@@ -126,6 +126,7 @@ module Keyboard
                 sleep 0.25.seconds
             end
             if SF::Keyboard.key_pressed?(SF::Keyboard::E)
+                EquippedItemsWindow::EquippedItemsWindowElements.position_elements(window, false)
                 MenuHandling::Window.is_equipped_items_window_open = !MenuHandling::Window.is_equipped_items_window_open
                 sleep 0.25.seconds
             end
