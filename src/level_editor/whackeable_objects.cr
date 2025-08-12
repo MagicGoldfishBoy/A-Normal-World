@@ -236,13 +236,22 @@ module WhackeableObject
         @@fire_agate_ore_01 = Ore.new("Fire Agate Ore", "fire_agate_ore_01", 0, 0,
         SF::Sprite.new(FIRE_AGATE_ORE_01, SF::Rect.new(0, 0, 40, 80)), 500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
 
-        @@turquoise_ore_01 = Ore.new("Turquoise Ore", "turquoise_ore_01", 0, 0, SF::Sprite.new(TURQUOISE_ORE_01, SF::Rect.new(0, 0, 40, 80)),
+
+        @@peridot_ore_01 = Ore.new("Peridot Ore", "peridot_ore_01", 0, 0, SF::Sprite.new(PERIDOT_ORE_01, SF::Rect.new(0, 0, 40, 80)),
         500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
+
+        @@peridot_ore_02 = Ore.new("Peridot Ore 02", "peridot_ore_02", 0, 0, SF::Sprite.new(PERIDOT_ORE_02, SF::Rect.new(0, 0, 40, 80)),
+        500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
+
 
         @@topaz_ore_01 = Ore.new("Topaz Ore", "topaz_ore_01", 0, 0, SF::Sprite.new(TOPAZ_ORE_01, SF::Rect.new(0, 0, 40, 80)),
         500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
 
         @@topaz_ore_02 = Ore.new("Topaz Ore 02", "topaz_ore_02", 0, 0, SF::Sprite.new(TOPAZ_ORE_02, SF::Rect.new(0, 0, 40, 80)),
+        500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
+
+
+        @@turquoise_ore_01 = Ore.new("Turquoise Ore", "turquoise_ore_01", 0, 0, SF::Sprite.new(TURQUOISE_ORE_01, SF::Rect.new(0, 0, 40, 80)),
         500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
     end
 end

@@ -391,8 +391,15 @@
     #------------------------------------------------ores----------------------------------------------
         FIRE_AGATE_ORE_01 = SF::Texture.from_file("../graphics/level_assets/fire_agate_ore_01.png")
 
-        TURQUOISE_ORE_01 = SF::Texture.from_file("../graphics/level_assets/turquoise_ore_01.png")
+
+        PERIDOT_ORE_01 = SF::Texture.from_file("../graphics/level_assets/peridot_ore_01.png")
+
+        PERIDOT_ORE_02 = SF::Texture.from_file("../graphics/level_assets/peridot_ore_02.png")
+
 
         TOPAZ_ORE_01 = SF::Texture.from_file("../graphics/level_assets/topaz_ore_01.png")
 
         TOPAZ_ORE_02 = SF::Texture.from_file("../graphics/level_assets/topaz_ore_02.png")
+
+        
+        TURQUOISE_ORE_01 = SF::Texture.from_file("../graphics/level_assets/turquoise_ore_01.png")
