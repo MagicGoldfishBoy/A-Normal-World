@@ -304,9 +304,9 @@
     #S                                         Soul Textures                                            S
     #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
-        SOUL_ORB_TEXTURE = SF::Texture.from_file("../graphics/soul_orb.png")
-        SOUL_JEWEL_TEXTURE = SF::Texture.from_file("../graphics/soul_jewel.png")
-    
+        SOUL_ORB_TEXTURE = SF::Texture.from_file("../graphics/soul_equips/soul_orb.png")
+        SOUL_JEWEL_TEXTURE = SF::Texture.from_file("../graphics/soul_equips/soul_jewel.png")
+
     #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
     #S                                         Socks Textures                                           S
     #SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
@@ -401,5 +401,5 @@
 
         TOPAZ_ORE_02 = SF::Texture.from_file("../graphics/level_assets/topaz_ore_02.png")
 
-        
+
         TURQUOISE_ORE_01 = SF::Texture.from_file("../graphics/level_assets/turquoise_ore_01.png")

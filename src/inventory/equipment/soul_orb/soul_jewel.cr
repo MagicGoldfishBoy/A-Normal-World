@@ -47,10 +47,16 @@ module SoulJewel
 
             Log.info &.emit("Soul Jewel Initialized", jewel_name: self.name, jewel_id: self.id, is_owned: self.is_owned)
         end
+    end
+    class StatBuffingSoulJewel < SoulJewelBase
 
-        #TODO: complete this when possible
+        property buff_type : String
+        property buff_value : Float64
 
-        def self.slot_jewel_into_orb
+        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, jewel_type : String, buff_type : String, buff_value : Float64)
+            super(name, id, is_owned, sprite, description, sfx, tier, base_monetary_value, required_lvl, jewel_type)
+            @buff_type = buff_type
+            @buff_value = buff_value
         end
     end
 end
