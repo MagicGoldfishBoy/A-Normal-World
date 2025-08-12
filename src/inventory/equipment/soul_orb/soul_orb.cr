@@ -33,9 +33,9 @@ module SoulOrb
         property required_lvl : Int32
 
         property max_slots : Int8
-        property slot_array : Array(SoulJewel::SoulJewelBase)?
+        property slot_array : Array(SoulJewel::SoulJewelBase)
 
-        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32)
+        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, max_slots : Int8, slot_array : Array(SoulJewel::SoulJewelBase))
             @name = name
             @id = id
             @is_owned = Settings::GameSettings.is_debug_mode ? true : is_owned
@@ -47,8 +47,25 @@ module SoulOrb
             @required_lvl = required_lvl
             @max_slots = max_slots
             @slot_array = slot_array
+
+            if self.is_owned
+                OWNED_SOUL_ORB_ARRAY << self
+            end
+
+            SOUL_ORB_SPRITE_HASH[id] = sprite
+            SOUL_ORB_SFX_HASH[id] = sfx
+
+            SOUL_ORB_ARRAY << self
             
             Log.info &.emit("Soul Orb Initialized", soul_orb_name: self.name, soul_orb_id: self.id, is_owned: self.is_owned)
         end
+    end
+    class ShittySoulOrb < SoulOrbBase
+
+        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, max_slots : Int8, slot_array : Array(SoulJewel::SoulJewelBase))
+            super(name, id, is_owned, sprite, description, sfx, tier, base_monetary_value, required_lvl, max_slots, slot_array)
+        end
+
+        @@faint_soul_orb = ShittySoulOrb.new("Faint Soul Orb", "soul_orb_01", false, SF::Sprite.new(SOUL_ORB_TEXTURE, SF::Rect.new(0, 0, 80, 80)), "A Soul Orb™ that will die soon", DEFAULT_SOUL_ORB_EQUIP_SFX, 1, 100, 1, 1, [] of SoulJewel::SoulJewelBase)
     end
 end

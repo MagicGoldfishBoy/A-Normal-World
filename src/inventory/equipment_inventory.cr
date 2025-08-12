@@ -9,6 +9,7 @@ require "../../src/inventory/equipment/equipment.cr"
 require "../../src/inventory/equipment/weapon/weapon.cr"
 require "../../src/inventory/equipment/weapon/blunt_weapon.cr"
 require "../../src/inventory/equipment/soul_orb/soul_jewel.cr"
+require "../../src/inventory/equipment/soul_orb/soul_orb.cr"
 
 module EquipmentInventory
     class EquipmentInventoryManager
@@ -134,9 +135,13 @@ module EquipmentInventory
 
             item.sprite.as(SF::Sprite).position = current_pos
 
-            item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(300, 690, 70, 50)
-            # item.sprite.as(SF::Sprite).scale = SF.vector2(2.25, 2.25)
-            # item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(2, 5) 
+            if EquipmentInventoryManager.current_tab == "weapon"
+                item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(300, 690, 70, 50)
+            end
+            if EquipmentInventoryManager.current_tab == "soul_orb"
+                # item.sprite.as(SF::Sprite).scale = SF.vector2(2.25, 2.25)
+                item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(15, 15)
+            end
 
             window.draw(item.sprite.as(SF::Sprite))
         
@@ -171,8 +176,8 @@ module EquipmentInventory
             case tab
             when "weapon"
                 @@weapon_inventory.draw(window)
-            # when "soul_orb"
-            #     @@soul_orb_inventory.draw(window)
+            when "soul_orb"
+                @@soul_orb_inventory.draw(window)
             when "soul_jewel"
                 @@soul_jewel_inventory.draw(window)
             end
@@ -182,6 +187,8 @@ module EquipmentInventory
             case EquipmentInventoryManager.current_tab
             when "weapon"
                 return @@weapon_inventory.page
+            when "soul_orb"
+                return @@soul_orb_inventory.page
             when "soul_jewel"
                 return @@soul_jewel_inventory.page
             else
@@ -192,6 +199,8 @@ module EquipmentInventory
             case EquipmentInventoryManager.current_tab
             when "weapon"
                 return @@weapon_inventory.max_page_count
+            when "soul_orb"
+                return @@soul_orb_inventory.max_page_count
             when "soul_jewel"
                 return @@soul_jewel_inventory.max_page_count
             else
@@ -202,6 +211,8 @@ module EquipmentInventory
         @@weapon_inventory = EquipmentInventoryBase.new("Weapon Inventory", "weapon_inventory", 1, 0, "weapon", "default", Weapon::WeaponBase::OWNED_WEAPON_ARRAY)  
 
         @@soul_jewel_inventory = EquipmentInventoryBase.new("Soul Jewel Inventory", "soul_jewel_inventory", 1, 0, "soul_jewel", "default", SoulJewel::SoulJewelBase::OWNED_SOUL_JEWEL_ARRAY)
+
+        @@soul_orb_inventory = EquipmentInventoryBase.new("Soul Orb Inventory", "soul_orb_inventory", 1, 0, "soul_orb", "default", SoulOrb::SoulOrbBase::OWNED_SOUL_ORB_ARRAY)
     end
 
     
