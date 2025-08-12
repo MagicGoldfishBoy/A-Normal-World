@@ -139,8 +139,11 @@ module EquipmentInventory
                 item.sprite.as(SF::Sprite).texture_rect = SF::Rect.new(300, 690, 70, 50)
             end
             if EquipmentInventoryManager.current_tab == "soul_orb"
-                # item.sprite.as(SF::Sprite).scale = SF.vector2(2.25, 2.25)
-                item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(15, 15)
+                item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(10, 15)
+            end
+            if EquipmentInventoryManager.current_tab == "soul_jewel"
+                item.sprite.as(SF::Sprite).scale = SF.vector2(2.0, 2.0)
+                item.sprite.as(SF::Sprite).position = current_pos - SF.vector2(10, 15)
             end
 
             window.draw(item.sprite.as(SF::Sprite))
