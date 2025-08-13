@@ -78,12 +78,18 @@ module SoulOrb
         end
 
     end
-    class ShittySoulOrb < SoulOrbBase
+    class BasicSoulOrb < SoulOrbBase
 
         def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, max_slots : Int8, slot_array : Array(SoulJewel::SoulJewelBase))
             super(name, id, is_owned, sprite, description, sfx, tier, base_monetary_value, required_lvl, max_slots, slot_array)
         end
 
-        @@faint_soul_orb = ShittySoulOrb.new("Faint Soul Orb", "soul_orb_01", false, SF::Sprite.new(SOUL_ORB_TEXTURE, SF::Rect.new(0, 0, 80, 80)), "A Soul Orb™ that will die soon", DEFAULT_SOUL_ORB_EQUIP_SFX, 1, 100, 1, 1, [] of SoulJewel::SoulJewelBase)
+        @@faint_soul_orb = BasicSoulOrb.new("Faint Soul Orb", "soul_orb_01", false, SF::Sprite.new(SOUL_ORB_TEXTURE, SF::Rect.new(0, 0, 80, 80)), "A Soul Orb™ that will die soon", DEFAULT_SOUL_ORB_EQUIP_SFX, 0, 100, 1, 1, [] of SoulJewel::SoulJewelBase)
+
+        @@fading_soul_orb = BasicSoulOrb.new("Fading Soul Orb", "soul_orb_02", false, SF::Sprite.new(SOUL_ORB_TEXTURE, SF::Rect.new(80, 0, 80, 80)), "A Soul Orb™ that is fading away", DEFAULT_SOUL_ORB_EQUIP_SFX, 1, 100, 1, 2, [] of SoulJewel::SoulJewelBase)
+
+        @@used_soul_orb = BasicSoulOrb.new("Used Soul Orb", "soul_orb_03", false, SF::Sprite.new(SOUL_ORB_TEXTURE, SF::Rect.new(160, 0, 80, 80)), "A Soul Orb™ that has been used. Gross.", DEFAULT_SOUL_ORB_EQUIP_SFX, 2, 100, 1, 3, [] of SoulJewel::SoulJewelBase)
+
+        @@wasted_soul_orb = BasicSoulOrb.new("Wasted Soul Orb", "soul_orb_04", false, SF::Sprite.new(SOUL_ORB_TEXTURE, SF::Rect.new(240, 0, 80, 80)), "A Soul Orb™ that has been wasted. It was still in the package.", DEFAULT_SOUL_ORB_EQUIP_SFX, 3, 100, 1, 4, [] of SoulJewel::SoulJewelBase)
     end
 end
