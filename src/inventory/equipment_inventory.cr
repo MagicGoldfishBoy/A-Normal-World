@@ -164,14 +164,19 @@ module EquipmentInventory
 
         def mouse_handling(window)
             self.array.each do |item|
-                if MouseHandling::ClickHandling.was_button_clicked?(item.sprite.as(SF::Sprite), window)
-                    if item.is_a?(Weapon::WeaponBase)
-                        Weapon::WeaponBase.swap_weapon(item.as(Weapon::WeaponBase))
-                        Weapon::WeaponBase::OWNED_WEAPON_ARRAY.reject! item
-                    end
-                    Sprites::Player.refresh_player_sprite(window)
-                    break
+            if MouseHandling::ClickHandling.was_button_clicked?(item.sprite.as(SF::Sprite), window)
+                if item.is_a?(Weapon::WeaponBase)
+                Weapon::WeaponBase.swap_weapon(item.as(Weapon::WeaponBase))
+                Weapon::WeaponBase::OWNED_WEAPON_ARRAY.reject! item
                 end
+                Sprites::Player.refresh_player_sprite(window)
+                break
+            end
+            end
+            if MouseHandling::ClickHandling.was_button_clicked?(InventoryWindow::InventoryWindowElements::LEFT_ARROW.sprite, window)
+            self.page = (self.page - 1) < 0 ? 0 : self.page - 1
+            elsif MouseHandling::ClickHandling.was_button_clicked?(InventoryWindow::InventoryWindowElements::RIGHT_ARROW.sprite, window)
+            self.page = (self.page + 1) >= self.max_page_count ? self.max_page_count - 1 : self.page + 1
             end
         end
 
