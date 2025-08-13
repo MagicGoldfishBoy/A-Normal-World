@@ -124,4 +124,22 @@ module SoulJewel
 
         @@glowing_soul_fire_agate = ElementalSoulJewel.new("Glowing Soul Fire Agate", "glowing_soul_fire_agate", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(80, 120, 40, 40)), "A glowing fire agate jewel with a powerful soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 4_i8, 400_i64, 1, "fire_agate", "fire", 20.0)
     end
+    class DropSoulJewel < SoulJewelBase
+        property drop_type : String
+        property drop_value : Float64
+
+        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, jewel_type : String, drop_type : String, drop_value : Float64)
+            super(name, id, is_owned, sprite, description, sfx, tier, base_monetary_value, required_lvl, jewel_type)
+            @drop_type = drop_type
+            @drop_value = drop_value
+        end
+
+        @@soul_dull_citrine = DropSoulJewel.new("Soul Dull Citrine", "soul_dull_citrine", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(160, 0, 40, 40)), "A dull citrine jewel with little time left.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 1_i8, 100_i64, 1, "citrine", "money", 5.0)
+
+        @@soul_citrine = DropSoulJewel.new("Soul Citrine", "soul_citrine", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(160, 40, 40, 40)), "A citrine jewel imbued with a mediocre soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 2_i8, 200_i64, 1, "citrine", "money", 10.0)
+
+        @@sparkling_soul_citrine = DropSoulJewel.new("Sparkling Soul Citrine", "sparkling_soul_citrine", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(160, 80, 40, 40)), "A sparkling citrine jewel with a strong soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 3_i8, 300_i64, 1, "citrine", "money", 15.0)
+
+        @@glowing_soul_citrine = DropSoulJewel.new("Glowing Soul Citrine", "glowing_soul_citrine", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(160, 120, 40, 40)), "A glowing citrine jewel with a powerful soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 4_i8, 400_i64, 1, "citrine", "money", 20.0)
+    end
 end
