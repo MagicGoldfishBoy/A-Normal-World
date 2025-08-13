@@ -123,6 +123,15 @@ module SoulJewel
         @@sparkling_soul_fire_agate = ElementalSoulJewel.new("Sparkling Soul Fire Agate", "sparkling_soul_fire_agate", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(80, 80, 40, 40)), "A sparkling fire agate jewel with a strong soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 3_i8, 300_i64, 1, "fire_agate", "fire", 15.0)
 
         @@glowing_soul_fire_agate = ElementalSoulJewel.new("Glowing Soul Fire Agate", "glowing_soul_fire_agate", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(80, 120, 40, 40)), "A glowing fire agate jewel with a powerful soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 4_i8, 400_i64, 1, "fire_agate", "fire", 20.0)
+
+
+        @@soul_dull_quartz = ElementalSoulJewel.new("Soul Dull Quartz", "soul_dull_quartz", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(200, 0, 40, 40)), "A dull quartz jewel with little time left.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 1_i8, 100_i64, 1, "quartz", "electricity", 5.0)
+
+        @@soul_quartz = ElementalSoulJewel.new("Soul Quartz", "soul_quartz", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(200, 40, 40, 40)), "A quartz jewel imbued with a mediocre soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 2_i8, 200_i64, 1, "quartz", "electricity", 10.0)
+
+        @@sparkling_soul_quartz = ElementalSoulJewel.new("Sparkling Soul Quartz", "sparkling_soul_quartz", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(200, 80, 40, 40)), "A sparkling quartz jewel with a strong soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 3_i8, 300_i64, 1, "quartz", "electricity", 15.0)
+
+        @@glowing_soul_quartz = ElementalSoulJewel.new("Glowing Soul Quartz", "glowing_soul_quartz", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(200, 120, 40, 40)), "A glowing quartz jewel with a powerful soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 4_i8, 400_i64, 1, "quartz", "electricity", 20.0)
     end
     class DropSoulJewel < SoulJewelBase
         property drop_type : String
