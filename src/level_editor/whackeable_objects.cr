@@ -233,6 +233,9 @@ module WhackeableObject
 
     class Ore < WhackeableObjectBase
 
+        @@citrine_ore_01 = Ore.new("Citrine Ore", "citrine_ore_01", 0, 0, SF::Sprite.new(CITRINE_ORE_01, SF::Rect.new(0, 0, 40, 80)),
+        500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
+
         @@fire_agate_ore_01 = Ore.new("Fire Agate Ore", "fire_agate_ore_01", 0, 0,
         SF::Sprite.new(FIRE_AGATE_ORE_01, SF::Rect.new(0, 0, 40, 80)), 500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
 

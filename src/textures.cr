@@ -389,6 +389,10 @@
     #-----------------------------------------------dummies--------------------------------------------
         TRAINING_DUMMY_TEXTURE_01 = SF::Texture.from_file("../graphics/level_assets/training_dummy.png")
     #------------------------------------------------ores----------------------------------------------
+
+        CITRINE_ORE_01 = SF::Texture.from_file("../graphics/level_assets/citrine_ore_01.png")
+
+        
         FIRE_AGATE_ORE_01 = SF::Texture.from_file("../graphics/level_assets/fire_agate_ore_01.png")
 
 
