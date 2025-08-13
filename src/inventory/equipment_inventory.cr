@@ -178,7 +178,7 @@ module EquipmentInventory
             elsif MouseHandling::ClickHandling.was_button_clicked?(InventoryWindow::InventoryWindowElements::RIGHT_ARROW.sprite, window)
             self.page = (self.page + 1) >= self.max_page_count ? self.max_page_count - 1 : self.page + 1
             end
-        end
+        endz
 
         def self.draw_equipment_items(window, tab)
             case tab
