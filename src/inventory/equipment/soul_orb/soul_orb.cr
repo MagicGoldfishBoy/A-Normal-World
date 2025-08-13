@@ -59,6 +59,24 @@ module SoulOrb
             
             Log.info &.emit("Soul Orb Initialized", soul_orb_name: self.name, soul_orb_id: self.id, is_owned: self.is_owned)
         end
+        def self.swap_soul_orb(item : SoulOrbBase)
+            if item.as(SoulOrb::SoulOrbBase).sfx != nil
+                item.as(SoulOrb::SoulOrbBase).sfx.not_nil!.play
+            else
+                DEFAULT_SOUL_ORB_EQUIP_SFX.play
+                Log.warn &.emit("SFX not found!", soul_orb_id: item.as(SoulOrb::SoulOrbBase).id)
+            end
+
+            if Player::Appearance.soul_orb != nil
+                if SoulOrb::SoulOrbBase::OWNED_SOUL_ORB_ARRAY.none? { |owned_orb| owned_orb.id == Player::Appearance.soul_orb.as(SoulOrb::SoulOrbBase).id }
+                    SoulOrb::SoulOrbBase::OWNED_SOUL_ORB_ARRAY << Player::Appearance.soul_orb.as(SoulOrb::SoulOrbBase)
+                end
+            end
+
+            Player::Appearance.soul_orb = item.as(SoulOrb::SoulOrbBase)
+            #Log.info &.emit("Soul Orb Swapped", soul_orb_name: Player::Appearance.soul_orb.name, soul_orb_id: Player::Appearance.soul_orb.id, is_owned: Player::Appearance.soul_orb.is_owned)
+        end
+
     end
     class ShittySoulOrb < SoulOrbBase
 
