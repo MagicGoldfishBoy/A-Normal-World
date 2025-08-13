@@ -135,6 +135,10 @@ module EquippedItemsWindow
             clamped_scale = [scale_ratio, max_scale].min
 
             window.view = window.default_view
+
+            soul_orb_sprite = Player::Appearance.soul_orb != nil ? Player::Appearance.soul_orb.as(SoulOrb::SoulOrbBase).sprite : SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(0, 0, 100, 100))
+            soul_orb_sprite.not_nil!.position = EquippedItemsWindowElements::SOUL_ORB_SLOT_BOX.sprite.not_nil!.position + SF.vector2(7 * max_scale, 7 * max_scale)
+
             if EquippedItemsWindowManager.is_dragging
             mouse_position = SF::Mouse.get_position(window)
             drag_button_pos = EquippedItemsWindowElements::DRAG_BUTTON_BOX.sprite.position
@@ -169,6 +173,7 @@ module EquippedItemsWindow
                 window.draw(slot.sprite)
             }
             end
+            window.draw(soul_orb_sprite.not_nil!)
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
             self.mouse_handling(window)
             end
