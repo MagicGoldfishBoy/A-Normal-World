@@ -407,3 +407,9 @@
 
 
         TURQUOISE_ORE_01 = SF::Texture.from_file("../graphics/level_assets/turquoise_ore_01.png")
+
+
+        QUARTZ_ORE_01 = SF::Texture.from_file("../graphics/level_assets/quartz_ore_01.png") 
+
+        QUARTZ_ORE_02 = SF::Texture.from_file("../graphics/level_assets/quartz_ore_02.png")
+

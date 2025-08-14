@@ -256,5 +256,12 @@ module WhackeableObject
 
         @@turquoise_ore_01 = Ore.new("Turquoise Ore", "turquoise_ore_01", 0, 0, SF::Sprite.new(TURQUOISE_ORE_01, SF::Rect.new(0, 0, 40, 80)),
         500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
+
+        
+        @@quartz_ore_01 = Ore.new("Quartz Ore", "quartz_ore_01", 0, 0, SF::Sprite.new(QUARTZ_ORE_01, SF::Rect.new(0, 0, 40, 80)),
+        500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
+
+        @@quartz_ore_02 = Ore.new("Quartz Ore 02", "quartz_ore_02", 0, 0, SF::Sprite.new(QUARTZ_ORE_02, SF::Rect.new(0, 0, 40, 80)),
+        500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
     end
 end
