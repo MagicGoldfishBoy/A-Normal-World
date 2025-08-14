@@ -90,6 +90,6 @@ module SoulOrb
 
         @@used_soul_orb = BasicSoulOrb.new("Used Soul Orb", "soul_orb_03", false, SF::Sprite.new(SOUL_ORB_TEXTURE, SF::Rect.new(160, 0, 80, 80)), "A Soul Orb™ that has been used. Gross.", DEFAULT_SOUL_ORB_EQUIP_SFX, 2, 100, 1, 3, [] of SoulJewel::SoulJewelBase)
 
-        @@wasted_soul_orb = BasicSoulOrb.new("Wasted Soul Orb", "soul_orb_04", false, SF::Sprite.new(SOUL_ORB_TEXTURE, SF::Rect.new(240, 0, 80, 80)), "A Soul Orb™ that has been wasted. It was still in the package.", DEFAULT_SOUL_ORB_EQUIP_SFX, 3, 100, 1, 4, [] of SoulJewel::SoulJewelBase)
+        @@wasted_soul_orb = BasicSoulOrb.new("Wasted Soul Orb", "soul_orb_04", false, SF::Sprite.new(SOUL_ORB_TEXTURE, SF::Rect.new(240, 0, 80, 80)), "A Soul Orb™ that had been wasted. It was still in the package.", DEFAULT_SOUL_ORB_EQUIP_SFX, 3, 100, 1, 4, [] of SoulJewel::SoulJewelBase)
     end
 end

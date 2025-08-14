@@ -94,7 +94,11 @@ module EquippedItemsWindow
             window.view = window.default_view
 
             if is_dragging == false
-             EQUIPPED_ITEMS_WINDOW_BOX.sprite.position = SF.vector2(EquippedItemsWindowManager.window_position_x * max_scale, EquippedItemsWindowManager.window_position_y * max_scale)
+                        box_px = SF.vector2(
+            EquippedItemsWindowManager.window_position_x * clamped_scale,
+            EquippedItemsWindowManager.window_position_y * clamped_scale
+            )
+            EquippedItemsWindowElements::EQUIPPED_ITEMS_WINDOW_BOX.sprite.position = box_px
             end
 
             EQUIPMENT_TAB_BOX.sprite.position = EQUIPPED_ITEMS_WINDOW_BOX.sprite.position - SF.vector2(-2 * max_scale, 50)
@@ -122,7 +126,8 @@ module EquippedItemsWindow
 
     end
     class EquippedItemsWindowDisplay
-        @@drag_offset : SF::Vector2(Int32) | Nil = nil
+        @@drag_offset : SF::Vector2(Float64)? = nil
+
         def self.display(window)
             current_size = window.size
             original_width = 800 
@@ -140,24 +145,29 @@ module EquippedItemsWindow
             soul_orb_sprite.not_nil!.position = EquippedItemsWindowElements::SOUL_ORB_SLOT_BOX.sprite.not_nil!.position + SF.vector2(7 * max_scale, 7 * max_scale)
 
             if EquippedItemsWindowManager.is_dragging
-            mouse_position = SF::Mouse.get_position(window)
-            drag_button_pos = EquippedItemsWindowElements::DRAG_BUTTON_BOX.sprite.position
-            mouse_position_int = SF::Vector2.new(mouse_position.x.to_i, mouse_position.y.to_i)
-            drag_button_pos_int = SF::Vector2.new(drag_button_pos.x.to_i, drag_button_pos.y.to_i)
-            if @@drag_offset.nil?
-                @@drag_offset = mouse_position_int - drag_button_pos_int
-            end
-            box_pos = mouse_position_int - @@drag_offset.not_nil!
-            drag_button_offset = EquippedItemsWindowElements::DRAG_BUTTON_BOX.sprite.position - EquippedItemsWindowElements::EQUIPPED_ITEMS_WINDOW_BOX.sprite.position
-            box_pos = box_pos - SF::Vector2.new(drag_button_offset.x.to_i, drag_button_offset.y.to_i)
-            EquippedItemsWindowElements::EQUIPPED_ITEMS_WINDOW_BOX.sprite.position = SF::Vector2.new(box_pos.x.to_f, box_pos.y.to_f)
-            EquippedItemsWindowManager.window_position_x = EquippedItemsWindowElements::EQUIPPED_ITEMS_WINDOW_BOX.sprite.position.x / max_scale
-            EquippedItemsWindowManager.window_position_y = EquippedItemsWindowElements::EQUIPPED_ITEMS_WINDOW_BOX.sprite.position.y / max_scale
-            EquippedItemsWindowElements.position_elements(window, true)
+                mouse_px = window.map_pixel_to_coords(SF::Mouse.get_position(window))
+                mouse_log = SF.vector2(mouse_px.x / clamped_scale, mouse_px.y / clamped_scale)
+
+                box_px = EquippedItemsWindowElements::EQUIPPED_ITEMS_WINDOW_BOX.sprite.position
+                box_log = SF.vector2(box_px.x / clamped_scale, box_px.y / clamped_scale)
+
+                if @@drag_offset.nil?
+                    @@drag_offset = mouse_log - box_log
+                end
+
+                new_box_log = mouse_log - @@drag_offset.not_nil!
+                EquippedItemsWindowManager.window_position_x = new_box_log.x
+                EquippedItemsWindowManager.window_position_y = new_box_log.y
+
+                EquippedItemsWindowElements::EQUIPPED_ITEMS_WINDOW_BOX.sprite.position =
+                    SF.vector2(new_box_log.x * clamped_scale, new_box_log.y * clamped_scale)
+
+                EquippedItemsWindowElements.position_elements(window, true)
             else
-            @@drag_offset = nil
-            EquippedItemsWindowElements.position_elements(window, false)
+                @@drag_offset = nil
+                EquippedItemsWindowElements.position_elements(window, false)
             end
+
             EquippedItemsWindowElements::EQUIPPED_ITEMS_WINDOW_BOXES.each { |box|
             window.draw(box.sprite)
             }
@@ -173,7 +183,7 @@ module EquippedItemsWindow
                 window.draw(slot.sprite)
             }
             end
-            window.draw(soul_orb_sprite.not_nil!)
+            window.draw(soul_orb_sprite.not_nil!) #< this lags behind the window a bit when the window is dragged, but I think it's funny so it's staying like that
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
             self.mouse_handling(window)
             end
@@ -192,25 +202,5 @@ module EquippedItemsWindow
                 EquippedItemsWindowManager.is_dragging = true
             end
         end
-        #         def self.drag_window(window)
-        #     current_size = window.size
-        #     original_width = 800 
-        #     original_height = 600
-        #     scale_x = current_size.x.to_f / original_width
-        #     scale_y = current_size.y.to_f / original_height
-    
-        #     scale_ratio = [scale_x, scale_y].min
-        #     max_scale = 1.5
-        #     clamped_scale = [scale_ratio, max_scale].min
-
-        #     window.view = window.default_view
-        
-        #     while SF::Mouse.button_pressed?(SF::Mouse::Left)
-        #     EquippedItemsWindowElements::EQUIPPED_ITEMS_WINDOW_BOX.sprite.position = SF::Mouse.get_position(window) - SF.vector2(180 * max_scale, 5 * max_scale)
-        #     EquippedItemsWindowElements.position_elements(window, true)
-        #     EquippedItemsWindowDisplay.display(window)
-        #     end
-
-        # end
     end
 end
