@@ -92,4 +92,13 @@ module SoulOrb
 
         @@wasted_soul_orb = BasicSoulOrb.new("Wasted Soul Orb", "soul_orb_04", false, SF::Sprite.new(SOUL_ORB_TEXTURE, SF::Rect.new(240, 0, 80, 80)), "A Soul Orb™ that had been wasted. It was still in the package.", DEFAULT_SOUL_ORB_EQUIP_SFX, 3, 100, 1, 4, [] of SoulJewel::SoulJewelBase)
     end
+
+    class BossSoulOrb < SoulOrbBase
+
+        def initialize(name : String, id : String, is_owned : Bool, sprite : SF::Sprite, description : String, sfx : SF::Sound, tier : Int8, base_monetary_value : Int64, required_lvl : Int32, max_slots : Int8, slot_array : Array(SoulJewel::SoulJewelBase))
+            super(name, id, is_owned, sprite, description, sfx, tier, base_monetary_value, required_lvl, max_slots, slot_array)
+        end
+
+        @@lyssa_soul_orb = BossSoulOrb.new("Lyssa's Soul Orb", "soul_orb_lyssa", false, SF::Sprite.new(SOUL_ORB_TEXTURE, SF::Rect.new(0, 80, 80, 80)), "A Soul Orb™ that contains the soul of Lyssa.", DEFAULT_SOUL_ORB_EQUIP_SFX, 4, 1000, 10, 5, [] of SoulJewel::SoulJewelBase)
+    end
 end
