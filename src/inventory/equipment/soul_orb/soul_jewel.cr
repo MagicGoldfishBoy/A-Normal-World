@@ -150,5 +150,14 @@ module SoulJewel
         @@sparkling_soul_citrine = DropSoulJewel.new("Sparkling Soul Citrine", "sparkling_soul_citrine", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(160, 80, 40, 40)), "A sparkling citrine jewel with a strong soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 3_i8, 300_i64, 1, "citrine", "money", 15.0)
 
         @@glowing_soul_citrine = DropSoulJewel.new("Glowing Soul Citrine", "glowing_soul_citrine", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(160, 120, 40, 40)), "A glowing citrine jewel with a powerful soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 4_i8, 400_i64, 1, "citrine", "money", 20.0)
+
+
+        @@soul_dull_red_beryl = DropSoulJewel.new("Soul Dull Red Beryl", "soul_dull_red_beryl", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(240, 0, 40, 40)), "A dull red beryl jewel with little time left.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 1_i8, 100_i64, 1, "red_beryl", "item", 5.0)
+
+        @@soul_red_beryl = DropSoulJewel.new("Soul Red Beryl", "soul_red_beryl", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(240, 40, 40, 40)), "A red beryl jewel imbued with a mediocre soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 2_i8, 200_i64, 1, "red_beryl", "item", 10.0)
+
+        @@sparkling_soul_red_beryl = DropSoulJewel.new("Sparkling Soul Red Beryl", "sparkling_soul_red_beryl", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(240, 80, 40, 40)), "A sparkling red beryl jewel with a strong soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 3_i8, 300_i64, 1, "red_beryl", "item", 15.0)
+
+        @@glowing_soul_red_beryl = DropSoulJewel.new("Glowing Soul Red Beryl", "glowing_soul_red_beryl", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(240, 120, 40, 40)), "A glowing red beryl jewel with a powerful soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 4_i8, 400_i64, 1, "red_beryl", "item", 20.0)
     end
 end
