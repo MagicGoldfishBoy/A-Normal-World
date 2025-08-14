@@ -47,8 +47,8 @@ module EquippedItemsWindow
         SOUL_ORB_SLOT_BOX = Ui_Elements::Ui_BoxBase.new("Head Slot", "EquItemBox04", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
         EQUIPMENT_SLOTS << SOUL_ORB_SLOT_BOX
 
-        CATALYST_SLOT_BOX = Ui_Elements::Ui_BoxBase.new("Catalyst Slot", "EquItemBox05", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
-        EQUIPMENT_SLOTS << CATALYST_SLOT_BOX
+        WEAPON_SLOT_BOX = Ui_Elements::Ui_BoxBase.new("Weapon Slot", "EquItemBox05", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 700, 100, 100)), 100.0, 100.0, 1)
+        EQUIPMENT_SLOTS << WEAPON_SLOT_BOX
 
         JEWEL_SLOT_BOX_01 = Ui_Elements::Ui_BoxBase.new("Jewelry Slot 1", "EquItemBox06", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 850, 50, 50)), 50.0, 50.0, 2)
         EQUIPMENT_SLOTS << JEWEL_SLOT_BOX_01 #This is only for testing, when soul orbs and jewels are fully implemented the slots should be removed from this array and only display based on the amount of slots
@@ -109,7 +109,7 @@ module EquippedItemsWindow
 
             SOUL_ORB_SLOT_BOX.sprite.position = EQUIPPED_ITEMS_WINDOW_BOX.sprite.position + SF.vector2(65 * max_scale, 50 * max_scale)
 
-            CATALYST_SLOT_BOX.sprite.position = EQUIPPED_ITEMS_WINDOW_BOX.sprite.position + SF.vector2(65 * max_scale, 200 * max_scale)
+            WEAPON_SLOT_BOX.sprite.position = EQUIPPED_ITEMS_WINDOW_BOX.sprite.position + SF.vector2(65 * max_scale, 200 * max_scale)
 
             JEWEL_SLOT_BOX_01.sprite.position = EQUIPPED_ITEMS_WINDOW_BOX.sprite.position + SF.vector2(80 * max_scale, 10 * max_scale)
             JEWEL_SLOT_BOX_02.sprite.position = EQUIPPED_ITEMS_WINDOW_BOX.sprite.position + SF.vector2(138 * max_scale, 10 * max_scale)
@@ -144,6 +144,8 @@ module EquippedItemsWindow
             soul_orb_sprite = Player::Appearance.soul_orb != nil ? Player::Appearance.soul_orb.as(SoulOrb::SoulOrbBase).sprite : SF::Sprite.new
             soul_orb_sprite.not_nil!.position = EquippedItemsWindowElements::SOUL_ORB_SLOT_BOX.sprite.not_nil!.position + SF.vector2(7 * max_scale, 7 * max_scale)
 
+
+
             if EquippedItemsWindowManager.is_dragging
                 mouse_px = window.map_pixel_to_coords(SF::Mouse.get_position(window))
                 mouse_log = SF.vector2(mouse_px.x / clamped_scale, mouse_px.y / clamped_scale)
@@ -168,6 +170,10 @@ module EquippedItemsWindow
                 EquippedItemsWindowElements.position_elements(window, false)
             end
 
+            weapon_sprite = Player::Appearance.weapon != nil ? Player::Appearance.weapon.as(Weapon::WeaponBase).sprite : SF::Sprite.new
+            weapon_sprite.not_nil!.position = EquippedItemsWindowElements::WEAPON_SLOT_BOX.sprite.not_nil!.position + SF.vector2(5 * max_scale, 5 * max_scale)
+            weapon_sprite.not_nil!.scale = SF.vector2(1.05 * max_scale, 1.05 * max_scale)
+
             EquippedItemsWindowElements::EQUIPPED_ITEMS_WINDOW_BOXES.each { |box|
             window.draw(box.sprite)
             }
@@ -184,6 +190,7 @@ module EquippedItemsWindow
             }
             end
             window.draw(soul_orb_sprite.not_nil!) #< this lags behind the window a bit when the window is dragged, but I think it's funny so it's staying like that
+            window.draw(weapon_sprite.not_nil!)
             if SF::Mouse.button_pressed?(SF::Mouse::Left)
             self.mouse_handling(window)
             end
