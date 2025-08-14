@@ -553,6 +553,10 @@ module Serialization
 
       LevelEditor::LevelEditorLogic.update_spawned_element_array
   end
+
+  class DropTables
+    include JSON::Serializable
+  end
 end
   
 end

@@ -10,13 +10,6 @@ require "../src/sound/music_handling.cr"
 
 puts "A Normal World"
 
-#  ___
-# (. .)  < This rude ass bitch refused to believe me when I told her where the cheese is, then bitched at me because she couldn't find it
-#(  *  )   
-#((___))
-# 0   0
-#TODO: add screaming trees lol
-#5005
 module GameLoop
   VERSION = "0.1.0"
   @[Link("GL")]
@@ -47,16 +40,6 @@ while window.open?
         MouseHandling::ClickHandling.update_mouse_position(window)
       end
       MouseHandling::ClickHandling.update_if_can_click(event)
-      # if event.is_a? SF::Event::MouseButtonReleased
-      #   if event.button.left?
-      #     MouseHandling::ClickHandling.can_click = true
-      #   end
-      # end
-      # if event.is_a? SF::Event::TextEntered
-      #   if event.unicode < 128
-      #     puts "ASCII character typed: #{event.unicode.chr}"
-      #   end
-      # end
     end
 
 
@@ -80,7 +63,6 @@ while window.open?
 
     MenuHandling::Window.draw_window(window)
 
-    #Inventory::InventoryManager.draw_inventory(window)
     window.display
   end
 end
