@@ -120,34 +120,35 @@ module EquippedItemsWindow
 
     class EquippedItemsWindowDisplay
         @@drag_offset : SF::Vector2(Float64)? = nil
-    def self.display_soul_orb_gem_slots(window)
-        if Player::Appearance.soul_orb != nil
-            if Player::Appearance.soul_orb.not_nil!.max_slots > 0
-                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_01.sprite)
-            end
-            if Player::Appearance.soul_orb.not_nil!.max_slots > 1
-                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_03.sprite)
-            end
-            if Player::Appearance.soul_orb.not_nil!.max_slots > 2
-                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_05.sprite)
-            end
-            if Player::Appearance.soul_orb.not_nil!.max_slots > 3
-                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_07.sprite)
-            end
-            if Player::Appearance.soul_orb.not_nil!.max_slots > 4
-                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_02.sprite)
-            end
-            if Player::Appearance.soul_orb.not_nil!.max_slots > 5
-                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_04.sprite)
-            end
-            if Player::Appearance.soul_orb.not_nil!.max_slots > 6
-                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_06.sprite)
-            end
-            if Player::Appearance.soul_orb.not_nil!.max_slots > 7
-                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_08.sprite)
+        
+        def self.display_soul_orb_gem_slots(window)
+            if Player::Appearance.soul_orb != nil
+                if Player::Appearance.soul_orb.not_nil!.max_slots > 0
+                    window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_01.sprite)
+                end
+                if Player::Appearance.soul_orb.not_nil!.max_slots > 1
+                    window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_03.sprite)
+                end
+                if Player::Appearance.soul_orb.not_nil!.max_slots > 2
+                    window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_05.sprite)
+                end
+                if Player::Appearance.soul_orb.not_nil!.max_slots > 3
+                    window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_07.sprite)
+                end
+                if Player::Appearance.soul_orb.not_nil!.max_slots > 4
+                    window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_02.sprite)
+                end
+                if Player::Appearance.soul_orb.not_nil!.max_slots > 5
+                    window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_04.sprite)
+                end
+                if Player::Appearance.soul_orb.not_nil!.max_slots > 6
+                    window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_06.sprite)
+                end
+                if Player::Appearance.soul_orb.not_nil!.max_slots > 7
+                    window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_08.sprite)
+                end
             end
         end
-    end
         def self.display(window)
             current_size = window.size
             original_width = 800 
