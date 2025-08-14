@@ -51,28 +51,20 @@ module EquippedItemsWindow
         EQUIPMENT_SLOTS << WEAPON_SLOT_BOX
 
         JEWEL_SLOT_BOX_01 = Ui_Elements::Ui_BoxBase.new("Jewelry Slot 1", "EquItemBox06", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 850, 50, 50)), 50.0, 50.0, 2)
-        EQUIPMENT_SLOTS << JEWEL_SLOT_BOX_01 #This is only for testing, when soul orbs and jewels are fully implemented the slots should be removed from this array and only display based on the amount of slots
 
         JEWEL_SLOT_BOX_02 = Ui_Elements::Ui_BoxBase.new("Jewelry Slot 2", "EquItemBox07", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 850, 50, 50)), 50.0, 50.0, 2)
-        EQUIPMENT_SLOTS << JEWEL_SLOT_BOX_02
 
         JEWEL_SLOT_BOX_03 = Ui_Elements::Ui_BoxBase.new("Jewelry Slot 3", "EquItemBox08", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 850, 50, 50)), 50.0, 50.0, 2)
-        EQUIPMENT_SLOTS << JEWEL_SLOT_BOX_03
 
         JEWEL_SLOT_BOX_04 = Ui_Elements::Ui_BoxBase.new("Jewelry Slot 4", "EquItemBox09", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 850, 50, 50)), 50.0, 50.0, 2)
-        EQUIPMENT_SLOTS << JEWEL_SLOT_BOX_04
 
         JEWEL_SLOT_BOX_05 = Ui_Elements::Ui_BoxBase.new("Jewelry Slot 5", "EquItemBox10", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 850, 50, 50)), 50.0, 50.0, 2)
-        EQUIPMENT_SLOTS << JEWEL_SLOT_BOX_05
 
         JEWEL_SLOT_BOX_06 = Ui_Elements::Ui_BoxBase.new("Jewelry Slot 6", "EquItemBox11", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 850, 50, 50)), 50.0, 50.0, 2)
-        EQUIPMENT_SLOTS << JEWEL_SLOT_BOX_06
 
         JEWEL_SLOT_BOX_07 = Ui_Elements::Ui_BoxBase.new("Jewelry Slot 7", "EquItemBox12", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 850, 50, 50)), 50.0, 50.0, 2)
-        EQUIPMENT_SLOTS << JEWEL_SLOT_BOX_07
 
         JEWEL_SLOT_BOX_08 = Ui_Elements::Ui_BoxBase.new("Jewelry Slot 8", "EquItemBox13", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1000, 850, 50, 50)), 50.0, 50.0, 2)
-        EQUIPMENT_SLOTS << JEWEL_SLOT_BOX_08
 
         CLOSE_BUTTON_BOX = Ui_Elements::Ui_BoxBase.new("Close Button", "EquItemBox14", SF::Sprite.new(BLANK_TEXTURE, SF::Rect.new(1200, 0, 9, 9)), 9.0, 9.0, 3)
         EQUIPPED_ITEMS_WINDOW_BOXES << CLOSE_BUTTON_BOX
@@ -125,9 +117,37 @@ module EquippedItemsWindow
         end
 
     end
+
     class EquippedItemsWindowDisplay
         @@drag_offset : SF::Vector2(Float64)? = nil
-
+    def self.display_soul_orb_gem_slots(window)
+        if Player::Appearance.soul_orb != nil
+            if Player::Appearance.soul_orb.not_nil!.max_slots > 0
+                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_01.sprite)
+            end
+            if Player::Appearance.soul_orb.not_nil!.max_slots > 1
+                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_03.sprite)
+            end
+            if Player::Appearance.soul_orb.not_nil!.max_slots > 2
+                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_05.sprite)
+            end
+            if Player::Appearance.soul_orb.not_nil!.max_slots > 3
+                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_07.sprite)
+            end
+            if Player::Appearance.soul_orb.not_nil!.max_slots > 4
+                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_02.sprite)
+            end
+            if Player::Appearance.soul_orb.not_nil!.max_slots > 5
+                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_04.sprite)
+            end
+            if Player::Appearance.soul_orb.not_nil!.max_slots > 6
+                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_06.sprite)
+            end
+            if Player::Appearance.soul_orb.not_nil!.max_slots > 7
+                window.draw(EquippedItemsWindowElements::JEWEL_SLOT_BOX_08.sprite)
+            end
+        end
+    end
         def self.display(window)
             current_size = window.size
             original_width = 800 
@@ -184,6 +204,7 @@ module EquippedItemsWindow
             EquippedItemsWindowElements::EQUIPMENT_SLOTS.each { |slot|
                 window.draw(slot.sprite)
             }
+            self.display_soul_orb_gem_slots(window)
             elsif EquippedItemsWindowManager.current_category == "cosmetics"
             EquippedItemsWindowElements::COSMETIC_SLOTS.each { |slot|
                 window.draw(slot.sprite)
