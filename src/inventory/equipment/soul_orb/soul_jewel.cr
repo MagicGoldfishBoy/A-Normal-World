@@ -105,6 +105,15 @@ module SoulJewel
         @@sparkling_soul_turquoise = ProtectiveSoulJewel.new("Sparkling Soul Turquoise", "sparkling_soul_turquoise", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(40, 80, 40, 40)), "A sparkling turquoise jewel with a strong soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 3_i8, 300_i64, 1, "turquoise", "physical", 15.0)
 
         @@glowing_soul_turquoise = ProtectiveSoulJewel.new("Glowing Soul Turquoise", "glowing_soul_turquoise", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(40, 120, 40, 40)), "A glowing turquoise jewel with a powerful soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 4_i8, 400_i64, 1, "turquoise", "physical", 20.0)
+
+
+        @@soul_dull_jasper = ProtectiveSoulJewel.new("Soul Dull Jasper", "soul_dull_jasper", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(160, 0, 40, 40)), "A dull jasper jewel with little time left.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 1_i8, 100_i64, 1, "jasper", "poison", 5.0)
+
+        @@soul_jasper = ProtectiveSoulJewel.new("Soul Jasper", "soul_jasper", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(160, 40, 40, 40)), "A jasper jewel imbued with a mediocre soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 2_i8, 200_i64, 1, "jasper", "poison", 10.0)
+
+        @@sparkling_soul_jasper = ProtectiveSoulJewel.new("Sparkling Soul Jasper", "sparkling_soul_jasper", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(160, 80, 40, 40)), "A sparkling jasper jewel with a strong soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 3_i8, 300_i64, 1, "jasper", "poison", 15.0)
+
+        @@glowing_soul_jasper = ProtectiveSoulJewel.new("Glowing Soul Jasper", "glowing_soul_jasper", false, SF::Sprite.new(SOUL_JEWEL_TEXTURE, SF::Rect.new(160, 120, 40, 40)), "A glowing jasper jewel with a powerful soul.", SoulJewelBase::DEFAULT_SOUL_JEWEL_EQUIP_SFX, 4_i8, 400_i64, 1, "jasper", "poison", 20.0)
     end
     class ElementalSoulJewel < SoulJewelBase
         property element_type : String
