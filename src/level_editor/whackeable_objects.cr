@@ -1,3 +1,4 @@
+require "log"
 require "crsfml"
 require "crsfml/audio"
 require "../../src/textures.cr"
@@ -5,6 +6,7 @@ require "../../src/level_elements.cr"
 require "../../src/sound/sfx.cr"
 
 module WhackeableObject
+    Log = ::Log.for("whackeable_object")
     class WhackeableObjectBase < LevelElements::LevelElementBase
         WHACKEABLE_TEMPLATE_ARRAY = [] of WhackeableObjectBase
         WHACKEABLE_SPRITE_HASH = {} of String => SF::Sprite
@@ -45,7 +47,7 @@ module WhackeableObject
      class_property animation_clock = SF::Clock.new
 
      def open_menu(window)
-        puts "⛔ Whackeables don't have a menu"
+        Log.info &.emit("WhackeableObjectBase does not have a menu")
      end
 
      def react_to_impact(window, attack_strength)
@@ -138,9 +140,9 @@ module WhackeableObject
 
      def self.spawn_whackeable(window)
         if LevelEditor::LevelEditorLogic.current_index >= WhackeableObject::WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY.size
-            puts "Error: No WhackableObject available to spawn. Index was '#{LevelEditor::LevelEditorLogic.current_index}'"
+            Log.warn &.emit("No more whackeable objects to spawn", index: LevelEditor::LevelEditorLogic.current_index)
             if WhackeableObject::WhackeableObjectBase::WHACKEABLE_TEMPLATE_ARRAY.empty?
-                puts "WackeableObject array is empty"
+                Log.info &.emit("WackeableObject array is empty")
             end
             return
         end
@@ -198,7 +200,7 @@ module WhackeableObject
 
             sprite = WhackeableObject::WhackeableObjectBase::WHACKEABLE_SPRITE_HASH[id]?.try(&.dup)
             unless sprite
-                puts "⚠️  Sprite not found for whackeable object ID: #{id}, skipping."
+                Log.warn &.emit("Sprite not found for whackeable object ID: #{id}, skipping.")
                 next
             end
 
@@ -207,7 +209,7 @@ module WhackeableObject
 
             sfx = WhackeableObject::WhackeableObjectBase::WHACKEABLE_SFX_HASH[id]?.try(&.dup)
             unless sfx
-                puts "⚠️  Sprite not found for whackeable object ID: #{id}, skipping."
+                Log.warn &.emit("SFX not found for whackeable object ID: #{id}, skipping.")
                 next
             end
 
@@ -220,11 +222,12 @@ module WhackeableObject
             max_wiggle_iterator, current_wiggle_iterator, is_dead)
             WhackeableObject::WhackeableObjectsMethods.spawned_whackeable_object_array << whackeable_object
             Combat::PlayerMethods::TARGET_ARRAY << whackeable_object
-            puts "✅ Loaded whackeable: #{name}, ID: #{id}, X: #{x}, Y: #{y}, Max_Hp: #{max_hp}, Current_Hp: #{current_hp}"
+            Log.info &.emit("Loaded Whackeable Object", name: name, id: id, x: x, y: y, max_hp: max_hp, current_hp: current_hp)
             whackeable_object
         end
      end
     end
+    
     class TrainingDummy < WhackeableObjectBase
 
         @@training_dummy_01 = TrainingDummy.new("Cloth Training Dummy", "training_dummy_01", 0, 0, 
@@ -257,7 +260,7 @@ module WhackeableObject
         @@turquoise_ore_01 = Ore.new("Turquoise Ore", "turquoise_ore_01", 0, 0, SF::Sprite.new(TURQUOISE_ORE_01, SF::Rect.new(0, 0, 40, 80)),
         500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
 
-        
+
         @@quartz_ore_01 = Ore.new("Quartz Ore", "quartz_ore_01", 0, 0, SF::Sprite.new(QUARTZ_ORE_01, SF::Rect.new(0, 0, 40, 80)),
         500.0, 500.0, SFX::WhackeableSFX::ROCK_HIT_01, false, 5, 5, false)
 
