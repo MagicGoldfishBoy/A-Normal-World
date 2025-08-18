@@ -1,0 +1,13 @@
+{
+  "id": "quartz_ore_01",
+  "drop_table": [
+    [
+      "quartz_ore",
+      100.0
+    ],
+    [
+      "quartz_ore",
+      5.0
+    ]
+  ]
+}

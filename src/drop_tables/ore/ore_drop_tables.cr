@@ -1,59 +1,152 @@
 require "log"
 require "json"
 
-module OreDropTables
-  abstract class OreDropTableBase
-    include JSON::Serializable
-    Log = ::Log.for("ore_drop_table")
+abstract class OreDropTableBase
+  include JSON::Serializable
 
-    property id : String
-    property drop_table : Array(String)
-    property chance_table : Array(Float64)
+  property id : String
+  property drop_table : Array(Tuple(String, Float64))
 
-    ORE_DROP_TABLES_ARRAY = [] of OreDropTableBase
-    ORE_DROP_TABLES_LIST = [] of Tuple(String, Float64)
+  Log = ::Log.for("ore_drop_table")
 
-    def initialize(id : String, drop_table : Array(String), chance_table : Array(Float64))
-      @id = id
-      @drop_table = drop_table
-      @chance_table = chance_table
-
-      ORE_DROP_TABLES_ARRAY << self
-
-      drop_table.zip(chance_table).each do |drop, chance|
-        ORE_DROP_TABLES_LIST << {drop, chance}
-      end
-
-      Log.info &.emit("Ore Drop Table Initialized", id: self.id, drop_table: self.drop_table)
-
-      save = SaveData.new(drop_table.zip(chance_table))
-      path = "#{id}.json"
-
-      Dir.mkdir_p(File.dirname(path))
-      File.write(path, save.to_json, mode: "w")
-      Log.info &.emit("Created Drop Table", file: path)
-    end
+  def initialize(@id : String, @drop_table : Array(Tuple(String, Float64)))
   end
 
-  struct SaveData
-    include JSON::Serializable
 
-    property ore_drop_table : Array(Tuple(String, Float64))
-
-    def initialize(ore_drop_table : Array(Tuple(String, Float64)))
-      @ore_drop_table = ore_drop_table
-    end
-  end
-
-  class CommonOreTables < OreDropTableBase
-    def initialize(id : String, drop_table : Array(String), chance_table : Array(Float64))
-        super(id, drop_table, chance_table)
-    end
-
-    @@turquoise_ore_drop_table = CommonOreTables.new("turquoise_ore_01", ["turquoise_ore", "turquoise_ore"], [100.0, 5.0])
-    @@quartz_ore_drop_table = CommonOreTables.new("quartz_ore_01", ["quartz_ore", "quartz_ore"], [100.0, 5.0])
+  def save_to_file(path : String)
+    File.write(path, self.to_pretty_json)
   end
 end
+
+
+class CommonOreTables < OreDropTableBase
+  @@tables = [] of CommonOreTables
+
+  def initialize(id : String, drop_table : Array(Tuple(String, Float64)))
+    super(id, drop_table)
+    @@tables << self
+  end
+
+
+  def self.all : Array(CommonOreTables)
+    @@tables
+  end
+
+
+  def self.save_all(folder : String)
+    Dir.mkdir_p(folder)
+    all.each do |table|
+      filename = File.join(folder, "#{table.id}.json")
+      table.save_to_file(filename)
+      Log.info &.emit("Created Drop Table", file: filename)
+    end
+  end
+end
+
+
+CommonOreTables.new("turquoise_ore_01",
+  [ {"turquoise_ore", 100.0}, {"turquoise_ore", 5.0} ]
+)
+
+CommonOreTables.new("quartz_ore_01",
+  [ {"quartz_ore", 100.0}, {"quartz_ore", 5.0} ]
+)
+
+
+CommonOreTables.save_all("generated_drop_tables")
+
+
+
+# require "json"
+
+# # --- same structs as before ---
+# struct LootEntry
+#   include JSON::Serializable
+#   property type : String
+#   property name : String
+#   property weight : Int32
+# end
+
+# struct LootPool
+#   include JSON::Serializable
+#   property rolls : Int32
+#   property entries : Array(LootEntry)
+# end
+
+# struct LootTable
+#   include JSON::Serializable
+#   property type : String
+#   property pools : Array(LootPool)
+# end
+
+# # --- helper to read a JSON file ---
+# def load_loot_table(path : String) : LootTable
+#   content = File.read(path)
+#   LootTable.from_json(content)
+# end
+
+# # --- example usage ---
+# turquoise = load_loot_table("generated_loot_tables/turquoise_ore.json")
+
+# puts "Loot table for #{turquoise.pools[0].entries[0].name}:"
+# turquoise.pools[0].entries.each do |entry|
+#   puts "- #{entry.name} (weight #{entry.weight})"
+# end
+
+
+
+
+# module OreDropTables
+#   abstract class OreDropTableBase
+#     include JSON::Serializable
+#     Log = ::Log.for("ore_drop_table")
+
+#     property id : String
+#     property drop_table : Array(Tuple(String, Float64))
+
+#     ORE_DROP_TABLES_ARRAY = [] of OreDropTableBase
+#     ORE_DROP_TABLES_LIST = [] of Tuple(String, Float64)
+
+#     def initialize(id : String, drop_table : Array(Tuple(String, Float64)))
+#       @id = id
+#       @drop_table = drop_table
+
+#       ORE_DROP_TABLES_ARRAY << self
+
+#       # drop_table.each do |(drop, chance)|
+#       #   ORE_DROP_TABLES_LIST << {drop, chance}
+#       # end
+
+#       Log.info &.emit("Ore Drop Table Initialized", id: self.id, drop_table: self.drop_table)
+
+#       save = SaveData.new(drop_table)
+#       path = "#{id}.json"
+
+#       Dir.mkdir_p(File.dirname(path))
+#       File.write(path, save.to_json, mode: "w")
+#       Log.info &.emit("Created Drop Table", file: path)
+#     end
+#   end
+
+#   struct SaveData
+#     include JSON::Serializable
+
+#     property ore_drop_table : Array(Tuple(String, Float64))
+
+#     def initialize(ore_drop_table : Array(Tuple(String, Float64)))
+#       @ore_drop_table = ore_drop_table
+#     end
+#   end
+
+#   class CommonOreTables < OreDropTableBase
+#     def initialize(id : String, drop_table : Array(Tuple(String, Float64)))
+#         super(id, drop_table)
+#     end
+
+#     @@turquoise_ore_drop_table = CommonOreTables.new("turquoise_ore_01", [{"turquoise_ore", 100.0}, {"turquoise_ore", 5.0}])
+#     @@quartz_ore_drop_table = CommonOreTables.new("quartz_ore_01", [{"quartz_ore", 100.0}, {"quartz_ore", 5.0}])
+#   end
+# end
 
 #-----NOTE: Might use this later
 
@@ -194,3 +287,160 @@ end
 #     vein
 #   end
 # end
+
+
+
+
+#might use
+
+
+#require "json"
+
+# One loot entry
+# struct LootEntry
+#   include JSON::Serializable
+
+#   @[JSON::Field(key: "type")]
+#   property type : String = "minecraft:item"
+
+#   @[JSON::Field(key: "name")]
+#   property name : String
+
+#   @[JSON::Field(key: "weight")]
+#   property weight : Int32
+# end
+
+# # A pool of entries
+# struct LootPool
+#   include JSON::Serializable
+
+#   @[JSON::Field(key: "rolls")]
+#   property rolls : Int32 = 1
+
+#   @[JSON::Field(key: "entries")]
+#   property entries : Array(LootEntry)
+# end
+
+# # Full loot table
+# struct LootTable
+#   include JSON::Serializable
+
+#   @[JSON::Field(key: "type")]
+#   property type : String = "minecraft:block"
+
+#   @[JSON::Field(key: "pools")]
+#   property pools : Array(LootPool)
+
+#   def save_to_file(path : String)
+#     File.write(path, self.to_pretty_json)
+#   end
+# end
+
+# # Helper to build loot tables from your simpler syntax
+# def make_loot_table(block_id : String, drops : Array(Tuple(String, Float64)))
+#   entries = drops.map do |(item_id, weight)|
+#     LootEntry.new(name: "minecraft:#{item_id}", weight: weight.to_i)
+#   end
+
+#   LootTable.new(
+#     pools: [LootPool.new(entries: entries)]
+#   )
+# end
+
+# # Example usage
+# turquoise_table = make_loot_table("turquoise_ore", [
+#   {"turquoise_ore", 100.0},
+#   {"turquoise_ore", 5.0}
+# ])
+
+# quartz_table = make_loot_table("quartz_ore", [
+#   {"quartz_ore", 100.0},
+#   {"quartz_ore", 5.0}
+# ])
+
+# Dir.mkdir_p("generated_loot_tables")
+# turquoise_table.save_to_file("generated_loot_tables/turquoise_ore.json")
+# quartz_table.save_to_file("generated_loot_tables/quartz_ore.json")
+
+
+
+
+# require "json"
+
+# # One loot entry
+# struct LootEntry
+#   include JSON::Serializable
+
+#   @[JSON::Field(key: "type")]
+#   property type : String = "minecraft:item"
+
+#   @[JSON::Field(key: "name")]
+#   property name : String
+
+#   @[JSON::Field(key: "weight")]
+#   property weight : Int32
+# end
+
+# # A pool of entries
+# struct LootPool
+#   include JSON::Serializable
+
+#   @[JSON::Field(key: "rolls")]
+#   property rolls : Int32 = 1
+
+#   @[JSON::Field(key: "entries")]
+#   property entries : Array(LootEntry)
+# end
+
+# # Full loot table
+# struct LootTable
+#   include JSON::Serializable
+
+#   @[JSON::Field(key: "type")]
+#   property type : String = "minecraft:block"
+
+#   @[JSON::Field(key: "pools")]
+#   property pools : Array(LootPool)
+
+#   def save_to_file(filename : String)
+#     File.write(filename, self.to_pretty_json)
+#   end
+# end
+
+# Ore registration class
+# class CommonOreTables
+#   @@tables = {} of String => LootTable
+
+#   # register an ore + drops
+#   def self.register(block_id : String, drops : Array(Tuple(String, Float64)))
+#     entries = drops.map do |(item_id, weight)|
+#       LootEntry.new(name: "minecraft:#{item_id}", weight: weight.to_i)
+#     end
+#     table = LootTable.new(pools: [LootPool.new(entries: entries)])
+#     @@tables[block_id] = table
+#   end
+
+#   # save all loot tables to a folder, naming files after block_id
+#   def self.save_all(folder : String)
+#     Dir.mkdir_p(folder)
+#     @@tables.each do |block_id, table|
+#       filename = File.join(folder, "#{block_id}.json")
+#       table.save_to_file(filename)
+#     end
+#   end
+# end
+
+# # --- register ores here ---
+# CommonOreTables.register("turquoise_ore", [
+#   {"turquoise_ore", 100.0},
+#   {"turquoise_ore", 5.0}
+# ])
+
+# CommonOreTables.register("quartz_ore", [
+#   {"quartz_ore", 100.0},
+#   {"quartz_ore", 5.0}
+# ])
+
+# # --- generate json files ---
+# CommonOreTables.save_all("generated_loot_tables")
+
